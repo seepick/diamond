@@ -7,8 +7,11 @@ on:
 
 jobs:
   prepare-release:
-    runs-on: ubuntu-latest
     name: Creating GitHub Release
+    runs-on: ubuntu-latest
+    # https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions
+    permissions:
+      contents: write
     steps:
       - name: Create Release # https://github.com/marketplace/actions/create-tag-release
         id: create_release
@@ -25,9 +28,11 @@ jobs:
       upload-url: ${{ steps.create_release.outputs.upload_url }}
 
   build-and-upload:
+    name: Building and uploading artifact
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     needs: prepare-release
-    name: Building and uploading artifact
     steps:
       - name: Log Info
         run: echo "This job is using ref ${{ github.ref }} and ref_name ${{ github.ref_name }}"

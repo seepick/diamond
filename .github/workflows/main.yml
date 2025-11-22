@@ -5,6 +5,9 @@ on:
       - main
 jobs:
   gradle:
+    name: Build Gradle project
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
