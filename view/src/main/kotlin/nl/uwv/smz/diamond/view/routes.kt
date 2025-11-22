@@ -8,8 +8,9 @@ import io.ktor.server.routing.routing
 
 private val log = logger {}
 
-fun Application.installRouting() {
+fun Application.installDiamondRouting() {
     log.info { "Installing routing..." }
+    // TODO @cpi do this todo due to 10.12.2025
     routing {
         get("/") {
             call.respondText("Hello World!")

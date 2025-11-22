@@ -1,0 +1,19 @@
+# see: https://docs.gradle.org/current/userguide/version_catalogs.html
+
+[versions]
+kotlin-logging = "7.0.13"
+logback = "1.5.18"
+manes-versions = "0.45.0"
+# my-lib = { strictly = "[1.0, 2.0[", prefer = "1.2" } # Rich version
+
+[libraries]
+logging-kotlin = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlin-logging" }
+logging-logback = { group = "ch.qos.logback", name = "logback-classic-jvm", version.ref = "logback" }
+#commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version = { strictly = "[3.8, 4.0[", prefer="3.9" } }
+
+[bundles]
+#ktor = ["ktor-core", "ktor-json", "ktor-foobar"]
+
+[plugins]
+# short-notation = "some.plugin.id:1.4"
+#versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions" }
