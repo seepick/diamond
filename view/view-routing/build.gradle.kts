@@ -1,7 +1,6 @@
 plugins {
     id("diamond-kotlin-common")
-//    kotlin("plugin.serialization")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    kotlin("plugin.serialization") // id("org.jetbrains.kotlin.plugin.serialization")
 
     // https://github.com/yahorbarkouski/todome
     // TODO experiment with todome
@@ -32,8 +31,8 @@ dependencies {
 
     // KTOR
     implementation(Deps.ktor.server.core)
-//    implementation(Deps.ktor.server.contentNegotiation)
-//    implementation(Deps.ktor.serialization)
+    implementation(Deps.ktor.server.contentNegotiation)
+    implementation(Deps.ktor.serialization)
 
     implementation(Deps.koin.ktor)
 
@@ -42,7 +41,11 @@ dependencies {
 //    implementation("org.jetbrains.exposed:exposed-jdbc:${Versions.exposed}")
 //    implementation("com.h2database:h2:${Versions.h2}") // TODO runtime optional; default = postgresql, dev/test = H2
 
-
+    testImplementation(Deps.ktor.client.contentNegotiation)
+    testImplementation(Deps.testing.kotest.junitRunner)
+    testImplementation("io.mockk:mockk:1.14.6")
+    testImplementation(Deps.testing.kotest.assertions)
+    testImplementation(Deps.testing.kotest.property)
     testImplementation(Deps.ktor.server.testHost)
 }
 

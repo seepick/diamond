@@ -16,7 +16,10 @@ repositories {
 
 kotlin {
     compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict")
+        freeCompilerArgs.addAll(
+            "-Xjsr305=strict", // Annotations for Software Defect Detection
+            "-Xopt-in=kotlin.uuid.ExperimentalUuidApi",
+        )
     }
 }
 

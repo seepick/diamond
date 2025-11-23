@@ -8,7 +8,7 @@ import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.TestApplication
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import nl.uwv.smz.diamond.app.prepareDiamond
+import nl.uwv.smz.diamond.app.setupCompleteKtor
 import kotlin.coroutines.EmptyCoroutineContext
 
 class KtorHooks(private val world: World) {
@@ -24,7 +24,7 @@ class KtorHooks(private val world: World) {
             world.initClient(client)
             application {
                 // FIXME rewire external-impl with stub; reconfigure application for test
-                prepareDiamond()
+                setupCompleteKtor()
             }
         }
     }

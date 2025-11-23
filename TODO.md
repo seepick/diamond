@@ -1,6 +1,11 @@
 Next
 =========================
 
+* resolve view-routes test run warnings
+    * Kotest autoscan is enabled.
+    * SLF4J(W): No SLF4J providers were found.
+
+* [ ] arrow either
 * [ ] CRUD operations (persistence-stub; ApiError handling, JSON serialization)
 * [ ] Persistence layer (Exposed, Liquibase/H2, testcontainer)
 * [ ] view:{routing/controller-api/controller-impl/view-models}
@@ -14,6 +19,7 @@ Questions
 Backlog
 -------------------------
 
+* [ ] provide test jars for reusable Arbs
 * [ ] Local reformatting (detekt, ...)
 * [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle, properties, kotlin mapping lib
 * [ ] Generate Software Architecture Document with Asciidoc
@@ -34,6 +40,7 @@ Backlog
 * [ ] Explore GitHub Detekt workflow
 * [ ] Explore GitHub CodeQL workflow
 * [ ] Write SAD sub-projects explanation
+* [ ] Postman collection
 
 Done
 =========================

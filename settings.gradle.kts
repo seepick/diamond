@@ -16,6 +16,7 @@ include(
     "persistence",
     "persistence:persistence-api",
     "persistence:persistence-impl",
+    "persistence:persistence-stub",
     "extern",
     "extern:extern-api",
     "extern:extern-impl",

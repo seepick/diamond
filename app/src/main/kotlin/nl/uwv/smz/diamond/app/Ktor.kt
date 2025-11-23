@@ -11,6 +11,7 @@ import nl.uwv.smz.diamond.domain_logic_impl.domainLogicImpl
 import nl.uwv.smz.diamond.shared.common.Modules
 import nl.uwv.smz.diamond.view.controller_impl.controllerImpl
 import nl.uwv.smz.diamond.view.routing.installDiamondRouting
+import nl.uwv.smz.diamond.view.routing.setupFundamentalKtorFeatures
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 
@@ -26,17 +27,18 @@ object Ktor {
     ): KtorServer {
         log.info { "Preparing Ktor with $config" }
         return embeddedServer(factory, port = config.port) {
-            prepareDiamond()
+            setupCompleteKtor()
         }
     }
 }
 
 /** Visible for integration test setup */
-fun Application.prepareDiamond() {
+fun Application.setupCompleteKtor() {
     install(Koin) {
         slf4jLogger()
         modules(Modules.all())
     }
+    setupFundamentalKtorFeatures()
     installDiamondRouting()
 }
 

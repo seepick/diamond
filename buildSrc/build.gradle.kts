@@ -12,9 +12,8 @@ repositories {
 // TODO reference to Versions.xxx not possible
 dependencies {
     val kotlinVersion = "2.2.21"
-//    val kotlinVersion = "1.7.20"
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-//    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // kotlin("jvm")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion") // kotlin("plugin.serialization")
 
     implementation("com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.52.0")
 }
