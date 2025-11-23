@@ -38,6 +38,14 @@ object Deps {
     }
 
     object testing {
+        val mockk = "io.mockk:mockk:1.14.6"
+
+
+        object junit {
+            val platformSuite = "org.junit.platform:junit-platform-suite:6.0.1"
+            val jupiter = "org.junit.jupiter:junit-jupiter:5.8.2"
+        }
+
         object kotest {
             private fun make(artifact: String) = "io.kotest:kotest-$artifact:${Versions.testing.kotest}"
             val junitRunner = make("runner-junit5-jvm")

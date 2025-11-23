@@ -9,11 +9,9 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
-import nl.uwv.smz.diamond.domain.model.Gram
 import nl.uwv.smz.diamond.domain_failure.Failure
 import nl.uwv.smz.diamond.domain_logic_api.CrystalService
 import nl.uwv.smz.diamond.domain_logic_api.GreetService
-import kotlin.uuid.Uuid
 
 class GreetServiceImpl : GreetService {
     override fun greet(): String = "Hello Service!"
@@ -23,10 +21,6 @@ class CrystalServiceImpl : CrystalService {
 
     private val log = logger {}
     private val crystals = mutableListOf<Crystal>()
-
-    init {
-        crystals += Crystal(id = CrystalId(Uuid.random()), weight = Gram(1337))
-    }
 
     override fun findAll(): List<Crystal> {
         log.debug { "findAll()" }
@@ -46,7 +40,7 @@ class CrystalServiceImpl : CrystalService {
         }
         // TODO ensure with same ID doesn't exist!
         val crystal = Crystal(
-            id = CrystalId(Uuid.random()),
+            id = CrystalId.random(),
             weight = create.weight,
         )
         crystals += crystal

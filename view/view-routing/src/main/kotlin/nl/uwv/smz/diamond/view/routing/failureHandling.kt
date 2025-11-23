@@ -31,4 +31,5 @@ val Failure.httpStatusCode
     get() = when (this) {
         is Failure.InvalidRequestFailure -> HttpStatusCode.BadRequest
         is Failure.NotFoundFailure -> HttpStatusCode.NotFound
+        is Failure.BadDataFailure -> HttpStatusCode.InternalServerError
     }

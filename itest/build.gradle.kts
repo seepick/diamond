@@ -1,5 +1,6 @@
 plugins {
     id("diamond-kotlin-common")
+    id("diamond-kotlin-test")
 }
 
 // https://cucumber.io/docs/guides/10-minute-tutorial?lang=kotlin
@@ -21,8 +22,6 @@ dependencies {
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$versionCucumber")
     testImplementation("org.junit.platform:junit-platform-suite:6.0.1")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-    testImplementation(Deps.testing.kotest.assertions)
-//    testImplementation(Deps.testing.kotest.property)
 }
 
 tasks.withType<Test> {

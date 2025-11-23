@@ -1,5 +1,6 @@
 plugins {
     id("diamond-kotlin-common")
+    id("diamond-kotlin-test")
     kotlin("plugin.serialization") // id("org.jetbrains.kotlin.plugin.serialization")
 
     // https://github.com/yahorbarkouski/todome
@@ -44,10 +45,6 @@ dependencies {
 //    implementation("com.h2database:h2:${Versions.h2}") // TODO runtime optional; default = postgresql, dev/test = H2
 
     testImplementation(Deps.ktor.client.contentNegotiation)
-    testImplementation(Deps.testing.kotest.junitRunner)
-    testImplementation("io.mockk:mockk:1.14.6")
-    testImplementation(Deps.testing.kotest.assertions)
-    testImplementation(Deps.testing.kotest.property)
     testImplementation(Deps.ktor.server.testHost)
 }
 

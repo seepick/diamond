@@ -5,8 +5,7 @@ Next
     * Kotest autoscan is enabled.
     * SLF4J(W): No SLF4J providers were found.
 
-* [ ] arrow either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
-* [ ] CRUD operations (persistence-stub; ApiError handling, JSON serialization)
+* [ ] CRUD operations for persistence (incl, stub)
 * [ ] Persistence layer (Exposed, Liquibase/H2, testcontainer)
 * [ ] view:{routing/controller-api/controller-impl/view-models}
 
@@ -59,6 +58,8 @@ V1
 * [x] GitHub Action (CI verify on push, CD on tags)
 * [x] Koin DI
 * [x] Cucumber programatic logging (before all)
+* [x] arrow either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
+* [x] CRUD operations until service (ApiError handling, JSON serialization)
 
 Challenges
 =========================

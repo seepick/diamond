@@ -18,7 +18,7 @@ kotlin {
     compilerOptions {
         freeCompilerArgs.addAll(
             "-Xjsr305=strict", // Annotations for Software Defect Detection
-            "-Xopt-in=kotlin.uuid.ExperimentalUuidApi",
+            "-opt-in=kotlin.uuid.ExperimentalUuidApi",
         )
     }
 }
@@ -29,9 +29,6 @@ java {
     }
 }
 
-tasks.withType<Test>().configureEach { // to be able to run kotests
-    useJUnitPlatform()
-}
 
 tasks.withType<DependencyUpdatesTask> {
     val rejectPatterns =
