@@ -1,10 +1,10 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import gradle.kotlin.dsl.accessors._e0089add3ded35fdd654c9963fdc04f9.java
 
 plugins {
     // no version numbers; declare as dependency in buildSrc/build.gradle.kts
     kotlin("jvm")
-    // not via version catalog possible :-/
+    // declaring plugins not possible via version catalog
+    // buildSrc/src/main/kotlin NOT available during runtime (misleading as available while writing)
     id("com.github.ben-manes.versions") // help / dependencyUpdates
 }
 
@@ -12,7 +12,10 @@ repositories {
     mavenCentral()
 }
 
-kotlin { compilerOptions {
+// no logging dependency, as API models don't need it (polluted!)
+
+kotlin {
+    compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
     }
 }

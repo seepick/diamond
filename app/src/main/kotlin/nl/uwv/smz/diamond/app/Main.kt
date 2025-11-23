@@ -12,6 +12,7 @@ object Main {
         reconfigureLog()
         val log = logger {}
         log.info { "Starting application and wait..." }
+
         Ktor
             .prepare(KtorConfig(port = 8000), Netty)
             .start(wait = true)

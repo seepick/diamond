@@ -4,7 +4,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
 import io.ktor.server.testing.testApplication
-import nl.uwv.smz.diamond.view.installDiamondRouting
+import nl.uwv.smz.diamond.app.prepareDiamond
 
 class World {
 
@@ -17,7 +17,7 @@ class World {
     private fun execute(withClient: suspend (HttpClient) -> HttpResponse) {
         testApplication {
             application {
-                installDiamondRouting()
+                prepareDiamond()
             }
             lastResponse = withClient(client)
         }

@@ -25,7 +25,7 @@ plugins {
 //}
 
 dependencies {
-    implementation(project(":logic-api"))
+    implementation(project(":logic:logic-api"))
 
     implementation(libs.logging.kotlin)
 
@@ -34,7 +34,7 @@ dependencies {
 //    implementation(Deps.ktor.server.contentNegotiation)
 //    implementation(Deps.ktor.serialization)
 
-    implementation("io.insert-koin:koin-ktor:${Versions.koin}")
+    implementation(Deps.koin.ktor)
 
     // DB
 //    implementation("org.jetbrains.exposed:exposed-core:${Versions.exposed}")

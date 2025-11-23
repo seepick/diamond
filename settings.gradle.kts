@@ -3,11 +3,19 @@ rootProject.name = "diamond"
 include(
     "app",
     "view",
-    "logic-api",
-    "logic-impl",
-    "itest",
+    "logic",
+    "logic:logic-api",
+    "logic:logic-impl",
+    "persistence",
+    "persistence:persistence-api",
+    "persistence:persistence-impl",
+    "extern",
+    "extern:extern-api",
+    "extern:extern-impl",
+    "extern:extern-stub",
     "shared",
     "shared:logging",
+    "itest",
 )
 
 dependencyResolutionManagement {

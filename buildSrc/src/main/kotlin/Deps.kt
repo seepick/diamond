@@ -18,4 +18,15 @@ object Deps {
             val openApi = make("server-openapi")
         }
     }
+
+    object koin {
+        private fun make(artifact: String) = "io.insert-koin:koin-$artifact:${Versions.koin}"
+        val core = make("core")
+        val ktor = make("ktor")
+        val logger = make("logger-slf4j")
+    }
+
+    object pluginIds {
+        val manesVersion = "com.github.ben-manes.versions"
+    }
 }
