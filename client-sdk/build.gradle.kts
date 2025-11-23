@@ -2,6 +2,10 @@ plugins {
     id("kotlin-multiplatform")
 }
 
+// TODO Client SDK testing: https://ktor.io/docs/client-testing.html#test-client
+// - test with testImplementation("io.ktor:ktor-client-mock:$ktor_version")
+// - write basic /demo-webapp (angular, ask alex)
+
 kotlin {
     jvm()
     js() {

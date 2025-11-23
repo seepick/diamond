@@ -1,28 +1,23 @@
 Next
 =========================
 
-* [ ] !!! ktor test engine with dislocated cucumber; allow for multiple HTTP executions
-    * also Given: mock backends, insert DB entries
-* [ ] Client SDK testing: https://ktor.io/docs/client-testing.html#test-client
-    * test with testImplementation("io.ktor:ktor-client-mock:$ktor_version")
-    * or target real application
-* [ ] Local reformatting (detekt, ...)
-* [ ] Cucumber programatic logging (before all)
-* [ ] Cucumber-JUnit test parallelization
+* [ ] CRUD operations (persistence-stub; ApiError handling, JSON serialization)
 * [ ] Persistence layer (Exposed, Liquibase/H2, testcontainer)
-* [ ] Generate Software Architecture Document with Asciidoc
-* [ ] Write some ADRs
-* [ ] harvest ktor-sample project
+* [ ] view:{routing/controller-api/controller-impl/view-models}
 
 Questions
 -------------------------
 
-* [ ] Merge subprojects app and view together?
 * [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
 
 Backlog
 -------------------------
 
+* [ ] Local reformatting (detekt, ...)
+* [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle, properties, kotlin mapping lib
+* [ ] Generate Software Architecture Document with Asciidoc
+* [ ] Write some ADRs
+* [ ] harvest ktor-sample project
 * [ ] bean validation (based on OpenAPI spec)
 * [ ] API error handling (with client, etc.)
 * [ ] Read Cucumber doc: https://cucumber.io
@@ -54,6 +49,7 @@ V1
 * [x] Programmatic Logback configuration
 * [x] GitHub Action (CI verify on push, CD on tags)
 * [x] Koin DI
+* [x] Cucumber programatic logging (before all)
 
 Challenges
 =========================
