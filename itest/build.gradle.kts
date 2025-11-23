@@ -7,6 +7,7 @@ dependencies {
     val versionCucumber = "7.32.0"
     implementation(project(":app"))
     implementation(project(":view"))
+    implementation(project(":client-sdk"))
     implementation(project(":shared:shared-commons"))
     implementation(project(":shared:shared-logging"))
     // https://cucumber.io/docs/cucumber/state/#picocontainer
@@ -20,8 +21,8 @@ dependencies {
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$versionCucumber")
     testImplementation("org.junit.platform:junit-platform-suite:6.0.1")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-    testImplementation("io.kotest:kotest-assertions-core:${Versions.testing.kotest}")
-    testImplementation("io.kotest:kotest-property:${Versions.testing.kotest}")
+    testImplementation(Deps.testing.kotest.assertions)
+//    testImplementation(Deps.testing.kotest.property)
 }
 
 tasks.withType<Test> {

@@ -21,8 +21,7 @@ class KtorHooks(private val world: World) {
         log.trace { "start ktor for: ${scenario.name}" }
 
         startKtor {
-            // FIXME client
-            world.client = client
+            world.initClient(client)
             application {
                 // FIXME rewire external-impl with stub; reconfigure application for test
                 prepareDiamond()

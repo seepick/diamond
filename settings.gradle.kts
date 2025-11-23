@@ -3,6 +3,8 @@ rootProject.name = "diamond"
 include(
     "app",
     "view",
+    "client-sdk",
+    "client-sdk:client-sdk-test",
     "logic",
     "logic:logic-api",
     "logic:logic-impl",

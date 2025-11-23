@@ -18,7 +18,7 @@ class Homepage(private val world: World) {
     @When("get home page")
     fun `When get home page`(): Unit = runBlocking {
         log.info { "Artificial wait for 500ms" }
-        world.get("/")
+        world.getHomepage()
     }
 
     @Then("response status code is {int}")

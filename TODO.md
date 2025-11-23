@@ -5,12 +5,14 @@ Next
     * also Given: mock backends, insert DB entries
 * [ ] Client SDK testing: https://ktor.io/docs/client-testing.html#test-client
     * test with testImplementation("io.ktor:ktor-client-mock:$ktor_version")
+    * or target real application
 * [ ] Local reformatting (detekt, ...)
 * [ ] Cucumber programatic logging (before all)
 * [ ] Cucumber-JUnit test parallelization
 * [ ] Persistence layer (Exposed, Liquibase/H2, testcontainer)
 * [ ] Generate Software Architecture Document with Asciidoc
 * [ ] Write some ADRs
+* [ ] harvest ktor-sample project
 
 Questions
 -------------------------
@@ -21,6 +23,8 @@ Questions
 Backlog
 -------------------------
 
+* [ ] bean validation (based on OpenAPI spec)
+* [ ] API error handling (with client, etc.)
 * [ ] Read Cucumber doc: https://cucumber.io
 * [ ] DTO mapping library (like mapstruct but for kotlin?)
 * [ ] Auto version bump up
