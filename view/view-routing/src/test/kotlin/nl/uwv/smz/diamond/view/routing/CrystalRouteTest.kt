@@ -1,9 +1,12 @@
 package nl.uwv.smz.diamond.view.routing
 
+import arrow.core.right
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.equals.shouldBeEqual
 import io.kotest.property.Arb
+import io.kotest.property.arbitrary.arbitrary
 import io.kotest.property.arbitrary.next
+import io.kotest.property.arbitrary.uuid
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -19,10 +22,12 @@ import nl.uwv.smz.diamond.view.controller_api.CrystalController
 import nl.uwv.smz.diamond.view.model.CrystalDto
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
+import kotlin.uuid.Uuid
 
 internal class CrystalRouteTest : DescribeSpec({
 
     val dto = Arb.crystalDto().next()
+    val crystalId = Arb.kotlinUuid().next()
     var controller: CrystalController = mockk()
 
     beforeTest {
@@ -60,7 +65,7 @@ internal class CrystalRouteTest : DescribeSpec({
 
     describe("GET /crystals") {
         it("Given controller returns a DTO Then ok and returned") {
-            every { controller.getAll() } returns listOf(dto) //Arb.list(Arb.crystalDto(), 0..10).next()
+            every { controller.findAll() } returns listOf(dto) //Arb.list(Arb.crystalDto(), 0..10).next()
 
             crystalTest { client ->
                 val response = client.get("/crystals")
@@ -70,4 +75,22 @@ internal class CrystalRouteTest : DescribeSpec({
             }
         }
     }
+
+    describe("GET /crystals/{id}") {
+        it("Given controller returns a DTO Then ok and returned") {
+            every { controller.findSingle(crystalId.toString()) } returns dto.right()
+
+            crystalTest { client ->
+                val response = client.get("/crystals/${crystalId}")
+
+                response.status shouldBeEqual HttpStatusCode.OK
+                response.body<CrystalDto>() shouldBeEqual dto
+            }
+        }
+    }
 })
+
+// TODO move to shared-test
+fun Arb.Companion.kotlinUuid() = arbitrary {
+    Uuid.parse(Arb.uuid().next().toString())
+}

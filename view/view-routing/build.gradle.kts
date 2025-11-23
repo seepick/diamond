@@ -26,8 +26,10 @@ plugins {
 dependencies {
     implementation(project(":view:view-model"))
     implementation(project(":view:controller-api"))
+    implementation(project(":domain:domain-failure"))
 
     implementation(Deps.logging.kotlin)
+    implementation(Deps.arrowCore)
 
     // KTOR
     implementation(Deps.ktor.server.core)

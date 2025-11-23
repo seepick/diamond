@@ -2,6 +2,8 @@ object Deps {
 
     val serializationx = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
 
+    val arrowCore = "io.arrow-kt:arrow-core:2.2.0"
+
     object logging {
         val kotlin = "io.github.oshai:kotlin-logging-jvm:${Versions.Logging.kotlin}"
         val logback = "ch.qos.logback:logback-classic:${Versions.Logging.logback}"

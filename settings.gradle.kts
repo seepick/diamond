@@ -12,6 +12,7 @@ include(
     "domain",
     "domain:domain-logic-api",
     "domain:domain-logic-impl",
+    "domain:domain-failure",
     "domain:domain-model",
     "persistence",
     "persistence:persistence-api",

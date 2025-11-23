@@ -5,7 +5,7 @@ Next
     * Kotest autoscan is enabled.
     * SLF4J(W): No SLF4J providers were found.
 
-* [ ] arrow either
+* [ ] arrow either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
 * [ ] CRUD operations (persistence-stub; ApiError handling, JSON serialization)
 * [ ] Persistence layer (Exposed, Liquibase/H2, testcontainer)
 * [ ] view:{routing/controller-api/controller-impl/view-models}
@@ -13,6 +13,7 @@ Next
 Questions
 -------------------------
 
+* [ ] kotlin.Uuid or java.UUID?
 * [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
 * [ ] how to name packages when in sub-sub-projects? what is the difference one or the other?
 
