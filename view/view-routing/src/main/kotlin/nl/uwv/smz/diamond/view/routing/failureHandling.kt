@@ -5,14 +5,24 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.server.response.respond
 import io.ktor.server.routing.RoutingCall
 import nl.uwv.smz.diamond.domain_failure.Failure
+import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Either<Failure, RESULT>) {
     result.fold(
-        {
-            respond(it.httpStatusCode, "nope") // FIXME ApiError + test first
+        { failure ->
+            respond(
+                failure.httpStatusCode, ApiErrorDto(
+                    code = failure.code,
+                    message = failure.message,
+                )
+            )
         },
         {
-            respond(it)
+            if (RESULT::class != Unit::class) {
+                respond(HttpStatusCode.OK, it)
+            } else {
+                respond(HttpStatusCode.OK)
+            }
         }
     )
 }

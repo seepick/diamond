@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     implementation(Deps.logging.kotlin)
+    implementation(Deps.arrowCore)
 }

@@ -4,3 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CrystalDto(val id: String, val weightInGram: Int)
+
+@Serializable
+data class CrystalCreateDto(val weightInGram: Int)

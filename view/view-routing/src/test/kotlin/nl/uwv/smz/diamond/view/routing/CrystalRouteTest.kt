@@ -1,24 +1,37 @@
 package nl.uwv.smz.diamond.view.routing
 
+import arrow.core.left
 import arrow.core.right
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.equals.shouldBeEqual
+import io.kotest.matchers.string.shouldBeEmpty
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.arbitrary
+import io.kotest.property.arbitrary.int
 import io.kotest.property.arbitrary.next
 import io.kotest.property.arbitrary.uuid
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.delete
 import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
+import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.install
 import io.ktor.server.testing.testApplication
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.serialization.json.Json
+import nl.uwv.smz.diamond.domain_failure.Failure
 import nl.uwv.smz.diamond.view.controller_api.CrystalController
+import nl.uwv.smz.diamond.view.model.ApiErrorDto
+import nl.uwv.smz.diamond.view.model.CrystalCreateDto
 import nl.uwv.smz.diamond.view.model.CrystalDto
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
@@ -27,7 +40,9 @@ import kotlin.uuid.Uuid
 internal class CrystalRouteTest : DescribeSpec({
 
     val dto = Arb.crystalDto().next()
+    val createDto = Arb.crystalCreateDto().next()
     val crystalId = Arb.kotlinUuid().next()
+    val failure = Failure.InvalidRequestFailure("invalid request")
     var controller: CrystalController = mockk()
 
     beforeTest {
@@ -56,8 +71,7 @@ internal class CrystalRouteTest : DescribeSpec({
             }
             code(client)
         }
-    }
-    /*
+    }/*
     val response: HttpResponse = client.post("http://localhost:8080/customer") {
     contentType(ContentType.Application.Json)
     setBody(Customer(3, "Jet", "Brains"))
@@ -88,9 +102,59 @@ internal class CrystalRouteTest : DescribeSpec({
             }
         }
     }
+
+    describe("POST /crystals}") {
+        it("Given controller returns a DTO Then ok and returned") {
+            every { controller.create(createDto) } returns dto.right()
+            crystalTest { client ->
+                val response = client.post("/crystals") {
+                    setJsonBody(createDto)
+                }
+
+                response.status shouldBeEqual HttpStatusCode.OK
+                response.body<CrystalDto>() shouldBeEqual dto
+            }
+        }
+        it("Given controller fails Then bad request and API error") {
+            every { controller.create(createDto) } returns failure.left()
+            crystalTest { client ->
+                val response = client.post("/crystals") {
+                    setJsonBody(createDto)
+                }
+
+                response.status shouldBeEqual HttpStatusCode.BadRequest
+                response.body<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = failure.code, message = failure.message)
+            }
+        }
+    }
+
+    describe("DELETE /crystals/{id}") {
+        it("Given controller returns a DTO Then ok and returned") {
+            every { controller.delete(crystalId.toString()) } returns Unit.right()
+
+            crystalTest { client ->
+                val response = client.delete("/crystals/${crystalId}")
+
+                response.status shouldBeEqual HttpStatusCode.OK
+                response.bodyAsText().shouldBeEmpty()
+            }
+        }
+        // TODO test for controller.delete fails
+    }
 })
 
 // TODO move to shared-test
+inline fun <reified BODY> HttpRequestBuilder.setJsonBody(body: BODY) {
+    contentType(ContentType.Application.Json)
+    setBody(body)
+}
+
 fun Arb.Companion.kotlinUuid() = arbitrary {
     Uuid.parse(Arb.uuid().next().toString())
+}
+
+fun Arb.Companion.crystalCreateDto() = arbitrary {
+    CrystalCreateDto(
+        weightInGram = int(1..5000).next()
+    )
 }

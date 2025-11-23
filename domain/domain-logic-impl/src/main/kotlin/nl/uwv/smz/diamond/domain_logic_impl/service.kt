@@ -57,6 +57,6 @@ class CrystalServiceImpl : CrystalService {
         if (crystals.removeIf { it.id == id }) {
             Unit.right()
         }
-        Failure.NotFoundFailure("Not found").left()
+        Failure.NotFoundFailure("Crystal not found with ID: $id").left()
     }
 }

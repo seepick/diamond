@@ -19,6 +19,7 @@ dependencies {
 
     implementation(Deps.koin.ktor)
     implementation(Deps.koin.logger)
+
 }
 
 application {

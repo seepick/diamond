@@ -3,10 +3,10 @@ package nl.uwv.smz.diamond.itest.stepdefs
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
-import io.kotest.common.runBlocking
 import io.kotest.matchers.equals.shouldBeEqual
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.ktor.client.statement.bodyAsText
+import kotlinx.coroutines.runBlocking
 import nl.uwv.smz.diamond.itest.World
 
 class Homepage(private val world: World) {
