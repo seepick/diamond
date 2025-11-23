@@ -5,8 +5,9 @@ Next
     * Kotest autoscan is enabled.
     * SLF4J(W): No SLF4J providers were found.
 
-* [ ] CRUD operations for stub persistence
-* [ ] Real persistence layer (Exposed, Liquibase/H2, testcontainer)
+* [ ] Investigate: exposed-dao vs plain?!
+* [ ] Real persistence layer (Exposed, Liquibase/H2)
+* [ ] Testcontainer tests with Postgres
 
 Backlog
 -------------------------
@@ -34,6 +35,7 @@ Backlog
 * [ ] Explore GitHub CodeQL workflow
 * [ ] Write SAD sub-projects explanation
 * [ ] Postman collection
+* ... persistence-impl is actually persistence-exposed ;)
 
 Questions
 -------------------------
@@ -43,6 +45,7 @@ Questions
 * [ ] how to name packages when in sub-sub-projects? what is the difference one or the other?
 * [ ] Persistence repos, returing domain-entity (port-adapter style) or DBO (plain)?
 * [ ] isolationMode = IsolationMode.InstancePerTest or default perSpec?
+* [ ] persistence-stub maybe not necessary?
 
 Done
 =========================
@@ -62,6 +65,8 @@ V1
 * [x] Cucumber programatic logging (before all)
 * [x] arrow either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
 * [x] CRUD operations until service (ApiError handling, JSON serialization)
+* [x] CRUD operations for stub persistence
+* [x] Setup Postman collection
 
 Challenges
 =========================

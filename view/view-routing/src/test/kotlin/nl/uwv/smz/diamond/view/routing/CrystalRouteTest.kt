@@ -79,7 +79,7 @@ internal class CrystalRouteTest : DescribeSpec({
                         single<CrystalController> { controller }
                     })
                 }
-                setupFundamentalKtorFeatures()
+                installFundamentalKtorPlugins()
                 installCrystalRouting()
             }
             code(client)

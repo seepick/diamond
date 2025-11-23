@@ -9,7 +9,8 @@ dependencies {
     implementation(project(":view:view-routing"))
     implementation(project(":domain:domain-logic-impl"))
     implementation(project(":view:controller-impl"))
-    implementation(project(":persistence:persistence-stub"))
+    implementation(project(":persistence:persistence-stub")) // TODO bad to have both...
+    implementation(project(":persistence:persistence-impl"))
     implementation(project(":shared:shared-logging"))
     implementation(project(":shared:shared-common"))
 

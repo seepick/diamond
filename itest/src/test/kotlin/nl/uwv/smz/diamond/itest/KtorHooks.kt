@@ -8,6 +8,7 @@ import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.TestApplication
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import nl.uwv.smz.diamond.app.PersistenceMode
 import nl.uwv.smz.diamond.app.setupCompleteKtor
 import kotlin.coroutines.EmptyCoroutineContext
 
@@ -23,8 +24,7 @@ class KtorHooks(private val world: World) {
         startKtor {
             world.initClient(client)
             application {
-                // FIXME rewire external-impl with stub; reconfigure application for test
-                setupCompleteKtor()
+                setupCompleteKtor(PersistenceMode.Impl)
             }
         }
     }

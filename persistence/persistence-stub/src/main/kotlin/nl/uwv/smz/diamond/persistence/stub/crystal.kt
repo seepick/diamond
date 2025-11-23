@@ -15,10 +15,10 @@ internal class CrystalStubbedRepo : CrystalRepo {
 
     private val crystals = mutableListOf<CrystalDbo>()
 
-    override fun loadAll() =
+    override suspend fun selectAll() =
         crystals
 
-    override fun findById(id: CrystalId) =
+    override fun selectById(id: CrystalId) =
         crystals.firstOrNull { it.id == id.value }?.right() ?: Failure.NotFoundFailure("").left()
 
     override fun create(create: CrystalCreate) =
@@ -30,7 +30,7 @@ internal class CrystalStubbedRepo : CrystalRepo {
         }.right()
 
     override fun update(update: CrystalUpdate) = either {
-        val dbo = findById(update.id).bind() // will cancel with NotFoundFailure if not found
+        val dbo = selectById(update.id).bind() // will cancel with NotFoundFailure if not found
         crystals.remove(dbo)
         dbo.updateBy(update).also {
             crystals += it

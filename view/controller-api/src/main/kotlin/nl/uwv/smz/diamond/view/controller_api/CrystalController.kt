@@ -7,7 +7,7 @@ import nl.uwv.smz.diamond.view.model.CrystalDto
 import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
 
 interface CrystalController {
-    fun findAll(): Either<Failure, List<CrystalDto>>
+    suspend fun findAll(): Either<Failure, List<CrystalDto>>
     fun findSingle(crystalId: String): Either<Failure, CrystalDto>
     fun create(create: CrystalCreateDto): Either<Failure, CrystalDto>
     fun update(crystalId: String, update: CrystalUpdateDto): Either<Failure, CrystalDto>

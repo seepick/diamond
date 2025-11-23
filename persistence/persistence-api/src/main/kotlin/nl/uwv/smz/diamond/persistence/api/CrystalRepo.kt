@@ -10,11 +10,13 @@ import kotlin.uuid.Uuid
 data class CrystalDbo(
     val id: Uuid,
     val weightInGram: Int,
-)
+) {
+    companion object
+}
 
 interface CrystalRepo {
-    fun loadAll(): List<CrystalDbo>
-    fun findById(id: CrystalId): Either<Failure, CrystalDbo>
+    suspend fun selectAll(): List<CrystalDbo>
+    fun selectById(id: CrystalId): Either<Failure, CrystalDbo>
     fun create(create: CrystalCreate): Either<Failure, CrystalDbo>
     fun update(update: CrystalUpdate): Either<Failure, CrystalDbo>
     fun delete(id: CrystalId): Either<Failure, Unit>

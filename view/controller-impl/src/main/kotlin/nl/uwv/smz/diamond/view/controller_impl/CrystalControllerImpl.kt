@@ -15,7 +15,7 @@ import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
 
 class CrystalControllerImpl(private val service: CrystalService) : CrystalController {
 
-    override fun findAll() = either {
+    override suspend fun findAll() = either {
         service.findAll().bind().map { it.toDto() }
     }
 

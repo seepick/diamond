@@ -22,13 +22,13 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
 
     private val log = logger {}
 
-    override fun findAll() = either {
+    override suspend fun findAll() = either {
         log.debug { "findAll()" }
-        repo.loadAll().map { it.toCrystal() }.bindAll()
+        repo.selectAll().map { it.toCrystal() }.bindAll()
     }
 
     override fun findSingle(id: CrystalId) = either {
-        repo.findById(id).bind().toCrystal().bind()
+        repo.selectById(id).bind().toCrystal().bind()
     }
 
     override fun create(create: CrystalCreate) = either {
