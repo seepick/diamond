@@ -18,6 +18,7 @@ import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.delete
 import io.ktor.client.request.get
 import io.ktor.client.request.post
+import io.ktor.client.request.put
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
@@ -34,6 +35,7 @@ import nl.uwv.smz.diamond.view.controller_api.CrystalController
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 import nl.uwv.smz.diamond.view.model.CrystalCreateDto
 import nl.uwv.smz.diamond.view.model.CrystalDto
+import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import kotlin.uuid.Uuid
@@ -50,6 +52,7 @@ internal class CrystalRouteTest : DescribeSpec({
     extensions(LogListener)
     val dto = Arb.crystalDto().next()
     val createDto = Arb.crystalCreateDto().next()
+    val updateDto = Arb.crystalUpdateDto().next()
     val crystalId = Arb.kotlinUuid().next()
     val failure = Failure.BadRequestFailure("invalid request")
     var controller: CrystalController = mockk()
@@ -98,10 +101,10 @@ internal class CrystalRouteTest : DescribeSpec({
 
     describe("GET /crystals/{id}") {
         it("Given controller returns a DTO Then ok and returned") {
-            every { controller.findSingle(crystalId.toString()) } returns dto.right()
+            every { controller.findSingle(dto.id) } returns dto.right()
 
             crystalTest { client ->
-                val response = client.get("/crystals/${crystalId}")
+                val response = client.get("/crystals/${dto.id}")
 
                 response.status shouldBeEqual HttpStatusCode.OK
                 response.body<CrystalDto>() shouldBeEqual dto
@@ -134,6 +137,21 @@ internal class CrystalRouteTest : DescribeSpec({
         }
     }
 
+    describe("PUT /crystals/{id}") {
+        it("Given controller returns DTO Then ok and DTO returned") {
+            every { controller.update(dto.id, updateDto) } returns dto.right()
+
+            crystalTest { client ->
+                val response = client.put("/crystals/${dto.id}") {
+                    setJsonBody(updateDto)
+                }
+
+                response.status shouldBeEqual HttpStatusCode.OK
+                response.body<CrystalDto>() shouldBeEqual dto
+            }
+        }
+    }
+
     describe("DELETE /crystals/{id}") {
         it("Given controller returns a DTO Then ok and returned") {
             every { controller.delete(crystalId.toString()) } returns Unit.right()
@@ -161,6 +179,12 @@ fun Arb.Companion.kotlinUuid() = arbitrary {
 
 fun Arb.Companion.crystalCreateDto() = arbitrary {
     CrystalCreateDto(
+        weightInGram = int(1..5000).next()
+    )
+}
+
+fun Arb.Companion.crystalUpdateDto() = arbitrary {
+    CrystalUpdateDto(
         weightInGram = int(1..5000).next()
     )
 }

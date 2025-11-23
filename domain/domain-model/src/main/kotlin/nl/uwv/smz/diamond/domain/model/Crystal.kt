@@ -39,3 +39,8 @@ data class Crystal(
 data class CrystalCreate(
     val weight: Gram,
 )
+
+data class CrystalUpdate(
+    val id: CrystalId,
+    val weight: Gram,
+)

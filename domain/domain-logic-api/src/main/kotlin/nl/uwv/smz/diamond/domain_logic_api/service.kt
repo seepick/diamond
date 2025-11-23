@@ -4,6 +4,7 @@ import arrow.core.Either
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
+import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain_failure.Failure
 
 interface GreetService {
@@ -15,5 +16,6 @@ interface CrystalService {
     fun findAll(): Either<Failure, List<Crystal>>
     fun findSingle(id: CrystalId): Either<Failure, Crystal>
     fun create(create: CrystalCreate): Either<Failure, Crystal>
+    fun update(update: CrystalUpdate): Either<Failure, Crystal>
     fun delete(id: CrystalId): Either<Failure, Unit>
 }

@@ -6,6 +6,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
+import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Gram
 import nl.uwv.smz.diamond.domain_failure.Failure
 import nl.uwv.smz.diamond.domain_logic_api.CrystalService
@@ -30,8 +31,12 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
         repo.findById(id).bind().toCrystal().bind()
     }
 
-    override fun create(create: CrystalCreate): Either<Failure, Crystal> = either {
+    override fun create(create: CrystalCreate) = either {
         repo.create(create).bind().toCrystal().bind()
+    }
+
+    override fun update(update: CrystalUpdate) = either {
+        repo.update(update).map { it.toCrystal().bind() }.bind()
     }
 
     override fun delete(id: CrystalId): Either<Failure, Unit> = either {
