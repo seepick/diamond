@@ -8,7 +8,7 @@ dependencies {
     implementation(project(":app"))
     implementation(project(":view"))
     implementation(project(":client-sdk"))
-    implementation(project(":shared:shared-commons"))
+    implementation(project(":shared:shared-common"))
     implementation(project(":shared:shared-logging"))
     // https://cucumber.io/docs/cucumber/state/#picocontainer
     // https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-picocontainer

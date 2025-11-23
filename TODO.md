@@ -9,6 +9,7 @@ Questions
 -------------------------
 
 * [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
+* [ ] how to name packages when in sub-sub-projects? what is the difference one or the other?
 
 Backlog
 -------------------------

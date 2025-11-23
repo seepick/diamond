@@ -6,8 +6,7 @@ import nl.uwv.smz.diamond.shared.common.Constants
 import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 
-object Main {
-
+object TestMain {
     @JvmStatic
     fun main(args: Array<String>) {
         reconfigureLog()
@@ -20,7 +19,6 @@ object Main {
     }
 
     private fun reconfigureLog() {
-        // TODO rolling file appender for PROD (or via app-config property?!)
         reconfigureLogback {
             rootLevel = LogLevel.Warn
             addConsoleAppender {

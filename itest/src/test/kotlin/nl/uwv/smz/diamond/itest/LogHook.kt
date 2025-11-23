@@ -1,7 +1,7 @@
 package nl.uwv.smz.diamond.itest
 
 import io.cucumber.java.BeforeAll
-import nl.uwv.smz.diamond.shared.commons.Constants
+import nl.uwv.smz.diamond.shared.common.Constants
 import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 

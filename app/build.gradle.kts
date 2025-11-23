@@ -6,9 +6,10 @@ plugins {
 
 dependencies {
     implementation(project(":view"))
-    implementation(project(":logic:logic-api"))
-    implementation(project(":logic:logic-impl"))
-    implementation(project(":shared:shared-commons"))
+    implementation(project(":domain:domain-logic-impl"))
+    implementation(project(":view:view-routing"))
+    implementation(project(":view:controller-impl"))
+    implementation(project(":shared:shared-common"))
     implementation(project(":shared:shared-logging"))
 
     implementation(Deps.logging.kotlin)

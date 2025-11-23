@@ -8,11 +8,11 @@ plugins {
 
 kotlin {
     jvm()
-    js() {
-        // https://kotlinlang.org/docs/js-project-setup.html#support-for-es2015-features
-        // TODO kotlin KMP JS
-        // browser {} or nodejs {}
-    }
+//    js() {
+    // https://kotlinlang.org/docs/js-project-setup.html#support-for-es2015-features
+    // TODO kotlin KMP JS
+    // browser {} or nodejs {}
+//    }
 
     // https://ktor.io/docs/client-create-multiplatform-application.html
     sourceSets {
