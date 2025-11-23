@@ -3,7 +3,6 @@ package nl.uwv.smz.diamond.view.routing
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import io.ktor.server.application.Application
 import io.ktor.server.request.receive
-import io.ktor.server.response.respond
 import io.ktor.server.routing.delete
 import io.ktor.server.routing.get
 import io.ktor.server.routing.post
@@ -20,7 +19,7 @@ internal fun Application.installCrystalRouting() {
         // if (call.request.queryParameters["price"] == "asc") {
         get("/crystals") {
             log.info { "GET /crystals" }
-            call.respond(controller.findAll())
+            call.handle(controller.findAll())
         }
         get("/crystals/{id}") {
             val crystalId = call.parameters["id"]!! // that can NEVER be null!!?!??!?!!
@@ -37,5 +36,6 @@ internal fun Application.installCrystalRouting() {
             log.info { "DELETE /crystals" }
             call.handle(controller.delete(crystalId))
         }
+
     }
 }

@@ -7,7 +7,7 @@ import org.koin.dsl.module
 
 fun Modules.domainLogicImpl() = module {
     single<GreetService> { GreetServiceImpl() }
-    single<CrystalService> { CrystalServiceImpl() }
+    single<CrystalService> { CrystalServiceImpl(get()) }
 //    singleOf(::UserRepositoryImpl) { bind<UserRepository>() }
     // singleOf(::UserService)
 }

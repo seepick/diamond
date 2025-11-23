@@ -6,7 +6,7 @@ import nl.uwv.smz.diamond.view.model.CrystalCreateDto
 import nl.uwv.smz.diamond.view.model.CrystalDto
 
 interface CrystalController {
-    fun findAll(): List<CrystalDto>
+    fun findAll(): Either<Failure, List<CrystalDto>>
     fun findSingle(crystalId: String): Either<Failure, CrystalDto>
     fun create(create: CrystalCreateDto): Either<Failure, CrystalDto>
     fun delete(crystalId: String): Either<Failure, Unit>

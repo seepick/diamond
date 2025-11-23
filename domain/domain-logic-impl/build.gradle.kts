@@ -4,11 +4,8 @@ plugins {
 
 dependencies {
     implementation(project(":domain:domain-logic-api"))
-    implementation(project(":domain:domain-model"))
-    implementation(project(":domain:domain-failure"))
+    implementation(project(":persistence:persistence-api"))
     implementation(project(":shared:shared-common"))
     implementation(Deps.koin.core)
     implementation(Deps.logging.kotlin)
-    implementation(Deps.arrowCore)
-
 }

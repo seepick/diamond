@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":domain:domain-failure"))
+    api(project(":domain:domain-failure"))
     implementation(project(":shared:shared-common"))
-    implementation(Deps.arrowCore)
+    api(Deps.arrowCore)
 }

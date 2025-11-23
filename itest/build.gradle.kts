@@ -18,6 +18,7 @@ dependencies {
     implementation(Deps.ktor.server.testHost)
     implementation(Deps.logging.kotlin)
 
+    testImplementation(project(":shared:shared-test"))
     testImplementation("io.cucumber:cucumber-java:$versionCucumber")
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$versionCucumber")
     testImplementation("org.junit.platform:junit-platform-suite:6.0.1")

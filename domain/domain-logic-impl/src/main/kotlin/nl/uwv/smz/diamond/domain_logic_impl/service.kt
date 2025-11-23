@@ -1,56 +1,47 @@
 package nl.uwv.smz.diamond.domain_logic_impl
 
 import arrow.core.Either
-import arrow.core.left
 import arrow.core.raise.either
-import arrow.core.raise.ensure
-import arrow.core.right
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
+import nl.uwv.smz.diamond.domain.model.Gram
 import nl.uwv.smz.diamond.domain_failure.Failure
 import nl.uwv.smz.diamond.domain_logic_api.CrystalService
 import nl.uwv.smz.diamond.domain_logic_api.GreetService
+import nl.uwv.smz.diamond.persistence.api.CrystalDbo
+import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 
 class GreetServiceImpl : GreetService {
     override fun greet(): String = "Hello Service!"
 }
 
-class CrystalServiceImpl : CrystalService {
+class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
 
     private val log = logger {}
-    private val crystals = mutableListOf<Crystal>()
 
-    override fun findAll(): List<Crystal> {
+    override fun findAll() = either {
         log.debug { "findAll()" }
-        return crystals
+        repo.loadAll().map { it.toCrystal() }.bindAll()
     }
 
-    override fun findSingle(id: CrystalId): Either<Failure, Crystal> { //  = either ... only when bind()
-        return crystals.firstOrNull { it.id == id }?.right() ?: Failure.NotFoundFailure("").left()
-//        return userRepository.findBy(userId).flatMap { existingUser ->
-//            existingUser?.right()
-//        }
+    override fun findSingle(id: CrystalId) = either {
+        repo.findById(id).bind().toCrystal().bind()
     }
 
     override fun create(create: CrystalCreate): Either<Failure, Crystal> = either {
-        ensure(create.weight.value > 0) { // TODO should be actually implicit (invariant; precondition on creation)
-            Failure.InvalidRequestFailure("Crystal weight must be > 0 but was: ${create.weight}")
-        }
-        // TODO ensure with same ID doesn't exist!
-        val crystal = Crystal(
-            id = CrystalId.random(),
-            weight = create.weight,
-        )
-        crystals += crystal
-        crystal
+        repo.create(create).bind().toCrystal().bind()
     }
 
     override fun delete(id: CrystalId): Either<Failure, Unit> = either {
-        if (crystals.removeIf { it.id == id }) {
-            Unit.right()
-        }
-        Failure.NotFoundFailure("Crystal not found with ID: $id").left()
+        repo.delete(id).bind()
     }
+}
+
+private fun CrystalDbo.toCrystal() = either {
+    Crystal(
+        id = CrystalId(id),
+        weight = Gram(weightInGram).bind()
+    )
 }

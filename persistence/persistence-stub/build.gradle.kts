@@ -3,5 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":persistence:persistence-api"))
+    api(project(":persistence:persistence-api"))
+    api(project(":shared:shared-common"))
+    implementation(Deps.koin.core)
 }

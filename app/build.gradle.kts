@@ -6,21 +6,18 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":view"))
-    implementation(project(":domain:domain-logic-impl"))
     implementation(project(":view:view-routing"))
+    implementation(project(":domain:domain-logic-impl"))
     implementation(project(":view:controller-impl"))
-    implementation(project(":shared:shared-common"))
+    implementation(project(":persistence:persistence-stub"))
     implementation(project(":shared:shared-logging"))
+    implementation(project(":shared:shared-common"))
 
     implementation(Deps.logging.kotlin)
-
     implementation(Deps.ktor.server.core)
     implementation(Deps.ktor.server.netty)
-
     implementation(Deps.koin.ktor)
     implementation(Deps.koin.logger)
-
 }
 
 application {

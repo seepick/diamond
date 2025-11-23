@@ -1,5 +1,7 @@
 package nl.uwv.smz.diamond.domain_failure
 
+import arrow.core.Either
+
 sealed interface Failure {
     val code: String
     val message: String
@@ -8,11 +10,14 @@ sealed interface Failure {
         override val code = "NOT_FOUND"
     }
 
-    data class BadDataFailure(override val message: String) : Failure {
-        override val code = "BAD_DATA"
+    data class CorruptDataFailure(override val message: String) : Failure {
+        override val code = "CORRUPT_DATA"
     }
 
-    data class InvalidRequestFailure(override val message: String) : Failure {
-        override val code = "INVALID_REQUEST"
+    data class BadRequestFailure(override val message: String) : Failure {
+        override val code = "BAD_REQUEST"
     }
 }
+
+fun <X> Either<Failure.CorruptDataFailure, X>.mapToBadRequest(): Either<Failure.BadRequestFailure, X> =
+    mapLeft { Failure.BadRequestFailure(it.message) }

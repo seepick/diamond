@@ -2,6 +2,7 @@ package nl.uwv.smz.diamond.view.routing
 
 import arrow.core.left
 import arrow.core.right
+import io.kotest.core.listeners.BeforeProjectListener
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.equals.shouldBeEqual
 import io.kotest.matchers.string.shouldBeEmpty
@@ -37,12 +38,20 @@ import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import kotlin.uuid.Uuid
 
+object LogListener : BeforeProjectListener {
+    override suspend fun beforeProject() {
+        // FIXME logging for kotest?!
+        println("before xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+    }
+}
+
 internal class CrystalRouteTest : DescribeSpec({
 
+    extensions(LogListener)
     val dto = Arb.crystalDto().next()
     val createDto = Arb.crystalCreateDto().next()
     val crystalId = Arb.kotlinUuid().next()
-    val failure = Failure.InvalidRequestFailure("invalid request")
+    val failure = Failure.BadRequestFailure("invalid request")
     var controller: CrystalController = mockk()
 
     beforeTest {
@@ -61,6 +70,7 @@ internal class CrystalRouteTest : DescribeSpec({
                 }
             }
             application {
+
                 install(Koin) {
                     modules(module {
                         single<CrystalController> { controller }
@@ -71,15 +81,11 @@ internal class CrystalRouteTest : DescribeSpec({
             }
             code(client)
         }
-    }/*
-    val response: HttpResponse = client.post("http://localhost:8080/customer") {
-    contentType(ContentType.Application.Json)
-    setBody(Customer(3, "Jet", "Brains"))
-     */
+    }
 
     describe("GET /crystals") {
         it("Given controller returns a DTO Then ok and returned") {
-            every { controller.findAll() } returns listOf(dto) //Arb.list(Arb.crystalDto(), 0..10).next()
+            every { controller.findAll() } returns listOf(dto).right()
 
             crystalTest { client ->
                 val response = client.get("/crystals")

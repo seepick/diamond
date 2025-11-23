@@ -5,23 +5,16 @@ Next
     * Kotest autoscan is enabled.
     * SLF4J(W): No SLF4J providers were found.
 
-* [ ] CRUD operations for persistence (incl, stub)
-* [ ] Persistence layer (Exposed, Liquibase/H2, testcontainer)
-* [ ] view:{routing/controller-api/controller-impl/view-models}
-
-Questions
--------------------------
-
-* [ ] kotlin.Uuid or java.UUID?
-* [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
-* [ ] how to name packages when in sub-sub-projects? what is the difference one or the other?
+* [ ] CRUD operations for stub persistence
+* [ ] Real persistence layer (Exposed, Liquibase/H2, testcontainer)
 
 Backlog
 -------------------------
 
+* [ ] Config per project via some fancy kotlin mapping lib (properties, yaml, env-vars)
 * [ ] provide test jars for reusable Arbs
 * [ ] Local reformatting (detekt, ...)
-* [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle, properties, kotlin mapping lib
+* [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle,
 * [ ] Generate Software Architecture Document with Asciidoc
 * [ ] Write some ADRs
 * [ ] harvest ktor-sample project
@@ -41,6 +34,15 @@ Backlog
 * [ ] Explore GitHub CodeQL workflow
 * [ ] Write SAD sub-projects explanation
 * [ ] Postman collection
+
+Questions
+-------------------------
+
+* [ ] kotlin.Uuid or java.UUID?
+* [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
+* [ ] how to name packages when in sub-sub-projects? what is the difference one or the other?
+* [ ] Persistence repos, returing domain-entity (port-adapter style) or DBO (plain)?
+* [ ] isolationMode = IsolationMode.InstancePerTest or default perSpec?
 
 Done
 =========================

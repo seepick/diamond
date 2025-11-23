@@ -3,13 +3,9 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":view:controller-api"))
-    implementation(project(":view:view-model"))
-    implementation(project(":shared:shared-common"))
+    api(project(":view:controller-api"))
     implementation(project(":domain:domain-logic-api"))
-    implementation(project(":domain:domain-failure"))
-    implementation(project(":domain:domain-model"))
+    implementation(project(":shared:shared-common"))
 
     implementation(Deps.koin.core)
-    implementation(Deps.arrowCore)
 }

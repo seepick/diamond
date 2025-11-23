@@ -25,6 +25,7 @@ include(
     "shared",
     "shared:shared-common",
     "shared:shared-logging",
+    "shared:shared-test",
     "itest",
 )
 

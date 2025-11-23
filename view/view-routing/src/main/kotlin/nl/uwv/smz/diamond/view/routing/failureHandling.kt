@@ -29,7 +29,7 @@ suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Either<Fail
 
 val Failure.httpStatusCode
     get() = when (this) {
-        is Failure.InvalidRequestFailure -> HttpStatusCode.BadRequest
+        is Failure.BadRequestFailure -> HttpStatusCode.BadRequest
         is Failure.NotFoundFailure -> HttpStatusCode.NotFound
-        is Failure.BadDataFailure -> HttpStatusCode.InternalServerError
+        is Failure.CorruptDataFailure -> HttpStatusCode.InternalServerError
     }

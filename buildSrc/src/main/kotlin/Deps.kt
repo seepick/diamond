@@ -43,7 +43,9 @@ object Deps {
 
         object junit {
             val platformSuite = "org.junit.platform:junit-platform-suite:6.0.1"
-            val jupiter = "org.junit.jupiter:junit-jupiter:5.8.2"
+            val jupiter = "org.junit.jupiter:junit-jupiter:${Versions.testing.junit}"
+            val jupiterApi = "org.junit.jupiter:junit-jupiter-api:${Versions.testing.junit}"
+            // testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.1")
         }
 
         object kotest {
