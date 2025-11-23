@@ -50,3 +50,16 @@ V1
 * [x] Programmatic Logback configuration
 * [x] GitHub Action (CI verify on push, CD on tags)
 * [x] Koin DI
+
+Challenges
+=========================
+
+Parallel Cucumber Tests
+-------------------------
+
+* ktor is doable; koin is stuck within with global static state :(
+    * also in the future, isolate in-memory DB
+* cucumber and junit provides parallel test infra
+* use thread local?
+* https://cucumber.io/docs/guides/parallel-execution/#junit-5
+* https://jadarma.github.io/blog/posts/2024/03/parallel-integration-tests-with-ktor/

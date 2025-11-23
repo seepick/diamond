@@ -8,6 +8,7 @@ import nl.uwv.smz.diamond.app.prepareDiamond
 
 class World {
 
+    lateinit var client: HttpClient
     var lastResponse: HttpResponse? = null
 
     fun get(url: String) {

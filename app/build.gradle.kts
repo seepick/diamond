@@ -8,7 +8,8 @@ dependencies {
     implementation(project(":view"))
     implementation(project(":logic:logic-api"))
     implementation(project(":logic:logic-impl"))
-    implementation(project(":shared:logging"))
+    implementation(project(":shared:shared-commons"))
+    implementation(project(":shared:shared-logging"))
 
     implementation(Deps.logging.kotlin)
 

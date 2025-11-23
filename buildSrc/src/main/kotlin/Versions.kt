@@ -10,6 +10,10 @@ object Versions {
         val kotlin = "7.0.13"
         val logback = "1.5.18"
     }
+
+    object testing {
+        val kotest = "5.9.1"
+    }
 }
 
 object Plugins {

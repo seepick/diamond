@@ -2,6 +2,7 @@ package nl.uwv.smz.diamond.app
 
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import io.ktor.server.netty.Netty
+import nl.uwv.smz.diamond.shared.commons.Constants
 import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 
@@ -24,7 +25,7 @@ object Main {
             addConsoleAppender {
                 pattern = "%d{HH:mm:ss.SSS} [%-5level] %logger{42} - %msg%n"
             }
-            packageLevel(LogLevel.Trace, Main::class.java.packageName)
+            packageLevel(LogLevel.Trace, Constants.ROOT_PACKAGE_NAME)
         }
     }
 }

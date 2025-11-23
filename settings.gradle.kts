@@ -14,7 +14,8 @@ include(
     "extern:extern-impl",
     "extern:extern-stub",
     "shared",
-    "shared:logging",
+    "shared:shared-commons",
+    "shared:shared-logging",
     "itest",
 )
 

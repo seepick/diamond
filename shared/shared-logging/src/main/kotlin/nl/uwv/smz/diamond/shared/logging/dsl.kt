@@ -55,11 +55,16 @@ interface ConsoleAppenderBuilder {
 
     var appenderName: String
 
-    /** Message pattern. */
+    /**
+     * Log message format pattern.
+     *
+     * E.g.: "%-43(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) [%-5level] %logger{42} - %msg%n"
+     */
     var pattern: String
 
     var level: LogLevel
 
+    // TODO <immediateFlush>true</immediateFlush> for tests
 }
 
 /**

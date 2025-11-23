@@ -27,7 +27,7 @@ plugins {
 dependencies {
     implementation(project(":logic:logic-api"))
 
-    implementation(libs.logging.kotlin)
+    implementation(Deps.logging.kotlin)
 
     // KTOR
     implementation(Deps.ktor.server.core)
