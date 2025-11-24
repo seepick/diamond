@@ -28,3 +28,14 @@ Diamond Software Architecture Document
 * backend-impl (HTTP, SFTP)
 * backend-stub
 * backend-models (?) - generated source code (YAML, WSDL)
+
+== Areas
+
+* quality gates
+** sonarqube and kotlin tools
+* testing
+** coverage 100%?, kotlin inlining issue...
+* db migration
+* api doc (OpenAPI)
+* monitoring
+** devops style, on 500 notify via ms teams integration, investigate how possible!

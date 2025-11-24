@@ -5,20 +5,27 @@ Next
     * Kotest autoscan is enabled.
     * SLF4J(W): No SLF4J providers were found.
 
-* [ ] Investigate: exposed-dao vs plain?!
-* [ ] Real persistence layer (Exposed, Liquibase/H2)
-* [ ] Testcontainer tests with Postgres
+* [ ] Exposed persistence layer (exposed-dao vs plain)
+* [ ] Liquibase database migration
+* [ ] Hikari connection pooling
+* [ ] Testcontainer tests with Oracle (local to persistence-impl); custom gradle profile to activate (kotest tags)
+* [ ] Production ready DB (inject properties via env); ask matthias how done
 * [ ] Static code analysis (detekt, ...)
 
 Backlog
 -------------------------
 
+* [ ] object mapper a la structmap for kotlin
+* [ ] at startup: log BANNER, incl. version, branch, build time
+* [ ] use the client SDK to also write tests (implicitly testing it)
+* [ ] production ready logging (file appender)
+* [ ] Release process: trigger build on GitHub, it will build+verify, then tag (version number), rebuild, publish/deploy
 * [ ] home page returns HATEOS-like overview
 * [ ] Local reformatting (editor config)
 * [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also in packages (explicit and simplified)
 * [ ] Config per project via some fancy kotlin mapping lib (properties, yaml, env-vars)
 * [ ] provide test jars for reusable Arbs
-* [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle,
+* [ ] info endpoint (build version & timestamp); inject GITHUB into gradle
 * [ ] Write some ADRs
 * [ ] bean validation (based on OpenAPI spec)
 * [ ] API error handling (with client, etc.)
@@ -43,7 +50,15 @@ Backlog
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
 * [ ] Kotlin scheduler (jobr?)
-* [ ] e2e-test as standalone sub-project; only dependency to client-sdk
+* [ ] e2e-test as standalone sub-project using Karate
+* [ ] can asciidoc eat ADR-md files? at least create create PDF out of them
+* [ ] more hateos-like endpoints
+* [ ] investigate property files needed, or config in code (env properties); same with logback
+* [ ] arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
+* [ ] health endpoint (ping all backends available, maybe response time)
+* [ ] generate war/docker image gradle task (document in readme.md)
+* use diagram code declaration in SAD/ADRs (PlantUML? supported by github?)
+* circuit braker (external services and also DB)? arrow.
 
 Low
 -------------------------
@@ -51,6 +66,7 @@ Low
 * [ ] OpenTelemetry, Micrometer
 * [ ] Docsify website for GitHub; see: https://iietmoon.github.io/simple-captcha-js/
 * [ ] host production somewhere free (google app engine?)
+* [ ] support HTTP caching? ETag (entity-tag values)
 
 Questions
 -------------------------
@@ -61,6 +77,11 @@ Questions
 * [ ] Persistence repos, returing domain-entity (port-adapter style) or DBO (plain)?
 * [ ] isolationMode = IsolationMode.InstancePerTest or default perSpec?
 * [ ] persistence-stub maybe not necessary?
+
+No!
+-------------------------
+
+* Whitelabel implementation for FE devs; same api definition, but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
 
 Done
 =========================
@@ -83,6 +104,7 @@ V1
 * [x] CRUD operations for stub persistence
 * [x] Setup Postman collection
 * [x] Generate Software Architecture Document with Asciidoc
+* [x] test fixtures depedency (arrow, kotest; reusable arbs)
 
 Challenges
 =========================

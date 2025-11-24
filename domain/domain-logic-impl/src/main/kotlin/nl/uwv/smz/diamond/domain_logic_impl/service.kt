@@ -3,15 +3,12 @@ package nl.uwv.smz.diamond.domain_logic_impl
 import arrow.core.Either
 import arrow.core.raise.either
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
-import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
-import nl.uwv.smz.diamond.domain.model.Gram
 import nl.uwv.smz.diamond.domain_failure.Failure
 import nl.uwv.smz.diamond.domain_logic_api.CrystalService
 import nl.uwv.smz.diamond.domain_logic_api.GreetService
-import nl.uwv.smz.diamond.persistence.api.CrystalDbo
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 
 class GreetServiceImpl : GreetService {
@@ -42,11 +39,4 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
     override fun delete(id: CrystalId): Either<Failure, Unit> = either {
         repo.delete(id).bind()
     }
-}
-
-private fun CrystalDbo.toCrystal() = either {
-    Crystal(
-        id = CrystalId(id),
-        weight = Gram(weightInGram).bind()
-    )
 }

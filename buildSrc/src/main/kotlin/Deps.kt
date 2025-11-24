@@ -50,9 +50,12 @@ object Deps {
 
         object kotest {
             private fun make(artifact: String) = "io.kotest:kotest-$artifact:${Versions.testing.kotest}"
+            val frameworkEngine = make("framework-engine")
             val junitRunner = make("runner-junit5-jvm")
             val assertions = make("assertions-core")
             val property = make("property")
+            /** https://kotest.io/docs/assertions/arrow.html */
+            val assertionsArrow = "io.kotest.extensions:kotest-assertions-arrow:2.0.0" // different version
         }
     }
 

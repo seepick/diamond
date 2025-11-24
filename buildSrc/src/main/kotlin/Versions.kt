@@ -13,8 +13,8 @@ object Versions {
     }
 
     object testing {
-        val junit = "6.0.1" // // 5.8.2
-        val kotest = "5.9.1"
+        val junit = "6.0.1"
+        val kotest = "6.0.5"
     }
 }
 

@@ -30,7 +30,6 @@ import kotlin.uuid.Uuid
 
 internal class CrystalRouteTest : DescribeSpec({
 
-    extensions(LogListener)
     val dto = Arb.crystalDto().next()
     val createDto = Arb.crystalCreateDto().next()
     val updateDto = Arb.crystalUpdateDto().next()
@@ -131,17 +130,17 @@ internal class CrystalRouteTest : DescribeSpec({
 
 
 fun Arb.Companion.kotlinUuid() = arbitrary {
-    Uuid.parse(Arb.uuid().next().toString())
+    Uuid.parse(Arb.uuid().bind().toString())
 }
 
 fun Arb.Companion.crystalCreateDto() = arbitrary {
     CrystalCreateDto(
-        weightInGram = int(1..5000).next()
+        weightInGram = int(1..5000).bind()
     )
 }
 
 fun Arb.Companion.crystalUpdateDto() = arbitrary {
     CrystalUpdateDto(
-        weightInGram = int(1..5000).next()
+        weightInGram = int(1..5000).bind()
     )
 }

@@ -1,6 +1,7 @@
 package nl.uwv.smz.diamond.persistence.api
 
 import arrow.core.Either
+import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
@@ -15,9 +16,9 @@ data class CrystalDbo(
 }
 
 interface CrystalRepo {
-    suspend fun selectAll(): List<CrystalDbo>
-    fun selectById(id: CrystalId): Either<Failure, CrystalDbo>
-    fun create(create: CrystalCreate): Either<Failure, CrystalDbo>
-    fun update(update: CrystalUpdate): Either<Failure, CrystalDbo>
-    fun delete(id: CrystalId): Either<Failure, Unit>
+    suspend fun selectAll(): Either<Failure, List<Crystal>>
+    suspend fun selectById(id: CrystalId): Either<Failure, Crystal>
+    suspend fun create(create: CrystalCreate): Either<Failure, Crystal>
+    suspend fun update(update: CrystalUpdate): Either<Failure, Crystal>
+    suspend fun delete(id: CrystalId): Either<Failure, Unit>
 }
