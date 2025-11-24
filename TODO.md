@@ -11,7 +11,6 @@ Next
 * [ ] Hikari connection pooling
 * [ ] Testcontainer tests with Oracle (local to persistence-impl); custom gradle profile to activate (kotest tags)
 * [ ] Production ready DB (inject properties via env); ask matthias how done
-* [ ] Static code analysis (detekt, ...)
 
 Backlog
 -------------------------
@@ -93,6 +92,7 @@ V1
 
 * [x] Create GitHub repository
 * [x] Create buildSrc infrastructure: Kotlin custom gradle plugin, Versions/Dependency management
+* [x] Static code analysis with detekt (reports checkstyle, but supports @Suppress; YES!)
 * [x] Setup Gradle multi-module setup
 * [x] Get HelloWorld endpoint working (simple Ktor application)
 * [x] Basic Cucumber integration test
@@ -120,6 +120,7 @@ Parallel Cucumber Tests
 * use thread local?
 * https://cucumber.io/docs/guides/parallel-execution/#junit-5
 * https://jadarma.github.io/blog/posts/2024/03/parallel-integration-tests-with-ktor/
+* parallel tests in general (also for kotest); start right away with it! (isolation mode solves a lot; cheating, hehe)
 
 OpenAPI and Ktor
 -------------------------

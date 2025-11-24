@@ -7,7 +7,7 @@ import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Gram
-import nl.uwv.smz.diamond.domain_failure.Failure
+import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
@@ -37,7 +37,7 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
             CrystalDao
                 .find { (CrystalTable.id eq id.value.toJavaUuid()) }
                 .map { it.toDomainModel().bind() }
-                .ensureSingle(id.value).bind()
+                .ensureSingleFound(id.value).bind()
         }
     }
 

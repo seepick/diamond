@@ -6,7 +6,7 @@ import nl.uwv.smz.diamond.shared.common.Constants
 import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 
-object TestMain {
+object LocalDiamondApp {
     @JvmStatic
     fun main(args: Array<String>) {
         reconfigureLog()

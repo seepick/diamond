@@ -6,7 +6,8 @@ import nl.uwv.smz.diamond.shared.common.Constants
 import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 
-object Main {
+/** FQN has to be in sync with /app/build.gradle.kts main class definition. */
+object DiamondApp {
 
     @JvmStatic
     fun main(args: Array<String>) {

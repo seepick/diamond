@@ -19,7 +19,7 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
 import io.mockk.coEvery
 import io.mockk.mockk
-import nl.uwv.smz.diamond.domain_failure.Failure
+import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.view.controller_api.CrystalController
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 import nl.uwv.smz.diamond.view.model.CrystalCreateDto

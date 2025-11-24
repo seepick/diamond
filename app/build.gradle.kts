@@ -22,7 +22,7 @@ dependencies {
 }
 
 application {
-    mainClass = "nl.uwv.smz.diamond.app.Main"
+    mainClass = "nl.uwv.smz.diamond.app.DiamondApp"
 }
 
 ktor {

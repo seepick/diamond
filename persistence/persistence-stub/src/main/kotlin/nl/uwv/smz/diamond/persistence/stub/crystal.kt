@@ -8,7 +8,7 @@ import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
-import nl.uwv.smz.diamond.domain_failure.Failure
+import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import kotlin.uuid.Uuid
 

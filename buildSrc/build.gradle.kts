@@ -16,4 +16,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion") // kotlin("plugin.serialization")
 
     implementation("com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.52.0")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.8") // duplicate version number in diamond-detekt.gradle.kts
+
 }

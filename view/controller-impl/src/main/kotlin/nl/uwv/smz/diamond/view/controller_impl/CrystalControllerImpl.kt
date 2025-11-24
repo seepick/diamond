@@ -6,7 +6,7 @@ import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Gram
-import nl.uwv.smz.diamond.domain_failure.mapToBadRequest
+import nl.uwv.smz.diamond.domainFailure.mapToBadRequest
 import nl.uwv.smz.diamond.domain_logic_api.CrystalService
 import nl.uwv.smz.diamond.view.controller_api.CrystalController
 import nl.uwv.smz.diamond.view.model.CrystalCreateDto

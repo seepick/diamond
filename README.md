@@ -12,3 +12,26 @@ A general technical overview can be found in the SAD (Software Architecture Docu
 
 All (design/tech/process) decisions are documented in so-called [ARD](https://github.com/joelparkerhenderson/architecture-decision-record)s; see:
 `/doc/ArchitectureDecisionRecords/*.md`
+
+## Dev Instructions
+
+### Setup
+
+* IntelliJ detekt plugin; use config/detekt.yml
+
+### Usage
+
+* run `nl.uwv.smz.diamond.app.LocalDiamondApp`
+* Postman collections: `/local/Diamond.postman_collection.json`
+
+## Philosophy
+
+* code first
+    * no annotations, strings, properties, yamls... just code
+* be in control
+    * no classpath scanning, reflection, other look-ups, no auto-magically something
+    * avoid intrusive frameworks (the systems serves us, we don't serve the system)
+* functional
+    * pure functions: stateless, side-effect free
+    * code as named expressions
+    * prefer single-expression-method `fun foo() = doSome().doOther().also { done(it) }`

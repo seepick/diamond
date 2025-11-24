@@ -7,6 +7,7 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import io.ktor.serialization.JsonConvertException
 
 inline fun <reified BODY> HttpRequestBuilder.setJsonBody(body: BODY) {
     contentType(ContentType.Application.Json)
@@ -17,5 +18,6 @@ suspend inline fun <reified T> HttpResponse.readBody(): T =
     try {
         body<T>()
     } catch (e: Exception) {
-        throw Exception("Failed to deserialize response JSON to ${T::class.qualifiedName}\n<<${bodyAsText()}>>", e)
+        val message = "Failed to deserialize response JSON to ${T::class.qualifiedName}\n<<${bodyAsText()}>>"
+        throw JsonConvertException(message, e)
     }

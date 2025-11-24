@@ -18,6 +18,20 @@ fun Arb.Companion.crystalId() = arbitrary {
     CrystalId(uuid().bind().toKotlinUuid())
 }
 
+@Suppress("MagicNumber")
 fun Arb.Companion.gram() = arbitrary {
     Gram(int(0..5000).bind()).shouldBeRight()
+}
+
+fun Arb.Companion.crystalCreate() = arbitrary {
+    CrystalCreate(
+        weight = gram().bind(),
+    )
+}
+
+fun Arb.Companion.crystalUpdate() = arbitrary {
+    CrystalUpdate(
+        id = crystalId().bind(),
+        weight = gram().bind(),
+    )
 }

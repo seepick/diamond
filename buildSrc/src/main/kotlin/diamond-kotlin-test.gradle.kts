@@ -1,4 +1,4 @@
-import gradle.kotlin.dsl.accessors._e0089add3ded35fdd654c9963fdc04f9.testImplementation
+import gradle.kotlin.dsl.accessors._fb21cc0d1272f53256e1229e5b966fd1.testImplementation
 
 dependencies {
     testImplementation(project(":shared:shared-test"))

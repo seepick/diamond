@@ -4,7 +4,7 @@ import arrow.core.Either
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.response.respond
 import io.ktor.server.routing.RoutingCall
-import nl.uwv.smz.diamond.domain_failure.Failure
+import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Either<Failure, RESULT>) {

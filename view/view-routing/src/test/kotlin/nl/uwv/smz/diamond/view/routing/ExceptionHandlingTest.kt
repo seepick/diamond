@@ -7,7 +7,7 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import nl.uwv.smz.diamond.domain_failure.ErrorCode
+import nl.uwv.smz.diamond.domainFailure.ErrorCode
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 class ExceptionHandlingTest : StringSpec({

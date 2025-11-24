@@ -16,7 +16,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import nl.uwv.smz.diamond.domain_failure.Failure
+import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 // must be outside, as local inlined functions are not (yet) supported by Kotlin

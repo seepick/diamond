@@ -11,11 +11,11 @@ import nl.uwv.smz.diamond.shared.logging.LogLevel
 import java.util.concurrent.atomic.AtomicInteger
 
 private val appenderCounter = AtomicInteger(1)
-private val defaultPattern = "%-43(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) [%-5level] %logger{42} - %msg%n"
+private const val DEFAULT_PATTERN = "%-43(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) [%-5level] %logger{42} - %msg%n"
 
 internal data class InternalConsoleAppenderBuilder(
     override var appenderName: String = "LogbackConsoleAppender_" + appenderCounter.getAndIncrement(),
-    override var pattern: String = defaultPattern,
+    override var pattern: String = DEFAULT_PATTERN,
     override var level: LogLevel = LogLevel.Trace
 ) : ConsoleAppenderBuilder {
 
@@ -32,7 +32,7 @@ internal data class InternalFileAppenderBuilder(
     override var file: String,
     override var filePattern: String,
     override var appenderName: String = "LogbackFileAppender_" + appenderCounter.getAndIncrement(),
-    override var pattern: String = defaultPattern,
+    override var pattern: String = DEFAULT_PATTERN,
     override var level: LogLevel = LogLevel.Trace,
     override var maxHistory: Int = 10
 ) : FileAppenderBuilder {

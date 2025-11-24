@@ -2,6 +2,7 @@ plugins {
     // no version numbers; declare as dependency in buildSrc/build.gradle.kts
     kotlin("jvm")
     id("diamond-versions")
+    id("diamond-detekt")
     // declaring plugins not possible via version catalog
     // buildSrc/src/main/kotlin NOT available during runtime (misleading as available while writing)
 }
