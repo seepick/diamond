@@ -21,22 +21,22 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
 
     override suspend fun findAll() = either {
         log.debug { "findAll()" }
-        repo.selectAll().map { it.toCrystal() }.bindAll()
+        repo.selectAll().bind()
     }
 
-    override fun findSingle(id: CrystalId) = either {
-        repo.selectById(id).bind().toCrystal().bind()
+    override suspend fun findSingle(id: CrystalId) = either {
+        repo.selectById(id).bind()
     }
 
-    override fun create(create: CrystalCreate) = either {
-        repo.create(create).bind().toCrystal().bind()
+    override suspend fun create(create: CrystalCreate) = either {
+        repo.create(create).bind()
     }
 
-    override fun update(update: CrystalUpdate) = either {
-        repo.update(update).map { it.toCrystal().bind() }.bind()
+    override suspend fun update(update: CrystalUpdate) = either {
+        repo.update(update).bind()
     }
 
-    override fun delete(id: CrystalId): Either<Failure, Unit> = either {
+    override suspend fun delete(id: CrystalId): Either<Failure, Unit> = either {
         repo.delete(id).bind()
     }
 }

@@ -19,15 +19,15 @@ class CrystalControllerImpl(private val service: CrystalService) : CrystalContro
         service.findAll().bind().map { it.toDto() }
     }
 
-    override fun findSingle(crystalId: String) = either {
+    override suspend fun findSingle(crystalId: String) = either {
         service.findSingle(CrystalId(crystalId).mapToBadRequest().bind()).bind().toDto()
     }
 
-    override fun create(create: CrystalCreateDto) = either {
+    override suspend fun create(create: CrystalCreateDto) = either {
         service.create(create.toDomain().bind()).bind().toDto()
     }
 
-    override fun update(crystalId: String, update: CrystalUpdateDto) = either {
+    override suspend fun update(crystalId: String, update: CrystalUpdateDto) = either {
         service.update(
             CrystalUpdate(
                 id = CrystalId(crystalId).bind(),
@@ -36,7 +36,7 @@ class CrystalControllerImpl(private val service: CrystalService) : CrystalContro
         ).map { it.toDto() }.bind()
     }
 
-    override fun delete(crystalId: String) = either {
+    override suspend fun delete(crystalId: String) = either {
         service.delete(CrystalId(crystalId).mapToBadRequest().bind()).bind()
     }
 }

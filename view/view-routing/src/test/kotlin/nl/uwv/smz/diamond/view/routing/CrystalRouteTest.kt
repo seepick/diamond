@@ -18,7 +18,6 @@ import io.ktor.client.request.put
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.mockk
 import nl.uwv.smz.diamond.domain_failure.Failure
 import nl.uwv.smz.diamond.view.controller_api.CrystalController
@@ -62,7 +61,7 @@ internal class CrystalRouteTest : DescribeSpec({
 
     describe("GET /crystals/{id}") {
         it("Given controller returns a DTO Then ok and returned") {
-            every { controller.findSingle(dto.id) } returns dto.right()
+            coEvery { controller.findSingle(dto.id) } returns dto.right()
 
             crystalTest { client ->
                 val response = client.get("/crystals/${dto.id}")
@@ -75,7 +74,7 @@ internal class CrystalRouteTest : DescribeSpec({
 
     describe("POST /crystals}") {
         it("Given controller returns a DTO Then ok and returned") {
-            every { controller.create(createDto) } returns dto.right()
+            coEvery { controller.create(createDto) } returns dto.right()
             crystalTest { client ->
                 val response = client.post("/crystals") {
                     setJsonBody(createDto)
@@ -86,7 +85,7 @@ internal class CrystalRouteTest : DescribeSpec({
             }
         }
         it("Given controller fails Then bad request and API error") {
-            every { controller.create(createDto) } returns failure.left()
+            coEvery { controller.create(createDto) } returns failure.left()
             crystalTest { client ->
                 val response = client.post("/crystals") {
                     setJsonBody(createDto)
@@ -100,7 +99,7 @@ internal class CrystalRouteTest : DescribeSpec({
 
     describe("PUT /crystals/{id}") {
         it("Given controller returns DTO Then ok and DTO returned") {
-            every { controller.update(dto.id, updateDto) } returns dto.right()
+            coEvery { controller.update(dto.id, updateDto) } returns dto.right()
 
             crystalTest { client ->
                 val response = client.put("/crystals/${dto.id}") {
@@ -115,7 +114,7 @@ internal class CrystalRouteTest : DescribeSpec({
 
     describe("DELETE /crystals/{id}") {
         it("Given controller returns a DTO Then ok and returned") {
-            every { controller.delete(crystalId.toString()) } returns Unit.right()
+            coEvery { controller.delete(crystalId.toString()) } returns Unit.right()
 
             crystalTest { client ->
                 val response = client.delete("/crystals/${crystalId}")
