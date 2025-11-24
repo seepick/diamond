@@ -15,6 +15,35 @@ import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import kotlin.uuid.toKotlinUuid
 
+/*
+val database = Database.connect(
+        url = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
+        user = "root",
+        driver = "org.h2.Driver",
+        password = "",
+    )
+
+transaction(database) {
+
+    suspend fun read(id: Int): ExposedUser? {
+        return dbQuery {
+            Users.selectAll()
+                .where { Users.id eq id }
+                .map { ExposedUser(it[Users.name], it[Users.age]) }
+                .singleOrNull()
+        }
+    }
+
+
+    suspend fun update(id: Int, user: ExposedUser) {
+        dbQuery {
+            Users.update({ Users.id eq id }) {
+                it[name] = user.name
+                it[age] = user.age
+            }
+        }
+    }
+ */
 object CrystalTable : UUIDTable("CRYSTALS", "ID") {
     val weightInGrams = integer("WEIGHT_IN_GRAMS")
 }

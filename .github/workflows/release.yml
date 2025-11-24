@@ -1,4 +1,4 @@
-name: Create releases on tags
+name: Build Release
 
 on:
   push:
@@ -45,8 +45,11 @@ jobs:
           java-version: 17
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Execute Gradle
+      - name: Build JAR
         run: ./gradlew :app:buildFatJar -Pdiamond_version="${{ github.ref_name }}"
+      - name: Build SAD
+        # TODO add version number/build date to PDF
+        run: ./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf
 
       - name: Upload Release Artifact
         uses: actions/upload-release-asset@v1
@@ -54,6 +57,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.prepare-release.outputs.upload-url }}
-          asset_path: build/libs/diamond.jar
+          asset_path: app/build/libs/diamond.jar
           asset_name: diamond.jar
           asset_content_type: application/java-archive
+
+      - name: Upload SAD
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.prepare-release.outputs.upload-url }}
+          asset_path: doc/SoftwareArchitectureDocument/build/docs/asciidocPdf/index.pdf
+          asset_name: Diamond-SoftwareArchitectureDocument.pdf
+          asset_content_type: application/pdf

@@ -1,11 +1,9 @@
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-
 plugins {
     // no version numbers; declare as dependency in buildSrc/build.gradle.kts
     kotlin("jvm")
+    id("diamond-versions")
     // declaring plugins not possible via version catalog
     // buildSrc/src/main/kotlin NOT available during runtime (misleading as available while writing)
-    id("com.github.ben-manes.versions") // help / dependencyUpdates
 }
 
 repositories {
@@ -26,16 +24,5 @@ kotlin {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(Versions.java)
-    }
-}
-
-
-tasks.withType<DependencyUpdatesTask> {
-    val rejectPatterns =
-        listOf(".*-ea.*", ".*RC", ".*M1", ".*check", ".*dev.*", ".*[Bb]eta.*", ".*[Aa]lpha.*").map { Regex(it) }
-    rejectVersionIf {
-        rejectPatterns.any {
-            it.matches(candidate.version)
-        }
     }
 }

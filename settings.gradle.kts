@@ -27,6 +27,7 @@ include(
     "shared:shared-logging",
     "shared:shared-test",
     "itest",
+    ":doc:SoftwareArchitectureDocument"
 )
 
 dependencyResolutionManagement {

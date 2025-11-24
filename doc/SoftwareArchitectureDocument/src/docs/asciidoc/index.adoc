@@ -1,0 +1,30 @@
+Diamond Software Architecture Document
+
+== Tech Stack
+
+* Gradle
+* Kotlin
+* Ktor
+* Koin (not really DI, but a service locator, but ok ;))
+* Kotest
+* Exposed
+* Liquibase
+
+== Modules
+
+// TODO plant UML diagram
+
+* app
+* view
+* logic-api
+* logic-impl
+* shared
+* shared / logging
+* itest
+* persistence-api
+* persistence-impl
+* persistence-stub (?)
+* backend-api
+* backend-impl (HTTP, SFTP)
+* backend-stub
+* backend-models (?) - generated source code (YAML, WSDL)

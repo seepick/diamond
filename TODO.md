@@ -13,12 +13,12 @@ Next
 Backlog
 -------------------------
 
+* [ ] home page returns HATEOS-like overview
 * [ ] Local reformatting (editor config)
 * [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also in packages (explicit and simplified)
 * [ ] Config per project via some fancy kotlin mapping lib (properties, yaml, env-vars)
 * [ ] provide test jars for reusable Arbs
 * [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle,
-* [ ] Generate Software Architecture Document with Asciidoc
 * [ ] Write some ADRs
 * [ ] bean validation (based on OpenAPI spec)
 * [ ] API error handling (with client, etc.)
@@ -37,6 +37,7 @@ Backlog
 * [ ] Write SAD sub-projects explanation
 * [ ] Postman collection
 * ... persistence-impl is actually persistence-exposed ;)
+* [ ] intellij + github issue tracker
 
 Questions
 -------------------------
@@ -68,6 +69,7 @@ V1
 * [x] CRUD operations until service (ApiError handling, JSON serialization)
 * [x] CRUD operations for stub persistence
 * [x] Setup Postman collection
+* [x] Generate Software Architecture Document with Asciidoc
 
 Challenges
 =========================

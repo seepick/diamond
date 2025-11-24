@@ -8,37 +8,7 @@ diamond created._"
 This is a sample project of a backend service using modern technologies (2025) and (to my current knowledge) all the
 best practices (software design/architecture, testing, code quality, CI/CD, etc).
 
-It documents all its (design/tech/process) decisions in
-so-called [ARD](https://github.com/joelparkerhenderson/architecture-decision-record)s; see:
+A general technical overview can be found in the SAD (Software Architecture Document).
+
+All (design/tech/process) decisions are documented in so-called [ARD](https://github.com/joelparkerhenderson/architecture-decision-record)s; see:
 `/doc/ArchitectureDecisionRecords/*.md`
-
-## Sub-Projects
-
-* app
-* view
-* logic-api
-* logic-impl
-* shared
-* shared / logging
-* itest
-
-next:
-
-* persistence-api
-* persistence-impl
-* persistence-stub (?)
-* backend-api
-* backend-impl (HTTP, SFTP)
-* backend-stub
-* backend-models (?) - generated source code (YAML, WSDL)
-
-## Tech Stack
-
-* Gradle
-* Kotlin
-* Ktor
-* Koin
-* Kotest
-* Exposed
-* Liquibase
-
