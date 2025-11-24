@@ -37,7 +37,20 @@ Backlog
 * [ ] Write SAD sub-projects explanation
 * [ ] Postman collection
 * ... persistence-impl is actually persistence-exposed ;)
-* [ ] intellij + github issue tracker
+* [ ] Investigate: intellij + github issue tracker
+* [ ] Investigate: code reviews done in intellij
+* [ ] write KDoc for general/shared stuff
+* [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by a proxy upfront (not the macroservice
+  itself; it only gets a user ID and assumes it has been done already)
+* [ ] Kotlin scheduler (jobr?)
+* [ ] e2e-test as standalone sub-project; only dependency to client-sdk
+
+Low
+-------------------------
+
+* [ ] OpenTelemetry, Micrometer
+* [ ] Docsify website for GitHub; see: https://iietmoon.github.io/simple-captcha-js/
+* [ ] host production somewhere free (google app engine?)
 
 Questions
 -------------------------
@@ -65,7 +78,7 @@ V1
 * [x] GitHub Action (CI verify on push, CD on tags)
 * [x] Koin DI
 * [x] Cucumber programatic logging (before all)
-* [x] arrow either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
+* [x] Use Arrow's either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
 * [x] CRUD operations until service (ApiError handling, JSON serialization)
 * [x] CRUD operations for stub persistence
 * [x] Setup Postman collection
