@@ -2,7 +2,6 @@ import gradle.kotlin.dsl.accessors._e0089add3ded35fdd654c9963fdc04f9.testImpleme
 
 dependencies {
     testImplementation(project(":shared:shared-test"))
-
     testImplementation(Deps.testing.kotest.junitRunner)
     testImplementation(Deps.testing.kotest.assertions)
     testImplementation(Deps.testing.kotest.assertionsArrow)
@@ -17,4 +16,3 @@ tasks.withType<Test>().configureEach {
     useJUnitPlatform()
     systemProperty("kotest.framework.config.fqn", "nl.uwv.smz.diamond.shared.test.DiamondKotestProjectConfig")
 }
-

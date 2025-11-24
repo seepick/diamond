@@ -5,6 +5,7 @@ Next
     * Kotest autoscan is enabled.
     * SLF4J(W): No SLF4J providers were found.
 
+* [ ] read ADR and write more my thought process (ammunition for alex)
 * [ ] Exposed persistence layer (exposed-dao vs plain)
 * [ ] Liquibase database migration
 * [ ] Hikari connection pooling
@@ -15,6 +16,7 @@ Next
 Backlog
 -------------------------
 
+* [ ] need a spin up test (does the assembled JAR work)
 * [ ] object mapper a la structmap for kotlin
 * [ ] at startup: log BANNER, incl. version, branch, build time
 * [ ] use the client SDK to also write tests (implicitly testing it)
