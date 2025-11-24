@@ -8,14 +8,15 @@ Next
 * [ ] Investigate: exposed-dao vs plain?!
 * [ ] Real persistence layer (Exposed, Liquibase/H2)
 * [ ] Testcontainer tests with Postgres
+* [ ] Static code analysis (detekt, ...)
 
 Backlog
 -------------------------
 
+* [ ] Local reformatting (editor config)
 * [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also in packages (explicit and simplified)
 * [ ] Config per project via some fancy kotlin mapping lib (properties, yaml, env-vars)
 * [ ] provide test jars for reusable Arbs
-* [ ] Local reformatting (detekt, ...)
 * [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle,
 * [ ] Generate Software Architecture Document with Asciidoc
 * [ ] Write some ADRs

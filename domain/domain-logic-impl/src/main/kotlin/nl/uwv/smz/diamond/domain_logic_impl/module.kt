@@ -5,6 +5,7 @@ import nl.uwv.smz.diamond.domain_logic_api.GreetService
 import nl.uwv.smz.diamond.shared.common.Modules
 import org.koin.dsl.module
 
+@Suppress("UnusedReceiverParameter")
 fun Modules.domainLogicImpl() = module {
     single<GreetService> { GreetServiceImpl() }
     single<CrystalService> { CrystalServiceImpl(get()) }

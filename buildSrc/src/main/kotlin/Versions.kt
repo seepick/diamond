@@ -1,3 +1,4 @@
+@Suppress("MayBeConstant", "unused", "ClassName")
 object Versions {
     val java = 17
     val kotlin = "2.2.21"

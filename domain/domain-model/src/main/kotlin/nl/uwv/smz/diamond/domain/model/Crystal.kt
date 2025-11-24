@@ -26,8 +26,7 @@ value class CrystalId(val value: Uuid) {
         operator fun invoke(value: String): Either<Failure.CorruptDataFailure, CrystalId> = either {
             CrystalId(Uuid.eitherParse(value).mapLeft { Failure.CorruptDataFailure(it.message ?: "") }.bind())
         }
-
-        fun random() = CrystalId(Uuid.random())
+//        fun random() = CrystalId(Uuid.random())
     }
 }
 

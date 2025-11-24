@@ -30,6 +30,7 @@ include(
 )
 
 dependencyResolutionManagement {
+    @Suppress("UnstableApiUsage")
     repositories {
         mavenCentral()
     }

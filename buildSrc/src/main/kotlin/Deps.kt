@@ -1,3 +1,4 @@
+@Suppress("MayBeConstant", "unused", "ClassName")
 object Deps {
 
     val serializationx = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"

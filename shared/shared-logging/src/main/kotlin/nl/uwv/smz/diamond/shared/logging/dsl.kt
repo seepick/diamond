@@ -39,6 +39,7 @@ interface LogbackConfig {
     )
 }
 
+@Suppress("unused")
 enum class LogLevel(internal val logbackLevel: Level) {
     Trace(Level.TRACE),
     Debug(Level.DEBUG),

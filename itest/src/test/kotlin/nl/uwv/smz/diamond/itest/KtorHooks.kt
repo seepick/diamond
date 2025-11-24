@@ -29,7 +29,7 @@ class KtorHooks(private val world: World) {
         }
     }
 
-    @Suppress("INVISIBLE_REFERENCE")
+    @Suppress("INVISIBLE_REFERENCE") // TODO this is a hack :-/
     private fun startKtor(block: suspend ApplicationTestBuilder.() -> Unit) = runBlocking {
         val builder = ApplicationTestBuilder()
         with(builder) {
