@@ -12,8 +12,6 @@ It documents all its (design/tech/process) decisions in
 so-called [ARD](https://github.com/joelparkerhenderson/architecture-decision-record)s; see:
 `/doc/ArchitectureDecisionRecords/*.md`
 
-Open the `/openapi` path to see an overview of all endpoints.
-
 ## Sub-Projects
 
 * app

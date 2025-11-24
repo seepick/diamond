@@ -27,7 +27,7 @@ Backlog
 * [ ] Auto version bump up
 * [ ] Quality gates (build fail static code analysis; no task tags in main)
 * [ ] Branch enforcement: no direct commits to main; only via PR merge
-* [ ] OpenAPI provision (swagger endpoint)
+* [ ] OpenAPI provision (swagger endpoint); ktor's plugin is unusable/too beta
 * [ ] End-to-End tests
 * [ ] Backend OpenAPI&WSDL generation (separate sub-project, make external-API depend on it)
 * [ ] OpenShift docker deploy?
@@ -85,7 +85,8 @@ Parallel Cucumber Tests
 OpenAPI and Ktor
 -------------------------
 
-* Experimental support (finally) exists (crappy website)
+* Experimental support (finally) exists
+    * BUT: crappy website, docs/ folders everywhere and not configurable
     * Spring is much better
 * How to guarantee OpenAPI doc is 1:1 implemented?
 * Custom code gen approach possible?!

@@ -18,6 +18,7 @@ object Versions {
     }
 }
 
+@Suppress("unused", "MayBeConstant")
 object Plugins {
     val manesVersions = "0.45.0"
 }

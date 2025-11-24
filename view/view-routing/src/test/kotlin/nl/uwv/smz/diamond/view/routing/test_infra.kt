@@ -16,12 +16,11 @@ fun viewTest(
     setupKoin: Module.() -> Unit = {},
     // additionalTestSetup ...
     additionalApplicationSetup: Application.() -> Unit = {},
-    enableOpenApi: Boolean = false,
     testCode: suspend (HttpClient) -> Unit,
 ) {
     testApplication {
         setupTestClient()
-        setupApplication(setupKoin, additionalApplicationSetup, enableOpenApi = enableOpenApi)
+        setupApplication(setupKoin, additionalApplicationSetup)
         testCode(client)
     }
 }
@@ -41,7 +40,6 @@ fun ApplicationTestBuilder.setupTestClient() {
 fun ApplicationTestBuilder.setupApplication(
     setupKoin: Module.() -> Unit,
     additionalSetup: Application.() -> Unit,
-    enableOpenApi: Boolean = false,
 ) {
     application {
         install(Koin) {
@@ -50,7 +48,7 @@ fun ApplicationTestBuilder.setupApplication(
             })
         }
         installPlugins()
-        installRoutings(enableOpenApi)
+        installRoutings()
         additionalSetup()
     }
 }

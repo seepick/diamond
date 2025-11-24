@@ -9,10 +9,10 @@ fun Modules.persistenceImpl() = module {
     single<CrystalRepo> { CrystalExposedRepo }
 }
 
-fun connectToDatabase() {
-    // FIXME
+//fun connectToDatabase() {
+// FIXME
 //    Database.connect("")
-}
+//}
 //Database.connect(
 //"jdbc:postgresql://localhost:5432/ktor_tutorial_db",
 //user = "postgres",

@@ -12,7 +12,6 @@ dependencies {
     implementation(Deps.koin.ktor)
     implementation(Deps.logging.kotlin)
     implementation(Deps.ktor.server.statusPages)
-    implementation(Deps.ktor.server.openApi)
 
     testImplementation(project(":shared:shared-test"))
     testImplementation(Deps.ktor.client.contentNegotiation)

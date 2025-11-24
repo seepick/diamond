@@ -21,7 +21,6 @@ object Deps {
             val contentNegotiation = make("server-content-negotiation")
             val hostCommon = make("server-host-common")
             val statusPages = make("server-status-pages")
-            val openApi = make("server-openapi")
         }
 
         object client {
