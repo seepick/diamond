@@ -5,8 +5,19 @@ import arrow.core.Either
 enum class ErrorCode(val renderedValue: String) {
     NOT_FOUND("NOT_FOUND"),
     CORRUPT_DATA("CORRUPT_DATA"),
-    BAD_REQUEST("BAD_REQUEST"),
+    // it's safe to rename (refactor) these (internal identifiers for developers, public facing API values separate from them)
+    BAD_CLIENT_REQUEST("BAD_REQUEST"),
     INTERNAL_ERROR("INTERNAL_ERROR"),
+    ;
+
+    companion object {
+        private val byRenderedValue by lazy {
+            entries.associateBy { it.renderedValue }
+        }
+
+        fun byRenderedValueOrThrow(value: String): ErrorCode =
+            byRenderedValue[value] ?: throw IllegalArgumentException("Unknown error code value [$value]")
+    }
 }
 
 sealed interface Failure {
@@ -22,7 +33,7 @@ sealed interface Failure {
     }
 
     data class BadRequestFailure(override val message: String) : Failure {
-        override val code = ErrorCode.BAD_REQUEST
+        override val code = ErrorCode.BAD_CLIENT_REQUEST
     }
 }
 

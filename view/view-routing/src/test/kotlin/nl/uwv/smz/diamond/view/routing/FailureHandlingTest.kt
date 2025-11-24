@@ -68,7 +68,7 @@ class FailureHandlingTest : DescribeSpec({
                 failureTest(failure.left()) { response ->
                     response.status shouldBeEqual expectedStatusCode
                     response.contentType().shouldNotBeNull().withoutParameters() shouldBeEqual ContentType.Application.Json
-                    response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = failure.code.renderedValue, message = someMessage)
+                    response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = failure.code, message = someMessage)
                 }
             }
         }

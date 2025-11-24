@@ -23,7 +23,7 @@ fun Application.installExceptionHandling() {
             call.respond(
                 status = HttpStatusCode.InternalServerError,
                 message = ApiErrorDto(
-                    code = ErrorCode.INTERNAL_ERROR.renderedValue,
+                    code = ErrorCode.INTERNAL_ERROR,
                     message = cause.message ?: "N/A",
                 )
             )

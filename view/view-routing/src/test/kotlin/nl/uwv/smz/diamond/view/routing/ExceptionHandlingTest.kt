@@ -7,6 +7,7 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
+import nl.uwv.smz.diamond.domain_failure.ErrorCode
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 class ExceptionHandlingTest : StringSpec({
@@ -35,7 +36,7 @@ class ExceptionHandlingTest : StringSpec({
             throw exceptionWithMessage
         }, { response ->
             response.status shouldBeEqual HttpStatusCode.InternalServerError
-            response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = "INTERNAL_ERROR", message = exceptionWithMessage.message!!)
+            response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = ErrorCode.INTERNAL_ERROR, message = exceptionWithMessage.message!!)
         })
     }
     "When Exception without message is thrown Then render 'N/A' message" {
@@ -50,7 +51,7 @@ class ExceptionHandlingTest : StringSpec({
             throw throwable
         }, { response ->
             response.status shouldBeEqual HttpStatusCode.InternalServerError
-            response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = "INTERNAL_ERROR", message = throwable.message!!)
+            response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = ErrorCode.INTERNAL_ERROR, message = throwable.message!!)
         })
     }
     "When Error is thrown Then respond with a 500 error" {
@@ -58,7 +59,7 @@ class ExceptionHandlingTest : StringSpec({
             throw error
         }, { response ->
             response.status shouldBeEqual HttpStatusCode.InternalServerError
-            response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = "INTERNAL_ERROR", message = error.message!!)
+            response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = ErrorCode.INTERNAL_ERROR, message = error.message!!)
         })
     }
 })

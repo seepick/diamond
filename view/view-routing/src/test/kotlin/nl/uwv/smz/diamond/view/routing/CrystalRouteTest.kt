@@ -94,7 +94,7 @@ internal class CrystalRouteTest : DescribeSpec({
                 }
 
                 response.status shouldBeEqual HttpStatusCode.BadRequest
-                response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = failure.code.renderedValue, message = failure.message)
+                response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = failure.code, message = failure.message)
             }
         }
     }

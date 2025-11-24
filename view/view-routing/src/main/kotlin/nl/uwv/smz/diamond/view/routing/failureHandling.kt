@@ -12,7 +12,7 @@ suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Either<Fail
         { failure ->
             respond(
                 failure.httpStatusCode, ApiErrorDto(
-                    code = failure.code.renderedValue,
+                    code = failure.code,
                     message = failure.message,
                 )
             )
