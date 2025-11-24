@@ -15,7 +15,7 @@ object Main {
         log.info { "Starting application and wait..." }
 
         Ktor
-            .prepare(KtorConfig(port = 8000), Netty)
+            .prepare(KtorConfig(port = 8000), Netty, PersistenceMode.Impl)
             .start(wait = true)
     }
 

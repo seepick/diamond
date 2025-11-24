@@ -6,8 +6,8 @@ import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.ApplicationEngineFactory
 import io.ktor.server.engine.EmbeddedServer
 import io.ktor.server.engine.embeddedServer
-import nl.uwv.smz.diamond.view.routing.installDiamondRouting
-import nl.uwv.smz.diamond.view.routing.installFundamentalKtorPlugins
+import nl.uwv.smz.diamond.view.routing.installPlugins
+import nl.uwv.smz.diamond.view.routing.installRoutings
 
 typealias KtorServer = EmbeddedServer<ApplicationEngine, out ApplicationEngine.Configuration>
 
@@ -17,11 +17,12 @@ object Ktor {
 
     fun prepare(
         config: KtorConfig,
-        factory: ApplicationEngineFactory<*, *>
+        factory: ApplicationEngineFactory<*, *>,
+        persistenceMode: PersistenceMode
     ): KtorServer {
         log.info { "Preparing Ktor with $config" }
         return embeddedServer(factory, port = config.port) {
-            setupCompleteKtor(PersistenceMode.Impl)
+            setupCompleteKtor(persistenceMode)
         }
     }
 }
@@ -29,8 +30,8 @@ object Ktor {
 /** Visible for integration test setup */
 fun Application.setupCompleteKtor(persistenceMode: PersistenceMode) {
     installKoin(persistenceMode)
-    installFundamentalKtorPlugins()
-    installDiamondRouting()
+    installPlugins()
+    installRoutings()
 }
 
 data class KtorConfig(

@@ -12,13 +12,13 @@ Next
 Backlog
 -------------------------
 
+* [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also in packages (explicit and simplified)
 * [ ] Config per project via some fancy kotlin mapping lib (properties, yaml, env-vars)
 * [ ] provide test jars for reusable Arbs
 * [ ] Local reformatting (detekt, ...)
 * [ ] info endpoint (incremental build version, build timestamp); inject GITHUB into gradle,
 * [ ] Generate Software Architecture Document with Asciidoc
 * [ ] Write some ADRs
-* [ ] harvest ktor-sample project
 * [ ] bean validation (based on OpenAPI spec)
 * [ ] API error handling (with client, etc.)
 * [ ] Read Cucumber doc: https://cucumber.io
@@ -84,6 +84,8 @@ Parallel Cucumber Tests
 OpenAPI and Ktor
 -------------------------
 
-* Experimental support (finally) exists
+* Experimental support (finally) exists (crappy website)
     * Spring is much better
-* How to guarantee OpenAPI doc is 1:1 implemented? Custom code gen approach again?! 
+* How to guarantee OpenAPI doc is 1:1 implemented?
+* Custom code gen approach possible?!
+* https://start.ktor.io/p/openapi

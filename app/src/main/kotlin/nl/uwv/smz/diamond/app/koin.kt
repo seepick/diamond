@@ -1,5 +1,6 @@
 package nl.uwv.smz.diamond.app
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import nl.uwv.smz.diamond.app.PersistenceMode.Impl
@@ -12,11 +13,14 @@ import nl.uwv.smz.diamond.view.controller_impl.controllerImpl
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 
+private val log = KotlinLogging.logger {}
+
 enum class PersistenceMode {
     Impl, Stub
 }
 
 fun Application.installKoin(persistenceMode: PersistenceMode) {
+    log.info { "installKoin($persistenceMode)" }
     install(Koin) {
         slf4jLogger()
         modules(Modules.all(persistenceMode))
