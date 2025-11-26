@@ -10,7 +10,7 @@ object Deps {
         val logback = "ch.qos.logback:logback-classic:${Versions.Logging.logback}"
     }
 
-    object config {
+    object hoplite {
         private fun make(artifact: String) = "com.sksamuel.hoplite:hoplite-$artifact:${Versions.hoplite}"
         val core = make("core")
 //        val yaml = make("yaml") NO!

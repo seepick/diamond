@@ -45,7 +45,7 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
         }
     }
 
-    override suspend fun create(create: CrystalCreate): Either<Failure, Crystal> = either {
+    override suspend fun insert(create: CrystalCreate): Either<Failure, Crystal> = either {
         suspendTransaction(db) {
             CrystalDao.new(UUID.randomUUID()) {
                 weightInGrams = create.weight.value
@@ -55,14 +55,11 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
 
     override suspend fun update(update: CrystalUpdate): Either<Failure, Crystal> = either {
         suspendTransaction(db) {
-            val maybeDeleted = CrystalDao.findByIdAndUpdate(update.id.value.toJavaUuid()) {
+            val found = CrystalDao.findByIdAndUpdate(update.id.value.toJavaUuid()) {
                 it.weightInGrams = update.weight.value
-            }
-            if (maybeDeleted == null) {
-                Failure.NotFoundFailure("sdf").left().bind()
-            } else {
-                maybeDeleted.toDomainModel().bind().right().bind()
-            }
+            } ?: Failure.NotFoundFailure("Not found for update: ${update.id}").left().bind()
+
+            found.toDomainModel().bind().right().bind()
         }
     }
 

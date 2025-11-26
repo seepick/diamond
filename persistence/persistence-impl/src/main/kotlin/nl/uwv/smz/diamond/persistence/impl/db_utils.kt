@@ -11,6 +11,26 @@ import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import kotlin.uuid.Uuid
 
+data class DatabaseAccess(
+    val jdbcUrl: String,
+    val username: String,
+    val password: String,
+) {
+    override fun toString() = "DatabaseAccess[jdbcUrl=$jdbcUrl; username=$username; password=****]"
+}
+
+fun Database.Companion.connect(access: DatabaseAccess) = connect(
+    url = access.jdbcUrl,
+    user = access.username,
+    password = access.password,
+)
+
+fun DatabaseConfig.toDatabaseAccess() = DatabaseAccess(
+    jdbcUrl = jdbcUrl,
+    username = username,
+    password = password.value,
+)
+
 internal suspend fun <T> suspendTransaction(db: Database, block: Transaction.() -> T): T =
     newSuspendedTransaction(
         context = Dispatchers.IO,

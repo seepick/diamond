@@ -3,17 +3,13 @@ Next
 
 * resolve view-routes test run warnings: Kotest autoscan is enabled.
 
-* [ ] Exposed persistence layer (exposed-dao vs plain)
-* [ ] Liquibase database migration
-* [ ] Build docker image (Gradle profile)
-* [ ] Docker-compose
-* [ ] Hikari connection pooling
-* [ ] Testcontainer tests with Oracle (local to persistence-impl); custom gradle profile to activate (kotest tags)
-* [ ] Production ready DB (inject properties via env)
-
 Backlog
 -------------------------
 
+* [ ] Docker-compose
+* [ ] Production ready DB (inject properties via env)
+* [ ] Hikari connection pooling
+* [ ] Build docker image (Gradle profile)
 * [ ] need a spin up test (does the assembled JAR work)
 * [ ] object mapper a la structmap for kotlin
 * [ ] at startup: log BANNER, incl. version, branch, build time
@@ -33,7 +29,9 @@ Backlog
 * [ ] DTO mapping library (like mapstruct but for kotlin?)
 * [ ] Auto version bump up
 * [ ] Fine tune detekt rules
-* [ ] Quality gates (build fail static code analysis; no task tags in main)
+* [ ] More static code analysis (higher level like PMD)
+* [ ] Provide metrics report about statistics/quality, etc.
+* [ ] Ensure no tasktags/todos
 * [ ] Branch enforcement: no direct commits to main; only via PR merge
 * [ ] OpenAPI provision (swagger endpoint); ktor's plugin is unusable/too beta
 * [ ] End-to-End tests
@@ -71,51 +69,34 @@ Low
 * [ ] host production somewhere free (google app engine?)
 * [ ] support HTTP caching? ETag (entity-tag values)
 
-Questions
+Open Questions
 -------------------------
 
 * [ ] kotlin.Uuid or java.UUID?
 * [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
 * [ ] how to name packages when in sub-sub-projects? what is the difference one or the other?
+    * `:persistence:persistence-impl` vs `:persistence:impl` (verbosity vs potential name-clash)
 * [ ] Persistence repos, returing domain-entity (port-adapter style) or DBO (plain)?
 * [ ] isolationMode = IsolationMode.InstancePerTest or default perSpec?
 * [ ] persistence-stub maybe not necessary?
+* [ ] classes in *-impl make the internal, or good enough? (pollutes code like final...)
 
 No!
 -------------------------
 
-* Whitelabel implementation for FE devs; same api definition, but full control of data (data setup wizard and endpoints,
-  choose set of predefined constellation)
-
-Done
-=========================
-
-V1
--------------------------
-
-* [x] Create GitHub repository
-* [x] Create buildSrc infrastructure: Kotlin custom gradle plugin, Versions/Dependency management
-* [x] Static code analysis with detekt (reports checkstyle, but supports @Suppress; YES!)
-* [x] Setup Gradle multi-module setup
-* [x] Get HelloWorld endpoint working (simple Ktor application)
-* [x] Basic Cucumber integration test
-* [x] Cucumber Ktor integration
-* [x] Programmatic Logback configuration
-* [x] GitHub Action (CI verify on push, CD on tags)
-* [x] Koin DI
-* [x] Cucumber programatic logging (before all)
-* [x] Use Arrow's
-  either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
-* [x] CRUD operations until service (ApiError handling, JSON serialization)
-* [x] CRUD operations for stub persistence
-* [x] Setup Postman collection
-* [x] Generate Software Architecture Document with Asciidoc
-* [x] Test fixtures depedency (arrow, kotest; reusable arbs)
-* [x] Runtime configuration for project (env-vars via hoplite)
-* [x] Generate configuration report (list of env-vars for Ops-people)
+* Whitelabel implementation for FE devs
+    * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
 
 Challenges
 =========================
+
+
+Ktor Cucumber Tests
+-------------------------
+
+* testApplication{} only provided; no way to dislocated startup and shutdown :-(
+* maybe startup more heavy-weight instance, with TestEngine... but then how to get the client wired (without HTTP).
+* no HTTP would be great (no port assignment); also regarding parallelization (remember: there will be MANY itests)
 
 Parallel Cucumber Tests
 -------------------------
@@ -137,3 +118,32 @@ OpenAPI and Ktor
 * How to guarantee OpenAPI doc is 1:1 implemented?
 * Custom code gen approach possible?!
 * https://start.ktor.io/p/openapi
+
+Done
+=========================
+
+V1
+-------------------------
+
+* [x] Create GitHub repository
+* [x] Create buildSrc infrastructure: Kotlin custom gradle plugin, Versions/Dependency management
+* [x] Static code analysis with detekt (reports checkstyle, but supports @Suppress; YES!)
+* [x] Setup Gradle multi-module setup
+* [x] Get HelloWorld endpoint working (simple Ktor application)
+* [x] Basic Cucumber integration test
+* [x] Cucumber Ktor integration
+* [x] Programmatic Logback configuration
+* [x] GitHub Action (CI verify on push, CD on tags)
+* [x] Koin DI
+* [x] Cucumber programatic logging (before all)
+* [x] Use Arrow's either
+* [x] CRUD operations until service (ApiError handling, JSON serialization)
+* [x] CRUD operations for stub persistence
+* [x] Setup Postman collection
+* [x] Generate Software Architecture Document with Asciidoc
+* [x] Test fixtures depedency (arrow, kotest; reusable arbs)
+* [x] Runtime configuration for project (env-vars via hoplite)
+* [x] Generate configuration report (list of env-vars for Ops-people)
+* [x] Liquibase database migration
+* [x] Exposed persistence layer (exposed-dao vs plain)
+* [x] Testcontainer tests with Oracle; custom gradle profile to activate (kotest tags)

@@ -8,6 +8,7 @@ dependencies {
     val versionCucumber = "7.32.0"
     implementation(project(":app"))
     implementation(project(":view"))
+    implementation(project(":persistence:persistence-impl"))
     implementation(project(":client-sdk"))
     implementation(project(":shared:shared-common"))
     implementation(project(":shared:shared-logging"))

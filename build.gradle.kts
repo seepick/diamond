@@ -4,7 +4,7 @@ plugins {
 }
 
 val appVersion = project.properties["diamond_version"]?.toString() ?: "0"
-println("[DIAMOND] Gradle appVersion=[$appVersion]")
+println("[DIAMOND-GRADLE:root] appVersion=[$appVersion]")
 
 allprojects {
     group = "nl.uwv.smz.diamond"
@@ -24,10 +24,3 @@ tasks.register("performRelease") {
         }
     }
 }
-
-//task runWithJavaExec(type: JavaExec) {
-//    group = "Execution"
-description = "Run the main class with JavaExecTask"
-//    classpath = sourceSets.main.runtimeClasspath
-//    main = javaMainClass
-//}

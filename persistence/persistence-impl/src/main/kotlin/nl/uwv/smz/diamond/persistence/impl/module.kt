@@ -14,11 +14,9 @@ fun Modules.persistenceImpl(config: DatabaseConfig) = module {
     single<CrystalRepo> { CrystalExposedDboRepo(db) }
 }
 
-internal fun connectToDatabase(config: DatabaseConfig): Database {
+private fun connectToDatabase(config: DatabaseConfig): Database {
     log.info { "Connecting to database" }
-    return Database.connect(
-        url = config.url,
-        user = config.username,
-        password = config.password.value,
-    )
+    val access = config.toDatabaseAccess()
+    LiquibaseMigrator.migrate(access)
+    return Database.connect(access)
 }

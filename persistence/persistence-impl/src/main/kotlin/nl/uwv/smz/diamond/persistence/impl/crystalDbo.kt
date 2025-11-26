@@ -8,7 +8,6 @@ import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Gram
-import nl.uwv.smz.diamond.persistence.api.CrystalDbo
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.persistence.impl.CrystalTable.id
 import org.jetbrains.exposed.sql.Database
@@ -29,7 +28,7 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
         suspendTransaction(db) {
             log.debug { "select all" }
             CrystalTable.selectAll().map { row ->
-                CrystalDbo.byRow(row).toCrystal().bind()
+                Crystal.byRow(row).bind()
             }
         }
     }
@@ -38,12 +37,12 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
         suspendTransaction(db) {
             CrystalTable.selectAll()
                 .where { CrystalTable.id eq id.value.toJavaUuid() }
-                .map { CrystalDbo.byRow(it).toCrystal().bind() }
+                .map { Crystal.byRow(it).bind() }
                 .ensureSingleFound(id.value).bind()
         }
     }
 
-    override suspend fun create(create: CrystalCreate) = either {
+    override suspend fun insert(create: CrystalCreate) = either {
         suspendTransaction(db) {
             val crystal = Crystal(
                 id = CrystalId.random(),
@@ -71,7 +70,6 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
         }
     }
 
-
     override suspend fun delete(id: CrystalId) = either {
         suspendTransaction(db) {
             val deletedCount = CrystalTable.deleteWhere {
@@ -82,14 +80,9 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
     }
 }
 
-private fun CrystalDbo.toCrystal() = either {
+private fun Crystal.Companion.byRow(row: ResultRow) = either {
     Crystal(
-        id = CrystalId(id),
-        weight = Gram(weightInGram).bind()
+        id = CrystalId(row[id].value.toKotlinUuid()),
+        weight = Gram(row[CrystalTable.weightInGrams]).bind(),
     )
 }
-
-private fun CrystalDbo.Companion.byRow(row: ResultRow) = CrystalDbo(
-    id = row[id].value.toKotlinUuid(),
-    weightInGram = row[CrystalTable.weightInGrams],
-)

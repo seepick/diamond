@@ -3,7 +3,7 @@
 cd ..
 ./gradlew :app:assemble
 
-export DATABASE_URL=db_url
+export DATABASE_JDBCURL=db_url
 export DATABASE_USERNAME=db_user
 export DATABASE_PASSWORD=db_pass
 export SERVER_PORT=12

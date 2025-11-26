@@ -29,7 +29,7 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
     }
 
     override suspend fun create(create: CrystalCreate) = either {
-        repo.create(create).bind()
+        repo.insert(create).bind()
     }
 
     override suspend fun update(update: CrystalUpdate) = either {

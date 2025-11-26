@@ -11,10 +11,7 @@ import io.kotest.matchers.should
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.arbitrary
-import io.kotest.property.arbitrary.int
 import io.kotest.property.arbitrary.next
-import io.kotest.property.arbitrary.uuid
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.crystal
@@ -22,20 +19,45 @@ import nl.uwv.smz.diamond.domain.model.crystalCreate
 import nl.uwv.smz.diamond.domain.model.crystalId
 import nl.uwv.smz.diamond.domain.model.crystalUpdate
 import nl.uwv.smz.diamond.domainFailure.Failure
-import nl.uwv.smz.diamond.persistence.api.CrystalDbo
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
+import nl.uwv.smz.diamond.persistence.impl.testInfra.DbListener
+import nl.uwv.smz.diamond.persistence.impl.testInfra.InmemoryDbListener
+import nl.uwv.smz.diamond.persistence.impl.testInfra.TestcontainerDbListener
+import nl.uwv.smz.diamond.shared.test.KoTags
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.uuid.toJavaUuid
-import kotlin.uuid.toKotlinUuid
+
+class CrystalExposedDboRepoInmemoryTest : DescribeSpec({
+    val dbListener = InmemoryDbListener()
+    extension(dbListener)
+    include(crystalRepoTest(dbListener) { CrystalExposedDboRepo(it) })
+})
+
+class CrystalExposedDaoRepoInmemoryTest : DescribeSpec({
+    val dbListener = InmemoryDbListener()
+    extension(dbListener)
+    include(crystalRepoTest(dbListener) { CrystalExposedDaoRepo(it) })
+})
+
+class CrystalExposedDboRepoTestcontainerTest : DescribeSpec({
+    tags(KoTags.testcontainerTag)
+    val dbListener = TestcontainerDbListener()
+    extension(dbListener)
+    include(crystalRepoTest(dbListener) { CrystalExposedDboRepo(it) })
+})
 
 @Suppress("LongMethod")
-fun crystalRepoTest(provideRepo: (Database) -> CrystalRepo) = describeSpec {
-    val dbListener = DbListener()
-    extension(dbListener)
+fun crystalRepoTest(
+    dbListener: DbListener,
+    provideRepo: (Database) -> CrystalRepo,
+) = describeSpec {
+    // extension(dbListener) ... won't pick-up runtime interface types :-/
     fun repo() = provideRepo(dbListener.db)
+    fun <T> tx(code: Transaction.() -> T): T = transaction(dbListener.db, code)
 
     val id = Arb.crystalId().next()
     val crystal = Arb.crystal().next()
@@ -44,8 +66,7 @@ fun crystalRepoTest(provideRepo: (Database) -> CrystalRepo) = describeSpec {
     val create = Arb.crystalCreate().next()
     val update = Arb.crystalUpdate().next()
 
-    fun selectAll() = transaction { CrystalTable.selectAll() }
-    fun insert(crystal: Crystal) = transaction {
+    fun insert(crystal: Crystal) = tx {
         CrystalTable.insert {
             it[CrystalTable.id] = crystal.id.value.toJavaUuid()
             it[CrystalTable.weightInGrams] = crystal.weight.value
@@ -64,7 +85,8 @@ fun crystalRepoTest(provideRepo: (Database) -> CrystalRepo) = describeSpec {
     }
     describe("select by ID") {
         it("Given nothing Then fail not found") {
-            repo().selectById(id).shouldBeLeft().shouldBeInstanceOf<Failure.NotFoundFailure>().message shouldContain id.toString()
+            repo().selectById(id).shouldBeLeft()
+                .shouldBeInstanceOf<Failure.NotFoundFailure>().message shouldContain id.toString()
         }
         it("Given it Then return it") {
             insert(crystal)
@@ -74,21 +96,24 @@ fun crystalRepoTest(provideRepo: (Database) -> CrystalRepo) = describeSpec {
     }
     describe("create") {
         it("Given nothing Then created") {
-            val actual = repo().create(create).shouldBeRight()
+            val actual = repo().insert(create).shouldBeRight()
             actual shouldBeEqual Crystal(
                 id = actual.id,
                 weight = create.weight,
             )
 
-            selectAll().shouldBeSingleton().first().should {
-                it[CrystalTable.id] shouldBeEqual actual.id
-                it[CrystalTable.weightInGrams] shouldBeEqual actual.weight.value
+            tx {
+                CrystalTable.selectAll().shouldBeSingleton().first().should {
+                    it[CrystalTable.id].value shouldBeEqual actual.id.value.toJavaUuid()
+                    it[CrystalTable.weightInGrams] shouldBeEqual actual.weight.value
+                }
             }
         }
     }
     describe("update") {
         it("Given nothing Then fail not found") {
-            repo().update(update).shouldBeLeft().shouldBeInstanceOf<Failure.NotFoundFailure>().message shouldContain update.id.toString()
+            repo().update(update).shouldBeLeft()
+                .shouldBeInstanceOf<Failure.NotFoundFailure>().message shouldContain update.id.toString()
         }
         it("Given something Then update it") {
             insert(crystal)
@@ -96,22 +121,27 @@ fun crystalRepoTest(provideRepo: (Database) -> CrystalRepo) = describeSpec {
 
             repo().update(update).shouldBeRight(crystal.copy(weight = update.weight))
 
-            selectAll().shouldBeSingleton().first().should {
-                it[CrystalTable.id] shouldBeEqual crystal.id
-                it[CrystalTable.weightInGrams] shouldBeEqual update.weight
+            tx {
+                CrystalTable.selectAll().shouldBeSingleton().first().should {
+                    it[CrystalTable.id].value shouldBeEqual crystal.id.value.toJavaUuid()
+                    it[CrystalTable.weightInGrams] shouldBeEqual update.weight.value
+                }
             }
         }
     }
     describe("delete") {
         it("Given nothing Then fail not found") {
-            repo().delete(id).shouldBeLeft().shouldBeInstanceOf<Failure.NotFoundFailure>().message shouldContain id.toString()
+            repo().delete(id).shouldBeLeft()
+                .shouldBeInstanceOf<Failure.NotFoundFailure>().message shouldContain id.toString()
         }
         it("Given it Then it's gone") {
             insert(crystal)
 
             repo().delete(crystal.id).shouldBeRight()
 
-            selectAll().shouldBeEmpty()
+            tx {
+                CrystalTable.selectAll().shouldBeEmpty()
+            }
         }
         it("Given two Then only one gone") {
             insert(crystal1)
@@ -119,23 +149,10 @@ fun crystalRepoTest(provideRepo: (Database) -> CrystalRepo) = describeSpec {
 
             repo().delete(crystal1.id).shouldBeRight()
 
-            selectAll().shouldBeSingleton().first()[CrystalTable.id].value shouldBeEqual crystal2.id.value.toJavaUuid()
+            tx {
+                CrystalTable.selectAll().shouldBeSingleton()
+                    .first()[CrystalTable.id].value shouldBeEqual crystal2.id.value.toJavaUuid()
+            }
         }
     }
-}
-
-class CrystalExposedDboRepoTest : DescribeSpec({
-    include(crystalRepoTest { CrystalExposedDboRepo(it) })
-})
-
-class CrystalExposedDaoRepoTest : DescribeSpec({
-    include(crystalRepoTest { CrystalExposedDaoRepo(it) })
-})
-
-
-fun Arb.Companion.crystaleDbo() = arbitrary {
-    CrystalDbo(
-        id = uuid().bind().toKotlinUuid(),
-        weightInGram = int(1..5000).bind(),
-    )
 }

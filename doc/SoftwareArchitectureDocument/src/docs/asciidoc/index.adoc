@@ -9,6 +9,7 @@ include::includes/config_report.generated.adoc[]
 * `./gradlew :app:buildFatJar -Pdiamond_version="${{ github.ref_name }}"`
 * `./gradlew :app:generateConfigDoc` generates the asciidoc for the config table (available env vars)
 * `./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf`
+* `./gradlew test -PrunTestcontainerTests=true` run only the tests requiring testcontainers (docker; oracle)
 
 === Gradle Properties
 
@@ -21,6 +22,8 @@ include::includes/config_report.generated.adoc[]
 
 == Tech Stack
 
+Go through all dependencies:
+
 * Gradle
 * Kotlin
 * Ktor
@@ -28,6 +31,9 @@ include::includes/config_report.generated.adoc[]
 * Kotest
 * Exposed
 * Liquibase
+* link:https://github.com/sksamuel/hoplite[Hoplite] - typesafe loading application configuration (sys-props, env-vars, files)
+* Arrow
+** Especially `Either` for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling]
 
 == Modules
 

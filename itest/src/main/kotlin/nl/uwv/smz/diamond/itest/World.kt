@@ -15,7 +15,12 @@ class World {
         lastResponse = client.get("/")
     }
 
-//          DiamondSdk(client).requestHomepage()
+    suspend fun getCrystals() {
+        lastResponse = client.get("/crystals")
+    }
+
+    // TODO could also use DiamondSdk(client).requestHomepage() ... but then would have not enough control
+    // the good old issue: one client for production use (high-level), another client (low-level) for test purpose
 
     fun initClient(client: HttpClient) {
         log.debug { "Init Ktor client." }

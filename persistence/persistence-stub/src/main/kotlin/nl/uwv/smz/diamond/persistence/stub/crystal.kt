@@ -25,7 +25,7 @@ internal class CrystalStubbedRepo : CrystalRepo {
             ?: Failure.NotFoundFailure("").left()).bind()
     }
 
-    override suspend fun create(create: CrystalCreate): Either<Failure, Crystal> = either {
+    override suspend fun insert(create: CrystalCreate): Either<Failure, Crystal> = either {
         Crystal(
             id = CrystalId(Uuid.random()),
             weight = create.weight,

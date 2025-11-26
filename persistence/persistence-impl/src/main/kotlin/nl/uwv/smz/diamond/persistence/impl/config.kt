@@ -7,7 +7,7 @@ data class DatabaseConfig(
     @ConfigProperty("Flag to switch from real implementation to a dev/test stub")
     val stubEnabled: Boolean = false,
     @ConfigProperty("JDBC driver URL")
-    val url: String,
+    val jdbcUrl: String,
     @ConfigProperty("DB username")
     val username: String,
     @ConfigProperty("DB password")

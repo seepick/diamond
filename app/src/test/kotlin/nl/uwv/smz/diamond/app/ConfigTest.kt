@@ -1,11 +1,27 @@
 package nl.uwv.smz.diamond.app
 
+import com.sksamuel.hoplite.Masked
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.equals.shouldBeEqual
+import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 
+/** See `/local/test_config.sh` for usage how it is actually being done in the end. */
 class ConfigTest : StringSpec({
-    // TODO write test with environment variables set (this is how it is ultimately done)
-    "asdf" {
-        val config = readConfig()
-        println(config)
+    "Given system properties When read config Then properly parsed" {
+        System.setProperty("config.override.database.jdbcUrl", "a")
+        System.setProperty("config.override.database.username", "b")
+        System.setProperty("config.override.database.password", "c")
+        System.setProperty("config.override.server.port", "12")
+
+        readConfig() shouldBeEqual Config(
+            server = ServerConfig(
+                port = 12,
+            ),
+            database = DatabaseConfig(
+                jdbcUrl = "a",
+                username = "b",
+                password = Masked("c"),
+            ),
+        )
     }
 })

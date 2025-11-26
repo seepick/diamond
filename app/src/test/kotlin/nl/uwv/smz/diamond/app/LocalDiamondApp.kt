@@ -10,7 +10,7 @@ object LocalDiamondApp {
 
     private val dbStubConfig = DatabaseConfig(
         stubEnabled = true,
-        url = "",
+        jdbcUrl = "",
         username = "",
         password = Secret(""),
     )

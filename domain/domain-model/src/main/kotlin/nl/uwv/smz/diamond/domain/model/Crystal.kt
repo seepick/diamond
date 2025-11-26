@@ -39,7 +39,9 @@ value class CrystalId(val value: Uuid) {
 data class Crystal(
     val id: CrystalId,
     val weight: Gram,
-)
+) {
+    companion object // for extensions
+}
 
 data class CrystalCreate(
     val weight: Gram,
