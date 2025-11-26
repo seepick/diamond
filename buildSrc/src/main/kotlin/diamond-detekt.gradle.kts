@@ -19,10 +19,16 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
+val detektVersion = "1.23.8"
+
+dependencies {
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+}
+
 detekt {
     // When unspecified the latest detekt version found will be used. Override to stay on the same version.
     // ATTENTION!!! duplicate version number in /buildSrc/build.gradle.kts
-    toolVersion = "1.23.8"
+    toolVersion = detektVersion
 
     source.setFrom("src/main/kotlin", "src/test/kotlin", "src/testFixtures/kotlin")
     // Builds the AST in parallel. Rules are always executed in parallel. `false` by default.

@@ -21,6 +21,7 @@ include(
     "extern",
     "extern:extern-api",
     "extern:extern-impl",
+    "extern:extern-generated",
     "extern:extern-stub",
     "shared",
     "shared:shared-common",

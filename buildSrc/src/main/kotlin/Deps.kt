@@ -36,6 +36,7 @@ object Deps {
     object ktor {
         private fun make(artifact: String) = "io.ktor:ktor-$artifact:${Versions.ktor}"
         val serialization = make("serialization-kotlinx-json")
+        val io = make("io-jvm")
 
         object server {
             val testHost = make("server-test-host")

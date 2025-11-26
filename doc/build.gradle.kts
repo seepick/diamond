@@ -1,1 +1,0 @@
-gradleLog("foo")

@@ -1,9 +1,15 @@
 Next
 =========================
 
+* [ ] extern-impl wiremock tests using extern-generated
+* [ ] implement extern-stub; wire for test & local app
+* [ ] use extern-api in domain-logic; introduce new sample endpoint; extend tests
 * [ ] Kotlin scheduler (jobr?)
 * [ ] SFTP lib
-* [ ] Backend OpenAPI&WSDL generation (separate sub-project, make external-API depend on it)
+* [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
+* [ ] Write OpenAPI spec for own API
+* [ ] Use OpenAPI spec to generate Ktor routing skeleton (possible?); a la spring boot
+* [ ] Use OpenAPI spec to generate client (client-SDK); write full tests to verify
 
 Backlog
 -------------------------
@@ -111,6 +117,7 @@ OpenAPI and Ktor
     * BUT: crappy website, docs/ folders everywhere and not configurable
     * Spring is much better
 * How to guarantee OpenAPI doc is 1:1 implemented?
+* We could always fall back to Java generated code, and use it from Kotlin ;)
 * Custom code gen approach possible?!
 * https://start.ktor.io/p/openapi
 
@@ -149,3 +156,4 @@ V1
 * [x] Exposed persistence layer (exposed-dao vs plain)
 * [x] Testcontainers tests with Oracle; custom gradle profile to activate (kotest tags)
 * [x] Info endpoint displaying build version, timestamp, branch, ...
+* [x] Backend OpenAPI generation in separate project extern-generated

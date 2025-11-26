@@ -796,3 +796,9 @@ style:
     active: true
     excludeImports:
       - 'java.util.*'
+
+formatting:
+  ParameterListWrapping:
+    active: false
+  ArgumentListWrapping:
+    active: false
