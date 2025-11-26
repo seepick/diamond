@@ -15,14 +15,14 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.testcontainers.oracle.OracleContainer
 import java.time.Duration
 
-class TestcontainerDbListener : DbListener, BeforeTestListener, BeforeSpecListener, AfterSpecListener {
+class TestcontainersDbListener : DbListener, BeforeTestListener, BeforeSpecListener, AfterSpecListener {
 
     private val log = logger {}
     private lateinit var oracle: OracleContainer
     override lateinit var db: Database
 
     override suspend fun beforeSpec(spec: Spec) {
-        log.info { "Starting Oracle testcontainer..." }
+        log.info { "Starting Oracle testcontainers..." }
         oracle = createOracleContainer().apply { start() }
         val dbAccess = oracle.toDatabaseAccess()
         LiquibaseMigrator.migrate(dbAccess)
@@ -30,7 +30,7 @@ class TestcontainerDbListener : DbListener, BeforeTestListener, BeforeSpecListen
     }
 
     override suspend fun afterSpec(spec: Spec) {
-        log.info { "Stopping Oracle testcontainer..." }
+        log.info { "Stopping Oracle testcontainers..." }
         oracle.stop()
     }
 

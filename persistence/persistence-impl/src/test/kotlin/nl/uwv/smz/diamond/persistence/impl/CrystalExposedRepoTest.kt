@@ -22,7 +22,7 @@ import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.persistence.impl.testInfra.DbListener
 import nl.uwv.smz.diamond.persistence.impl.testInfra.InmemoryDbListener
-import nl.uwv.smz.diamond.persistence.impl.testInfra.TestcontainerDbListener
+import nl.uwv.smz.diamond.persistence.impl.testInfra.TestcontainersDbListener
 import nl.uwv.smz.diamond.shared.test.KoTags
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Transaction
@@ -43,9 +43,9 @@ class CrystalExposedDaoRepoInmemoryTest : DescribeSpec({
     include(crystalRepoTest(dbListener) { CrystalExposedDaoRepo(it) })
 })
 
-class CrystalExposedDboRepoTestcontainerTest : DescribeSpec({
-    tags(KoTags.testcontainerTag)
-    val dbListener = TestcontainerDbListener()
+class CrystalExposedDboRepoTestcontainersTest : DescribeSpec({
+    tags(KoTags.testcontainersTag)
+    val dbListener = TestcontainersDbListener()
     extension(dbListener)
     include(crystalRepoTest(dbListener) { CrystalExposedDboRepo(it) })
 })

@@ -1,8 +1,6 @@
 Next
 =========================
 
-* resolve view-routes test run warnings: Kotest autoscan is enabled.
-
 Backlog
 -------------------------
 
@@ -20,7 +18,7 @@ Backlog
 * [ ] Local reformatting (editor config)
 * [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also
   in packages (explicit and simplified)
-* [ ] provide test jars for reusable Arbs
+* [ ] Parallelize Kotest tests
 * [ ] info endpoint (build version & timestamp); inject GITHUB into gradle
 * [ ] Write some ADRs
 * [ ] bean validation (based on OpenAPI spec)
@@ -59,6 +57,7 @@ Backlog
 Low
 -------------------------
 
+* [ ] AsciiDoc needs some love
 * [ ] more hateos-like endpoints
 * [ ] circuit breaker (external services and also DB)? arrow.
 * [ ] Investigate: intellij + github issue tracker
@@ -69,8 +68,14 @@ Low
 * [ ] host production somewhere free (google app engine?)
 * [ ] support HTTP caching? ETag (entity-tag values)
 
-Open Questions
+No!
 -------------------------
+
+* Whitelabel implementation for FE devs
+    * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
+
+Open Questions
+=========================
 
 * [ ] kotlin.Uuid or java.UUID?
 * [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
@@ -78,14 +83,11 @@ Open Questions
     * `:persistence:persistence-impl` vs `:persistence:impl` (verbosity vs potential name-clash)
 * [ ] Persistence repos, returing domain-entity (port-adapter style) or DBO (plain)?
 * [ ] isolationMode = IsolationMode.InstancePerTest or default perSpec?
-* [ ] persistence-stub maybe not necessary?
+* [ ] persistence-stub maybe not necessary? YES, most likely drop it
 * [ ] classes in *-impl make the internal, or good enough? (pollutes code like final...)
-
-No!
--------------------------
-
-* Whitelabel implementation for FE devs
-    * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
+* [ ] should the build be optimized for prod (local dev cumbersome) or for local dev (prod error-prone if not careful)
+    * autoamted tests should cover for prod issues, so developer convience has precedence
+    * how about external-impl and external-stub: better not have both! (not *-stub in PROD)
 
 Challenges
 =========================
@@ -146,4 +148,4 @@ V1
 * [x] Generate configuration report (list of env-vars for Ops-people)
 * [x] Liquibase database migration
 * [x] Exposed persistence layer (exposed-dao vs plain)
-* [x] Testcontainer tests with Oracle; custom gradle profile to activate (kotest tags)
+* [x] Testcontainers tests with Oracle; custom gradle profile to activate (kotest tags)

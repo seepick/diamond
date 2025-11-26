@@ -5,9 +5,26 @@ object Deps {
 
     val arrowCore = "io.arrow-kt:arrow-core:2.2.0"
 
+    object database {
+        val h2 = "com.h2database:h2:${Versions.h2}"
+        val oracle = "com.oracle.database.jdbc:ojdbc17:23.26.0.0.0"
+
+        object liquibase {
+            val core = "org.liquibase:liquibase-core:4.31.1"
+            val slf4j = "com.mattbertolini:liquibase-slf4j:5.1.0"
+        }
+
+        object exposed {
+            private fun make(artifact: String) = "org.jetbrains.exposed:exposed-$artifact:${Versions.exposed}"
+            val core = make("core")
+            val dao = make("dao")
+            val jdbc = make("jdbc")
+        }
+    }
+
     object logging {
-        val kotlin = "io.github.oshai:kotlin-logging-jvm:${Versions.Logging.kotlin}"
-        val logback = "ch.qos.logback:logback-classic:${Versions.Logging.logback}"
+        val kotlin = "io.github.oshai:kotlin-logging-jvm:${Versions.logging.kotlin}"
+        val logback = "ch.qos.logback:logback-classic:${Versions.logging.logback}"
     }
 
     object hoplite {
@@ -46,12 +63,10 @@ object Deps {
     object testing {
         val mockk = "io.mockk:mockk:1.14.6"
 
-
         object junit {
-            val platformSuite = "org.junit.platform:junit-platform-suite:6.0.1"
+            val platformSuite = "org.junit.platform:junit-platform-suite:${Versions.testing.junit}"
             val jupiter = "org.junit.jupiter:junit-jupiter:${Versions.testing.junit}"
             val jupiterApi = "org.junit.jupiter:junit-jupiter-api:${Versions.testing.junit}"
-            // testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.1")
         }
 
         object kotest {
@@ -62,6 +77,19 @@ object Deps {
             val property = make("property")
             /** https://kotest.io/docs/assertions/arrow.html */
             val assertionsArrow = "io.kotest.extensions:kotest-assertions-arrow:2.0.0" // different version
+        }
+
+        object testcontainers {
+            private fun make(suffix: String) = "org.testcontainers:testcontainers${suffix}:${Versions.testcontainers}"
+            val main = make("")
+            val oracle = make("-oracle-free") // TODO or testcontainers-oracle-xe?
+        }
+
+        object cucumber {
+            private fun make(artifact: String) = "io.cucumber:cucumber-$artifact:${Versions.testing.cucumber}"
+            val java = make("java")
+            val junitEngine = make("junit-platform-engine")
+            val picocontainer = make("picocontainer")
         }
     }
 

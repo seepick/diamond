@@ -5,7 +5,6 @@ plugins {
 
 // https://cucumber.io/docs/guides/10-minute-tutorial?lang=kotlin
 dependencies {
-    val versionCucumber = "7.32.0"
     implementation(project(":app"))
     implementation(project(":view"))
     implementation(project(":persistence:persistence-impl"))
@@ -14,19 +13,18 @@ dependencies {
     implementation(project(":shared:shared-logging"))
     // https://cucumber.io/docs/cucumber/state/#picocontainer
     // https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-picocontainer
-    implementation("io.cucumber:cucumber-picocontainer:$versionCucumber")
-
+    implementation(Deps.testing.cucumber.picocontainer)
     implementation(Deps.ktor.server.testHost)
     implementation(Deps.logging.kotlin)
 
     testImplementation(project(":shared:shared-test"))
-    testImplementation("io.cucumber:cucumber-java:$versionCucumber")
-    testImplementation("io.cucumber:cucumber-junit-platform-engine:$versionCucumber")
-    testImplementation("org.junit.platform:junit-platform-suite:6.0.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation(Deps.testing.cucumber.java)
+    testImplementation(Deps.testing.cucumber.junitEngine)
+    testImplementation(Deps.testing.junit.platformSuite)
+    testImplementation(Deps.testing.junit.jupiter)
 }
 
-tasks.withType<Test> {
+//tasks.withType<Test> {
 //// Parallel forks across JVMs
 //    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).coerceAtLeast(2)
 //    forkEvery = 1
@@ -36,4 +34,4 @@ tasks.withType<Test> {
 //        events("passed", "failed", "skipped", "standardOut", "standardError")
 //        showStandardStreams = true
 //    }
-}
+//}

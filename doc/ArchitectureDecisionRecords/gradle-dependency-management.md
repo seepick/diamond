@@ -57,6 +57,15 @@ Cons:
 * going into source implementation/definition not possible (CTRL+click), cumbersome
 * if changing/refactoring, then step-by-step errors by each build, cumbersome
 
+```toml
+[bundles]
+ktor = ["ktor-core", "ktor-json", "ktor-foobar"]
+
+[plugins]
+short-notation = "some.plugin.id:1.4"
+versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions" }
+```
+
 Conclusion
 ======================
 

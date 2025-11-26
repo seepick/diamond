@@ -23,18 +23,18 @@ dependencies {
 }
 
 application {
-    mainClass = "nl.uwv.smz.diamond.app.DiamondApp"
+    mainClass = Constants.Fqn.mainClass
 }
 
 ktor {
     fatJar {
-        archiveFileName.set("diamond.jar")
+        archiveFileName.set(Constants.assemblyName)
     }
 }
 
 /** generate asciidoc describing the support environment variables to be set by operations */
 tasks.register<JavaExec>("generateConfigDoc") {
-    mainClass.set("nl.uwv.smz.diamond.app.ConfigDocWriterApp")
+    mainClass.set(Constants.Fqn.configDocWriter)
     workingDir = rootDir
     classpath = java.sourceSets["test"].runtimeClasspath
 }

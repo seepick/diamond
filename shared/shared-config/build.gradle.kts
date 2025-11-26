@@ -5,9 +5,6 @@ plugins {
 
 dependencies {
     api(Deps.hoplite.core)
-    implementation(Deps.logging.kotlin)
-//    implementation(kotlin("reflect"))
     api(Deps.arrowCore)
-
-//    testRuntimeOnly(Deps.config.yaml)
+    implementation(Deps.logging.kotlin)
 }

@@ -4,21 +4,29 @@
 
 include::includes/config_report.generated.adoc[]
 
-== Gradle Tasks
+== Gradle
 
-* `./gradlew :app:buildFatJar -Pdiamond_version="${{ github.ref_name }}"`
-* `./gradlew :app:generateConfigDoc` generates the asciidoc for the config table (available env vars)
-* `./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf`
-* `./gradlew test -PrunTestcontainerTests=true` run only the tests requiring testcontainers (docker; oracle)
+Sharing build logic via the `buildSrc` directory.
+
+See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html
 
 === Gradle Properties
 
 * `diamond_version` - application version, defaults to `0` if not specified
 ** displayed in info endpoint, used in generated documentation
+* `runTestcontainersTests` - see task below
+
+=== Gradle Tasks
+
+* `./gradlew :app:buildFatJar -Pdiamond_version="42"` - build a standalone, executable Jar
+* `./gradlew :app:generateConfigDoc` - custom task which generates the asciidoc for the config table (available env vars)
+* `./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf`
+* `./gradlew test -PrunTestcontainersTests=true` - run only the tests requiring testcontainers (docker; oracle)
+* `./gradlew dependencyUpdates` - to check for outdated dependencies (help category)
 
 == Start Parameters
 
-* `java -jar diamond.jar printConfigOnly` will print the read configuration object for verification
+* `java -jar diamond.jar printConfigOnly` - will print the read configuration object for verification
 
 == Tech Stack
 

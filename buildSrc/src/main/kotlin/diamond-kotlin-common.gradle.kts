@@ -1,5 +1,4 @@
 plugins {
-    // no version numbers; declare as dependency in buildSrc/build.gradle.kts
     kotlin("jvm")
     id("diamond-versions")
     id("diamond-detekt")

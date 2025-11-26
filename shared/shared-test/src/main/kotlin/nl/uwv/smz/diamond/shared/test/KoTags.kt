@@ -8,6 +8,6 @@ import io.kotest.core.NamedTag
  */
 @Suppress("ConstPropertyName")
 object KoTags {
-    const val testcontainerName = "testcontainer" // can be used in annotations via @RequiresTag(..)
-    val testcontainerTag = NamedTag(testcontainerName) // can be used in code via tags(..)
+    const val testcontainersName = "testcontainers" // can be used in annotations via @RequiresTag(..)
+    val testcontainersTag = NamedTag(testcontainersName) // can be used in code via tags(..)
 }

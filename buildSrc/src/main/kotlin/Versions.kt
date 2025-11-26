@@ -7,8 +7,9 @@ object Versions {
     val h2 = "2.3.232"
     val exposed = "0.61.0"
     val hoplite = "3.0.0.RC1" // "2.9.0"
+    val testcontainers = "2.0.2"
 
-    object Logging {
+    object logging {
         val kotlin = "7.0.13"
         val logback = "1.5.18"
     }
@@ -16,19 +17,6 @@ object Versions {
     object testing {
         val junit = "6.0.1"
         val kotest = "6.0.5"
+        val cucumber = "7.32.0"
     }
 }
-
-@Suppress("unused", "MayBeConstant")
-object Plugins {
-    val manesVersions = "0.45.0"
-}
-/*
-[bundles]
-#ktor = ["ktor-core", "ktor-json", "ktor-foobar"]
-
-[plugins]
-# short-notation = "some.plugin.id:1.4"
-#versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions" }
-
- */

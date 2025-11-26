@@ -1,5 +1,6 @@
 import io.gitlab.arturbosch.detekt.Detekt
 
+// TODO cleanup
 // https://detekt.dev/
 // gradle check implies detekt
 // see result: build/reports/detekt/detekt
@@ -20,7 +21,9 @@ plugins {
 
 detekt {
     // When unspecified the latest detekt version found will be used. Override to stay on the same version.
-    toolVersion = "1.23.8" // duplicate version number in /buildSrc/build.gradle.kts
+    // ATTENTION!!! duplicate version number in /buildSrc/build.gradle.kts
+    toolVersion = "1.23.8"
+
     source.setFrom("src/main/kotlin", "src/test/kotlin", "src/testFixtures/kotlin")
     // Builds the AST in parallel. Rules are always executed in parallel. `false` by default.
     parallel = true
@@ -50,6 +53,7 @@ tasks.withType<Detekt>().configureEach {
     }
 }
 
+// TODO check detekt type resolution enabled (more rules)
 // required for type resolution
 // tasks.withType<dev.detekt.gradle.Detekt>().configureEach {
 //    jvmTarget.set("1.8")

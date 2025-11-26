@@ -30,7 +30,7 @@ tasks {
     }
 }
 
-//resources(delegateClosureOf<CopySpec> {
+// resources(delegateClosureOf<CopySpec> {
 //  from("src/docs/asciidoc/images") {
 //    include("**/*.png")
 //    exclude("**/notThisOne.png")
@@ -39,4 +39,4 @@ tasks {
 //    include("deck.js/**")
 //  }
 //  into("./images")
-//})
+// })

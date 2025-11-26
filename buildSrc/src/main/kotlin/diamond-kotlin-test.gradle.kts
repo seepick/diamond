@@ -14,5 +14,9 @@ dependencies {
 tasks.withType<Test>().configureEach {
     // to be able to run kotests
     useJUnitPlatform()
-    systemProperty("kotest.framework.config.fqn", "nl.uwv.smz.diamond.shared.test.DiamondKotestProjectConfig")
+    systemProperties = enhanceSystemProperties(
+        "kotest.framework.config.fqn" to Constants.Fqn.kotestProjectConfig,
+        // get rid of warning "Kotest autoscan is enabled" when running tests
+        "kotest.framework.classpath.scanning.config.disable" to "true",
+    )
 }
