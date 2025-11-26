@@ -1,72 +1,66 @@
 Next
 =========================
 
+* [ ] Info endpoint (build version & timestamp); inject GITHUB into gradle
+* [ ] Kotlin scheduler (jobr?)
+* [ ] SFTP lib
+* [ ] Backend OpenAPI&WSDL generation (separate sub-project, make external-API depend on it)
+
 Backlog
 -------------------------
 
+* [ ] PlantUML support for Asciidoc
 * [ ] Docker-compose
 * [ ] Production ready DB (inject properties via env)
 * [ ] Hikari connection pooling
 * [ ] Build docker image (Gradle profile)
-* [ ] need a spin up test (does the assembled JAR work)
-* [ ] object mapper a la structmap for kotlin
-* [ ] at startup: log BANNER, incl. version, branch, build time
-* [ ] use the client SDK to also write tests (implicitly testing it)
-* [ ] production ready logging (file appender)
-* [ ] Release process: trigger build on GitHub, it will build+verify, then tag (version number), rebuild, publish/deploy
-* [ ] home page returns HATEOS-like overview
-* [ ] Local reformatting (editor config)
-* [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also
-  in packages (explicit and simplified)
-* [ ] Parallelize Kotest tests
-* [ ] info endpoint (build version & timestamp); inject GITHUB into gradle
-* [ ] Write some ADRs
-* [ ] bean validation (based on OpenAPI spec)
-* [ ] API error handling (with client, etc.)
-* [ ] Read Cucumber doc: https://cucumber.io
+* [ ] Object mapper a la structmap for kotlin
+* [ ] Log info at startup: log BANNER, incl. version, branch, build time
 * [ ] DTO mapping library (like mapstruct but for kotlin?)
-* [ ] Auto version bump up
-* [ ] Fine tune detekt rules
-* [ ] More static code analysis (higher level like PMD)
-* [ ] Provide metrics report about statistics/quality, etc.
-* [ ] Ensure no tasktags/todos
-* [ ] Branch enforcement: no direct commits to main; only via PR merge
-* [ ] OpenAPI provision (swagger endpoint); ktor's plugin is unusable/too beta
-* [ ] End-to-End tests
-* [ ] Backend OpenAPI&WSDL generation (separate sub-project, make external-API depend on it)
-* [ ] OpenShift docker deploy?
-* [ ] Scheduler
-* [ ] Explore GitHub Detekt workflow
-* [ ] Explore GitHub CodeQL workflow
+* [ ] Provide swagger HTML endpoint
 * [ ] Write SAD sub-projects explanation
-* [ ] Postman collection
-* ... persistence-impl is actually persistence-exposed ;)
-* [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
-  a proxy upfront (not the macroservice
-  itself; it only gets a user ID and assumes it has been done already)
-* [ ] Kotlin scheduler (jobr?)
+* [ ] Write some ADRs
 * [ ] e2e-test as standalone sub-project using Karate (Gradle profile)
-* [ ] can asciidoc eat ADR-md files? at least create create PDF out of them
-* [ ] investigate property files needed, or config in code (env properties); same with logback
-* [ ] arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
-* [ ] health endpoint (ping all backends available, maybe response time)
-* [ ] generate war/docker image gradle task (document in readme.md)
-* [ ] use diagram code declaration in SAD/ADRs (PlantUML? supported by github?)
-* [ ] configure owasp (create gradle profile, document it in README.md)
+* [ ] OpenTelemetry, Micrometer
+* [ ] Write KDoc for general/shared stuff
+* [ ] Parallelize Kotest tests
+* [ ] Bean validation (based on OpenAPI spec)
 
 Low
 -------------------------
 
+* [ ] Auto version bump up
+* [ ] More static code analysis (higher level like PMD)
+* [ ] Need a spin up test (does the assembled JAR work)
+* [ ] Use the client SDK to also write tests (implicitly testing it)
+* [ ] Production ready logging (file appender)
+* [ ] Release process: trigger build on GitHub, it will build+verify, then tag (version number), rebuild, publish/deploy
+* [ ] Local reformatting (editor config)
+* [ ] Refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also
+  in packages (explicit and simplified)
+* [ ] Provide metrics report about statistics/quality, etc.
+* [ ] Ensure no tasktags/todos
+* [ ] Branch enforcement: no direct commits to main; only via PR merge
+* [ ] OpenShift docker deploy?
+* [ ] Explore GitHub Detekt workflow
+* [ ] Explore GitHub CodeQL workflow
+* [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
+  a proxy upfront (not the macroservice
+  itself; it only gets a user ID and assumes it has been done already)
+* [ ] Can Asciidoc eat ADR-md files? at least create create PDF out of them
+* [ ] Arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
+* [ ] Health endpoint (ping all backends available, maybe response time)
+* [ ] Generate war/docker image gradle task (document in readme.md)
+* [ ] Configure OWASP (create gradle profile, document it in README.md)
+* [ ] Fine tune detekt rules
+* [ ] Home page returns HATEOS-like overview
 * [ ] AsciiDoc needs some love
-* [ ] more hateos-like endpoints
-* [ ] circuit breaker (external services and also DB)? arrow.
+* [ ] Circuit breaker (external services and also DB)? arrow.
 * [ ] Investigate: intellij + github issue tracker
 * [ ] Investigate: code reviews done in intellij
-* [ ] write KDoc for general/shared stuff
-* [ ] OpenTelemetry, Micrometer
 * [ ] Docsify website for GitHub; see: https://iietmoon.github.io/simple-captcha-js/
-* [ ] host production somewhere free (google app engine?)
-* [ ] support HTTP caching? ETag (entity-tag values)
+* [ ] Host production somewhere free (google app engine?)
+* [ ] Support HTTP caching? ETag (entity-tag values)
 
 No!
 -------------------------

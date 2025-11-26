@@ -10,7 +10,8 @@ best practices (software design/architecture, testing, code quality, CI/CD, etc)
 
 A general technical overview can be found in the SAD (Software Architecture Document).
 
-All (design/tech/process) decisions are documented in so-called [ARD](https://github.com/joelparkerhenderson/architecture-decision-record)s; see:
+All (design/tech/process) decisions are documented in
+so-called [ARD](https://github.com/joelparkerhenderson/architecture-decision-record)s; see:
 `/doc/ArchitectureDecisionRecords/*.md`
 
 ## Dev Instructions
@@ -35,3 +36,10 @@ All (design/tech/process) decisions are documented in so-called [ARD](https://gi
     * pure functions: stateless, side-effect free
     * code as named expressions
     * prefer single-expression-method `fun foo() = doSome().doOther().also { done(it) }`
+
+## Coded UML
+
+@startuml
+[Component] --> Interface1
+[Component] -> Interface2
+@enduml
