@@ -31,3 +31,10 @@ ktor {
         archiveFileName.set("diamond.jar")
     }
 }
+
+/** generate asciidoc describing the support environment variables to be set by operations */
+tasks.register<JavaExec>("generateConfigDoc") {
+    mainClass.set("nl.uwv.smz.diamond.app.ConfigDocWriterApp")
+    workingDir = rootDir
+    classpath = java.sourceSets["test"].runtimeClasspath
+}

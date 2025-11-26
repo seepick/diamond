@@ -12,6 +12,7 @@ allprojects {
     description = "diamond sample project"
 }
 
+// TODO use this gradle magic
 // $ gradle performRelease -PisCI=true --quiet
 tasks.register("performRelease") {
     val isCI = providers.gradleProperty("isCI")
@@ -23,3 +24,10 @@ tasks.register("performRelease") {
         }
     }
 }
+
+//task runWithJavaExec(type: JavaExec) {
+//    group = "Execution"
+description = "Run the main class with JavaExecTask"
+//    classpath = sourceSets.main.runtimeClasspath
+//    main = javaMainClass
+//}

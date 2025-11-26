@@ -3,16 +3,13 @@ Next
 
 * resolve view-routes test run warnings: Kotest autoscan is enabled.
 
-* [ ] use detekt to format and configure intellij
 * [ ] Exposed persistence layer (exposed-dao vs plain)
 * [ ] Liquibase database migration
-* [ ] Oracle + testcontainers
 * [ ] Build docker image (Gradle profile)
 * [ ] Docker-compose
 * [ ] Hikari connection pooling
 * [ ] Testcontainer tests with Oracle (local to persistence-impl); custom gradle profile to activate (kotest tags)
-* [ ] Production ready DB (inject properties via env); ask matthias how done
-* [ ] Fine tune detekt rules
+* [ ] Production ready DB (inject properties via env)
 
 Backlog
 -------------------------
@@ -35,6 +32,7 @@ Backlog
 * [ ] Read Cucumber doc: https://cucumber.io
 * [ ] DTO mapping library (like mapstruct but for kotlin?)
 * [ ] Auto version bump up
+* [ ] Fine tune detekt rules
 * [ ] Quality gates (build fail static code analysis; no task tags in main)
 * [ ] Branch enforcement: no direct commits to main; only via PR merge
 * [ ] OpenAPI provision (swagger endpoint); ktor's plugin is unusable/too beta
@@ -47,29 +45,27 @@ Backlog
 * [ ] Write SAD sub-projects explanation
 * [ ] Postman collection
 * ... persistence-impl is actually persistence-exposed ;)
-* [ ] Investigate: intellij + github issue tracker
-* [ ] Investigate: code reviews done in intellij
-* [ ] write KDoc for general/shared stuff
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
   a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
 * [ ] Kotlin scheduler (jobr?)
 * [ ] e2e-test as standalone sub-project using Karate (Gradle profile)
 * [ ] can asciidoc eat ADR-md files? at least create create PDF out of them
-* [ ] more hateos-like endpoints
 * [ ] investigate property files needed, or config in code (env properties); same with logback
 * [ ] arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
 * [ ] health endpoint (ping all backends available, maybe response time)
 * [ ] generate war/docker image gradle task (document in readme.md)
 * [ ] use diagram code declaration in SAD/ADRs (PlantUML? supported by github?)
-* [ ] circuit breaker (external services and also DB)? arrow.
 * [ ] configure owasp (create gradle profile, document it in README.md)
-* [ ] fail-fast application config (if something is wrongly configured/missing)
-* [ ] application config overview (like a -h flag in terminal); maybe auto-generate doc + publish
 
 Low
 -------------------------
 
+* [ ] more hateos-like endpoints
+* [ ] circuit breaker (external services and also DB)? arrow.
+* [ ] Investigate: intellij + github issue tracker
+* [ ] Investigate: code reviews done in intellij
+* [ ] write KDoc for general/shared stuff
 * [ ] OpenTelemetry, Micrometer
 * [ ] Docsify website for GitHub; see: https://iietmoon.github.io/simple-captcha-js/
 * [ ] host production somewhere free (google app engine?)

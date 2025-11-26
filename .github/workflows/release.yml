@@ -47,7 +47,9 @@ jobs:
 
       - name: Build JAR
         run: ./gradlew :app:buildFatJar -Pdiamond_version="${{ github.ref_name }}"
-      - name: Build SAD
+      - name: Generate config documentation
+        run: ./gradlew :app:generateConfigDoc
+      - name: Build SAD PDF
         # TODO add version number/build date to PDF
         run: ./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf
 

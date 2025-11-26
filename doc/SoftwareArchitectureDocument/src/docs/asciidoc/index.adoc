@@ -4,7 +4,18 @@
 
 include::includes/config_report.generated.adoc[]
 
-=== Start Parameters
+== Gradle Tasks
+
+* `./gradlew :app:buildFatJar -Pdiamond_version="${{ github.ref_name }}"`
+* `./gradlew :app:generateConfigDoc` generates the asciidoc for the config table (available env vars)
+* `./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf`
+
+=== Gradle Properties
+
+* `diamond_version` - application version, defaults to `0` if not specified
+** displayed in info endpoint, used in generated documentation
+
+== Start Parameters
 
 * `java -jar diamond.jar printConfigOnly` will print the read configuration object for verification
 

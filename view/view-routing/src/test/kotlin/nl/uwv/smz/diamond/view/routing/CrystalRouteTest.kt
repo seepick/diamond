@@ -27,7 +27,7 @@ import nl.uwv.smz.diamond.view.model.CrystalDto
 import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
 import kotlin.uuid.Uuid
 
-internal class CrystalRouteTest : DescribeSpec({
+class CrystalRouteTest : DescribeSpec({
 
     val dto = Arb.crystalDto().next()
     val createDto = Arb.crystalCreateDto().next()
@@ -92,7 +92,10 @@ internal class CrystalRouteTest : DescribeSpec({
                 }
 
                 response.status shouldBeEqual HttpStatusCode.BadRequest
-                response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = failure.code, message = failure.message)
+                response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(
+                    code = failure.code,
+                    message = failure.message
+                )
             }
         }
     }
