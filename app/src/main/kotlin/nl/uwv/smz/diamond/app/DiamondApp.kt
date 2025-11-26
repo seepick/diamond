@@ -9,27 +9,33 @@ import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 /** FQN has to be in sync with /app/build.gradle.kts main class definition. */
 object DiamondApp {
 
+    private const val APP_ARG_PRINT_CONFIG_ONLY = "printConfigOnly"
+
     @JvmStatic
     fun main(args: Array<String>) {
-        if (args.contains("printConfigOnly")) {
-            println(readConfig())
+        if (args.contains(APP_ARG_PRINT_CONFIG_ONLY)) {
+            println(readEnvConfig())
         } else {
             startApp()
         }
     }
 
+    /** With default params, so LocalDiamondApp can reconfigure the application accordingly. */
     fun startApp(
-        defaultLog: () -> Unit = { reconfigureLog() },
-        defaultConfig: () -> Config = { readConfig() },
+        defaultLog: () -> Unit = { reconfigureProdLog() },
+        defaultEnvConfig: () -> EnvConfig = { readEnvConfig() },
     ) {
         defaultLog()
         val log = logger {}
-        log.info { "Starting application and wait..." }
-        val config = defaultConfig()
+        log.info { "Starting application and wait" }
+        val config = GlobalConfig(
+            env = defaultEnvConfig(),
+            build = readBuildProperties(),
+        )
         Ktor.prepare(config, Netty).start(wait = true)
     }
 
-    private fun reconfigureLog() {
+    private fun reconfigureProdLog() {
         // TODO rolling file appender for PROD (or via app-config property?!)
         reconfigureLogback {
             rootLevel = LogLevel.Warn

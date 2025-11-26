@@ -22,3 +22,7 @@ fun Project.fullProjectName(): String {
 
 fun Project.hasGradleProperty(property: Constants.GradleProperty): Boolean =
     providers.gradleProperty(property.value).isPresent
+
+inline fun <reified C> Project.configure(name: String, configuration: C.() -> Unit) {
+    (this.tasks.getByName(name) as C).configuration()
+}

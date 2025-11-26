@@ -6,7 +6,8 @@ import io.ktor.server.application.Application
 private val log = logger {}
 
 fun Application.installRoutings() {
-    log.info { "Installing routing..." }
+    log.info { "Installing routings" }
     installHomepageRouting()
     installCrystalRouting()
+    installInfoRouting()
 }

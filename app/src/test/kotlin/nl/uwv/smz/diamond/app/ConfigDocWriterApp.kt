@@ -14,7 +14,7 @@ object ConfigDocWriterApp {
         println("Going to generate the documentation part for the application configuration ...")
         check(targetFolder.exists()) { "Target folder ${targetFolder.absolutePath} does not exist!" }
 
-        val report = configPrinterAsAsciidoc(parseConfigEntries(Config::class))
+        val report = configPrinterAsAsciidoc(parseConfigEntries(EnvConfig::class))
         target.writeText(report)
         println("Successfully saved config report to: ${target.absolutePath} ✅")
     }

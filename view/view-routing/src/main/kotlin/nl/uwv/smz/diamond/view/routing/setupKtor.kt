@@ -13,7 +13,9 @@ fun Application.installPlugins() {
 
 fun Application.installContentNegotiation() {
     install(ContentNegotiation) {
+        // TODO disable detect warning here!
         json(Json {
+            serializersModule
             prettyPrint = true
             isLenient = false
             ignoreUnknownKeys = false // be super strict (?)

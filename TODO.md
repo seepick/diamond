@@ -1,7 +1,6 @@
 Next
 =========================
 
-* [ ] Info endpoint (build version & timestamp); inject GITHUB into gradle
 * [ ] Kotlin scheduler (jobr?)
 * [ ] SFTP lib
 * [ ] Backend OpenAPI&WSDL generation (separate sub-project, make external-API depend on it)
@@ -9,7 +8,6 @@ Next
 Backlog
 -------------------------
 
-* [ ] PlantUML support for Asciidoc
 * [ ] Docker-compose
 * [ ] Production ready DB (inject properties via env)
 * [ ] Hikari connection pooling
@@ -25,10 +23,12 @@ Backlog
 * [ ] Write KDoc for general/shared stuff
 * [ ] Parallelize Kotest tests
 * [ ] Bean validation (based on OpenAPI spec)
+* [ ] Run testcontainers test on GitHub
 
 Low
 -------------------------
 
+* [ ] PlantUML support for Asciidoc (working in IDE but not in gradle...)
 * [ ] Auto version bump up
 * [ ] More static code analysis (higher level like PMD)
 * [ ] Need a spin up test (does the assembled JAR work)
@@ -41,7 +41,6 @@ Low
 * [ ] Provide metrics report about statistics/quality, etc.
 * [ ] Ensure no tasktags/todos
 * [ ] Branch enforcement: no direct commits to main; only via PR merge
-* [ ] OpenShift docker deploy?
 * [ ] Explore GitHub Detekt workflow
 * [ ] Explore GitHub CodeQL workflow
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
@@ -118,6 +117,12 @@ OpenAPI and Ktor
 Done
 =========================
 
+Not Doing
+-------------------------
+
+* OpenShift docker deploy
+* Add branch name in /info endpoint (necessary for environment per feature-branch)
+
 V1
 -------------------------
 
@@ -143,3 +148,4 @@ V1
 * [x] Liquibase database migration
 * [x] Exposed persistence layer (exposed-dao vs plain)
 * [x] Testcontainers tests with Oracle; custom gradle profile to activate (kotest tags)
+* [x] Info endpoint displaying build version, timestamp, branch, ...

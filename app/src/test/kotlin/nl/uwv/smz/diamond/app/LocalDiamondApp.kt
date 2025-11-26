@@ -22,7 +22,7 @@ object LocalDiamondApp {
 //    )
 
     // TODO maybe per user?! so can switch between fast stub, regular H2, or heavy oracle?!
-    private val localConfig = Config(
+    private val localEnvConfig = EnvConfig(
         database = dbStubConfig, server = ServerConfig(port = 8000)
     )
 
@@ -30,7 +30,7 @@ object LocalDiamondApp {
     fun main(args: Array<String>) {
         DiamondApp.startApp(
             defaultLog = ::reconfigureLog,
-            defaultConfig = { localConfig },
+            defaultEnvConfig = { localEnvConfig },
         )
     }
 

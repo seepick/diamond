@@ -13,7 +13,7 @@ class ConfigTest : StringSpec({
         System.setProperty("config.override.database.password", "c")
         System.setProperty("config.override.server.port", "12")
 
-        readConfig() shouldBeEqual Config(
+        readEnvConfig() shouldBeEqual EnvConfig(
             server = ServerConfig(
                 port = 12,
             ),

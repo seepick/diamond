@@ -1,3 +1,7 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 plugins {
     id("diamond-kotlin-common")
     id("diamond-kotlin-test")
@@ -37,4 +41,17 @@ tasks.register<JavaExec>("generateConfigDoc") {
     mainClass.set(Constants.Fqn.configDocWriter)
     workingDir = rootDir
     classpath = java.sourceSets["test"].runtimeClasspath
+}
+
+configure<ProcessResources>("processResources") {
+    from("src/main/resources") {
+        include("buildInjected.properties")
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        filter<ReplaceTokens>(
+            "tokens" to mapOf(
+                "appVersion" to version,
+                "buildTime" to LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+            ),
+        )
+    }
 }

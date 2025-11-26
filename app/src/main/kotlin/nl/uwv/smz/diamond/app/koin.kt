@@ -7,25 +7,31 @@ import nl.uwv.smz.diamond.domain_logic_impl.domainLogicImpl
 import nl.uwv.smz.diamond.persistence.impl.persistenceImpl
 import nl.uwv.smz.diamond.persistence.stub.persistenceStub
 import nl.uwv.smz.diamond.shared.common.Modules
+import nl.uwv.smz.diamond.view.controller_impl.ControllerConfig
 import nl.uwv.smz.diamond.view.controller_impl.controllerImpl
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 
 private val log = logger {}
 
-fun Application.installKoin(config: Config) {
-    log.info { "installKoin" }
+fun Application.installKoin(config: GlobalConfig) {
+    log.info { "Installing Koin" }
     install(Koin) {
         slf4jLogger()
         modules(Modules.all(config))
     }
 }
 
-fun Modules.all(config: Config) = listOf(
-    controllerImpl(),
+fun Modules.all(config: GlobalConfig) = listOf(
+    controllerImpl(
+        ControllerConfig(
+            appVersion = config.build.appVersion,
+            buildTime = config.build.buildTime,
+        )
+    ),
     domainLogicImpl(),
-    when (config.database.stubEnabled) {
+    when (config.env.database.stubEnabled) {
         true -> persistenceStub()
-        false -> persistenceImpl(config.database)
+        false -> persistenceImpl(config.env.database)
     },
 )
