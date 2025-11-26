@@ -24,8 +24,8 @@ fun Application.installKoin(config: Config) {
 fun Modules.all(config: Config) = listOf(
     controllerImpl(),
     domainLogicImpl(),
-    when (config.database.mode) {
-        is PersistenceMode.ImplMode -> persistenceImpl(config.database.mode.impl)
-        PersistenceMode.StubMode -> persistenceStub()
+    when (config.database.stubEnabled) {
+        true -> persistenceStub()
+        false -> persistenceImpl(config.database)
     },
 )

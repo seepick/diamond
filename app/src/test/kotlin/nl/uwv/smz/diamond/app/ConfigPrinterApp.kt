@@ -21,19 +21,3 @@ object ConfigPrinterApp {
         println("Saved config report to: ${target.absolutePath}")
     }
 }
-/*
-Nope: Optional, Default?
-
-|===
-|Param |Type |Description
-
-|`DATABASE_MODE`
-|string
-|Switch between in-memory stub and real implementation mode
-
-|`KTOR_MODE`
-|integer
-|Webserver port
-
-|===
-*/

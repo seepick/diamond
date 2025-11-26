@@ -4,6 +4,10 @@
 
 include::includes/config_report.generated.adoc[]
 
+=== Start Parameters
+
+* `java -jar diamond.jar printConfigOnly` will print the read configuration object for verification
+
 == Tech Stack
 
 * Gradle

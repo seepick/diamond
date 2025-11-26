@@ -1,12 +1,29 @@
 |===
-|Param |Type |Description
+|Param |Type |Default |Description
 
-|`DATABASE_MODE`
-|class nl.uwv.smz.diamond.app.PersistenceMode
-|Switch between in-memory stub and real implementation mode
+|`DATABASE_PASSWORD`
+|string
+|-
+|DB password
 
-|`KTOR_PORT`
-|Int
-|Webserver port
+|`DATABASE_STUBENABLED`
+|boolean
+|false
+|Flag to switch from real implementation to a dev/test stub
+
+|`DATABASE_URL`
+|string
+|-
+|JDBC driver URL
+
+|`DATABASE_USERNAME`
+|string
+|-
+|DB username
+
+|`SERVER_PORT`
+|integer
+|8080
+|Webserver HTTP port to listen to
 
 |===

@@ -11,7 +11,11 @@ object DiamondApp {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        startApp()
+        if (args.contains("printConfigOnly")) {
+            println(readConfig())
+        } else {
+            startApp()
+        }
     }
 
     fun startApp(

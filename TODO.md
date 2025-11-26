@@ -3,6 +3,7 @@ Next
 
 * resolve view-routes test run warnings: Kotest autoscan is enabled.
 
+* [ ] use detekt to format and configure intellij
 * [ ] Exposed persistence layer (exposed-dao vs plain)
 * [ ] Liquibase database migration
 * [ ] Oracle + testcontainers
@@ -24,7 +25,8 @@ Backlog
 * [ ] Release process: trigger build on GitHub, it will build+verify, then tag (version number), rebuild, publish/deploy
 * [ ] home page returns HATEOS-like overview
 * [ ] Local reformatting (editor config)
-* [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also in packages (explicit and simplified)
+* [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also
+  in packages (explicit and simplified)
 * [ ] provide test jars for reusable Arbs
 * [ ] info endpoint (build version & timestamp); inject GITHUB into gradle
 * [ ] Write some ADRs
@@ -48,7 +50,8 @@ Backlog
 * [ ] Investigate: intellij + github issue tracker
 * [ ] Investigate: code reviews done in intellij
 * [ ] write KDoc for general/shared stuff
-* [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by a proxy upfront (not the macroservice
+* [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
+  a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
 * [ ] Kotlin scheduler (jobr?)
 * [ ] e2e-test as standalone sub-project using Karate (Gradle profile)
@@ -85,7 +88,8 @@ Questions
 No!
 -------------------------
 
-* Whitelabel implementation for FE devs; same api definition, but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
+* Whitelabel implementation for FE devs; same api definition, but full control of data (data setup wizard and endpoints,
+  choose set of predefined constellation)
 
 Done
 =========================
@@ -104,7 +108,8 @@ V1
 * [x] GitHub Action (CI verify on push, CD on tags)
 * [x] Koin DI
 * [x] Cucumber programatic logging (before all)
-* [x] Use Arrow's either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
+* [x] Use Arrow's
+  either: https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07
 * [x] CRUD operations until service (ApiError handling, JSON serialization)
 * [x] CRUD operations for stub persistence
 * [x] Setup Postman collection

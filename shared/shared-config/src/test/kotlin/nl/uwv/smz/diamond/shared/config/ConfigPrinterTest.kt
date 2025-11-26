@@ -8,19 +8,21 @@ class ConfigPrinterTest : StringSpec({
         configPrinterAsAsciidoc(
             listOf(
                 // TODO test for path being: "foo_bar" or "fooBar"
-                ConfigEntry(path = listOf("simple"), "string", "description"),
-                ConfigEntry(path = listOf("foo", "bar"), "type", "description")
+                ConfigEntry(path = listOf("simple"), ConfigType.String, "description"),
+                ConfigEntry(path = listOf("foo", "bar"), ConfigType.Integer, "description", "42")
             )
         ) shouldBeEqual """
             |===
-            |Param |Type |Description
+            |Param |Type |Default |Description
             
             |`FOO_BAR`
-            |type
+            |integer
+            |42
             |description
 
             |`SIMPLE`
             |string
+            |-
             |description
 
             |===

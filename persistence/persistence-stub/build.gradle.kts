@@ -6,4 +6,5 @@ dependencies {
     api(project(":persistence:persistence-api"))
     api(project(":shared:shared-common"))
     implementation(Deps.koin.core)
+    implementation(Deps.logging.kotlin)
 }

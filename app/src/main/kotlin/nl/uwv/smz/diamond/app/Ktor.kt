@@ -21,7 +21,7 @@ object Ktor {
         factory: ApplicationEngineFactory<*, *>,
     ): KtorServer {
         log.info { "Preparing Ktor with $config" }
-        return embeddedServer(factory, port = config.ktor.port) {
+        return embeddedServer(factory, port = config.server.port) {
             setupCompleteKtor(config)
         }
     }
@@ -34,7 +34,7 @@ fun Application.setupCompleteKtor(config: Config) {
     installRoutings()
 }
 
-data class KtorConfig(
-    @ConfigProperty("Webserver port")
-    val port: Int,
+data class ServerConfig(
+    @ConfigProperty("Webserver HTTP port to listen to")
+    val port: Int = 8080,
 )

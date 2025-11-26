@@ -1,30 +1,23 @@
 package nl.uwv.smz.diamond.app
 
+import com.sksamuel.hoplite.ConfigException
 import com.sksamuel.hoplite.ConfigLoaderBuilder
 import com.sksamuel.hoplite.ExperimentalHoplite
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
-import nl.uwv.smz.diamond.shared.config.ConfigProperty
 import nl.uwv.smz.diamond.shared.config.SubConfig
 
 @OptIn(ExperimentalHoplite::class)
-fun readConfig(): Config =
+fun readConfig(): Config = try {
     ConfigLoaderBuilder.default().withExplicitSealedTypes().build().loadConfigOrThrow<Config>()
+} catch (e: ConfigException) {
+    throw ConfigException(
+        "Application configuration failed. " +
+                "Please see exception cause for details and the SAD document for configuration details.",
+        e
+    )
+}
 
 data class Config(
-    @SubConfig
-    val database: DatabaseMetaConfig,
-    @SubConfig
-    val ktor: KtorConfig,
+    @SubConfig val server: ServerConfig,
+    @SubConfig val database: DatabaseConfig,
 )
-
-data class DatabaseMetaConfig(
-    @ConfigProperty("Switch between in-memory stub and real implementation mode")
-    val mode: PersistenceMode, // FIXME config parser doesn't pick it up :-(
-)
-
-sealed interface PersistenceMode {
-    object StubMode : PersistenceMode
-    data class ImplMode(
-        val impl: DatabaseConfig
-    ) : PersistenceMode
-}
