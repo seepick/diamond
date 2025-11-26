@@ -10,6 +10,12 @@ object Deps {
         val logback = "ch.qos.logback:logback-classic:${Versions.Logging.logback}"
     }
 
+    object config {
+        private fun make(artifact: String) = "com.sksamuel.hoplite:hoplite-$artifact:${Versions.hoplite}"
+        val core = make("core")
+//        val yaml = make("yaml") NO!
+    }
+
     object ktor {
         private fun make(artifact: String) = "io.ktor:ktor-$artifact:${Versions.ktor}"
         val serialization = make("serialization-kotlinx-json")

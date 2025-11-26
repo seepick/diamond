@@ -1,5 +1,9 @@
 Diamond Software Architecture Document
 
+== Application Properties
+
+include::src/docs/asciidoc/includes/config_report.generated.adoc[]
+
 == Tech Stack
 
 * Gradle

@@ -1,16 +1,17 @@
 Next
 =========================
 
-* resolve view-routes test run warnings
-    * Kotest autoscan is enabled.
-    * SLF4J(W): No SLF4J providers were found.
+* resolve view-routes test run warnings: Kotest autoscan is enabled.
 
-* [ ] read ADR and write more my thought process (ammunition for alex)
 * [ ] Exposed persistence layer (exposed-dao vs plain)
 * [ ] Liquibase database migration
+* [ ] Oracle + testcontainers
+* [ ] Build docker image (Gradle profile)
+* [ ] Docker-compose
 * [ ] Hikari connection pooling
 * [ ] Testcontainer tests with Oracle (local to persistence-impl); custom gradle profile to activate (kotest tags)
 * [ ] Production ready DB (inject properties via env); ask matthias how done
+* [ ] Fine tune detekt rules
 
 Backlog
 -------------------------
@@ -24,7 +25,6 @@ Backlog
 * [ ] home page returns HATEOS-like overview
 * [ ] Local reformatting (editor config)
 * [ ] refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also in packages (explicit and simplified)
-* [ ] Config per project via some fancy kotlin mapping lib (properties, yaml, env-vars)
 * [ ] provide test jars for reusable Arbs
 * [ ] info endpoint (build version & timestamp); inject GITHUB into gradle
 * [ ] Write some ADRs
@@ -51,15 +51,18 @@ Backlog
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
 * [ ] Kotlin scheduler (jobr?)
-* [ ] e2e-test as standalone sub-project using Karate
+* [ ] e2e-test as standalone sub-project using Karate (Gradle profile)
 * [ ] can asciidoc eat ADR-md files? at least create create PDF out of them
 * [ ] more hateos-like endpoints
 * [ ] investigate property files needed, or config in code (env properties); same with logback
 * [ ] arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
 * [ ] health endpoint (ping all backends available, maybe response time)
 * [ ] generate war/docker image gradle task (document in readme.md)
-* use diagram code declaration in SAD/ADRs (PlantUML? supported by github?)
-* circuit braker (external services and also DB)? arrow.
+* [ ] use diagram code declaration in SAD/ADRs (PlantUML? supported by github?)
+* [ ] circuit breaker (external services and also DB)? arrow.
+* [ ] configure owasp (create gradle profile, document it in README.md)
+* [ ] fail-fast application config (if something is wrongly configured/missing)
+* [ ] application config overview (like a -h flag in terminal); maybe auto-generate doc + publish
 
 Low
 -------------------------
@@ -106,7 +109,9 @@ V1
 * [x] CRUD operations for stub persistence
 * [x] Setup Postman collection
 * [x] Generate Software Architecture Document with Asciidoc
-* [x] test fixtures depedency (arrow, kotest; reusable arbs)
+* [x] Test fixtures depedency (arrow, kotest; reusable arbs)
+* [x] Runtime configuration for project (env-vars via hoplite)
+* [x] Generate configuration report (list of env-vars for Ops-people)
 
 Challenges
 =========================

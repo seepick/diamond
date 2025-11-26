@@ -13,6 +13,7 @@ dependencies {
     implementation(project(":persistence:persistence-impl"))
     implementation(project(":shared:shared-logging"))
     implementation(project(":shared:shared-common"))
+    implementation(project(":shared:shared-config"))
 
     implementation(Deps.logging.kotlin)
     implementation(Deps.ktor.server.core)

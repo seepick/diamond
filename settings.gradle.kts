@@ -24,6 +24,7 @@ include(
     "extern:extern-stub",
     "shared",
     "shared:shared-common",
+    "shared:shared-config",
     "shared:shared-logging",
     "shared:shared-test",
     "itest",

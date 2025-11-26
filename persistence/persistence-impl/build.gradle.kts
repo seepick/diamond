@@ -6,6 +6,7 @@ plugins {
 dependencies {
     api(project(":persistence:persistence-api"))
     implementation(project(":shared:shared-common"))
+    implementation(project(":shared:shared-config"))
     implementation(Deps.koin.core)
     implementation(Deps.logging.kotlin)
 

@@ -6,6 +6,7 @@ import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.ApplicationEngineFactory
 import io.ktor.server.engine.EmbeddedServer
 import io.ktor.server.engine.embeddedServer
+import nl.uwv.smz.diamond.shared.config.ConfigProperty
 import nl.uwv.smz.diamond.view.routing.installPlugins
 import nl.uwv.smz.diamond.view.routing.installRoutings
 
@@ -16,24 +17,24 @@ object Ktor {
     private val log = logger {}
 
     fun prepare(
-        config: KtorConfig,
+        config: Config,
         factory: ApplicationEngineFactory<*, *>,
-        persistenceMode: PersistenceMode
     ): KtorServer {
         log.info { "Preparing Ktor with $config" }
-        return embeddedServer(factory, port = config.port) {
-            setupCompleteKtor(persistenceMode)
+        return embeddedServer(factory, port = config.ktor.port) {
+            setupCompleteKtor(config)
         }
     }
 }
 
 /** Visible for integration test setup */
-fun Application.setupCompleteKtor(persistenceMode: PersistenceMode) {
-    installKoin(persistenceMode)
+fun Application.setupCompleteKtor(config: Config) {
+    installKoin(config)
     installPlugins()
     installRoutings()
 }
 
 data class KtorConfig(
-    val port: Int
+    @ConfigProperty("Webserver port")
+    val port: Int,
 )

@@ -1,7 +1,9 @@
 package nl.uwv.smz.diamond.persistence.impl
 
 import arrow.core.Either
+import arrow.core.left
 import arrow.core.raise.either
+import arrow.core.right
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
@@ -13,6 +15,8 @@ import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.deleteWhere
 import java.util.UUID
 import kotlin.uuid.toJavaUuid
 import kotlin.uuid.toKotlinUuid
@@ -41,47 +45,36 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
         }
     }
 
-    override suspend fun create(create: CrystalCreate): Either<Failure, Crystal> {
-        TODO("Not yet implemented")
+    override suspend fun create(create: CrystalCreate): Either<Failure, Crystal> = either {
+        suspendTransaction(db) {
+            CrystalDao.new(UUID.randomUUID()) {
+                weightInGrams = create.weight.value
+            }.toDomainModel().bind()
+        }
     }
 
-    override suspend fun update(update: CrystalUpdate): Either<Failure, Crystal> {
-        TODO("Not yet implemented")
+    override suspend fun update(update: CrystalUpdate): Either<Failure, Crystal> = either {
+        suspendTransaction(db) {
+            val maybeDeleted = CrystalDao.findByIdAndUpdate(update.id.value.toJavaUuid()) {
+                it.weightInGrams = update.weight.value
+            }
+            if (maybeDeleted == null) {
+                Failure.NotFoundFailure("sdf").left().bind()
+            } else {
+                maybeDeleted.toDomainModel().bind().right().bind()
+            }
+        }
     }
 
-    override suspend fun delete(id: CrystalId): Either<Failure, Unit> {
-        TODO("Not yet implemented")
+    override suspend fun delete(id: CrystalId) = either {
+        suspendTransaction(db) {
+            val deletedCount = CrystalTable.deleteWhere {
+                CrystalTable.id eq id.value.toJavaUuid()
+            }
+            ensureSingleAffected(deletedCount, id.value) { }.bind()
+        }
     }
-
 }
-/*
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.deleteWhere
-
-
-    override suspend fun taskByName(name: String): Task? = suspendTransaction {
-        TaskDAO
-            .find { (TaskTable.name eq name) }
-            .limit(1)
-            .map(::daoToModel)
-            .firstOrNull()
-    }
-
-    override suspend fun addTask(task: Task): Unit = suspendTransaction {
-        TaskDAO.new {
-            name = task.name
-            description = task.description
-            priority = task.priority.toString()
-        }
-    }
-
-    override suspend fun removeTask(name: String): Boolean = suspendTransaction {
-        val rowsDeleted = TaskTable.deleteWhere {
-            TaskTable.name eq name
-        }
-        rowsDeleted == 1
-    }
- */
 
 
 private fun CrystalDao.toDomainModel() = either {

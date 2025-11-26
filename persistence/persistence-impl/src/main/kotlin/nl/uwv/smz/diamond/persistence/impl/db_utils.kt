@@ -26,10 +26,10 @@ internal fun <T> List<T>.ensureSingleFound(id: Uuid): Either<Failure, T> = eithe
     }.bind()
 }
 
-fun <RETURN> ensureSingleUpdate(updatedRows: Int, id: Uuid, returnValue: () -> RETURN) = either {
-    when (updatedRows) {
-        0 -> Failure.NotFoundFailure("Not found for update: $id").left()
+fun <RETURN> ensureSingleAffected(affectedRows: Int, id: Uuid, returnValue: () -> RETURN) = either {
+    when (affectedRows) {
+        0 -> Failure.NotFoundFailure("Not any found with ID: $id").left()
         1 -> returnValue().right()
-        else -> Failure.CorruptDataFailure("More than 1 entities with same ID found: $id").left()
+        else -> Failure.CorruptDataFailure("More than 1 entity found with same ID: $id").left()
     }.bind()
 }

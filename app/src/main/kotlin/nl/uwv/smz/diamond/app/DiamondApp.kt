@@ -11,13 +11,18 @@ object DiamondApp {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        reconfigureLog()
+        startApp()
+    }
+
+    fun startApp(
+        defaultLog: () -> Unit = { reconfigureLog() },
+        defaultConfig: () -> Config = { readConfig() },
+    ) {
+        defaultLog()
         val log = logger {}
         log.info { "Starting application and wait..." }
-
-        Ktor
-            .prepare(KtorConfig(port = 8000), Netty, PersistenceMode.Impl)
-            .start(wait = true)
+        val config = defaultConfig()
+        Ktor.prepare(config, Netty).start(wait = true)
     }
 
     private fun reconfigureLog() {

@@ -1,6 +1,5 @@
 package nl.uwv.smz.diamond.persistence.impl
 
-import arrow.core.Either
 import arrow.core.raise.either
 import arrow.core.right
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
@@ -9,12 +8,13 @@ import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Gram
-import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.persistence.api.CrystalDbo
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.persistence.impl.CrystalTable.id
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
@@ -62,7 +62,7 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
             val updatedRows = CrystalTable.update({ CrystalTable.id eq update.id.value.toJavaUuid() }) {
                 it[weightInGrams] = update.weight.value
             }
-            ensureSingleUpdate(updatedRows, update.id.value) {
+            ensureSingleAffected(updatedRows, update.id.value) {
                 Crystal(
                     id = update.id,
                     weight = update.weight,
@@ -72,8 +72,13 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
     }
 
 
-    override suspend fun delete(id: CrystalId): Either<Failure, Unit> {
-        TODO("Not yet implemented")
+    override suspend fun delete(id: CrystalId) = either {
+        suspendTransaction(db) {
+            val deletedCount = CrystalTable.deleteWhere {
+                CrystalTable.id eq id.value.toJavaUuid()
+            }
+            ensureSingleAffected(deletedCount, id.value) { Unit }.bind()
+        }
     }
 }
 

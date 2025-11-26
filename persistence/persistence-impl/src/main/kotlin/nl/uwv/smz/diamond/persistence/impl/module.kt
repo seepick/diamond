@@ -9,26 +9,16 @@ import org.koin.dsl.module
 private val log = logger {}
 
 @Suppress("UnusedReceiverParameter")
-fun Modules.persistenceImpl(config: DbConfig) = module {
+fun Modules.persistenceImpl(config: DatabaseConfig) = module {
     val db = connectToDatabase(config)
     single<CrystalRepo> { CrystalExposedDboRepo(db) }
 }
 
-data class DbConfig(
-    val url: String,
-    val username: String,
-    val password: String,
-) {
-    override fun toString(): String {
-        return super.toString()
-    }
-}
-
-internal fun connectToDatabase(config: DbConfig): Database {
+internal fun connectToDatabase(config: DatabaseConfig): Database {
     log.info { "Connecting to database" }
     return Database.connect(
         url = config.url,
         user = config.username,
-        password = config.password,
+        password = config.password.value,
     )
 }

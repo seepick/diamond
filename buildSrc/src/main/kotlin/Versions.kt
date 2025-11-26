@@ -1,11 +1,12 @@
-@Suppress("MayBeConstant", "unused", "ClassName")
+@Suppress("MayBeConstant", "unused", "ClassName", "ConstPropertyName")
 object Versions {
-    val java = 17
+    const val java = 17
     val kotlin = "2.2.21"
     val koin = "4.1.1"
     val ktor = "3.3.2"
     val h2 = "2.3.232"
     val exposed = "0.61.0"
+    val hoplite = "3.0.0.RC1" // "2.9.0"
 
     object Logging {
         val kotlin = "7.0.13"
