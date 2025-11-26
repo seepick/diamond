@@ -13,7 +13,7 @@ plugins {
 
 tasks {
     "asciidoctor"(AsciidoctorTask::class) {
-//        sourceDir = file("docs")
+        sourceDir(file("src/docs/asciidoc"))
 //        outputDir = file("$buildDir/docs")
 //        sources(delegateClosureOf<PatternSet> {
 //            include("toplevel.adoc", "another.adoc", "third.adoc")

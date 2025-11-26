@@ -1,0 +1,12 @@
+|===
+|Param |Type |Description
+
+|`DATABASE_MODE`
+|class nl.uwv.smz.diamond.app.PersistenceMode
+|Switch between in-memory stub and real implementation mode
+
+|`KTOR_PORT`
+|Int
+|Webserver port
+
+|===

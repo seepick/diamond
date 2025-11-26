@@ -1,8 +1,8 @@
-Diamond Software Architecture Document
+= Diamond Software Architecture Document
 
 == Application Properties
 
-include::src/docs/asciidoc/includes/config_report.generated.adoc[]
+include::includes/config_report.generated.adoc[]
 
 == Tech Stack
 
