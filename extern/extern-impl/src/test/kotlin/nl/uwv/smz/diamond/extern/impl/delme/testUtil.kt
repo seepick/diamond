@@ -7,16 +7,7 @@ import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.output.Slf4jLogConsumer
 import org.testcontainers.images.PullPolicy
 import java.nio.file.Files
-import java.nio.file.Path
 import java.time.Duration
-
-fun createInputTempFile(): Path = Files.createTempFile("file-in", ".tmp")
-
-fun createOutputTempDirectory(): Path = Files.createTempDirectory("files-out")
-
-fun makeTmpFs(folderName: String): Map<String, String> = mapOf(Files.createTempDirectory(folderName).toString() to "rw")
-
-fun getReuseLabel(): String = "reuse.UUID"
 
 fun GenericContainer<*>.startOrReuseUniqueInstance(
     tmpFolderName: String,
@@ -24,13 +15,13 @@ fun GenericContainer<*>.startOrReuseUniqueInstance(
     vararg exposedPorts: Int,
     logger: Logger? = null,
 ): GenericContainer<*> {
-    withTmpFs(makeTmpFs(tmpFolderName))
+    withTmpFs(mapOf(Files.createTempDirectory(tmpFolderName).toString() to "rw"))
     env.forEach { addEnv(it.key, it.value) }
     if (exposedPorts.isNotEmpty()) withExposedPorts(*exposedPorts.toTypedArray())
     withImagePullPolicy(PullPolicy.ageBased(Duration.ofDays(30)))
     withStartupAttempts(1)
     withReuse(true)
-    withLabel(getReuseLabel(), tmpFolderName)
+    withLabel("reuse.UUID", tmpFolderName)
     start()
     logger?.let {
         followOutput(Slf4jLogConsumer(it).withSeparateOutputStreams())
