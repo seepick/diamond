@@ -1,4 +1,4 @@
-package nl.uwv.smz.diamond.extern.impl.delme
+package nl.uwv.smz.diamond.extern.impl.sftp
 
 import com.jcraft.jsch.ChannelSftp
 import com.jcraft.jsch.Session

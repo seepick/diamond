@@ -1,6 +1,8 @@
-package nl.uwv.smz.diamond.extern.impl.delme
+package nl.uwv.smz.diamond.extern.impl.sftp
 
 import com.jcraft.jsch.JSch
+
+// inspired by https://github.com/alkaphreak/marstech-sftp/blob/main/src/main/kotlin/fr/marstech/mtsftp/service/SftpFileConnectorServiceImpl.kt
 
 data class SftpConnectConfig(
     val remoteHost: String,
@@ -18,25 +20,10 @@ sealed interface SftpAuthType {
 }
 
 interface SftpConnector {
-    fun connect(
-        knownHostsFilePath: String,
-        strategy: ConnectionStrategy,
-    ): SftpClient
-
     fun connect(config: SftpConnectConfig): SftpClient
 }
 
-class SftpConnectorImpl : SftpConnector {
-    override fun connect(
-        knownHostsFilePath: String,
-        strategy: ConnectionStrategy,
-    ): SftpClient =
-        when (strategy) {
-            is SftpPasswordConnectionStrategyImpl -> SftpSftpClientImpl(strategy.connect(knownHostsFilePath))
-            is SftpPrivateKeyConnectionStrategyImpl -> SftpSftpClientImpl(strategy.connect(knownHostsFilePath))
-            else -> throw UnsupportedOperationException("Unsupported connection strategy: $strategy")
-        }
-
+object SftpConnectorImpl : SftpConnector {
     override fun connect(config: SftpConnectConfig): SftpClient {
         val jsch = JSch()
         jsch.setKnownHosts(config.knownHostsFilePath)

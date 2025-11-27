@@ -1,4 +1,4 @@
-package nl.uwv.smz.diamond.extern.impl
+package nl.uwv.smz.diamond.extern.impl.sftp
 
 import arrow.core.Either
 import arrow.core.left
@@ -19,13 +19,6 @@ data class SftpAccess(
     val password: String,
 )
 
-class SftConnector {
-    // see: https://github.com/alkaphreak/marstech-sftp/blob/main/src/main/kotlin/fr/marstech/mtsftp/service/SftpFileConnectorServiceImpl.kt
-    fun connect(): SftpImpl {
-        // pass session
-        return SftpImpl()
-    }
-}
 
 class SftpImpl {
     private val log = logger {}

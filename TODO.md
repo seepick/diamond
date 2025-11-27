@@ -1,13 +1,13 @@
 Next
 =========================
 
+* ! fix ktlint; adjust it to my style
 * [ ] extern-impl wiremock tests using extern-generated
 * [ ] implement extern-stub; wire for test & local app
 * [ ] use extern-api in domain-logic; introduce new sample endpoint; extend tests
 
 * [ ] Log info at startup: log BANNER, incl. version, branch, build time
 * [ ] Kotlin scheduler (jobr?)
-* [ ] SFTP lib
 * [ ] Object mapper a la structmap for kotlin
 * [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
 * [ ] Write OpenAPI spec for own API
@@ -173,4 +173,5 @@ V1
 * [x] Info endpoint displaying build version, timestamp, branch, ...
 * [x] Backend OpenAPI generation in separate project extern-generated
 * [x] Parallelize Kotest tests
-* [x] detekt-ktlint (configure via editConfig); auto-format; intellij plugin
+* [x] detekt-ktlint (configure via editConfig); auto-format; IntelliJ plugin
+* [x] SFTP client (JSch, testcontainers)

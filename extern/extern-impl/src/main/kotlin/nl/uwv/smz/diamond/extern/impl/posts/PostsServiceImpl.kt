@@ -1,4 +1,4 @@
-package nl.uwv.smz.diamond.extern.impl
+package nl.uwv.smz.diamond.extern.impl.posts
 
 import org.apache.hc.client5.http.impl.classic.HttpClients
 import org.openapitools.client.ApiClient

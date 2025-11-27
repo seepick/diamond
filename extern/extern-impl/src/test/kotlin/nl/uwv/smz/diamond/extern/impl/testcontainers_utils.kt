@@ -1,4 +1,4 @@
-package nl.uwv.smz.diamond.extern.impl.delme
+package nl.uwv.smz.diamond.extern.impl
 
 import io.github.oshai.kotlinlogging.DelegatingKLogger
 import io.github.oshai.kotlinlogging.KLogger

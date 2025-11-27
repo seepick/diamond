@@ -1,4 +1,4 @@
-package nl.uwv.smz.diamond.extern.impl
+package nl.uwv.smz.diamond.extern.impl.posts
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.kotest.core.spec.style.DescribeSpec
