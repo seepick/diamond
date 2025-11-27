@@ -1,11 +1,13 @@
 package nl.uwv.smz.diamond.persistence.impl.testInfra
 
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
-import io.kotest.core.listeners.AfterSpecListener
+import io.kotest.core.listeners.AfterProjectListener
 import io.kotest.core.listeners.BeforeSpecListener
 import io.kotest.core.listeners.BeforeTestListener
 import io.kotest.core.spec.Spec
 import io.kotest.core.test.TestCase
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import nl.uwv.smz.diamond.persistence.impl.DatabaseAccess
 import nl.uwv.smz.diamond.persistence.impl.LiquibaseMigrator
 import nl.uwv.smz.diamond.persistence.impl.connect
@@ -15,26 +17,41 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.testcontainers.oracle.OracleContainer
 import java.time.Duration
 
-class TestcontainersDbListener : DbListener, BeforeTestListener, BeforeSpecListener, AfterSpecListener {
+class TestcontainersDbListener : DbListener, BeforeSpecListener, BeforeTestListener, AfterProjectListener {
 
     private val log = logger {}
-    private lateinit var oracle: OracleContainer
+    private var oracle: OracleContainer? = null
     override lateinit var db: Database
+    private val mutex = Mutex()
 
     override suspend fun beforeSpec(spec: Spec) {
-        log.info { "Starting Oracle testcontainers..." }
+        mutex.withLock {
+            val currentOracle = oracle // to enable smart-cast
+            if (currentOracle == null || !currentOracle.isRunning) {
+                startOracle()
+            }
+        }
+    }
+
+    private fun startOracle() {
+        log.info { "Starting Oracle testcontainers" }
         oracle = createOracleContainer().apply { start() }
-        val dbAccess = oracle.toDatabaseAccess()
+        val dbAccess = oracle!!.toDatabaseAccess()
         LiquibaseMigrator.migrate(dbAccess)
         db = Database.connect(dbAccess)
     }
 
-    override suspend fun afterSpec(spec: Spec) {
-        log.info { "Stopping Oracle testcontainers..." }
-        oracle.stop()
+    override suspend fun afterProject() {
+        log.info { "Stopping Oracle testcontainers" }
+        val currentOracle = oracle // to enable smart-cast
+        if (currentOracle != null && currentOracle.isRunning) {
+            currentOracle.stop()
+            oracle = null
+        }
     }
 
     override suspend fun beforeTest(testCase: TestCase) {
+        log.info { "Delete all content from DB tables" }
         transaction(db) {
             allTables.forEach { table ->
                 table.deleteAll()

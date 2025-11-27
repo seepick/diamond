@@ -24,8 +24,11 @@ tasks.withType<Test>().configureEach {
     )
 
     testLogging {
-        events("passed", "failed", "skipped")
-//        events("passed", "failed", "skipped", "standardOut", "standardError")
-        showStandardStreams = false
+//        events("passed", "failed", "skipped")
+//        showStandardStreams = false
+
+        // TODO enable log output via gradle property
+        events("passed", "failed", "skipped", "standardOut", "standardError")
+        showStandardStreams = true
     }
 }
