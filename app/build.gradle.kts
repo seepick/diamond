@@ -24,6 +24,8 @@ dependencies {
     implementation(Deps.ktor.server.netty)
     implementation(Deps.koin.ktor)
     implementation(Deps.koin.logger)
+
+    testImplementation(Deps.koin.test)
 }
 
 application {

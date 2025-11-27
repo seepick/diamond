@@ -11,10 +11,10 @@ class ConfigTest : StringSpec({
         System.setProperty("config.override.database.jdbcUrl", "a")
         System.setProperty("config.override.database.username", "b")
         System.setProperty("config.override.database.password", "c")
-        System.setProperty("config.override.server.port", "12")
+        System.setProperty("config.override.ktor.port", "12")
 
         readEnvConfig() shouldBeEqual EnvConfig(
-            server = ServerConfig(
+            ktor = KtorConfig(
                 port = 12,
             ),
             database = DatabaseConfig(

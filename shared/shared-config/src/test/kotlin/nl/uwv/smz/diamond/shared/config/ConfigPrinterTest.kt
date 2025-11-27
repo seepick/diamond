@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.equals.shouldBeEqual
 
 class ConfigPrinterTest : StringSpec({
-    "single entry" {
+    "complete test" {
         configPrinterAsAsciidoc(
             listOf(
                 // TODO test for path being: "foo_bar" or "fooBar"

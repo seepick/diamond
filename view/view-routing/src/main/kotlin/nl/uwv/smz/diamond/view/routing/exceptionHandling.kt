@@ -13,7 +13,7 @@ import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 private val log = logger {}
 
-fun Application.installExceptionHandling() {
+internal fun Application.installExceptionHandling() {
     install(StatusPages) {
         // TODO they often do Throwable here :-/ not comfortable with it, but ok...
         exception<Throwable> { call, cause ->

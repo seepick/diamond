@@ -14,8 +14,7 @@ import java.time.LocalDateTime
 class InfoRouteTest : StringSpec({
 
     val dto = InfoDto(
-        version = "test",
-        buildTime = LocalDateTime.of(2000, 1, 1, 12, 42)
+        version = "test", buildTime = LocalDateTime.of(2000, 1, 1, 12, 42)
     )
     var controller: InfoController = mockk()
 

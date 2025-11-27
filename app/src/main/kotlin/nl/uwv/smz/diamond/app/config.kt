@@ -16,7 +16,7 @@ data class GlobalConfig(
 )
 
 data class EnvConfig(
-    @SubConfig val server: ServerConfig,
+    @SubConfig val ktor: KtorConfig,
     @SubConfig val database: DatabaseConfig,
 )
 

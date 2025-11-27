@@ -7,7 +7,7 @@ import io.ktor.server.routing.RoutingCall
 import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
-suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Either<Failure, RESULT>) {
+internal suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Either<Failure, RESULT>) {
     result.fold(
         { failure ->
             respond(
@@ -28,7 +28,7 @@ suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Either<Fail
     )
 }
 
-val Failure.httpStatusCode
+private val Failure.httpStatusCode
     get() = when (this) {
         is Failure.BadRequestFailure -> HttpStatusCode.BadRequest
         is Failure.NotFoundFailure -> HttpStatusCode.NotFound

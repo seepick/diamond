@@ -29,6 +29,7 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
     }
 
     override suspend fun create(create: CrystalCreate) = either {
+        // here we could do actual business logic; right now it's just a "durchlauferhitzer" ;)
         repo.insert(create).bind()
     }
 

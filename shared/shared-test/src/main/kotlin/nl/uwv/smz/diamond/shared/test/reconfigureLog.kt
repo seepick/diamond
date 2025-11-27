@@ -5,7 +5,7 @@ import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 
 fun reconfigureLogForTest() {
-    println("[DIAMOND] Reconfiguring logback for test purpose")
+    println("[DIAMOND] [${Thread.currentThread().name}] Reconfiguring logback for test purpose")
     reconfigureLogback {
         rootLevel = LogLevel.Warn
         packageLevel(LogLevel.Trace, Constants.ROOT_PACKAGE_NAME)

@@ -3,6 +3,8 @@ package nl.uwv.smz.diamond.shared.test
 import io.kotest.core.config.AbstractProjectConfig
 import io.kotest.core.config.LogLevel
 import io.kotest.core.names.DuplicateTestNameMode
+import io.kotest.core.spec.IsolationMode
+import io.kotest.engine.concurrency.TestExecutionMode
 
 /**
  * Programmatically rewiring logback config (more control than via XML in classpath).
@@ -17,8 +19,8 @@ object DiamondKotestProjectConfig : AbstractProjectConfig() {
     override val logLevel = LogLevel.Error
     override val duplicateTestNameMode = DuplicateTestNameMode.Error
 
-//    override val testExecutionMode = TestExecutionMode.Concurrent
-//    override val isolationMode = IsolationMode.SingleInstance
+    override val testExecutionMode = TestExecutionMode.Concurrent
+    override val isolationMode = IsolationMode.InstancePerTest
 
     override suspend fun beforeProject() {
         reconfigureLogForTest()

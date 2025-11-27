@@ -6,11 +6,11 @@ cd ..
 export DATABASE_JDBCURL=db_url
 export DATABASE_USERNAME=db_user
 export DATABASE_PASSWORD=db_pass
-export SERVER_PORT=12
+export KTOR_PORT=12
 
 OUTPUT=$(java -jar app/build/libs/diamond.jar printConfigOnly)
 echo "$OUTPUT"
-EXPECTED="Config(server=ServerConfig(port=12), database=DatabaseConfig(stubEnabled=false, url=db_url, username=db_user, password=****))"
+EXPECTED="Config(ktor=KtorConfig(port=12), database=DatabaseConfig(stubEnabled=false, url=db_url, username=db_user, password=****))"
 
 if [ "$OUTPUT" = "$EXPECTED" ]; then
   echo "All OK ✅"

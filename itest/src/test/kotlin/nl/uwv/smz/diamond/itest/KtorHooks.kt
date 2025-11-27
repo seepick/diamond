@@ -12,8 +12,8 @@ import kotlinx.coroutines.withContext
 import nl.uwv.smz.diamond.app.BuildProperties
 import nl.uwv.smz.diamond.app.EnvConfig
 import nl.uwv.smz.diamond.app.GlobalConfig
-import nl.uwv.smz.diamond.app.ServerConfig
-import nl.uwv.smz.diamond.app.setupCompleteKtor
+import nl.uwv.smz.diamond.app.KtorConfig
+import nl.uwv.smz.diamond.app.setupDiamondKtor
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 import java.time.LocalDateTime
 import kotlin.coroutines.EmptyCoroutineContext
@@ -23,7 +23,7 @@ class KtorHooks(private val world: World) {
     private val log = logger {}
     private var testApplication: TestApplication? = null
     private val testEnvConfig = EnvConfig(
-        ServerConfig(),
+        KtorConfig(),
         DatabaseConfig(
             jdbcUrl = "jdbc:h2:mem:testdb${System.currentTimeMillis()};DB_CLOSE_DELAY=-1",
             username = "",
@@ -44,12 +44,13 @@ class KtorHooks(private val world: World) {
         startKtor {
             world.initClient(client)
             application {
-                setupCompleteKtor(testGlobalConfig)
+                setupDiamondKtor(testGlobalConfig)
             }
         }
     }
 
-    @Suppress("INVISIBLE_REFERENCE") // FIXME this is a hack :-/
+    // TODO report to ktor people, using with cucumber, "delocated" shutdown of ktor test application context
+    @Suppress("INVISIBLE_REFERENCE", "ERROR_SUPPRESSION") // FIXME this is a hack :-/
     private fun startKtor(block: suspend ApplicationTestBuilder.() -> Unit) = runBlocking {
         val builder = ApplicationTestBuilder()
         with(builder) {

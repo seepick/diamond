@@ -10,7 +10,7 @@ import io.ktor.server.testing.testApplication
 import kotlinx.serialization.json.Json
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import org.koin.ktor.plugin.Koin
+import org.koin.ktor.plugin.KoinIsolated
 
 fun viewTest(
     setupKoin: Module.() -> Unit = {},
@@ -42,13 +42,12 @@ fun ApplicationTestBuilder.setupApplication(
     additionalSetup: Application.() -> Unit,
 ) {
     application {
-        install(Koin) {
+        install(KoinIsolated) {
             modules(module {
                 setupKoin()
             })
         }
-        installPlugins()
-        installRoutings()
+        installRoutingsAndPlugins()
         additionalSetup()
     }
 }

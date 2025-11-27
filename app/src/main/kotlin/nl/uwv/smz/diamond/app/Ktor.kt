@@ -8,8 +8,7 @@ import io.ktor.server.engine.ApplicationEngineFactory
 import io.ktor.server.engine.EmbeddedServer
 import io.ktor.server.engine.embeddedServer
 import nl.uwv.smz.diamond.shared.config.ConfigProperty
-import nl.uwv.smz.diamond.view.routing.installPlugins
-import nl.uwv.smz.diamond.view.routing.installRoutings
+import nl.uwv.smz.diamond.view.routing.installRoutingsAndPlugins
 import java.time.Duration
 import java.time.LocalDateTime
 
@@ -23,29 +22,28 @@ object Ktor {
         config: GlobalConfig,
         factory: ApplicationEngineFactory<*, *>,
     ): KtorServer {
-        log.info { "Preparing Ktor" }
+        log.info { "Preparing Ktor at port: ${config.env.ktor.port}" }
         val startTime = LocalDateTime.now()
-        return embeddedServer(factory, port = config.env.server.port) {
+        return embeddedServer(factory, port = config.env.ktor.port) {
             monitor.subscribe(ApplicationStarted) {
                 log.info {
                     "Application successfully finished starting after: ${
                         Duration.between(startTime, LocalDateTime.now()).toSeconds()
-                    }sec"
+                    }sec 👍🏻😎💎"
                 }
             }
-            setupCompleteKtor(config)
+            setupDiamondKtor(config)
         }
     }
 }
 
 /** Visible for integration test setup */
-fun Application.setupCompleteKtor(config: GlobalConfig) {
+fun Application.setupDiamondKtor(config: GlobalConfig) {
     installKoin(config)
-    installPlugins()
-    installRoutings()
+    installRoutingsAndPlugins()
 }
 
-data class ServerConfig(
+data class KtorConfig(
     @ConfigProperty("Webserver HTTP port to listen to")
     val port: Int = 8080,
 )

@@ -9,15 +9,16 @@ import nl.uwv.smz.diamond.persistence.stub.persistenceStub
 import nl.uwv.smz.diamond.shared.common.Modules
 import nl.uwv.smz.diamond.view.controller_impl.ControllerConfig
 import nl.uwv.smz.diamond.view.controller_impl.controllerImpl
-import org.koin.ktor.plugin.Koin
+import org.koin.core.logger.Level
+import org.koin.ktor.plugin.KoinIsolated
 import org.koin.logger.slf4jLogger
 
 private val log = logger {}
 
 fun Application.installKoin(config: GlobalConfig) {
     log.info { "Installing Koin" }
-    install(Koin) {
-        slf4jLogger()
+    install(KoinIsolated) {
+        slf4jLogger(level = Level.INFO) // TODO extract as EnvConfig, default = WARN
         modules(Modules.all(config))
     }
 }

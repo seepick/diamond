@@ -14,9 +14,18 @@ dependencies {
 tasks.withType<Test>().configureEach {
     // to be able to run kotests
     useJUnitPlatform()
+    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).coerceAtLeast(2)
+    forkEvery = 1
+
     systemProperties = enhanceSystemProperties(
         "kotest.framework.config.fqn" to Constants.Fqn.kotestProjectConfig,
         // get rid of warning "Kotest autoscan is enabled" when running tests
         "kotest.framework.classpath.scanning.config.disable" to "true",
     )
+
+    testLogging {
+        events("passed", "failed", "skipped")
+//        events("passed", "failed", "skipped", "standardOut", "standardError")
+        showStandardStreams = false
+    }
 }

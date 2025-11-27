@@ -58,6 +58,7 @@ object Deps {
         private fun make(artifact: String) = "io.insert-koin:koin-$artifact:${Versions.koin}"
         val core = make("core")
         val ktor = make("ktor")
+        val test = make("test")
         val logger = make("logger-slf4j")
     }
 

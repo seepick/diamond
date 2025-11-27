@@ -1,6 +1,11 @@
 |===
 |Param |Type |Default |Description
 
+|`DATABASE_JDBCURL`
+|string
+|-
+|JDBC driver URL
+
 |`DATABASE_PASSWORD`
 |string
 |-
@@ -11,17 +16,12 @@
 |false
 |Flag to switch from real implementation to a dev/test stub
 
-|`DATABASE_URL`
-|string
-|-
-|JDBC driver URL
-
 |`DATABASE_USERNAME`
 |string
 |-
 |DB username
 
-|`SERVER_PORT`
+|`KTOR_PORT`
 |integer
 |8080
 |Webserver HTTP port to listen to

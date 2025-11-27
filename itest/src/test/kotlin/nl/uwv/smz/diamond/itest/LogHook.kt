@@ -10,6 +10,7 @@ object LogHook {
     @BeforeAll // must be cucumber's, not the one from junit!
     @JvmStatic
     fun reconfigureLog() {
+        println("itest - LogHook")
         reconfigureLogForTest()
     }
 }

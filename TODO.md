@@ -99,6 +99,13 @@ Ktor Cucumber Tests
 * maybe startup more heavy-weight instance, with TestEngine... but then how to get the client wired (without HTTP).
 * no HTTP would be great (no port assignment); also regarding parallelization (remember: there will be MANY itests)
 
+Parallel Tests
+-------------------------
+
+* use this as a selling point: https://jadarma.github.io/blog/posts/2024/03/parallel-integration-tests-with-ktor/
+* use koinApplication (not global instance!)
+* install(KoinIsolated) for ktor  https://www.droidcon.com/2025/01/14/koins-isolated-context/
+
 Parallel Cucumber Tests
 -------------------------
 
