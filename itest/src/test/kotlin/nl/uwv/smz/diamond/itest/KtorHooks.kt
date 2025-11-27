@@ -9,10 +9,13 @@ import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.TestApplication
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import nl.uwv.smz.diamond.app.BuildProperties
 import nl.uwv.smz.diamond.app.EnvConfig
+import nl.uwv.smz.diamond.app.GlobalConfig
 import nl.uwv.smz.diamond.app.ServerConfig
 import nl.uwv.smz.diamond.app.setupCompleteKtor
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
+import java.time.LocalDateTime
 import kotlin.coroutines.EmptyCoroutineContext
 
 class KtorHooks(private val world: World) {
@@ -27,6 +30,13 @@ class KtorHooks(private val world: World) {
             password = Masked(""),
         ),
     )
+    private val testGlobalConfig = GlobalConfig(
+        testEnvConfig,
+        BuildProperties(
+            "0-test",
+            LocalDateTime.of(2000, 1, 1, 12, 42)
+        )
+    )
 
     @Before
     fun `before each scenario`(scenario: Scenario) {
@@ -34,7 +44,7 @@ class KtorHooks(private val world: World) {
         startKtor {
             world.initClient(client)
             application {
-                setupCompleteKtor(testEnvConfig)
+                setupCompleteKtor(testGlobalConfig)
             }
         }
     }
