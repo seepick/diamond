@@ -64,6 +64,7 @@ object Deps {
 
     object testing {
         val mockk = "io.mockk:mockk:1.14.6"
+        val wiremock = "org.wiremock:wiremock:3.13.2"
 
         object junit {
             val platformSuite = "org.junit.platform:junit-platform-suite:${Versions.testing.junit}"

@@ -6,5 +6,5 @@ plugins {
 
 dependencies {
     implementation(project(":extern:extern-generated"))
-    testImplementation("org.wiremock:wiremock:3.13.2")
+    testImplementation(project(":shared:shared-wiremock"))
 }

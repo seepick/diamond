@@ -27,10 +27,11 @@ Backlog
 Low
 -------------------------
 
+* [ ] API versioning (path based; or accept header?)
 * [ ] Provide swagger HTML endpoint
 * [ ] OpenTelemetry, Micrometer
 * [ ] Write KDoc for general/shared stuff
-* [ ] Parallelize Kotest tests
+* [ ] Gatling load tests: https://github.com/gatling/gatling-gradle-plugin-demo-kotlin
 * [ ] Run testcontainers test on GitHub
 * [ ] Use OpenAPI spec to custom-generate Ktor routing skeleton
 * [ ] Use OpenAPI spec to custom-generate client (client-SDK); write full tests to verify
@@ -135,7 +136,7 @@ Not Doing
 -------------------------
 
 * OpenShift docker deploy
-* Add branch name in /info endpoint (necessary for environment per feature-branch)
+* Add branch name in `/info` endpoint (necessary for environment per feature-branch)
 
 V1
 -------------------------
@@ -164,3 +165,4 @@ V1
 * [x] Testcontainers tests with Oracle; custom gradle profile to activate (kotest tags)
 * [x] Info endpoint displaying build version, timestamp, branch, ...
 * [x] Backend OpenAPI generation in separate project extern-generated
+* [x] Parallelize Kotest tests
