@@ -15,6 +15,7 @@ ktlint_standard_comment-spacing = enabled # //_space
 ktlint_standard_annotation = disabled # 2+ annotations allowed to be on same line
 ktlint_standard_no-empty-first-line-in-class-body = disabled # after type signature, allow blank line (let me breathe)
 ktlint_standard_filename = disabled # snake case file names is ok
+ktlint_standard_multiline-expression-wrapping = disabled # allow method signature with direct method body expression
 
 ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
 #  Disable wildcard imports entirely

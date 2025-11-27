@@ -21,6 +21,11 @@
 |-
 |DB username
 
+|`EXTERN_POSTSSERVICEBASEURL`
+|string
+|-
+|Base URL for the external posts service
+
 |`KTOR_PORT`
 |integer
 |8080

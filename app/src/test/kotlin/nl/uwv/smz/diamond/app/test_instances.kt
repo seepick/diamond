@@ -2,11 +2,14 @@ package nl.uwv.smz.diamond.app
 
 import com.sksamuel.hoplite.Masked
 import io.kotest.property.Arb
+import io.kotest.property.arbitrary.Codepoint
+import io.kotest.property.arbitrary.alphanumeric
 import io.kotest.property.arbitrary.arbitrary
 import io.kotest.property.arbitrary.boolean
 import io.kotest.property.arbitrary.int
 import io.kotest.property.arbitrary.localDateTime
 import io.kotest.property.arbitrary.string
+import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 
 fun Arb.Companion.serverConfig() = arbitrary {
@@ -24,10 +27,18 @@ fun Arb.Companion.databaseConfig() = arbitrary {
     )
 }
 
+fun Arb.Companion.externConfig() =
+    arbitrary {
+        ExternConfig(
+            postsServiceBaseUrl = string(1..10, codepoints = Codepoint.alphanumeric()).bind(),
+    )
+}
+
 fun Arb.Companion.envConfig() = arbitrary {
     EnvConfig(
         ktor = serverConfig().bind(),
         database = databaseConfig().bind(),
+        extern = externConfig().bind(),
     )
 }
 

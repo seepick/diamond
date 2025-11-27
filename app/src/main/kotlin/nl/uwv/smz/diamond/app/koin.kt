@@ -4,6 +4,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import nl.uwv.smz.diamond.domain_logic_impl.domainLogicImpl
+import nl.uwv.smz.diamond.extern.impl.externImpl
 import nl.uwv.smz.diamond.persistence.impl.persistenceImpl
 import nl.uwv.smz.diamond.persistence.stub.persistenceStub
 import nl.uwv.smz.diamond.shared.common.Modules
@@ -35,4 +36,5 @@ fun Modules.all(config: GlobalConfig) = listOf(
         true -> persistenceStub()
         false -> persistenceImpl(config.env.database)
     },
+    externImpl(config.env.extern),
 )

@@ -1,6 +1,7 @@
 package nl.uwv.smz.diamond.app
 
 import com.sksamuel.hoplite.Secret
+import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 import nl.uwv.smz.diamond.shared.common.Constants
 import nl.uwv.smz.diamond.shared.logging.LogLevel
@@ -23,7 +24,9 @@ object LocalDiamondApp {
 
     // TODO maybe per user?! so can switch between fast stub, regular H2, or heavy oracle?!
     private val localEnvConfig = EnvConfig(
-        database = dbStubConfig, ktor = KtorConfig(port = 8000)
+        database = dbStubConfig,
+        ktor = KtorConfig(port = 8000),
+        extern = ExternConfig("local_undefined"),
     )
 
     @JvmStatic

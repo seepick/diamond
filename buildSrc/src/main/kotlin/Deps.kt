@@ -3,7 +3,8 @@ object Deps {
 
     val serializationx = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
 
-    val arrowCore = "io.arrow-kt:arrow-core:2.2.0"
+    val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
+    val jsch = "com.github.mwiede:jsch:${Versions.jsch}" // fork of JSch: "com.jcraft:jsch:0.1.55"
 
     object database {
         val h2 = "com.h2database:h2:${Versions.h2}"

@@ -13,6 +13,7 @@ dependencies {
     implementation(project(":view:view-routing"))
     implementation(project(":domain:domain-logic-impl"))
     implementation(project(":view:controller-impl"))
+    implementation(project(":extern:extern-impl"))
     implementation(project(":persistence:persistence-stub")) // TODO bad to have both...
     implementation(project(":persistence:persistence-impl"))
     implementation(project(":shared:shared-logging"))

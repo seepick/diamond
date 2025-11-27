@@ -6,22 +6,6 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import java.nio.file.Path
 import kotlin.io.path.pathString
 
-interface SftpClient {
-    fun listRemoteFiles(remoteDirectoryPath: Path): Set<Path>
-
-    fun uploadFile(
-        localFilePath: Path,
-        remoteFilePath: Path,
-    )
-
-    fun downloadFile(
-        remoteFilePath: Path,
-        localFilePath: Path,
-    )
-
-    fun disconnect()
-}
-
 class SftpSftpClientImpl(private val session: Session) : SftpClient {
     companion object {
         private const val SESSION_TIMEOUT = 5_000
@@ -33,7 +17,6 @@ class SftpSftpClientImpl(private val session: Session) : SftpClient {
         (session.openChannel("sftp") as ChannelSftp).apply { connect(SESSION_TIMEOUT) }
     }
 
-    // TODO needs to translate exceptions to Either.left
     override fun uploadFile(
         localFilePath: Path,
         remoteFilePath: Path,

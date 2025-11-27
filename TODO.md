@@ -1,6 +1,13 @@
 Next
 =========================
 
+* mini-playground; to try out things
+    1) kotest tags (testcontainers additivity)
+* e0.5e tests with docker, so not real backends
+* crystal upload ftp
+* crystal POST enrich from posts
+* docker compose, wiremock for posts api (used in e0.5e)
+
 * ! fix ktlint; adjust it to my style
 * [ ] extern-impl wiremock tests using extern-generated
 * [ ] implement extern-stub; wire for test & local app
@@ -57,7 +64,7 @@ Low
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
   a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
-* [ ] Can Asciidoc eat ADR-md files? at least create create PDF out of them
+* [ ] Can Asciidoc eat (ADR) markdown files? at least create create PDF out of them
 * [ ] Arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
 * [ ] Health endpoint (ping all backends available, maybe response time)
 * [ ] Generate war/docker image gradle task (document in readme.md)

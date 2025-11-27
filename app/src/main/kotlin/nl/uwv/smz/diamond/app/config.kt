@@ -6,18 +6,22 @@ import com.sksamuel.hoplite.ConfigException
 import com.sksamuel.hoplite.ConfigLoaderBuilder
 import com.sksamuel.hoplite.ExperimentalHoplite
 import com.sksamuel.hoplite.addResourceSource
+import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 import nl.uwv.smz.diamond.shared.config.SubConfig
 import java.time.LocalDateTime
 
 data class GlobalConfig(
+    /** Read via hoplite from environment variables (or system properties). */
     val env: EnvConfig,
+    /** Injected variables from Gradle build. */
     val build: BuildProperties,
 )
 
 data class EnvConfig(
     @SubConfig val ktor: KtorConfig,
     @SubConfig val database: DatabaseConfig,
+    @SubConfig val extern: ExternConfig,
 )
 
 @OptIn(ExperimentalHoplite::class)
