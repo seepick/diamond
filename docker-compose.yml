@@ -1,0 +1,83 @@
+#### Extension fields
+
+x-common-keys-core: &common-keys-core
+  stop_grace_period: 5s
+  networks:
+    - bsc-network
+  restart: unless-stopped
+
+x-common-depends-on: &common-depends-on
+  depends_on:
+    db:
+      condition: service_healthy
+    wiremock:
+      condition: service_healthy
+
+x-common-healthcheck: &common-healthcheck
+  healthcheck:
+    test: "curl --noproxy '*' --fail --silent 127.0.0.1:8080/actuator/health | grep UP || exit 1"
+    interval: 20s
+    timeout: 5s
+    retries: 5
+
+services:
+  medewerkersportaal-api:
+    build: .
+    ports:
+      - "8084:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dockerenv
+      - JAVA_OPTS="-Djavax.net.ssl.trustStore=/opt/java/openjdk/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=changeit"
+    volumes:
+      - ${JAVA_HOME}/lib/security:/opt/java/openjdk/lib/security
+    container_name: medewerkersportaal-api
+    <<: [ *common-depends-on, *common-healthcheck, *common-keys-core ]
+
+  db:
+    image: gvenzl/oracle-xe:21.3.0
+    env_file:
+      - ./.env
+    ports:
+      - '1521:1521'
+    <<: *common-keys-core
+    volumes:
+      - ./database/initdb:/container-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    container_name: database-schaduw
+
+  wiremock:
+    image: up9inc/wiremock-studio:2.32.0-18
+    hostname: wiremock
+    ports:
+      - '9000:9000'
+      #  Mapped ports for mocked services (see https://confluence.ba.uwv.nl/display/PS/BSC+poortnummers)
+      - '28093:28093'
+      - '28094:28094'
+      - '28098:28098'
+      - '28099:28099'
+    <<: *common-keys-core
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - ./wiremock:/home/wiremock
+    container_name: wiremock
+
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - ./sftp/upload:/home/foo/upload
+    ports:
+      - "2222:22"
+    <<: *common-keys-core
+    command: foo:pass:1001
+
+networks:
+  bsc-network:
+    name: bsc-network

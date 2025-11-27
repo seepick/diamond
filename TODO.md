@@ -1,7 +1,6 @@
 Next
 =========================
 
-* [ ] detekt-ktlint (configure via editConfig); auto-format; intellij plugin
 * [ ] extern-impl wiremock tests using extern-generated
 * [ ] implement extern-stub; wire for test & local app
 * [ ] use extern-api in domain-logic; introduce new sample endpoint; extend tests
@@ -16,6 +15,7 @@ Next
 Backlog
 -------------------------
 
+* [ ] List endpoints with pagination and sorting
 * [ ] make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
 * [ ] FIX: run testcointaners test addititively (not exclusively)
 * [ ] Production ready DB (inject properties via env)
@@ -173,3 +173,4 @@ V1
 * [x] Info endpoint displaying build version, timestamp, branch, ...
 * [x] Backend OpenAPI generation in separate project extern-generated
 * [x] Parallelize Kotest tests
+* [x] detekt-ktlint (configure via editConfig); auto-format; intellij plugin

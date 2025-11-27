@@ -12,7 +12,7 @@ class SftpImplTest : StringSpec({
     extension(sftpServer)
     "fo" {
         val file = tempfile(suffix = ".txt")
-
+        println("sftpServer.access: ${sftpServer.access}")
         SftpImpl().upload(sftpServer.access, file, "/copied.txt").shouldBeRight()
 
         SftpImpl.withChannel(sftpServer.access) { channel ->
