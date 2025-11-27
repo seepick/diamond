@@ -1,6 +1,7 @@
 Next
 =========================
 
+* [ ] detekt-ktlint (configure via editConfig); auto-format; intellij plugin
 * [ ] extern-impl wiremock tests using extern-generated
 * [ ] implement extern-stub; wire for test & local app
 * [ ] use extern-api in domain-logic; introduce new sample endpoint; extend tests
@@ -15,6 +16,8 @@ Next
 Backlog
 -------------------------
 
+* [ ] make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
+* [ ] FIX: run testcointaners test addititively (not exclusively)
 * [ ] Production ready DB (inject properties via env)
 * [ ] Hikari connection pooling
 * [ ] Build docker image (Gradle profile)
@@ -23,6 +26,7 @@ Backlog
 * [ ] Bean validation (based on OpenAPI spec)
 * [ ] Write SAD sub-projects explanation
 * [ ] Write some ADRs
+* [ ] ktlint? https://github.com/JLLeitschuh/ktlint-gradle
 
 Low
 -------------------------
@@ -61,7 +65,7 @@ Low
 * [ ] Fine tune detekt rules
 * [ ] Home page returns HATEOS-like overview
 * [ ] AsciiDoc needs some love
-* [ ] Circuit breaker (external services and also DB)? arrow.
+* [ ] Circuit breaker with arrow-fx-coroutines (external services and also DB?)
 * [ ] Investigate: intellij + github issue tracker
 * [ ] Investigate: code reviews done in intellij
 * [ ] Docsify website for GitHub; see: https://iietmoon.github.io/simple-captcha-js/
@@ -77,6 +81,7 @@ No!
 Open Questions
 =========================
 
+* [ ] how much config can be moved to code? https://12factor.net/config
 * [ ] kotlin.Uuid or java.UUID?
 * [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
 * [ ] how to name packages when in sub-sub-projects? what is the difference one or the other?
@@ -127,6 +132,7 @@ OpenAPI and Ktor
 * How to guarantee OpenAPI doc is 1:1 implemented?
 * We could always fall back to Java generated code, and use it from Kotlin ;)
 * Custom code gen approach possible?!
+    * use https://square.github.io/kotlinpoet/
 * https://start.ktor.io/p/openapi
 
 Done
@@ -144,6 +150,7 @@ V1
 * [x] Create GitHub repository
 * [x] Create buildSrc infrastructure: Kotlin custom gradle plugin, Versions/Dependency management
 * [x] Static code analysis with detekt (reports checkstyle, but supports @Suppress; YES!)
+    * https://medium.com/@mohamad.alemicode/enforcing-code-quality-in-android-with-detekt-and-ktlint-a-practical-guide-907b57d047ec
 * [x] Setup Gradle multi-module setup
 * [x] Get HelloWorld endpoint working (simple Ktor application)
 * [x] Basic Cucumber integration test

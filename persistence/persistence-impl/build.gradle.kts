@@ -27,7 +27,7 @@ dependencies {
 
 // $ ./gradlew test -PrunTestcontainersTests=true
 val test by tasks.getting(Test::class) {
-    // TODO actually want to run additive: if tag set, then additionally! run those tests
+    // FIXME actually want to run additive: if tag set, then additionally! run those tests
     val runTestcontainersTests = hasGradleProperty(Constants.GradleProperty.testcontainers)
     // https://kotest.io/docs/framework/tags.html
     val tagProperty = if (runTestcontainersTests) {

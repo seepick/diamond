@@ -1,28 +1,50 @@
 import io.gitlab.arturbosch.detekt.Detekt
 
-// TODO cleanup
-// https://detekt.dev/
 // gradle check implies detekt
-// see result: build/reports/detekt/detekt
+// run detektMain/detektTest to enable type resolution (by default off)
+// => better to create custom task!
+// IntelliJ: Refactor -> AutoCorrect by Detekt rules
 
-// detektMain and detektTest to enable type resolution (by default off)
-// better to create custom task!
-
-// intellij plugin: warning highlight directly inside the IDE as well as support for code formatting
-// Refactor -> AutoCorrect by Detekt rules
-
-// gradle.properties ... detekt.use.worker.api = true
-// for KMP (client-SDK): detektMetadataCommonMain
-
-// and because gradle build files are also just kotlin, in intellij, the detekt plugin will also check those -sweet ;)
 plugins {
     id("io.gitlab.arturbosch.detekt")
+    // https://github.com/JLLeitschuh/ktlint-gradle
+//    id("org.jlleitschuh.gradle.ktlint")
+    // ./gradlew ktlintCheck
 }
 
+// configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+//    debug.set(true)
+// }
+//
+// ktlint {
+// version.set("0.41.0-SNAPSHOT")
+//    android = false
+// verbose.set(true)
+// android.set(false)
+// outputToConsole.set(true)
+// outputColorName.set("RED")
+// ignoreFailures.set(false)
+//    ignoreFailures = false
+//    colored output = ...
+//    reporters {
+//        reporter(ReporterType.PLAIN)
+//        reporter(ReporterType.CHECKSTYLE)
+//        reporter(ReporterType.SARIF)
+//    }
+// }
+
 val detektVersion = "1.23.8"
+// val detektVersion = "2.0.0-alpha.1" // see also buildSrc/build.gradle.kts
 
 dependencies {
+    // more plugins here: https://detekt.dev/marketplace/
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+    // https://detekt.dev/docs/next/rules/ktlint/
+    detektPlugins("dev.detekt:detekt-rules-ktlint-wrapper:2.0.0-alpha.1")
+
+//    ktlintRuleset("com.github.username:rulseset:main-SNAPSHOT")
+//    ktlintRuleset(files("/path/to/custom/rulseset.jar"))
+//    ktlintRuleset(project(":chore:project-ruleset"))
 }
 
 detekt {
@@ -31,19 +53,15 @@ detekt {
     toolVersion = detektVersion
 
     source.setFrom("src/main/kotlin", "src/test/kotlin", "src/testFixtures/kotlin")
-    // Builds the AST in parallel. Rules are always executed in parallel. `false` by default.
     parallel = true
     config.setFrom(project.rootDir.absolutePath + "/config/detekt.yml")
 //    debug = true
 
-//    // The build fails when there is at least one issue with this severity (or above).
-//    // If set ot `Never`, the task will not fail regardless of the number of issues and their severities.
-//    // If `ignoreFailures` is set to `true`, the value of this property is ignored.
-//    // Defaults to `Error`
+    ignoreFailures = false
 //    failOnSeverity = dev.detekt.gradle.extensions.FailOnSeverity.Error
-//
-//    // Specify the base path for file paths in the formatted reports.
-//    // If not set, all file paths reported will be absolute file path.
+
+    // Specify the base path for file paths in the formatted reports.
+    // If not set, all file paths reported will be absolute file path.
 //    basePath.set(projectDir)
 }
 
@@ -55,27 +73,16 @@ tasks.withType<Detekt>().configureEach {
         txt.required.set(false)
         xml.required.set(false)
         // starting with v2.0.0
-//        checkstyle.required.set(true)
+        // checkstyle.required.set(true)
     }
 }
 
-// TODO check detekt type resolution enabled (more rules)
-// required for type resolution
-// tasks.withType<dev.detekt.gradle.Detekt>().configureEach {
-//    jvmTarget.set("1.8")
-//    jdkHome.set(file("path/to/jdkHome"))
-// }
-// tasks.withType<dev.detekt.gradle.DetektCreateBaselineTask>().configureEach {
-//    jvmTarget.set("1.8")
-//    jdkHome.set(file("path/to/jdkHome"))
-// }
+tasks.withType<Detekt>().configureEach {
+    // TODO set JDK for type resolution to b enabled (more rules)
 
-// tasks.withType<dev.detekt.gradle.Detekt>().configureEach {
+//    jvmTarget.set("1.8")
+//    jvmTarget = "1.8"
+//    jdkHome.set(file("path/to/jdkHome"))
 //    // include("**/special/package/**") // only analyze a sub package inside src/main/kotlin
 //    exclude("**/special/package/internal/**") // but exclude our legacy internal package
-// }
-//
-// tasks.withType<dev.detekt.gradle.DetektCreateBaselineTask>().configureEach {
-//    // include("**/special/package/**") // only analyze a sub package inside src/main/kotlin
-//    exclude("**/special/package/internal/**") // but exclude our legacy internal package
-// }
+}

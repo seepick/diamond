@@ -1,0 +1,25 @@
+root = true
+
+[*]
+insert_final_newline = true
+
+[*.{kt,kts}]
+ktlint_code_style = ktlint_official
+ktlint_standard = enabled # all rules from the `standard` rule set provided by KtLint
+ktlint_standard_class-signature = disabled # NO! we want them to be on the same line
+ktlint_experimental = enabled # all `experimental` rules from all rule sets provided by KtLint or other rule providers
+ktlint_custom-rule-set = disabled # all rules in the `custom-rule-set` rule set (not provided by KtLint)
+ktlint_standard_no-consecutive-blank-lines = enabled # TODO not sure about this one...k
+ktlint_standard_final-newline = enabled # newline at end of file
+ktlint_standard_comment-spacing = enabled # //_space
+ktlint_standard_annotation = disabled # 2+ annotations allowed to be on same line
+
+ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
+#  Disable wildcard imports entirely
+ij_kotlin_name_count_to_use_star_import = 2147483647
+ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
+ij_kotlin_packages_to_use_import_on_demand = unset
+ij_kotlin_allow_trailing_comma = false
+
+# [api/*.{kt,kts}]
+# ktlint_standard_indent = disabled
