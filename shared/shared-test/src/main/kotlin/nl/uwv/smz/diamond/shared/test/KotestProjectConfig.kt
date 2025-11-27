@@ -14,14 +14,19 @@ import io.kotest.core.names.DuplicateTestNameMode
  */
 object DiamondKotestProjectConfig : AbstractProjectConfig() {
 
-    // TestExecutionMode concurrent
     override val logLevel = LogLevel.Error
     override val duplicateTestNameMode = DuplicateTestNameMode.Error
+
+//    override val testExecutionMode = TestExecutionMode.Concurrent
 //    override val isolationMode = IsolationMode.SingleInstance
 
     override suspend fun beforeProject() {
         reconfigureLogForTest()
     }
+
+//    override fun extensions(): List<Extension> = listOf(
+//        TestDatabaseProvider.Extension,
+//    )
 
     // TODO what's that?
 //    @OptIn(ExperimentalKotest::class)

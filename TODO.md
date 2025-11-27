@@ -4,36 +4,36 @@ Next
 * [ ] extern-impl wiremock tests using extern-generated
 * [ ] implement extern-stub; wire for test & local app
 * [ ] use extern-api in domain-logic; introduce new sample endpoint; extend tests
+
+* [ ] Log info at startup: log BANNER, incl. version, branch, build time
 * [ ] Kotlin scheduler (jobr?)
 * [ ] SFTP lib
+* [ ] Object mapper a la structmap for kotlin
 * [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
 * [ ] Write OpenAPI spec for own API
-* [ ] Use OpenAPI spec to generate Ktor routing skeleton (possible?); a la spring boot
-* [ ] Use OpenAPI spec to generate client (client-SDK); write full tests to verify
 
 Backlog
 -------------------------
 
-* [ ] Docker-compose
 * [ ] Production ready DB (inject properties via env)
 * [ ] Hikari connection pooling
 * [ ] Build docker image (Gradle profile)
-* [ ] Object mapper a la structmap for kotlin
-* [ ] Log info at startup: log BANNER, incl. version, branch, build time
-* [ ] DTO mapping library (like mapstruct but for kotlin?)
-* [ ] Provide swagger HTML endpoint
+* [ ] Docker-compose (app + dependencies: DB, SFTP, MQ)
+* [ ] e2e-test as standalone sub-project using Karate (Gradle profile)
+* [ ] Bean validation (based on OpenAPI spec)
 * [ ] Write SAD sub-projects explanation
 * [ ] Write some ADRs
-* [ ] e2e-test as standalone sub-project using Karate (Gradle profile)
-* [ ] OpenTelemetry, Micrometer
-* [ ] Write KDoc for general/shared stuff
-* [ ] Parallelize Kotest tests
-* [ ] Bean validation (based on OpenAPI spec)
-* [ ] Run testcontainers test on GitHub
 
 Low
 -------------------------
 
+* [ ] Provide swagger HTML endpoint
+* [ ] OpenTelemetry, Micrometer
+* [ ] Write KDoc for general/shared stuff
+* [ ] Parallelize Kotest tests
+* [ ] Run testcontainers test on GitHub
+* [ ] Use OpenAPI spec to custom-generate Ktor routing skeleton
+* [ ] Use OpenAPI spec to custom-generate client (client-SDK); write full tests to verify
 * [ ] PlantUML support for Asciidoc (working in IDE but not in gradle...)
 * [ ] Auto version bump up
 * [ ] More static code analysis (higher level like PMD)
