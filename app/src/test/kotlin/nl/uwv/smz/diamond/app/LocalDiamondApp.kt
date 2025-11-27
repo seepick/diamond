@@ -2,8 +2,10 @@ package nl.uwv.smz.diamond.app
 
 import com.sksamuel.hoplite.Secret
 import nl.uwv.smz.diamond.extern.impl.ExternConfig
+import nl.uwv.smz.diamond.extern.stub.externStub
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 import nl.uwv.smz.diamond.shared.common.Constants
+import nl.uwv.smz.diamond.shared.common.Modules
 import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 
@@ -34,6 +36,7 @@ object LocalDiamondApp {
         DiamondApp.startApp(
             defaultLog = ::reconfigureLog,
             defaultEnvConfig = { localEnvConfig },
+            externStub = Modules.externStub(),
         )
     }
 

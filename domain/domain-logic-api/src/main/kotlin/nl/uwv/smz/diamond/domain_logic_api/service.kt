@@ -5,6 +5,7 @@ import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
+import nl.uwv.smz.diamond.domain.model.Post
 import nl.uwv.smz.diamond.domainFailure.Failure
 
 interface GreetService {
@@ -18,4 +19,8 @@ interface CrystalService {
     suspend fun create(create: CrystalCreate): Either<Failure, Crystal>
     suspend fun update(update: CrystalUpdate): Either<Failure, Crystal>
     suspend fun delete(id: CrystalId): Either<Failure, Unit>
+}
+
+interface PostsService {
+    fun fetchPosts(): List<Post>
 }

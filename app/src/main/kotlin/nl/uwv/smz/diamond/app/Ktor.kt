@@ -9,6 +9,7 @@ import io.ktor.server.engine.EmbeddedServer
 import io.ktor.server.engine.embeddedServer
 import nl.uwv.smz.diamond.shared.config.ConfigProperty
 import nl.uwv.smz.diamond.view.routing.installRoutingsAndPlugins
+import org.koin.core.module.Module
 import java.time.Duration
 import java.time.LocalDateTime
 
@@ -21,6 +22,7 @@ object Ktor {
     fun prepare(
         config: GlobalConfig,
         factory: ApplicationEngineFactory<*, *>,
+        externStub: Module?,
     ): KtorServer {
         log.info { "Preparing Ktor at port: ${config.env.ktor.port}" }
         val startTime = LocalDateTime.now()
@@ -32,14 +34,17 @@ object Ktor {
                     }sec 👍🏻😎💎"
                 }
             }
-            setupDiamondKtor(config)
+            setupDiamondKtor(config, externStub)
         }
     }
 }
 
 /** Visible for integration test setup */
-fun Application.setupDiamondKtor(config: GlobalConfig) {
-    installKoin(config)
+fun Application.setupDiamondKtor(
+    config: GlobalConfig,
+    externStub: Module?,
+) {
+    installKoin(config, externStub)
     installRoutingsAndPlugins()
 }
 

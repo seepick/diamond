@@ -26,6 +26,7 @@ dependencies {
     implementation(Deps.koin.ktor)
     implementation(Deps.koin.logger)
 
+    testImplementation(project(":extern:extern-stub"))
     testImplementation(Deps.koin.test)
 }
 

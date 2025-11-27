@@ -8,6 +8,6 @@ private val log = io.github.oshai.kotlinlogging.KotlinLogging.logger {}
 
 @Suppress("UnusedReceiverParameter")
 fun Modules.persistenceStub() = module {
-    log.info { "Using persistence stub (no real impl will be used!)" }
+    log.info { "Using persistence stub (no real impl will be used)" }
     single<CrystalRepo> { CrystalStubbedRepo() }
 }

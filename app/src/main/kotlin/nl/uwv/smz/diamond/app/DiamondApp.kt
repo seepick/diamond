@@ -5,6 +5,7 @@ import io.ktor.server.netty.Netty
 import nl.uwv.smz.diamond.shared.common.Constants
 import nl.uwv.smz.diamond.shared.logging.LogLevel
 import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
+import org.koin.core.module.Module
 
 /** FQN has to be in sync with /app/build.gradle.kts main class definition. */
 object DiamondApp {
@@ -24,6 +25,7 @@ object DiamondApp {
     fun startApp(
         defaultLog: () -> Unit = { reconfigureProdLog() },
         defaultEnvConfig: () -> EnvConfig = { readEnvConfig() },
+        externStub: Module? = null,
     ) {
         defaultLog()
         val log = logger {}
@@ -32,7 +34,7 @@ object DiamondApp {
             env = defaultEnvConfig(),
             build = readBuildProperties(),
         )
-        Ktor.prepare(config, Netty).start(wait = true)
+        Ktor.prepare(config, Netty, externStub).start(wait = true)
     }
 
     private fun reconfigureProdLog() {

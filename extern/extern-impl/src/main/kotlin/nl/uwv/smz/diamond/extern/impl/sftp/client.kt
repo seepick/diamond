@@ -3,6 +3,7 @@ package nl.uwv.smz.diamond.extern.impl.sftp
 import com.jcraft.jsch.ChannelSftp
 import com.jcraft.jsch.Session
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
+import nl.uwv.smz.diamond.extern.api.sftp.SftpClient
 import java.nio.file.Path
 import kotlin.io.path.pathString
 

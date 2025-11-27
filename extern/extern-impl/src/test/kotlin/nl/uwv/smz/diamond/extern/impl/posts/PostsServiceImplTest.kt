@@ -11,6 +11,7 @@ import io.kotest.property.arbitrary.next
 import io.kotest.property.arbitrary.orNull
 import io.kotest.property.arbitrary.string
 import kotlinx.coroutines.delay
+import nl.uwv.smz.diamond.extern.api.posts.PostRto
 import nl.uwv.smz.diamond.shared.wiremock.WiremockListener
 import nl.uwv.smz.diamond.shared.wiremock.WiremockMethod
 import nl.uwv.smz.diamond.shared.wiremock.givenWiremock
@@ -30,13 +31,13 @@ class PostsServiceImplTest : DescribeSpec({
                 responseBody = jackson.writeValueAsString(listOf(dto.toExternPost()))
             )
             delay(5_000)
-            PostsServiceImpl(WiremockListener.url).fetchPosts() shouldBeEqual listOf(dto)
+            PostsExternImpl(WiremockListener.url).fetchPosts() shouldBeEqual listOf(dto)
         }
     }
 })
 
 fun Arb.Companion.postDto() = arbitrary {
-    PostDto(
+    PostRto(
         id = int().bind(),
         userId = int().bind(),
         title = string().bind(),
@@ -44,8 +45,9 @@ fun Arb.Companion.postDto() = arbitrary {
     )
 }
 
-fun PostDto.toExternPost() = Post().also {
-    it.id = id
+fun PostRto.toExternPost() =
+    Post().also {
+        it.id = id
     it.userId = userId
     it.title = title
     it.completed = completed

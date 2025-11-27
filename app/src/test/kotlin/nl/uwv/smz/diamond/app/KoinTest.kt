@@ -12,7 +12,7 @@ import org.koin.test.verify.verify
 class KoinTest : StringSpec({
     "verify modules or throw" {
         module {
-            includes(Modules.all(Arb.Companion.globalConfig().next()))
+            includes(Modules.all(Arb.globalConfig().next()))
         }.verify()
     }
 })

@@ -1,6 +1,10 @@
 package nl.uwv.smz.diamond.extern.impl.sftp
 
 import com.jcraft.jsch.JSch
+import nl.uwv.smz.diamond.extern.api.sftp.SftpAuthType
+import nl.uwv.smz.diamond.extern.api.sftp.SftpClient
+import nl.uwv.smz.diamond.extern.api.sftp.SftpConnectConfig
+import nl.uwv.smz.diamond.extern.api.sftp.SftpConnector
 
 // inspired by https://github.com/alkaphreak/marstech-sftp/blob/main/src/main/kotlin/fr/marstech/mtsftp/service/SftpFileConnectorServiceImpl.kt
 // also see: https://medium.com/whozapp/sftp-test-implem-of-jsch-with-kotlin-testcontainers-and-spring-boot-native-537f624da895

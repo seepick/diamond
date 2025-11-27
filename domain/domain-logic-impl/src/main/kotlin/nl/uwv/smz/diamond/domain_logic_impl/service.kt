@@ -6,9 +6,13 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
+import nl.uwv.smz.diamond.domain.model.Post
 import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.domain_logic_api.CrystalService
 import nl.uwv.smz.diamond.domain_logic_api.GreetService
+import nl.uwv.smz.diamond.domain_logic_api.PostsService
+import nl.uwv.smz.diamond.extern.api.posts.PostRto
+import nl.uwv.smz.diamond.extern.api.posts.PostsExtern
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 
 class GreetServiceImpl : GreetService {
@@ -41,3 +45,16 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
         repo.delete(id).bind()
     }
 }
+
+class PostsServiceImpl(
+    private val extern: PostsExtern,
+) : PostsService {
+    override fun fetchPosts() = extern.fetchPosts().map { it.toPost() }
+}
+
+private fun PostRto.toPost() =
+    Post(
+        id = id,
+        title = title,
+        // drop the other properties
+)

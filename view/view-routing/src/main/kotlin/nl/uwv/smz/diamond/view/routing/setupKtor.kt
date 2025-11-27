@@ -12,8 +12,9 @@ private val log = logger {}
 fun Application.installRoutingsAndPlugins() {
     log.info { "Installing Ktor routings and plugins" }
     installHomepageRouting()
-    installCrystalRouting()
     installInfoRouting()
+    installCrystalRouting()
+    installPostsRouting()
 
     installContentNegotiation()
     installExceptionHandling()
