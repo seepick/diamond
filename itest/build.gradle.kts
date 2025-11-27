@@ -1,6 +1,7 @@
 plugins {
     id("diamond-kotlin-common")
     id("diamond-kotlin-test")
+    kotlin("plugin.serialization")
 }
 
 // https://cucumber.io/docs/guides/10-minute-tutorial?lang=kotlin
@@ -18,10 +19,17 @@ dependencies {
     implementation(Deps.logging.kotlin)
 
     testImplementation(project(":shared:shared-test"))
+    testImplementation(project(":extern:extern-impl")) // TODO to only get the config... part of *-api?!?
+    testImplementation(project(":extern:extern-stub"))
+    testImplementation(Deps.ktor.client.contentNegotiation)
+    testImplementation(Deps.ktor.serialization)
+    testImplementation(Deps.koin.ktor)
     testImplementation(Deps.testing.cucumber.java)
     testImplementation(Deps.testing.cucumber.junitEngine)
     testImplementation(Deps.testing.junit.platformSuite)
     testImplementation(Deps.testing.junit.jupiter)
+    // see: https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping
+    testImplementation("io.github.deblockt:cucumber-datatable-to-bean-mapping:1.1.2")
 }
 
 //tasks.withType<Test> {

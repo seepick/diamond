@@ -20,4 +20,10 @@ class WorldApi(
             responseCallback(client.get("/crystals"))
         }
     }
+
+    fun getPosts() {
+        runBlocking {
+            responseCallback(client.get("/posts"))
+        }
+    }
 }

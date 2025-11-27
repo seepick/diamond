@@ -8,6 +8,7 @@ Next
 * crystal POST enrich from posts
 * docker compose, wiremock for posts api (used in e0.5e)
 
+
 * ! fix ktlint; adjust it to my style
 * [ ] extern-impl wiremock tests using extern-generated
 * [ ] implement extern-stub; wire for test & local app
@@ -182,3 +183,5 @@ V1
 * [x] Parallelize Kotest tests
 * [x] detekt-ktlint (configure via editConfig); auto-format; IntelliJ plugin
 * [x] SFTP client (JSch, testcontainers)
+* [x] Cucumber rewiring application through koin (extern-stub); fiddle around with its internals/intestines ;)
+* [x] Cucumber table handling via Data Class Generator (java "only")
