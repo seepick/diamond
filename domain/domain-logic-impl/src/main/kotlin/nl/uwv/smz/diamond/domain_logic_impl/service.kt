@@ -49,6 +49,7 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
 class PostsServiceImpl(
     private val extern: PostsExtern,
 ) : PostsService {
+    // could enrch crystal with posts
     override fun fetchPosts() = extern.fetchPosts().map { it.toPost() }
 }
 

@@ -1,19 +1,14 @@
 Next
 =========================
 
-* mini-playground; to try out things
-    1) kotest tags (testcontainers additivity)
-* e0.5e tests with docker, so not real backends
-* crystal upload ftp
-* crystal POST enrich from posts
-* docker compose, wiremock for posts api (used in e0.5e)
-
-
+* ! remove DB-stub; only during test/local
+* ! docker-compose, start real application
+* ! replace all: singleOf(::XImpl) { bind<X>() }
+* ! mini-playground; to try out things: kotest tags (testcontainers additivity)
 * ! fix ktlint; adjust it to my style
-* [ ] extern-impl wiremock tests using extern-generated
-* [ ] implement extern-stub; wire for test & local app
-* [ ] use extern-api in domain-logic; introduce new sample endpoint; extend tests
 
+* [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
+* [ ] Docker compose, wiremock for posts api (used in e0.5e)
 * [ ] Log info at startup: log BANNER, incl. version, branch, build time
 * [ ] Kotlin scheduler (jobr?)
 * [ ] Object mapper a la structmap for kotlin
@@ -39,6 +34,7 @@ Backlog
 Low
 -------------------------
 
+* [ ] LDAP integration
 * [ ] API versioning (path based; or accept header?)
 * [ ] Provide swagger HTML endpoint
 * [ ] OpenTelemetry, Micrometer
@@ -165,7 +161,7 @@ V1
 * [x] Cucumber Ktor integration
 * [x] Programmatic Logback configuration
 * [x] GitHub Action (CI verify on push, CD on tags)
-* [x] Koin DI
+* [x] Koin DI ("service locater")
 * [x] Cucumber programatic logging (before all)
 * [x] Use Arrow's either
 * [x] CRUD operations until service (ApiError handling, JSON serialization)
@@ -178,10 +174,12 @@ V1
 * [x] Liquibase database migration
 * [x] Exposed persistence layer (exposed-dao vs plain)
 * [x] Testcontainers tests with Oracle; custom gradle profile to activate (kotest tags)
-* [x] Info endpoint displaying build version, timestamp, branch, ...
+* [x] Info endpoint displaying build version, timestamp, branch, etc
 * [x] Backend OpenAPI generation in separate project extern-generated
+* [x] extern-impl wiremock tests using extern-generated
 * [x] Parallelize Kotest tests
 * [x] detekt-ktlint (configure via editConfig); auto-format; IntelliJ plugin
 * [x] SFTP client (JSch, testcontainers)
+* [x] Implement extern-stub; wire for test&local app
 * [x] Cucumber rewiring application through koin (extern-stub); fiddle around with its internals/intestines ;)
 * [x] Cucumber table handling via Data Class Generator (java "only")

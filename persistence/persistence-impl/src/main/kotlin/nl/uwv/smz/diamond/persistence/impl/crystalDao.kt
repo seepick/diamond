@@ -21,7 +21,6 @@ import java.util.UUID
 import kotlin.uuid.toJavaUuid
 import kotlin.uuid.toKotlinUuid
 
-// https://ktor.io/docs/server-integrate-database.html#create-mapping
 internal class CrystalDao(id: EntityID<UUID>) : UUIDEntity(id) {
     companion object : UUIDEntityClass<CrystalDao>(CrystalTable)
 

@@ -8,7 +8,6 @@ import kotlin.io.path.Path
 import kotlin.io.path.exists
 import kotlin.io.path.isRegularFile
 
-/** See: https://github.com/testcontainers/testcontainers-java/blob/main/examples/sftp/src/test/java/org/example/SftpContainerTest.java */
 class SftpClientTest : StringSpec({
     val sftp = SftpExtension(SftpContainerConfig())
     extension(sftp)

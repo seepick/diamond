@@ -30,13 +30,10 @@ class PostsSteps(private val world: World) {
         world.api().getPosts()
     }
 
-    // https://www.baeldung.com/cucumber-data-tables
     @Then("response posts are")
     fun `Then response posts are`(posts: List<PostDtoRow>) {
-//        val posts = dataTable.asList(Post::class.java)
         world.lastResponse().bodyAs<List<PostDto>>() shouldBeEqual posts.map(PostDtoRow::toDto)
     }
-// https://github.com/cucumber/cucumber-jvm/tree/main/datatable
 }
 
 @Serializable

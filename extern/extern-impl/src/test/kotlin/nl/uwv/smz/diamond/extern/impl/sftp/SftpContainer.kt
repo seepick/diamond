@@ -8,11 +8,6 @@ data class SftpContainerConfig(
     val port: Int = 22,
 )
 
-// docker run -p 22:22 -d atmoz/sftp foo::::upload
-// or maybe? https://hub.docker.com/r/instantlinux/proftpd
-// or: https://docs.sftpgo.com/2.6/docker/
-// or: https://github.com/emberstack/docker-sftp
-
 class SftpContainer(val config: SftpContainerConfig) : GenericContainer<SftpContainer>("atmoz/sftp") {
     init {
         val sshFiles =
