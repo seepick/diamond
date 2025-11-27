@@ -1,6 +1,5 @@
 package nl.uwv.smz.diamond.extern.impl.sftp
 
-import io.github.oshai.kotlinlogging.KLogger
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import io.kotest.core.listeners.BeforeTestListener
 import io.kotest.core.test.TestCase
@@ -9,15 +8,14 @@ import nl.uwv.smz.diamond.extern.impl.toSlf4j
 import java.util.UUID
 
 class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener {
-    private val log: KLogger = logger {}
-    private val tmpFolderName = UUID.randomUUID().toString()
+    private val log = logger {}
     private lateinit var container: SftpContainer
 
     override suspend fun beforeTest(testCase: TestCase) {
         container =
             SftpContainer(config).apply {
                 startOrReuseUniqueInstance(
-                    tmpFolderName = tmpFolderName,
+                    tmpFolderName = UUID.randomUUID().toString(),
                     exposedPorts = intArrayOf(config.port),
                     logger = log.toSlf4j(),
                 )
@@ -30,8 +28,8 @@ class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener {
                 remoteHost = container.host,
                 port = container.getMappedPort(config.port),
                 username = config.username,
-                auth = SftpAuthType.AuthKey(javaClass.getResource("/sftp_ssh/id_ed25519_client").file),
-                knownHostsFilePath = javaClass.getResource("/sftp_ssh/known_hosts").file,
+                auth = SftpAuthType.AuthKey(SftpFiles.privateKey),
+                knownHostsFilePath = SftpFiles.knownHosts,
                 strictHostChecking = false,
             ),
         )

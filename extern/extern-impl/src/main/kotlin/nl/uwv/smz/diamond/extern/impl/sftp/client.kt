@@ -23,18 +23,23 @@ interface SftpClient {
 }
 
 class SftpSftpClientImpl(private val session: Session) : SftpClient {
-    private val log = logger {}
-
-    private val channelSftp: ChannelSftp by lazy {
-        (session.openChannel("sftp") as ChannelSftp).apply { connect() }
+    companion object {
+        private const val SESSION_TIMEOUT = 5_000
     }
 
+    private val log = logger {}
+
+    private val channel: ChannelSftp by lazy {
+        (session.openChannel("sftp") as ChannelSftp).apply { connect(SESSION_TIMEOUT) }
+    }
+
+    // TODO needs to translate exceptions to Either.left
     override fun uploadFile(
         localFilePath: Path,
         remoteFilePath: Path,
     ) {
         log.debug { "uploading file $localFilePath -> $remoteFilePath" }
-        channelSftp.put(localFilePath.pathString, remoteFilePath.pathString)
+        channel.put(localFilePath.pathString, remoteFilePath.pathString)
     }
 
     override fun downloadFile(
@@ -42,12 +47,12 @@ class SftpSftpClientImpl(private val session: Session) : SftpClient {
         localFilePath: Path,
     ) {
         log.debug { "downloading file $remoteFilePath -> $localFilePath" }
-        channelSftp.get(remoteFilePath.pathString, localFilePath.pathString)
+        channel.get(remoteFilePath.pathString, localFilePath.pathString)
     }
 
     override fun listRemoteFiles(remoteDirectoryPath: Path): Set<Path> {
         log.debug { "listing files from $remoteDirectoryPath" }
-        return channelSftp
+        return channel
             .ls(remoteDirectoryPath.pathString)
             .asSequence()
             .filterIsInstance<ChannelSftp.LsEntry>()
@@ -59,7 +64,7 @@ class SftpSftpClientImpl(private val session: Session) : SftpClient {
     override fun disconnect() =
         try {
             log.debug { "disconnecting" }
-            channelSftp.exit()
+            channel.exit()
         } finally {
             session.disconnect()
         }

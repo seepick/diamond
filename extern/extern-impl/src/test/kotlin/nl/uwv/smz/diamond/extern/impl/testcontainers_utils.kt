@@ -1,7 +1,5 @@
 package nl.uwv.smz.diamond.extern.impl
 
-import io.github.oshai.kotlinlogging.DelegatingKLogger
-import io.github.oshai.kotlinlogging.KLogger
 import org.slf4j.Logger
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.output.Slf4jLogConsumer
@@ -28,7 +26,3 @@ fun GenericContainer<*>.startOrReuseUniqueInstance(
     }
     return this
 }
-
-// Extension function to safely convert KLogger to org.slf4j.Logger using reflection
-@Suppress("UNCHECKED_CAST")
-fun KLogger.toSlf4j(): Logger = (this as DelegatingKLogger<Logger>).underlyingLogger

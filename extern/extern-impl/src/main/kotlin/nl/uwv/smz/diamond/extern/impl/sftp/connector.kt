@@ -24,6 +24,8 @@ interface SftpConnector {
 }
 
 object SftpConnectorImpl : SftpConnector {
+    private const val CONNECTION_TIMEOUT = 10_000
+
     override fun connect(config: SftpConnectConfig): SftpClient {
         val jsch = JSch()
         jsch.setKnownHosts(config.knownHostsFilePath)
@@ -37,7 +39,7 @@ object SftpConnectorImpl : SftpConnector {
         }
         session.setConfig("StrictHostKeyChecking", if (config.strictHostChecking) "yes" else "no")
         session.setConfig("HashKnownHosts", "yes")
-        session.connect()
+        session.connect(CONNECTION_TIMEOUT)
         return SftpSftpClientImpl(session)
     }
 }
