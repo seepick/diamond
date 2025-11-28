@@ -1,8 +1,8 @@
 import org.asciidoctor.gradle.jvm.AsciidoctorTask
 
-//repositories {
-//    mavenCentral()
-//}
+repositories {
+    mavenCentral()
+}
 
 plugins {
     id("diamond-versions")
@@ -26,8 +26,8 @@ tasks {
         asciidoctorj { // AsciidoctorJExtension
             // The AsciidoctorJ engine supports Batik, Ditaa, JSyntrax, and PlantUml via a Diagram extension
             modules {
-                diagram.use()
-                diagram.version("1.5.16")
+//                diagram.use()
+//                diagram.version("1.5.16")
 //                pdf.setVersion("1.2.3")
 //                diagram
             }

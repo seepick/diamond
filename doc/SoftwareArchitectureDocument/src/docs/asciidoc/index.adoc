@@ -2,7 +2,8 @@
 
 == Application Properties
 
-include::includes/config_report.generated.adoc[]
+// FIXME do it
+// include::includes/config_report.generated.adoc[]
 
 == Dev Instructions
 
@@ -102,22 +103,22 @@ Go through all dependencies:
 
 Install `dot` binary from https://graphviz.org/download/ to be able to build diagrams with code.
 
-Inline:
-
-[plantuml,inlineUml,svg]
-....
-@startuml
-[Inline] --> Interface1
-[Inline] -> Interface2
-@enduml
-....
-
-Included:
-
-[plantuml,includedUml,svg]
-....
-include::includes/diagram.puml[]
-....
+// Inline:
+//
+// [plantuml,inlineUml,svg]
+// ....
+// @startuml
+// [Inline] --> Interface1
+// [Inline] -> Interface2
+// @enduml
+// ....
+//
+// Included:
+//
+// [plantuml,includedUml,svg]
+// ....
+// include::includes/diagram.puml[]
+// ....
 
 With markdown (GitHub) also PlantUML possible "somehow":
 https://gist.github.com/noamtamim/f11982b28602bd7e604c233fbe9d910f

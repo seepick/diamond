@@ -2,14 +2,15 @@
 
 [![Build Status](https://github.com/seepick/diamond/actions/workflows/continuous.yml/badge.svg)](https://github.com/seepick/diamond/actions/workflows/continuous.yml)
 
-"_Given a very long time and even far more pressure, and even out of the most common shit there will be a precious
-diamond created._"
+"_Given a very long time and an exorbitant amount of pressure, and even out of the most ordinary (literally) shit, there
+will be a precious diamond formed._"
 
-This is a sample project of a backend service using modern technologies (2025) and (to my current knowledge) all the
-best practices (software design/architecture, testing, code quality, CI/CD, etc).
+This is a sample project of a backend service using modern technologies and best practice regarding software design and
+architecture, automated tests and test concept, build setup, code quality, and more.
 
 A general technical overview can be found in
-the [Software Architecture Document PDF](https://github.com/seepick/diamond/releases/latest/download/Diamond-SoftwareArchitectureDocument.pdf).
+the [Software Architecture Document](https://github.com/seepick/diamond/releases/latest/download/Diamond-SoftwareArchitectureDocument.pdf) (
+PDF).
 
 All smaller, specific decisions are documented in
 so-called [Architecture Decision Records](https://github.com/seepick/diamond/tree/main/doc/ArchitectureDecisionRecords).
