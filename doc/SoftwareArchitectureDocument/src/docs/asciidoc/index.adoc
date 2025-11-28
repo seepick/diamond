@@ -1,8 +1,9 @@
-= Diamond Software Architecture Document
+= Diamond Software Documentation
 
-// ifndef::basedir[./]
+ifndef::basedir[]
+:basedir: ./
+endif::[]
 // :foo: fromDoc
-
 
 // ifeval::["{projcode}"=="cm"}]
 // If `projcode == cm` then you should see this.
@@ -14,18 +15,12 @@
 == Image
 
 [.thumb]
-image::/images/diamond.jpg[scaledwidth=75%]
+image::{basedir}/images/diamond.jpg[scaledwidth=30%]
 
-Foobar: {foo}
-
-This works
-
-[.thumb2]
-image::src/docs/asciidoc/images/diamond.jpg[scaledwidth=75%]
 
 == Application Environment Variables
 
-include::includes/config_report.generated.adoc[]
+include::{basedir}/includes/config_report.generated.adoc[]
 
 == Dev Instructions
 
