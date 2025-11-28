@@ -6,6 +6,7 @@ Next
 * ! replace all: singleOf(::XImpl) { bind<X>() }
 * ! mini-playground; to try out things: kotest tags (testcontainers additivity)
 * ! fix ktlint; adjust it to my style
+* store BSN as a number in DB (heavy queries/joins)
 
 * [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
 * [ ] Docker compose, wiremock for posts api (used in e0.5e)

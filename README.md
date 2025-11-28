@@ -1,6 +1,6 @@
 # Diamond
 
-[![Build Status](https://github.com/seepick/diamond/actions/workflows/main.yml/badge.svg)](https://github.com/seepick/diamond/actions/workflows/main.yml)
+[![Build Status](https://github.com/seepick/diamond/actions/workflows/continuous.yml/badge.svg)](https://github.com/seepick/diamond/actions/workflows/continuous.yml)
 
 "_Given a very long time and even far more pressure, and even out of the most common shit there will be a precious
 diamond created._"
