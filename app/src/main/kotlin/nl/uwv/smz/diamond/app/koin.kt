@@ -30,18 +30,18 @@ fun Application.installKoin(
 
 fun Modules.all(
     config: GlobalConfig,
-    externStub: Module? = null) =
-    listOf(
+    externStub: Module? = null,
+) = listOf(
     controllerImpl(
         ControllerConfig(
             appVersion = config.build.appVersion,
             buildTime = config.build.buildTime,
-        )
+        ),
     ),
     domainLogicImpl(),
     when (config.env.database.stubEnabled) {
         true -> persistenceStub()
         false -> persistenceImpl(config.env.database)
-        },
-        externStub ?: externImpl(config.env.extern)
+    },
+    externStub ?: externImpl(config.env.extern),
 )
