@@ -53,7 +53,7 @@ class KtorHooks(private val world: World) {
     @Before
     fun `before each scenario`(scenario: Scenario) {
         log.trace { "Starting ktor for test: ${scenario.name}" }
-        var clientt: HttpClient? = null
+        var tmpClient: HttpClient? = null
         startKtor {
             client =
                 createClient {
@@ -68,13 +68,13 @@ class KtorHooks(private val world: World) {
                         )
                     }
                 }
-            clientt = client
+            tmpClient = client
             application {
                 setupDiamondKtor(testGlobalConfig, Modules.externStub())
             }
         }
         val koin = (testApplication!!.application.attributes.get(KOIN_ATTRIBUTE_KEY) as Koin)
-        world.initContext(WorldContext(clientt!!, (koin.get<PostsExtern>() as PostsExternStub)))
+        world.initContext(WorldContext(tmpClient!!, (koin.get<PostsExtern>() as PostsExternStub)))
     }
 
     // TODO report to ktor people, using with cucumber, "delocated" shutdown of ktor test application context

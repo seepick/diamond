@@ -1,5 +1,10 @@
 Feature: Posts endpoint
 
+  Scenario: Get empty posts
+    When get posts
+    Then response status code is 200
+    And response posts are empty
+
   Scenario: Get posts
     Given the following posts are returned by the backend
       | id | user id | title | completed |

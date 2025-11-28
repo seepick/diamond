@@ -19,6 +19,8 @@ Next
 Backlog
 -------------------------
 
+* [ ] e0.5e tests with docker, so not real backends
+* [ ] docker compose, wiremock for posts api (used in e0.5e)
 * [ ] List endpoints with pagination and sorting
 * [ ] make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
 * [ ] FIX: run testcointaners test addititively (not exclusively)
@@ -35,6 +37,7 @@ Backlog
 Low
 -------------------------
 
+* [ ] asciidoc should fail the build if stuff not found
 * [ ] LDAP integration
 * [ ] API versioning (path based; or accept header?)
 * [ ] Provide swagger HTML endpoint
@@ -80,6 +83,8 @@ Low
 No!
 -------------------------
 
+* crystal upload ftp
+* crystal POST enrich from posts
 * AsciiDoc to generate (and host) HTML (github pages)
 * Whitelabel implementation for FE devs
     * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)

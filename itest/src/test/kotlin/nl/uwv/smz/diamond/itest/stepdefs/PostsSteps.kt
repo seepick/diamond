@@ -3,6 +3,7 @@ package nl.uwv.smz.diamond.itest.stepdefs
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
+import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.equals.shouldBeEqual
 import kotlinx.serialization.Serializable
 import nl.uwv.smz.diamond.extern.api.posts.PostRto
@@ -33,6 +34,11 @@ class PostsSteps(private val world: World) {
     @Then("response posts are")
     fun `Then response posts are`(posts: List<PostDtoRow>) {
         world.lastResponse().bodyAs<List<PostDto>>() shouldBeEqual posts.map(PostDtoRow::toDto)
+    }
+
+    @Then("response posts are empty")
+    fun `Then response posts are empty`() {
+        world.lastResponse().bodyAs<List<PostDto>>().shouldBeEmpty()
     }
 }
 
