@@ -22,7 +22,6 @@ Backlog
 * [ ] e0.5e tests with docker, so not real backends
 * [ ] docker compose, wiremock for posts api (used in e0.5e)
 * [ ] List endpoints with pagination and sorting
-* [ ] make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
 * [ ] FIX: run testcointaners test addititively (not exclusively)
 * [ ] Production ready DB (inject properties via env)
 * [ ] Hikari connection pooling
@@ -32,11 +31,12 @@ Backlog
 * [ ] Bean validation (based on OpenAPI spec)
 * [ ] Write SAD sub-projects explanation
 * [ ] Write some ADRs
-* [ ] ktlint? https://github.com/JLLeitschuh/ktlint-gradle
+* [ ] ktlint direct or via detekt? (definitely need it to fail!) https://github.com/JLLeitschuh/ktlint-gradle
 
 Low
 -------------------------
 
+* [ ] make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
 * [ ] asciidoc should fail the build if stuff not found
 * [ ] LDAP integration
 * [ ] API versioning (path based; or accept header?)
@@ -79,6 +79,8 @@ Low
 * [ ] Docsify website for GitHub; see: https://iietmoon.github.io/simple-captcha-js/
 * [ ] Host production somewhere free (google app engine?)
 * [ ] Support HTTP caching? ETag (entity-tag values)
+* [ ] Liquibase gradle plugin? What for? Generating stuff? e.g. liquibaseRuntime("org.postgresql:postgresql:42.2.23")
+* [ ] Sonarqube gradle plugin...
 
 No!
 -------------------------

@@ -4,10 +4,10 @@ import nl.uwv.smz.diamond.extern.api.sftp.SftpClient
 import nl.uwv.smz.diamond.extern.api.sftp.SftpConnectConfig
 import nl.uwv.smz.diamond.extern.api.sftp.SftpConnector
 import java.nio.file.Path
-import kotlin.io.path.Path
 
 class SftpClientStub : SftpClient {
-    var remoteFiles = setOf(Path("stubPath"))
+
+    var remoteFiles = emptySet<Path>()
     var uploadedFiles = mutableListOf<Pair<Path, Path>>()
     var downloadFiles = mutableListOf<Pair<Path, Path>>()
     var disconnectCalled = 0
