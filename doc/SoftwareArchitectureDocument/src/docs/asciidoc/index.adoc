@@ -1,9 +1,31 @@
 = Diamond Software Architecture Document
 
-== Application Properties
+// ifndef::basedir[./]
+// :foo: fromDoc
 
-// FIXME do it
-// include::includes/config_report.generated.adoc[]
+
+// ifeval::["{projcode}"=="cm"}]
+// If `projcode == cm` then you should see this.
+// endif::[]
+// ifdef::projcode[project was defined as {projcode}]
+// ifndef::projcode[project was not defined]
+
+
+== Image
+
+[.thumb]
+image::/images/diamond.jpg[scaledwidth=75%]
+
+Foobar: {foo}
+
+This works
+
+[.thumb2]
+image::src/docs/asciidoc/images/diamond.jpg[scaledwidth=75%]
+
+== Application Environment Variables
+
+include::includes/config_report.generated.adoc[]
 
 == Dev Instructions
 
@@ -122,6 +144,10 @@ Install `dot` binary from https://graphviz.org/download/ to be able to build dia
 
 With markdown (GitHub) also PlantUML possible "somehow":
 https://gist.github.com/noamtamim/f11982b28602bd7e604c233fbe9d910f
+
+== Documentation
+
+* in asciidoc (github can render it, just like markdown)
 
 == Resources
 

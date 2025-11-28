@@ -80,6 +80,7 @@ Low
 No!
 -------------------------
 
+* AsciiDoc to generate (and host) HTML (github pages)
 * Whitelabel implementation for FE devs
     * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
 
