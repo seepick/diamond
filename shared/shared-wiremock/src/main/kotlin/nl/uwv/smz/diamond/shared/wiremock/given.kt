@@ -9,6 +9,8 @@ import com.github.tomakehurst.wiremock.http.HttpHeaders
 import com.github.tomakehurst.wiremock.http.Request
 import com.github.tomakehurst.wiremock.matching.RequestPatternBuilder
 
+// TODO rewrite as DSL
+@Suppress("LongParameterList")
 fun givenWiremock(
     method: WiremockMethod = WiremockMethod.GET,
     path: String = "/",

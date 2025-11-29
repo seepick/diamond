@@ -78,7 +78,7 @@ class KtorHooks(private val world: World) {
                 setupDiamondKtor(testGlobalConfig, Modules.externStub())
             }
         }
-        val koin = (testApplication!!.application.attributes.get(KOIN_ATTRIBUTE_KEY) as Koin)
+        @Suppress("USELESS_CAST") val koin = testApplication!!.application.attributes[KOIN_ATTRIBUTE_KEY] as Koin
         world.initContext(WorldContext(tmpClient!!, koin))
     }
 
@@ -89,9 +89,7 @@ class KtorHooks(private val world: World) {
         with(builder) {
             withContext(EmptyCoroutineContext) { block() }
         }
-        testApplication = builder.testApplication.also {
-            it.start()
-        }
+        testApplication = builder.testApplication.apply { start() }
     }
 
     @After

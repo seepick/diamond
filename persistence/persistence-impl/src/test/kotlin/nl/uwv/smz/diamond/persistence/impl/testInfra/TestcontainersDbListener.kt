@@ -21,7 +21,7 @@ class TestcontainersDbListener : DbListener, BeforeSpecListener, BeforeTestListe
 
     private val log = logger {}
     private var oracle: OracleContainer? = null
-    override lateinit var db: Database
+    override lateinit var database: Database
     private val mutex = Mutex()
 
     override suspend fun beforeSpec(spec: Spec) {
@@ -38,7 +38,7 @@ class TestcontainersDbListener : DbListener, BeforeSpecListener, BeforeTestListe
         oracle = createOracleContainer().apply { start() }
         val dbAccess = oracle!!.toDatabaseAccess()
         LiquibaseMigrator.migrate(dbAccess)
-        db = Database.connect(dbAccess)
+        database = Database.connect(dbAccess)
     }
 
     override suspend fun afterProject() {
@@ -52,7 +52,7 @@ class TestcontainersDbListener : DbListener, BeforeSpecListener, BeforeTestListe
 
     override suspend fun beforeTest(testCase: TestCase) {
         log.info { "Delete all content from DB tables" }
-        transaction(db) {
+        transaction(database) {
             allTables.forEach { table ->
                 table.deleteAll()
             }

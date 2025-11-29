@@ -5,6 +5,7 @@ import arrow.core.Either
 enum class ErrorCode(val renderedValue: String) {
     NOT_FOUND("NOT_FOUND"),
     CORRUPT_DATA("CORRUPT_DATA"),
+
     // it's safe to rename (refactor) these
     // separate A) internal identifiers for developers, and B) public facing API values
     BAD_CLIENT_REQUEST("BAD_REQUEST"),
@@ -17,7 +18,7 @@ enum class ErrorCode(val renderedValue: String) {
         }
 
         fun byRenderedValueOrThrow(value: String): ErrorCode =
-            byRenderedValue[value] ?: throw IllegalArgumentException("Unknown error code value [$value]")
+            requireNotNull(byRenderedValue[value]) { "Unknown error code value [$value]" }
     }
 }
 

@@ -26,15 +26,16 @@ data class EnvConfig(
 
 @OptIn(ExperimentalHoplite::class)
 fun readEnvConfig(): EnvConfig = try {
-    ConfigLoaderBuilder.default()
+    ConfigLoaderBuilder
+        .default()
         .withExplicitSealedTypes()
         .build()
         .loadConfigOrThrow<EnvConfig>()
 } catch (e: ConfigException) {
     throw ConfigException(
         "Application configuration failed. " +
-                "Please see exception cause for details and the SAD document for configuration details.",
-        e
+            "Please see exception cause for details and the SAD document for configuration details.",
+        e,
     )
 }
 
@@ -46,7 +47,9 @@ data class BuildProperties(
 private const val BUILD_INJECTED_CLASSPATH = "/buildInjected.properties"
 
 fun readBuildProperties(): BuildProperties =
-    ConfigLoaderBuilder.default()
+    ConfigLoaderBuilder
+        .default()
         .withExplicitSealedTypes()
-        .addResourceSource(BUILD_INJECTED_CLASSPATH).build()
+        .addResourceSource(BUILD_INJECTED_CLASSPATH)
+        .build()
         .loadConfigOrThrow<BuildProperties>()

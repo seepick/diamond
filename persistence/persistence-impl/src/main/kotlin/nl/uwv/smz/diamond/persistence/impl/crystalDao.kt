@@ -22,9 +22,9 @@ import kotlin.uuid.toJavaUuid
 import kotlin.uuid.toKotlinUuid
 
 internal class CrystalDao(id: EntityID<UUID>) : UUIDEntity(id) {
-    companion object : UUIDEntityClass<CrystalDao>(CrystalTable)
-
     var weightInGrams by CrystalTable.weightInGrams
+
+    companion object : UUIDEntityClass<CrystalDao>(CrystalTable)
 }
 
 internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
@@ -38,17 +38,20 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
     override suspend fun selectById(id: CrystalId) = either {
         suspendTransaction(db) {
             CrystalDao
-                .find { (CrystalTable.id eq id.value.toJavaUuid()) }
+                .find { CrystalTable.id eq id.value.toJavaUuid() }
                 .map { it.toDomainModel().bind() }
-                .ensureSingleFound(id.value).bind()
+                .ensureSingleFound(id.value)
+                .bind()
         }
     }
 
     override suspend fun insert(create: CrystalCreate): Either<Failure, Crystal> = either {
         suspendTransaction(db) {
-            CrystalDao.new(UUID.randomUUID()) {
-                weightInGrams = create.weight.value
-            }.toDomainModel().bind()
+            CrystalDao
+                .new(UUID.randomUUID()) {
+                    weightInGrams = create.weight.value
+                }.toDomainModel()
+                .bind()
         }
     }
 
@@ -58,7 +61,11 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
                 it.weightInGrams = update.weight.value
             } ?: Failure.NotFoundFailure("Not found for update: ${update.id}").left().bind()
 
-            found.toDomainModel().bind().right().bind()
+            found
+                .toDomainModel()
+                .bind()
+                .right()
+                .bind()
         }
     }
 
@@ -72,10 +79,9 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
     }
 }
 
-
 private fun CrystalDao.toDomainModel() = either {
     Crystal(
         id = CrystalId(id.value.toKotlinUuid()),
-        weight = Gram(weightInGrams).bind()
+        weight = Gram(weightInGrams).bind(),
     )
 }

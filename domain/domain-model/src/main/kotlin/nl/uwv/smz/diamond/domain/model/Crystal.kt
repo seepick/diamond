@@ -9,6 +9,9 @@ import kotlin.uuid.Uuid
 
 @JvmInline
 value class Gram private constructor(val value: Int) {
+
+    operator fun plus(addition: Int) = Gram(value + addition)
+
     companion object {
         operator fun invoke(value: Int) = either {
             ensure(value >= 0) {
@@ -17,12 +20,13 @@ value class Gram private constructor(val value: Int) {
             Gram(value)
         }
     }
-
-    operator fun plus(addition: Int) = Gram(value + addition)
 }
 
 @JvmInline
 value class CrystalId(val value: Uuid) {
+
+    override fun toString() = value.toString()
+
     companion object {
         // make sure BadDataFailure is mapped differently for incoming request (400 Bad Request)
         // and internal outgoing data like corrupt DB entries (500 Internal Error)
@@ -32,8 +36,6 @@ value class CrystalId(val value: Uuid) {
 
         fun random() = CrystalId(Uuid.random())
     }
-
-    override fun toString() = value.toString()
 }
 
 data class Crystal(

@@ -4,6 +4,8 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.shared.common.Modules
 import org.jetbrains.exposed.sql.Database
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 private val log = logger {}
@@ -16,7 +18,7 @@ fun Modules.persistenceImpl(config: DatabaseConfig) = module {
         // but then also checking connection in health endpoint... hm...
         connectToDatabase(config)
     }
-    single<CrystalRepo> { CrystalExposedDboRepo(get()) }
+    singleOf(::CrystalExposedDboRepo) { bind<CrystalRepo>() }
 }
 
 private fun connectToDatabase(config: DatabaseConfig): Database {

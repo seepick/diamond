@@ -5,7 +5,7 @@ import nl.uwv.smz.diamond.persistence.impl.CrystalTable
 import org.jetbrains.exposed.sql.Database
 
 interface DbListener : Extension {
-    val db: Database
+    val database: Database
 }
 
 val allTables = arrayOf(

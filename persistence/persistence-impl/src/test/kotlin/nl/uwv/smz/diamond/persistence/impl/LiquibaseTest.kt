@@ -18,7 +18,7 @@ class LiquibaseTest : StringSpec({
             )
         )
         val tableNames = mutableSetOf<String>()
-        transaction(dbListener.db) {
+        transaction(dbListener.database) {
             exec("SELECT * FROM INFORMATION_SCHEMA.TABLES") { rs ->
                 while (rs.next()) {
                     tableNames += rs.getString("TABLE_NAME")

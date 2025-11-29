@@ -8,10 +8,6 @@ import nl.uwv.smz.diamond.extern.api.sftp.SftpConnector
 
 class SftpConnectorImpl(private val config: SftpConfig) : SftpConnector {
 
-    companion object {
-        private const val CONNECTION_TIMEOUT = 10_000
-    }
-
     private val log = logger {}
 
     override fun connect(): SftpClient {
@@ -27,5 +23,9 @@ class SftpConnectorImpl(private val config: SftpConfig) : SftpConnector {
         log.info { "Connecting to ${config.username}@${config.remoteHost}:${config.port}" }
         session.connect(CONNECTION_TIMEOUT)
         return SftpSftpClientImpl(session)
+    }
+
+    companion object {
+        private const val CONNECTION_TIMEOUT = 10_000
     }
 }

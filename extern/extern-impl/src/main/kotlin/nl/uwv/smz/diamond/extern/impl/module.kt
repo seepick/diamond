@@ -17,6 +17,7 @@ data class ExternConfig(
     val sftp: SftpConfig,
 )
 
+@Suppress("UnusedReceiverParameter")
 fun Modules.externImpl(config: ExternConfig) =
     module {
         single<PostsExtern> { PostsExternImpl(baseUrl = config.postsServiceBaseUrl) }

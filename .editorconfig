@@ -14,7 +14,7 @@ ktlint_custom-rule-set = disabled # all rules in the `custom-rule-set` rule set 
 
 ktlint_standard_annotation = disabled # 2+ annotations allowed to be on same line
 ktlint_standard_comment-spacing = enabled # //_space
-ktlint_standard_filename = disabled # snake case file names is ok
+ktlint_standard_filename = disabled # snakeCasing file names is ok; no enforcing PascalCase
 ktlint_standard_final-newline = enabled # newline at end of file
 ktlint_standard_function-signature = disabled # allow method direct assignment body expression
 ktlint_standard_multiline-expression-wrapping = disabled # allow method signature with direct method body expression
