@@ -1,16 +1,18 @@
 package nl.uwv.smz.diamond.extern.impl.sftp
 
+import com.sksamuel.hoplite.Secret
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
+import io.kotest.core.listeners.AfterTestListener
 import io.kotest.core.listeners.BeforeTestListener
 import io.kotest.core.test.TestCase
-import nl.uwv.smz.diamond.extern.api.sftp.SftpAuthType
+import io.kotest.engine.test.TestResult
 import nl.uwv.smz.diamond.extern.api.sftp.SftpClient
-import nl.uwv.smz.diamond.extern.api.sftp.SftpConnectConfig
+import nl.uwv.smz.diamond.extern.api.sftp.SftpConfig
 import nl.uwv.smz.diamond.extern.impl.startOrReuseUniqueInstance
 import nl.uwv.smz.diamond.extern.impl.toSlf4j
 import java.util.UUID
 
-class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener {
+class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener, AfterTestListener {
     private val log = logger {}
     private lateinit var container: SftpContainer
 
@@ -25,24 +27,26 @@ class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener {
             }
     }
 
-    fun connectClient() =
-        SftpConnectorImpl.connect(
-            SftpConnectConfig(
+    override suspend fun afterTest(testCase: TestCase, result: TestResult) {
+        container.close()
+    }
+
+    private fun connectClient() =
+        SftpConnectorImpl(
+            SftpConfig(
                 remoteHost = container.host,
                 port = container.getMappedPort(config.port),
                 username = config.username,
-                auth = SftpAuthType.AuthKey(SftpFiles.privateKey),
+                authIsPassword = false,
+                authPasswordOrPrivateKeyPath = Secret(SftpFiles.clientPrivKey),
                 knownHostsFilePath = SftpFiles.knownHosts,
                 strictHostChecking = false,
             ),
-        )
+        ).connect()
 
     fun withClient(code: (SftpClient) -> Unit) {
-        val client = connectClient()
-        try {
+        connectClient().use { client ->
             code(client)
-        } finally {
-            client.disconnect()
         }
     }
 }

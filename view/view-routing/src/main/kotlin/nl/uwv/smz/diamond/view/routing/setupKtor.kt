@@ -15,6 +15,7 @@ fun Application.installRoutingsAndPlugins() {
     installInfoRouting()
     installCrystalRouting()
     installPostsRouting()
+    installSyncRouting()
 
     installContentNegotiation()
     installExceptionHandling()

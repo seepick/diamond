@@ -1,16 +1,16 @@
 Next
 =========================
 
-* [ ] Setup docker-compose (wire oracle, sftp; later wiremock; use ktor plugin's docker capabilities)
-
 * tag sftp test with testcontainers
 * ! remove DB-stub; only during test/local
-* [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
-* [ ] Implement endpoint which uses sftp
 
 Backlog
 -------------------------
 
+* [ ] e2e-test as standalone sub-project using Karate (Gradle profile; using docker-compose for now)
+* [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
+* fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
+* use SyncService to actually do something meaningful (verifable in tests)
 * [ ] cronjob running SFTP; can be triggered via endpoint
 * ! replace:
     * single<PostsExtern> { PostsExternStub() }
@@ -32,11 +32,11 @@ Backlog
 * [ ] Hikari connection pooling
 * [ ] Build docker image (Gradle profile)
 * [ ] Docker-compose (app + dependencies: DB, SFTP, MQ)
-* [ ] e2e-test as standalone sub-project using Karate (Gradle profile)
 * [ ] Bean validation (based on OpenAPI spec)
 * [ ] Write SAD sub-projects explanation
 * [ ] Write some ADRs
 * [ ] ktlint direct or via detekt? (definitely need it to fail!) https://github.com/JLLeitschuh/ktlint-gradle
+* [ ] remove leading slash "/" from config paths/urls
 
 Low
 -------------------------
@@ -87,6 +87,8 @@ Low
 * [ ] Support HTTP caching? ETag (entity-tag values)
 * [ ] Liquibase gradle plugin? What for? Generating stuff? e.g. liquibaseRuntime("org.postgresql:postgresql:42.2.23")
 * [ ] Sonarqube gradle plugin...
+* [ ] graceful shutdown when running in kubernetes/docker-compose (finish current requests; block new ones; release
+  resources)
 
 No!
 -------------------------
@@ -201,3 +203,5 @@ V1
 * [x] Cucumber rewiring application through koin (extern-stub); fiddle around with its internals/intestines ;)
 * [x] Cucumber table handling via Data Class Generator (java "only")
 * [x] Kotlin coverage verified with kover (no jacoco)
+* [x] Setup docker-compose (oracle, sftp)
+* [x] Implement PUT /sync endpoint which uses the sftp connection

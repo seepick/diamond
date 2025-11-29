@@ -1,6 +1,7 @@
 package nl.uwv.smz.diamond.itest
 
 import com.sksamuel.hoplite.Masked
+import com.sksamuel.hoplite.Secret
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.Scenario
@@ -19,6 +20,7 @@ import nl.uwv.smz.diamond.app.GlobalConfig
 import nl.uwv.smz.diamond.app.KtorConfig
 import nl.uwv.smz.diamond.app.setupDiamondKtor
 import nl.uwv.smz.diamond.extern.api.posts.PostsExtern
+import nl.uwv.smz.diamond.extern.api.sftp.SftpConfig
 import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.extern.stub.externStub
 import nl.uwv.smz.diamond.extern.stub.posts.PostsExternStub
@@ -40,14 +42,17 @@ class KtorHooks(private val world: World) {
             username = "",
             password = Masked(""),
         ),
-        ExternConfig("postsUrl"), // not used, as using stub
+        ExternConfig(
+            postsServiceBaseUrl = "postsUrl",
+            sftp = SftpConfig("", 22, "", true, Secret(""), ""),
+        ), // not used, as using stub
     )
     private val testGlobalConfig = GlobalConfig(
         testEnvConfig,
         BuildProperties(
             "0-test",
-            LocalDateTime.of(2000, 1, 1, 12, 42)
-        )
+            LocalDateTime.of(2000, 1, 1, 12, 42),
+        ),
     )
 
     @Before
@@ -74,7 +79,7 @@ class KtorHooks(private val world: World) {
             }
         }
         val koin = (testApplication!!.application.attributes.get(KOIN_ATTRIBUTE_KEY) as Koin)
-        world.initContext(WorldContext(tmpClient!!, (koin.get<PostsExtern>() as PostsExternStub)))
+        world.initContext(WorldContext(tmpClient!!, koin))
     }
 
     // TODO report to ktor people, using with cucumber, "delocated" shutdown of ktor test application context
@@ -93,11 +98,14 @@ class KtorHooks(private val world: World) {
     fun `after each scenario`(scenario: Scenario): Unit =
         runBlocking {
             log.trace { "stop ktor for: ${scenario.name}" }
-        testApplication?.stop()
-    }
+            testApplication?.stop()
+        }
 }
 
-data class WorldContext(
+class WorldContext(
     val client: HttpClient,
-    val postsStub: PostsExternStub,
-)
+    private val koin: Koin,
+) {
+    fun resolvePostsExternStub(): PostsExternStub =
+        koin.get<PostsExtern>() as PostsExternStub
+}

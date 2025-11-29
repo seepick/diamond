@@ -1,7 +1,6 @@
 package nl.uwv.smz.diamond.extern.stub.sftp
 
 import nl.uwv.smz.diamond.extern.api.sftp.SftpClient
-import nl.uwv.smz.diamond.extern.api.sftp.SftpConnectConfig
 import nl.uwv.smz.diamond.extern.api.sftp.SftpConnector
 import java.nio.file.Path
 
@@ -10,7 +9,7 @@ class SftpClientStub : SftpClient {
     var remoteFiles = emptySet<Path>()
     var uploadedFiles = mutableListOf<Pair<Path, Path>>()
     var downloadFiles = mutableListOf<Pair<Path, Path>>()
-    var disconnectCalled = 0
+    var closeCalled = 0
 
     override fun listRemoteFiles(remoteDirectoryPath: Path) = remoteFiles
 
@@ -28,11 +27,11 @@ class SftpClientStub : SftpClient {
         downloadFiles += localFilePath to remoteFilePath
     }
 
-    override fun disconnect() {
-        disconnectCalled++
+    override fun close() {
+        closeCalled++
     }
 }
 
 class SftpConnectorStub : SftpConnector {
-    override fun connect(config: SftpConnectConfig) = SftpClientStub()
+    override fun connect() = SftpClientStub()
 }

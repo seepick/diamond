@@ -30,6 +30,6 @@ class World {
 
     fun initContext(context: WorldContext) {
         client = context.client
-        postsStub = context.postsStub
+        postsStub = context.resolvePostsExternStub()
     }
 }

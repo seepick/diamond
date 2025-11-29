@@ -45,9 +45,9 @@ class SftpSftpClientImpl(private val session: Session) : SftpClient {
             .also { log.debug { "end file list. Found ${it.size} files" } }
     }
 
-    override fun disconnect() =
+    override fun close() =
         try {
-            log.debug { "disconnecting" }
+            log.debug { "closing/disconnecting" }
             channel.exit()
         } finally {
             session.disconnect()

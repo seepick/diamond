@@ -5,22 +5,17 @@ import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
-import nl.uwv.smz.diamond.domain.model.Post
 import nl.uwv.smz.diamond.domainFailure.Failure
-
-interface GreetService {
-    fun greet(): String
-}
 
 interface CrystalService {
     /** Failure if for example corrupt data in database. */
     suspend fun findAll(): Either<Failure, List<Crystal>>
-    suspend fun findSingle(id: CrystalId): Either<Failure, Crystal>
-    suspend fun create(create: CrystalCreate): Either<Failure, Crystal>
-    suspend fun update(update: CrystalUpdate): Either<Failure, Crystal>
-    suspend fun delete(id: CrystalId): Either<Failure, Unit>
-}
 
-interface PostsService {
-    fun fetchPosts(): List<Post>
+    suspend fun findSingle(id: CrystalId): Either<Failure, Crystal>
+
+    suspend fun create(create: CrystalCreate): Either<Failure, Crystal>
+
+    suspend fun update(update: CrystalUpdate): Either<Failure, Crystal>
+
+    suspend fun delete(id: CrystalId): Either<Failure, Unit>
 }

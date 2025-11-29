@@ -12,10 +12,10 @@ services:
   diamond:
     container_name: diamond
     restart: unless-stopped
-    # assuming you did a: `./gradlew :app:publishImageToLocalRegistry
-    image: diamond:latest
+    # build it via ./local/docker_diamond.sh
+    image: diamond/diamond:latest
     # to build from source... requires Dockerfile though
-    #    build: .
+    #    build: docker/diamond
     ports:
       - "8080:8080"
     environment:
@@ -24,14 +24,24 @@ services:
       DATABASE_PASSWORD: demo123
       # TODO wiremock
       EXTERN_POSTSSERVICEBASEURL: url
+      EXTERN_SFTP_REMOTEHOST: sftp
+      EXTERN_SFTP_PORT: 2222
+      EXTERN_SFTP_USERNAME: sftpUser
+      EXTERN_SFTP_AUTHISPASSWORD: false
+      # see /app/src/main/docker; as defined in Dockerfile
+      EXTERN_SFTP_AUTHPASSWORDORPRIVATEKEYPATH: /app/config/sftp_private.key
+      EXTERN_SFTP_KNOWNHOSTSFILEPATH: /app/config/known_hosts
       KTOR_PORT: 8080
     depends_on:
       oracle-db:
         condition: service_healthy
+  #      sftp:
+  #        condition: service_healthy
   #    volumes:
   #      - ${JAVA_HOME}/lib/security:/opt/java/openjdk/lib/security
 
   oracle-db:
+    # Native ARM64 version (gvenzl/oracle-free:23-full) fails with control file error?!
     image: gvenzl/oracle-xe:21-slim-faststart
     container_name: oracle-xe-21
     restart: unless-stopped
@@ -49,6 +59,48 @@ services:
       timeout: 10s
       retries: 5
       start_period: 120s
+
+  sftp:
+    image: diamond/sftp:latest
+    container_name: sftp-server
+    restart: unless-stopped
+    volumes:
+      - ./build/docker/sftp:/home
+      #      - ./build/docker/sftp/etc_ssh:/etc/ssh
+      # - ./ssh_host_keys:/etc/ssh/ssh_host_keys:ro
+    ports:
+      - "2222:22"
+    environment:
+      SFTP_USERS: |
+        sftpUser:sftpPass:1001:1001
+    healthcheck:
+      test: [ "CMD", "ss", "-ltnp", "sport = :22" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  #  wiremock:
+  #    image: up9inc/wiremock-studio:2.32.0-18
+  #    hostname: wiremock
+  #    ports:
+  #      - '9000:9000'
+  #      #  Mapped ports for mocked services (see https://confluence.ba.uwv.nl/display/PS/BSC+poortnummers)
+  #      - '28093:28093'
+  #      - '28094:28094'
+  #      - '28098:28098'
+  #      - '28099:28099'
+  #    <<: *common-keys-core
+  #    healthcheck:
+  #      test: [ "CMD", "nc", "-z", "localhost", "9000" ]
+  #      interval: 30s
+  #      timeout: 10s
+  #      retries: 5
+  #    volumes:
+  #      - ./wiremock:/home/wiremock
+  #    container_name: wiremock
+
+
 volumes:
+  sftp_data:
   oracle_xe_data:
-    driver: local
+    driver: local # to make it unbound

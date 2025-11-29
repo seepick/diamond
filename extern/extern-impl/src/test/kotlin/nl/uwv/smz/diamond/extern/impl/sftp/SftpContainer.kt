@@ -10,14 +10,11 @@ data class SftpContainerConfig(
 
 class SftpContainer(val config: SftpContainerConfig) : GenericContainer<SftpContainer>("atmoz/sftp") {
     init {
-        val sshFiles =
-            mapOf(
-                SftpFiles.hostEdKey to "/etc/ssh/ssh_host_ed25519_key",
-                SftpFiles.hostRsaKey to "/etc/ssh/ssh_host_rsa_key",
-                SftpFiles.clientPub to "/home/${config.username}/.ssh/keys/id_ed25519_client.pub",
-            )
-
-        sshFiles.forEach { (resourcePath, containerPath) ->
+        mapOf(
+            SftpFiles.hostEdKey to "/etc/ssh/ssh_host_ed25519_key",
+            SftpFiles.hostRsaKey to "/etc/ssh/ssh_host_rsa_key",
+            SftpFiles.clientPubKey to "/home/${config.username}/.ssh/keys/id_ed25519_client.pub",
+        ).forEach { (resourcePath, containerPath) ->
             val transferable = Transferable.of(javaClass.getResource(resourcePath)!!.openStream().readAllBytes())
             withCopyToContainer(transferable, containerPath)
         }

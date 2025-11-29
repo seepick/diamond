@@ -26,6 +26,41 @@
 |-
 |Base URL for the external posts service
 
+|`EXTERN_SFTP_AUTHISPASSWORD`
+|boolean
+|-
+|Configure whether defined password or private key.
+
+|`EXTERN_SFTP_AUTHPASSWORDORPRIVATEKEYPATH`
+|string
+|-
+|Either password or private key.
+
+|`EXTERN_SFTP_KNOWNHOSTSFILEPATH`
+|string
+|-
+|SSH known hosts.
+
+|`EXTERN_SFTP_PORT`
+|integer
+|22
+|SFTP port, usually 22
+
+|`EXTERN_SFTP_REMOTEHOST`
+|string
+|-
+|SFTP remote host
+
+|`EXTERN_SFTP_STRICTHOSTCHECKING`
+|boolean
+|true
+|Disable security check; do NOT activate in production; pretty please
+
+|`EXTERN_SFTP_USERNAME`
+|string
+|-
+|Login username
+
 |`KTOR_PORT`
 |integer
 |8080

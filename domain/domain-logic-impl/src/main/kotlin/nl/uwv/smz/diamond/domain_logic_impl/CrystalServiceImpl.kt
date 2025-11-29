@@ -2,26 +2,17 @@ package nl.uwv.smz.diamond.domain_logic_impl
 
 import arrow.core.Either
 import arrow.core.raise.either
-import io.github.oshai.kotlinlogging.KotlinLogging.logger
+import io.github.oshai.kotlinlogging.KotlinLogging
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
-import nl.uwv.smz.diamond.domain.model.Post
 import nl.uwv.smz.diamond.domainFailure.Failure
 import nl.uwv.smz.diamond.domain_logic_api.CrystalService
-import nl.uwv.smz.diamond.domain_logic_api.GreetService
-import nl.uwv.smz.diamond.domain_logic_api.PostsService
-import nl.uwv.smz.diamond.extern.api.posts.PostRto
-import nl.uwv.smz.diamond.extern.api.posts.PostsExtern
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
-
-class GreetServiceImpl : GreetService {
-    override fun greet(): String = "Hello Service!"
-}
 
 class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
 
-    private val log = logger {}
+    private val log = KotlinLogging.logger {}
 
     override suspend fun findAll() = either {
         log.debug { "findAll()" }
@@ -45,17 +36,3 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
         repo.delete(id).bind()
     }
 }
-
-class PostsServiceImpl(
-    private val extern: PostsExtern,
-) : PostsService {
-    // could enrch crystal with posts
-    override fun fetchPosts() = extern.fetchPosts().map { it.toPost() }
-}
-
-private fun PostRto.toPost() =
-    Post(
-        id = id,
-        title = title,
-        // drop the other properties
-)

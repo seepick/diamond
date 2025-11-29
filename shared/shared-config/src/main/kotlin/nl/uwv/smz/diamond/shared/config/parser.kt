@@ -42,6 +42,7 @@ private fun scanForEntries(
     properties: Collection<KProperty1<*, *>>,
 ): List<ConfigEntry> {
     log.debug { "Sub scanning. prefix: $pathPrefix; props: $properties" }
+    // TODO error if property declared but not annotated!
     return properties.filter { it.hasAnnotation<ConfigProperty>() }.map { prop ->
         @Suppress("UNCHECKED_CAST")
         ConfigEntry(

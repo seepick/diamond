@@ -1,6 +1,7 @@
 package nl.uwv.smz.diamond.app
 
 import com.sksamuel.hoplite.Secret
+import nl.uwv.smz.diamond.extern.api.sftp.SftpConfig
 import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.extern.stub.externStub
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
@@ -24,11 +25,16 @@ object LocalDiamondApp {
 //        stubEnabled = false, url = "jdbc:h2:mem:localDb;DB_CLOSE_DELAY=-1", username = "", password = Secret("")
 //    )
 
+    private val sftp = SftpConfig("host", 22, "user", authIsPassword = true, Secret("pass"), "hosts")
+
     // TODO maybe per user?! so can switch between fast stub, regular H2, or heavy oracle?!
     private val localEnvConfig = EnvConfig(
         database = dbStubConfig,
         ktor = KtorConfig(port = 8000),
-        extern = ExternConfig("local_undefined"),
+        extern = ExternConfig(
+            postsServiceBaseUrl = "local_undefined",
+            sftp = sftp,
+        ),
     )
 
     @JvmStatic

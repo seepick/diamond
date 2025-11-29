@@ -2,7 +2,9 @@
 *
 
 # Allow files and directories
-!/build/*/diamond.jar
+!/app/build/libs/diamond.jar
+!/app/src/main/docker/*
+!/docker/sftp/ssh_files/*
 
 # Ignore unnecessary files inside allowed directories
 # This should go after the allowed directories

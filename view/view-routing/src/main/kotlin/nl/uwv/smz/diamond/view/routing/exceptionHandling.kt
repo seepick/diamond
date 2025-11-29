@@ -24,8 +24,9 @@ internal fun Application.installExceptionHandling() {
                 status = HttpStatusCode.InternalServerError,
                 message = ApiErrorDto(
                     code = ErrorCode.INTERNAL_ERROR,
-                    message = cause.message ?: "N/A",
-                )
+                    // do NOT expose cause.message here for security reasons
+                    message = "Internal error occured (please tell admin to check logs)",
+                ),
             )
         }
     }

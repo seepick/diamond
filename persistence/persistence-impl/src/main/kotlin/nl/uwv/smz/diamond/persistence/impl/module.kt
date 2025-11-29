@@ -12,8 +12,10 @@ private val log = logger {}
 fun Modules.persistenceImpl(config: DatabaseConfig) = module {
     single<Database> {
         // TODO deal properly with connection fails java.sql.SQLException
+        // TODO shall we really delay connection here?!
+        // but then also checking connection in health endpoint... hm...
         connectToDatabase(config)
-    } // delay connection; check connection in health endpoint
+    }
     single<CrystalRepo> { CrystalExposedDboRepo(get()) }
 }
 

@@ -1,8 +1,10 @@
 package nl.uwv.smz.diamond.app
 
 import com.sksamuel.hoplite.Masked
+import com.sksamuel.hoplite.Secret
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.equals.shouldBeEqual
+import nl.uwv.smz.diamond.extern.api.sftp.SftpConfig
 import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 
@@ -14,6 +16,13 @@ class ConfigTest : StringSpec({
         System.setProperty("config.override.database.password", "dbPass")
         System.setProperty("config.override.ktor.port", "42")
         System.setProperty("config.override.extern.postsServiceBaseUrl", "postsUrl")
+        System.setProperty("config.override.extern.sftp.remoteHost", "sftpHost")
+        System.setProperty("config.override.extern.sftp.port", "22")
+        System.setProperty("config.override.extern.sftp.username", "sftpUser")
+        System.setProperty("config.override.extern.sftp.authIsPassword", "true")
+        System.setProperty("config.override.extern.sftp.authPasswordOrPrivateKeyPath", "sftpPass")
+        System.setProperty("config.override.extern.sftp.knownHostsFilePath", "sftpHosts")
+        System.setProperty("config.override.extern.sftp.strictHostChecking", "false")
 
         // if this test fails, please also adjust the `/local/test_config.sh` file -thank you :)
         readEnvConfig() shouldBeEqual EnvConfig(
@@ -25,10 +34,18 @@ class ConfigTest : StringSpec({
                 username = "dbUser",
                 password = Masked("dbPass"),
             ),
-            extern =
-                ExternConfig(
-                    postsServiceBaseUrl = "postsUrl",
-                )
+            extern = ExternConfig(
+                postsServiceBaseUrl = "postsUrl",
+                sftp = SftpConfig(
+                    remoteHost = "sftpHost",
+                    port = 22,
+                    username = "sftpUser",
+                    authIsPassword = true,
+                    authPasswordOrPrivateKeyPath = Secret("sftpPass"),
+                    knownHostsFilePath = "sftpHosts",
+                    strictHostChecking = false,
+                ),
+            ),
         )
     }
 })
