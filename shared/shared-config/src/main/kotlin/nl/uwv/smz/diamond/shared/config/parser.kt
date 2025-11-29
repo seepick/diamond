@@ -12,7 +12,9 @@ import kotlin.reflect.full.hasAnnotation
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.full.primaryConstructor
 
-// TODO move reporter to testFixtures; not polite the classpath; this is only used to generate a static report (MD file), not used at runtime!
+// TODO move reporter to testFixtures
+// dont pollute the classpath; this is only used to generate a static report (MD file), not used at runtime!
+
 private val log = logger {}
 
 enum class ConfigType(val label: String) {

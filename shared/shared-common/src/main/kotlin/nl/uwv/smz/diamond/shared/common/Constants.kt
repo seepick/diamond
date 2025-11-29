@@ -15,4 +15,10 @@ object Constants {
     init {
         log.info { "Computed root package name: [$ROOT_PACKAGE_NAME]" }
     }
+
+    fun delme() {
+        val aaa: String = ""
+        val bbb = aaa?.length
+        println(bbb)
+    }
 }

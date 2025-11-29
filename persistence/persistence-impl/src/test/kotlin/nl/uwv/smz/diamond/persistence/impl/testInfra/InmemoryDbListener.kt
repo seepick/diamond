@@ -16,21 +16,21 @@ class InmemoryDbListener(
 
     private val log = logger {}
     lateinit var jdbcUrl: String
-    override lateinit var database: Database
+    override lateinit var db: Database
 
     override suspend fun beforeEach(testCase: TestCase) {
         jdbcUrl = createJdbcInmemoryUrl()
-        database = Database.connect(jdbcUrl)
+        db = Database.connect(jdbcUrl)
         if (createSchema) {
             log.debug { "Creating complete schema via Exposed." }
-            transaction(database) {
+            transaction(db) {
                 SchemaUtils.create(*allTables)
             }
         }
     }
 
     override suspend fun afterEach(testCase: TestCase, result: TestResult) {
-        TransactionManager.closeAndUnregister(database)
+        TransactionManager.closeAndUnregister(db)
     }
 }
 

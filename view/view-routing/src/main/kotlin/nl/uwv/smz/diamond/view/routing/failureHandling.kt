@@ -16,7 +16,8 @@ internal suspend inline fun <reified RESULT : Any> RoutingCall.handle(result: Ei
     result.fold(
         { failure ->
             log.error(failure.exception) {
-                "FAILED! ${request.httpMethod} ${request.path()} - ${failure.httpStatusCode}/${failure.code.renderedValue}: ${failure.message}"
+                "Failure occured while processing request: ${request.httpMethod} ${request.path()} - " +
+                    "${failure.httpStatusCode}/${failure.code.renderedValue}: ${failure.message}"
             }
             respond(
                 status = failure.httpStatusCode,

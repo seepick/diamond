@@ -8,9 +8,6 @@ import java.nio.file.Path
 import kotlin.io.path.pathString
 
 class SftpSftpClientImpl(private val session: Session) : SftpClient {
-    companion object {
-        private const val SESSION_TIMEOUT = 5_000
-    }
 
     private val log = logger {}
 
@@ -52,4 +49,8 @@ class SftpSftpClientImpl(private val session: Session) : SftpClient {
         } finally {
             session.disconnect()
         }
+
+    companion object {
+        private const val SESSION_TIMEOUT = 5_000
+    }
 }

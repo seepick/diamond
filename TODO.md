@@ -115,6 +115,15 @@ Open Questions
 Challenges
 =========================
 
+Detekt (ktlint) config
+-------------------------
+
+* fine tuning of rules
+* overlapping of detekt+ktlint
+* gradle-build and intellij full in sync
+* fail on any rule violation (warning); detekt+ktlint
+* autoformat in intellij and gradle-build (we don't want people to not have the plugin configured, and then have them
+  break the build unknowingly)
 
 Ktor Cucumber Tests
 -------------------------

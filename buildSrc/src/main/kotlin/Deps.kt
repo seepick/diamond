@@ -1,4 +1,4 @@
-@Suppress("MayBeConstant", "unused", "ClassName")
+@Suppress("MayBeConstant", "unused", "ClassName", "ClassOrdering")
 object Deps {
 
     val serializationx = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
@@ -17,6 +17,7 @@ object Deps {
 
         object exposed {
             private fun make(artifact: String) = "org.jetbrains.exposed:exposed-$artifact:${Versions.exposed}"
+
             val core = make("core")
             val dao = make("dao")
             val jdbc = make("jdbc")
@@ -31,12 +32,14 @@ object Deps {
 
     object hoplite {
         private fun make(artifact: String) = "com.sksamuel.hoplite:hoplite-$artifact:${Versions.hoplite}"
+
         val core = make("core")
 //        val yaml = make("yaml") NO!
     }
 
     object ktor {
         private fun make(artifact: String) = "io.ktor:ktor-$artifact:${Versions.ktor}"
+
         val serialization = make("serialization-kotlinx-json")
         val io = make("io-jvm")
 
@@ -58,6 +61,7 @@ object Deps {
 
     object koin {
         private fun make(artifact: String) = "io.insert-koin:koin-$artifact:${Versions.koin}"
+
         val core = make("core")
         val ktor = make("ktor")
         val test = make("test")
@@ -76,22 +80,26 @@ object Deps {
 
         object kotest {
             private fun make(artifact: String) = "io.kotest:kotest-$artifact:${Versions.testing.kotest}"
+
             val frameworkEngine = make("framework-engine")
             val junitRunner = make("runner-junit5-jvm")
             val assertions = make("assertions-core")
             val property = make("property")
+
             /** https://kotest.io/docs/assertions/arrow.html */
             val assertionsArrow = "io.kotest.extensions:kotest-assertions-arrow:2.0.0" // different version
         }
 
         object testcontainers {
-            private fun make(suffix: String) = "org.testcontainers:testcontainers${suffix}:${Versions.testcontainers}"
+            private fun make(suffix: String) = "org.testcontainers:testcontainers$suffix:${Versions.testcontainers}"
+
             val main = make("")
             val oracle = make("-oracle-free") // TODO or testcontainers-oracle-xe?
         }
 
         object cucumber {
             private fun make(artifact: String) = "io.cucumber:cucumber-$artifact:${Versions.testing.cucumber}"
+
             val java = make("java")
             val junitEngine = make("junit-platform-engine")
             val picocontainer = make("picocontainer")

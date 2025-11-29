@@ -56,9 +56,9 @@ fun crystalRepoTest(
     provideRepo: (Database) -> CrystalRepo,
 ) = describeSpec {
     // extension(dbListener) ... won't pick-up runtime interface types :-/
-    fun repo() = provideRepo(dbListener.database)
+    fun repo() = provideRepo(dbListener.db)
 
-    fun <T> tx(code: Transaction.() -> T): T = transaction(dbListener.database, code)
+    fun <T> tx(code: Transaction.() -> T): T = transaction(dbListener.db, code)
 
     val id = Arb.crystalId().next()
     val crystal = Arb.crystal().next()

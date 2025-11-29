@@ -24,14 +24,13 @@ private inline fun <reified T : Any> failureTest(
     value: Either<Failure, T>,
     crossinline expect: suspend (HttpResponse) -> Unit,
 ) {
-    viewTest(
-        additionalApplicationSetup = {
-            routing {
-                get("/testFailure") {
-                    call.handle<T>(value)
-                }
+    viewTest(additionalApplicationSetup = {
+        routing {
+            get("/testFailure") {
+                call.handle<T>(value)
             }
-        }) { client ->
+        }
+    }) { client ->
         val response = client.get("/testFailure")
         expect(response)
     }
@@ -67,8 +66,14 @@ class FailureHandlingTest : DescribeSpec({
             it("Given ${failure::class.simpleName} Then ${expectedStatusCode.value} and error DTO") {
                 failureTest(failure.left()) { response ->
                     response.status shouldBeEqual expectedStatusCode
-                    response.contentType().shouldNotBeNull().withoutParameters() shouldBeEqual ContentType.Application.Json
-                    response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(code = failure.code, message = someMessage)
+                    response
+                        .contentType()
+                        .shouldNotBeNull()
+                        .withoutParameters() shouldBeEqual ContentType.Application.Json
+                    response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(
+                        code = failure.code,
+                        message = someMessage,
+                    )
                 }
             }
         }

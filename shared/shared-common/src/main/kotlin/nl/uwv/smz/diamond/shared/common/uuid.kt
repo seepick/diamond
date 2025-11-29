@@ -5,6 +5,7 @@ import arrow.core.left
 import arrow.core.right
 import kotlin.uuid.Uuid
 
+@Suppress("TooGenericExceptionCaught")
 fun Uuid.Companion.eitherParse(string: String): Either<IllegalArgumentException, Uuid> =
     try {
         Uuid.parse(string).right()

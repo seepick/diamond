@@ -311,8 +311,8 @@ naming:
     forbiddenName: [ ]
   FunctionMaxLength:
     active: true
-    maximumFunctionNameLength: 30
-    excludes: [ '**/*Steps.kt' ]
+    maximumFunctionNameLength: 40
+    excludes: [ '**/*Test.kt', '**/*Steps.kt' ]
   FunctionMinLength:
     active: false
   FunctionNaming:
@@ -363,7 +363,7 @@ naming:
     maximumVariableNameLength: 30
   VariableMinLength:
     active: true
-    minimumVariableNameLength: 3
+    minimumVariableNameLength: 2
   VariableNaming:
     active: true
     variablePattern: '[a-z][A-Za-z0-9]*'
@@ -664,7 +664,7 @@ style:
     active: false
   ReturnCount:
     active: true
-    max: 1
+    max: 2
     excludedFunctions:
       - 'equals'
     excludeLabeled: false

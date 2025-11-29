@@ -78,7 +78,8 @@ tasks.withType<Detekt>().configureEach {
 }
 
 tasks.withType<Detekt>().configureEach {
-    // TODO set JDK for type resolution to b enabled (more rules)
+    // TODO set JDK for type resolution to be enabled (more rules)
+    // or actually should be done, as it is a jvm/kotlin project... but rules seem not to be active?!
 
 //    jvmTarget.set("1.8")
 //    jvmTarget = "1.8"
