@@ -10,7 +10,10 @@ private val log = logger {}
 
 @Suppress("UnusedReceiverParameter")
 fun Modules.persistenceImpl(config: DatabaseConfig) = module {
-    single<Database> { connectToDatabase(config) } // delay connection
+    single<Database> {
+        // TODO deal properly with connection fails java.sql.SQLException
+        connectToDatabase(config)
+    } // delay connection; check connection in health endpoint
     single<CrystalRepo> { CrystalExposedDboRepo(get()) }
 }
 

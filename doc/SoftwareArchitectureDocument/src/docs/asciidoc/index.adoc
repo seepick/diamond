@@ -64,7 +64,8 @@ See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subpr
 * `./gradlew :app:generateConfigDoc` - custom task which generates the asciidoc for the config table (available env vars)
 * `./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf`
 * `./gradlew test -PrunTestcontainersTests=true` - run only the tests requiring testcontainers (docker; oracle)
-* `./gradlew dependencyUpdates` - to check for outdated dependencies (help category)
+* `./gradlew dependencyUpdates` - to check for outdated dependencies (help category, using manes plugin)
+* `./gradlew publishImageToLocalRegistry` or `runDocker` (or `publishImage` once remote registry is configured)
 
 == Start Parameters
 

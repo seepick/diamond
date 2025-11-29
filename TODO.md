@@ -1,16 +1,22 @@
 Next
 =========================
 
+* [ ] Setup docker-compose (wire oracle, sftp; later wiremock; use ktor plugin's docker capabilities)
+
+* tag sftp test with testcontainers
+* ! remove DB-stub; only during test/local
+* [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
+* [ ] Implement endpoint which uses sftp
 
 Backlog
 -------------------------
 
-* ! remove DB-stub; only during test/local
-* ! docker-compose, start real application
+* [ ] cronjob running SFTP; can be triggered via endpoint
 * ! replace:
     * single<PostsExtern> { PostsExternStub() }
     * singleOf(::PostsExternStub) { bind<PostsExtern>() }
-* ! mini-playground; to try out things: kotest tags (testcontainers additivity)
+* [ ] playground subfolder with standalone porjects; try out things: kotest tags (testcontainers additivity),
+  ktor+cucumber (file issue)
 * [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
 * [ ] Docker compose, wiremock for posts api (used in e0.5e)
 * [ ] Log info at startup: log BANNER, incl. version, branch, build time
@@ -18,7 +24,6 @@ Backlog
 * [ ] Object mapper a la structmap for kotlin
 * [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
 * [ ] Write OpenAPI spec for own API
-* [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
 * [ ] e0.5e tests with docker, so not real backends
 * [ ] docker compose, wiremock for posts api (used in e0.5e)
 * [ ] List endpoints with pagination and sorting
@@ -86,6 +91,7 @@ Low
 No!
 -------------------------
 
+* custom Dockerfile to build image
 * crystal upload ftp
 * crystal POST enrich from posts
 * AsciiDoc to generate (and host) HTML (github pages)

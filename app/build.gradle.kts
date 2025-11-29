@@ -9,6 +9,29 @@ plugins {
     application
 }
 
+ktor {
+    docker {
+        localImageName.set("diamond")
+        imageTag.set("latest")
+        jreVersion.set(JavaVersion.VERSION_17)
+        // NO, this needs to be done by the "host"; by default mapping 8080:8080
+//        portMappings.set(listOf(
+//            io.ktor.plugin.features.DockerPortMapping(
+//                outsideDockerPort,
+//                insideDockerPort,
+//                io.ktor.plugin.features.DockerPortMappingProtocol.TCP
+//            )
+//        ))
+//        externalRegistry.set(
+//            io.ktor.plugin.features.DockerImageRegistry.dockerHub(
+//                appName = provider { "ktor-app" },
+//                username = providers.environmentVariable("DOCKER_HUB_USERNAME"),
+//                password = providers.environmentVariable("DOCKER_HUB_PASSWORD")
+//            )
+//        )
+    }
+}
+
 dependencies {
     implementation(project(":view:view-routing"))
     implementation(project(":domain:domain-logic-impl"))
