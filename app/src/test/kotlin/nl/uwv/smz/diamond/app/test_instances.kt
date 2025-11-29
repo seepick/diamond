@@ -22,7 +22,6 @@ fun Arb.Companion.serverConfig() = arbitrary {
 
 fun Arb.Companion.databaseConfig() = arbitrary {
     DatabaseConfig(
-        stubEnabled = boolean().bind(),
         jdbcUrl = string().bind(),
         username = string().bind(),
         password = Masked(string().bind()),

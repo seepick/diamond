@@ -13,7 +13,6 @@ import nl.uwv.smz.diamond.shared.logging.reconfigureLogback
 object LocalDiamondApp {
 
     private val dbStubConfig = DatabaseConfig(
-        stubEnabled = true,
         jdbcUrl = "",
         username = "",
         password = Secret(""),

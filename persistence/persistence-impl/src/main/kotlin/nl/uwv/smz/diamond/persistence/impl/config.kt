@@ -4,8 +4,6 @@ import com.sksamuel.hoplite.Masked
 import nl.uwv.smz.diamond.shared.config.ConfigProperty
 
 data class DatabaseConfig(
-    @ConfigProperty("Flag to switch from real implementation to a dev/test stub")
-    val stubEnabled: Boolean = false,
     @ConfigProperty("JDBC driver URL")
     val jdbcUrl: String,
     @ConfigProperty("DB username")

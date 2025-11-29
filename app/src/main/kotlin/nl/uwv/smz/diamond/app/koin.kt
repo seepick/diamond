@@ -6,7 +6,6 @@ import io.ktor.server.application.install
 import nl.uwv.smz.diamond.domain_logic_impl.domainLogicImpl
 import nl.uwv.smz.diamond.extern.impl.externImpl
 import nl.uwv.smz.diamond.persistence.impl.persistenceImpl
-import nl.uwv.smz.diamond.persistence.stub.persistenceStub
 import nl.uwv.smz.diamond.shared.common.Modules
 import nl.uwv.smz.diamond.view.controller_impl.ControllerConfig
 import nl.uwv.smz.diamond.view.controller_impl.controllerImpl
@@ -30,7 +29,7 @@ fun Application.installKoin(
 
 fun Modules.all(
     config: GlobalConfig,
-    externStub: Module? = null,
+    externStub: Module? = null, // FIXME NO! do a module override!
 ) = listOf(
     controllerImpl(
         ControllerConfig(
@@ -39,9 +38,6 @@ fun Modules.all(
         ),
     ),
     domainLogicImpl(),
-    when (config.env.database.stubEnabled) {
-        true -> persistenceStub()
-        false -> persistenceImpl(config.env.database)
-    },
+    persistenceImpl(config.env.database),
     externStub ?: externImpl(config.env.extern),
 )

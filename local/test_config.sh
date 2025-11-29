@@ -17,8 +17,8 @@ export KTOR_PORT=12
 OUTPUT=$(java -jar app/build/libs/diamond.jar printConfigOnly)
 
 EXPECTED_KTOR="ktor=KtorConfig(port=12)"
-EXPECTED_DB="database=DatabaseConfig(stubEnabled=false, jdbcUrl=db_url, username=db_user, password=****)"
-EXPECTED_EXTERN_SFTP="sftp=SftpConfig(remoteHost=sftpHost, port=22, username=sftpUser, authIsPassword=true, authPasswordOrPrivateKeyPath=sftpPass, knownHostsFilePath=knownHosts, strictHostChecking=true)"
+EXPECTED_DB="database=DatabaseConfig(jdbcUrl=db_url, username=db_user, password=****)"
+EXPECTED_EXTERN_SFTP="sftp=SftpConfig(remoteHost=sftpHost, port=22, username=sftpUser, authIsPassword=true, authPasswordOrPrivateKeyPath=****, knownHostsFilePath=knownHosts, strictHostChecking=true)"
 EXPECTED_EXTERN="extern=ExternConfig(postsServiceBaseUrl=postsUrl, $EXPECTED_EXTERN_SFTP)"
 EXPECTED="EnvConfig($EXPECTED_KTOR, $EXPECTED_DB, $EXPECTED_EXTERN)"
 

@@ -1,19 +1,15 @@
 Next
 =========================
 
-* ! remove DB-stub; only during test/local
-
 Backlog
 -------------------------
 
+* [ ] treat ktlint warnings as errors; breaking the build
 * [ ] e2e-test as standalone sub-project using Karate (Gradle profile; using docker-compose for now)
 * [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
 * fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
 * use SyncService to actually do something meaningful (verifable in tests)
 * [ ] cronjob running SFTP; can be triggered via endpoint
-* ! replace:
-    * single<PostsExtern> { PostsExternStub() }
-    * singleOf(::PostsExternStub) { bind<PostsExtern>() }
 * [ ] playground subfolder with standalone porjects; try out things: kotest tags (testcontainers additivity),
   ktor+cucumber (file issue)
 * [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
@@ -98,6 +94,7 @@ No!
 * AsciiDoc to generate (and host) HTML (github pages)
 * Whitelabel implementation for FE devs
     * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
+* there is no persistence-stub (in-memory DB is fast enough and we are in full control of it; thus no reason)
 
 Open Questions
 =========================
@@ -110,7 +107,6 @@ Open Questions
         * => YES< clear, verbosity wins! otherwise there WILL BE name clashes!
 * [ ] Persistence repos, returing domain-entity (port-adapter style) or DBO (plain)?
 * [ ] isolationMode = IsolationMode.InstancePerTest or default perSpec?
-* [ ] persistence-stub maybe not necessary? YES, most likely drop it
 * [ ] classes in *-impl make the internal, or good enough? (pollutes code like final...)
 * [ ] should the build be optimized for prod (local dev cumbersome) or for local dev (prod error-prone if not careful)
     * autoamted tests should cover for prod issues, so developer convience has precedence
@@ -183,7 +179,6 @@ V1
 * [x] Cucumber programatic logging (before all)
 * [x] Use Arrow's either
 * [x] CRUD operations until service (ApiError handling, JSON serialization)
-* [x] CRUD operations for stub persistence
 * [x] Setup Postman collection
 * [x] Generate Software Architecture Document with Asciidoc
 * [x] Test fixtures depedency (arrow, kotest; reusable arbs)

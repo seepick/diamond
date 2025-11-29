@@ -11,11 +11,6 @@
 |-
 |DB password
 
-|`DATABASE_STUBENABLED`
-|boolean
-|false
-|Flag to switch from real implementation to a dev/test stub
-
 |`DATABASE_USERNAME`
 |string
 |-
@@ -29,7 +24,7 @@
 |`EXTERN_SFTP_AUTHISPASSWORD`
 |boolean
 |-
-|Configure whether defined password or private key.
+|Whether using password or private key.
 
 |`EXTERN_SFTP_AUTHPASSWORDORPRIVATEKEYPATH`
 |string
@@ -39,27 +34,27 @@
 |`EXTERN_SFTP_KNOWNHOSTSFILEPATH`
 |string
 |-
-|SSH known hosts.
+|Path to SSH known hosts file.
 
 |`EXTERN_SFTP_PORT`
 |integer
 |22
-|SFTP port, usually 22
+|Port of the SFTP server.
 
 |`EXTERN_SFTP_REMOTEHOST`
 |string
 |-
-|SFTP remote host
+|Host of the SFTP server.
 
 |`EXTERN_SFTP_STRICTHOSTCHECKING`
 |boolean
 |true
-|Disable security check; do NOT activate in production; pretty please
+|Disable security check; do NOT activate in production; pretty please.
 
 |`EXTERN_SFTP_USERNAME`
 |string
 |-
-|Login username
+|Login username.
 
 |`KTOR_PORT`
 |integer
