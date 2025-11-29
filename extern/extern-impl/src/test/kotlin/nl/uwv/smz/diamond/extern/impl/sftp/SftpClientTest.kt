@@ -2,6 +2,7 @@ package nl.uwv.smz.diamond.extern.impl.sftp
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import nl.uwv.smz.diamond.shared.test.KoTags
 import java.nio.file.Files
 import java.util.UUID
 import kotlin.io.path.Path
@@ -9,6 +10,7 @@ import kotlin.io.path.exists
 import kotlin.io.path.isRegularFile
 
 class SftpClientTest : StringSpec({
+    tags(KoTags.testcontainersTag)
     val sftp = SftpExtension(SftpContainerConfig())
     extension(sftp)
 

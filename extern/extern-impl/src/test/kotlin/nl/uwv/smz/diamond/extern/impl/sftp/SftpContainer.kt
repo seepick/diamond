@@ -23,9 +23,10 @@ class SftpContainer(val config: SftpContainerConfig) : GenericContainer<SftpCont
 //            "/home/$user/upload/testcontainers",
 //        )
 
-        // TODO withEnv("SFTP_USERS", "$user:$password:1001::share") ???
         // user:pass[:e][:uid[:gid[:dir1[,dir2]...]]] ...,
+        // withEnv("SFTP_USERS", "$user:$password:1001::share")
         withEnv("SFTP_USERS", "${config.username}::1001::share")
+
         withCommand("/bin/sh", "-c", "exec /usr/sbin/sshd -D -e")
         // withExposedPorts(port) no => see: startOrReuseUniqueInstance
         // setPortBindings(List.of("22:22"))

@@ -17,14 +17,13 @@ class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener, After
     private lateinit var container: SftpContainer
 
     override suspend fun beforeTest(testCase: TestCase) {
-        container =
-            SftpContainer(config).apply {
-                startOrReuseUniqueInstance(
-                    tmpFolderName = UUID.randomUUID().toString(),
-                    exposedPorts = intArrayOf(config.port),
-                    logger = log.toSlf4j(),
-                )
-            }
+        container = SftpContainer(config).apply {
+            startOrReuseUniqueInstance(
+                tmpFolderName = UUID.randomUUID().toString(),
+                exposedPorts = intArrayOf(config.port),
+                logger = log.toSlf4j(),
+            )
+        }
     }
 
     override suspend fun afterTest(testCase: TestCase, result: TestResult) {

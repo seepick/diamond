@@ -1,7 +1,6 @@
 Next
 =========================
 
-* tag sftp test with testcontainers
 * ! remove DB-stub; only during test/local
 
 Backlog
