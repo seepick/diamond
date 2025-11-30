@@ -6,7 +6,9 @@ object Constants {
 
     @Suppress("EnumNaming", "EnumEntryName", "EnumEntryNameCase")
     enum class GradleProperty(val value: String) {
-        testcontainers("runTestcontainersTests")
+        appVersion("diamond_version"),
+        testcontainers("runTestcontainersTests"),
+        etests("runEtests"),
     }
 
     object Fqn {
@@ -14,6 +16,4 @@ object Constants {
         const val kotestProjectConfig = "nl.uwv.smz.diamond.shared.test.DiamondKotestProjectConfig"
         const val configDocWriter = "nl.uwv.smz.diamond.app.ConfigDocWriterApp"
     }
-
 }
-

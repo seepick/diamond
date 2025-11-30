@@ -2,21 +2,20 @@ package nl.uwv.smz.diamond.extern.impl.sftp
 
 import com.sksamuel.hoplite.Secret
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
-import io.kotest.core.listeners.AfterTestListener
-import io.kotest.core.listeners.BeforeTestListener
-import io.kotest.core.test.TestCase
-import io.kotest.engine.test.TestResult
+import io.kotest.core.listeners.AfterSpecListener
+import io.kotest.core.listeners.BeforeSpecListener
+import io.kotest.core.spec.Spec
 import nl.uwv.smz.diamond.extern.api.sftp.SftpClient
 import nl.uwv.smz.diamond.extern.api.sftp.SftpConfig
 import nl.uwv.smz.diamond.extern.impl.startOrReuseUniqueInstance
 import nl.uwv.smz.diamond.extern.impl.toSlf4j
 import java.util.UUID
 
-class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener, AfterTestListener {
+class SftpExtension(val config: SftpContainerConfig) : BeforeSpecListener, AfterSpecListener {
     private val log = logger {}
     private lateinit var container: SftpContainer
 
-    override suspend fun beforeTest(testCase: TestCase) {
+    override suspend fun beforeSpec(spec: Spec) {
         container = SftpContainer(config).apply {
             startOrReuseUniqueInstance(
                 tmpFolderName = UUID.randomUUID().toString(),
@@ -26,7 +25,7 @@ class SftpExtension(val config: SftpContainerConfig) : BeforeTestListener, After
         }
     }
 
-    override suspend fun afterTest(testCase: TestCase, result: TestResult) {
+    override suspend fun afterSpec(spec: Spec) {
         container.close()
     }
 

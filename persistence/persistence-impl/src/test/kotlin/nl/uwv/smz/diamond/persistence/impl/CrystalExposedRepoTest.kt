@@ -2,6 +2,7 @@ package nl.uwv.smz.diamond.persistence.impl
 
 import io.kotest.assertions.arrow.core.shouldBeLeft
 import io.kotest.assertions.arrow.core.shouldBeRight
+import io.kotest.core.annotation.RequiresTag
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.describeSpec
 import io.kotest.matchers.collections.shouldBeEmpty
@@ -45,8 +46,8 @@ class CrystalExposedDaoRepoInmemoryTest : DescribeSpec({
     include(crystalRepoTest(dbListener, { CrystalExposedDaoRepo(it) }))
 })
 
+@RequiresTag(KoTags.testcontainersName)
 class CrystalExposedDboRepoTestcontainersTest : DescribeSpec({
-    tags(KoTags.testcontainersTag)
     val dbListener = TestcontainersDbListener()
     extension(dbListener)
     include(crystalRepoTest(dbListener, { CrystalExposedDboRepo(it) }))

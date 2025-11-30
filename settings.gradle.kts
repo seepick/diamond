@@ -25,6 +25,7 @@ include(
     "shared:shared-test",
     "shared:shared-testKtor",
     "itest",
+    "etest",
     ":doc:SoftwareArchitectureDocument",
 )
 

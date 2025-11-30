@@ -54,6 +54,7 @@ Low
 * [ ] OpenTelemetry, Micrometer
 * [ ] Write KDoc for general/shared stuff
 * [ ] Gatling load tests: https://github.com/gatling/gatling-gradle-plugin-demo-kotlin
+    * also with karate available: https://github.com/karatelabs/karate/tree/master/karate-gatling
 * [ ] Run testcontainers test on GitHub
 * [ ] Use OpenAPI spec to custom-generate Ktor routing skeleton
 * [ ] Use OpenAPI spec to custom-generate client (client-SDK); write full tests to verify
@@ -107,6 +108,7 @@ For Real
 -------------------------
 
 * switch cucumber-en to cucumber-nl
+* investigate GitHub test reporter: https://github.com/marketplace/actions/test-reporter
 
 Open Questions
 =========================

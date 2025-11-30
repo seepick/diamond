@@ -29,7 +29,7 @@ object LocalDiamondApp {
     // TODO maybe per user?! so can switch between fast stub, regular H2, or heavy oracle?!
     private val localEnvConfig = EnvConfig(
         database = dbStubConfig,
-        ktor = KtorConfig(port = 8000),
+        ktor = KtorConfig(port = 8080),
         extern = ExternConfig(
             postsServiceBaseUrl = "local_undefined",
             sftp = sftp,

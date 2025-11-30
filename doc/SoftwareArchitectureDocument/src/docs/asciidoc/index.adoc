@@ -54,9 +54,12 @@ See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subpr
 
 === Gradle Properties
 
+Pass them either as `-P` (precendence) or `-D`.
+
 * `diamond_version` - application version, defaults to `0` if not specified
 ** displayed in info endpoint, used in generated documentation
 * `runTestcontainersTests` - see task below
+* `runEtests` - see task below
 
 === Gradle Tasks
 
@@ -64,6 +67,7 @@ See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subpr
 * `./gradlew :app:generateConfigDoc` - custom task which generates the asciidoc for the config table (available env vars)
 * `./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf`
 * `./gradlew test -PrunTestcontainersTests=true` - run only the tests requiring testcontainers (docker; oracle)
+* `./gradlew test -PrunEtests=true` - run the Karate tests located in the `etest` subproject
 * `./gradlew dependencyUpdates` - to check for outdated dependencies (help category, using manes plugin)
 * `./gradlew publishImageToLocalRegistry` or `runDocker` (or `publishImage` once remote registry is configured)
 

@@ -7,8 +7,8 @@ plugins {
     id("org.openapi.generator") version "7.0.1" apply false
 }
 
-val appVersion = project.properties["diamond_version"]?.toString() ?: "0"
-gradleLog("appVersion=[$appVersion]")
+val appVersion = lookupGradleProperty(Constants.GradleProperty.appVersion) ?: "0"
+gradleLog("appVersion passed via diamond_version property is: [$appVersion]")
 
 allprojects {
     group = "nl.uwv.smz.diamond"
