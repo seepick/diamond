@@ -38,6 +38,8 @@ dependencies {
 // TODO generation should happen in an external library (different git repo)
 // actually... the service-providers should provide it to us ;)
 openApiGenerate {
+    // no way to disable donation banner :-/
+    // see: https://github.com/OpenAPITools/openapi-generator/issues/8982
     inputSpec.set("${project.projectDir}/src/main/specs/postsAPI.yml")
     generatorName.set("java")
     // https://openapi-generator.tech/docs/generators/java/

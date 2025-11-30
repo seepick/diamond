@@ -7,14 +7,16 @@ import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
 import io.mockk.every
 import io.mockk.mockk
-import nl.uwv.smz.diamond.view.controller_api.InfoController
+import nl.uwv.smz.diamond.shared.testKtor.readBody
+import nl.uwv.smz.diamond.view.controllerApi.InfoController
 import nl.uwv.smz.diamond.view.model.InfoDto
 import java.time.LocalDateTime
 
 class InfoRouteTest : StringSpec({
 
     val dto = InfoDto(
-        version = "test", buildTime = LocalDateTime.of(2000, 1, 1, 12, 42)
+        version = "test",
+        buildTime = LocalDateTime.of(2000, 1, 1, 12, 42),
     )
     var controller: InfoController = mockk()
 

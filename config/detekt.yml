@@ -104,8 +104,8 @@ complexity:
       - 'run'
       - 'use'
       - 'with'
-  LabeledExpression:
-    active: true
+  LabeledExpression: # useful for shadowed this-reference in nested lambdas for extension functions
+    active: false
     ignoredLabels: [ ]
   LargeClass:
     active: true

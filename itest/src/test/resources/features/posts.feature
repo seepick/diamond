@@ -2,7 +2,7 @@ Feature: Posts endpoint
 
   Scenario: Get empty posts
     When get posts
-    Then response status code is 200
+    Then the response status code is 200
     And response posts are empty
 
   Scenario: Get posts
@@ -11,8 +11,8 @@ Feature: Posts endpoint
       | 1  | 11      | foo   | false     |
       | 2  | 22      | bar   |           |
     When get posts
-    Then response status code is 200
-    And response posts are
+    Then the response status code is 200
+    And the response posts are
       | id | title |
       | 1  | foo   |
       | 2  | bar   |

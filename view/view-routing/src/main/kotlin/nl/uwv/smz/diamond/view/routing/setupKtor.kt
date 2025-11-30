@@ -9,7 +9,12 @@ import kotlinx.serialization.json.Json
 
 private val log = logger {}
 
-fun Application.installRoutingsAndPlugins() {
+data class RoutingSetting(
+    /** Disable for faster speed and less bandwidth usage. */
+    val prettyPrint: Boolean = false
+)
+
+fun Application.installRoutingsAndPlugins(setting: RoutingSetting) {
     log.info { "Installing Ktor routings and plugins" }
     installHomepageRouting()
     installInfoRouting()
@@ -17,18 +22,18 @@ fun Application.installRoutingsAndPlugins() {
     installPostsRouting()
     installSyncRouting()
 
-    installContentNegotiation()
+    installContentNegotiation(setting)
     installExceptionHandling()
 }
 
-internal fun Application.installContentNegotiation() {
+internal fun Application.installContentNegotiation(setting: RoutingSetting) {
     install(ContentNegotiation) {
-        // TODO disable detect warning here!
-        json(Json {
-            serializersModule
-            prettyPrint = true
-            isLenient = false
-            ignoreUnknownKeys = false // be super strict (?)
-        })
+        json(
+            Json {
+                prettyPrint = setting.prettyPrint
+                isLenient = false // be strict
+                ignoreUnknownKeys = false // be strict to frontend; fail fast, fail early
+            },
+        )
     }
 }

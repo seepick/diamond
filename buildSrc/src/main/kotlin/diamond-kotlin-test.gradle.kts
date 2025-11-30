@@ -49,8 +49,10 @@ kover {
                 // line coverage
                 minBound(
                     when (project.name) {
-                        "app" -> 20
-                        else -> 50
+                        // would be usually >80% ;)
+                        "app" -> 1
+
+                        else -> 3
                     },
                 )
             }

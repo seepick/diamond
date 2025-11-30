@@ -1,46 +1,54 @@
 Next
 =========================
 
+==> focus on MWP MVP ;) showcase that it's possible, don't make it "klaar", go fast forward, PoC prototype spike only
+==> redo basic tech things, see how they are done / can be done better / differently with new techstack
+
+* [ ] Support pagination
+* [ ] Support sorting (dot-syntax for deep objects)
+* [ ] Support filtering (dot-syntax for deep objects)
+
 Backlog
 -------------------------
 
-* [ ] treat ktlint warnings as errors; breaking the build
-* [ ] e2e-test as standalone sub-project using Karate (Gradle profile; using docker-compose for now)
-* [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
-* fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
-* use SyncService to actually do something meaningful (verifable in tests)
-* [ ] cronjob running SFTP; can be triggered via endpoint
-* [ ] playground subfolder with standalone porjects; try out things: kotest tags (testcontainers additivity),
-  ktor+cucumber (file issue)
-* [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
-* [ ] Docker compose, wiremock for posts api (used in e0.5e)
-* [ ] Log info at startup: log BANNER, incl. version, branch, build time
-* [ ] Kotlin scheduler (jobr?)
-* [ ] Object mapper a la structmap for kotlin
+* change postsAPI to something meaningful
+* in itest, use programmatic tests too (mock single bean in koin; more fine control)
+* [ ] API versioning
 * [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
-* [ ] Write OpenAPI spec for own API
-* [ ] e0.5e tests with docker, so not real backends
-* [ ] docker compose, wiremock for posts api (used in e0.5e)
-* [ ] List endpoints with pagination and sorting
-* [ ] FIX: run testcointaners test addititively (not exclusively)
-* [ ] Production ready DB (inject properties via env)
-* [ ] Hikari connection pooling
-* [ ] Build docker image (Gradle profile)
-* [ ] Docker-compose (app + dependencies: DB, SFTP, MQ)
+* [ ] e2e-test as standalone sub-project using Karate (Gradle profile; using docker-compose for now)
+* [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
+* [ ] playground subfolder with standalone porjects;
+    * [ ] FIX: run testcointaners test addititively (not exclusively)
+    * [ ] ktor+cucumber, decoupled test application
+* [ ] Object mapper a la structmap for kotlin
+* [ ] Write OpenAPI spec for own API (how to verify contract automatically?!)
+* [ ] setup MQ
 * [ ] Bean validation (based on OpenAPI spec)
+* [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
+    * [ ] Docker compose, wiremock for posts api (used in e0.5e)
 * [ ] Write SAD sub-projects explanation
 * [ ] Write some ADRs
-* [ ] ktlint direct or via detekt? (definitely need it to fail!) https://github.com/JLLeitschuh/ktlint-gradle
-* [ ] remove leading slash "/" from config paths/urls
+* [ ] Health endpoint (ping all backends available, maybe response time)
+* [ ] feature flags support
+* [ ] micrometer install(MicrometerMetrics) { registry = SimpleMeterRegistry() }
+* [ ] sftp coroutine IO
+* [ ] investigate: https://json-schema.org
 
 Low
 -------------------------
 
+* [ ] Hikari connection pooling
+* [ ] Log info at startup: log BANNER, incl. version, branch, build time
+* fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
+* use SyncService to actually do something meaningful (verifable in tests)
+* [ ] ktlint direct or via detekt? (definitely need it to fail!) https://github.com/JLLeitschuh/ktlint-gradle
+* [ ] remove leading slash "/" from config paths/urls
+* [ ] treat ktlint warnings as errors; breaking the build
+* [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
 * [ ] store BSN as a number in DB (heavy queries/joins)
 * [ ] make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
 * [ ] asciidoc should fail the build if stuff not found
 * [ ] LDAP integration
-* [ ] API versioning (path based; or accept header?)
 * [ ] Provide swagger HTML endpoint
 * [ ] OpenTelemetry, Micrometer
 * [ ] Write KDoc for general/shared stuff
@@ -68,7 +76,6 @@ Low
   itself; it only gets a user ID and assumes it has been done already)
 * [ ] Can Asciidoc eat (ADR) markdown files? at least create create PDF out of them
 * [ ] Arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
-* [ ] Health endpoint (ping all backends available, maybe response time)
 * [ ] Generate war/docker image gradle task (document in readme.md)
 * [ ] Configure OWASP (create gradle profile, document it in README.md)
 * [ ] Fine tune detekt rules
@@ -90,11 +97,15 @@ No!
 
 * custom Dockerfile to build image
 * crystal upload ftp
-* crystal POST enrich from posts
 * AsciiDoc to generate (and host) HTML (github pages)
 * Whitelabel implementation for FE devs
     * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
 * there is no persistence-stub (in-memory DB is fast enough and we are in full control of it; thus no reason)
+
+For Real
+-------------------------
+
+* switch cucumber-en to cucumber-nl
 
 Open Questions
 =========================
@@ -206,5 +217,5 @@ V1
 * [x] Cucumber rewiring application through koin (extern-stub); fiddle around with its internals/intestines ;)
 * [x] Cucumber table handling via Data Class Generator (java "only")
 * [x] Kotlin coverage verified with kover (no jacoco)
-* [x] Setup docker-compose (oracle, sftp)
+* [x] Setup Dockerfile and docker-compose (oracle, sftp)
 * [x] Implement PUT /sync endpoint which uses the sftp connection

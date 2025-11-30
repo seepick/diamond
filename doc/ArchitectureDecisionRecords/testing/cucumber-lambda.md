@@ -1,0 +1,12 @@
+* use more kotlin-idiomatic approach by the java8 lambda functionality
+    * instead the old fashioned annotationstyle
+* both approaches are fully supported by the intellij-plugin
+    * click into declaration possible from feature files
+
+Resources
+===
+
+* https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-java8/README.md
+*
+
+Example: https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-kotlin-java8/src/test/kotlin/io/cucumber/kotlin/LambdaStepDefinitions.kt

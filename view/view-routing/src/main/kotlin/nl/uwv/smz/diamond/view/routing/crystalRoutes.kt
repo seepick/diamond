@@ -8,7 +8,7 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.put
 import io.ktor.server.routing.routing
-import nl.uwv.smz.diamond.view.controller_api.CrystalController
+import nl.uwv.smz.diamond.view.controllerApi.CrystalController
 import nl.uwv.smz.diamond.view.model.CrystalCreateDto
 import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
 import org.koin.ktor.ext.inject
@@ -20,11 +20,12 @@ internal fun Application.installCrystalRouting() {
     routing {
         get("/crystals") {
             log.info { "GET /crystals" }
-            call.handle(controller.findAll())
+            val pageRequest = call.request.readPageRequestDto()
+            call.handle(controller.findAll(pageRequest))
         }
         get("/crystals/{id}") {
             val crystalId = call.parameters["id"]!!
-            log.info { "GET /crystals/${crystalId}" }
+            log.info { "GET /crystals/$crystalId" }
             call.handle(controller.findSingle(crystalId))
         }
         post("/crystals") {

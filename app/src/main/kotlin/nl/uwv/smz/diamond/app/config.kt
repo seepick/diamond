@@ -9,13 +9,16 @@ import com.sksamuel.hoplite.addResourceSource
 import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 import nl.uwv.smz.diamond.shared.config.SubConfig
+import nl.uwv.smz.diamond.view.routing.RoutingSetting
 import java.time.LocalDateTime
 
-data class GlobalConfig(
+data class GlobalConfiguration(
     /** Read via hoplite from environment variables (or system properties). */
     val env: EnvConfig,
     /** Injected variables from Gradle build. */
     val build: BuildProperties,
+    /** Static settings configured only internally via code (prod/test). */
+    val routingSetting: RoutingSetting = RoutingSetting(),
 )
 
 data class EnvConfig(

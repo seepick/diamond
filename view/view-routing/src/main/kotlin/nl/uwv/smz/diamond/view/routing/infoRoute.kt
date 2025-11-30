@@ -5,7 +5,7 @@ import io.ktor.server.application.Application
 import io.ktor.server.response.respond
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import nl.uwv.smz.diamond.view.controller_api.InfoController
+import nl.uwv.smz.diamond.view.controllerApi.InfoController
 import org.koin.ktor.ext.inject
 
 private val log = logger {}

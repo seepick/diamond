@@ -12,13 +12,15 @@ import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.next
+import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
+import nl.uwv.smz.diamond.domain.model.PageRequest
 import nl.uwv.smz.diamond.domain.model.crystal
 import nl.uwv.smz.diamond.domain.model.crystalCreate
 import nl.uwv.smz.diamond.domain.model.crystalId
 import nl.uwv.smz.diamond.domain.model.crystalUpdate
-import nl.uwv.smz.diamond.domainFailure.Failure
+import nl.uwv.smz.diamond.domain.model.default
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.persistence.impl.testInfra.DbListener
 import nl.uwv.smz.diamond.persistence.impl.testInfra.InmemoryDbListener
@@ -76,12 +78,12 @@ fun crystalRepoTest(
 
     describe("select all") {
         it("Given nothing Then return empty") {
-            repo().selectAll().shouldBeRight().shouldBeEmpty()
+            repo().selectAll(PageRequest.default()).shouldBeRight().shouldBeEmpty()
         }
         it("Given single Then return it") {
             insert(crystal)
 
-            repo().selectAll().shouldBeRight().shouldBeSingleton().first() shouldBeEqual crystal
+            repo().selectAll(PageRequest.default()).shouldBeRight().shouldBeSingleton().first() shouldBeEqual crystal
         }
     }
     describe("select by ID") {

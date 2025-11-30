@@ -2,5 +2,5 @@ Feature: feature name
 
   Scenario: scenario name
     When get homepage
-    Then response status code is 200
-    And response body is "Hello Service!"
+    Then the response status code is 200
+    And the response body is "Hello Service!"

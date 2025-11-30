@@ -1,0 +1,54 @@
+Approaches
+============
+
+Offset
+------------
+
+* offset, limit; skip, take
+* based upon it can implement page-based pagination (could support both actually)
+* bad for big datasets; DB has to scan through rows
+
+Other
+------------
+
+* Keyset pagination, seek method
+    * for example via `since_id` and a limit/take param
+    * only for IDs with auto-increment, or timestamps
+* Time-based pagination
+    * for analytics/log monitoring only
+* Cursor-based pagination
+    * like a bookmark, a backend-determined value not necessarily linked to any data fields (contrary to keyset)
+    * more complex to implement
+    * also return the "next cursor" in the response
+
+Best Practices
+============
+
+* clearly document pagination mechanism (openAPI, provide examples)
+* don't implement pagination for: A) small datasets and B) fast changing data
+* use standard names
+* provide page metadata:
+    * total pages, current page
+    * total items, items in page, size (request page size)
+    * has more
+* provide navigation _links (HATEOES), next/previous/first/last
+    * either in metadata payload
+    * or in header: Link: <http://localhost:8080/api/books/paged?page=1&size=10>; rel="self"
+
+* reuse test logic: each paginated endpoint needs to have the same set of tests
+
+Questions
+============
+
+* either use or at least get "inspired" by: https://github.com/perracodex/exposed-pagination
+* how strict or lenient to be?
+    * negative numbers (skip -1, take 0)?
+    * take more than existing (page > totalPages)
+* restrict a maximum take/limit param?
+
+Resources
+============
+
+* https://www.merge.dev/blog/rest-api-pagination
+* https://www.merge.dev/blog/api-pagination-best-practices
+* https://restfulapi.net/api-pagination-sorting-filtering/

@@ -7,7 +7,7 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import nl.uwv.smz.diamond.domainFailure.ErrorCode
+import nl.uwv.smz.diamond.domain.failure.ErrorCode
 
 @Serializable
 data class ApiErrorDto(

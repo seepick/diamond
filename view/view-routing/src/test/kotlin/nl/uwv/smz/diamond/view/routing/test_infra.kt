@@ -28,11 +28,13 @@ fun viewTest(
 fun ApplicationTestBuilder.setupTestClient() {
     client = createClient {
         install(ContentNegotiation) {
-            json(Json {
-                prettyPrint = true
-                isLenient = true
-                ignoreUnknownKeys = true // TODO or be super strict (?)
-            })
+            json(
+                Json {
+                    prettyPrint = true
+                    isLenient = true
+                    ignoreUnknownKeys = true
+                },
+            )
         }
     }
 }
@@ -43,11 +45,13 @@ fun ApplicationTestBuilder.setupApplication(
 ) {
     application {
         install(KoinIsolated) {
-            modules(module {
-                setupKoin()
-            })
+            modules(
+                module {
+                    setupKoin()
+                },
+            )
         }
-        installRoutingsAndPlugins()
+        installRoutingsAndPlugins(RoutingSetting(prettyPrint = true))
         additionalSetup()
     }
 }

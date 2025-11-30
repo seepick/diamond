@@ -3,7 +3,7 @@ package nl.uwv.smz.diamond.view.routing
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.equals.shouldBeEqual
 import kotlinx.serialization.json.Json
-import nl.uwv.smz.diamond.domainFailure.ErrorCode
+import nl.uwv.smz.diamond.domain.failure.ErrorCode
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 class ApiErrorDtoTest : StringSpec({

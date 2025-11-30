@@ -20,7 +20,7 @@ object Ktor {
     private val log = logger {}
 
     fun prepare(
-        config: GlobalConfig,
+        config: GlobalConfiguration,
         factory: ApplicationEngineFactory<*, *>,
         externStub: Module?,
     ): KtorServer {
@@ -41,11 +41,11 @@ object Ktor {
 
 /** Visible for integration test setup */
 fun Application.setupDiamondKtor(
-    config: GlobalConfig,
+    config: GlobalConfiguration,
     externStub: Module?,
 ) {
     installKoin(config, externStub)
-    installRoutingsAndPlugins()
+    installRoutingsAndPlugins(config.routingSetting)
 }
 
 data class KtorConfig(

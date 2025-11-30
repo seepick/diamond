@@ -7,10 +7,13 @@ import io.kotest.property.arbitrary.int
 import io.kotest.property.arbitrary.uuid
 import kotlin.uuid.toKotlinUuid
 
+fun PageRequest.Companion.default() =
+    PageRequest(skip = 0, take = 10).shouldBeRight()
+
 fun Arb.Companion.crystal() = arbitrary {
     Crystal(
         id = crystalId().bind(),
-        weight = gram().bind()
+        weight = gram().bind(),
     )
 }
 

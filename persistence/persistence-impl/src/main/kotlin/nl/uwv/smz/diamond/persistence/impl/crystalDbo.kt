@@ -8,6 +8,7 @@ import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Gram
+import nl.uwv.smz.diamond.domain.model.PageRequest
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.persistence.impl.CrystalTable.id
 import org.jetbrains.exposed.sql.Database
@@ -24,12 +25,13 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
 
     private val log = logger {}
 
-    override suspend fun selectAll() = either {
+    override suspend fun selectAll(pageRequest: PageRequest) = either {
         suspendTransaction(db) {
             log.debug { "select all" }
             CrystalTable.selectAll().map { row ->
+                // FIXME implement DB level pagination
                 Crystal.byRow(row).bind()
-            }
+            }.toPage(pageRequest)
         }
     }
 
@@ -75,7 +77,7 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
             val deletedCount = CrystalTable.deleteWhere {
                 CrystalTable.id eq id.value.toJavaUuid()
             }
-            ensureSingleAffected(deletedCount, id.value) { Unit }.bind()
+            ensureSingleAffected(deletedCount, id.value) { }.bind()
         }
     }
 }

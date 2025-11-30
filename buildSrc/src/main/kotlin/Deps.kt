@@ -71,6 +71,9 @@ object Deps {
     object testing {
         val mockk = "io.mockk:mockk:1.14.6"
         val wiremock = "org.wiremock:wiremock:3.13.2"
+        val jsonPath = "com.jayway.jsonpath:json-path:2.10.0"
+        val jsonPathHamcrestAssert = "com.jayway.jsonpath:json-path-assert:2.10.0" // hamcrest matchers?!
+        val hamcrest = "org.hamcrest:hamcrest:3.0"
 
         object junit {
             val platformSuite = "org.junit.platform:junit-platform-suite:${Versions.testing.junit}"
@@ -101,6 +104,7 @@ object Deps {
             private fun make(artifact: String) = "io.cucumber:cucumber-$artifact:${Versions.testing.cucumber}"
 
             val java = make("java")
+            val java8 = make("java8") // lambdas, nice
             val junitEngine = make("junit-platform-engine")
             val picocontainer = make("picocontainer")
         }

@@ -7,7 +7,7 @@ import io.ktor.server.request.httpMethod
 import io.ktor.server.request.path
 import io.ktor.server.response.respond
 import io.ktor.server.routing.RoutingCall
-import nl.uwv.smz.diamond.domainFailure.Failure
+import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 private val log = logger {}

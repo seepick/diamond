@@ -33,7 +33,7 @@ ktor {
 }
 
 dependencies {
-    implementation(project(":view:view-routing"))
+    api(project(":view:view-routing"))
     implementation(project(":domain:domain-logic-impl"))
     implementation(project(":view:controller-impl"))
     implementation(project(":extern:extern-impl"))

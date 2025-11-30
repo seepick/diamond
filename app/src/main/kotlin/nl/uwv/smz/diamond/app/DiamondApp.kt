@@ -30,7 +30,7 @@ object DiamondApp {
         defaultLog()
         val log = logger {}
         log.info { "Starting application and wait" }
-        val config = GlobalConfig(
+        val config = GlobalConfiguration(
             env = defaultEnvConfig(),
             build = readBuildProperties(),
         )

@@ -13,19 +13,27 @@ import io.kotest.property.arbitrary.uuid
 import io.ktor.client.HttpClient
 import io.ktor.client.request.delete
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.client.request.put
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
 import io.mockk.coEvery
 import io.mockk.mockk
-import nl.uwv.smz.diamond.domainFailure.Failure
-import nl.uwv.smz.diamond.view.controller_api.CrystalController
+import nl.uwv.smz.diamond.domain.failure.Failure
+import nl.uwv.smz.diamond.shared.testKtor.readBody
+import nl.uwv.smz.diamond.shared.testKtor.setJsonBody
+import nl.uwv.smz.diamond.view.controllerApi.CrystalController
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 import nl.uwv.smz.diamond.view.model.CrystalCreateDto
 import nl.uwv.smz.diamond.view.model.CrystalDto
 import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
+import nl.uwv.smz.diamond.view.model.PageDto
+import nl.uwv.smz.diamond.view.model.PageMetaDto
+import nl.uwv.smz.diamond.view.model.PageRequestDto
 import kotlin.uuid.Uuid
+
+fun PageRequestDto.Companion.undefined() = PageRequestDto(null, null)
 
 class CrystalRouteTest : DescribeSpec({
 
@@ -47,21 +55,26 @@ class CrystalRouteTest : DescribeSpec({
     }
 
     describe("GET /crystals") {
-        it("Given controller returns a DTO Then ok and returned") {
-            coEvery { controller.findAll() } returns listOf(dto).right()
+        it("Given controller returns a DTO When use page params Then ok and returned") {
+            val pageRequest = PageRequestDto("1", "5")
+            val page = PageDto(PageMetaDto(2, 6, false), items = listOf(dto))
+            coEvery { controller.findAll(pageRequest) } returns page.right()
 
             crystalTest { client ->
-                val response = client.get("/crystals")
+                val response = client.get("/crystals") {
+                    parameter("skip", 1)
+                    parameter("take", 5)
+                }
 
                 response.status shouldBeEqual HttpStatusCode.OK
-                response.readBody<List<CrystalDto>>() shouldBeEqual listOf(dto)
+                response.readBody<PageDto<CrystalDto>>() shouldBeEqual page
             }
         }
     }
 
     describe("GET /crystals/{id}") {
         it("Given controller returns a DTO Then ok and returned") {
-            coEvery { controller.findSingle(dto.id) } returns dto.right()
+            coEvery { controller.findSingle(dto.id.toString()) } returns dto.right()
 
             crystalTest { client ->
                 val response = client.get("/crystals/${dto.id}")
@@ -94,7 +107,7 @@ class CrystalRouteTest : DescribeSpec({
                 response.status shouldBeEqual HttpStatusCode.BadRequest
                 response.readBody<ApiErrorDto>() shouldBeEqual ApiErrorDto(
                     code = failure.code,
-                    message = failure.message
+                    message = failure.message,
                 )
             }
         }
@@ -102,7 +115,7 @@ class CrystalRouteTest : DescribeSpec({
 
     describe("PUT /crystals/{id}") {
         it("Given controller returns DTO Then ok and DTO returned") {
-            coEvery { controller.update(dto.id, updateDto) } returns dto.right()
+            coEvery { controller.update(dto.id.toString(), updateDto) } returns dto.right()
 
             crystalTest { client ->
                 val response = client.put("/crystals/${dto.id}") {
@@ -120,7 +133,7 @@ class CrystalRouteTest : DescribeSpec({
             coEvery { controller.delete(crystalId.toString()) } returns Unit.right()
 
             crystalTest { client ->
-                val response = client.delete("/crystals/${crystalId}")
+                val response = client.delete("/crystals/$crystalId")
 
                 response.status shouldBeEqual HttpStatusCode.OK
                 response.bodyAsText().shouldBeEmpty()
@@ -130,19 +143,18 @@ class CrystalRouteTest : DescribeSpec({
     }
 })
 
-
 fun Arb.Companion.kotlinUuid() = arbitrary {
     Uuid.parse(Arb.uuid().bind().toString())
 }
 
 fun Arb.Companion.crystalCreateDto() = arbitrary {
     CrystalCreateDto(
-        weightInGram = int(1..5000).bind()
+        weightInGram = int(1..5000).bind(),
     )
 }
 
 fun Arb.Companion.crystalUpdateDto() = arbitrary {
     CrystalUpdateDto(
-        weightInGram = int(1..5000).bind()
+        weightInGram = int(1..5000).bind(),
     )
 }

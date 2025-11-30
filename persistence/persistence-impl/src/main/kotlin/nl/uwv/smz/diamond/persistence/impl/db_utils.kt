@@ -5,7 +5,7 @@ import arrow.core.left
 import arrow.core.raise.either
 import arrow.core.right
 import kotlinx.coroutines.Dispatchers
-import nl.uwv.smz.diamond.domainFailure.Failure
+import nl.uwv.smz.diamond.domain.failure.Failure
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction

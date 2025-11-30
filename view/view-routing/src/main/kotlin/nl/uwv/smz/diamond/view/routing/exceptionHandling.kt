@@ -8,7 +8,7 @@ import io.ktor.server.plugins.statuspages.StatusPages
 import io.ktor.server.request.httpMethod
 import io.ktor.server.request.uri
 import io.ktor.server.response.respond
-import nl.uwv.smz.diamond.domainFailure.ErrorCode
+import nl.uwv.smz.diamond.domain.failure.ErrorCode
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 private val log = logger {}

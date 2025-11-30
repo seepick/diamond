@@ -14,7 +14,7 @@ dependencies {
     implementation(Deps.ktor.server.statusPages)
 
     testImplementation(project(":shared:shared-test"))
+    testImplementation(project(":shared:shared-testKtor"))
     testImplementation(Deps.ktor.client.contentNegotiation)
     testImplementation(Deps.ktor.server.testHost)
 }
-

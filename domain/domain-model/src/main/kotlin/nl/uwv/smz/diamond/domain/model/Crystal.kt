@@ -3,7 +3,7 @@ package nl.uwv.smz.diamond.domain.model
 import arrow.core.Either
 import arrow.core.raise.either
 import arrow.core.raise.ensure
-import nl.uwv.smz.diamond.domainFailure.Failure
+import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.shared.common.eitherParse
 import kotlin.uuid.Uuid
 
@@ -31,7 +31,11 @@ value class CrystalId(val value: Uuid) {
         // make sure BadDataFailure is mapped differently for incoming request (400 Bad Request)
         // and internal outgoing data like corrupt DB entries (500 Internal Error)
         operator fun invoke(value: String): Either<Failure.CorruptDataFailure, CrystalId> = either {
-            CrystalId(Uuid.eitherParse(value).mapLeft { Failure.CorruptDataFailure(it.message ?: "") }.bind())
+            CrystalId(
+                Uuid.eitherParse(value)
+                    .mapLeft { Failure.CorruptDataFailure("Invalid UUID: [$value]", it) }
+                    .bind(),
+            )
         }
 
         fun random() = CrystalId(Uuid.random())

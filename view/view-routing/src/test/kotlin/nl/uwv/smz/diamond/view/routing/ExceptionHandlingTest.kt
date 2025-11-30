@@ -6,7 +6,8 @@ import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import nl.uwv.smz.diamond.domainFailure.ErrorCode
+import nl.uwv.smz.diamond.domain.failure.ErrorCode
+import nl.uwv.smz.diamond.shared.testKtor.readBody
 import nl.uwv.smz.diamond.view.model.ApiErrorDto
 
 @Suppress("TooGenericExceptionThrown")

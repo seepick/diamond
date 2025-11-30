@@ -63,7 +63,7 @@ fun Arb.Companion.buildProperties() = arbitrary {
 }
 
 fun Arb.Companion.globalConfig() = arbitrary {
-    GlobalConfig(
+    GlobalConfiguration(
         envConfig().bind(),
         buildProperties().bind(),
     )

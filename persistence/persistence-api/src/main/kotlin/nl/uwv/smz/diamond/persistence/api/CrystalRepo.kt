@@ -1,14 +1,16 @@
 package nl.uwv.smz.diamond.persistence.api
 
 import arrow.core.Either
+import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
-import nl.uwv.smz.diamond.domainFailure.Failure
+import nl.uwv.smz.diamond.domain.model.Page
+import nl.uwv.smz.diamond.domain.model.PageRequest
 
 interface CrystalRepo {
-    suspend fun selectAll(): Either<Failure, List<Crystal>>
+    suspend fun selectAll(pageRequest: PageRequest): Either<Failure, Page<Crystal>>
 
     suspend fun selectById(id: CrystalId): Either<Failure, Crystal>
 
