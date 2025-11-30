@@ -1,10 +1,10 @@
 # Ignore everything
-*
+../app
 
 # Allow files and directories
-!/app/build/libs/diamond.jar
-!/app/src/main/docker/*
-!/docker/sftp/ssh_files/*
+!../app/build/libs/diamond.jar
+!../app/src/main/docker/*
+!../docker/sftp/ssh_files/*
 
 # Ignore unnecessary files inside allowed directories
 # This should go after the allowed directories
