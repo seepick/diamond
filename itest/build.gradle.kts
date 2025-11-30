@@ -25,13 +25,14 @@ dependencies {
     testImplementation(Deps.ktor.client.contentNegotiation)
     testImplementation(Deps.ktor.serialization)
     testImplementation(Deps.koin.ktor)
-    testImplementation(Deps.testing.cucumber.java) // TODO remove once migrated
-    testImplementation(Deps.testing.cucumber.java8)
+    testImplementation(Deps.testing.cucumber.java) // needed as some cucumber features are not working with java8
+    testImplementation(Deps.testing.cucumber.java8) // lambda definition
     testImplementation(Deps.testing.cucumber.junitEngine)
     testImplementation(Deps.testing.junit.platformSuite)
     testImplementation(Deps.testing.junit.jupiter)
     testImplementation(Deps.testing.jsonPath)
     testImplementation(Deps.testing.jsonPathHamcrestAssert)
+    testImplementation(Deps.testing.jsonAssert)
     testImplementation(Deps.testing.hamcrest)
     // see: https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping
     testImplementation("io.github.deblockt:cucumber-datatable-to-bean-mapping:1.1.2")

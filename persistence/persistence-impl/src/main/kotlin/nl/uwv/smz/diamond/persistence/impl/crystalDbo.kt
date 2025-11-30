@@ -7,19 +7,15 @@ import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
-import nl.uwv.smz.diamond.domain.model.Gram
 import nl.uwv.smz.diamond.domain.model.PageRequest
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
-import nl.uwv.smz.diamond.persistence.impl.CrystalTable.id
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
 import kotlin.uuid.toJavaUuid
-import kotlin.uuid.toKotlinUuid
 
 internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
 
@@ -27,11 +23,8 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
 
     override suspend fun selectAll(pageRequest: PageRequest) = either {
         suspendTransaction(db) {
-            log.debug { "select all" }
-            CrystalTable.selectAll().map { row ->
-                // FIXME implement DB level pagination
-                Crystal.byRow(row).bind()
-            }.toPage(pageRequest)
+            log.debug { "selectAll($pageRequest)" }
+            selectPagedCrystals(pageRequest).bind()
         }
     }
 
@@ -80,11 +73,4 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
             ensureSingleAffected(deletedCount, id.value) { }.bind()
         }
     }
-}
-
-private fun Crystal.Companion.byRow(row: ResultRow) = either {
-    Crystal(
-        id = CrystalId(row[id].value.toKotlinUuid()),
-        weight = Gram(row[CrystalTable.weightInGrams]).bind(),
-    )
 }

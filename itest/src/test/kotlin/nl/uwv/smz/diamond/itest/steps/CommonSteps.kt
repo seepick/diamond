@@ -22,6 +22,6 @@ class CommonSteps(private val world: World) {
 
     @Then("the response body is {string}")
     fun `Then the response body is {string}`(expectedBody: String) {
-        world.lastResponse().bodyText() shouldBeEqual expectedBody
+        world.lastResponse().bodyAsText() shouldBeEqual expectedBody
     }
 }

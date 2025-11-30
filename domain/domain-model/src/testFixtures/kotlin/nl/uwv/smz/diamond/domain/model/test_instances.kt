@@ -8,7 +8,10 @@ import io.kotest.property.arbitrary.uuid
 import kotlin.uuid.toKotlinUuid
 
 fun PageRequest.Companion.default() =
-    PageRequest(skip = 0, take = 10).shouldBeRight()
+    build(skip = 0, take = 10)
+
+fun PageRequest.Companion.build(skip: Int, take: Int) =
+    PageRequest(skip = skip, take = take).shouldBeRight()
 
 fun Arb.Companion.crystal() = arbitrary {
     Crystal(

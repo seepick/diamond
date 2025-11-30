@@ -74,6 +74,7 @@ object Deps {
         val jsonPath = "com.jayway.jsonpath:json-path:2.10.0"
         val jsonPathHamcrestAssert = "com.jayway.jsonpath:json-path-assert:2.10.0" // hamcrest matchers?!
         val hamcrest = "org.hamcrest:hamcrest:3.0"
+        val jsonAssert = "org.skyscreamer:jsonassert:1.5.3"
 
         object junit {
             val platformSuite = "org.junit.platform:junit-platform-suite:${Versions.testing.junit}"

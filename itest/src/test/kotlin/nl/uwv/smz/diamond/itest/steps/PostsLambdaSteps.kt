@@ -20,7 +20,7 @@ fun PostRtoRow.toPostRto() =
         completed = completed,
     )
 
-class PostsSteps(private val world: World) : En {
+class PostsLambdaSteps(private val world: World) : En {
 
     init {
         When("get posts") {
@@ -29,7 +29,7 @@ class PostsSteps(private val world: World) : En {
     }
 }
 
-class PostsStepsDeprecated(private val world: World) {
+class PostsSteps(private val world: World) {
     @Given("the following posts are returned by the backend")
     fun `Given the following posts are returned by the backend`(posts: List<PostRtoRow>) {
         world.postsStub.posts = posts.map { it.toPostRto() }

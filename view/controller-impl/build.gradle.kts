@@ -9,4 +9,5 @@ dependencies {
     implementation(project(":shared:shared-common"))
 
     implementation(Deps.koin.core)
+    testImplementation(testFixtures(project(":domain:domain-model")))
 }

@@ -36,29 +36,29 @@ import kotlin.uuid.toJavaUuid
 class CrystalExposedDboRepoInmemoryTest : DescribeSpec({
     val dbListener = InmemoryDbListener()
     extension(dbListener)
-    include(crystalRepoTest(dbListener) { CrystalExposedDboRepo(it) })
+    include(crystalRepoTest(dbListener, { CrystalExposedDboRepo(it) }))
 })
 
 class CrystalExposedDaoRepoInmemoryTest : DescribeSpec({
     val dbListener = InmemoryDbListener()
     extension(dbListener)
-    include(crystalRepoTest(dbListener) { CrystalExposedDaoRepo(it) })
+    include(crystalRepoTest(dbListener, { CrystalExposedDaoRepo(it) }))
 })
 
 class CrystalExposedDboRepoTestcontainersTest : DescribeSpec({
     tags(KoTags.testcontainersTag)
     val dbListener = TestcontainersDbListener()
     extension(dbListener)
-    include(crystalRepoTest(dbListener) { CrystalExposedDboRepo(it) })
+    include(crystalRepoTest(dbListener, { CrystalExposedDboRepo(it) }))
 })
 
 @Suppress("LongMethod")
 fun crystalRepoTest(
     dbListener: DbListener,
-    provideRepo: (Database) -> CrystalRepo,
+    repoProvider: (Database) -> CrystalRepo,
 ) = describeSpec {
     // extension(dbListener) ... won't pick-up runtime interface types :-/
-    fun repo() = provideRepo(dbListener.db)
+    fun repo() = repoProvider(dbListener.db)
 
     fun <T> tx(code: Transaction.() -> T): T = transaction(dbListener.db, code)
 
@@ -75,6 +75,15 @@ fun crystalRepoTest(
             it[CrystalTable.weightInGrams] = crystal.weight.value
         }
     }
+
+    include(
+        paginationRepoTests(
+            dbProvider = { dbListener.db },
+            repoProvider = repoProvider,
+            inserter = { repeat(it) { insert(Arb.crystal().next()) } },
+            paginatedRepoCall = { selectAll(it) },
+        ),
+    )
 
     describe("select all") {
         it("Given nothing Then return empty") {

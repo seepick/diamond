@@ -11,7 +11,7 @@ class WorldResponse(private val response: HttpResponse) {
 
     val statusCode = response.status.value
 
-    fun bodyText() = runBlocking {
+    fun bodyAsText() = runBlocking {
         response.bodyAsText()
     }
 

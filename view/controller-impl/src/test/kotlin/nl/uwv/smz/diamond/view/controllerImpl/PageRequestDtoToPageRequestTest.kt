@@ -9,6 +9,7 @@ import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.shouldBeInstanceOf
 import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.PageRequest
+import nl.uwv.smz.diamond.domain.model.build
 import nl.uwv.smz.diamond.view.model.PageRequestDto
 
 class PageRequestDtoToPageRequestTest : DescribeSpec({
@@ -18,7 +19,7 @@ class PageRequestDtoToPageRequestTest : DescribeSpec({
     describe("Sunshine") {
         fun assertDto(given: Pair<String?, String?>, expected: Pair<Int, Int>) {
             PageRequestDto(given.first, given.second).toPageRequest()
-                .shouldBeRight() shouldBeEqual PageRequest(expected.first, expected.second).shouldBeRight()
+                .shouldBeRight() shouldBeEqual PageRequest.build(expected.first, expected.second)
         }
         it("Given nothing Then return default") {
             assertDto(null to null, defaultSkip to defaultTake)

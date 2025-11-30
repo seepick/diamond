@@ -33,6 +33,7 @@ import java.time.LocalDateTime
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.coroutines.EmptyCoroutineContext
 
+// FIXME if tests run in parallel, world has to be scoped for each test!
 class KtorHooks(private val world: World) {
 
     private val log = logger {}
@@ -58,6 +59,7 @@ class KtorHooks(private val world: World) {
         RoutingSetting(prettyPrint = true),
     )
 
+    // TODO could replace hooks to java8 lambdas
     @Before
     fun `before each scenario`(scenario: Scenario) {
         log.trace { "Starting ktor for test: ${scenario.name}" }
@@ -80,7 +82,7 @@ class KtorHooks(private val world: World) {
             }
         }
         @Suppress("USELESS_CAST") val koin = testApplication!!.application.attributes[KOIN_ATTRIBUTE_KEY] as Koin
-        world.initContext(WorldContext(tmpClient!!, koin))
+        world.reinitialize(WorldContext(tmpClient!!, koin))
     }
 
     // TODO report to ktor people, using with cucumber, "delocated" shutdown of ktor test application context

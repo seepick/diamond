@@ -18,6 +18,7 @@ fun Modules.persistenceImpl(config: DatabaseConfig) = module {
         // but then also checking connection in health endpoint... hm...
         connectToDatabase(config)
     }
+    // use the DBO, not the DAO impl
     singleOf(::CrystalExposedDboRepo) { bind<CrystalRepo>() }
 }
 

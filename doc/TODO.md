@@ -11,6 +11,7 @@ Next
 Backlog
 -------------------------
 
+* [ ] support of datetime types (HTTP, DB); exposed-java-time
 * change postsAPI to something meaningful
 * in itest, use programmatic tests too (mock single bean in koin; more fine control)
 * [ ] API versioning
@@ -110,6 +111,8 @@ For Real
 Open Questions
 =========================
 
+* [ ] exposed DSL or DAO
+  approach? https://stackoverflow.com/questions/70734941/exposed-orm-dsl-vs-dao-in-many-to-many-relationships-best-practices
 * [ ] how much config can be moved to code? https://12factor.net/config
 * [ ] kotlin.Uuid or java.UUID?
 * [ ] Gradle version catalog (TOML)? otherwise how to group dependencies ("libraries")
@@ -205,7 +208,7 @@ V1
 * [x] Runtime configuration for project (env-vars via hoplite)
 * [x] Generate configuration report (list of env-vars for Ops-people)
 * [x] Liquibase database migration
-* [x] Exposed persistence layer (exposed-dao vs plain)
+* [x] Exposed persistence layer
 * [x] Testcontainers tests with Oracle; custom gradle profile to activate (kotest tags)
 * [x] Info endpoint displaying build version, timestamp, branch, etc
 * [x] Backend OpenAPI generation in separate project extern-generated
