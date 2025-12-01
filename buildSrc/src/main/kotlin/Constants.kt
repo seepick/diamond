@@ -6,7 +6,11 @@ object Constants {
 
     @Suppress("EnumNaming", "EnumEntryName", "EnumEntryNameCase")
     enum class GradleProperty(val value: String) {
+        // injected variables
         appVersion("diamond_version"),
+        branchName("diamond_branch"),
+
+        // profiles
         testcontainers("runTestcontainersTests"),
         etests("runEtests"),
     }

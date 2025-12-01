@@ -29,11 +29,11 @@ object DiamondApp {
     ) {
         defaultLog()
         val log = logger {}
-        log.info { "Starting application and wait" }
         val config = GlobalConfiguration(
             env = defaultEnvConfig(),
             build = readBuildProperties(),
         )
+        log.info { buildBanner(config.build) }
         Ktor.prepare(config, Netty, externStub).start(wait = true)
     }
 

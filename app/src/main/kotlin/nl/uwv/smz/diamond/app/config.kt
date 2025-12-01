@@ -42,9 +42,12 @@ fun readEnvConfig(): EnvConfig = try {
     )
 }
 
+/** Injected by Gradle. */
 data class BuildProperties(
     val appVersion: String,
     val buildTime: LocalDateTime,
+    /** GIT branch currently checked out; e.g. "feature/SMP-12345_foobar */
+    val branchName: String,
 )
 
 private const val BUILD_INJECTED_CLASSPATH = "/buildInjected.properties"

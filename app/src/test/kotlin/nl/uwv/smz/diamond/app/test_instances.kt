@@ -59,6 +59,7 @@ fun Arb.Companion.buildProperties() = arbitrary {
     BuildProperties(
         appVersion = int(1..100).bind().toString(),
         buildTime = localDateTime().bind(),
+        branchName = string(1..30, codepoints = Codepoint.alphanumeric()).bind(),
     )
 }
 

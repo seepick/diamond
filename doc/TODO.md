@@ -32,12 +32,13 @@ Backlog
 * [ ] Micrometer" `install(MicrometerMetrics) { registry = SimpleMeterRegistry() }`
 * [ ] SFTP coroutine IO
 * [ ] Investigate JSON schema: https://json-schema.org
+* [ ] Write more KDoc to help making this code a better sample
+* [ ] Karate support different environments
 
 Low
 -------------------------
 
 * [ ] Hikari connection pooling
-* [ ] Log info at startup: log BANNER, incl. version, branch, build time
 * fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
 * use SyncService to actually do something meaningful (verifable in tests)
 * [ ] ktlint direct or via detekt? (definitely need it to fail!) https://github.com/JLLeitschuh/ktlint-gradle
@@ -50,7 +51,6 @@ Low
 * [ ] LDAP integration
 * [ ] Provide swagger HTML endpoint
 * [ ] OpenTelemetry, Micrometer
-* [ ] Write KDoc for general/shared stuff
 * [ ] Gatling load tests: https://github.com/gatling/gatling-gradle-plugin-demo-kotlin
     * also with karate available: https://github.com/karatelabs/karate/tree/master/karate-gatling
 * [ ] Run testcontainers test on GitHub
@@ -225,3 +225,4 @@ V1
 * [x] Simple end-to-end tests with Karate (etest project); assuming running local instance
 * [x] Support pagination
 * [x] Support sorting
+* [ ] Log info at startup: banner, version, branch, build time

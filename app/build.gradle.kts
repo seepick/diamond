@@ -77,6 +77,7 @@ configure<ProcessResources>("processResources") {
             "tokens" to mapOf(
                 "appVersion" to version,
                 "buildTime" to LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+                "branchName" to lookupGradleProperty(Constants.GradleProperty.branchName, "?BRANCH?"),
             ),
         )
     }
