@@ -5,6 +5,8 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import nl.uwv.smz.diamond.extern.api.sftp.SftpClient
 import nl.uwv.smz.diamond.extern.api.sftp.SftpConfig
 import nl.uwv.smz.diamond.extern.api.sftp.SftpConnector
+import nl.uwv.smz.diamond.extern.impl.safeMeasureSuccessful
+import nl.uwv.smz.diamond.shared.common.ServiceHealthInfo
 
 class SftpConnectorImpl(private val config: SftpConfig) : SftpConnector {
 
@@ -23,6 +25,15 @@ class SftpConnectorImpl(private val config: SftpConfig) : SftpConnector {
         log.info { "Connecting to ${config.username}@${config.remoteHost}:${config.port}" }
         session.connect(CONNECTION_TIMEOUT)
         return SftpSftpClientImpl(session)
+    }
+
+    override fun healthInfo(): ServiceHealthInfo {
+        val (time, state) = safeMeasureSuccessful { connect().close() }
+        return ServiceHealthInfo(
+            serviceName = "SFTP Client",
+            pingTimeInMs = time,
+            state = state,
+        )
     }
 
     companion object {

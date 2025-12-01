@@ -5,6 +5,7 @@ Next
 ==> redo basic tech things, see how they are done / can be done better / differently with new techstack
 
 * [ ] Support filtering
+* [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
 
 Backlog
 -------------------------
@@ -17,7 +18,6 @@ Backlog
 * in itest, use programmatic tests too (mock single bean in koin; more fine control)
 * [ ] API versioning
 * [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
-* [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
 * [ ] Setup playground subfolder with standalone porjects
     * [ ] FIX: run testcointaners test addititively (not exclusively)
     * [ ] ktor+cucumber, decoupled test application
@@ -27,7 +27,6 @@ Backlog
 * [ ] Bean validation (based on OpenAPI spec)
 * [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
     * [ ] Docker compose, wiremock for posts api (used in e0.5e)
-* [ ] Health endpoint (ping all backends available, maybe response time)
 * [ ] Feature flag support
 * [ ] Micrometer" `install(MicrometerMetrics) { registry = SimpleMeterRegistry() }`
 * [ ] SFTP coroutine IO
@@ -225,4 +224,5 @@ V1
 * [x] Simple end-to-end tests with Karate (etest project); assuming running local instance
 * [x] Support pagination
 * [x] Support sorting
-* [ ] Log info at startup: banner, version, branch, build time
+* [x] Log info at startup: banner, version, branch, build time
+* [x] Health endpoint (ping all backends available, track response time)

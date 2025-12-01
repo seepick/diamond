@@ -12,6 +12,7 @@ import org.koin.dsl.module
 
 private val log = logger {}
 
+@Suppress("UnusedReceiverParameter")
 fun Modules.externStub() =
     module {
         log.info { "Using extern stub (no real impl will be used)" }

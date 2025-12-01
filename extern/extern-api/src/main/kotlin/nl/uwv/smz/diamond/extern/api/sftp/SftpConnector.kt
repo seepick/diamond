@@ -1,9 +1,10 @@
 package nl.uwv.smz.diamond.extern.api.sftp
 
 import com.sksamuel.hoplite.Masked
+import nl.uwv.smz.diamond.shared.common.HealthableService
 import nl.uwv.smz.diamond.shared.config.ConfigProperty
 
-interface SftpConnector {
+interface SftpConnector : HealthableService {
     fun connect(): SftpClient
 }
 
@@ -28,8 +29,8 @@ data class SftpConfig(
             isPassword(authPasswordOrPrivateKeyPath.value)
         } else {
             isPrivateKey(
-                authPasswordOrPrivateKeyPath.value
-        )
+                authPasswordOrPrivateKeyPath.value,
+            )
         }
     }
 }

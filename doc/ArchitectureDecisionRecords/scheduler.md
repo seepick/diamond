@@ -1,0 +1,26 @@
+* we need to run jobs regularly in a cronjob way
+* no spring scheduler available
+
+Options
+==
+
+* Quartz https://www.quartz-scheduler.org
+    * enterprise (heavy, slow) scheduler; the "platzhirsch", used to be the one and only; decades
+    * but the pros comes with cons: outdated, verbose APIs
+    * features: persisted in DB (requires 10+! tables), retry, clustering, prioritization etc
+    * no monitoring (grafana, jaeger)
+* JobRunr https://www.jobrunr.io
+    * lightweight, modern; RDBMS (and NoSQL)
+    * features: distributed, dashboard, retry
+* db-scheduler https://github.com/kagkarlsson/db-scheduler
+    * lightweight: performant, minimal deps; still offer what's need: persistence, cluster
+
+maybe there is a mature enough kotlin library which leverages coroutines?
+
+* KtScheduler https://github.com/Pool-Of-Tears/KtScheduler
+    * seems like a small hobby project...
+
+Resources
+==
+
+* https://www.jobrunr.io/en/blog/2024-10-31-task-schedulers-java-modern-alternatives-to-quartz/

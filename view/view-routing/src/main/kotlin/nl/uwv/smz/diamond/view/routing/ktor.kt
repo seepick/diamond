@@ -16,12 +16,7 @@ data class RoutingSetting(
 
 fun Application.installRoutingsAndPlugins(setting: RoutingSetting) {
     log.info { "Installing Ktor routings and plugins" }
-    installHomepageRouting()
-    installInfoRouting()
-    installCrystalRouting()
-    installPostsRouting()
-    installSyncRouting()
-
+    installRoutings()
     installContentNegotiation(setting)
     installExceptionHandling()
 }
