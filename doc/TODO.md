@@ -6,20 +6,20 @@ Next
 
 * [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
 * [ ] Support filtering
-* [ ] OWASP and also other security reports
+* [ ] Configure OWASP report (fail on too high vulns)
 * [ ] Object mapper a la structmap for kotlin
+* delete all ADRs, incorporate in asciidoc
+* [ ] support of datetime types (HTTP, DB); exposed-java-time
 
 Backlog
 -------------------------
 
-* [ ] Kotlin support for asciidoc
 * [ ] Configure jacaco XML for
   sonarqube https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
 * [ ] invoke health endpoint from docker compose
 * [ ] Introduce nested domain object (supported by sorting and filtering)
 * [ ] Introduce second domain entity (full shared/reuse of pagination, sorting, filtering)
 * move pagination/sorting/filtering into shared-*
-* [ ] support of datetime types (HTTP, DB); exposed-java-time
 * change postsAPI to something meaningful
 * in itest, use programmatic tests too (mock single bean in koin; more fine control)
 * [ ] API versioning
@@ -43,6 +43,7 @@ Backlog
 Low
 -------------------------
 
+* [ ] Kotlin support for asciidoc
 * [ ] Hikari connection pooling
 * fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
 * use SyncService to actually do something meaningful (verifable in tests)
@@ -78,7 +79,7 @@ Low
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
   a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
-* [ ] incorporate ADR.md into Software Doc PDF (asciidoc); it can't do it by default
+* [ ] incorporate markdown into asciidoc (ADRs into Software Doc); it can't do it by default
     * a big lib exists which could do that: https://github.com/verhas/jamal (MVP: maybe merge PDFs)
 * [ ] Arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
 * [ ] Generate war/docker image gradle task (document in readme.md)

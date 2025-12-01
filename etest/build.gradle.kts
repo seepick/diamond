@@ -26,7 +26,7 @@ sourceSets {
 }
 
 tasks.withType<Test>().configureEach {
-    if (lookupGradleProperty(Constants.GradleProperty.etests) != null) {
+    if (GradleProperty.etests.isSet()) {
         gradleLog("Going to run the Karate E2E test suite.")
         useJUnitPlatform()
     } else {

@@ -1,4 +1,4 @@
-import gradle.kotlin.dsl.accessors._fb21cc0d1272f53256e1229e5b966fd1.testImplementation
+import gradle.kotlin.dsl.accessors._dfefe04184237bb8e2cfe40aa2a2bf83.testImplementation
 
 plugins {
     // gradle tasks: koverVerify and koverHtmlReport
