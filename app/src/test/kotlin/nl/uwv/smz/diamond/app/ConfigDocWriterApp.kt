@@ -6,7 +6,7 @@ import java.io.File
 
 object ConfigDocWriterApp {
 
-    private val targetFolder = File("doc/SoftwareArchitectureDocument/src/docs/asciidoc/includes")
+    private val targetFolder = File("doc/SoftwareDocument/src/docs/asciidoc/includes")
     private val target = File(targetFolder, "config_report.generated.adoc")
 
     @JvmStatic

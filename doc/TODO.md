@@ -4,12 +4,18 @@ Next
 ==> focus on MWP MVP ;) showcase that it's possible, don't make it "klaar", go fast forward, PoC prototype spike only
 ==> redo basic tech things, see how they are done / can be done better / differently with new techstack
 
-* [ ] Support filtering
 * [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
+* [ ] Support filtering
+* [ ] OWASP and also other security reports
+* [ ] Object mapper a la structmap for kotlin
 
 Backlog
 -------------------------
 
+* [ ] Kotlin support for asciidoc
+* [ ] Configure jacaco XML for
+  sonarqube https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
+* [ ] invoke health endpoint from docker compose
 * [ ] Introduce nested domain object (supported by sorting and filtering)
 * [ ] Introduce second domain entity (full shared/reuse of pagination, sorting, filtering)
 * move pagination/sorting/filtering into shared-*
@@ -21,7 +27,6 @@ Backlog
 * [ ] Setup playground subfolder with standalone porjects
     * [ ] FIX: run testcointaners test addititively (not exclusively)
     * [ ] ktor+cucumber, decoupled test application
-* [ ] Object mapper a la structmap for kotlin
 * [ ] Write OpenAPI spec for own API (how to verify contract automatically?!)
 * [ ] Setup MQ
 * [ ] Bean validation (based on OpenAPI spec)
@@ -33,6 +38,7 @@ Backlog
 * [ ] Investigate JSON schema: https://json-schema.org
 * [ ] Write more KDoc to help making this code a better sample
 * [ ] Karate support different environments
+* [ ] Check if liquibase-to-exposed generation is possible (do we even want that?! NO!)
 
 Low
 -------------------------
@@ -45,7 +51,6 @@ Low
 * [ ] treat ktlint warnings as errors; breaking the build
 * [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
 * [ ] store BSN as a number in DB (heavy queries/joins)
-* [ ] make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
 * [ ] asciidoc should fail the build if stuff not found
 * [ ] LDAP integration
 * [ ] Provide swagger HTML endpoint
@@ -73,7 +78,8 @@ Low
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
   a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
-* [ ] Can Asciidoc eat (ADR) markdown files? at least create create PDF out of them
+* [ ] incorporate ADR.md into Software Doc PDF (asciidoc); it can't do it by default
+    * a big lib exists which could do that: https://github.com/verhas/jamal (MVP: maybe merge PDFs)
 * [ ] Arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
 * [ ] Generate war/docker image gradle task (document in readme.md)
 * [ ] Configure OWASP (create gradle profile, document it in README.md)
@@ -226,3 +232,5 @@ V1
 * [x] Support sorting
 * [x] Log info at startup: banner, version, branch, build time
 * [x] Health endpoint (ping all backends available, track response time)
+* [x] Make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
+    * NO, not supporting kotlin 2.*: https://github.com/kscripting/kscript/issues/421

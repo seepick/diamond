@@ -1,0 +1,35 @@
+= Diamond Software Documentation
+
+// TODO only print h1&h2 in ToC
+// TODO introduce chapter numbering a la "3.1.1" for easier orientation
+
+ifndef::basedir[]
+:basedir: .
+endif::[]
+
+ifndef::sourcedir[]
+:sourcedir: ../../main/kotlin
+endif::[]
+
+// ifeval::["{projcode}"=="cm"}]
+// If `projcode == cm` then you should see this.
+// endif::[]
+// ifdef::projcode[project was defined as {projcode}]
+// ifndef::projcode[project was not defined]
+
+[.thumb]
+image::{basedir}/images/diamond.jpg[scaledwidth=30%]
+
+include::{basedir}/ch_principles.adoc[]
+
+include::{basedir}/ch_architecture.adoc[]
+
+include::{basedir}/ch_application.adoc[]
+
+include::{basedir}/ch_testing.adoc[]
+
+include::{basedir}/ch_quality.adoc[]
+
+include::{basedir}/ch_devops.adoc[]
+
+include::{basedir}/ch_appendix.adoc[]

@@ -22,4 +22,4 @@ jobs:
       - name: Check Project
         run: ./gradlew check
       - name: Build SAD
-        run: ./gradlew :doc:SoftwareArchitectureDocument:asciidoctorPdf
+        run: ./gradlew :doc:SoftwareDocument:asciidoctorPdf

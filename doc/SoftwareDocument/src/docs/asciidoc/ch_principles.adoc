@@ -1,0 +1,33 @@
+ifndef::sourcedir[]
+:sourcedir: ../../main/kotlin
+endif::[]
+
+== Principles
+
+=== Coding Philosophy
+
+* fail early, fail fast
+* e.g. if application config something is configured wrong/missing
+* validate data (front incoming HTTP, back external systems/DB, immediately throw)
+* code first (no strings/annotations, no declarative xml/json/yaml)
+* no annotations, strings, properties, yamls... just code
+* be in control
+* no classpath scanning, reflection, other look-ups, no auto-magically something
+* avoid intrusive frameworks (the systems serves us, we don't serve the system)
+* functional
+* pure functions: stateless, side-effect free
+* code as named expressions
+* prefer single-expression-method `fun foo() = doSome().doOther().also { done(it) }`
+
+=== Coding Principles
+
+* instead of regular methods -> "named expressions"
+** always use "=" after method signature; single expression body
+** no state, no "val" keyword, all just immediate execution (more functional)
+** forces to write very short methods, easy to read and comprehend
+** methods have names, they create logical structure of arbitrary code
+
+[source,java]
+----
+include::{sourcedir}/named_expressions.kt[]
+----

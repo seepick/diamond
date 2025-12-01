@@ -1,0 +1,16 @@
+== DevOps
+
+=== Distributed Services
+
+* Resilience and Fault Tolerance: circuit breakers, retries, and bulkheads
+
+=== Monitoring
+
+* Use monitoring and logging tools to gain insights into your application’s performance and health.
+Tools like Prometheus, Grafana, and ELK Stack (Elasticsearch, Logstash, Kibana
+
+=== Alerting
+
+* watch 500 and call person on-duty schedule (cascading)
+* use e.g. Sentry
+* via ms teams integration, investigate how possible!

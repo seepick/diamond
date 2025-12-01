@@ -1,0 +1,28 @@
+== Testing
+
+=== Coverage
+
+* coverage 100%?, kotlin inlining issue...
+
+=== test types
+
+* unit tests
+* integration tests
+* application/module/component tests
+* acceptance/functional tests
+* contract tests
+* external system tests (backend)
+* system tests
+* end-to-end tests
+
+other types:
+
+* performance/load/stress tests (gatling or jmeter)
+* security/penetration tests
+
+=== End-to-End
+
+* in real world, it would be in a separate GIT repo
+* use karate, only change base URL
+* use @WIP tagging; maybe @JIRAID-12345
+* use @ReadOnly tagging to execute target production as well

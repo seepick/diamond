@@ -48,6 +48,7 @@ tasks.asciidoctorPdf {
     attributes(
         mapOf(
             "basedir" to "src/docs/asciidoc",
+            "sourcedir" to "src/main/kotlin",
             "source-highlighter" to "coderay",
             "toc" to "left",
             "idprefix" to "",

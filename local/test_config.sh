@@ -1,6 +1,10 @@
 #!/bin/bash
 
-cd ..
+# ensure CWD is project root
+CWD=`pwd`
+ROOT="${CWD%/local}"
+cd "${ROOT}" || exit 1
+
 ./gradlew :app:assemble
 
 export DATABASE_JDBCURL=db_url

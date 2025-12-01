@@ -26,7 +26,7 @@ include(
     "shared:shared-testKtor",
     "itest",
     "etest",
-    ":doc:SoftwareArchitectureDocument",
+    ":doc:SoftwareDocument",
 )
 
 dependencyResolutionManagement {

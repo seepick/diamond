@@ -1,0 +1,22 @@
+== Code Quality
+
+* quality gates
+* sonarqube and kotlin tools
+* CAVE: there is much overlap in the tools
+** test coverage enforcing by gradle (kover) and sonarqube
+** lots with detekt/ktlint (intellij? sonarqube?)
+
+=== Static Code Analysis
+
+Detekt
+
+ktlint
+
+* https://pinterest.github.io/ktlint/1.8.0/
+
+=== SonarQube
+
+* use the free tier for open source projects
+** See: https://sonarcloud.io/project/configuration/AutoScan?id=seepick_diamond
+* define new code by days (continuous delivery), not by change delta (planned releases)
+* use it to report coverage (enforced by gradle-kover itself, not sonar)

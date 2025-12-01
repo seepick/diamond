@@ -9,8 +9,12 @@ This is a sample project of a backend service using modern technologies and best
 architecture, automated tests and test concept, build setup, code quality, and more.
 
 A general technical overview can be found in
-the [Software Architecture Document](https://github.com/seepick/diamond/releases/latest/download/Diamond-SoftwareArchitectureDocument.pdf) (
+the [Software Document](https://github.com/seepick/diamond/releases/latest/download/Diamond-SoftwareDocument.pdf) (
 PDF).
 
 All smaller, specific decisions are documented in
 so-called [Architecture Decision Records](https://github.com/seepick/diamond/tree/main/doc/ArchitectureDecisionRecords).
+
+## Links
+
+* [SonarQube](https://sonarcloud.io/project/overview?id=seepick_diamond)
