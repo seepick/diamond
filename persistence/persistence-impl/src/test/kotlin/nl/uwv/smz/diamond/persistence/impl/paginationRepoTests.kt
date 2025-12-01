@@ -16,9 +16,22 @@ import nl.uwv.smz.diamond.domain.model.build
 import nl.uwv.smz.diamond.domain.model.default
 import org.jetbrains.exposed.sql.Database
 
-fun sortPaginationTests() {
-    // TODO check that skip is in order; first get all; store order; then request again
-}
+// fun <
+//    REPO,
+//    ENTITY,
+//    REQUEST : SortRequest<FIELD>,
+//    FIELD : SortField,
+//    SORT : SortingsRequest<REQUEST, FIELD>
+// > sortPaginationTests(
+//    dbProvider: () -> Database,
+//    repoProvider: (Database) -> REPO,
+// //    inserter: (Int) -> Unit,
+//    repoCall: suspend REPO.(PageRequest, SORT) -> Either<Failure, Page<ENTITY>>,
+//    // paginatedRepoCall: suspend CrystalRepo.(PageRequest) -> Either<Failure, Page<Crystal>>,
+// ) = describeSpec {
+//    // TODO check that skip is in order; first get all; store order; then request again
+//    repoCall(repoProvider(), PageRequest.default(), )
+// }
 
 fun <REPO, ENTITY> paginationRepoTests(
     dbProvider: () -> Database,

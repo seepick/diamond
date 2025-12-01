@@ -4,36 +4,34 @@ Next
 ==> focus on MWP MVP ;) showcase that it's possible, don't make it "klaar", go fast forward, PoC prototype spike only
 ==> redo basic tech things, see how they are done / can be done better / differently with new techstack
 
-* [ ] Support pagination
-* [ ] Support sorting (dot-syntax for deep objects)
-* [ ] Support filtering (dot-syntax for deep objects)
+* [ ] Support filtering
 
 Backlog
 -------------------------
 
+* [ ] Introduce nested domain object (supported by sorting and filtering)
+* [ ] Introduce second domain entity (full shared/reuse of pagination, sorting, filtering)
+* move pagination/sorting/filtering into shared-*
 * [ ] support of datetime types (HTTP, DB); exposed-java-time
 * change postsAPI to something meaningful
 * in itest, use programmatic tests too (mock single bean in koin; more fine control)
 * [ ] API versioning
 * [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
-* [ ] e2e-test as standalone sub-project using Karate (Gradle profile; using docker-compose for now)
 * [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
-* [ ] playground subfolder with standalone porjects;
+* [ ] Setup playground subfolder with standalone porjects
     * [ ] FIX: run testcointaners test addititively (not exclusively)
     * [ ] ktor+cucumber, decoupled test application
 * [ ] Object mapper a la structmap for kotlin
 * [ ] Write OpenAPI spec for own API (how to verify contract automatically?!)
-* [ ] setup MQ
+* [ ] Setup MQ
 * [ ] Bean validation (based on OpenAPI spec)
 * [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
     * [ ] Docker compose, wiremock for posts api (used in e0.5e)
-* [ ] Write SAD sub-projects explanation
-* [ ] Write some ADRs
 * [ ] Health endpoint (ping all backends available, maybe response time)
-* [ ] feature flags support
-* [ ] micrometer install(MicrometerMetrics) { registry = SimpleMeterRegistry() }
-* [ ] sftp coroutine IO
-* [ ] investigate: https://json-schema.org
+* [ ] Feature flag support
+* [ ] Micrometer" `install(MicrometerMetrics) { registry = SimpleMeterRegistry() }`
+* [ ] SFTP coroutine IO
+* [ ] Investigate JSON schema: https://json-schema.org
 
 Low
 -------------------------
@@ -224,3 +222,6 @@ V1
 * [x] Kotlin coverage verified with kover (no jacoco)
 * [x] Setup Dockerfile and docker-compose (oracle, sftp)
 * [x] Implement PUT /sync endpoint which uses the sftp connection
+* [x] Simple end-to-end tests with Karate (etest project); assuming running local instance
+* [x] Support pagination
+* [x] Support sorting

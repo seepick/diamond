@@ -8,6 +8,8 @@ import io.cucumber.java.Scenario
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.TestApplication
@@ -66,6 +68,9 @@ class KtorHooks(private val world: World) {
         var tmpClient: HttpClient? = null
         startKtor {
             tmpClient = createClient {
+                install(Logging) {
+                    level = LogLevel.ALL
+                }
                 install(ContentNegotiation) {
                     json(
                         Json {

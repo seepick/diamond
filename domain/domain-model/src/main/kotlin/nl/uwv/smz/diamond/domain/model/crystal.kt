@@ -7,20 +7,21 @@ import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.shared.common.eitherParse
 import kotlin.uuid.Uuid
 
-@JvmInline
-value class Gram private constructor(val value: Int) {
-
-    operator fun plus(addition: Int) = Gram(value + addition)
-
-    companion object {
-        operator fun invoke(value: Int) = either {
-            ensure(value >= 0) {
-                Failure.CorruptDataFailure("Gram must not be negative: $value")
-            }
-            Gram(value)
-        }
-    }
+data class Crystal(
+    val id: CrystalId,
+    val weight: Gram,
+) {
+    companion object // for extensions
 }
+
+data class CrystalCreate(
+    val weight: Gram,
+)
+
+data class CrystalUpdate(
+    val id: CrystalId,
+    val weight: Gram,
+)
 
 @JvmInline
 value class CrystalId(val value: Uuid) {
@@ -42,18 +43,18 @@ value class CrystalId(val value: Uuid) {
     }
 }
 
-data class Crystal(
-    val id: CrystalId,
-    val weight: Gram,
-) {
-    companion object // for extensions
+@JvmInline
+value class Gram private constructor(val value: Int) {
+
+    /** Returns either as could result in a negative number: "3 + (-5) = -2". */
+    operator fun plus(addition: Int) = invoke(value + addition)
+
+    companion object {
+        operator fun invoke(value: Int) = either {
+            ensure(value >= 0) {
+                Failure.CorruptDataFailure("Gram must not be negative: $value")
+            }
+            Gram(value)
+        }
+    }
 }
-
-data class CrystalCreate(
-    val weight: Gram,
-)
-
-data class CrystalUpdate(
-    val id: CrystalId,
-    val weight: Gram,
-)

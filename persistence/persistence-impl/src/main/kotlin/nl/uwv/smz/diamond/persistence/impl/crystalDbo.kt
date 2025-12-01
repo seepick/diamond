@@ -6,6 +6,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging.logger
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
+import nl.uwv.smz.diamond.domain.model.CrystalSortingsRequest
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.PageRequest
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
@@ -21,10 +22,10 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
 
     private val log = logger {}
 
-    override suspend fun selectAll(pageRequest: PageRequest) = either {
+    override suspend fun selectAll(pageRequest: PageRequest, sorting: CrystalSortingsRequest) = either {
         suspendTransaction(db) {
-            log.debug { "selectAll($pageRequest)" }
-            selectPagedCrystals(pageRequest).bind()
+            log.debug { "selectAll($pageRequest, $sorting)" }
+            selectCrystalsWith(pageRequest, sorting).bind()
         }
     }
 

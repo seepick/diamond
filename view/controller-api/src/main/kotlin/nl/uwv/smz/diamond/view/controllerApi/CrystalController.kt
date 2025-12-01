@@ -9,7 +9,7 @@ import nl.uwv.smz.diamond.view.model.PageDto
 import nl.uwv.smz.diamond.view.model.PageRequestDto
 
 interface CrystalController {
-    suspend fun findAll(pageRequest: PageRequestDto): Either<Failure, PageDto<CrystalDto>>
+    suspend fun findAll(pageRequest: PageRequestDto, sort: String?): Either<Failure, PageDto<CrystalDto>>
 
     suspend fun findSingle(crystalId: String): Either<Failure, CrystalDto>
 

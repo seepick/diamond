@@ -7,6 +7,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.describeSpec
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldBeSingleton
+import io.kotest.matchers.collections.shouldContainInOrder
 import io.kotest.matchers.equals.shouldBeEqual
 import io.kotest.matchers.should
 import io.kotest.matchers.string.shouldContain
@@ -15,13 +16,18 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.next
 import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Crystal
+import nl.uwv.smz.diamond.domain.model.CrystalSortField
+import nl.uwv.smz.diamond.domain.model.CrystalSortRequest
+import nl.uwv.smz.diamond.domain.model.CrystalSortingsRequest
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.PageRequest
+import nl.uwv.smz.diamond.domain.model.SortDirection
 import nl.uwv.smz.diamond.domain.model.crystal
 import nl.uwv.smz.diamond.domain.model.crystalCreate
 import nl.uwv.smz.diamond.domain.model.crystalId
 import nl.uwv.smz.diamond.domain.model.crystalUpdate
 import nl.uwv.smz.diamond.domain.model.default
+import nl.uwv.smz.diamond.domain.model.gram
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.persistence.impl.testInfra.DbListener
 import nl.uwv.smz.diamond.persistence.impl.testInfra.InmemoryDbListener
@@ -53,6 +59,12 @@ class CrystalExposedDboRepoTestcontainersTest : DescribeSpec({
     include(crystalRepoTest(dbListener, { CrystalExposedDboRepo(it) }))
 })
 
+fun CrystalSortingsRequest.Companion.empty() = CrystalSortingsRequest(emptyList())
+
+fun sort(vararg fieldsAndDirs: Pair<CrystalSortField, SortDirection>) = CrystalSortingsRequest(
+    fieldsAndDirs.map { CrystalSortRequest(it.first, it.second) },
+)
+
 @Suppress("LongMethod")
 fun crystalRepoTest(
     dbListener: DbListener,
@@ -82,18 +94,36 @@ fun crystalRepoTest(
             dbProvider = { dbListener.db },
             repoProvider = repoProvider,
             inserter = { repeat(it) { insert(Arb.crystal().next()) } },
-            paginatedRepoCall = { selectAll(it) },
+            paginatedRepoCall = { selectAll(it, CrystalSortingsRequest.empty()) },
         ),
     )
+    describe("Sorting") {
+        it("Simple asc") {
+            insert(crystal1.copy(weight = 1.gram))
+            insert(crystal2.copy(weight = 2.gram))
+
+            repo().selectAll(PageRequest.default(), sort(CrystalSortField.WeightInGram to SortDirection.Asc))
+                .shouldBeRight().map { it.weight.value } shouldContainInOrder listOf(1, 2)
+        }
+        it("Simple desc") {
+            insert(crystal1.copy(weight = 1.gram))
+            insert(crystal2.copy(weight = 2.gram))
+
+            repo().selectAll(PageRequest.default(), sort(CrystalSortField.WeightInGram to SortDirection.Desc))
+                .shouldBeRight().map { it.weight.value } shouldContainInOrder listOf(2, 1)
+        }
+        // TODO test to sort for multiple fields
+    }
 
     describe("select all") {
         it("Given nothing Then return empty") {
-            repo().selectAll(PageRequest.default()).shouldBeRight().shouldBeEmpty()
+            repo().selectAll(PageRequest.default(), CrystalSortingsRequest.empty()).shouldBeRight().shouldBeEmpty()
         }
         it("Given single Then return it") {
             insert(crystal)
 
-            repo().selectAll(PageRequest.default()).shouldBeRight().shouldBeSingleton().first() shouldBeEqual crystal
+            repo().selectAll(PageRequest.default(), CrystalSortingsRequest.empty())
+                .shouldBeRight().shouldBeSingleton().first() shouldBeEqual crystal
         }
     }
     describe("select by ID") {
@@ -130,7 +160,7 @@ fun crystalRepoTest(
         }
         it("Given something Then update it") {
             insert(crystal)
-            val update = CrystalUpdate(id = crystal.id, weight = crystal.weight + 1)
+            val update = CrystalUpdate(id = crystal.id, weight = (crystal.weight + 1).shouldBeRight())
 
             repo().update(update).shouldBeRight(crystal.copy(weight = update.weight))
 

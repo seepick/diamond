@@ -23,6 +23,7 @@ dependencies {
     testImplementation(project(":extern:extern-impl")) // TODO to only get the config... part of *-api?!?
     testImplementation(project(":extern:extern-stub"))
     testImplementation(Deps.ktor.client.contentNegotiation)
+    testImplementation(Deps.ktor.client.logging)
     testImplementation(Deps.ktor.serialization)
     testImplementation(Deps.koin.ktor)
     testImplementation(Deps.testing.cucumber.java) // needed as some cucumber features are not working with java8

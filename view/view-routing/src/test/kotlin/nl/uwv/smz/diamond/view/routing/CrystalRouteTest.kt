@@ -58,7 +58,7 @@ class CrystalRouteTest : DescribeSpec({
         it("Given controller returns a DTO When use page params Then ok and returned") {
             val pageRequest = PageRequestDto("1", "5")
             val page = PageDto(PageMetaDto(2, 6, false), items = listOf(dto))
-            coEvery { controller.findAll(pageRequest) } returns page.right()
+            coEvery { controller.findAll(pageRequest, null) } returns page.right()
 
             crystalTest { client ->
                 val response = client.get("/crystals") {

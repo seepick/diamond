@@ -55,6 +55,7 @@ object Deps {
         object client {
             val core = make("client-core")
             val cio = make("client-cio")
+            val logging = make("client-logging")
             val contentNegotiation = make("client-content-negotiation")
         }
     }

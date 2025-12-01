@@ -5,12 +5,13 @@ import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
+import nl.uwv.smz.diamond.domain.model.CrystalSortingsRequest
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Page
 import nl.uwv.smz.diamond.domain.model.PageRequest
 
 interface CrystalRepo {
-    suspend fun selectAll(pageRequest: PageRequest): Either<Failure, Page<Crystal>>
+    suspend fun selectAll(pageRequest: PageRequest, sorting: CrystalSortingsRequest): Either<Failure, Page<Crystal>>
 
     suspend fun selectById(id: CrystalId): Either<Failure, Crystal>
 

@@ -8,6 +8,7 @@ import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalCreate
 import nl.uwv.smz.diamond.domain.model.CrystalId
+import nl.uwv.smz.diamond.domain.model.CrystalSortingsRequest
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.Gram
 import nl.uwv.smz.diamond.domain.model.Page
@@ -41,10 +42,10 @@ internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
 
     private val log = logger {}
 
-    override suspend fun selectAll(pageRequest: PageRequest) = either {
+    override suspend fun selectAll(pageRequest: PageRequest, sorting: CrystalSortingsRequest) = either {
         suspendTransaction(db) {
-            log.debug { "selectAll($pageRequest)" }
-            selectPagedCrystals(pageRequest).bind()
+            log.debug { "selectAll($pageRequest, $sorting)" }
+            selectCrystalsWith(pageRequest, sorting).bind()
         }
     }
 
