@@ -2,6 +2,7 @@
 object Deps {
 
     val serializationx = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
+    val datetimex = "org.jetbrains.kotlinx:kotlinx-datetime:0.7.1"
 
     val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
     val jsch = "com.github.mwiede:jsch:${Versions.jsch}" // fork of JSch: "com.jcraft:jsch:0.1.55"
@@ -21,7 +22,7 @@ object Deps {
             val core = make("core")
             val dao = make("dao")
             val jdbc = make("jdbc")
-            // java-time
+            val datetimex = make("kotlin-datetime") // no java-time
         }
     }
 
@@ -93,6 +94,7 @@ object Deps {
 
             /** https://kotest.io/docs/assertions/arrow.html */
             val assertionsArrow = "io.kotest.extensions:kotest-assertions-arrow:2.0.0" // different version
+            val assertionsDatetimex = "io.kotest:kotest-assertions-kotlinx-time:4.4.3" // different version
         }
 
         object testcontainers {

@@ -89,4 +89,5 @@ private fun CrystalCreateDto.toDomain() = either {
 private fun Crystal.toDto() = CrystalDto(
     id = id.value,
     weightInGram = weight.value,
+    created = created,
 )

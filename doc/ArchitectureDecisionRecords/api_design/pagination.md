@@ -49,6 +49,7 @@ Questions
 Resources
 ============
 
+* TODO get inspired by: https://github.com/perracodex/exposed-pagination
 * https://www.merge.dev/blog/rest-api-pagination
 * https://www.merge.dev/blog/api-pagination-best-practices
 * https://restfulapi.net/api-pagination-sorting-filtering/

@@ -1,42 +1,11 @@
 package nl.uwv.smz.diamond.persistence.impl
 
-import arrow.core.Either
-import arrow.core.left
-import arrow.core.raise.either
-import io.github.oshai.kotlinlogging.KotlinLogging.logger
-import nl.uwv.smz.diamond.domain.failure.Failure
-import nl.uwv.smz.diamond.domain.model.Crystal
-import nl.uwv.smz.diamond.domain.model.CrystalCreate
-import nl.uwv.smz.diamond.domain.model.CrystalId
-import nl.uwv.smz.diamond.domain.model.CrystalSortingsRequest
-import nl.uwv.smz.diamond.domain.model.CrystalUpdate
-import nl.uwv.smz.diamond.domain.model.Gram
-import nl.uwv.smz.diamond.domain.model.Page
-import nl.uwv.smz.diamond.domain.model.PageMeta
-import nl.uwv.smz.diamond.domain.model.PageRequest
-import nl.uwv.smz.diamond.persistence.api.CrystalRepo
-import org.jetbrains.exposed.dao.UUIDEntity
-import org.jetbrains.exposed.dao.UUIDEntityClass
-import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.sql.Database
-import java.util.UUID
-import kotlin.uuid.toJavaUuid
-import kotlin.uuid.toKotlinUuid
-
+/*
 internal class CrystalDaoEntity(id: EntityID<UUID>) : UUIDEntity(id) {
     var weightInGrams by CrystalTable.weightInGrams
 
     companion object : UUIDEntityClass<CrystalDaoEntity>(CrystalTable)
 }
-
-fun <T> List<T>.toPage(pageRequest: PageRequest, hasMore: Boolean) = Page(
-    meta = PageMeta(
-        skip = pageRequest.skip,
-        take = pageRequest.take,
-        hasMore = hasMore,
-    ),
-    items = this,
-)
 
 internal class CrystalExposedDaoRepo(private val db: Database) : CrystalRepo {
 
@@ -92,3 +61,4 @@ private fun CrystalDaoEntity.toDomainModel() = either {
         weight = Gram(weightInGrams).bind(),
     )
 }
+*/

@@ -10,8 +10,7 @@ import io.ktor.server.engine.embeddedServer
 import nl.uwv.smz.diamond.shared.config.ConfigProperty
 import nl.uwv.smz.diamond.view.routing.installRoutingsAndPlugins
 import org.koin.core.module.Module
-import java.time.Duration
-import java.time.LocalDateTime
+import kotlin.time.Clock
 
 typealias KtorServer = EmbeddedServer<ApplicationEngine, out ApplicationEngine.Configuration>
 
@@ -25,12 +24,12 @@ object Ktor {
         externStub: Module?,
     ): KtorServer {
         log.info { "Preparing Ktor at port: ${config.env.ktor.port}" }
-        val startTime = LocalDateTime.now()
+        val startTime = Clock.System.now().epochSeconds
         return embeddedServer(factory, port = config.env.ktor.port) {
             monitor.subscribe(ApplicationStarted) {
                 log.info {
                     "Application successfully finished starting after: ${
-                        Duration.between(startTime, LocalDateTime.now()).toSeconds()
+                        Clock.System.now().epochSeconds - startTime
                     }sec 👍🏻😎💎"
                 }
             }

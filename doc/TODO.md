@@ -4,18 +4,19 @@ Next
 ==> focus on MWP MVP ;) showcase that it's possible, don't make it "klaar", go fast forward, PoC prototype spike only
 ==> redo basic tech things, see how they are done / can be done better / differently with new techstack
 
-* [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
 * [ ] Support filtering
+* [ ] support of datetime types (HTTP, DB); exposed-java-time
 * [ ] Configure OWASP report (fail on too high vulns)
+* finish sonar integration; reports; also for OWASP https://ossindex.sonatype.org/doc/auth-required
 * [ ] Object mapper a la structmap for kotlin
 * delete all ADRs, incorporate in asciidoc
-* [ ] support of datetime types (HTTP, DB); exposed-java-time
 
 Backlog
 -------------------------
 
-* [ ] Configure jacaco XML for
-  sonarqube https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
+* [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
+* [ ] Configure jacaco XML for sonarqube
+    * see: https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
 * [ ] invoke health endpoint from docker compose
 * [ ] Introduce nested domain object (supported by sorting and filtering)
 * [ ] Introduce second domain entity (full shared/reuse of pagination, sorting, filtering)

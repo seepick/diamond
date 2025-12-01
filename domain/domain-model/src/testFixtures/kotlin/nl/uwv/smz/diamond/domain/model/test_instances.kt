@@ -4,7 +4,9 @@ import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.arbitrary
 import io.kotest.property.arbitrary.int
+import io.kotest.property.arbitrary.localDateTime
 import io.kotest.property.arbitrary.uuid
+import kotlinx.datetime.toKotlinLocalDateTime
 import kotlin.uuid.toKotlinUuid
 
 val Int.gram: Gram get() = Gram(this).shouldBeRight()
@@ -12,6 +14,7 @@ val Int.gram: Gram get() = Gram(this).shouldBeRight()
 fun Arb.Companion.crystal() = arbitrary {
     Crystal(
         id = crystalId().bind(),
+        created = localDateTime().bind().toKotlinLocalDateTime(),
         weight = gram().bind(),
     )
 }

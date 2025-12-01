@@ -4,9 +4,10 @@ plugins {
 }
 
 dependencies {
+    api(Deps.arrowCore)
+    api(Deps.datetimex)
     api(project(":domain:domain-failure"))
     implementation(project(":shared:shared-common"))
-    api(Deps.arrowCore)
 
     testFixturesApi(Deps.testing.kotest.property)
     testFixturesImplementation(Deps.testing.kotest.assertionsArrow)

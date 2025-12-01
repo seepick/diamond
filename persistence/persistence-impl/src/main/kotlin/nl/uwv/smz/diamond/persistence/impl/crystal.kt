@@ -34,7 +34,8 @@ fun selectCrystalsWith(
         .toList().map { it.toCrystal().bind() }
         .toPage(
             pageRequest = pageRequest,
-            hasMore = CrystalDaoEntity.count() > pageRequest.skip + pageRequest.take,
+            hasMore = CrystalTable.selectAll().count().toInt() > pageRequest.skip + pageRequest.take,
+//            hasMore = CrystalDaoEntity.count() > pageRequest.skip + pageRequest.take,
         )
 }
 
@@ -45,5 +46,6 @@ fun Crystal.Companion.byRow(row: ResultRow) = either {
     Crystal(
         id = CrystalId(row[id].value.toKotlinUuid()),
         weight = Gram(row[CrystalTable.weightInGrams]).bind(),
+        created = row[CrystalTable.created],
     )
 }

@@ -22,6 +22,7 @@ kotlin {
         freeCompilerArgs.addAll(
             "-Xjsr305=strict", // Annotations for Software Defect Detection
             "-opt-in=kotlin.uuid.ExperimentalUuidApi",
+            "-opt-in=kotlin.uuid.ExperimentalTime",
         )
     }
 }

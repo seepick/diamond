@@ -10,6 +10,8 @@ import nl.uwv.smz.diamond.domain.model.CrystalSortingsRequest
 import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.PageRequest
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
+import nl.uwv.smz.diamond.shared.common.Clock
+import nl.uwv.smz.diamond.shared.common.UuidGenerator
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
@@ -18,7 +20,11 @@ import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
 import kotlin.uuid.toJavaUuid
 
-internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
+internal class CrystalExposedDboRepo(
+    private val db: Database,
+    private val uuidGen: UuidGenerator,
+    private val clock: Clock,
+) : CrystalRepo {
 
     private val log = logger {}
 
@@ -31,21 +37,27 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
 
     override suspend fun selectById(id: CrystalId) = either {
         suspendTransaction(db) {
-            CrystalTable.selectAll()
-                .where { CrystalTable.id eq id.value.toJavaUuid() }
-                .map { Crystal.byRow(it).bind() }
-                .ensureSingleFound(id.value).bind()
+            selectByIdBlocking(id).bind()
         }
+    }
+
+    private fun selectByIdBlocking(id: CrystalId) = either {
+        CrystalTable.selectAll()
+            .where { CrystalTable.id eq id.value.toJavaUuid() }
+            .map { Crystal.byRow(it).bind() }
+            .ensureSingleFound(id.value).bind()
     }
 
     override suspend fun insert(create: CrystalCreate) = either {
         suspendTransaction(db) {
             val crystal = Crystal(
-                id = CrystalId.random(),
+                id = CrystalId(uuidGen.generate()),
+                created = clock.now(),
                 weight = create.weight,
             )
             CrystalTable.insert {
                 it[id] = crystal.id.value.toJavaUuid()
+                it[created] = crystal.created
                 it[weightInGrams] = crystal.weight.value
             }
             crystal.right().bind()
@@ -57,12 +69,8 @@ internal class CrystalExposedDboRepo(private val db: Database) : CrystalRepo {
             val updatedRows = CrystalTable.update({ CrystalTable.id eq update.id.value.toJavaUuid() }) {
                 it[weightInGrams] = update.weight.value
             }
-            ensureSingleAffected(updatedRows, update.id.value) {
-                Crystal(
-                    id = update.id,
-                    weight = update.weight,
-                )
-            }.bind()
+            ensureSingleAffected(updatedRows, update.id.value) {}.bind()
+            selectByIdBlocking(update.id).bind()
         }
     }
 

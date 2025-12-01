@@ -3,6 +3,7 @@ package nl.uwv.smz.diamond.persistence.impl
 import io.kotest.assertions.arrow.core.shouldBeLeft
 import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.annotation.RequiresTag
+import io.kotest.core.spec.DslDrivenSpec
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.describeSpec
 import io.kotest.matchers.collections.shouldBeEmpty
@@ -14,8 +15,11 @@ import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.next
+import io.kotest.property.arbitrary.uuid
+import kotlinx.datetime.LocalDateTime
 import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Crystal
+import nl.uwv.smz.diamond.domain.model.CrystalId
 import nl.uwv.smz.diamond.domain.model.CrystalSortField
 import nl.uwv.smz.diamond.domain.model.CrystalSortRequest
 import nl.uwv.smz.diamond.domain.model.CrystalSortingsRequest
@@ -32,32 +36,57 @@ import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 import nl.uwv.smz.diamond.persistence.impl.testInfra.DbListener
 import nl.uwv.smz.diamond.persistence.impl.testInfra.InmemoryDbListener
 import nl.uwv.smz.diamond.persistence.impl.testInfra.TestcontainersDbListener
+import nl.uwv.smz.diamond.shared.common.StaticClock
+import nl.uwv.smz.diamond.shared.common.StaticUuidGenerator
+import nl.uwv.smz.diamond.shared.common.now
 import nl.uwv.smz.diamond.shared.test.KoTags
+import nl.uwv.smz.diamond.shared.test.kotlinLocalDateTime
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
+import kotlin.uuid.Uuid
 import kotlin.uuid.toJavaUuid
+import kotlin.uuid.toKotlinUuid
 
 class CrystalExposedDboRepoInmemoryTest : DescribeSpec({
-    val dbListener = InmemoryDbListener()
-    extension(dbListener)
-    include(crystalRepoTest(dbListener, { CrystalExposedDboRepo(it) }))
+    configureRepoTests(InmemoryDbListener())
+//    val dbListener = InmemoryDbListener()
+//    extension(dbListener)
+//    include(
+//        crystalRepoTest(dbListener) { db, uuid, now ->
+//            CrystalExposedDboRepo(db, StaticUuidGenerator(uuid), StaticClock(now))
+//        },
+//    )
 })
 
-class CrystalExposedDaoRepoInmemoryTest : DescribeSpec({
-    val dbListener = InmemoryDbListener()
-    extension(dbListener)
-    include(crystalRepoTest(dbListener, { CrystalExposedDaoRepo(it) }))
-})
+// no dao
+// class CrystalExposedDaoRepoInmemoryTest : DescribeSpec({
+//    val dbListener = InmemoryDbListener()
+//    extension(dbListener)
+//    include(crystalRepoTest(dbListener, { CrystalExposedDaoRepo(it) }))
+// })
 
 @RequiresTag(KoTags.testcontainersName)
 class CrystalExposedDboRepoTestcontainersTest : DescribeSpec({
-    val dbListener = TestcontainersDbListener()
-    extension(dbListener)
-    include(crystalRepoTest(dbListener, { CrystalExposedDboRepo(it) }))
+    configureRepoTests(TestcontainersDbListener())
+//    val dbListener = TestcontainersDbListener()
+//    extension(dbListener)
+//    include(crystalRepoTest(dbListener) { db, uuid, now ->
+//        CrystalExposedDboRepo(db, StaticUuidGenerator(uuid), StaticClock(now))
+//    }
+//    )
 })
+
+private fun DslDrivenSpec.configureRepoTests(dbListener: DbListener) {
+    extension(dbListener)
+    include(
+        crystalRepoTest(dbListener) { db, uuid, now ->
+            CrystalExposedDboRepo(db, StaticUuidGenerator(uuid), StaticClock(now))
+        },
+    )
+}
 
 fun CrystalSortingsRequest.Companion.empty() = CrystalSortingsRequest(emptyList())
 
@@ -68,10 +97,13 @@ fun sort(vararg fieldsAndDirs: Pair<CrystalSortField, SortDirection>) = CrystalS
 @Suppress("LongMethod")
 fun crystalRepoTest(
     dbListener: DbListener,
-    repoProvider: (Database) -> CrystalRepo,
+    repoProvider: (Database, Uuid, LocalDateTime) -> CrystalRepo,
 ) = describeSpec {
     // extension(dbListener) ... won't pick-up runtime interface types :-/
-    fun repo() = repoProvider(dbListener.db)
+    fun repo(
+        uuid: Uuid = Uuid.random(),
+        now: LocalDateTime = LocalDateTime.now(),
+    ) = repoProvider(dbListener.db, uuid, now)
 
     fun <T> tx(code: Transaction.() -> T): T = transaction(dbListener.db, code)
 
@@ -85,6 +117,7 @@ fun crystalRepoTest(
     fun insert(crystal: Crystal) = tx {
         CrystalTable.insert {
             it[CrystalTable.id] = crystal.id.value.toJavaUuid()
+            it[CrystalTable.created] = crystal.created
             it[CrystalTable.weightInGrams] = crystal.weight.value
         }
     }
@@ -139,9 +172,12 @@ fun crystalRepoTest(
     }
     describe("create") {
         it("Given nothing Then created") {
-            val actual = repo().insert(create).shouldBeRight()
+            val uuid = Arb.uuid().next().toKotlinUuid()
+            val now = Arb.kotlinLocalDateTime().next()
+            val actual = repo(now = now, uuid = uuid).insert(create).shouldBeRight()
             actual shouldBeEqual Crystal(
-                id = actual.id,
+                id = CrystalId(uuid),
+                created = now,
                 weight = create.weight,
             )
 
