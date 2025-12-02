@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Diamond API
+  description: See https://github.com/seepick/diamond
+paths:
+  /crystals:
+    get:
+      description: Returns all crystals
+      tags: [ "Crystals" ]
+      operationId: "loadAllCrystals"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/CrystalsList"
+
+  /crystals/{id}:
+    get:
+      description: Returns a crystal by its ID
+      tags: [ "Crystals" ]
+      operationId: "findCrystal"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The crystal UUID.
+          schema:
+            $ref: "#/components/schemas/uuid"
+      #            type: string
+      #            format: uuid
+      #            pattern:
+      responses:
+        "200":
+          description: Successful response
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Crystal"
+        "404":
+          description: Crystal not found
+          # TODO OpenAPI definition of ApiErrorDto
+
+components:
+  schemas:
+    CrystalsList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Crystal"
+    Crystal:
+      type: object
+      required:
+        - id
+        - weightInGram
+        - created
+      properties:
+        id:
+          $ref: "#/components/schemas/uuid"
+        weightInGram:
+          type: integer
+        created:
+          type: string
+          format: date
+    uuid:
+      type: string
+      pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+      # the regex above limits the length;
+      # however, some tools might require explicit settings:
+      minLength: 36
+      maxLength: 36

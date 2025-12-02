@@ -1,0 +1,40 @@
+=== Layering
+
+* Each architectural layer is represented by a Gradle sub-project (or sub-module as called in Maven terminology).
+
+// TODO plant UML diagram
+
+Main Subprojects:
+
+* app
+* view
+** view-routing and view-controller-[api/impl] could be merged into one...
+* logic-api
+* logic-impl
+* extern
+** extern-api
+** extern-impl (HTTP, SFTP)
+** extern-stub
+** extern-model (?) - generated source code (YAML, WSDL)
+* persistence
+** persistence-api
+** persistence-impl (is actually persistence-exposed)
+** once there was a persistence-stub, but it turned out to be useless (already in full control)
+
+Other Subprojects:
+
+* client-sdk (kotlin MP)
+** sdk
+** models
+** tests?
+* openapi-gen (resides in shared)
+
+Test Subprojects:
+
+* itest
+* etest: separate GIT repo (maybe dep on client-model)
+
+Shared Subprojects:
+
+* test
+* logging
