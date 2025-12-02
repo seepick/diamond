@@ -5,6 +5,20 @@ on:
     tags:
       - '*'
 
+# TODO rearrange
+# on: manual-run
+# gradlew -DisCi
+# verify:
+# *) check (tests, detekt)
+# *) run/enable advanced tests: docker, ...; -DrunEtests; -DrunTestcontainersTests
+# *) OWASP -DenableOwasp
+#
+# build:
+# *) asciidoc
+# *) assemble: jar, docker; -Ddiamond_version; -Ddiamond_branch
+# *) deploy/release
+# *) increment version, tag
+
 jobs:
   prepare-release:
     name: Creating GitHub Release

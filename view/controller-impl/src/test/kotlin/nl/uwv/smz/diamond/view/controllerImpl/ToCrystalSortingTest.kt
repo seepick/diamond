@@ -15,6 +15,7 @@ import nl.uwv.smz.diamond.domain.model.SortDirection
 import nl.uwv.smz.diamond.domain.model.empty
 
 class ToCrystalSortingTest : DescribeSpec({
+
     val defaultDirection = SortDirection.Asc
 
     fun assertSorting(string: String, vararg values: Pair<CrystalSortField, SortDirection>) {
@@ -64,14 +65,14 @@ class ToCrystalSortingTest : DescribeSpec({
     describe("Valid multiple") {
         it("When sort by two fields Then sort by both with default direction") {
             assertSorting(
-                "id,weight",
+                "id,weightInGram",
                 CrystalSortField.Id to defaultDirection,
                 CrystalSortField.WeightInGram to defaultDirection,
             )
         }
         it("When sort by two fields with direction Then sort by both with their direction") {
             assertSorting(
-                "-id,+weight",
+                "-id,+weightInGram",
                 CrystalSortField.Id to SortDirection.Desc,
                 CrystalSortField.WeightInGram to SortDirection.Asc,
             )

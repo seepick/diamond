@@ -1,7 +1,7 @@
 Architecture Decision Records
 ==============
 
-* [Arrow's Either](arrow-either.md) allows for a more functional, side-effect free approach
+* [Arrow's Either](functional_with_arrow.adoc) allows for a more functional, side-effect free approach
 * ...
 
 - setup ADR: https://github.com/joelparkerhenderson/architecture-decision-record

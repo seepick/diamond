@@ -9,5 +9,6 @@ import java.time.LocalDateTime
 @Serializable
 data class InfoDto(
     val version: String,
+    @Serializable(with = LocalDateTimeSerializer::class)
     val buildTime: LocalDateTime,
 )

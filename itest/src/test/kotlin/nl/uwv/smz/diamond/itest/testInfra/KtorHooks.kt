@@ -55,8 +55,9 @@ class KtorHooks(private val world: World) {
     private val testGlobalConfiguration = GlobalConfiguration(
         testEnvConfig,
         BuildProperties(
-            "0-test",
-            LocalDateTime.of(2000, 1, 1, 12, 42),
+            appVersion = "0-test",
+            buildTime = LocalDateTime.of(2000, 1, 1, 12, 42),
+            branchName = "branch/test",
         ),
         RoutingSetting(prettyPrint = true),
     )

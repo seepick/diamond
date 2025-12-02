@@ -1,20 +1,20 @@
-fun `❌ single expression`(): String = "foo"
+fun `BAD single expression`(): String = "foo"
 
-fun `✅ single expression`() = "foo"
+fun `GOOD single expression`() = "foo"
 
-fun `❌ db access`() {
+fun `BAD db access`() {
     transactional {
         repo.update()
     }
 }
 
-fun `✅ db access`() {
+fun `GOOD db access`() {
     transactional {
         repo.update()
     }
 }
 
-fun Service.`❌ wither`(): Service {
+fun Service.`BAD wither`(): Service {
     setFoo("bar")
     return this
 }

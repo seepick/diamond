@@ -5,7 +5,6 @@ plugins {
 
 dependencies {
     api(Deps.arrowCore)
-    api(Deps.datetimex)
     api(project(":domain:domain-failure"))
     implementation(project(":shared:shared-common"))
 

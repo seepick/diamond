@@ -5,7 +5,6 @@ plugins {
 
 dependencies {
     api(project(":persistence:persistence-api"))
-    api(Deps.datetimex)
     implementation(project(":shared:shared-common"))
     implementation(project(":shared:shared-config"))
     api(Deps.hoplite.core) // due to DatabaseConfig.password: Masked
@@ -15,7 +14,7 @@ dependencies {
     implementation(Deps.database.exposed.core)
     implementation(Deps.database.exposed.dao)
     implementation(Deps.database.exposed.jdbc)
-    implementation(Deps.database.exposed.datetimex)
+    implementation(Deps.database.exposed.datetime)
     implementation(Deps.database.liquibase.core)
     implementation(Deps.database.liquibase.slf4j)
     // TODO runtime optional!; default = oracle, dev/test = H2

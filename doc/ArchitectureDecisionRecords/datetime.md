@@ -9,4 +9,7 @@
     * BAD: not all (java) libs support it
     * BAD: higher barrier of entry for others
     * any benefit from its multiplatform nature?
-* decision go for kotlin, let's see if hit a wall
+* conclusion:
+    * unstable API is too dangerous for production!
+    * NoSuchMethod error, incompatible versions on classpath
+    * kotlin is not well integrated yet (kotest)

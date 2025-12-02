@@ -11,6 +11,7 @@ Feature: Crystal endpoint
       | 42     |
     When get crystals
     Then the response status code is 200
+    # TODO test for whole json returned; store variables for dynamic fields
     And the response JSON "$.items[0].weightInGram" is 42
 
     # TODO write crystal CRUD itests
@@ -26,11 +27,12 @@ Feature: Crystal endpoint
     Then the response status code is 200
     # TODO assert for list size = 1 and list[0] weightInGram = 1
     And store response JSON "$.items[0].id" as "ID"
+    And store response JSON "$.items[0].created" as "CREATED"
     And the response JSON body is
     """
     {
       "meta": { "skip": 0, "take": 1, "hasMore": true },
-      "items": [ { "id": "$ID", "weightInGram": 1 } ]
+      "items": [ { "id": "$ID", "created": "$CREATED", "weightInGram": 1 } ]
     }
     """
 

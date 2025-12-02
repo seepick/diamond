@@ -1,8 +1,6 @@
 package nl.uwv.smz.diamond.shared.common
 
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
+import java.time.LocalDateTime
 import kotlin.time.ExperimentalTime
 
 interface Clock {
@@ -11,6 +9,5 @@ interface Clock {
 
 @OptIn(ExperimentalTime::class)
 object SystemClock : Clock {
-    override fun now(): LocalDateTime =
-        kotlin.time.Clock.System.now().toLocalDateTime(TimeZone.UTC)
+    override fun now(): LocalDateTime = LocalDateTime.now()
 }

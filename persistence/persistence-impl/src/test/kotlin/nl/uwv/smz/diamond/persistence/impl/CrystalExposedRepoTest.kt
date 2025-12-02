@@ -14,9 +14,9 @@ import io.kotest.matchers.should
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.property.Arb
+import io.kotest.property.arbitrary.localDateTime
 import io.kotest.property.arbitrary.next
 import io.kotest.property.arbitrary.uuid
-import kotlinx.datetime.LocalDateTime
 import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Crystal
 import nl.uwv.smz.diamond.domain.model.CrystalId
@@ -38,14 +38,13 @@ import nl.uwv.smz.diamond.persistence.impl.testInfra.InmemoryDbListener
 import nl.uwv.smz.diamond.persistence.impl.testInfra.TestcontainersDbListener
 import nl.uwv.smz.diamond.shared.common.StaticClock
 import nl.uwv.smz.diamond.shared.common.StaticUuidGenerator
-import nl.uwv.smz.diamond.shared.common.now
 import nl.uwv.smz.diamond.shared.test.KoTags
-import nl.uwv.smz.diamond.shared.test.kotlinLocalDateTime
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.time.LocalDateTime
 import kotlin.uuid.Uuid
 import kotlin.uuid.toJavaUuid
 import kotlin.uuid.toKotlinUuid
@@ -173,7 +172,7 @@ fun crystalRepoTest(
     describe("create") {
         it("Given nothing Then created") {
             val uuid = Arb.uuid().next().toKotlinUuid()
-            val now = Arb.kotlinLocalDateTime().next()
+            val now = Arb.localDateTime().next()
             val actual = repo(now = now, uuid = uuid).insert(create).shouldBeRight()
             actual shouldBeEqual Crystal(
                 id = CrystalId(uuid),

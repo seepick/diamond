@@ -17,19 +17,16 @@ endif::[]
 // ifdef::projcode[project was defined as {projcode}]
 // ifndef::projcode[project was not defined]
 
-[.thumb]
-image::{basedir}/images/diamond.jpg[scaledwidth=30%]
+include::{basedir}/architecture/_index.adoc[]
 
-include::{basedir}/ch_principles.adoc[]
+include::{basedir}/application/_index.adoc[]
 
-include::{basedir}/ch_architecture.adoc[]
+include::{basedir}/coding/_index.adoc[]
 
-include::{basedir}/ch_application.adoc[]
+include::{basedir}/testing/_index.adoc[]
 
-include::{basedir}/ch_testing.adoc[]
+include::{basedir}/quality/_index.adoc[]
 
-include::{basedir}/ch_quality.adoc[]
-
-include::{basedir}/ch_devops.adoc[]
+include::{basedir}/devops/_index.adoc[]
 
 include::{basedir}/ch_appendix.adoc[]

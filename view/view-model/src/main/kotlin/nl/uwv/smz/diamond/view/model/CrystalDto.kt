@@ -1,13 +1,14 @@
 package nl.uwv.smz.diamond.view.model
 
-import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
+import java.time.LocalDateTime
 import kotlin.uuid.Uuid
 
 @Serializable
 data class CrystalDto(
     val id: Uuid,
     val weightInGram: Int,
+    @Serializable(with = LocalDateTimeSerializer::class)
     val created: LocalDateTime,
 )
 

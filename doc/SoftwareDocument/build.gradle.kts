@@ -29,6 +29,7 @@ dependencies {
 
 tasks.asciidoctorPdf {
     asciidoctorj {
+        // TODO support emojis!
         // AsciidoctorJExtension
         // The AsciidoctorJ engine supports Batik, Ditaa, JSyntrax, and PlantUml via a Diagram extension
         modules {
@@ -47,8 +48,9 @@ tasks.asciidoctorPdf {
     // THIS should be actually the way to go...?!
     attributes(
         mapOf(
-            "basedir" to "src/docs/asciidoc",
-            "sourcedir" to "src/main/kotlin",
+            "basedir" to "${project.projectDir}/src/docs/asciidoc",
+            "sourcedir" to "${project.projectDir}/src/main/kotlin",
+            "adrsdir" to "${project.projectDir}/../ArchitectureDecisionRecords",
             "source-highlighter" to "coderay",
             "toc" to "left",
             "idprefix" to "",

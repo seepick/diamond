@@ -9,7 +9,6 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.arbitrary
 import io.kotest.property.arbitrary.int
 import io.kotest.property.arbitrary.next
-import io.kotest.property.arbitrary.uuid
 import io.ktor.client.HttpClient
 import io.ktor.client.request.delete
 import io.ktor.client.request.get
@@ -21,6 +20,7 @@ import io.ktor.http.HttpStatusCode
 import io.mockk.coEvery
 import io.mockk.mockk
 import nl.uwv.smz.diamond.domain.failure.Failure
+import nl.uwv.smz.diamond.shared.test.kotlinUuid
 import nl.uwv.smz.diamond.shared.testKtor.readBody
 import nl.uwv.smz.diamond.shared.testKtor.setJsonBody
 import nl.uwv.smz.diamond.view.controllerApi.CrystalController
@@ -31,7 +31,7 @@ import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
 import nl.uwv.smz.diamond.view.model.PageDto
 import nl.uwv.smz.diamond.view.model.PageMetaDto
 import nl.uwv.smz.diamond.view.model.PageRequestDto
-import kotlin.uuid.Uuid
+import nl.uwv.smz.diamond.view.model.crystalDto
 
 fun PageRequestDto.Companion.undefined() = PageRequestDto(null, null)
 
@@ -142,10 +142,6 @@ class CrystalRouteTest : DescribeSpec({
         // TODO test for controller.delete fails
     }
 })
-
-fun Arb.Companion.kotlinUuid() = arbitrary {
-    Uuid.parse(Arb.uuid().bind().toString())
-}
 
 fun Arb.Companion.crystalCreateDto() = arbitrary {
     CrystalCreateDto(

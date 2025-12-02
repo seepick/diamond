@@ -3,9 +3,9 @@ package nl.uwv.smz.diamond.domain.model
 import arrow.core.Either
 import arrow.core.raise.either
 import arrow.core.raise.ensure
-import kotlinx.datetime.LocalDateTime
 import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.shared.common.eitherParse
+import java.time.LocalDateTime
 import kotlin.uuid.Uuid
 
 data class Crystal(

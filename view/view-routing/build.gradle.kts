@@ -13,6 +13,7 @@ dependencies {
     implementation(Deps.logging.kotlin)
     implementation(Deps.ktor.server.statusPages)
 
+    testImplementation(testFixtures(project(":view:view-model")))
     testImplementation(project(":shared:shared-test"))
     testImplementation(project(":shared:shared-testKtor"))
     testImplementation(Deps.ktor.client.contentNegotiation)

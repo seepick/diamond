@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    api(Deps.testing.kotest.assertionsArrow)
     api(Deps.testing.kotest.property)
     implementation(Deps.testing.kotest.frameworkEngine)
     implementation(project(":shared:shared-common"))

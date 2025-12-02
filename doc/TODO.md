@@ -10,6 +10,7 @@ Next
 * finish sonar integration; reports; also for OWASP https://ossindex.sonatype.org/doc/auth-required
 * [ ] Object mapper a la structmap for kotlin
 * delete all ADRs, incorporate in asciidoc
+* when test fails `gradlew check`, then also display assertion error message
 
 Backlog
 -------------------------

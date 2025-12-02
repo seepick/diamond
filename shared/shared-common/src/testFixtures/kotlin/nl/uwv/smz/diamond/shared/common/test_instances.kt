@@ -1,6 +1,6 @@
 package nl.uwv.smz.diamond.shared.common
 
-import kotlinx.datetime.LocalDateTime
+import java.time.LocalDateTime
 import kotlin.uuid.Uuid
 
 class StaticClock(private val now: LocalDateTime) : Clock {

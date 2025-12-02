@@ -1,8 +1,14 @@
 ifndef::sourcedir[]
-:sourcedir: ../../main/kotlin
+:sourcedir: ../../../main/kotlin
 endif::[]
 
-== Principles
+== Coding
+
+Kotlin.
+
+* list the bad things as well; honesty, expection mgmt, credibility.
+* intellij support; crash; young
+
 
 === Coding Philosophy
 

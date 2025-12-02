@@ -1,6 +1,7 @@
+=== ADR - Application Configuration
+
 * config as ENV vars or centralized config mgmr?
 
-Resources
-==
+==== Resources
 
 * https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/

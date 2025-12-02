@@ -9,17 +9,17 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.equals.shouldBeEqual
 import io.kotest.matchers.should
 import io.kotest.property.Arb
+import io.kotest.property.arbitrary.localDateTime
 import io.kotest.property.arbitrary.next
 import io.kotest.property.arbitrary.uuid
-import kotlinx.datetime.LocalDateTime
 import nl.uwv.smz.diamond.domain.failure.Failure
 import nl.uwv.smz.diamond.domain.model.Page
 import nl.uwv.smz.diamond.domain.model.PageMeta
 import nl.uwv.smz.diamond.domain.model.PageRequest
 import nl.uwv.smz.diamond.domain.model.build
 import nl.uwv.smz.diamond.domain.model.default
-import nl.uwv.smz.diamond.shared.test.kotlinLocalDateTime
 import org.jetbrains.exposed.sql.Database
+import java.time.LocalDateTime
 import kotlin.uuid.Uuid
 import kotlin.uuid.toKotlinUuid
 
@@ -48,7 +48,7 @@ fun <REPO, ENTITY> paginationRepoTests(
     // paginatedRepoCall: suspend CrystalRepo.(PageRequest) -> Either<Failure, Page<Crystal>>,
 ) = describeSpec {
     suspend fun execute(request: PageRequest): Either<Failure, Page<ENTITY>> =
-        repoProvider(dbProvider(), Arb.uuid().next().toKotlinUuid(), Arb.kotlinLocalDateTime().next())
+        repoProvider(dbProvider(), Arb.uuid().next().toKotlinUuid(), Arb.localDateTime().next())
             .paginatedRepoCall(request)
 
     describe("Pagination regular content cases") {

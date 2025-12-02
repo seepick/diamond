@@ -12,7 +12,6 @@ dependencies {
     testImplementation(Deps.testing.kotest.junitRunner)
     testImplementation(Deps.testing.kotest.assertions)
     testImplementation(Deps.testing.kotest.assertionsArrow)
-    testImplementation(Deps.testing.kotest.assertionsDatetimex)
     testImplementation(Deps.testing.kotest.property)
     testImplementation(Deps.testing.junit.platformSuite)
     testImplementation(Deps.testing.junit.jupiter)

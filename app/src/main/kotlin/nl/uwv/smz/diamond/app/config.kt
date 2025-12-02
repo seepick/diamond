@@ -6,11 +6,11 @@ import com.sksamuel.hoplite.ConfigException
 import com.sksamuel.hoplite.ConfigLoaderBuilder
 import com.sksamuel.hoplite.ExperimentalHoplite
 import com.sksamuel.hoplite.addResourceSource
-import kotlinx.datetime.LocalDateTime
 import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 import nl.uwv.smz.diamond.shared.config.SubConfig
 import nl.uwv.smz.diamond.view.routing.RoutingSetting
+import java.time.LocalDateTime
 
 data class GlobalConfiguration(
     /** Read via hoplite from environment variables (or system properties). */

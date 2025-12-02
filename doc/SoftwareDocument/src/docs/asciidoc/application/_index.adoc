@@ -1,0 +1,56 @@
+ifndef::adrsdir[]
+:adrsdir: ../../../../../ArchitectureDecisionRecords
+endif::[]
+
+
+== Application
+
+[.thumb]
+image::diamond.jpg[scaledwidth=30%]
+
+* `java -jar diamond.jar printConfigOnly` - will print the read configuration object for verification
+
+=== Tech Stack
+
+// TODO Go through all dependencies
+
+* Gradle
+* Kotlin
+* Ktor
+* Koin (not really DI, but a service locator, but ok ;))
+* Kotest
+* Exposed
+* Liquibase
+* link:https://github.com/sksamuel/hoplite[Hoplite] - typesafe loading application configuration (sys-props, env-vars, files)
+* Arrow
+** Especially `Either` for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling]
+
+=== Environment Variables
+
+include::environment_variables.generated.adoc[]
+
+include::{adrsdir}/application_configuration.adoc[]
+
+=== Local Development
+
+* run `nl.uwv.smz.diamond.app.LocalDiamondApp`
+* Postman collection can be found at: `/local/Diamond.postman_collection.json`
+
+IntelliJ plugins:
+
+* Gradle
+* EditorConfig
+* detekt - configure with `/config/detekt.yml`
+* ktlint
+* kotest
+* Markdown
+* AsciiDoc
+* plantuml4idea (graphivz/dot required)
+* Gherkin
+* Cucumber for Kotlin
+* Cucumber for Java
+* Cucumber+
+* Cucumber Table Mapping
+* kotlin-fill-class
+
+include::gradle.adoc

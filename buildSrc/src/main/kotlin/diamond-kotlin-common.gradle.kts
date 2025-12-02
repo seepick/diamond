@@ -34,6 +34,11 @@ java {
 }
 
 if (GradleProperty.enableOwasp.isSet() || GradleProperty.isCi.isSet()) {
+    // TODO possible to move in here?
+//    plugins {
+//        id("org.owasp.dependencycheck")
+//    }
+
     configure<org.owasp.dependencycheck.gradle.extension.DependencyCheckExtension> {
         // Output directory default: build/reports/dependency-check
 //    failBuildOnCVSS = 7f // score >= 7 is critical/high

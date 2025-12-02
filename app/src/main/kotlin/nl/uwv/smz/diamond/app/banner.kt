@@ -1,7 +1,6 @@
 package nl.uwv.smz.diamond.app
 
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.format
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.math.ceil
 

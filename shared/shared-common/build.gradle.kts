@@ -4,7 +4,6 @@ plugins {
 }
 
 dependencies {
-    api(Deps.datetimex)
     api(Deps.arrowCore)
     implementation(Deps.logging.kotlin)
 }
