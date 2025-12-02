@@ -7,10 +7,6 @@ ifndef::basedir[]
 :basedir: .
 endif::[]
 
-ifndef::sourcedir[]
-:sourcedir: ../../main/kotlin
-endif::[]
-
 // ifeval::["{projcode}"=="cm"}]
 // If `projcode == cm` then you should see this.
 // endif::[]

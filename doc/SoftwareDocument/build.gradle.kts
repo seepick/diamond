@@ -49,7 +49,6 @@ tasks.asciidoctorPdf {
     attributes(
         mapOf(
             "basedir" to "${project.projectDir}/src/docs/asciidoc",
-            "sourcedir" to "${project.projectDir}/src/main/kotlin",
             "adrsdir" to "${project.projectDir}/../ArchitectureDecisionRecords",
             "source-highlighter" to "coderay",
             "toc" to "left",

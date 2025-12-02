@@ -1,7 +1,3 @@
-ifndef::sourcedir[]
-:sourcedir: ../../../main/kotlin
-endif::[]
-
 == Coding
 
 Kotlin.
@@ -35,5 +31,5 @@ Kotlin.
 
 [source,java]
 ----
-include::{sourcedir}/named_expressions.kt[]
+include::named_expressions.kt[]
 ----
