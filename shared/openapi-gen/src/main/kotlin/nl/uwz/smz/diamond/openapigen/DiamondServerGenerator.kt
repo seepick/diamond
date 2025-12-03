@@ -46,40 +46,7 @@ class DiamondServerGenerator : AbstractKotlinCodegen(), BeanValidationFeatures {
     override fun processOpts() {
         super.processOpts()
 
-//        val generateApis = additionalProperties.containsKey(CodegenConstants.GENERATE_APIS)
-//        val packageFolder = (sourceFolder + File.separator + packageName).replace(".", File.separator)
-
-//        val gradleBuildFile = "build.gradle.kts"
-//        supportingFiles.add(SupportingFile(gradleBuildFile + ".mustache", "", gradleBuildFile))
-//        supportingFiles.add(SupportingFile("settings.gradle.mustache", "", "settings.gradle"))
-//        supportingFiles.add(SupportingFile("gradle.properties", "", "gradle.properties"))
-
         additionalProperties[KotlinServerCodegen.Constants.IS_KTOR] = true
-
-//        supportingFiles.add(SupportingFile("AppMain.kt.mustache", packageFolder, "AppMain.kt"))
-//        supportingFiles.add(SupportingFile("Configuration.kt.mustache", packageFolder, "Configuration.kt"))
-
-//        if (generateApis && resourcesFeatureEnabled) {
-//            supportingFiles.add(SupportingFile("Paths.kt.mustache", packageFolder, "Paths.kt"))
-//        }
-
-//        supportingFiles.add(SupportingFile("application.conf.mustache", resourcesFolder, "application.conf"))
-//        supportingFiles.add(SupportingFile("logback.xml", resourcesFolder, "logback.xml"))
-
-//        val infrastructureFolder =
-//            (sourceFolder + File.separator + packageName + File.separator + "infrastructure")
-//                .replace(".", File.separator)
-//        supportingFiles.add(SupportingFile("ApiKeyAuth.kt.mustache", infrastructureFolder, "ApiKeyAuth.kt"))
-
-//        if (!this.omitGradleWrapper) {
-//            supportingFiles.add(
-//                SupportingFile(
-//                    "gradle-wrapper.properties",
-//                    "gradle" + File.separator + "wrapper",
-//                    "gradle-wrapper.properties",
-//                ),
-//            )
-//        }
     }
 
     override fun postProcess() {
@@ -143,7 +110,6 @@ class DiamondServerGenerator : AbstractKotlinCodegen(), BeanValidationFeatures {
                 },
             )
         }
-
         return objs
     }
 
