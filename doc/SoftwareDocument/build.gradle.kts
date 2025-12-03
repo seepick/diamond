@@ -1,10 +1,6 @@
 // https://docs.asciidoctor.org/pdf-converter/latest/
 // https://asciidoctor.github.io/asciidoctor-gradle-examples/
 
-repositories {
-    mavenCentral()
-}
-
 plugins {
     val asciidoctorVersion = "4.0.5"
     id("diamond-versions")

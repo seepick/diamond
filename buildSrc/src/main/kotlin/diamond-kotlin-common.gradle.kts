@@ -11,10 +11,6 @@ plugins {
 // ./gradlew dependencyCheckAnalyze
 // suppressionFile
 
-repositories {
-    mavenCentral()
-}
-
 // no logging dependency, as API models don't need it (polluted!)
 
 kotlin {

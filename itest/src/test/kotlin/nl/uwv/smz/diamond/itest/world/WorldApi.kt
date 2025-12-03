@@ -5,7 +5,7 @@ import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import kotlinx.coroutines.runBlocking
-import kotlin.contracts.ExperimentalContracts
+import nl.uwv.smz.diamond.shared.common.ifNotEmpty
 
 data class CrystalRequest(
     val skip: Int?,
@@ -49,16 +49,5 @@ class WorldApi(
         runBlocking {
             responseCallback(client.get("/posts"))
         }
-    }
-}
-
-@OptIn(ExperimentalContracts::class)
-inline fun <T> List<T>.ifNotEmpty(code: (List<T>) -> Unit) {
-//    contract {
-//        callsInPlace(defaultValue, InvocationKind.AT_MOST_ONCE)
-//    }
-    ifEmpty { }
-    if (isNotEmpty()) {
-        code(this)
     }
 }

@@ -42,15 +42,19 @@ components:
   schemas:
     DogList:
       type: array
+      description: a list of dogs
       items:
         $ref: "#/components/schemas/Dog"
     Dog:
       type: object
+      description: a loyal friend to the human
       required:
         - id
         - name
       properties:
         id:
           type: integer
+          description: the dogs number, always number one of course
         name:
           type: string
+          description: call him, he will be there

@@ -4,7 +4,7 @@ plugins {
     // instead of cumbersome impl dependency in buildSrc build file?! :)
 
 //    id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin apply false
-    id("org.openapi.generator") version "7.0.1" apply false
+    id("org.openapi.generator") version Versions.openapi apply false
 }
 
 val appVersion = GradleProperty.appVersion.get() ?: "SNAPSHOT"
@@ -14,4 +14,9 @@ allprojects {
     group = "nl.uwv.smz.diamond"
     version = appVersion
     description = "diamond sample project"
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
 }

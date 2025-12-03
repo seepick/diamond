@@ -2,7 +2,7 @@
 object Deps {
 
     val serializationx = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
-
+    val openapi = "org.openapitools:openapi-generator:${Versions.openapi}"
     val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
     val jsch = "com.github.mwiede:jsch:${Versions.jsch}" // fork of JSch: "com.jcraft:jsch:0.1.55"
 

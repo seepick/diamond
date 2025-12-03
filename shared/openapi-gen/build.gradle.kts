@@ -1,9 +1,22 @@
 plugins {
     id("diamond-kotlin-common")
     id("diamond-kotlin-test")
+    `maven-publish`
 }
 
 dependencies {
+    implementation(Deps.openapi)
     implementation(Deps.logging.kotlin)
-    implementation("org.openapitools:openapi-generator:7.17.0")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = group as String
+            artifactId = "openapi-gen"
+            version = "0" // TODO read from somewhere...
+
+            from(components["kotlin"])
+        }
+    }
 }

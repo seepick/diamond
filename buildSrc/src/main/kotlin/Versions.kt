@@ -10,6 +10,7 @@ object Versions {
     val hoplite = "3.0.0.RC1" // "2.9.0"
     val testcontainers = "2.0.2"
     val jsch = "2.27.7"
+    val openapi = "7.17.0" // plugin and dependency
 
     object logging {
         val kotlin = "7.0.13"

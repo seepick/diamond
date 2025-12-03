@@ -2,7 +2,6 @@ package {{modelPackage}}
 
 {{#imports}}import {{import}}
 {{/imports}}
-
 {{#models}}
 {{#model}}
 {{#isEnum}}{{>model/enum_class}}{{/isEnum}}{{^isEnum}}{{>model/data_class}}{{/isEnum}}

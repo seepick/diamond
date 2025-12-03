@@ -26,7 +26,7 @@ paths:
         - name: id
           in: path
           required: true
-          description: The crystal UUID.
+          description: The crystal's ID.
           schema:
             $ref: "#/components/schemas/uuid"
       #            type: string
@@ -34,13 +34,13 @@ paths:
       #            pattern:
       responses:
         "200":
-          description: Successful response
+          description: Successfully found the desired crystal.
           content:
             "application/json":
               schema:
                 $ref: "#/components/schemas/Crystal"
         "404":
-          description: Crystal not found
+          description: Crystal was not found, helaas.
           # TODO OpenAPI definition of ApiErrorDto
 
 components:
@@ -51,6 +51,7 @@ components:
         $ref: "#/components/schemas/Crystal"
     Crystal:
       type: object
+      description: a valuable item many desire
       required:
         - id
         - weightInGram
@@ -58,11 +59,14 @@ components:
       properties:
         id:
           $ref: "#/components/schemas/uuid"
+          description: the unique identifier
         weightInGram:
           type: integer
+          description: how heavy the crystal is
         created:
           type: string
           format: date
+          description: the moment the entity was stored in the database
     uuid:
       type: string
       pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
