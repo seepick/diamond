@@ -4,6 +4,8 @@ Next
 ==> focus on MWP MVP ;) showcase that it's possible, don't make it "klaar", go fast forward, PoC prototype spike only
 ==> redo basic tech things, see how they are done / can be done better / differently with new techstack
 
+* write custom ktor OpenAPI generator (use freemarker templates again)
+    * see: https://www.baeldung.com/java-openapi-custom-generator
 * [ ] Support filtering
 * [ ] support of datetime types (HTTP, DB); exposed-java-time
 * [ ] Configure OWASP report (fail on too high vulns)

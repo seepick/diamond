@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Test API
+paths:
+  /dogs:
+    get:
+      description: Return all dogs
+      tags: [ "Dogs" ]
+      operationId: "getAllDogs"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/DogList"
+
+  /dogs/{id}:
+    get:
+      description: Returns a dog by its ID
+      tags: [ "Dogs" ]
+      operationId: "getDog"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The dog's ID.
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Dog"
+        "404":
+          description: Dog not found
+
+components:
+  schemas:
+    DogList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Dog"
+    Dog:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string

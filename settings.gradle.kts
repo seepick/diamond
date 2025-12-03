@@ -24,6 +24,7 @@ include(
     "shared:shared-logging",
     "shared:shared-test",
     "shared:shared-testKtor",
+    "shared:openapi-gen",
     "itest",
     "etest",
     ":doc:SoftwareDocument",
