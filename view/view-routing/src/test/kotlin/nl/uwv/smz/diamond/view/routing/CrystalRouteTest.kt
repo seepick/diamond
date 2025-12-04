@@ -83,6 +83,8 @@ class CrystalRouteTest : DescribeSpec({
                 response.readBody<CrystalDto>() shouldBeEqual dto
             }
         }
+        it("asdf") {
+        }
     }
 
     describe("POST /crystals}") {
