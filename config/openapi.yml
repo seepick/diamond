@@ -51,7 +51,7 @@ components:
         $ref: "#/components/schemas/Crystal"
     Crystal:
       type: object
-      description: a valuable item many desire
+      description: A valuable item many desire.
       required:
         - id
         - weightInGram

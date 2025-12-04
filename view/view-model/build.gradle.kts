@@ -12,6 +12,7 @@ dependencies {
     implementation(Deps.serializationx)
 // `./gradlew :shared:openapi-gen:publishToMavenLocal`
     implementation("nl.uwv.smz.diamond:openapi-gen:0")
+//    implementation(project(":shared:openapi-gen"))
 
     testImplementation(Deps.testing.jsonAssert)
     testFixturesApi(project(":shared:shared-test"))
@@ -23,14 +24,18 @@ openApiGenerate {
     inputSpec.set(diamondOpenApiPath)
     generatorName.set("diamond-model") // see: nl.uwz.smz.diamond.openapigen.DiamondModelGenerator
 
-    outputDir.set("$projectDir/src/main/kotlin")
-    packageName.set("nl.uwv.smz.diamond.view.modelGen")
+    outputDir.set(projectDir.absolutePath)
+    packageName.set("nl.uwv.smz.diamond.view.model.generated")
 //    apiPackage.set("apiGen")
 //    modelPackage.set("modelGen")
+}
 
-    configOptions.set(
-        mapOf(
-            "serializationLibrary" to "kotlinx_serialization",
-        ),
-    )
+tasks.openApiGenerate {
+    doLast {
+        // TODO how to disable codegen to write those?!
+        delete(
+            "$projectDir/.openapi-generator-ignore",
+            "$projectDir/.openapi-generator/",
+        )
+    }
 }

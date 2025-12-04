@@ -1,0 +1,6 @@
+=== Distributed Services
+
+Their specifics require:
+
+* Versioning, backwards compatiability.
+* Resilience and Fault Tolerance: circuit breakers, retries, and bulkheads.

@@ -1,0 +1,47 @@
+=== ADR - Logging with Kotlin
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+First we did this:
+
+[source,kotlin]
+----
+if (log.isDebugEnabled()) {
+    log.debug("some message " + message + " was returned")
+}
+----
+
+This way we only create the string if it is really necessary, bad.
+But it's very verbose, to do it correct and concise; bad.
+
+Then we switched to a `String.format`-like approach to fix this, to always be able to invoke the log method without performance impact:
+
+[source,kotlin]
+----
+log.debug("some message %s was returned", message)
+----
+
+This two issues (conciseness, performance) but still was not readable, especially when logging longer messages with multiple values.
+The displacement-nature of these kind of formatting approaches is just not doing it...
+
+Finally we are doing it nicely, using Kotlin's string templates which are basically string concatenations, and the ease of lambda declarations:
+
+[source,kotlin]
+----
+log.debug { "some message $dto was returned" }
+----
+
+==== Logger Declaration
+
+Thanks to `io.github.oshai:kotlin-logging-jvm` (former "mu-kotlin") the declaration of a logger is as simple as it can be:
+
+[source,kotlin]
+----
+private val log = logger {}
+----
+
+It will look up the surrounding class and thus use the right logger factory itself.
+It uses Slf4j underneath.
+
+The actual logging implementation is done by Logback (the better Log4j).

@@ -1,0 +1,33 @@
+=== ADR - Filter ReST Resources
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+==== Context
+
+* the user (via the frontend) needs to be able to filter bigger datasetes
+* different fields have different types require different operators
+** general: equal, not equal
+** numeric: greater/lesser (or equal); between is done by adding both ;)
+** enum: (with)in
+* operators are all in conjunctive form (coupled by AND)
+
+==== Proposal
+
+Simple:
+
+* `/crystals?filter=author eq 'Peter'`
+* `/crystals?author=eq:Peter`
+* `/crystals?weight=gt:3&weight=lte:10`
+* `/crystals?state=in:FOO,BAR`
+
+Complex:
+
+* `/crystals?filter[0].property=owner.name&filter[0].operator=equals&filter[0].value=Peter`
+
+Radical other approach would be to turn it into a POST (PUT?) request and provide a request body (full control).
+It feels like we are trying to squeeze a proper payload into query parameters (feels wrong, a smell we are misusing something).
+
+==== Links
+
+* https://restfulapi.net/api-pagination-sorting-filtering/

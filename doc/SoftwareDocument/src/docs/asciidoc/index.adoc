@@ -23,6 +23,4 @@ include::{basedir}/testing/_index.adoc[]
 
 include::{basedir}/quality/_index.adoc[]
 
-include::{basedir}/devops/_index.adoc[]
-
 include::{basedir}/ch_appendix.adoc[]

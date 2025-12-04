@@ -1,5 +1,5 @@
 ifndef::adrsdir[]
-:adrsdir: ../../../../../ArchitectureDecisionRecords
+:adrsdir: ../../../../../decisions
 endif::[]
 
 
@@ -29,7 +29,7 @@ image::diamond.jpg[scaledwidth=30%]
 
 include::environment_variables.generated.adoc[]
 
-include::{adrsdir}/application_configuration.adoc[]
+include::{adrsdir}/application/configure_application.adoc[]
 
 === Local Development
 
@@ -53,4 +53,4 @@ IntelliJ plugins:
 * Cucumber Table Mapping
 * kotlin-fill-class
 
-include::gradle.adoc
+include::gradle.adoc[]

@@ -1,0 +1,34 @@
+=== ADR - Generate Custom OpenAPI Code
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+Reason:
+
+* We need to keep the API spec (YAML) and the code (Kotlin) in sync; we don't want to rely on doing this manually.
+* Thus, establish an automatism via generation.
+* We need something that fits our needs: modern, up2date, high quality code and libs.
+* Current (Kotlin) generators are out of date (unusable), thus a custom generator is required.
+
+Alternatives:
+
+* Write some tests to verify sync of spec and code.
+* No, as we want immediate feedback (compile time) about correct implementation.
+* Use Java generators, they are more modern and Kotlin-Java interoperability works well.
+* It would not clash as Java generated clients use different libraries (even when outdated).
+
+Implementation requirements:
+
+* Kotlin data classes with Kotlinx serialization annotations.
+* Ability to hook specific type serializer (provided or custom).
+* Think of `java.time.LocalDateTime` and enums.
+* Generated separately (`view-model` subproject) from server routes; a unique requirement not provided by default generators.
+* Interfaces for Ktor server.
+* Some route providing interface types could be injected into Koin.
+* Only bare skeleton mandatory (HTTP method and path), everything else optional (could go crazy with details).
+* Client generation is optional.
+
+==== Resources
+
+* https://www.baeldung.com/java-openapi-custom-generator
+* https://deepwiki.com/OpenAPITools/openapi-generator/5.1-creating-custom-generators

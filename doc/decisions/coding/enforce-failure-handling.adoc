@@ -1,0 +1,22 @@
+=== ADR - Enforce Failure Handling
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+About:
+
+* Pure Functions:
+** return values are identical for identical arguments (no variation with static variables, non-local variables, mutable reference arguments or input streams, i.e., referential transparency)
+** the function has no side effects (no mutation of non-local variables, mutable reference arguments or input/output streams)
+* Throwing (unchecked) exceptions is a sort of an implicit return value which can be forgotten to be handled properly, resulting in false-500 responses.
+* Use the Arrow library to introduce a more functional approach, the `Either` class specifically
+** TODO: in the future maybe also optics to manipulate deep nested, immutable data classes.
+
+==== Either
+
+* Good:
+** developers need to think (forced to, explicit) error types, mapping of them (translation of corrupt data to bad request/internal error)
+** supports DDD by simulating failure-aware constructors (companion operator fun with Either return type)
+* Bad:
+** sometimes not clear if not familiar with it
+** sometimes IDE doesn't suggest `.bind()` although it's the solution

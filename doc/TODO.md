@@ -4,19 +4,17 @@ Next
 ==> focus on MWP MVP ;) showcase that it's possible, don't make it "klaar", go fast forward, PoC prototype spike only
 ==> redo basic tech things, see how they are done / can be done better / differently with new techstack
 
-* write custom ktor OpenAPI generator (use freemarker templates again)
-    * see: https://www.baeldung.com/java-openapi-custom-generator
-* [ ] Support filtering
+
+Backlog
+-------------------------
+
 * [ ] support of datetime types (HTTP, DB); exposed-java-time
+* [ ] Support filtering
 * [ ] Configure OWASP report (fail on too high vulns)
 * finish sonar integration; reports; also for OWASP https://ossindex.sonatype.org/doc/auth-required
 * [ ] Object mapper a la structmap for kotlin
 * delete all ADRs, incorporate in asciidoc
 * when test fails `gradlew check`, then also display assertion error message
-
-Backlog
--------------------------
-
 * [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
 * [ ] Configure jacaco XML for sonarqube
     * see: https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
@@ -43,6 +41,8 @@ Backlog
 * [ ] Write more KDoc to help making this code a better sample
 * [ ] Karate support different environments
 * [ ] Check if liquibase-to-exposed generation is possible (do we even want that?! NO!)
+* [ ] Use OpenAPI generator for data classes with kotlinx serialization
+* [ ] Write OpenAPI generator for ktor server side (route interfaces)
 
 Low
 -------------------------
@@ -213,7 +213,7 @@ V1
 * [x] Use Arrow's either
 * [x] CRUD operations until service (ApiError handling, JSON serialization)
 * [x] Setup Postman collection
-* [x] Generate Software Architecture Document with Asciidoc
+* [x] Generate Software Document with Asciidoc
 * [x] Test fixtures depedency (arrow, kotest; reusable arbs)
 * [x] Runtime configuration for project (env-vars via hoplite)
 * [x] Generate configuration report (list of env-vars for Ops-people)
@@ -239,3 +239,4 @@ V1
 * [x] Health endpoint (ping all backends available, track response time)
 * [x] Make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
     * NO, not supporting kotlin 2.*: https://github.com/kscripting/kscript/issues/421
+* [x] Write and use OpenAPI generator for data classes with kotlinx serialization

@@ -1,0 +1,20 @@
+=== ADR - Verify Coverage
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+About:
+
+* Goal: automatically verify minimum test coverage threshold
+** Fail build if not achieved
+** Provide dashboards (Sonarqube) on current state and changes (delta)
+
+Alternatives:
+
+* jacoco
+** very mature, well supported by tools
+** other coverage tools usually can export to jacoco's format too
+** not supporting Kotlin's inline
+* kover
+** specific for kotlin, from jetbrains
+** bleeding edge (child sicknesses?)

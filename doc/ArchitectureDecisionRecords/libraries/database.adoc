@@ -1,7 +1,0 @@
-=== Database
-
-* access via code; libs:
-** Exposed
-** (No: KTorm https://www.ktorm.org)
-* DBMS used:
-** Oracle, H2 in-memory for testing

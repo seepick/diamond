@@ -1,0 +1,90 @@
+= Architecture Decision Records
+
+* link:https://github.com/joelparkerhenderson/architecture-decision-record[What are ADRs]?
+** They capture DECISIONS made along with CONTEXT (why, reasons, motivations) and CONSEQUENCES (impact, risk).
+** They are mall chunks of structured information to document our thought process.
+** Their goal is to be able to trace back what and why (not) certain decisions were made.
+
+== Log
+
+API Design:
+
+* ...
+
+Coding:
+
+* link:coding/enforce-failure-handling.adoc[Arrow's Either] - allows for a more functional, side-effect free approach
+* ...
+
+== Writing ADRs
+
+Criteria to consider:
+
+* How urgent/important is the AD?
+* Find decision by personal/collective experience (good and bad) and industry best practices.
+* We want to create an ADR when we want future developers to understand the "why" of what we're doing.)
+* Lifecycle: Initiating → Researching → Evaluating → Implementing → Maintaining → Sunsetting
+
+What are _good_ ADRs?
+
+* The contain pros and cons of various potential choices, feature COMPARISONS, cost/benefit discussions
+* They are *specific* (SRP), contain only one AD not multiple
+* They contain *timestamps* for creation/updates; things change over time
+* They are *immutable*, dont change existing ones; instead add new information or create a one.
+* E.g. https://github.com/joelparkerhenderson/architecture-decision-record/tree/main/locales/en/templates/decision-record-template-of-the-madr-project
+
+Context contains:
+
+* The organization's situation and business priorities.
+* Include rationale and considerations based on social and skills makeups of your team.
+* Include pros and cons that are relevant, and describe them in terms that align with your needs and goals.
+
+Consequences contains:
+
+* What follows from this decision: Effects, outcomes, outputs, follow ups.
+* Link subsequent ADRs; big decisions usually lead to multiple smaller ones consequently.
+* Add retrospective gathered experience after having decided on it; learn and grow; Kaizen.
+
+Header Metadata Info:
+
+* Status: draft | proposed | rejected | accepted | deprecated | ... | superseded by ADR `filter-resources`]
+* Created timestamp and author
+
+Possible format:
+
+. Prologue (Summary); Statement to summarize:
+** In the context of (use case)
+** facing (concern)
+** we decided for (option)
+** to achieve (quality)
+** accepting (downside).
+. Discussion (Context)
+** Explains the forces at play (technical, political, social, project).
+** This is the story explaining the problem we are looking to resolve.
+. Solution
+** Explains how the decision will solve the problem.
+. Consequences
+** Explains the results of the decision over the long term.
+** Did it work, not work, was changed, upgraded, etc.
+
+Planguage is a planning language that uses these keywords:
+
+* Tag: A unique, persistent identifier
+* Gist: A brief summary of the requirement or area addressed
+* Requirement: The text that details the requirement itself
+* Rationale: The reasoning that justifies the requirement
+* Priority: A statement of priority and claim on resources
+* Stakeholders: Parties materially affected by the requirement
+* Status: The status of the requirement (draft, reviewed, committed, etc.)
+* Owner: The person responsible for implementing the requirement
+* Author: The person that wrote the requirement
+* Revision: A version number for the statement
+* Date: The date of the most recent revision
+* Assumptions: Anything that could cause problems if untrue now or later
+* Risks: Anything that could cause malfunction, delay, or other negative impacts
+* Defined: The definition of a term (better to use a glossary)
+
+== Teamwork
+
+You have an opportunity to lead your teammates, by talking together about the "why", rather than mandating the "what".
+For example, decision records are a way for teams to think smarter and communicate better; decision records are not valuable if they're just an after-the-fact forced paperwork requirement.

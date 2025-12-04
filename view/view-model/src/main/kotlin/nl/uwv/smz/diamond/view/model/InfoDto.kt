@@ -4,6 +4,7 @@ package nl.uwv.smz.diamond.view.model
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import nl.uwv.smz.diamond.view.model.serializer.LocalDateTimeSerializer
 import java.time.LocalDateTime
 
 @Serializable

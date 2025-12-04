@@ -1,0 +1,15 @@
+=== ADR - Choose Database Access
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+About:
+
+* access via code; libs:
+** Exposed; by JetBrains
+** (No: [KTorm](https://www.ktorm.org) )
+** Needs to be type-safe (no strings)
+* no ORM like JPA (hibernate)
+* DBMS used:
+** Oracle: production
+** H2: fast in-memory for testing (and local startup)

@@ -1,4 +1,5 @@
 == Architecture
 
-include::service_types.adoc[]
 include::layering.adoc[]
+include::service_types.adoc[]
+include::distributed.adoc[]

@@ -1,0 +1,12 @@
+=== ADR - Secure HTTP Endpoints
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+How is authentification and authorization handled?
+
+* IAM/LDAP
+* Central security auth gateway in front
+* service(s) only get an already checked user ID only (auth-agnostic)
+* endpoints are configured centrally (?); the obligatory "auth matrix" ;)
+* OAuth2 vs JWT?

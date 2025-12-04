@@ -45,7 +45,7 @@ tasks.asciidoctorPdf {
     attributes(
         mapOf(
             "basedir" to "${project.projectDir}/src/docs/asciidoc",
-            "adrsdir" to "${project.projectDir}/../ArchitectureDecisionRecords",
+            "adrsdir" to "${project.projectDir}/../decisions",
             "source-highlighter" to "coderay",
             "toc" to "left",
             "idprefix" to "",

@@ -1,0 +1,9 @@
+=== ADR - Choose Persistence Tech
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+About:
+
+* relational database, NoSQL store, or an in-memory cache?
+* if performance (searching/filtering) is an issue, maybe an elasticsearch index as a view on top of the heavy DB?

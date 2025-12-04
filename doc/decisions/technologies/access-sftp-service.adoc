@@ -1,0 +1,9 @@
+=== ADR - Access SFTP service
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+About:
+
+* JSch is very old and very outdated
+* Use forked and updated `com.github.mwiede:jsch` instead of original `com.jcraft:jsch`

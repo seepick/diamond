@@ -1,0 +1,12 @@
+=== ADR - Use BDD
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+About:
+
+* TDD on unit test level; BDD for integration tests (on higher acceptance/functional level)
+* using a gherkin-based format; use cucumber
+* when having both plugins (cucumber and karate) installed, configure file types to be different
+** cucumber: *.feature
+** karate: *.karate.feature

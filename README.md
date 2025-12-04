@@ -13,7 +13,7 @@ the [Software Document](https://github.com/seepick/diamond/releases/latest/downl
 PDF).
 
 All smaller, specific decisions are documented in
-so-called [Architecture Decision Records](https://github.com/seepick/diamond/tree/main/doc/ArchitectureDecisionRecords).
+so-called [Architecture Decision Records](https://github.com/seepick/diamond/tree/main/doc/decisions).
 
 ## Links
 

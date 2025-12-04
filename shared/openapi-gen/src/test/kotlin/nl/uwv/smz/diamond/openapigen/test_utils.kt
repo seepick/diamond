@@ -28,8 +28,8 @@ fun runGenerator(gen: Generation) {
     DefaultGenerator().opts(configurator.toClientOptInput()).generate()
 }
 
-fun assertFilesExisting(targetGenFolder: String, files: List<String>) {
-    files.map { File("$targetGenFolder/src/main/kotlin/$it") }
+fun assertSourceFilesExisting(targetGenFolder: String, sourceFolder: String = "src/main/kotlin", vararg files: String) {
+    files.map { File("$targetGenFolder/$sourceFolder/$it") }
         .filter { !it.exists() }
         .ifNotEmpty {
             throw AssertionError(

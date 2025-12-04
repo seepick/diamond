@@ -1,6 +1,7 @@
 package nl.uwv.smz.diamond.view.model
 
 import kotlinx.serialization.Serializable
+import nl.uwv.smz.diamond.view.model.serializer.LocalDateTimeSerializer
 import java.time.LocalDateTime
 import kotlin.uuid.Uuid
 

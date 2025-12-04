@@ -14,6 +14,11 @@ class DiamondServerGeneratorITest : StringSpec({
 
         runGenerator(gen)
 
-        assertFilesExisting(targetGenFolder, listOf("testgen/api/DogsApi.kt", "testgen/model/Dog.kt"))
+        assertSourceFilesExisting(
+            targetGenFolder,
+            "src/main/kotlin",
+            "testgen/api/DogsApi.kt",
+            "testgen/model/Dog.kt",
+        )
     }
 })

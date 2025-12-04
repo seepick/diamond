@@ -1,0 +1,11 @@
+=== ADR - Static Code Analysis
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+About:
+
+* actually also runtime detection possible!
+* also ktlint
+* enable `Refactor -> AutoCorrect by detekt rules`
+* bad: e.g. line length not auto-configured in intellij by detekt rule :-(
