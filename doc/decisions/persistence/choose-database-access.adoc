@@ -8,7 +8,7 @@ About:
 
 * access via code; libs:
 ** Exposed; by JetBrains
-** (No: [KTorm](https://www.ktorm.org) )
+** (No: https://www.ktorm.org[KTorm,window=_blank])
 ** Needs to be type-safe (no strings)
 * no ORM like JPA (hibernate)
 * DBMS used:

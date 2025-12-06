@@ -42,9 +42,9 @@ include::named_expressions.kt[]
 
 include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+4]
 
-include::{adrsdir}/technologies/choose-scheduler-tech.adoc[leveloffset=+3]
+include::{adrsdir}/technologies/choose-scheduler-tech.adoc[leveloffset=+4]
 
-include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+3]
+include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+4]
 
 include::{adrsdir}/libraries/choose-datetime.adoc[leveloffset=+4]
 

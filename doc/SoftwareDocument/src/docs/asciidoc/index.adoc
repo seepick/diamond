@@ -14,6 +14,8 @@ endif::[]
 If you want to go fast, you need to go lightweight.
 ====
 
+A small abstract about what this document is about...
+
 // TODO show high-level overviews & diagrams on the first pages
 
 include::{basedir}/architecture/_index.adoc[]

@@ -37,4 +37,7 @@ Ordered:
 |row2 col2
 |===
 
+// auto link
+https://asciidoctor.org[Asciidoctor,window=_blank]
 
+link:https://www.nu.nl[Link Text]
