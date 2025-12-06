@@ -6,7 +6,14 @@ endif::[]
 
 === Purpose
 
-TODO
+It is a state-of-the-art prototype of a backend service, which can be used as a playground to gain experience, a base for technical decision making and a template for future reference.
+
+KPIs:
+
+* Lead time of X days until feature available.
+* High quality, many tests, low bugs.
+* API response times of Xms (performance tests).
+* Build time max 3mins locally; build pipeline max 5mins.
 
 === Decision Documentation
 
@@ -15,3 +22,5 @@ We use ADRs (Architecture Decision Records) to document important architectural 
 For more explanation what ADRs are, please read: https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc
 
 // TODO show high-level overviews & diagrams
+
+

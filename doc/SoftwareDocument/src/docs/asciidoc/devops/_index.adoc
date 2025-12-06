@@ -22,9 +22,6 @@ image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]
 * Nightly
 * Release
 
-=== Environment Variables
-
-include::../generated/environment_variables.generated.adoc[]
 
 include::distributed.adoc[]
 

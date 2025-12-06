@@ -17,7 +17,7 @@ endif::[]
 
 = Diamond Doc: A Software Documentation
 
-TIP: If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
+NOTE: If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
 
 This document was built using link:https://asciidoc.org[AsciiDoc], a simple yet powerful markup language for writing technical documentation.
 

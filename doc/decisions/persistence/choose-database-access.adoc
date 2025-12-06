@@ -1,8 +1,11 @@
 = Database Access Library
 
-* Status: Accepted
-* Created: 1.12.2025
-* Author: Seepick
+[TIP]
+====
+Status: Accepted +
+Created: 1.12.2025 +
+Author: Seepick
+====
 
 *Context:*
 

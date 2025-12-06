@@ -35,7 +35,7 @@ Kotlin.
 ==== Best Practices
 
 * Strive for functional, pure functions (no side effects).
-
+* no overloaded methods, provide different name
 * instead of regular methods -> "named expressions"
 ** functions as named codeblocks, lead to shorter (easier to comprehend) methods
 ** always use "=" after method signature; single expression body
@@ -43,30 +43,64 @@ Kotlin.
 ** forces to write very short methods, easy to read and comprehend
 ** methods have names, they create logical structure of arbitrary code
 
-.Named Expressions Example
+===== Conciseness
 
+Using type inference and link:https://kotlinlang.org/docs/functions.html#single-expression-functions[single expression functions], function declarations can be shortened and made more readable:
+
+.Ommitting the return type
 [source,kotlin]
 ----
-include::named_expressions.kt[]
+fun `BAD explicit`(): String = "foo"
+
+fun `GOOD inferred`() = "foo"
 ----
 
-* no overloaded methods, provide different name
+.Using lambda wrappers
+[source,kotlin]
+----
+fun `BAD increase indentation`() {
+    transactional {
+        repo.update()
+    }
+}
 
+fun `GOOD single expression`() = transactional { // <1>
+    repo.update()
+}
+----
 
-include::{adrsdir}/building/generating-sources.adoc[leveloffset=+2]
+<1> Sometimes needed to override inferred type to `: Unit`.
 
-include::local_development.adoc[leveloffset=+2]
+.Using standard functionals
+[source,kotlin]
+----
+fun Service.`BAD return`(): Service {
+    setFoo("bar")
+    return this
+}
 
-=== Libraries
+fun Service.`GOOD apply`() = apply {
+    setFoo("bar")
+}
+----
 
-include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+3]
+=== Code Samples
 
-include::{adrsdir}/technologies/choose-scheduler-tech.adoc[leveloffset=+3]
+.Source of `healthRouting.kt` from the :view:view-routing module
+[source,kotlin]
+----
+include::{rootdir}/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt[]
+----
 
-include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+3]
+=== Logging
 
-include::{adrsdir}/libraries/choose-datetime.adoc[leveloffset=+3]
+include::{adrsdir}/libraries/configure-logging.adoc[leveloffset=+3]
 
 include::{adrsdir}/libraries/logging-with-kotlin.adoc[leveloffset=+3]
 
-include::{adrsdir}/libraries/configure-logging.adoc[leveloffset=+3]
+include::local_development.adoc[leveloffset=+2]
+
+=== Code Generation
+
+include::{adrsdir}/building/generating-sources.adoc[leveloffset=+3]
+include::{adrsdir}/persistence/generate-code.adoc[leveloffset=+3]

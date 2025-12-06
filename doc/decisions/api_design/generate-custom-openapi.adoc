@@ -1,8 +1,11 @@
 = Generate Custom OpenAPI Code
 
-* Status: Draft
-* Created: 1.12.2025
-* Author: Seepick
+[TIP]
+====
+Status: Draft +
+Created: 1.12.2025 +
+Author: Seepick
+====
 
 *Reason:*
 
@@ -29,7 +32,7 @@
 * Only bare skeleton mandatory (HTTP method and path), everything else optional (could go crazy with details).
 * Client generation is optional.
 
-== Resources
+*Resources:*
 
 * https://www.baeldung.com/java-openapi-custom-generator
 * https://deepwiki.com/OpenAPITools/openapi-generator/5.1-creating-custom-generators

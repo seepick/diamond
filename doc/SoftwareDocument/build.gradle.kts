@@ -38,7 +38,8 @@ fun asciidocAttributes(
 ): Map<String, String> = mapOf(
     // custom internal
     "basedir" to asciidocSrcDir.absolutePath,
-    "adrsdir" to "${project.projectDir}/../decisions",
+    "adrsdir" to "$projectDir/../decisions",
+    "rootdir" to "${rootDir.absolutePath}",
     "appVersion" to version.toString(),
     "buildDateClean" to LocalDateTime.now()
         .format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)),

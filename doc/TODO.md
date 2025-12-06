@@ -23,16 +23,6 @@ Minor:
 * [ ] Support filtering (see MWP)
 * [ ] API versioning (needed with only 1 FE?)
 
-Asciidoc
--------------------------
-
-* Extract all from notion and put it here
-* Use a nicer theme! https://docs.antora.org/antora/latest/page/intrinsic-attributes/#site-and-configuration-attributes
-  ** List: https://gist.github.com/misuo/5b2af22ca78d5d87c522a817a7a8569d
-  ** https://github.com/uroesch/asciidoctor-pdf-tutorial-theme/
-* AsciiDoc should fail the build if stuff not found
-* Render draw.io diagrams via Gradle; do it manually in code?
-    * https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
 
 Backlog
 -------------------------
@@ -72,6 +62,16 @@ Backlog
 * [ ] Write more KDoc to help making this code a better sample
 * [ ] Karate support different environments
 * [ ] Write OpenAPI generator for ktor server side (route interfaces)
+
+Asciidoc
+-------------------------
+
+* Extract all from notion and put it here
+* AsciiDoc should fail the build if stuff not found
+* Render draw.io diagrams via Gradle; do it manually in code?
+    * https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
+* advanced: generate multi-page HTML (see: https://docs.asciidoctor.org/asciidoc/latest/toc/)
+* emojis in asciidoc didn't work :-/
 
 Low
 -------------------------
@@ -140,7 +140,7 @@ Unimportant
 * PlantUML support for AsciiDoc (working in IDE but not in gradle...)
 * Asciidoctor and SVGs: https://docs.asciidoctor.org/asciidoc/latest/macros/image-svg/
 
-For Real
+When going real Real
 -------------------------
 
 * switch cucumber-en to cucumber-nl

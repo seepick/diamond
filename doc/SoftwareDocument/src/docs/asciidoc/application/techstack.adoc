@@ -1,0 +1,55 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Techstack
+
+// TODO Go through all dependencies
+
+Library choice guidelines:
+
+* Kotlin-idiomatic (DSLs, functional)
+* Asynchronous (native coroutine support)
+* Alive project (recent commit to repo)
+* Non-intrusive (clean code, no coupling)
+* Code over Config (incl. annotations)
+
+As a golden rule, there should never be any *non-production dependencies* (test, stubs, localdev, etc like H2) in production code.
+Instead activate profiles which customize the build (dependency tree).
+E.g. for tests (presistence-tests and itests) different wiring
+
+== Libraries
+
+=== General
+
+Gradle:: Build system to run tasks such as compiling, testing, and packaging ("_newer Maven_", using its sophisticated dependency management).
+Kotlin:: General purpose programming language running on the JVM ("_newer Java_", fully interoperable).
+SonarQube:: Quality gate for code analysis, test coverage and more.
+
+=== Core Libs
+
+Ktor:: Lightweight web framework ("_newer Spring Web_").
+Koin:: Dependency injection, actually service locator, framework ("_newer Spring Framework_", neither classpath scanning nor annotations use).
+Kotest:: Modern flexible testing framework integrating with the JUnit engine ("_newer JUnit_")/
+Exposed:: Typesafe SQL library (not a full fledged ORM like JPA/Hbernate).
+Liquibase:: Database migration library using XML.
+Arrow:: Functional library used for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling] via `Either`.
+link:https://github.com/sksamuel/hoplite[Hoplite]:: Typesafe loading of application configuration.
+
+=== Support
+
+Detekt:: Static code analysis together ("_newer CheckStyle_")
+Ktlint:: Auto-formatter, integrated via Detekt.
+Kover:: Test coverage tool, generating JaCoCo compatible XML reports.
+
+== Library Choices
+
+include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+2]
+
+include::{adrsdir}/technologies/choose-scheduler-tech.adoc[leveloffset=+2]
+
+include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+2]
+
+include::{adrsdir}/libraries/choose-datetime.adoc[leveloffset=+2]
+
+include::{adrsdir}/coding/dto-mapping-library.adoc[leveloffset=+2]

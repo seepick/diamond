@@ -17,9 +17,10 @@ dependencies {
     implementation(Deps.database.exposed.datetime)
     implementation(Deps.database.liquibase.core)
     implementation(Deps.database.liquibase.slf4j)
-    // TODO runtime optional!; default = oracle, dev/test = H2
     runtimeOnly(Deps.database.oracle)
+    // TODO runtime optional!; default = oracle, dev/test = H2
     runtimeOnly(Deps.database.h2)
+// Non-prod dependencies (test, stubs, localdev, etc like H2) should NOT be in production code
 
     testImplementation(testFixtures(project(":domain:domain-model")))
     testImplementation(testFixtures(project(":shared:shared-common")))

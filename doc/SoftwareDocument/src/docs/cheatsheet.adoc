@@ -1,15 +1,33 @@
+// STATES { draft | proposed | rejected | accepted | deprecated }
+
 // with gradle: https://www.vogella.com/tutorials/AsciiDoc/article.html
 // https://www.quadhelion.engineering/guides/AsciiDocCheatSheet.pdf
 // https://gist.github.com/namjae/bcac5fb00d1edc4e74a5e20a7dc8dace
 
+
+.Caption
+[source,kotlin]
+----
+// include::foo.kt[]
+----
+
+line with hardbreak +
+needs a plus sign
+
+NOTE: displays info symbol, blue --> use it for quotes/sayings/expressions
+
+TIP: lightulb icon --> used for ADRs
+
+WARNING: yellow triangle with !
+--> ?
+
+IMPORTANT: red circle witih ! --> bad practice, common mistake
+
+CAUTION: flame symbol --> ?
+
 [NOTE]
 ====
-If you want to go fast, you need to go lightweight.
-====
-
-[QUOTE]
-====
-If you want to go fast, you need to go lightweight.
+not multi line
 ====
 
 [headingId]

@@ -1,8 +1,11 @@
 = Webframework Choice
 
-* Status: Draft
-* Created: 5.12.2025
-* Author: Seepick
+[TIP]
+====
+Status: Draft +
+Created: 5.12.2025 +
+Author: Seepick
+====
 
 [QUESTION]
 ====

@@ -180,7 +180,6 @@ description of second term
 open - a general-purpose content wrapper; useful for enclosing content to attach to a list item
 --
 
-// recognized types include CAUTION, IMPORTANT, NOTE, TIP, and WARNING
 // enable admonition icons by setting `:icons: font` in the document header
 [NOTE]
 ====

@@ -1,8 +1,11 @@
 = Filter ReST Resources
 
-* Status: Draft
-* Created: 1.12.2025
-* Author: Seepick
+[TIP]
+====
+Status: Draft +
+Created: 1.12.2025 +
+Author: Seepick
+====
 
 *Context:*
 

@@ -14,3 +14,4 @@
 ** https://towardsdev.com/how-to-perfectly-test-your-ktor-application-94fb92c5a303
 ** https://www.baeldung.com/cucumber-data-tables
 ** https://github.com/cucumber/cucumber-jvm/tree/main/datatable
+* AsciiDoc themes https://gist.github.com/misuo/5b2af22ca78d5d87c522a817a7a8569d

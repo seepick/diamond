@@ -4,6 +4,12 @@ endif::[]
 
 = Layering
 
+How the application can be *split and grouped* with different aspects in mind, each with their own pros and cons.
+What kind of logical layering (represented by a consistent naming pattern) and technical subdivisioning is used.
+Whether a subdivision is implemented as a submodule (same VCS repo), or an external dependency (own VCS repo).
+
+== Packaging
+
 .The degree of impact on the application depending on the choice of packaging strategy
 image::{imgdir}/diagrams/application-packaging.png[scaledwidth=100%]
 
@@ -101,3 +107,5 @@ Best Practices:
 ** The code resides in its own repository; separately built and versioned.
 * We maintain a client-useful (confirmed benefit) SDK for our API ourselves.
 ** We potentiialy used it ourselves in tests, http-controllers, etc.
+
+include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+2]

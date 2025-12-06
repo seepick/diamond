@@ -1,8 +1,11 @@
 = Generate Persistence Code
 
-* Status: Draft
-* Created: 6.12.2025
-* Author: Seepick
+[TIP]
+====
+Status: Draft +
+Created: 6.12.2025 +
+Author: Seepick
+====
 
 *Context:*
 

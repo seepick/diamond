@@ -1,8 +1,11 @@
 = Secure HTTP Endpoints
 
-* Status: Draft
-* Created: 1.12.2025
-* Author: Seepick
+[TIP]
+====
+Status: Draft +
+Created: 1.12.2025 +
+Author: Seepick
+====
 
 How is authentification and authorization handled?
 
