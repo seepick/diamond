@@ -90,6 +90,7 @@ tasks.asciidoctorPdf {
             sourceHighlighter = "coderay",
             imagesDir = "${asciidocSrcDir.absolutePath}/images",
             more = mapOf(
+                "isPdf" to "true",
                 "pdf-theme" to "diamond-pdf",
                 "pdf-themesdir" to "${project.projectDir}/src/docs/themes/",
 //                "pdf-fontsdir" to "${project.projectDir}/src/docs/fonts",

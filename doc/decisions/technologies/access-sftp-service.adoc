@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-About:
+*Context:*
 
 * JSch is very old and very outdated
 * Use forked and updated `com.github.mwiede:jsch` instead of original `com.jcraft:jsch`

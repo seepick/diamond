@@ -1,6 +1,8 @@
 Next
 =========================
 
+* finish openapi generator (client 80% done)
+
 Asciidoc
 -------------------------
 
@@ -18,6 +20,8 @@ Asciidoc
 Backlog
 -------------------------
 
+* [ ] What if plugin-apply-false (instead buildSrc/build dep?); ALSO: ./gradlew dependencyUpdates doesn't work to be
+  applied recursively!
 * [ ] Change github action release process: no local tagging, just run a build in web interface; first check, then tag,
   then deploy
 * [ ] support of datetime types (HTTP, DB); exposed-java-time

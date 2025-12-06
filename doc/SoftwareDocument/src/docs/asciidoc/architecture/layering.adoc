@@ -1,8 +1,14 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
 === Layering
 
 * Each architectural layer is represented by a Gradle sub-project (or sub-module as called in Maven terminology).
 
-// TODO plant UML diagram
+
+.The degree of impact on the application depending on the choice of packaging strategy
+image::{imgdir}/diagrams/application-packaging.png[scaledwidth=100%]
 
 Main Subprojects:
 

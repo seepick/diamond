@@ -4,9 +4,14 @@
 CWD=`pwd`
 ROOT="${CWD%/local}"
 cd "${ROOT}" || exit 1
+source "./local/_includes.sh"
 
-./gradlew :app:assemble
+echoH1 "🔧 Testing application configuration"
+echo ""
 
+./gradlew :app:assemble || exit 1
+
+# see: https://seepick.github.io/diamond/#environment-variables
 export DATABASE_JDBCURL=db_url
 export DATABASE_USERNAME=db_user
 export DATABASE_PASSWORD=db_pass
@@ -20,16 +25,17 @@ export KTOR_PORT=12
 
 OUTPUT=$(java -jar app/build/libs/diamond.jar printConfigOnly)
 
-EXPECTED_KTOR="ktor=KtorConfig(port=12)"
+EXPECTED_KTOR="ktor=KtorConfig(port=$KTOR_PORT)"
 EXPECTED_DB="database=DatabaseConfig(jdbcUrl=db_url, username=db_user, password=****)"
 EXPECTED_EXTERN_SFTP="sftp=SftpConfig(remoteHost=sftpHost, port=22, username=sftpUser, authIsPassword=true, authPasswordOrPrivateKeyPath=****, knownHostsFilePath=knownHosts, strictHostChecking=true)"
 EXPECTED_EXTERN="extern=ExternConfig(postsServiceBaseUrl=postsUrl, $EXPECTED_EXTERN_SFTP)"
 EXPECTED="EnvConfig($EXPECTED_KTOR, $EXPECTED_DB, $EXPECTED_EXTERN)"
 
+
 if [ "$OUTPUT" = "$EXPECTED" ]; then
-  echo "All OK ✅"
+  echoSuccess "🔧 Testing application configuration"
 else
-  echo "Configuration did not match expected value ❌"
+  echo -e "❌ ${COL_RED}Configuration did not match expected value!${COL_RESET} ❌"
   echo ""
   echo "ACTUAL>>   $OUTPUT"
   echo "EXPECTED>> $EXPECTED"

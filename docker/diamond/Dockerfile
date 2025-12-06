@@ -1,4 +1,4 @@
-# see /local/docker_diamond.sh
+# see /local/build_image.sh
 
 FROM amazoncorretto:22 AS runtime
 EXPOSE 8080

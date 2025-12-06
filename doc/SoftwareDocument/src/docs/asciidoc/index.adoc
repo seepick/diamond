@@ -11,12 +11,10 @@ endif::[]
 
 [QUOTE]
 ====
-If you want to go fast, you need to go lightweight.
+If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
 ====
 
-A small abstract about what this document is about...
-
-// TODO show high-level overviews & diagrams on the first pages
+include::{basedir}/intro/_index.adoc[]
 
 include::{basedir}/architecture/_index.adoc[]
 

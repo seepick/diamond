@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-About:
+*Context:*
 
 * TDD on unit test level; BDD for integration tests (on higher acceptance/functional level)
 * using a gherkin-based format; use cucumber

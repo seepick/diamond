@@ -6,20 +6,21 @@ plugins {
 
 dependencies {
     val swagger_annotations_version = "1.6.6"
-    val jackson_version = "2.14.1"
-    val jackson_databind_version = "2.14.1"
-    val jackson_databind_nullable_version = "0.2.6"
+    val jackson_version = "2.20"
+    val jackson_versionX = "2.20.1"
+    val jackson_databind_nullable_version = "0.2.8"
     val jakarta_annotation_version = "1.3.5"
     val httpclient_version = "5.1.3"
     implementation("io.swagger:swagger-annotations:$swagger_annotations_version")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     api("org.apache.httpcomponents.client5:httpclient5:$httpclient_version")
-    implementation("com.fasterxml.jackson.core:jackson-core:$jackson_version")
+    implementation("com.fasterxml.jackson.core:jackson-core:$jackson_versionX")
     implementation("com.fasterxml.jackson.core:jackson-annotations:$jackson_version")
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jackson_databind_version")
-    implementation("com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:$jackson_version")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jackson_versionX")
+    implementation("com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:$jackson_versionX")
     implementation("org.openapitools:jackson-databind-nullable:$jackson_databind_nullable_version")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_versionX")
+    // com.fasterxml.jackson.datatype.jsr310.JavaTimeFeature
     implementation("jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version")
     // for OpenAPI generated client
 //    implementation(Deps.ktor.client.core)

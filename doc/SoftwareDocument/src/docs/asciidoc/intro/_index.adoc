@@ -1,0 +1,21 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+== Introduction
+
+ifndef::isPdf[]
+Download this document as a PDF: https://seepick.github.io/diamond/diamond-software-documentation.pdf
+endif::[]
+
+=== Purpose
+
+TODO
+
+=== Decision Documentation
+
+We use ADRs (Architecture Decision Records) to document important architectural and technical decisions made during the development of this software project.
+
+For more explanation what ADRs are, please read: https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc
+
+// TODO show high-level overviews & diagrams

@@ -38,6 +38,8 @@ Kotlin.
 include::named_expressions.kt[]
 ----
 
+include::{adrsdir}/building/generating-sources.adoc[leveloffset=+2]
+
 === Libraries
 
 include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+3]

@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-Requirements:
+*Requirements:*
 
 * programmatic (source code, version trackable)
 * but high barrier entry
@@ -14,13 +14,13 @@ Requirements:
 * user/rights/auth
 * web based
 
-Options:
+*Options:*
 
 * plantuml
 * mermaid
 * ...?
 
-== PlantUml
+*PlantUml:*
 
 Install `dot` binary from https://graphviz.org/download/ to be able to build diagrams with code.
 

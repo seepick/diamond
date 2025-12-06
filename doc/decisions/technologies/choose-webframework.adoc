@@ -10,6 +10,8 @@ Spring Boot or Ktor?
 (Quarkus?)
 ====
 
+*Context:*
+
 * besides people dont know it, less mature, less doc
 * much needs handwritten (openapi generation, jpa orm)
 

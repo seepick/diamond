@@ -9,7 +9,7 @@ This is a sample project of a backend service using modern technologies and best
 architecture, automated tests and test concept, build setup, code quality, and more.
 
 A general technical **Software Document** can be found at: https://seepick.github.io/diamond/ (or read it as
-a [single PDF](https://github.com/seepick/diamond/releases/latest/download/Diamond-SoftwareDocument.pdf)).
+a [single PDF](https://seepick.github.io/diamond/SoftwareDocument.pdf)).
 
 For tracability, most decisions are documented in
 so-called [Architecture Decision Records](https://github.com/seepick/diamond/tree/main/doc/decisions).

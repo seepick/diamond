@@ -4,21 +4,21 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-Reason:
+*Reason:*
 
 * We need to keep the API spec (YAML) and the code (Kotlin) in sync; we don't want to rely on doing this manually.
 * Thus, establish an automatism via generation.
 * We need something that fits our needs: modern, up2date, high quality code and libs.
 * Current (Kotlin) generators are out of date (unusable), thus a custom generator is required.
 
-Alternatives:
+*Alternatives:*
 
 * Write some tests to verify sync of spec and code.
 * No, as we want immediate feedback (compile time) about correct implementation.
 * Use Java generators, they are more modern and Kotlin-Java interoperability works well.
 * It would not clash as Java generated clients use different libraries (even when outdated).
 
-Implementation requirements:
+*Implementation requirements:*
 
 * Kotlin data classes with Kotlinx serialization annotations.
 * Ability to hook specific type serializer (provided or custom).

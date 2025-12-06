@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-About:
+*Context:*
 
 * Pure Functions:
 ** return values are identical for identical arguments (no variation with static variables, non-local variables, mutable reference arguments or input streams, i.e., referential transparency)
@@ -13,7 +13,7 @@ About:
 * Use the Arrow library to introduce a more functional approach, the `Either` class specifically
 ** TODO: in the future maybe also optics to manipulate deep nested, immutable data classes.
 
-== Either
+*Either:*
 
 * Good:
 ** developers need to think (forced to, explicit) error types, mapping of them (translation of corrupt data to bad request/internal error)

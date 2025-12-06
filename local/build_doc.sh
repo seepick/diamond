@@ -9,6 +9,7 @@ source "./local/_includes.sh"
 echoH1 "📚 Building all documentation formats"
 echo
 
-./local/doc_diagrams.sh || exit 1
-./local/doc_html.sh || exit 1
-./local/doc_pdf.sh || exit 1
+./local/build_doc_diagrams.sh || exit 1
+./local/build_doc_html.sh || exit 1
+./local/build_doc_pdf.sh || exit 1
+echoSuccess "📚 Building all documentation formats"

@@ -17,6 +17,9 @@ kotlin {
     compilerOptions {
         freeCompilerArgs.addAll(
             "-Xjsr305=strict", // Annotations for Software Defect Detection
+            // TODO only declare these opt-ins for the specific modules where it's needed, otherwise we get this warning
+//            w: Opt-in requirement marker kotlin.uuid.ExperimentalTime is unresolved.
+//            Please make sure it's present in the module dependencies
             "-opt-in=kotlin.uuid.ExperimentalUuidApi",
             "-opt-in=kotlin.uuid.ExperimentalTime",
         )

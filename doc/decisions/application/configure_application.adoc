@@ -6,6 +6,6 @@
 
 * config as ENV vars or centralized config manager?
 
-== Resources
+*Links:*
 
 * https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/

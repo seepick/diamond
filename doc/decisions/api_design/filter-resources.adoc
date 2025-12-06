@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-== Context
+*Context:*
 
 * the user (via the frontend) needs to be able to filter bigger datasetes
 * different fields have different types require different operators
@@ -13,7 +13,7 @@
 ** enum: (with)in
 * operators are all in conjunctive form (coupled by AND)
 
-== Proposal
+*Proposal:*
 
 Simple:
 
@@ -29,6 +29,6 @@ Complex:
 Radical other approach would be to turn it into a POST (PUT?) request and provide a request body (full control).
 It feels like we are trying to squeeze a proper payload into query parameters (feels wrong, a smell we are misusing something).
 
-== Links
+*Links:*
 
 * https://restfulapi.net/api-pagination-sorting-filtering/

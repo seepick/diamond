@@ -5,17 +5,6 @@
 ** They are mall chunks of structured information to document our thought process.
 ** Their goal is to be able to trace back what and why (not) certain decisions were made.
 
-== Log
-
-API Design:
-
-* ...
-
-Coding:
-
-* link:coding/enforce-failure-handling.adoc[Arrow's Either] - allows for a more functional, side-effect free approach
-* ...
-
 == Writing ADRs
 
 Criteria to consider:

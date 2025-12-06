@@ -1,0 +1,37 @@
+= ADR - Generating Sources
+
+* Status: Draft
+* Created: 6.12.2025
+* Author: Seepick
+
+*Context:*
+
+* We use specifications to document the contract, provided by ourselves and third parties.
+* Primarily OpenAPI YAML and WSDL XML files.
+
+[QUESTION]
+====
+Should we regenerate sources each time and host the code next to our own, or should be pre-generate and store them in a dedicated repository?
+====
+
+*Options:*
+
+Re-generate:
+
+* GOOD: Everything is self-contained; simple, easy.
+* BAD: Slows down the build process due to regeneration despite no API changes (caching?).
+* BAD: Exclusion configuration necessary for static code analysis, coverage, etc. (different rules apply to them)
+
+Pre-generate:
+
+* GOOD: Faster build times.
+* GOOD: A change of the API contract must be a conscious act
+** Leads to more safety/stability
+** But it's also a BAD argument: slower development time, more complex!
+* For 3rd party APIs, we would expect a given SDK anyways... so we do it ourselves.
+
+*Decision:*
+
+* Pre-generate!
+* Divide and conquer: Manage the bigger complexity by outsourcing.
+* Split things apart, separation of concerns.

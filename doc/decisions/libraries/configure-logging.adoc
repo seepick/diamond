@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-About:
+*Context:*
 
 * following principle: code > configuration (yaml/properties)
 ** more flexibility, more control, more sophisticated, more robust

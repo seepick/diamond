@@ -12,9 +12,8 @@ echoH1 "📕 Generating PDF"
 echo ""
 echo "💾 Target file: $TARGET_FILE"
 echo ""
-
 ./gradlew :doc:SoftwareDocument:clean :doc:SoftwareDocument:asciidoctorPdf || exit 1
-cp doc/SoftwareDocument/build/docs/asciidocPdf/index.pdf docs/SoftwareDocument.pdf || exit 1
+cp doc/SoftwareDocument/build/docs/asciidocPdf/index.pdf $TARGET_FILE || exit 1
 echoDocCommitWarning
-open doc/SoftwareDocument/build/docs/asciidocPdf/index.pdf || exit 1
-echoSuccess "Generating PDF"
+open $TARGET_FILE || exit 1
+echoSuccess "📕 Generating PDF"

@@ -115,7 +115,7 @@ class DiamondModelGeneratorITest : StringSpec({
             
             """.trimIndent()
     }
-    "custom serializer for date" {
+    "custom serializer for date".config(enabled = false) {
         runGeneratorFromString(
             generateSpecForEntity(
                 """

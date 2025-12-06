@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-About:
+*Context:*
 
 * access via code; libs:
 ** Exposed; by JetBrains

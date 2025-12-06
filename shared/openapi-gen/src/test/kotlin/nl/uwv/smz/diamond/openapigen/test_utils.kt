@@ -10,7 +10,7 @@ data class Generation(
     val targetGenFolder: String,
     val packageApi: String = "testgen.api",
     val packageModel: String = "testgen.model",
-    val pathToYml: String = "test-simple.yml",
+    val pathToYml: String,
 )
 
 fun runGenerator(gen: Generation) {

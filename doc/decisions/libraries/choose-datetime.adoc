@@ -4,15 +4,18 @@
 * Created: 1.12.2025
 * Author: Seepick
 
+[QUESTION]
+====
 Use java-time or kotlin-time?
+====
 
-Java
+*Java:*
 
 * GOOD: robust, well-known, well-integrated with libs (serialization, DB)
 * BAD: cumberesome
 * BAD: not supported by kotlin-idiomatic libs
 
-Kotlin
+*Kotlin:*
 
 * GOOD: lightweight, probably/most-likely kotlin idiomatic; modern API
 * GOOD: integration with kotlinx-serialization and exposed
@@ -20,7 +23,7 @@ Kotlin
 * BAD: higher barrier of entry for others
 * any benefit from its multiplatform nature?
 
-Conclusion:
+*Conclusion:*
 
 * unstable API is too dangerous for production!
 * NoSuchMethod error, incompatible versions on classpath

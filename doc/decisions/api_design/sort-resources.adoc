@@ -4,7 +4,7 @@
 * Created: 1.12.2025
 * Author: Seepick
 
-About:
+*About:*
 
 * call it sort or orderBy
 * `orderBy=author,title`
@@ -13,7 +13,7 @@ About:
 * or plus/minus: `orderBy=+author,-title`
 * default to asc if not defined
 
-== Error Handling
+*Error Handling:*
 
 E.g.:
 
@@ -40,6 +40,6 @@ E.g.:
 }
 ----
 
-== Links
+*Links:*
 
 * https://restfulapi.net/api-pagination-sorting-filtering/
