@@ -7,23 +7,23 @@ import java.io.File
 
 class DiamondModelGeneratorITest : StringSpec({
 
-    val targetGenFolder = "build/testgenModel"
+    fun buildTargetGenFolder() = File.createTempFile("diamondTestOpenapi", "model").parentFile
 
-    fun genSpecFromString(openapiContent: String): Generation {
+    fun genSpecFromString(openapiContent: String, targetFolder: File): Generation {
         val openapiFile = File.createTempFile("openapi-testspec", ".yml")
         openapiFile.writeText(openapiContent)
 
         return Generation(
             name = "diamond-model",
-            targetGenFolder = targetGenFolder,
+            targetGenFolder = targetFolder,
             packageApi = "testgen.api",
             packageModel = "testgen.model",
             pathToYml = openapiFile.absolutePath,
         )
     }
 
-    fun runGeneratorFromString(openapiContent: String) {
-        runGenerator(genSpecFromString(openapiContent))
+    fun runGeneratorFromString(openapiContent: String, targetFolder: File) {
+        runGenerator(genSpecFromString(openapiContent, targetFolder))
     }
 
     fun generateSpecForEntity(component: String): String =
@@ -69,6 +69,7 @@ class DiamondModelGeneratorITest : StringSpec({
 
     // TODO test for non-required
     "generate simple" {
+        val targetFolder = buildTargetGenFolder()
         runGeneratorFromString(
             generateSpecForEntity(
                 """
@@ -87,11 +88,11 @@ class DiamondModelGeneratorITest : StringSpec({
                 
                 """,
             ),
+            targetFolder,
         )
-
-        File("$targetGenFolder/testgen/api").exists().shouldBeFalse()
-        assertSourceFilesExisting(targetGenFolder, "src/main/kotlin", "testgen/model/Dog.kt")
-        File("$targetGenFolder/src/main/kotlin/testgen/model/Dog.kt").readText() shouldBeEqual
+        File(targetFolder, "testgen/api").exists().shouldBeFalse()
+        assertSourceFilesExisting(targetFolder, "src/main/kotlin", "testgen/model/Entity.kt")
+        File(targetFolder, "src/main/kotlin/testgen/model/Entity.kt").readText() shouldBeEqual
             """
             package testgen.model
 
@@ -99,11 +100,12 @@ class DiamondModelGeneratorITest : StringSpec({
 
             /**
              * a loyal friend to the human
+             *
              * @param id the dogs number, always number one of course
              * @param name call him, he will be there
              */
             @Serializable
-            data class Dog(
+            data class Entity(
                 /* the dogs number, always number one of course */
                 val id: kotlin.Int,
                 /* call him, he will be there */
@@ -113,9 +115,12 @@ class DiamondModelGeneratorITest : StringSpec({
                 companion object // for extensions
             }
             
+            
             """.trimIndent()
     }
+
     "custom serializer for date".config(enabled = false) {
+        val targetFolder = buildTargetGenFolder()
         runGeneratorFromString(
             generateSpecForEntity(
                 """
@@ -128,9 +133,10 @@ class DiamondModelGeneratorITest : StringSpec({
                     format: date
                 """,
             ),
+            targetFolder,
         )
 
-        File("$targetGenFolder/src/main/kotlin/testgen/model/Entity.kt").readText() shouldBeEqual
+        File(targetFolder, "src/main/kotlin/testgen/model/Entity.kt").readText() shouldBeEqual
             // TODO these serializers need to be provided as infrastructure code!
             """
             package testgen.model

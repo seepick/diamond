@@ -22,6 +22,7 @@ Backlog
 -------------------------
 
 * [ ] SonarQube Coverage
+* [ ] SonarQube detekt & ktlint integration
 * [ ] SonarQube badges: https://github.com/marketplace/actions/sonarqube-badge
 * ADR: liquibase migration strategy (generate one or the other, like with JPA gen?!); how to handle if there are MANY (
   compress/squash them?)?

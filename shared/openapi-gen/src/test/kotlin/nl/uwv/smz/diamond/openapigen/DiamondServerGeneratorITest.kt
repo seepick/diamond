@@ -1,13 +1,17 @@
 package nl.uwv.smz.diamond.openapigen
 
 import io.kotest.core.spec.style.StringSpec
+import java.io.File
 
 class DiamondServerGeneratorITest : StringSpec({
+
+    fun buildTargetGenFolder() = File.createTempFile("diamondTestOpenapi", "server").parentFile
+
     "Given dogs-API When generate Then files existing" {
-        val targetGenFolder = "build/testgenServer"
+        val targetFolder = buildTargetGenFolder()
         val gen = Generation(
             name = "diamond-server",
-            targetGenFolder = targetGenFolder,
+            targetGenFolder = targetFolder,
             packageApi = "testgen.api",
             packageModel = "testgen.model",
             pathToYml = "dogs-api.yml",
@@ -16,7 +20,7 @@ class DiamondServerGeneratorITest : StringSpec({
         runGenerator(gen)
 
         assertSourceFilesExisting(
-            targetGenFolder = targetGenFolder,
+            targetGenFolder = targetFolder,
             sourceFolder = "src/main/kotlin",
             "testgen/api/DogsApi.kt",
             "testgen/model/Dog.kt",

@@ -64,6 +64,9 @@ ktor {
 
 /** generate asciidoc describing the support environment variables to be set by operations */
 tasks.register<JavaExec>("generateConfigDoc") {
+    group = "documentation"
+    description = "Generate ENV vars overview by using reflection."
+    // TODO make output configurable
     mainClass.set(Constants.Fqn.configDocWriter)
     workingDir = rootDir
     classpath = java.sourceSets["test"].runtimeClasspath

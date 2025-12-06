@@ -7,7 +7,7 @@ import java.io.File
 
 data class Generation(
     val name: String,
-    val targetGenFolder: String,
+    val targetGenFolder: File,
     val packageApi: String = "testgen.api",
     val packageModel: String = "testgen.model",
     val pathToYml: String,
@@ -23,13 +23,13 @@ fun runGenerator(gen: Generation) {
                 CodegenConstants.MODEL_PACKAGE to gen.packageModel,
             ),
         )
-        .setOutputDir(gen.targetGenFolder)
+        .setOutputDir(gen.targetGenFolder.absolutePath)
 
     DefaultGenerator().opts(configurator.toClientOptInput()).generate()
 }
 
-fun assertSourceFilesExisting(targetGenFolder: String, sourceFolder: String = "src/main/kotlin", vararg files: String) {
-    files.map { File("$targetGenFolder/$sourceFolder/$it") }
+fun assertSourceFilesExisting(targetGenFolder: File, sourceFolder: String = "src/main/kotlin", vararg files: String) {
+    files.map { File("${targetGenFolder.absolutePath}/$sourceFolder/$it") }
         .filter { !it.exists() }
         .ifNotEmpty {
             throw AssertionError(
