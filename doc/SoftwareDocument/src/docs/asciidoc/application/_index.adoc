@@ -69,6 +69,8 @@ IntelliJ plugins:
 * kotest
 * Markdown
 * AsciiDoc
+* SonarQube for IDE
+** Configure with SonarQube Cloud project: https://sonarcloud.io/project/overview?id=seepick_diamond
 * plantuml4idea (graphivz/dot required)
 * Gherkin
 * Cucumber for Kotlin

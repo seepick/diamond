@@ -16,7 +16,7 @@ architecture, code quality, testing, building, and more.
 
 A comprehensive **software documentation** can be accessed either as
 an [online website](https://seepick.github.io/diamond/) or as
-a [PDF file](https://seepick.github.io/diamond/SoftwareDocument.pdf).
+a [PDF file](https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf).
 
 Important decisions are well documented in
 so-called [architecture decision records](https://github.com/seepick/diamond/tree/main/doc/decisions).

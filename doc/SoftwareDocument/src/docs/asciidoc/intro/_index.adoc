@@ -5,7 +5,7 @@ endif::[]
 == Introduction
 
 ifndef::isPdf[]
-Download this document as a PDF: https://seepick.github.io/diamond/diamond-software-documentation.pdf
+Download this document as a PDF: https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf
 endif::[]
 
 === Purpose

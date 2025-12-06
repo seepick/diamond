@@ -32,7 +32,7 @@ java {
     }
 }
 
-if (GradleProperty.enableOwasp.isSet() || GradleProperty.isCi.isSet()) {
+if (GradleProperty.enableOwasp.isSet()) {
     // TODO possible to move in here?
 //    plugins {
 //        id("org.owasp.dependencycheck")

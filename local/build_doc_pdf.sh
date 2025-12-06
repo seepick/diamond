@@ -6,7 +6,7 @@ ROOT="${CWD%/local}"
 cd "${ROOT}" || exit 1
 source "./local/_includes.sh"
 
-TARGET_FILE="docs/SoftwareDocument.pdf"
+TARGET_FILE="docs/Diamond-SoftwareDocument.pdf"
 
 echoH1 "📕 Generating PDF"
 echo ""
