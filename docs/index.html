@@ -593,7 +593,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <div class="sectionbody">
             <div class="paragraph">
                 <p>Download this document as a PDF: <a
-                        class="bare" href="https://seepick.github.io/diamond/diamond-software-documentation.pdf">https://seepick.github.io/diamond/diamond-software-documentation.pdf</a>
+                        class="bare" href="https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf">https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf</a>
                 </p>
             </div>
             <div class="sect2">
@@ -1535,6 +1535,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <p>E.g.:</p>
                 </div>
                 <div class="listingblock">
+                    <div class="title">Example from a fictional API</div>
                     <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "error": {
@@ -1852,6 +1853,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </ul>
                 </div>
                 <div class="listingblock">
+                    <div class="title">Sample toString representation of the application configuration</div>
                     <div class="content">
 <pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">EnvConfig(
   ktor=KtorConfig(port=12),
@@ -1914,6 +1916,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </li>
                         <li>
                             <p>AsciiDoc</p>
+                        </li>
+                        <li>
+                            <p>SonarQube for IDE</p>
+                            <div class="ulist">
+                                <ul>
+                                    <li>
+                                        <p>Configure with SonarQube Cloud project: <a
+                                                class="bare"
+                                                href="https://sonarcloud.io/project/overview?id=seepick_diamond">https://sonarcloud.io/project/overview?id=seepick_diamond</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li>
                             <p>plantuml4idea (graphivz/dot required)</p>
@@ -2194,6 +2209,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </ul>
                     </div>
                     <div class="listingblock">
+                        <div class="title">Example of a Gradle version catalog</div>
                         <div class="content">
 <pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="toml">[bundles]
 ktor = ["ktor-core", "ktor-json", "ktor-foobar"]
@@ -2513,8 +2529,9 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                         </ul>
                     </div>
                     <div class="listingblock">
+                        <div class="title">Named Expressions Example</div>
                         <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">fun `BAD single expression`(): String = "foo"
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">fun `BAD single expression`(): String = "foo"
 
 fun `GOOD single expression`() = "foo"
 
@@ -2772,15 +2789,15 @@ fun Service.`GOOD wither`() = apply {
                             </li>
                         </ul>
                     </div>
-                    <div class="paragraph">
-                        <p>Example of the DAO API:</p>
-                    </div>
                     <div class="listingblock">
+                        <div class="title">Example of Exposed&#8217;s (unfavored) DAO API</div>
                         <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">class CrystalDaoEntity(id: EntityID&lt;UUID&gt;) : UUIDEntity(id) {
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">// definition
+class CrystalDaoEntity(id: EntityID&lt;UUID&gt;) : UUIDEntity(id) {
     var weightInGrams by CrystalTable.weightInGrams
     companion object : UUIDEntityClass&lt;CrystalDaoEntity&gt;(CrystalTable)
 }
+// usage
 CrystalDaoEntity.findById(id)
 CrystalDaoEntity.new(UUID.randomUUID()) {
     weightInGrams = 42
@@ -3015,6 +3032,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         <p><strong>Logging evolution:</strong></p>
                     </div>
                     <div class="listingblock">
+                        <div class="title">Initial approach with performance in mind</div>
                         <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">if (log.isDebugEnabled()) {
     log.debug("some message " + message + " was returned")
@@ -3030,6 +3048,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             to invoke the log method without performance impact:</p>
                     </div>
                     <div class="listingblock">
+                        <div class="title">Less verbose, but still performant</div>
                         <div class="content">
                             <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">log.debug("some message %s was returned", message)</code></pre>
                         </div>
@@ -3040,10 +3059,12 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             The displacement-nature of these kind of formatting approaches is just not doing it&#8230;&#8203;</p>
                     </div>
                     <div class="paragraph">
-                        <p>Finally we are doing it nicely, using Kotlin&#8217;s string templates which are basically
-                            string concatenations, and the ease of lambda declarations:</p>
+                        <p>Finally we are doing it nicely, using Kotlin&#8217;s string templates (interpolation) which
+                            are basically string concatenations, and the ease of lambda declarations (deferred/lazy
+                            evaluation):</p>
                     </div>
                     <div class="listingblock">
+                        <div class="title">Readable and performant</div>
                         <div class="content">
                             <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">log.debug { "some message $dto was returned" }</code></pre>
                         </div>
@@ -3056,6 +3077,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             declaration of a logger is as simple as it can be:</p>
                     </div>
                     <div class="listingblock">
+                        <div class="title">Implicit log factory creation</div>
                         <div class="content">
                             <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">private val log = logger {}</code></pre>
                         </div>
