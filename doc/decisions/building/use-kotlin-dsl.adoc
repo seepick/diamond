@@ -1,0 +1,8 @@
+=== ADR - Use Gradle Kotlin DSL
+
+* Status: Draft
+* Created: 1.12.2025 by Seepick
+
+* obviously not groovy (cumbersome)
+* as project is already in kotlin, makes sense to configure gradle also with kotlin
+* has become stable enough the last years (support, plugins/configuration, sufficient documentation on the internet)

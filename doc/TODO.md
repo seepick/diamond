@@ -1,19 +1,27 @@
 Next
 =========================
 
-==> focus on MWP MVP ;) showcase that it's possible, don't make it "klaar", go fast forward, PoC prototype spike only
-==> redo basic tech things, see how they are done / can be done better / differently with new techstack
+Asciidoc
+-------------------------
 
+* [ ] Use a nicer theme!
+* [ ] Check all ADRs are used in SoftwareDoc (write unit test)
+* [ ] Support Kotlin syntax highlighting in Asciidoc
+* [ ] AsciiDoc should fail the build if stuff not found
+* [ ] PlantUML support for AsciiDoc (working in IDE but not in gradle...)
 
 Backlog
 -------------------------
 
 * [ ] support of datetime types (HTTP, DB); exposed-java-time
-* [ ] Support filtering
+* [ ] create playground cucumber and ktor testengine, parallel tests (otherwise startEmbedded full fledged?!)
+    * set up playground, parallel tests (junit/kotest and cucumber) starting up isolated parts of the application (
+      rewire things; @PrimaryBean vs koin-modules (overrides); and then override 2x; once in PROD, once in test, and
+      BAM); capability to implement different test strategies
+* [ ] Support filtering (see MWP)
 * [ ] Configure OWASP report (fail on too high vulns)
 * finish sonar integration; reports; also for OWASP https://ossindex.sonatype.org/doc/auth-required
 * [ ] Object mapper a la structmap for kotlin
-* delete all ADRs, incorporate in asciidoc
 * when test fails `gradlew check`, then also display assertion error message
 * [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
 * [ ] Configure jacaco XML for sonarqube
@@ -47,7 +55,6 @@ Backlog
 Low
 -------------------------
 
-* [ ] Kotlin support for asciidoc
 * [ ] Hikari connection pooling
 * fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
 * use SyncService to actually do something meaningful (verifable in tests)
@@ -56,7 +63,6 @@ Low
 * [ ] treat ktlint warnings as errors; breaking the build
 * [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
 * [ ] store BSN as a number in DB (heavy queries/joins)
-* [ ] asciidoc should fail the build if stuff not found
 * [ ] LDAP integration
 * [ ] Provide swagger HTML endpoint
 * [ ] OpenTelemetry, Micrometer
@@ -65,7 +71,6 @@ Low
 * [ ] Run testcontainers test on GitHub
 * [ ] Use OpenAPI spec to custom-generate Ktor routing skeleton
 * [ ] Use OpenAPI spec to custom-generate client (client-SDK); write full tests to verify
-* [ ] PlantUML support for Asciidoc (working in IDE but not in gradle...)
 * [ ] Auto version bump up
 * [ ] More static code analysis (higher level like PMD)
 * [ ] Need a spin up test (does the assembled JAR work)
@@ -83,14 +88,11 @@ Low
 * [ ] Security (authentification (username/password)+authorisation (has the rights to access endpoint)) must be done by
   a proxy upfront (not the macroservice
   itself; it only gets a user ID and assumes it has been done already)
-* [ ] incorporate markdown into asciidoc (ADRs into Software Doc); it can't do it by default
-    * a big lib exists which could do that: https://github.com/verhas/jamal (MVP: maybe merge PDFs)
 * [ ] Arrow optics to manipulate deep nested immutable data https://arrow-kt.io/learn/immutable-data/
 * [ ] Generate war/docker image gradle task (document in readme.md)
 * [ ] Configure OWASP (create gradle profile, document it in README.md)
 * [ ] Fine tune detekt rules
 * [ ] Home page returns HATEOS-like overview
-* [ ] AsciiDoc needs some love
 * [ ] Circuit breaker with arrow-fx-coroutines (external services and also DB?)
 * [ ] Investigate: intellij + github issue tracker
 * [ ] Investigate: code reviews done in intellij
@@ -101,13 +103,15 @@ Low
 * [ ] Sonarqube gradle plugin...
 * [ ] graceful shutdown when running in kubernetes/docker-compose (finish current requests; block new ones; release
   resources)
+* [ ] client-sdk tested just like routing-tests (no wiremock)
+* [ ] client-sdk split client-models (openApi generated; custom generator? create playground); use client-models in
+  separate (own repo) e2e tests
 
 No!
 -------------------------
 
 * custom Dockerfile to build image
 * crystal upload ftp
-* AsciiDoc to generate (and host) HTML (github pages)
 * Whitelabel implementation for FE devs
     * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
 * there is no persistence-stub (in-memory DB is fast enough and we are in full control of it; thus no reason)
@@ -240,3 +244,5 @@ V1
 * [x] Make use of KScript for local tools (instead bash): https://github.com/kscripting/kscript
     * NO, not supporting kotlin 2.*: https://github.com/kscripting/kscript/issues/421
 * [x] Write and use OpenAPI generator for data classes with kotlinx serialization
+* [x] Incorporate ADRs (migrating from MD to AsciiDoc) into Software Doc
+* [x] Generate HTML (and host on GitHub pages) with AsciiDoc

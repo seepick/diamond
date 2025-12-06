@@ -1,0 +1,19 @@
+= ADR - Webframework Choice
+
+* Status: Draft
+* Created: 5.12.2025 by Seepick
+
+[QUESTION]
+====
+Spring Boot or Ktor?
+(Quarkus?)
+====
+
+* besides people dont know it, less mature, less doc
+* much needs handwritten (openapi generation, jpa orm)
+
+* the thing with spring boot is, very much like maven, “super strict, either our or no way”; very opinionated (convention over configuration like)
+** it’s beneficial, speed up, and stuff, but once you want to do more custom made things, it’s a fucking pain in the ass (like openshift: you are a pro user, use k8s directly)
+* if you want to start only certain parts of the application in an isolated way, and then also in parallel, then spring boot is impossible for that
+** trust me, i tried it several times. it’s fucked.
+** with ktor, as everything is code (instead of annotations), there is a beautifully simple way to do it, and so extremely flexible, that every test strategy we can imagine can be implemented.

@@ -10,5 +10,13 @@ class DiamondModelGenerator : DiamondAbstractGenerator(
 ) {
     init {
         apiTemplateFiles.clear()
+        // TODO add for java.lang.LocalDateTime: @Serializable(with = LocalDateTimeSerializer::class)
+        // need to generate supported files
+
+        // or in OpenAPI YAML:
+//        myCustomType:
+//        type: object
+//        x-class-extra-annotation: '@some.package.SomeAnnotation(foo="bar")'
+//        properties:
     }
 }

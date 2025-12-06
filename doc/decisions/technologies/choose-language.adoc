@@ -1,0 +1,14 @@
+= ADR - Language Choice
+
+* Status: Draft
+* Created: 5.12.2025 by Seepick
+
+[QUESTION]
+====
+Java or Kotlin?
+====
+
+TODO
+
+Definitely no Scala, Clojure, ... and no non-JVM languages (Go, Rust, Python, C#, ...).
+

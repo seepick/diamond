@@ -1,0 +1,37 @@
+[NOTE]
+====
+If you want to go fast, you need to go lightweight.
+====
+
+[QUOTE]
+====
+If you want to go fast, you need to go lightweight.
+====
+
+.A precious material
+image::diamond.jpg[scaledwidth=30%]
+
+Unordered:
+
+* super
+** sublist
+
+Ordered:
+
+. super
+.. sub
+
+
+.caption for this TABLE
+
+[width="100%",cols="50%,50%",options="header",]
+|===
+|Th1 |Th2
+|row1 col1
+|row1 col2
+
+|row2 col1
+|row2 col2
+|===
+
+

@@ -65,6 +65,7 @@ components:
           description: how heavy the crystal is
         created:
           type: string
+          # TODO actually datetime, not date...
           format: date
           description: the moment the entity was stored in the database
     uuid:

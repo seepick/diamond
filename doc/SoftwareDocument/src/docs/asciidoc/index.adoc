@@ -13,6 +13,16 @@ endif::[]
 // ifdef::projcode[project was defined as {projcode}]
 // ifndef::projcode[project was not defined]
 
+
+[QUOTE]
+====
+If you want to go fast, you need to go lightweight.
+====
+
+
+// TODO show high-level overviews & diagrams on the first pages
+
+
 include::{basedir}/architecture/_index.adoc[]
 
 include::{basedir}/application/_index.adoc[]

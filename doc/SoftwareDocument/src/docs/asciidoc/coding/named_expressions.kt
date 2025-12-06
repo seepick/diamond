@@ -19,6 +19,6 @@ fun Service.`BAD wither`(): Service {
     return this
 }
 
-fun Service.`✅ wither`() = apply {
+fun Service.`GOOD wither`() = apply {
     setFoo("bar")
 }

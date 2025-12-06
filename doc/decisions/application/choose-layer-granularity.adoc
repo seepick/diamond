@@ -1,0 +1,29 @@
+= ADR - Layer Granularity
+
+* Status: Draft
+* Created: 5.12.2025 by Seepick
+
+[QUESTION]
+====
+Should the view-routing and view-controller-* modules be separate or merged?
+====
+
+* if testing strategy is testing from http (ktor test engine) then it can be merged.
+** if testing from controller (no ktor involved, plain code, simpler but less realistic/higher risk, require complementary tests and integration of those layers) then it should be separate.
+* current situation feels like adding a costly feature without using its benefit
+** the modules are separated and the itests are not using the controllers (but HTTP ktor test engine)
+
+== Separate
+
+* very clean
+** view-route only purpose interact with web framework and leave
+** easy to test routes
+* adds complexity (already heavy due to route - controller - domain - persist/extern)
+** controller interface, controller impl, register koin, ...
+** but enforces clean architecture!
+* itests could use view-controllers instead using HTTP (from cucumber looks the same, just faster/easier setup)
+
+== Merged
+
+* faster development; less code/complexity
+* unit (integration, as they use ktor) test for routes will be heavier.

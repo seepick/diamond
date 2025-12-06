@@ -23,7 +23,70 @@ dependencies {
 
 // https://asciidoctor.github.io/asciidoctor-gradle-plugin/master/user-guide/
 
+val asciidocSrcDir = file("src/docs/asciidoc")
+
+gradleLog("AsciiDoc source dir: [${"${project.projectDir}/src/docs/asciidoc"}]")
+
+fun asciidocAttributes(
+    sourceHighlighter: String,
+) = mapOf(
+    "basedir" to asciidocSrcDir.absolutePath,
+    "adrsdir" to "${project.projectDir}/../decisions",
+    "imgdir" to "${asciidocSrcDir.absolutePath}/images",
+    "source-highlighter" to sourceHighlighter,
+    "toc" to "left",
+    "toclevels" to "3",
+//            "sectnums" to "",
+//            "sectnumlevels" to "4",
+    "icons" to "font",
+    "idprefix" to "",
+    "idseparator" to "-",
+//            "doctype" to "article"
+)
+
+// val asciidoctor by tasks.registering(AsciidoctorTask::class) {
+tasks.asciidoctor {
+//    group = "diamond asciidoc group name"
+//    description = "diamond asciidoc group description"
+    setSourceDir(asciidocSrcDir)
+    backends().add("html5")
+    sources {
+        include("index.adoc") // otherwise treat included files as root-files
+    }
+    options(
+        mapOf(
+            "doctype" to "article",
+        ),
+    )
+    attributes(
+        asciidocAttributes(
+            sourceHighlighter = "highlightjs",
+        ),
+    )
+    resources {
+        from(asciidocSrcDir.resolve("images")) {
+            into("images")
+        }
+    }
+}
+
 tasks.asciidoctorPdf {
+    setSourceDir(asciidocSrcDir)
+    sources {
+        include("index.adoc") // otherwise treat included files as root-files
+    }
+    options(
+        mapOf(
+            "doctype" to "book",
+            "ruby" to "erubis",
+        ),
+    )
+    attributes(
+        asciidocAttributes(
+            sourceHighlighter = "coderay",
+        ),
+    )
+
     asciidoctorj {
         // TODO support emojis!
         // AsciidoctorJExtension
@@ -35,23 +98,6 @@ tasks.asciidoctorPdf {
 //                diagram
         }
     }
-    options(
-        mapOf(
-            "doctype" to "book",
-            "ruby" to "erubis",
-        ),
-    )
-    // THIS should be actually the way to go...?!
-    attributes(
-        mapOf(
-            "basedir" to "${project.projectDir}/src/docs/asciidoc",
-            "adrsdir" to "${project.projectDir}/../decisions",
-            "source-highlighter" to "coderay",
-            "toc" to "left",
-            "idprefix" to "",
-            "idseparator" to "-",
-        ),
-    )
 }
 
 // asciidoctorPdf {

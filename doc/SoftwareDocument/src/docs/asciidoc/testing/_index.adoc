@@ -1,5 +1,10 @@
 == Testing
 
+[WARNING]
+====
+Watch out to not test same multiple times, we need to be able to still move and change fast!
+====
+
 === Coverage
 
 * coverage 100%?, kotlin inlining issue...

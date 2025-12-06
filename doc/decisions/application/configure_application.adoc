@@ -1,10 +1,10 @@
-=== ADR - Application Configuration
+= ADR - Application Configuration
 
 * Status: Draft
 * Created: 1.12.2025 by Seepick
 
 * config as ENV vars or centralized config manager?
 
-==== Resources
+== Resources
 
 * https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/
