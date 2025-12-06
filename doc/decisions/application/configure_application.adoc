@@ -1,4 +1,4 @@
-= ADR - Application Configuration
+= Application Configuration
 
 * Status: Draft
 * Created: 1.12.2025

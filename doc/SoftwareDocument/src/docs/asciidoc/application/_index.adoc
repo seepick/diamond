@@ -5,7 +5,7 @@ endif::[]
 == Application
 
 .A precious material
-image::{imgdir}/diamond.jpg[scaledwidth=30%]
+image::{imgdir}/diamond.png[scaledwidth=30%]
 
 === Tech Stack
 

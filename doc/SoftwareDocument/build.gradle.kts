@@ -39,12 +39,17 @@ fun asciidocAttributes(
     // custom internal
     "basedir" to asciidocSrcDir.absolutePath,
     "adrsdir" to "${project.projectDir}/../decisions",
+    "appVersion" to version.toString(),
+    "buildDateClean" to LocalDateTime.now()
+        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)),
     "buildDate" to LocalDateTime.now()
         .format(DateTimeFormatter.ofPattern("EEE, d. LLLL yyyy", Locale.ENGLISH)),
     "buildTime" to LocalDateTime.now()
         .format(DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH)),
     "imgdir" to imagesDir,
     // asciidoc default (could also define via theme config)
+    "pdf-fontsdir" to "$projectDir/src/docs/themes/fonts",
+//    "iconsdir" to "icons",
     "source-highlighter" to sourceHighlighter,
     "toc" to "left",
     "toclevels" to "3",
@@ -73,7 +78,7 @@ tasks.asciidoctor {
     attributes(
         asciidocAttributes(
             sourceHighlighter = "highlightjs",
-            // Make generated HTML use a relative images path: <img src="images/diamond.jpg">
+            // Make generated HTML use a relative images path: <img src="images/diamond.png">
             imagesDir = "images",
         ),
     )
@@ -101,8 +106,9 @@ tasks.asciidoctorPdf {
             imagesDir = "${asciidocSrcDir.absolutePath}/images",
             more = mapOf(
                 "isPdf" to "true",
-                "pdf-theme" to "diamond-pdf",
-                "pdf-themesdir" to "${project.projectDir}/src/docs/themes/",
+                "pdf-theme" to "diamond-uroesch",
+//                "pdf-theme" to "diamond-pdf",
+                "pdf-themesdir" to "$projectDir/src/docs/themes/",
 //                "pdf-fontsdir" to "${project.projectDir}/src/docs/fonts",
             ),
         ),

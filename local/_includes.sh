@@ -35,7 +35,7 @@ echoH1() {
   TITLE=$1
   echo ""
   echo -e "${COL_CYAN}===================================================${COL_RESET}"
-  echo -e "${COL_CYAN}===${COL_RESET} ${TITLE}"
+  echo -e "${COL_CYAN}===${COL_RESET} ${COL_BOLD}${TITLE}${COL_RESET}"
   echo -e "${COL_CYAN}===================================================${COL_RESET}"
   echo ""
 }
@@ -67,6 +67,6 @@ verifyExists() {
 echoDocCommitWarning() {
   echo ""
   echo -e "⚠️ ${COL_RED}Commit changes${COL_RESET} to trigger GitHub pages action. ⚠️"
-  sleep 1
+#  sleep 1
   echo ""
 }

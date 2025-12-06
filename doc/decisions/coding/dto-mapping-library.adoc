@@ -1,4 +1,4 @@
-= ADR - DTO Mapping Library
+= DTO Mapping Library
 
 * Status: Draft
 * Created: 6.12.2025

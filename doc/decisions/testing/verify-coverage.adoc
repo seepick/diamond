@@ -1,4 +1,4 @@
-= ADR - Verify Coverage
+= Verify Coverage
 
 * Status: Draft
 * Created: 1.12.2025

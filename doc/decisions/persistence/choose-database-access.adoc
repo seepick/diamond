@@ -1,4 +1,4 @@
-= ADR - Database Access Library
+= Database Access Library
 
 * Status: Accepted
 * Created: 1.12.2025

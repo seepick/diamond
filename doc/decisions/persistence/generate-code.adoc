@@ -1,4 +1,4 @@
-= ADR - Generate Persistence Code
+= Generate Persistence Code
 
 * Status: Draft
 * Created: 6.12.2025

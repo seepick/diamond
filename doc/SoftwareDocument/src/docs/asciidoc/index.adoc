@@ -1,3 +1,11 @@
+:author: Seepick
+:revnumber: {appVersion}
+// :revremark: foobar
+:revdate: {buildDateClean}
+// :stem: ???
+// :icons: font ... via build.gradle.kts
+// :toc: left ... via build.gradle.kts
+
 ifndef::basedir[]
 :basedir: .
 endif::[]
@@ -7,17 +15,14 @@ endif::[]
 // ifdef::projcode[project was defined as {projcode}]
 // ifndef::projcode[project was not defined]
 
-= Diamond Software Documentation
+= Diamond Doc: A Software Documentation
 
-[QUOTE]
-====
-If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
-====
+TIP: If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
 
 This document was built using link:https://asciidoc.org[AsciiDoc], a simple yet powerful markup language for writing technical documentation.
 
 ifndef::isPdf[]
-Download this version as a PDF: https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf
+NOTE: Download this version as a PDF: https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf
 endif::[]
 
 The build for this document was triggered on {buildDate} at {buildTime} - enjoy :)

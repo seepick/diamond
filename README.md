@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/seepick/diamond/actions/workflows/continuous.yml/badge.svg)](https://github.com/seepick/diamond/actions/workflows/continuous.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=seepick_diamond&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=seepick_diamond)
 
-<img src="https://raw.githubusercontent.com/seepick/diamond/refs/heads/main/doc/SoftwareDocument/src/docs/asciidoc/images/diamond.jpg" width="100"  align="left" style="margin-right: 10px;">
+<img src="https://raw.githubusercontent.com/seepick/diamond/refs/heads/main/doc/SoftwareDocument/src/docs/asciidoc/images/diamond.png" width="100"  align="left" style="margin-right: 10px;">
 
 "_Given a very long time (far, far away) and an exorbitant amount of persistent pressure, and even out of the most
 ordinary dirt, a precious diamond will be formed._"

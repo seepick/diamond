@@ -1,4 +1,4 @@
-= ADR - Layer Granularity
+= Layer Granularity
 
 * Status: Draft
 * Created: 5.12.2025

@@ -4,6 +4,10 @@ endif::[]
 
 == DevOps
 
+// .What is CI/CD?
+// video::AknbizcLq4w[youtube] // => TODO embed youtube doesn't work?!
+// DevOps in 100 secs: scEDHsr3APg
+
 .Sketching a build pipeline overview
 image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]
 

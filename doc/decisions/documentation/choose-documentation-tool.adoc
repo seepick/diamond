@@ -1,4 +1,4 @@
-= ADR - Documentation Tool
+= Documentation Tool
 
 * Status: Draft
 * Created: 1.12.2025

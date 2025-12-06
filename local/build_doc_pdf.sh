@@ -11,6 +11,7 @@ TARGET_FILE="docs/Diamond-SoftwareDocument.pdf"
 echoH1 "📕 Generating PDF"
 echoParam "💾 Target file" $TARGET_FILE
 echo ""
+
 ./gradlew :doc:SoftwareDocument:clean :doc:SoftwareDocument:asciidoctorPdf || exit 1
 cp doc/SoftwareDocument/build/docs/asciidocPdf/index.pdf $TARGET_FILE || exit 1
 echoDocCommitWarning

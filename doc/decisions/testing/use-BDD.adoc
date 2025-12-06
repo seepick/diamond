@@ -1,4 +1,4 @@
-= ADR - Use BDD
+= Use BDD
 
 * Status: Draft
 * Created: 1.12.2025

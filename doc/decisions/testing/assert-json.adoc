@@ -1,4 +1,4 @@
-= ADR - Assert JSON
+= Assert JSON
 
 * Status: Draft
 * Created: 1.12.2025

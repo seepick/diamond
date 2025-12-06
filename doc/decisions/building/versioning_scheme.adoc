@@ -1,4 +1,4 @@
-= ADR - Versioning Scheme
+= Versioning Scheme
 
 * Status: Draft
 * Created: 6.12.2025

@@ -1,3 +1,7 @@
+// with gradle: https://www.vogella.com/tutorials/AsciiDoc/article.html
+// https://www.quadhelion.engineering/guides/AsciiDocCheatSheet.pdf
+// https://gist.github.com/namjae/bcac5fb00d1edc4e74a5e20a7dc8dace
+
 [NOTE]
 ====
 If you want to go fast, you need to go lightweight.
@@ -12,7 +16,9 @@ If you want to go fast, you need to go lightweight.
 == Heading with ID
 
 .A precious material
-image::diamond.jpg[scaledwidth=30%]
+image::diamond.png[scaledwidth=30%]
+
+// image attributes: https://docs.asciidoctor.org/asciidoc/latest/macros/image-ref/
 
 Unordered:
 

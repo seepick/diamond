@@ -1,4 +1,4 @@
-= ADR - Generating Sources
+= Generating Sources
 
 * Status: Draft
 * Created: 6.12.2025

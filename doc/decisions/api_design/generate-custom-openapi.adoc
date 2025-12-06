@@ -1,4 +1,4 @@
-= ADR - Generate Custom OpenAPI Code
+= Generate Custom OpenAPI Code
 
 * Status: Draft
 * Created: 1.12.2025

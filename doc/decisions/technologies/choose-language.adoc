@@ -1,4 +1,4 @@
-= ADR - Language Choice
+= Language Choice
 
 * Status: Draft
 * Created: 5.12.2025

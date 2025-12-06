@@ -1,4 +1,4 @@
-= ADR - Use Gradle Kotlin DSL
+= Gradle Kotlin DSL
 
 * Status: Draft
 * Created: 1.12.2025

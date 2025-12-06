@@ -1,0 +1,136 @@
+# Credits to: https://github.com/uroesch/asciidoctor-pdf-tutorial-theme/
+# see theme keys for availabile options: https://docs.asciidoctor.org/pdf-converter/latest/theme/keys/
+page:
+  layout: portrait
+  margin: [ 10mm, 15mm, 10mm, 15mm ]
+  size: a4
+footer:
+  height: 0.5in
+  line_height: 1
+  font-size: 8
+  recto:
+    right:
+      content: '{chapter-title} | *{page-number}*'
+  verso:
+    left:
+      content: '*{page-number}* | {chapter-title}'
+running-content:
+  start-at: toc
+toc:
+  indent: 10
+  h2-font-size: 12
+  h2-font-style: bold
+  h3-font-size: 11
+  h4-font-size: 10
+base:
+  font_color: #333333
+  font_family: Clear Sans
+  font_style: normal
+  font_size: 12
+  line_height_length: 14
+  line_height: $base_line_height_length / $base_font_size
+vertical_spacing: $base_line_height_length
+heading:
+  font_color: #1d4e89
+  font_family: Clear Sans
+  font_size: 16
+  font_style: normal
+  line_height: 1
+  margin_bottom: $vertical_spacing / 1.5
+  margin_top: $vertical_spacing / 1.2
+code:
+  font_color: #333333
+  font_family: Courier Prime Sans
+  font_style: normal
+  font_size: 10
+  background_color: #f6f6f6
+  border_color: #0f80aa
+  border_radius: 2
+codespan:
+  # literal: # the literal theme category is deprecated; use the codespan category instead
+  font_family: Courier Prime Sans
+  font_style: bold
+link:
+  font_color: #002FA7
+description_list:
+  description_indent: $base_font_size * 2.5
+list:
+  # outline_list: # the outline-list theme category is deprecated; use the list category instead
+  indent: $base_font_size * 2.5
+title_page:
+  font_family: Clear Sans Thin
+  font_color: ffffff
+  background_color: #265899
+  align: center
+  logo:
+    top: 10%
+    image: image:images/diamond-cover.png[width=40%, align=center]
+  title:
+    top: 30%
+    font_size: $base_font_size * 4.25
+    font_family: Clear Sans
+    font_style: bold
+    line_height: 0.9
+  subtitle:
+    font_size: $base_font_size * 2.00
+    line_height: 1
+  authors:
+    margin_top: $base_font_size * 29.25
+    font_size: $base_font_size * 1.5
+  revision:
+    margin_top: $base_font_size * 0.5
+table:
+  border_width: 0
+  cell:
+    padding: 3
+  head:
+    font_size: 10
+  body:
+    font_size: 9
+  foot:
+    font_size: 9
+conum:
+  font_family: M+ 1mn
+  font_color: #0f80aa
+  line_height: 4 / 3
+  glyphs: filled
+kbd:
+  #key: # the key theme category is deprecated; use the kbd category instead
+  background_color: #f5f5f5
+  border_color: #cccccc
+  border_offset: 2
+  border_radius: 2
+  border_width: 0.5
+  font_family: M+ 1mn
+  font_style: bold
+  separator: "\u202f+\u202f"
+
+## ----------------------------------------------------------------------------
+## Fonts
+## ----------------------------------------------------------------------------
+font:
+  catalog:
+    Courier Prime Sans:
+      normal: Courier Prime Sans.ttf
+      bold: Courier Prime Sans Bold.ttf
+      italic: Courier Prime Sans Italic.ttf
+      bold_italic: Courier Prime Sans Bold Italic.ttf
+    Clear Sans:
+      normal: ClearSans-Regular.ttf
+      bold: ClearSans-Bold.ttf
+      italic: ClearSans-Italic.ttf
+      bold_italic: ClearSans-BoldItalic.ttf
+    Clear Sans Thin:
+      normal: ClearSans-Thin.ttf
+    Clear Sans Light:
+      normal: ClearSans-Light.ttf
+    Clear Sans Medium:
+      bold: ClearSans-Medium.ttf
+      bold_italic: ClearSans-MediumItalic.ttf
+    M+ 1mn:
+      normal: GEM_FONTS_DIR/mplus1mn-regular-subset.ttf
+      bold: GEM_FONTS_DIR/mplus1mn-bold-subset.ttf
+      italic: GEM_FONTS_DIR/mplus1mn-italic-subset.ttf
+      bold_italic: GEM_FONTS_DIR/mplus1mn-bold_italic-subset.ttf
+  fallbacks:
+    - M+ 1mn

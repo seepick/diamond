@@ -48,4 +48,4 @@ Documentation:
 
 include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+1]
 
-include::{adrsdir}/building/use-kotlin-dsl.adoc[leveloffset=+1]
+include::{adrsdir}/building/gradle-kotlin-dsl.adoc[leveloffset=+1]
