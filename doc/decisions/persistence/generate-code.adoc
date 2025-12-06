@@ -1,0 +1,19 @@
+= ADR - Generate Persistence Code
+
+* Status: Draft
+* Created: 6.12.2025
+* Author: Seepick
+
+*Context:*
+
+* liquibase migration strategy...
+* Generate Liquibase by classes; or generate classes by liquibase?
+** Back then possible with JPA
+** Or we keep it in-sync by hand
+** How is it different than API-spec?
+** maybe good to have file for contract, to make more aware if you do changes
+
+Other (semi-related) problem: How to handle if there are MANY changelogs?
+
+* It slows down startup considerably
+* Compress/squash them?!

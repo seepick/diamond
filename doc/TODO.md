@@ -1,7 +1,27 @@
 Next
 =========================
 
-* finish openapi generator (client 80% done)
+* finish openapi generator (client 80% done; kotlinx serialization java datetime)
+
+Business Relevant
+-------------------------
+
+* [ ] Initial DB seeding of masterdata
+* [ ] Setup MessageQueue
+* [ ] Bean validation (based on OpenAPI spec)
+* [ ] Object mapper a la mapstruct for kotlin (optics?)
+    * how does it solve the 99% default, 1% custom mapping?
+* [ ] LDAP integration
+* [ ] Provide swagger HTML endpoint
+* [ ] OpenTelemetry, Micrometer `install(MicrometerMetrics) { registry = SimpleMeterRegistry() }`
+* [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
+* [ ] Check if liquibase-to-exposed generation is possible (do we even want that?! NO!)
+
+Minor:
+
+* [ ] Feature flag support
+* [ ] Support filtering (see MWP)
+* [ ] API versioning (needed with only 1 FE?)
 
 Asciidoc
 -------------------------
@@ -23,12 +43,14 @@ Asciidoc
 Backlog
 -------------------------
 
+* when test fails `gradlew check`, then also display assertion error message
+* [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
+* [ ] Configure jacaco XML for sonarqube
+    * see: https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
 * [ ] Enforce quality gates (fail build; coverag DONE; sonarqube/detekt? locally & remote)
 * [ ] SonarQube Coverage
 * [ ] SonarQube detekt & ktlint integration
 * [ ] SonarQube badges: https://github.com/marketplace/actions/sonarqube-badge
-* ADR: liquibase migration strategy (generate one or the other, like with JPA gen?!); how to handle if there are MANY (
-  compress/squash them?)?
 * [ ] What if plugin-apply-false (instead buildSrc/build dep?); ALSO: ./gradlew dependencyUpdates doesn't work to be
   applied recursively!
 * [ ] Change github action release process: no local tagging, just run a build in web interface; first check, then tag,
@@ -38,38 +60,23 @@ Backlog
     * set up playground, parallel tests (junit/kotest and cucumber) starting up isolated parts of the application (
       rewire things; @PrimaryBean vs koin-modules (overrides); and then override 2x; once in PROD, once in test, and
       BAM); capability to implement different test strategies
-* [ ] Support filtering (see MWP)
 * [ ] Configure OWASP report (fail on too high vulns)
-* finish sonar integration; reports; also for OWASP https://ossindex.sonatype.org/doc/auth-required
-* [ ] Object mapper a la structmap for kotlin
-* when test fails `gradlew check`, then also display assertion error message
-* [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
-* [ ] Configure jacaco XML for sonarqube
-    * see: https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
+* better sonar integration; reports; also for OWASP https://ossindex.sonatype.org/doc/auth-required
 * [ ] invoke health endpoint from docker compose
 * [ ] Introduce nested domain object (supported by sorting and filtering)
 * [ ] Introduce second domain entity (full shared/reuse of pagination, sorting, filtering)
 * move pagination/sorting/filtering into shared-*
 * change postsAPI to something meaningful
 * in itest, use programmatic tests too (mock single bean in koin; more fine control)
-* [ ] API versioning
-* [ ] Backend WSDL generation (separate sub-project, make external-API depend on it)
 * [ ] Setup playground subfolder with standalone porjects
     * [ ] FIX: run testcointaners test addititively (not exclusively)
     * [ ] ktor+cucumber, decoupled test application
 * [ ] Write OpenAPI spec for own API (how to verify contract automatically?!)
-* [ ] Setup MQ
-* [ ] Bean validation (based on OpenAPI spec)
 * [ ] Introduce e0.5e (quarter of a e2e) tests with docker, so not real backends
     * [ ] Docker compose, wiremock for posts api (used in e0.5e)
-* [ ] Feature flag support
-* [ ] Micrometer" `install(MicrometerMetrics) { registry = SimpleMeterRegistry() }`
 * [ ] SFTP coroutine IO
-* [ ] Investigate JSON schema: https://json-schema.org
 * [ ] Write more KDoc to help making this code a better sample
 * [ ] Karate support different environments
-* [ ] Check if liquibase-to-exposed generation is possible (do we even want that?! NO!)
-* [ ] Use OpenAPI generator for data classes with kotlinx serialization
 * [ ] Write OpenAPI generator for ktor server side (route interfaces)
 
 Low
@@ -83,9 +90,6 @@ Low
 * [ ] remove leading slash "/" from config paths/urls
 * [ ] treat ktlint warnings as errors; breaking the build
 * [ ] store BSN as a number in DB (heavy queries/joins)
-* [ ] LDAP integration
-* [ ] Provide swagger HTML endpoint
-* [ ] OpenTelemetry, Micrometer
 * [ ] Gatling load tests: https://github.com/gatling/gatling-gradle-plugin-demo-kotlin
     * also with karate available: https://github.com/karatelabs/karate/tree/master/karate-gatling
 * [ ] Run testcontainers test on GitHub
@@ -97,7 +101,6 @@ Low
 * [ ] Use the client SDK to also write tests (implicitly testing it)
 * [ ] Production ready logging (file appender)
 * [ ] Release process: trigger build on GitHub, it will build+verify, then tag (version number), rebuild, publish/deploy
-* [ ] Local reformatting (editor config)
 * [ ] Refactor to super/sub instead of super/super-sub (hopefully no clash, if duplicate subs in different supers); also
   in packages (explicit and simplified)
 * [ ] Provide metrics report about statistics/quality, etc.
@@ -126,6 +129,7 @@ Low
 * [ ] client-sdk tested just like routing-tests (no wiremock)
 * [ ] client-sdk split client-models (openApi generated; custom generator? create playground); use client-models in
   separate (own repo) e2e tests
+* [ ] Investigate JSON schema: https://json-schema.org
 
 No!
 -------------------------

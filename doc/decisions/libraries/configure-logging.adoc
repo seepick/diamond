@@ -6,7 +6,7 @@
 
 *Context:*
 
-* following principle: code > configuration (yaml/properties)
+* following principle: code > config
 ** more flexibility, more control, more sophisticated, more robust
 * programmatic logging configuration
 * dev/test different from default-prod

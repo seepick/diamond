@@ -22,9 +22,21 @@ image::{imgdir}/diamond.jpg[scaledwidth=30%]
 * Arrow
 ** Especially `Either` for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling]
 
+Clean Dependencies:
+
+* Non-prod dependencies (test, stubs, localdev, etc like H2) should NOT be in production code
+** Instead: Activate profiles which customize the build (dependency tree)
+** E.g. for tests (presistence-tests and itests) different wiring
+
 include::{adrsdir}/application/configure_application.adoc[leveloffset=+2]
 
 include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+2]
+
+=== KPIs
+
+* build time below 3mins locally (build server?)
+* response times (load tests)
+* lead time
 
 === Startup Arguments
 
@@ -32,6 +44,7 @@ include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+2]
 ** Used in `./local/test_apponfig.sh` to verify output
 
 .Sample toString representation of the application configuration
+
 [source,text]
 ----
 EnvConfig(
@@ -56,35 +69,7 @@ EnvConfig(
 )
 ----
 
-=== Local Development
-
-* run `nl.uwv.smz.diamond.app.LocalDiamondApp`
-* Postman collection can be found at: `/local/Diamond.postman_collection.json`
-
-IntelliJ plugins:
-
-* Gradle
-* EditorConfig
-* detekt - configure with `/config/detekt.yml`
-* ktlint
-* kotest
-* Markdown
-* AsciiDoc
-* SonarQube for IDE
-** Configure with SonarQube Cloud project: https://sonarcloud.io/project/overview?id=seepick_diamond
-* plantuml4idea (graphivz/dot required)
-* Gherkin
-* Cucumber for Kotlin
-* Cucumber for Java
-* Cucumber+
-* Cucumber Table Mapping
-* kotlin-fill-class
-
 include::gradle.adoc[leveloffset=+2]
-
-include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+2]
-
-include::{adrsdir}/building/use-kotlin-dsl.adoc[leveloffset=+2]
 
 === Documentation
 

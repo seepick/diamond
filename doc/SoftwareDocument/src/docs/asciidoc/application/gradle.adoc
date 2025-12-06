@@ -1,12 +1,20 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
 = Gradle
 
-Sharing build logic via the `buildSrc` directory.
-
-See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html
+* Guiding Principles:
+** Keep build log output silent; don't pollute it; don't be verbose (by default)
+** Keep all warnings down to zero immediately (0-warning policy applies here as well).
+* Sharing build logic via the `/buildSrc/` directory.
+** See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html
 
 == Gradle Properties
 
-Pass them either as `-P` (precendence) or `-D`.
+with certain flags (enabled via gradle properties and on CI), it will enable more tests/reports (which take longer and require more local setup)
+
+Pass them either as system variables `-D` (as gradle properties sometimes doesn't work `-P`).
 
 * `diamond_version` - application version, defaults to `0` if not specified
 ** displayed in info endpoint, used in generated documentation
@@ -15,11 +23,29 @@ Pass them either as `-P` (precendence) or `-D`.
 
 == Gradle Tasks
 
-* `./gradlew :app:buildFatJar -Pdiamond_version="42"` - build a standalone, executable Jar
-* `./gradlew :app:generateConfigDoc` - custom task which generates the asciidoc for the config table (available env vars)
-* `./gradlew :doc:SoftwareDocument:asciidoctorPdf` - generate PDF as `doc/SoftwareDocument/build/docs/asciidocPdf/index.pdf`
-* `./gradlew :doc:SoftwareDocument:asciidoctor` - generate HTML to ``
-* `./gradlew test -PrunTestcontainersTests=true` - run only the tests requiring testcontainers (docker; oracle)
-* `./gradlew test -PrunEtests=true` - run the Karate tests located in the `etest` subproject
-* `./gradlew dependencyUpdates` - to check for outdated dependencies (help category, using manes plugin)
-* `./gradlew publishImageToLocalRegistry` or `runDocker` (or `publishImage` once remote registry is configured)
+* Build an executable JAR:
+** `./gradlew :app:buildFatJar -Pdiamond_version="42"`
+* Check for outdated dependencies:
+* `./gradlew dependencyUpdates`
+* Deploy container image to local Docker registry.
+* `./gradlew publishImageToLocalRegistry`
+
+Test:
+
+* Run tests using testcontainers (requires Docker daemon to be running)
+** `./gradlew test -PrunTestcontainersTests=true`
+* Run Karate end-to-end tests.
+** `./gradlew test -PrunEtests=true`
+
+Documentation:
+
+* Generate documentation for available ENV properties:
+** `./gradlew :app:generateConfigDoc`
+* Generate software documentation as PDF:
+** `./gradlew :doc:SoftwareDocument:asciidoctorPdf`
+* Generate software documentation as HTML:
+* `./gradlew :doc:SoftwareDocument:asciidoctor`
+
+include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+1]
+
+include::{adrsdir}/building/use-kotlin-dsl.adoc[leveloffset=+1]

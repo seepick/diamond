@@ -4,6 +4,12 @@ endif::[]
 
 == API Design
 
+* OpenAPI even needed?
+** The spec is the source of truth, the holy contract
+** Especially multiple consumers (always at least 2: 1x FE and testers)
+** OpenAPI generators can keep contract in sync with code
+* Show SwaggerUI as endpoint (display both UI and yaml-spec); consumer convenience
+
 include::{adrsdir}/api_design/filter-resources.adoc[leveloffset=+2]
 
 include::{adrsdir}/api_design/generate-custom-openapi.adoc[leveloffset=+2]

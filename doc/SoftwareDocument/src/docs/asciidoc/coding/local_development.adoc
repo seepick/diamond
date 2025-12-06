@@ -1,0 +1,33 @@
+= Local Development
+
+The goal is to only have to check out the sourcecode, and run a single command to start the application up in a local model.
+No further setup must be needed (no docker, no special files created).
+There is no required readme to be read, no manual or instructions; it just works out of the box.
+
+* run `nl.uwv.smz.diamond.app.LocalDiamondApp`
+* Postman collection can be found at: `/local/Diamond.postman_collection.json`
+* There are a lot of useful (required) build scripts in `/local/*.sh`
+
+== IntelliJ Plugins
+
+The following plugins are recommended to have a smooth development experience:
+
+* Gradle
+* EditorConfig - autoconfigures styling
+* detekt - configure with `/config/detekt.yml`
+* ktlint - auto-formatter
+* kotest - test framework integration
+* Markdown - some internal documentation files use it
+* AsciiDoc - documentation written in it
+* SonarQube for IDE - connector to quality gates
+** Configure with SonarQube Cloud project: https://sonarcloud.io/project/overview?id=seepick_diamond
+* Gherkin - Test specifications support
+* Cucumber for Kotlin - Step definitions; regexp
+* Cucumber for Java - not sure, i guess it adds to it (?)
+* Cucumber+ - Better support
+* Cucumber Table Mapping - Specific support
+* kotlin-fill-class - Useful inline code generator
+
+Other:
+
+* plantuml4idea (graphivz/dot required)

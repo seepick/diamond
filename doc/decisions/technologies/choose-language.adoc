@@ -13,3 +13,6 @@ TODO
 
 Definitely no Scala, Clojure, ... and no non-JVM languages (Go, Rust, Python, C#, ...).
 
+EDU: from plain java, to Lombok, to kotlin (data classes, properties, prop-initializing-ctor; from final, to var, to val)
+
+EDU: from plain java, to instancio, to kotest-property

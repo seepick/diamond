@@ -7,6 +7,17 @@ endif::[]
 .Sketching a build pipeline overview
 image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]
 
+* When a feature branch is created, a new environment gets auto-created.
+** Testers can write their E2E tests targeting it.
+*** Development starts in parallel: The contract (requirements) the base.
+* On merge: Old feature-branches are deleted and custom environment destroyed.
+
+=== GitHub Actions
+
+* Continuous
+* Nightly
+* Release
+
 === Environment Variables
 
 include::../generated/environment_variables.generated.adoc[]

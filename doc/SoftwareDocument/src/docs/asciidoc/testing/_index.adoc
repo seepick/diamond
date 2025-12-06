@@ -4,26 +4,66 @@ endif::[]
 
 == Testing
 
+* All tests are automated; there is not a single manual test!
+* We have full confidence in our tests as a safety net.
+
 === Test Types
 
-* unit tests
-* integration tests
-* application/module/component tests
+==== Unit Tests
+
+* In OO-languages, the smallest unit is a class (object); tests grouped by its public methods.
+* Run extremely fast, easy to write (if code is well designed/testable), stable (low maintenance).
+* There is not a single framework (besides mocking if applicable) involved.
+* They test business logic code, not integration code (smell: overuse of mocking).
+
+==== Integration Tests
+
+* Narrow definition: Everything testing 2+ classes; broad definition: Testing the application as a whole.
+* Never leaves the application boundary, thus in *full control*; stable, but a bit slower.
+* Relying on an (implicit/self-defined) contract is risky (better E2E).
+
+==== End-to-End (E2E) Tests
+
+* About:
+** Using the application as a black box; only acting upon a contract (requirements).
+** Located in a separate GIT repo (no code sharing/dependency; be independent, a parallel stream).
+* Pros:
+** Verifies the (implicit) contracts
+** Tests the complexity behind configuring the systems working neatly together.
+* Cons:
+** Very slow execution
+** Fragile, as depends on all systems to be up and running.
+** Sometimes the functionality is "hidden" and not testable from the outside.
+** No proper control over the (test) data.
+* Details:
+** Using Karate test framework, only change base URL to target another environment.
+** Use @WIP tagging; maybe Jira ID @ABC-12345
+** Each environment (DEV, FB-*, TEST, ACC) is running them
+*** Could provide @ReadOnly to target also PROD
+* external parties need to provide test-environment/sandbox, otherwise mock it
+** mocking external parties MUST always comply with real implementation, otherwise our (self-invented) contract is different from actual real implementation
+
+==== Other Types
+
+* application tests?
+* module tests?
+* component tests?
 * acceptance/functional tests
 * contract tests
 * external system tests (backend)
 * system tests
-* end-to-end tests
 
-other types:
+Other:
 
 * ATDD, BDD Tests
 * smoke tests
 * regression tests
-* performance/load/stress tests (gatling or jmeter)
+* performance/load/stress tests
+** We for sure need one of those!
+** Use gatling (with karate?) or jmeter
 * security/penetration tests
 
-other other types:
+Other other:
 
 * sanity tests
 * exploratory tests
@@ -31,12 +71,32 @@ other other types:
 * compatibility tests
 * localization/internationalization tests
 
-==== End-to-End
+=== Test Strategy
 
-* in real world, it would be in a separate GIT repo
-* use karate, only change base URL
-* use @WIP tagging; maybe @JIRAID-12345
-* use @ReadOnly tagging to execute target production as well
+.Simplified view from different test strategies onto the application boundaries
+image::{imgdir}/diagrams/test-strategies.png[]
+
+* Some Unit Tests (using Kotest framework) covering logic (not infrastructure/IO related code).
+* Lots of Integration Tests (using Cucumber framework) verifying functional requirements.
+** Either using fast test engine, or real HTTP (slower, more production-similar).
+** Either using H2 or Oracle in a testcontainer (slower, more production-similar).
+** Has the Koin context available, thus full control of the internals (extern-stub or custom mocks).
+** The parts, the IT don't cover, can be complemented by separate tests.
+** Karate not feasable anymore, due to need of custom vocabulary (step definitions).
+* Few End2end Tests talking real HTTP, separately deployed, no access than a regular user would.
+* A sandbox environment of 3rd party services would be great (if available).
+** Do we want to provide one ourselves to others?!
+
+Ad complementing:
+
+* Backend Tests, only testing the extern-layer with testcontainers.
+** Could make them system tests (without testcontainers! sandbox?), but super fragile/limited.
+
+=== E1E Test
+
+* A mix between an Integration Test and an End2end Test is a E1E Test (half of a E2E).
+* It works under same assumptions as E2E (blackbox, Karate) but all real systems are mocked.
+** Additionally it has access to system internals through an additionally deployed test API.
 
 === Best Practices
 
@@ -44,6 +104,28 @@ other other types:
 ====
 Watch out to not test same multiple times, we need to be able to still move and change fast!
 ====
+
+* Test for HTTP codes (sometimes returning 500 if authorization is not present for the user)
+* Think and test blackbox (you don't know the implementation)
+** E.g. just because the same mechanism is applied to several endpoints with a cross cutting concern (security, pagination, ...), doesn't justify not testing it.
+** To overcome DRY, write sophisticated test infrastructure (Kotest `include()` test factory)
+* There also always the possibility to deploy another service exposing additional test endpoints ;)
+
+=== Anti Patterns
+
+* Not keeping proper level of abstraction: Displaying irrelevant values.
+* Hardcoded, OS-specific, absolute paths in code or properties.
+* Using the filesystem; if really needed, use Java's temp file mechanism.
+* Not testing "automagic" (implicit stuff; aspects, proxies; reflection, annotations)
+** Previoiusly Spring repository interfaces (not visible in coverage as well)
+
+==== Testable Code
+
+* no manual instantiation or static random data generation
+
+==== Maintainable Tests
+
+* Assert only what's relevant, thus less in many cases.
 
 === Test Tech
 

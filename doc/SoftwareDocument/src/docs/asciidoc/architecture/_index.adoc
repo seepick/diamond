@@ -6,7 +6,7 @@ endif::[]
 
 include::service_types.adoc[]
 
-include::layering.adoc[]
+include::layering.adoc[leveloffset=+2]
 
 === Technology Choices
 

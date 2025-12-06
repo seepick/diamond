@@ -15,19 +15,29 @@ Kotlin.
 * fail early, fail fast
 * e.g. if application config something is configured wrong/missing
 * validate data (front incoming HTTP, back external systems/DB, immediately throw)
-* code first (no strings/annotations, no declarative xml/json/yaml)
-* no annotations, strings, properties, yamls... just code
-* be in control
-* no classpath scanning, reflection, other look-ups, no auto-magically something
+* code first / code over config
+** no strings/annotations, no declarative xml/json/yaml/properties
+** just code, be in control, flexible, safe (compiler reference check)
+* no classpath scanning, reflection, other look-ups/service-locator, no auto-magically something
 * avoid intrusive frameworks (the systems serves us, we don't serve the system)
-* functional
+* functional programming
 * pure functions: stateless, side-effect free
 * code as named expressions
 * prefer single-expression-method `fun foo() = doSome().doOther().also { done(it) }`
+* absolutely no local files (IDE specific, build generated, ...)
+** not checked in, even existing put on .gitignore
+** all auto-configured by build system/gradle
+** don’t interfere with each other; give devs freedom - no coupling
+* single responsibility (of package, class, method/function)
+* clear names, self-explanatory, capturing its essence (single responsibility)
+** no abbreviations, no short cryptic names
 
-==== Coding Principles
+==== Best Practices
+
+* Strive for functional, pure functions (no side effects).
 
 * instead of regular methods -> "named expressions"
+** functions as named codeblocks, lead to shorter (easier to comprehend) methods
 ** always use "=" after method signature; single expression body
 ** no state, no "val" keyword, all just immediate execution (more functional)
 ** forces to write very short methods, easy to read and comprehend
@@ -40,7 +50,12 @@ Kotlin.
 include::named_expressions.kt[]
 ----
 
+* no overloaded methods, provide different name
+
+
 include::{adrsdir}/building/generating-sources.adoc[leveloffset=+2]
+
+include::local_development.adoc[leveloffset=+2]
 
 === Libraries
 
