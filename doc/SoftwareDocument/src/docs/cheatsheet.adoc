@@ -65,3 +65,6 @@ Ordered:
 https://asciidoctor.org[Asciidoctor,window=_blank]
 
 link:https://www.nu.nl[Link Text]
+
+// only for HTML i assume (if it's a root doc too)
+//xref:document.adoc[A sibling document]

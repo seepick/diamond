@@ -31,6 +31,7 @@ object Deps {
     }
 
     object hoplite {
+        @Suppress("SameParameterValue")
         private fun make(artifact: String) = "com.sksamuel.hoplite:hoplite-$artifact:${Versions.hoplite}"
 
         val core = make("core")

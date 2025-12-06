@@ -10,9 +10,7 @@ import java.time.LocalDateTime
 
 class CrystalDtoTest : StringSpec({
     "serializes" {
-        var dto = Arb.crystalDto().next().let {
-            it.copy(created = LocalDateTime.of(2000, 12, 31, 12, 13, 14))
-        }
+        var dto = Arb.crystalDto().next().copy(created = LocalDateTime.of(2000, 12, 31, 12, 13, 14))
         JSONAssert.assertEquals(
             """{"id": "${dto.id}", "weightInGram": ${dto.weightInGram}, "created": "2000-12-31T12:13:14"}""",
             Json.encodeToString(dto),
