@@ -5,6 +5,7 @@ plugins {
 
 //    id("org.jetbrains.kotlin.plugin.serialization") version Versions.kotlin apply false
     id("org.openapi.generator") version Versions.openapi apply false
+    id("org.jetbrains.kotlinx.kover")
 }
 
 val appVersion = GradleProperty.appVersion.get() ?: "SNAPSHOT"
@@ -19,4 +20,9 @@ allprojects {
         mavenLocal()
         mavenCentral()
     }
+}
+
+dependencies {
+//    kover(project(":view:view-routing"))
+    kover(project(":view:controller-impl"))
 }

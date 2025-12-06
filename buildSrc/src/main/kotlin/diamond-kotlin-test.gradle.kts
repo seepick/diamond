@@ -44,6 +44,7 @@ tasks.withType<Test>().configureEach {
 kover {
     // automatically attached to check target
     // https://kotlin.github.io/kotlinx-kover/gradle-plugin/
+    useJacoco()
     reports {
         verify {
             rule {

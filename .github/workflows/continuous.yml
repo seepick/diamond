@@ -30,13 +30,12 @@ jobs:
         run: ./gradlew :shared:openapi-gen:publishToMavenLocal
       - name: Check Project
         run: ./gradlew test check koverXmlReport -DisCi=1
-#        run: ./gradlew clean test koverXmlReport --no-daemon
-
-#      - name: SonarCloud Scan
-#        uses: sonarsource/sonarcloud-github-action@master
-#        with:
-#          args: >
-#            -Dsonar.organization=YOUR_ORG
-#            -Dsonar.projectKey=YOUR_PROJECT_KEY
-#            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-#            -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/kover/report.xml
+      #        run: ./gradlew clean test koverXmlReport --no-daemon
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.organization=seepick
+            -Dsonar.projectKey=seepick_diamond
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/kover/report.xml

@@ -1,7 +1,7 @@
 # Diamond
 
 [![Build Status](https://github.com/seepick/diamond/actions/workflows/continuous.yml/badge.svg)](https://github.com/seepick/diamond/actions/workflows/continuous.yml)
-[![SonarQube Fake Badge](https://raw.githubusercontent.com/jadewon/sonar-badge/main/.badges/alert_status.sonarqube.svg)](https://sonarcloud.io/project/overview?id=seepick_diamond)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=seepick_diamond&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=seepick_diamond)
 
 <img src="https://raw.githubusercontent.com/seepick/diamond/refs/heads/main/doc/SoftwareDocument/src/docs/asciidoc/images/diamond.jpg" width="100"  align="left" style="margin-right: 10px;">
 

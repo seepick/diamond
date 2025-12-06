@@ -6,7 +6,7 @@ Next
 Asciidoc
 -------------------------
 
-* add build time!
+* add build time to
 * Extract all from notion and put it here
 * deploy PDF with docs/ folder (refer to it in README.md)
     * also: new asciidoc property isNotPdf, if set then render "download PDF here" link (only HTML thus)
