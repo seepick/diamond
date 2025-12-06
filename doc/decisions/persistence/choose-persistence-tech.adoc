@@ -1,4 +1,4 @@
-= ADR - Choose Persistence Tech
+= ADR - Persistence Technology
 
 * Status: Draft
 * Created: 1.12.2025

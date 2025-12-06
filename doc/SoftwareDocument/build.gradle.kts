@@ -97,18 +97,18 @@ tasks.asciidoctorPdf {
         ),
     )
     jvm {
-        jvmArgs.addAll(
-            // TODO JRuby accessing some internal JDK classes without proper module access causes warnings
+//             TODO JRuby accessing some internal JDK classes without proper module access causes warnings
 // 2025-12-06T09:15:49.847+01:00 [WorkerExecutor Queue] WARN FilenoUtil :
 // Native subprocess control requires open access to the JDK IO subsystem
 // Pass '--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED' to enable.
-            listOf(
-                "--add-opens",
-                "java.base/sun.nio.ch=ALL-UNNAMED",
-                "--add-opens",
-                "java.base/java.io=ALL-UNNAMED",
-            ),
-        )
+//        jvmArgs.addAll(
+//            listOf(
+//                "--add-opens",
+//                "java.base/sun.nio.ch=ALL-UNNAMED",
+//                "--add-opens",
+//                "java.base/java.io=ALL-UNNAMED",
+//            ),
+//        )
     }
     asciidoctorj {
         // TODO support emojis!

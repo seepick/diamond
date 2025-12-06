@@ -4,27 +4,38 @@
 CWD=`pwd`
 ROOT="${CWD%/local}"
 cd "${ROOT}" || exit 1
+source "./local/_includes.sh"
 
 # ensure drawio desktop is installed (mac: brew cask install drawio)
-
 DRAWIO_BIN="/Applications/draw.io.app/Contents/MacOS/draw.io"
 TARGET_DIR="./doc/SoftwareDocument/src/docs/asciidoc/images/diagrams/"
+SOURCE_DIR="./doc/SoftwareDocument/src/docs/diagrams/"
+
 generate() {
-    echo "Param: $1"
     SOURCE_FILE=$1
     FILENAME=`basename $SOURCE_FILE`
     OUTPUT_FILE="$TARGET_DIR${FILENAME%.drawio}.png"
     CMD="$DRAWIO_BIN --export --format png --output $OUTPUT_FILE $SOURCE_FILE"
-    echo $CMD
+    echo ">> $CMD"
     # ignore the "Permission denied" message
     `$CMD`
 }
 
-for diagram in `find ./doc/SoftwareDocument/src/docs/diagrams -type f -name "*.drawio"`; do
+echoH1 "📊 Generating images from draw.io diagrams"
+echo ""
+echo "📁 Source directory: $SOURCE_DIR"
+echo "📁 Target directory: $TARGET_DIR"
+echo "💾 Draw.io binary: $DRAWIO_BIN"
+echo "(You can safely ignore the printed 'Permission denied' messages 🤭)"
+verifyExists $DRAWIO_BIN
+echo ""
+
+for diagram in `find $SOURCE_DIR -type f -name "*.drawio"`; do
   generate $diagram
 done
+echoSuccess "Generating diagram images"
 
-
+# draw.io command line options:
 #  -V, --version                      output the version number
 #  -c, --create                       creates a new empty file if no file is passed
 #  -x, --export                       export the input file/folder based on the given options

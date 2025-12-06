@@ -1,4 +1,4 @@
-= ADR - Configure Logging
+= ADR - Logging Configuration
 
 * Status: Draft
 * Created: 1.12.2025
@@ -6,6 +6,8 @@
 
 About:
 
+* following principle: code > configuration (yaml/properties)
+** more flexibility, more control, more sophisticated, more robust
 * programmatic logging configuration
 * dev/test different from default-prod
 * provide mechanism to override(?), maybe even

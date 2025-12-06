@@ -463,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         <ul class="sectlevel3">
                             <li><a href="#adr-language-choice">1.2.1. ADR - Language Choice</a></li>
                             <li><a href="#adr-webframework-choice">1.2.2. ADR - Webframework Choice</a></li>
-                            <li><a href="#adr-choose-persistence-tech">1.2.3. ADR - Choose Persistence Tech</a></li>
+                            <li><a href="#adr-persistence-technology">1.2.3. ADR - Persistence Technology</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -535,8 +535,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <li><a href="#adr-use-gradle-kotlin-dsl">3.7. ADR - Use Gradle Kotlin DSL</a></li>
                     <li><a href="#documentation">3.8. Documentation</a>
                         <ul class="sectlevel3">
-                            <li><a href="#adr-choose-documentation-tool">3.8.1. ADR - Choose Documentation Tool</a></li>
-                            <li><a href="#adr-choose-diagram-tool">3.8.2. ADR - Choose Diagram Tool</a></li>
+                            <li><a href="#adr-documentation-tool">3.8.1. ADR - Documentation Tool</a></li>
+                            <li><a href="#adr-diagram-drawing-tool">3.8.2. ADR - Diagram Drawing Tool</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -549,13 +549,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </ul>
                     </li>
                     <li><a href="#libraries">4.2. Libraries</a>
-                        <ul class="sectlevel4">
-                            <li><a href="#adr-choose-database-access">4.2.1. ADR - Choose Database Access</a></li>
-                            <li><a href="#adr-choose-scheduler-tech">4.2.2. ADR - Choose Scheduler Tech</a></li>
+                        <ul class="sectlevel3">
+                            <li><a href="#adr-database-access-library">4.2.1. ADR - Database Access Library</a></li>
+                            <li><a href="#adr-scheduler-library">4.2.2. ADR - Scheduler Library</a></li>
                             <li><a href="#adr-access-sftp-service">4.2.3. ADR - Access SFTP service</a></li>
-                            <li><a href="#adr-choose-datetime-library">4.2.4. ADR - Choose datetime library</a></li>
+                            <li><a href="#adr-datetime-library">4.2.4. ADR - DateTime library</a></li>
                             <li><a href="#adr-logging-with-kotlin">4.2.5. ADR - Logging with Kotlin</a></li>
-                            <li><a href="#adr-configure-logging">4.2.6. ADR - Configure Logging</a></li>
+                            <li><a href="#adr-logging-configuration">4.2.6. ADR - Logging Configuration</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -966,7 +966,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="adr-choose-persistence-tech">1.2.3. ADR - Choose Persistence Tech</h4>
+                    <h4 id="adr-persistence-technology">1.2.3. ADR - Persistence Technology</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2141,7 +2141,7 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
             <div class="sect2">
                 <h3 id="documentation">3.8. Documentation</h3>
                 <div class="sect3">
-                    <h4 id="adr-choose-documentation-tool">3.8.1. ADR - Choose Documentation Tool</h4>
+                    <h4 id="adr-documentation-tool">3.8.1. ADR - Documentation Tool</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2207,7 +2207,7 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="adr-choose-diagram-tool">3.8.2. ADR - Choose Diagram Tool</h4>
+                    <h4 id="adr-diagram-drawing-tool">3.8.2. ADR - Diagram Drawing Tool</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2435,8 +2435,8 @@ fun Service.`GOOD wither`() = apply {
             </div>
             <div class="sect2">
                 <h3 id="libraries">4.2. Libraries</h3>
-                <div class="sect4">
-                    <h5 id="adr-choose-database-access">4.2.1. ADR - Choose Database Access</h5>
+                <div class="sect3">
+                    <h4 id="adr-database-access-library">4.2.1. ADR - Database Access Library</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2463,8 +2463,8 @@ fun Service.`GOOD wither`() = apply {
                                             <p>Exposed; by JetBrains</p>
                                         </li>
                                         <li>
-                                            <p>(No: [KTorm](<a class="bare" href="https://www.ktorm.org">https://www.ktorm.org</a>)
-                                                )</p>
+                                            <p>(No: <a href="https://www.ktorm.org" rel="noopener"
+                                                       target="_blank">KTorm</a>)</p>
                                         </li>
                                         <li>
                                             <p>Needs to be type-safe (no strings)</p>
@@ -2491,8 +2491,8 @@ fun Service.`GOOD wither`() = apply {
                         </ul>
                     </div>
                 </div>
-                <div class="sect4">
-                    <h5 id="adr-choose-scheduler-tech">4.2.2. ADR - Choose Scheduler Tech</h5>
+                <div class="sect3">
+                    <h4 id="adr-scheduler-library">4.2.2. ADR - Scheduler Library</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2575,8 +2575,8 @@ fun Service.`GOOD wither`() = apply {
                             </li>
                         </ul>
                     </div>
-                    <div class="sect5">
-                        <h6 id="links-4">Links</h6>
+                    <div class="sect4">
+                        <h5 id="links-4">4.2.2.1. Links</h5>
                         <div class="ulist">
                             <ul>
                                 <li>
@@ -2589,8 +2589,8 @@ fun Service.`GOOD wither`() = apply {
                         </div>
                     </div>
                 </div>
-                <div class="sect4">
-                    <h5 id="adr-access-sftp-service">4.2.3. ADR - Access SFTP service</h5>
+                <div class="sect3">
+                    <h4 id="adr-access-sftp-service">4.2.3. ADR - Access SFTP service</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2619,8 +2619,8 @@ fun Service.`GOOD wither`() = apply {
                         </ul>
                     </div>
                 </div>
-                <div class="sect4">
-                    <h5 id="adr-choose-datetime-library">4.2.4. ADR - Choose datetime library</h5>
+                <div class="sect3">
+                    <h4 id="adr-datetime-library">4.2.4. ADR - DateTime library</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2692,8 +2692,8 @@ fun Service.`GOOD wither`() = apply {
                         </ul>
                     </div>
                 </div>
-                <div class="sect4">
-                    <h5 id="adr-logging-with-kotlin">4.2.5. ADR - Logging with Kotlin</h5>
+                <div class="sect3">
+                    <h4 id="adr-logging-with-kotlin">4.2.5. ADR - Logging with Kotlin</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2744,8 +2744,8 @@ fun Service.`GOOD wither`() = apply {
                             <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">log.debug { "some message $dto was returned" }</code></pre>
                         </div>
                     </div>
-                    <div class="sect5">
-                        <h6 id="logger-declaration">Logger Declaration</h6>
+                    <div class="sect4">
+                        <h5 id="logger-declaration">4.2.5.1. Logger Declaration</h5>
                         <div class="paragraph">
                             <p>Thanks to <code>io.github.oshai:kotlin-logging-jvm</code> (former "mu-kotlin") the
                                 declaration of a logger is as simple as it can be:</p>
@@ -2765,8 +2765,8 @@ fun Service.`GOOD wither`() = apply {
                         </div>
                     </div>
                 </div>
-                <div class="sect4">
-                    <h5 id="adr-configure-logging">4.2.6. ADR - Configure Logging</h5>
+                <div class="sect3">
+                    <h4 id="adr-logging-configuration">4.2.6. ADR - Logging Configuration</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -2785,6 +2785,16 @@ fun Service.`GOOD wither`() = apply {
                     </div>
                     <div class="ulist">
                         <ul>
+                            <li>
+                                <p>following principle: code &gt; configuration (yaml/properties)</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>more flexibility, more control, more sophisticated, more robust</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li>
                                 <p>programmatic logging configuration</p>
                             </li>
