@@ -29,10 +29,11 @@ gradleLog("AsciiDoc source dir: [${"${project.projectDir}/src/docs/asciidoc"}]")
 
 fun asciidocAttributes(
     sourceHighlighter: String,
+    imagesDir: String,
 ) = mapOf(
     "basedir" to asciidocSrcDir.absolutePath,
     "adrsdir" to "${project.projectDir}/../decisions",
-    "imgdir" to "${asciidocSrcDir.absolutePath}/images",
+    "imgdir" to imagesDir,
     "source-highlighter" to sourceHighlighter,
     "toc" to "left",
     "toclevels" to "3",
@@ -61,6 +62,8 @@ tasks.asciidoctor {
     attributes(
         asciidocAttributes(
             sourceHighlighter = "highlightjs",
+            // Make generated HTML use a relative images path: <img src="images/diamond.jpg">
+            imagesDir = "images",
         ),
     )
     resources {
@@ -84,6 +87,7 @@ tasks.asciidoctorPdf {
     attributes(
         asciidocAttributes(
             sourceHighlighter = "coderay",
+            imagesDir = "${asciidocSrcDir.absolutePath}/images",
         ),
     )
 

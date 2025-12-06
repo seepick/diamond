@@ -8,11 +8,10 @@ will be a precious diamond formed._"
 This is a sample project of a backend service using modern technologies and best practice regarding software design and
 architecture, automated tests and test concept, build setup, code quality, and more.
 
-A general technical overview can be found in
-the [Software Document](https://github.com/seepick/diamond/releases/latest/download/Diamond-SoftwareDocument.pdf) (
-PDF).
+A general technical **Software Document** can be found at https://seepick.github.io/diamond/ (or read it as
+a [single PDF](https://github.com/seepick/diamond/releases/latest/download/Diamond-SoftwareDocument.pdf).
 
-All smaller, specific decisions are documented in
+For tracability, most decisions are documented in
 so-called [Architecture Decision Records](https://github.com/seepick/diamond/tree/main/doc/decisions).
 
 ## Links

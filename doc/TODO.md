@@ -5,7 +5,6 @@ Asciidoc
 -------------------------
 
 * [ ] Use a nicer theme!
-* [ ] Check all ADRs are used in SoftwareDoc (write unit test)
 * [ ] Support Kotlin syntax highlighting in Asciidoc
 * [ ] AsciiDoc should fail the build if stuff not found
 * [ ] PlantUML support for AsciiDoc (working in IDE but not in gradle...)
@@ -13,6 +12,8 @@ Asciidoc
 Backlog
 -------------------------
 
+* [ ] Change github action release process: no local tagging, just run a build in web interface; first check, then tag,
+  then deploy
 * [ ] support of datetime types (HTTP, DB); exposed-java-time
 * [ ] create playground cucumber and ktor testengine, parallel tests (otherwise startEmbedded full fledged?!)
     * set up playground, parallel tests (junit/kotest and cucumber) starting up isolated parts of the application (
@@ -61,7 +62,6 @@ Low
 * [ ] ktlint direct or via detekt? (definitely need it to fail!) https://github.com/JLLeitschuh/ktlint-gradle
 * [ ] remove leading slash "/" from config paths/urls
 * [ ] treat ktlint warnings as errors; breaking the build
-* [ ] Change release process: no local tagging, just run a build in web interface; first check, then tag, then deploy
 * [ ] store BSN as a number in DB (heavy queries/joins)
 * [ ] LDAP integration
 * [ ] Provide swagger HTML endpoint
@@ -246,3 +246,4 @@ V1
 * [x] Write and use OpenAPI generator for data classes with kotlinx serialization
 * [x] Incorporate ADRs (migrating from MD to AsciiDoc) into Software Doc
 * [x] Generate HTML (and host on GitHub pages) with AsciiDoc
+* [x] Check all ADRs are used in SoftwareDoc (write unit test)

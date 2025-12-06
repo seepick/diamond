@@ -1,4 +1,5 @@
 = Diamond Software Documentation
+:sectnums:
 
 // TODO only print h1&h2 in ToC
 // TODO introduce chapter numbering a la "3.1.1" for easier orientation
