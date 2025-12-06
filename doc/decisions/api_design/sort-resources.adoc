@@ -17,6 +17,7 @@
 
 E.g.:
 
+.Example from a fictional API
 [source,json]
 ----
 {

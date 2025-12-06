@@ -10,9 +10,8 @@ DOCS_DIR="docs"
 INDEX_FILE="$DOCS_DIR/index.html"
 
 echoH1 "📄 Generating HTML documentation"
-echo
-echo "💾 Result will be: $INDEX_FILE"
-echo "🌍 GitHub pages URL: https://seepick.github.io/diamond/"
+echoParam "💾 Result will be" $INDEX_FILE
+echoParam "🌍 GitHub pages URL" "https://seepick.github.io/diamond/"
 
 ./gradlew :doc:SoftwareDocument:clean :doc:SoftwareDocument:asciidoctor || exit 1
 cp -r doc/SoftwareDocument/build/docs/asciidoc/ $DOCS_DIR/ || exit 1

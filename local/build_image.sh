@@ -10,9 +10,8 @@ TARGET_IMAGE="diamond/diamond:latest"
 DOCKER_FILE="docker/diamond/Dockerfile"
 
 echoH1 "🐳 Building Docker image"
-echo ""
-echo "📝 Docker file: $DOCKER_FILE"
-echo "💾 Target image: $TARGET_IMAGE"
+echoParam "📝 Docker file" $DOCKER_FILE
+echoParam "💾 Target image" $TARGET_IMAGE
 echo ""
 ./gradlew :app:shadowJar || exit 1
 docker build -t $TARGET_IMAGE -f $DOCKER_FILE .

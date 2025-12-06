@@ -33,7 +33,9 @@ Kotlin.
 ** forces to write very short methods, easy to read and comprehend
 ** methods have names, they create logical structure of arbitrary code
 
-[source,java]
+.Named Expressions Example
+
+[source,kotlin]
 ----
 include::named_expressions.kt[]
 ----

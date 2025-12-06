@@ -34,8 +34,7 @@ Requirements:
 * It fits with the rest of the used ecosystem.
 * We use the conventional DSL, not the DAO API (seem unfinished).
 
-Example of the DAO API:
-
+.Example of Exposed's (unfavored) DAO API
 [source,kotlin]
 ----
 // definition

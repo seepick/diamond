@@ -58,6 +58,7 @@ Cons:
 * going into source implementation/definition not possible (CTRL+click), cumbersome
 * if changing/refactoring, then step-by-step errors by each build, cumbersome
 
+.Example of a Gradle version catalog
 [source,toml]
 ----
 [bundles]

@@ -6,6 +6,7 @@
 
 *Logging evolution:*
 
+.Initial approach with performance in mind
 [source,kotlin]
 ----
 if (log.isDebugEnabled()) {
@@ -18,6 +19,7 @@ But it's very verbose, to do it correct and concise; bad.
 
 Then we switched to a `String.format`-like approach to fix this, to always be able to invoke the log method without performance impact:
 
+.Less verbose, but still performant
 [source,kotlin]
 ----
 log.debug("some message %s was returned", message)
@@ -26,8 +28,9 @@ log.debug("some message %s was returned", message)
 This two issues (conciseness, performance) but still was not readable, especially when logging longer messages with multiple values.
 The displacement-nature of these kind of formatting approaches is just not doing it...
 
-Finally we are doing it nicely, using Kotlin's string templates which are basically string concatenations, and the ease of lambda declarations:
+Finally we are doing it nicely, using Kotlin's string templates (interpolation) which are basically string concatenations, and the ease of lambda declarations (deferred/lazy evaluation):
 
+.Readable and performant
 [source,kotlin]
 ----
 log.debug { "some message $dto was returned" }
@@ -37,6 +40,7 @@ Logger Declaration:*
 
 Thanks to `io.github.oshai:kotlin-logging-jvm` (former "mu-kotlin") the declaration of a logger is as simple as it can be:
 
+.Implicit log factory creation
 [source,kotlin]
 ----
 private val log = logger {}

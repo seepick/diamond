@@ -9,7 +9,7 @@ source "./local/_includes.sh"
 TARGET_TARGET_FILE=build/__dependencies__.txt
 
 echoH1 "🌳 Generating dependency trees"
-echo "💾 Target file: $TARGET_TARGET_FILE"
+echoParam "💾 Target file" $TARGET_TARGET_FILE
 echo ""
 # :dependencies ... for gradle report
 # :dependencyUpdates ... for version plugin

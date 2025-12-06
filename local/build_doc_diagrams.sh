@@ -22,10 +22,9 @@ generate() {
 }
 
 echoH1 "📊 Generating images from draw.io diagrams"
-echo ""
-echo "📁 Source directory: $SOURCE_DIR"
-echo "📁 Target directory: $TARGET_DIR"
-echo "💾 Draw.io binary: $DRAWIO_BIN"
+echoParam "📁 Source directory" $SOURCE_DIR
+echoParam "📁 Target directory" $TARGET_DIR
+echoParam "💾 Draw.io binary" $DRAWIO_BIN
 echo "(You can safely ignore the printed 'Permission denied' messages 🤭)"
 verifyExists $DRAWIO_BIN
 echo ""

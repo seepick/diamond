@@ -31,6 +31,7 @@ include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+2]
 * `java -jar diamond.jar printConfigOnly` - will print the read configuration object for verification
 ** Used in `./local/test_apponfig.sh` to verify output
 
+.Sample toString representation of the application configuration
 [source,text]
 ----
 EnvConfig(
