@@ -14,6 +14,14 @@ endif::[]
 If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
 ====
 
+This document was built using link:https://asciidoc.org[AsciiDoc], a simple yet powerful markup language for writing technical documentation.
+
+ifndef::isPdf[]
+Download this version as a PDF: https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf
+endif::[]
+
+The build for this document was triggered on {buildDate} at {buildTime} - enjoy :)
+
 include::{basedir}/intro/_index.adoc[]
 
 include::{basedir}/architecture/_index.adoc[]

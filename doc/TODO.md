@@ -26,19 +26,13 @@ Minor:
 Asciidoc
 -------------------------
 
-* add build time to
 * Extract all from notion and put it here
-* deploy PDF with docs/ folder (refer to it in README.md)
-    * also: new asciidoc property isNotPdf, if set then render "download PDF here" link (only HTML thus)
 * Use a nicer theme! https://docs.antora.org/antora/latest/page/intrinsic-attributes/#site-and-configuration-attributes
   ** List: https://gist.github.com/misuo/5b2af22ca78d5d87c522a817a7a8569d
   ** https://github.com/uroesch/asciidoctor-pdf-tutorial-theme/
-* Support Kotlin syntax highlighting in Asciidoc
 * AsciiDoc should fail the build if stuff not found
 * Render draw.io diagrams via Gradle; do it manually in code?
     * https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
-* [ ] PlantUML support for AsciiDoc (working in IDE but not in gradle...)
-* [ ] Asciidoctor and SVGs: https://docs.asciidoctor.org/asciidoc/latest/macros/image-svg/
 
 Backlog
 -------------------------
@@ -139,6 +133,12 @@ No!
 * Whitelabel implementation for FE devs
     * same API but full control of data (data setup wizard and endpoints, choose set of predefined constellation)
 * there is no persistence-stub (in-memory DB is fast enough and we are in full control of it; thus no reason)
+
+Unimportant
+-------------------------
+
+* PlantUML support for AsciiDoc (working in IDE but not in gradle...)
+* Asciidoctor and SVGs: https://docs.asciidoctor.org/asciidoc/latest/macros/image-svg/
 
 For Real
 -------------------------

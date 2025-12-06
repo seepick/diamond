@@ -33,6 +33,7 @@ COL_GREY="\033[1;30m"
 
 echoH1() {
   TITLE=$1
+  echo ""
   echo -e "${COL_CYAN}===================================================${COL_RESET}"
   echo -e "${COL_CYAN}===${COL_RESET} ${TITLE}"
   echo -e "${COL_CYAN}===================================================${COL_RESET}"

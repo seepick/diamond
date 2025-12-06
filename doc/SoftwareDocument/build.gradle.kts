@@ -1,3 +1,7 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Locale
+
 // https://docs.asciidoctor.org/pdf-converter/latest/
 // https://asciidoctor.github.io/asciidoctor-gradle-examples/
 
@@ -28,14 +32,19 @@ val asciidocSrcDir = file("src/docs/asciidoc")
 gradleLog("AsciiDoc source dir: [${"${project.projectDir}/src/docs/asciidoc"}]")
 
 fun asciidocAttributes(
-    // syntax highlighting
-    sourceHighlighter: String,
+    sourceHighlighter: String, // different for HTML/PDF
     imagesDir: String,
     more: Map<String, String> = emptyMap(),
 ): Map<String, String> = mapOf(
+    // custom internal
     "basedir" to asciidocSrcDir.absolutePath,
     "adrsdir" to "${project.projectDir}/../decisions",
+    "buildDate" to LocalDateTime.now()
+        .format(DateTimeFormatter.ofPattern("EEE, d. LLLL yyyy", Locale.ENGLISH)),
+    "buildTime" to LocalDateTime.now()
+        .format(DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH)),
     "imgdir" to imagesDir,
+    // asciidoc default (could also define via theme config)
     "source-highlighter" to sourceHighlighter,
     "toc" to "left",
     "toclevels" to "3",
