@@ -11,6 +11,8 @@ Asciidoc
 * deploy PDF with docs/ folder (refer to it in README.md)
     * also: new asciidoc property isNotPdf, if set then render "download PDF here" link (only HTML thus)
 * Use a nicer theme! https://docs.antora.org/antora/latest/page/intrinsic-attributes/#site-and-configuration-attributes
+  ** List: https://gist.github.com/misuo/5b2af22ca78d5d87c522a817a7a8569d
+  ** https://github.com/uroesch/asciidoctor-pdf-tutorial-theme/
 * Support Kotlin syntax highlighting in Asciidoc
 * AsciiDoc should fail the build if stuff not found
 * Render draw.io diagrams via Gradle; do it manually in code?

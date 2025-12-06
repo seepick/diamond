@@ -20,9 +20,9 @@ on:
 #
 # build:
 # *) asciidoc
-# *) assemble: jar, docker; -Ddiamond_version; -Ddiamond_branch
+# *) assemble: jar, docker image; -Ddiamond_version; -Ddiamond_branch
+# *) increment version, tag code
 # *) deploy/release
-# *) increment version, tag
 
 jobs:
   prepare-release:
