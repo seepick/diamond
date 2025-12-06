@@ -30,20 +30,21 @@ gradleLog("AsciiDoc source dir: [${"${project.projectDir}/src/docs/asciidoc"}]")
 fun asciidocAttributes(
     sourceHighlighter: String,
     imagesDir: String,
-) = mapOf(
+    more: Map<String, String> = emptyMap(),
+): Map<String, String> = mapOf(
     "basedir" to asciidocSrcDir.absolutePath,
     "adrsdir" to "${project.projectDir}/../decisions",
     "imgdir" to imagesDir,
     "source-highlighter" to sourceHighlighter,
     "toc" to "left",
     "toclevels" to "3",
-//            "sectnums" to "",
-//            "sectnumlevels" to "4",
+    "sectnums" to "",
+    "sectnumlevels" to "4",
     "icons" to "font",
     "idprefix" to "",
     "idseparator" to "-",
-//            "doctype" to "article"
-)
+) +
+    more
 
 // val asciidoctor by tasks.registering(AsciidoctorTask::class) {
 tasks.asciidoctor {
@@ -88,6 +89,11 @@ tasks.asciidoctorPdf {
         asciidocAttributes(
             sourceHighlighter = "coderay",
             imagesDir = "${asciidocSrcDir.absolutePath}/images",
+            more = mapOf(
+                "pdf-theme" to "diamond-pdf",
+                "pdf-themesdir" to "${project.projectDir}/src/docs/themes/",
+//                "pdf-fontsdir" to "${project.projectDir}/src/docs/fonts",
+            ),
         ),
     )
 

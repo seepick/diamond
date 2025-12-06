@@ -7,5 +7,5 @@ cd "${ROOT}" || exit 1
 
 TARGET=build/__dependencies__.txt
 echo "Generating dependency trees for all submodules and saving it to: [$TARGET]"
-./gradlew :doc:SoftwareDocument:dependencies > ${TARGET} || exit 1
+./gradlew :dependencies > ${TARGET} || exit 1
 open ${TARGET}

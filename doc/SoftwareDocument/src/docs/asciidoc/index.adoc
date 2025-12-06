@@ -1,28 +1,20 @@
-= Diamond Software Documentation
-:sectnums:
-
-// TODO only print h1&h2 in ToC
-// TODO introduce chapter numbering a la "3.1.1" for easier orientation
-
 ifndef::basedir[]
 :basedir: .
 endif::[]
-
 // ifeval::["{projcode}"=="cm"}]
 // If `projcode == cm` then you should see this.
 // endif::[]
 // ifdef::projcode[project was defined as {projcode}]
 // ifndef::projcode[project was not defined]
 
+= Diamond Software Documentation
 
 [QUOTE]
 ====
 If you want to go fast, you need to go lightweight.
 ====
 
-
 // TODO show high-level overviews & diagrams on the first pages
-
 
 include::{basedir}/architecture/_index.adoc[]
 
@@ -33,5 +25,7 @@ include::{basedir}/coding/_index.adoc[]
 include::{basedir}/testing/_index.adoc[]
 
 include::{basedir}/quality/_index.adoc[]
+
+include::{basedir}/devops/_index.adoc[]
 
 include::{basedir}/ch_appendix.adoc[]

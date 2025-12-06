@@ -1,0 +1,9 @@
+extends: default
+footer:
+  #  columns: <25% =50% >25%
+  recto:
+    right:
+      content: '{chapter-title} | *{page-number}*'
+#  // https://docs.asciidoctor.org/pdf-converter/latest/theme/add-running-content/
+running-content:
+  start-at: toc

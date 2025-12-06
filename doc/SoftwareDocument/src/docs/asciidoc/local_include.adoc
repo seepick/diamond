@@ -1,0 +1,4 @@
+// variables set for developing locally in IDE
+// usually these are set by the gradle build
+:adrsdir: ../../../../../decisions
+:imgdir: ../images

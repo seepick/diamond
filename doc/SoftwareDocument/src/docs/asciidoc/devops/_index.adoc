@@ -1,0 +1,8 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+== DevOps
+
+.Sketching a build pipeline overview
+image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]

@@ -1,10 +1,6 @@
 ifndef::adrsdir[]
-:adrsdir: ../../../../../decisions
+include::../local_include.adoc[]
 endif::[]
-ifndef::imgdir[]
-:imgdir: ../images
-endif::[]
-
 
 == Application
 

@@ -7,7 +7,11 @@ Asciidoc
 * [ ] Use a nicer theme!
 * [ ] Support Kotlin syntax highlighting in Asciidoc
 * [ ] AsciiDoc should fail the build if stuff not found
+* [ ] Render draw.io diagrams via Gradle
+    * do it manually in
+      code? https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
 * [ ] PlantUML support for AsciiDoc (working in IDE but not in gradle...)
+* [ ] Asciidoctor and SVGs: https://docs.asciidoctor.org/asciidoc/latest/macros/image-svg/
 
 Backlog
 -------------------------
