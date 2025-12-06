@@ -1,5 +1,16 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
 == Architecture
 
-include::layering.adoc[]
+
 include::service_types.adoc[]
-include::distributed.adoc[]
+
+include::layering.adoc[]
+
+include::{adrsdir}/technologies/choose-language.adoc[leveloffset=+3]
+
+include::{adrsdir}/technologies/choose-webframework.adoc[leveloffset=+3]
+
+include::{adrsdir}/persistence/choose-persistence-tech.adoc[leveloffset=+3]

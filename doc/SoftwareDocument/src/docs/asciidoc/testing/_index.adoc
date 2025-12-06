@@ -1,15 +1,10 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
 == Testing
 
-[WARNING]
-====
-Watch out to not test same multiple times, we need to be able to still move and change fast!
-====
-
-=== Coverage
-
-* coverage 100%?, kotlin inlining issue...
-
-=== test types
+=== Test Types
 
 * unit tests
 * integration tests
@@ -22,12 +17,40 @@ Watch out to not test same multiple times, we need to be able to still move and 
 
 other types:
 
+* ATDD, BDD Tests
+* smoke tests
+* regression tests
 * performance/load/stress tests (gatling or jmeter)
 * security/penetration tests
 
-=== End-to-End
+other other types:
+
+* sanity tests
+* exploratory tests
+* usability tests
+* compatibility tests
+* localization/internationalization tests
+
+==== End-to-End
 
 * in real world, it would be in a separate GIT repo
 * use karate, only change base URL
 * use @WIP tagging; maybe @JIRAID-12345
 * use @ReadOnly tagging to execute target production as well
+
+=== Best Practices
+
+[WARNING]
+====
+Watch out to not test same multiple times, we need to be able to still move and change fast!
+====
+
+=== Test Tech
+
+include::{adrsdir}/testing/use-BDD.adoc[leveloffset=+3]
+
+include::{adrsdir}/testing/use-cucumber-lambdas.adoc[leveloffset=+3]
+
+include::{adrsdir}/testing/verify-coverage.adoc[leveloffset=+3]
+
+include::{adrsdir}/testing/assert-json.adoc[leveloffset=+3]

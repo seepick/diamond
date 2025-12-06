@@ -1,7 +1,8 @@
-=== ADR - Sort ReST Resources
+= ADR - Sort ReST Resources
 
 * Status: Draft
-* Created: 1.12.2025 by Seepick
+* Created: 1.12.2025
+* Author: Seepick
 
 About:
 
@@ -12,7 +13,7 @@ About:
 * or plus/minus: `orderBy=+author,-title`
 * default to asc if not defined
 
-==== Error Handling
+== Error Handling
 
 E.g.:
 
@@ -39,6 +40,6 @@ E.g.:
 }
 ----
 
-==== Links
+== Links
 
 * https://restfulapi.net/api-pagination-sorting-filtering/

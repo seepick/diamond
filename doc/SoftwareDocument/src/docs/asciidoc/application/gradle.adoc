@@ -1,10 +1,10 @@
-=== Gradle
+= Gradle
 
 Sharing build logic via the `buildSrc` directory.
 
 See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html
 
-==== Gradle Properties
+== Gradle Properties
 
 Pass them either as `-P` (precendence) or `-D`.
 
@@ -13,7 +13,7 @@ Pass them either as `-P` (precendence) or `-D`.
 * `runTestcontainersTests` - see task below
 * `runEtests` - see task below
 
-==== Gradle Tasks
+== Gradle Tasks
 
 * `./gradlew :app:buildFatJar -Pdiamond_version="42"` - build a standalone, executable Jar
 * `./gradlew :app:generateConfigDoc` - custom task which generates the asciidoc for the config table (available env vars)

@@ -1,7 +1,8 @@
-=== ADR - Static Code Analysis
+= ADR - Static Code Analysis
 
 * Status: Draft
-* Created: 1.12.2025 by Seepick
+* Created: 1.12.2025
+* Author: Seepick
 
 About:
 

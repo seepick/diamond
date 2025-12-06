@@ -1,7 +1,8 @@
-=== ADR - Manage Dependencies
+= ADR - Manage Dependencies
 
 * Status: Draft
-* Created: 1.12.2025 by Seepick
+* Created: 1.12.2025
+* Author: Seepick
 
 Which way to properly manage gradle dependencies?
 
@@ -20,11 +21,11 @@ Requirements:
 * deal with a huge amount of versions/dependencies/plugins
 * custom plugin declaration (to share common code as extensions/compositions) can use it as well
 
-==== Alternatives
+== Alternatives
 
 Either: 1) buildSrc custom code or 2) use gradle's standard version catalog.
 
-===== Custom `buildSrc` Code
+=== Custom `buildSrc` Code
 
 Pros:
 
@@ -42,7 +43,7 @@ Cons:
 * it's custom made for something a default solution already exists
 * doesn't support view usages
 
-==== Gradle Version Catalog
+== Gradle Version Catalog
 
 * https://docs.gradle.org/current/userguide/version_catalogs.html
 
@@ -67,7 +68,7 @@ short-notation = "some.plugin.id:1.4"
 versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions" }
 ----
 
-==== Conclusion
+== Conclusion
 
 * both support grouping and a nested-hierarchy to control a vast amount of declarations
 * both support auto-completion

@@ -1,3 +1,7 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
 == Code Quality
 
 * quality gates
@@ -20,3 +24,7 @@ ktlint
 ** See: https://sonarcloud.io/project/configuration/AutoScan?id=seepick_diamond
 * define new code by days (continuous delivery), not by change delta (planned releases)
 * use it to report coverage (enforced by gradle-kover itself, not sonar)
+
+include::{adrsdir}/coding/analyse-code.adoc[leveloffset=+2]
+
+include::{adrsdir}/coding/enforce-failure-handling.adoc[leveloffset=+2]

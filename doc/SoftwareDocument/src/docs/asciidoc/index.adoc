@@ -18,6 +18,8 @@ If you want to go fast, you need to go lightweight.
 
 include::{basedir}/architecture/_index.adoc[]
 
+include::{basedir}/api_design/_index.adoc[]
+
 include::{basedir}/application/_index.adoc[]
 
 include::{basedir}/coding/_index.adoc[]

@@ -1,9 +1,10 @@
-=== ADR - Paginate ReST Resources
+= ADR - Paginate ReST Resources
 
 * Status: Draft
-* Created: 1.12.2025 by Seepick
+* Created: 1.12.2025
+* Author: Seepick
 
-==== Approaches
+== Approaches
 
 Offset:
 
@@ -23,7 +24,7 @@ Others:
     * more complex to implement
     * also return the "next cursor" in the response
 
-==== Best Practices
+== Best Practices
 
 * clearly document pagination mechanism (openAPI, provide examples)
 * don't implement pagination for: A) small datasets and B) fast changing data
@@ -38,7 +39,7 @@ Others:
 
 * reuse test logic: each paginated endpoint needs to have the same set of tests
 
-==== Questions
+== Questions
 
 * either use or at least get "inspired" by: https://github.com/perracodex/exposed-pagination
 * how strict or lenient to be?
@@ -46,7 +47,7 @@ Others:
     * take more than existing (page > totalPages)
 * restrict a maximum take/limit param?
 
-==== Resources
+== Resources
 
 * TODO get inspired by: https://github.com/perracodex/exposed-pagination
 * https://www.merge.dev/blog/rest-api-pagination

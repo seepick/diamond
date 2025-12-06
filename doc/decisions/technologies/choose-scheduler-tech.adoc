@@ -1,7 +1,8 @@
-=== ADR - Choose Scheduler Tech
+= ADR - Choose Scheduler Tech
 
 * Status: Draft
-* Created: 1.12.2025 by Seepick
+* Created: 1.12.2025
+* Author: Seepick
 
 About:
 
@@ -26,6 +27,6 @@ maybe there is a mature enough kotlin library which leverages coroutines?
 * KtScheduler https://github.com/Pool-Of-Tears/KtScheduler
 * seems like a small hobby project...
 
-==== Links
+== Links
 
 * https://www.jobrunr.io/en/blog/2024-10-31-task-schedulers-java-modern-alternatives-to-quartz/

@@ -24,11 +24,9 @@ image::{imgdir}/diamond.jpg[scaledwidth=30%]
 * Arrow
 ** Especially `Either` for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling]
 
-=== Environment Variables
-
-include::environment_variables.generated.adoc[]
-
 include::{adrsdir}/application/configure_application.adoc[leveloffset=+2]
+
+include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+2]
 
 === Local Development
 
@@ -52,4 +50,14 @@ IntelliJ plugins:
 * Cucumber Table Mapping
 * kotlin-fill-class
 
-include::gradle.adoc[]
+include::gradle.adoc[leveloffset=+2]
+
+include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+2]
+
+include::{adrsdir}/building/use-kotlin-dsl.adoc[leveloffset=+2]
+
+=== Documentation
+
+include::{adrsdir}/documentation/choose-documentation-tool.adoc[leveloffset=+3]
+
+include::{adrsdir}/documentation/choose-diagram-tool.adoc[leveloffset=+3]

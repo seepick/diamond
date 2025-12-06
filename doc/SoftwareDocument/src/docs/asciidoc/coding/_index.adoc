@@ -1,3 +1,7 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
 == Coding
 
 Kotlin.
@@ -21,7 +25,7 @@ Kotlin.
 * code as named expressions
 * prefer single-expression-method `fun foo() = doSome().doOther().also { done(it) }`
 
-=== Coding Principles
+==== Coding Principles
 
 * instead of regular methods -> "named expressions"
 ** always use "=" after method signature; single expression body
@@ -33,3 +37,17 @@ Kotlin.
 ----
 include::named_expressions.kt[]
 ----
+
+=== Libraries
+
+include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+4]
+
+include::{adrsdir}/technologies/choose-scheduler-tech.adoc[leveloffset=+3]
+
+include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+3]
+
+include::{adrsdir}/libraries/choose-datetime.adoc[leveloffset=+4]
+
+include::{adrsdir}/libraries/logging-with-kotlin.adoc[leveloffset=+4]
+
+include::{adrsdir}/libraries/configure-logging.adoc[leveloffset=+4]

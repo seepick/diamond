@@ -1,7 +1,8 @@
-=== ADR - Logging with Kotlin
+= ADR - Logging with Kotlin
 
 * Status: Draft
-* Created: 1.12.2025 by Seepick
+* Created: 1.12.2025
+* Author: Seepick
 
 First we did this:
 
@@ -32,7 +33,7 @@ Finally we are doing it nicely, using Kotlin's string templates which are basica
 log.debug { "some message $dto was returned" }
 ----
 
-==== Logger Declaration
+== Logger Declaration
 
 Thanks to `io.github.oshai:kotlin-logging-jvm` (former "mu-kotlin") the declaration of a logger is as simple as it can be:
 

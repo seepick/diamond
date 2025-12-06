@@ -1,7 +1,8 @@
-=== ADR - Secure HTTP Endpoints
+= ADR - Secure HTTP Endpoints
 
 * Status: Draft
-* Created: 1.12.2025 by Seepick
+* Created: 1.12.2025
+* Author: Seepick
 
 How is authentification and authorization handled?
 

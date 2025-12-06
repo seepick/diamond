@@ -1,0 +1,17 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+== API Design
+
+include::{adrsdir}/api_design/filter-resources.adoc[leveloffset=+2]
+
+include::{adrsdir}/api_design/generate-custom-openapi.adoc[leveloffset=+2]
+
+include::{adrsdir}/api_design/paginate-responses.adoc[leveloffset=+2]
+
+include::{adrsdir}/api_design/secure-endpoints.adoc[leveloffset=+2]
+
+include::{adrsdir}/api_design/sort-resources.adoc[leveloffset=+2]
+
+include::{adrsdir}/api_design/version-endpoints.adoc[leveloffset=+2]
