@@ -6,6 +6,7 @@ Next
 Asciidoc
 -------------------------
 
+* add build time!
 * Extract all from notion and put it here
 * deploy PDF with docs/ folder (refer to it in README.md)
     * also: new asciidoc property isNotPdf, if set then render "download PDF here" link (only HTML thus)
@@ -20,6 +21,9 @@ Asciidoc
 Backlog
 -------------------------
 
+* [ ] SonarQube badges: https://github.com/marketplace/actions/sonarqube-badge
+* ADR: liquibase migration strategy (generate one or the other, like with JPA gen?!); how to handle if there are MANY (
+  compress/squash them?)?
 * [ ] What if plugin-apply-false (instead buildSrc/build dep?); ALSO: ./gradlew dependencyUpdates doesn't work to be
   applied recursively!
 * [ ] Change github action release process: no local tagging, just run a build in web interface; first check, then tag,
