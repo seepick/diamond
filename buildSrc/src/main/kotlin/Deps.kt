@@ -99,7 +99,7 @@ object Deps {
             private fun make(suffix: String) = "org.testcontainers:testcontainers$suffix:${Versions.testcontainers}"
 
             val main = make("")
-            val oracle = make("-oracle-free") // TODO or testcontainers-oracle-xe?
+            val oracle = make("-oracle-free") // sometimes: testcontainers-oracle-xe?
         }
 
         object cucumber {
@@ -109,6 +109,10 @@ object Deps {
             val java8 = make("java8") // lambdas, nice
             val junitEngine = make("junit-platform-engine")
             val picocontainer = make("picocontainer")
+
+            // see: https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping
+            val dataTable =
+                "io.github.deblockt:cucumber-datatable-to-bean-mapping:${Versions.testing.cucumberDatatable}"
         }
     }
 

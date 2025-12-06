@@ -21,5 +21,6 @@ object Versions {
         val junit = "6.0.1"
         val kotest = "6.0.5"
         val cucumber = "7.32.0"
+        val cucumberDatatable = "1.1.2"
     }
 }

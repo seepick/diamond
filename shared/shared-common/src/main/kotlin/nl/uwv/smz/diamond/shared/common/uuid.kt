@@ -5,13 +5,11 @@ import arrow.core.left
 import arrow.core.right
 import kotlin.uuid.Uuid
 
-interface UuidGenerator {
+fun interface UuidGenerator {
     fun generate(): Uuid
 }
 
-object RandomUuidGenerator : UuidGenerator {
-    override fun generate() = Uuid.random()
-}
+val RandomUuidGenerator = UuidGenerator { Uuid.random() }
 
 @Suppress("TooGenericExceptionCaught")
 fun Uuid.Companion.eitherParse(string: String): Either<IllegalArgumentException, Uuid> =

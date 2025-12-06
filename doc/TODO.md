@@ -21,6 +21,7 @@ Asciidoc
 Backlog
 -------------------------
 
+* [ ] Enforce quality gates (fail build; coverag DONE; sonarqube/detekt? locally & remote)
 * [ ] SonarQube Coverage
 * [ ] SonarQube detekt & ktlint integration
 * [ ] SonarQube badges: https://github.com/marketplace/actions/sonarqube-badge
@@ -72,6 +73,7 @@ Backlog
 Low
 -------------------------
 
+* [ ] reconfigureProdLog(): rolling file appender for PROD (or via app-config property?!)
 * [ ] Hikari connection pooling
 * fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
 * use SyncService to actually do something meaningful (verifable in tests)

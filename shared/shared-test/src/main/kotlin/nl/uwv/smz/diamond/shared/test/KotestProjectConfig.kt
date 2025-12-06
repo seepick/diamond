@@ -25,18 +25,4 @@ object DiamondKotestProjectConfig : AbstractProjectConfig() {
     override suspend fun beforeProject() {
         reconfigureLogForTest()
     }
-
-//    override fun extensions(): List<Extension> = listOf(
-//        TestDatabaseProvider.Extension,
-//    )
-
-    // TODO what's that?
-//    @OptIn(ExperimentalKotest::class)
-//    override val extensions = listOf(
-//        object : LogExtension {
-//            override suspend fun handleLogs(testCase: TestCase, logs: List<LogEntry>) {
-//                logs.forEach { println("FOO: " + it.level.name + " - " + it.message) }
-//            }
-//        }
-//    )
 }

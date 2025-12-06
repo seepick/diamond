@@ -38,7 +38,6 @@ object DiamondApp {
     }
 
     private fun reconfigureProdLog() {
-        // TODO rolling file appender for PROD (or via app-config property?!)
         reconfigureLogback {
             rootLevel = LogLevel.Warn
             addConsoleAppender {
