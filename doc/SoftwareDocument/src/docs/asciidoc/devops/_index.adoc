@@ -12,3 +12,5 @@ image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]
 include::../generated/environment_variables.generated.adoc[]
 
 include::distributed.adoc[]
+
+include::{adrsdir}/building/versioning_scheme.adoc[leveloffset=+3]

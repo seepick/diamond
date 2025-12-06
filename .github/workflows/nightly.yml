@@ -21,4 +21,4 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: Run checks
-        run: ./gradlew check -DisCi=1
+        run: ./gradlew check -DenableOwasp -DisCi=1

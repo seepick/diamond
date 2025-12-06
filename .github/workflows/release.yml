@@ -1,9 +1,14 @@
 name: Build Release
 
 on:
-  push:
-    tags:
-      - '*'
+  # invoke manually
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version number to be used'
+        required: true
+        default: '2025.12.1'
+        type: string
 
 # TODO rearrange
 # on: manual-run
@@ -22,6 +27,7 @@ on:
 jobs:
   prepare-release:
     name: Creating GitHub Release
+    environment: main
     runs-on: ubuntu-latest
     # https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions
     permissions:
@@ -33,8 +39,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref_name }}
+          #          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.event.inputs.version }}
           body: No changelog provided
           draft: false
           prerelease: false
@@ -43,14 +49,17 @@ jobs:
 
   build-and-upload:
     name: Building and uploading artifact
-    permissions:
-      contents: write
+    environment: main
     runs-on: ubuntu-latest
     needs: prepare-release
+    permissions:
+      contents: write
     steps:
       - name: Log Info
         # e.g.: "ref refs/tags/1 and ref_name 1"
-        run: echo "This job is using ref ${{ github.ref }} and ref_name ${{ github.ref_name }}"
+        run: |
+          echo "The given version number is: ${{ github.event.inputs.version }}"
+          echo "This job is using ref ${{ github.ref }} and ref_name ${{ github.ref_name }}"
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Setup JDK
@@ -62,12 +71,11 @@ jobs:
 
       - name: Build JAR
         # TODO change version number algorithm here
-        run: ./gradlew :app:buildFatJar -Ddiamond_version="${{ github.ref_name }}" -Ddiamond_branch="${{ github.ref}}"
+        run: ./gradlew :app:buildFatJar -Ddiamond_version="${{ github.event.inputs.version }}" -Ddiamond_branch="${{ github.ref}}"
       - name: Generate config documentation
         run: ./gradlew :app:generateConfigDoc
-      - name: Build SAD PDF
-        # TODO add version number/build date to PDF
-        run: ./gradlew :doc:SoftwareDocument:asciidoctorPdf
+      - name: Build SoftwareDocument PDF
+        run: ./gradlew :doc:SoftwareDocument:asciidoctorPdf -Ddiamond_version="${{ github.event.inputs.version }}"
 
       - name: Upload Release Artifact
         uses: actions/upload-release-asset@v1
@@ -79,7 +87,7 @@ jobs:
           asset_name: diamond.jar
           asset_content_type: application/java-archive
 
-      - name: Upload SAD
+      - name: Upload SoftwareDocument
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

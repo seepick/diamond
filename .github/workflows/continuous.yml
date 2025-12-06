@@ -6,9 +6,10 @@ on:
 jobs:
   gradle:
     name: Build Gradle project
+    runs-on: ubuntu-latest
+    environment: main
     permissions:
       contents: read
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4

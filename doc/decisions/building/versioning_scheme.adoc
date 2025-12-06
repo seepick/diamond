@@ -1,0 +1,26 @@
+= ADR - Versioning Scheme
+
+* Status: Draft
+* Created: 6.12.2025
+* Author: Seepick
+
+*Context:*
+
+* Deployed software has to be uniquely identifiable.
+* The version number needs to be generated automatically (CI/CD).
+* It will be exposed in various places (APIs, UIs, documentation, etc.).
+
+*Options:*
+
+. One single continuous version number for each build.
+** The number becomes meaningless, but very simple to implement.
+. Semantic Versioning (SemVer)
+** Well known and widely adopted.
+** Major, Minor, Patch conveys information about backward compatibility.
+. Calendar Versioning (CalVer)
+** Easy to understand and communicate.
+** Conveys information about the release date.
+
+*Resources:*
+
+* E.g. use GitHub action for that: https://github.com/marketplace/actions/version-increment
