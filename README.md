@@ -10,7 +10,8 @@ ordinary dirt, a precious diamond will be formed._"
 
 <div style="clear: both;"></div>
 
-This is a sample project of a backend service using modern technologies and best practices regarding software design,
+This is a sample project of a backend service using modern technologies and **best practices** regarding software
+design,
 architecture, code quality, testing, building, and more.
 
 A comprehensive **software documentation** can be accessed either as

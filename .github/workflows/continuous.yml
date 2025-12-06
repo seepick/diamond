@@ -19,7 +19,7 @@ jobs:
           java-version: 17
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+      - name: Install OpenAPI Generator
+        run: ./gradlew :shared:openapi-gen:publishToMavenLocal
       - name: Check Project
-        run: ./gradlew check
-      - name: Build SAD
-        run: ./gradlew :doc:SoftwareDocument:asciidoctorPdf
+        run: ./gradlew check -DisCi=1
