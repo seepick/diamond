@@ -1,5 +1,7 @@
 = Architecture Decision Records
 
+// STATES { draft | proposed | rejected | accepted | deprecated }
+
 * link:https://github.com/joelparkerhenderson/architecture-decision-record[What are ADRs]?
 ** They capture DECISIONS made along with CONTEXT (why, reasons, motivations) and CONSEQUENCES (impact, risk).
 ** They are mall chunks of structured information to document our thought process.

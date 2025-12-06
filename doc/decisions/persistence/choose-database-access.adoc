@@ -1,16 +1,54 @@
 = ADR - Database Access Library
 
-* Status: Draft
+* Status: Accepted
 * Created: 1.12.2025
 * Author: Seepick
 
 *Context:*
 
-* access via code; libs:
-** Exposed; by JetBrains
-** (No: https://www.ktorm.org[KTorm,window=_blank])
-** Needs to be type-safe (no strings)
-* no ORM like JPA (hibernate)
-* DBMS used:
-** Oracle: production
-** H2: fast in-memory for testing (and local startup)
+* We need a way to access relational database from Kotlin code.
+** We talk about DB access (as in JDBC), not a full ORM solution.
+* Question is, which library to use?
+
+Requirements:
+
+* Needs to be type-safe (no "stringly-typed" expressions)
+* Little/no code generation magic
+* Kotlin-idiomatic (coroutines, DSLs)
+** For using coroutines we would need a non-blocking implementation (no JDBC)
+
+*Options:*
+
+. https://www.jetbrains.com/exposed/[Exposed,window=_blank] by JetBrains
+** Seems production ready; mature and stable enough
+** Lightweight and typesafe
+. https://www.ktorm.org[KTorm,window=_blank]
+** ORM mapper for Kotlin, pure JDBC
+. JPA / Hibernate
+** Heavyweight, not Kotlin-idiomatic
+** Lots of magic, code generation, proxies, etc.
+
+*Choice:*
+
+* Exposed
+* It fits with the rest of the used ecosystem.
+* We use the conventional DSL, not the DAO API (seem unfinished).
+
+Example of the DAO API:
+
+[source,kotlin]
+----
+// definition
+class CrystalDaoEntity(id: EntityID<UUID>) : UUIDEntity(id) {
+    var weightInGrams by CrystalTable.weightInGrams
+    companion object : UUIDEntityClass<CrystalDaoEntity>(CrystalTable)
+}
+// usage
+CrystalDaoEntity.findById(id)
+CrystalDaoEntity.new(UUID.randomUUID()) {
+    weightInGrams = 42
+}
+CrystalDaoEntity.findByIdAndUpdate(id) {
+    it.weightInGrams = 42
+}
+----

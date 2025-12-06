@@ -11,15 +11,15 @@ dependencies {
     api(project(":domain:domain-failure"))
     implementation(Deps.serializationx)
 // `./gradlew :shared:openapi-gen:publishToMavenLocal`
-    implementation("nl.uwv.smz.diamond:openapi-gen:0")
-//    implementation(project(":shared:openapi-gen"))
+//    implementation("nl.uwv.smz.diamond:openapi-gen:0")
+    implementation(project(":shared:openapi-gen"))
 
     testImplementation(Deps.testing.jsonAssert)
     testFixturesApi(project(":shared:shared-test"))
     testFixturesApi(Deps.testing.kotest.property)
 }
 
-// execute manually: `./gradlew :view:view-model:openApiGenerate`
+// $ ./gradlew :view:view-model:openApiGenerate
 openApiGenerate {
     inputSpec.set(diamondOpenApiPath)
     generatorName.set("diamond-model") // see: nl.uwz.smz.diamond.openapigen.DiamondModelGenerator

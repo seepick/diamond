@@ -6,5 +6,35 @@
 
 *Context:*
 
-* relational database, NoSQL store, or an in-memory cache?
-* if performance (searching/filtering) is an issue, maybe an elasticsearch index as a view on top of the heavy DB?
+* We need to choose a persistence technology for our application.
+* A clear distinction between the needs for production vs test/development (local startup).
+* We choose for a relational database...
+** No NoSQL store (MongoDB) or in-memory cache
+
+*Requirements:*
+
+Production DB:
+
+* Available in corporate environment.
+* If performance (searching/filtering) is an issue, maybe an elasticsearch index could be useful?
+
+Test/Dev DB:
+
+* Lightweight (in-memory)
+* Fast startup and execution time
+* No setup costs (installing, configuration, etc)
+
+*Options:*
+
+Production:
+
+. Oracle
+. Postgres/MySQL
+. MS SQL Server
+
+Test/Dev:
+
+. H2
+. HSQLDB
+. Sqlite
+

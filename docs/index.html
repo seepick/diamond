@@ -759,7 +759,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <div class="content">
                         <img alt="application packaging" src="images/diagrams/application-packaging.png">
                     </div>
-                    <div class="title">Figure 1. Sketching a build pipeline overview</div>
+                    <div class="title">Figure 1. The degree of impact on the application depending on the choice of
+                        packaging strategy
+                    </div>
                 </div>
                 <div class="paragraph">
                     <p>Main Subprojects:</p>
@@ -992,13 +994,91 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>relational database, NoSQL store, or an in-memory cache?</p>
+                                <p>We need to choose a persistence technology for our application.</p>
                             </li>
                             <li>
-                                <p>if performance (searching/filtering) is an issue, maybe an elasticsearch index as a
-                                    view on top of the heavy DB?</p>
+                                <p>A clear distinction between the needs for production vs test/development (local
+                                    startup).</p>
+                            </li>
+                            <li>
+                                <p>We choose for a relational database&#8230;&#8203;</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>No NoSQL store (MongoDB) or in-memory cache</p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Requirements:</strong></p>
+                    </div>
+                    <div class="paragraph">
+                        <p>Production DB:</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Available in corporate environment.</p>
+                            </li>
+                            <li>
+                                <p>If performance (searching/filtering) is an issue, maybe an elasticsearch index could
+                                    be useful?</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p>Test/Dev DB:</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Lightweight (in-memory)</p>
+                            </li>
+                            <li>
+                                <p>Fast startup and execution time</p>
+                            </li>
+                            <li>
+                                <p>No setup costs (installing, configuration, etc)</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Options:</strong></p>
+                    </div>
+                    <div class="paragraph">
+                        <p>Production:</p>
+                    </div>
+                    <div class="olist arabic">
+                        <ol class="arabic">
+                            <li>
+                                <p>Oracle</p>
+                            </li>
+                            <li>
+                                <p>Postgres/MySQL</p>
+                            </li>
+                            <li>
+                                <p>MS SQL Server</p>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="paragraph">
+                        <p>Test/Dev:</p>
+                    </div>
+                    <div class="olist arabic">
+                        <ol class="arabic">
+                            <li>
+                                <p>H2</p>
+                            </li>
+                            <li>
+                                <p>HSQLDB</p>
+                            </li>
+                            <li>
+                                <p>Sqlite</p>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -2578,7 +2658,7 @@ fun Service.`GOOD wither`() = apply {
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>Status: Draft</p>
+                                <p>Status: Accepted</p>
                             </li>
                             <li>
                                 <p>Created: 1.12.2025</p>
@@ -2594,39 +2674,121 @@ fun Service.`GOOD wither`() = apply {
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>access via code; libs:</p>
+                                <p>We need a way to access relational database from Kotlin code.</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>Exposed; by JetBrains</p>
-                                        </li>
-                                        <li>
-                                            <p>(No: <a href="https://www.ktorm.org" rel="noopener"
-                                                       target="_blank">KTorm</a>)</p>
-                                        </li>
-                                        <li>
-                                            <p>Needs to be type-safe (no strings)</p>
+                                            <p>We talk about DB access (as in JDBC), not a full ORM solution.</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p>no ORM like JPA (hibernate)</p>
+                                <p>Question is, which library to use?</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p>Requirements:</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Needs to be type-safe (no "stringly-typed" expressions)</p>
                             </li>
                             <li>
-                                <p>DBMS used:</p>
+                                <p>Little/no code generation magic</p>
+                            </li>
+                            <li>
+                                <p>Kotlin-idiomatic (coroutines, DSLs)</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>Oracle: production</p>
-                                        </li>
-                                        <li>
-                                            <p>H2: fast in-memory for testing (and local startup)</p>
+                                            <p>For using coroutines we would need a non-blocking implementation (no
+                                                JDBC)</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Options:</strong></p>
+                    </div>
+                    <div class="olist arabic">
+                        <ol class="arabic">
+                            <li>
+                                <p><a href="https://www.jetbrains.com/exposed/" rel="noopener"
+                                      target="_blank">Exposed</a> by JetBrains</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>Seems production ready; mature and stable enough</p>
+                                        </li>
+                                        <li>
+                                            <p>Lightweight and typesafe</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <p><a href="https://www.ktorm.org" rel="noopener" target="_blank">KTorm</a></p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>ORM mapper for Kotlin, pure JDBC</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <p>JPA / Hibernate</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>Heavyweight, not Kotlin-idiomatic</p>
+                                        </li>
+                                        <li>
+                                            <p>Lots of magic, code generation, proxies, etc.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Choice:</strong></p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Exposed</p>
+                            </li>
+                            <li>
+                                <p>It fits with the rest of the used ecosystem.</p>
+                            </li>
+                            <li>
+                                <p>We use the conventional DSL, not the DAO API (seem unfinished).</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p>Example of the DAO API:</p>
+                    </div>
+                    <div class="listingblock">
+                        <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">class CrystalDaoEntity(id: EntityID&lt;UUID&gt;) : UUIDEntity(id) {
+    var weightInGrams by CrystalTable.weightInGrams
+    companion object : UUIDEntityClass&lt;CrystalDaoEntity&gt;(CrystalTable)
+}
+CrystalDaoEntity.findById(id)
+CrystalDaoEntity.new(UUID.randomUUID()) {
+    weightInGrams = 42
+}
+CrystalDaoEntity.findByIdAndUpdate(id) {
+    it.weightInGrams = 42
+}</code></pre>
+                        </div>
                     </div>
                 </div>
                 <div class="sect3">

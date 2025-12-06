@@ -28,6 +28,7 @@ val asciidocSrcDir = file("src/docs/asciidoc")
 gradleLog("AsciiDoc source dir: [${"${project.projectDir}/src/docs/asciidoc"}]")
 
 fun asciidocAttributes(
+    // syntax highlighting
     sourceHighlighter: String,
     imagesDir: String,
     more: Map<String, String> = emptyMap(),
@@ -87,7 +88,7 @@ tasks.asciidoctorPdf {
     )
     attributes(
         asciidocAttributes(
-            sourceHighlighter = "coderay",
+            sourceHighlighter = "rouge", // NO: coderay, pygments
             imagesDir = "${asciidocSrcDir.absolutePath}/images",
             more = mapOf(
                 "isPdf" to "true",

@@ -11,8 +11,6 @@ dependencies {
     // PITY: reference to Versions.xxx not possible :-(
     // INFO: no version numbers for plugins in custom gradle-plugins; declare as dependency here instead
 
-    implementation("nl.uwv.smz.diamond:openapi-gen:0")
-
     val kotlinVersion = "2.2.21"
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // kotlin("jvm")
     implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion") // kotlin("plugin.serialization")
