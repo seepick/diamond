@@ -32,12 +32,14 @@ jobs:
       - name: Check Project
         run: ./gradlew test check koverXmlReport -DisCi=1
       #        run: ./gradlew clean test koverXmlReport --no-daemon
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v6.0.0
-        with:
-          # defined in /sonar-project.properties
-          #            -Dsonar.organization=seepick
-          #            -Dsonar.projectKey=seepick_diamond
-          args: >
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/kover/report.xml
+
+      # You are running CI analysis while Automatic Analysis is enabled. Please consider disabling one or the other.
+#      - name: SonarCloud Scan
+#        uses: SonarSource/sonarqube-scan-action@v6.0.0
+#        with:
+#          # defined in /sonar-project.properties
+#          #            -Dsonar.organization=seepick
+#          #            -Dsonar.projectKey=seepick_diamond
+#          args: >
+#            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+#            -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/kover/report.xml
