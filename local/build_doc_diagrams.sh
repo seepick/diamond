@@ -16,7 +16,7 @@ generate() {
     FILENAME=`basename $SOURCE_FILE`
     OUTPUT_FILE="$TARGET_DIR${FILENAME%.drawio}.png"
     CMD="$DRAWIO_BIN --export --format png --output $OUTPUT_FILE $SOURCE_FILE"
-    echo ">> $CMD"
+    echo "   ... Generating image for diagram: /$FILENAME"
     # ignore the "Permission denied" message
     `$CMD`
 }
