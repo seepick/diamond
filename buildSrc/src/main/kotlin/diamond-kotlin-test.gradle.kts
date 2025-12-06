@@ -40,6 +40,7 @@ tasks.withType<Test>().configureEach {
     }
 }
 
+// Kover produces a JaCoCo-compatible XML at `build/reports/kover/report.xml` by default.
 kover {
     // automatically attached to check target
     // https://kotlin.github.io/kotlinx-kover/gradle-plugin/
