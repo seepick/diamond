@@ -1,4 +1,4 @@
-# see /local/build_image.sh
+# see /bin/build_image.sh
 
 FROM amazoncorretto:22 AS runtime
 EXPOSE 8080

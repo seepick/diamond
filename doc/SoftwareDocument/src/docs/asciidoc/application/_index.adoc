@@ -12,7 +12,7 @@ include::techstack.adoc[leveloffset=+2]
 === Startup Arguments
 
 * `java -jar diamond.jar printConfigOnly` - will print the read configuration object for verification
-** Used in `./local/test_apponfig.sh` to verify output
+** Used in `./bin/test_apponfig.sh` to verify output
 
 .Sample toString representation of the application configuration
 ....

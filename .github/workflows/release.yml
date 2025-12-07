@@ -25,7 +25,71 @@ on:
 # *) deploy/release
 
 jobs:
-  prepare-release:
+  #  bump-version:
+  #    name: Bump up version for later
+  #    environment: main
+  #    runs-on: ubuntu-latest
+  #    # https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions
+  #    permissions:
+  #      contents: write
+  #    steps:
+  #      - name: Checkout Code
+  #        uses: actions/checkout@v4
+  #      - name: Bump version and push tag
+  #        uses: laputansoft/github-tag-action@v4.6
+  #        with:
+  #          github_token: ${{ secrets.GITHUB_TOKEN }}
+  #          #          default_bump: patch
+  #          #          dry_run: true
+  #          #          tag: ${{ steps.package-version.outputs.version }}
+  #          tag: ${{ github.event.inputs.version }}
+
+  # for AUTO release:
+  #  - name: Get current date
+  #      id: date
+  #      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+  # ==> tag_name: ${{ steps.date.outputs.date }}
+  #          release_name: ${{ steps.date.outputs.date }}
+
+  log-info:
+    name: Print some debug info
+    environment: main
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Log Info
+        # e.g.: "ref refs/tags/1 and ref_name 1"
+        run: |
+          echo "The given version number is: ${{ github.event.inputs.version }}"
+          echo "This job is using ref ${{ github.ref }} and ref_name ${{ github.ref_name }}"
+
+  build-and-verify-project:
+    name: Build and verify (test, check) project assembly
+    environment: main
+    runs-on: ubuntu-latest
+    # https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions
+    permissions:
+      contents: write
+    steps:
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Run tests and check application
+        run: ./gradlew check
+      # TODO here require quality gate (sonarqube); better triggger other build for us (reuse)
+      - name: Build JAR
+        # for auto releease, change version number algorithm here
+        run: ./gradlew :app:buildFatJar -Ddiamond_version="${{ github.event.inputs.version }}" -Ddiamond_branch="${{ github.ref}}"
+      - name: Generate config documentation
+        run: ./gradlew :app:generateConfigDoc
+      - name: Build Software Documentation PDF
+        run: ./gradlew :doc:SoftwareDocument:asciidoctorPdf -Ddiamond_version="${{ github.event.inputs.version }}"
+
+  create-github-release:
     name: Creating GitHub Release
     environment: main
     runs-on: ubuntu-latest
@@ -33,51 +97,37 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Tag version
+        uses: .... tag... FIXME!
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.version }}
       - name: Create Release # https://github.com/marketplace/actions/create-tag-release
         id: create_release
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          #          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.event.inputs.version }}
+          tag_name: ${{ github.event.inputs.version }}
+          release_name: Release v${{ github.event.inputs.version }}
           body: No changelog provided
           draft: false
           prerelease: false
     outputs:
       upload-url: ${{ steps.create_release.outputs.upload_url }}
 
-  build-and-upload:
-    name: Building and uploading artifact
+  upload-release-artifacts:
+    name: Uploading release build artifacts
     environment: main
     runs-on: ubuntu-latest
-    needs: prepare-release
+    needs:
+      - build-and-verify-project
+      - create-github-release
     permissions:
       contents: write
     steps:
-      - name: Log Info
-        # e.g.: "ref refs/tags/1 and ref_name 1"
-        run: |
-          echo "The given version number is: ${{ github.event.inputs.version }}"
-          echo "This job is using ref ${{ github.ref }} and ref_name ${{ github.ref_name }}"
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      - name: Setup JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-      - uses: gradle/actions/setup-gradle@v4
-
-      - name: Build JAR
-        # TODO change version number algorithm here
-        run: ./gradlew :app:buildFatJar -Ddiamond_version="${{ github.event.inputs.version }}" -Ddiamond_branch="${{ github.ref}}"
-      - name: Generate config documentation
-        run: ./gradlew :app:generateConfigDoc
-      - name: Build SoftwareDocument PDF
-        run: ./gradlew :doc:SoftwareDocument:asciidoctorPdf -Ddiamond_version="${{ github.event.inputs.version }}"
-
-      - name: Upload Release Artifact
+      - name: Upload Application JAR
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -87,7 +137,7 @@ jobs:
           asset_name: diamond.jar
           asset_content_type: application/java-archive
 
-      - name: Upload SoftwareDocument
+      - name: Upload SoftwareDocument PDF
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

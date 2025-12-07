@@ -2,10 +2,11 @@
 
 // STATES { draft | proposed | rejected | accepted | deprecated }
 
-* link:https://github.com/joelparkerhenderson/architecture-decision-record[What are ADRs]?
-** They capture DECISIONS made along with CONTEXT (why, reasons, motivations) and CONSEQUENCES (impact, risk).
-** They are mall chunks of structured information to document our thought process.
-** Their goal is to be able to trace back what and why (not) certain decisions were made.
+link:https://github.com/joelparkerhenderson/architecture-decision-record[What are ADRs]?
+
+* They capture DECISIONS made along with CONTEXT (why, reasons, motivations) and CONSEQUENCES (impact, risk).
+* They are mall chunks of structured information to document our thought process.
+* Their goal is to be able to trace back what and why (not) certain decisions were made.
 
 == Writing ADRs
 

@@ -12,7 +12,7 @@ services:
   diamond:
     container_name: diamond
     restart: unless-stopped
-    # build it via ./local/build_image.sh
+    # build it via ./bin/build_image.sh
     image: diamond/diamond:latest
     # to build from source... requires Dockerfile though
     #    build: docker/diamond

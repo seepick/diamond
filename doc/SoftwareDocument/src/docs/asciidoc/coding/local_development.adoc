@@ -5,8 +5,8 @@ No further setup must be needed (no docker, no special files created).
 There is no required readme to be read, no manual or instructions; it just works out of the box.
 
 * run `nl.uwv.smz.diamond.app.LocalDiamondApp`
-* Postman collection can be found at: `/local/Diamond.postman_collection.json`
-* There are a lot of useful (required) build scripts in `/local/*.sh`
+* Postman collection can be found at: `/config/Diamond.postman_collection.json`
+* There are a lot of useful (required) build scripts in `/bin/*.sh`
 
 == IntelliJ Plugins
 

@@ -8,7 +8,7 @@ import nl.uwv.smz.diamond.extern.api.sftp.SftpConfig
 import nl.uwv.smz.diamond.extern.impl.ExternConfig
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 
-/** See `/local/test_config.sh` for usage how it is actually being done in the end. */
+/** See `/bin/test_config.sh` for usage how it is actually being done in the end. */
 class ConfigTest : StringSpec({
     "Given system properties When read config Then properly parsed" {
         System.setProperty("config.override.database.jdbcUrl", "dbUrl")
@@ -24,7 +24,7 @@ class ConfigTest : StringSpec({
         System.setProperty("config.override.extern.sftp.knownHostsFilePath", "sftpHosts")
         System.setProperty("config.override.extern.sftp.strictHostChecking", "false")
 
-        // if this test fails, please also adjust the `/local/test_config.sh` file -thank you :)
+        // if this test fails, please also adjust the `/bin/test_config.sh` file -thank you :)
         readEnvConfig() shouldBeEqual EnvConfig(
             ktor = KtorConfig(
                 port = 42,

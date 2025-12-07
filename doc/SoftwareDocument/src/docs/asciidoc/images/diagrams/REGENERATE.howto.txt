@@ -1,3 +1,0 @@
-execute `/local/doc_diagrams.sh`
-to regenerate diagrams in this folder
-based on src/docs/diagrams/*.drawio files.

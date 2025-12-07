@@ -4,6 +4,15 @@ endif::[]
 
 == Architecture
 
+=== Overall Guiding Principles
+
+Based on those KPIs:
+
+* Lead time of X days until feature available.
+* High quality, many tests, low bugs.
+* API response times of Xms (performance tests).
+* Build time max 3mins locally; build pipeline max 5mins.
+
 include::service_types.adoc[]
 
 include::layering.adoc[leveloffset=+2]

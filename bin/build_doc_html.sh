@@ -2,9 +2,9 @@
 
 # ensure CWD is project root
 CWD=`pwd`
-ROOT="${CWD%/local}"
+ROOT="${CWD%/bin}"
 cd "${ROOT}" || exit 1
-source "./local/_includes.sh"
+source "./bin/_includes.sh"
 
 DOCS_DIR="docs"
 INDEX_FILE="$DOCS_DIR/index.html"

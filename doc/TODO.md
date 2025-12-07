@@ -1,11 +1,18 @@
 Next
 =========================
 
-* finish openapi generator (client 80% done; kotlinx serialization java datetime)
+Round up doc:
+
+* mindmap software doc (top down)
+* integrate what's already there
+* bottom up: details, go through code
+
+* TODOs.md (and tasktags) as appendix chapter outlook, future/open doings
 
 Business Relevant
 -------------------------
 
+* !! finish openapi generator (client 80% done; kotlinx serialization java datetime)
 * [ ] Initial DB seeding of masterdata
 * [ ] Setup MessageQueue
 * [ ] Bean validation (based on OpenAPI spec)
@@ -23,7 +30,6 @@ Minor:
 * [ ] Support filtering (see MWP)
 * [ ] API versioning (needed with only 1 FE?)
 
-
 Backlog
 -------------------------
 
@@ -37,8 +43,7 @@ Backlog
 * [ ] SonarQube badges: https://github.com/marketplace/actions/sonarqube-badge
 * [ ] What if plugin-apply-false (instead buildSrc/build dep?); ALSO: ./gradlew dependencyUpdates doesn't work to be
   applied recursively!
-* [ ] Change github action release process: no local tagging, just run a build in web interface; first check, then tag,
-  then deploy
+* [ ] Autoversion on manual release (specifcy version)
 * [ ] support of datetime types (HTTP, DB); exposed-java-time
 * [ ] create playground cucumber and ktor testengine, parallel tests (otherwise startEmbedded full fledged?!)
     * set up playground, parallel tests (junit/kotest and cucumber) starting up isolated parts of the application (
@@ -72,10 +77,13 @@ Asciidoc
     * https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
 * advanced: generate multi-page HTML (see: https://docs.asciidoctor.org/asciidoc/latest/toc/)
 * emojis in asciidoc didn't work :-/
+* how to create "list of" at the end of document (for ADRs, for TODOs)
 
 Low
 -------------------------
 
+* Nightly build not only more quality analysis (security/OWASP) but also different test types (performance/load/stress,
+  security)
 * [ ] reconfigureProdLog(): rolling file appender for PROD (or via app-config property?!)
 * [ ] Hikari connection pooling
 * fix sftp docker shizzle https://hub.docker.com/r/atmoz/sftp/#providing-your-own-ssh-host-key-recommended
