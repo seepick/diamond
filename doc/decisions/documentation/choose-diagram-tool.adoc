@@ -1,4 +1,4 @@
-= Diagram Drawing Tool
+= Diagram Tool
 
 [TIP]
 ====

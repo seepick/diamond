@@ -1,0 +1,11 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Test Techstack
+
+include::{adrsdir}/testing/use-BDD.adoc[leveloffset=+3]
+
+include::{adrsdir}/testing/use-cucumber-lambdas.adoc[leveloffset=+3]
+
+include::{adrsdir}/testing/assert-json.adoc[leveloffset=+3]

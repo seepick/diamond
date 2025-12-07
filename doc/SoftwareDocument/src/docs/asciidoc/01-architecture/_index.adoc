@@ -6,14 +6,7 @@ endif::[]
 
 // TODO show high-level overviews & diagrams
 
-== Overall Guiding Principles
-
-Based on those KPIs:
-
-* Lead time of X days until feature available.
-* High quality, many tests, low bugs.
-* API response times of Xms (performance tests).
-* Build time max 3mins locally; build pipeline max 5mins.
+include::principles.adoc[leveloffset=+1]
 
 include::service_types.adoc[leveloffset=+1]
 

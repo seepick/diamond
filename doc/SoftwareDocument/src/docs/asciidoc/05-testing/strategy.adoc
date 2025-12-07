@@ -1,0 +1,24 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Test Strategy
+
+.Simplified view from different test strategies onto the application boundaries
+image::{imgdir}/diagrams/test-strategies.png[]
+
+* Some Unit Tests (using Kotest framework) covering logic (not infrastructure/IO related code).
+* Lots of Integration Tests (using Cucumber framework) verifying functional requirements.
+** Either using fast test engine, or real HTTP (slower, more production-similar).
+** Either using H2 or Oracle in a testcontainer (slower, more production-similar).
+** Has the Koin context available, thus full control of the internals (extern-stub or custom mocks).
+** The parts, the IT don't cover, can be complemented by separate tests.
+** Karate not feasable anymore, due to need of custom vocabulary (step definitions).
+* Few End2end Tests talking real HTTP, separately deployed, no access than a regular user would.
+* A sandbox environment of 3rd party services would be great (if available).
+** Do we want to provide one ourselves to others?!
+
+Ad complementing:
+
+* Backend Tests, only testing the extern-layer with testcontainers.
+** Could make them system tests (without testcontainers! sandbox?), but super fragile/limited.

@@ -1,0 +1,19 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Code Quality
+
+* quality gates
+** make the build fail upon error
+** 0-warning policy
+* sonarqube (misc metrics), coverage kotlin tools (detekt, ktlint)
+* CAVE: there is much overlap in the tools
+** test coverage enforcing by gradle (kover) and sonarqube
+** lots with detekt/ktlint (intellij? sonarqube?)
+
+include::best_practices.adoc[leveloffset=+1]
+
+include::static_analysis.adoc[leveloffset=+1]
+
+include::integration.adoc[leveloffset=+1]

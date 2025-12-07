@@ -2,27 +2,27 @@ ifndef::adrsdir[]
 include::../local_include.adoc[]
 endif::[]
 
-== DevOps
+= DevOps
 
 // .What is CI/CD?
 // video::AknbizcLq4w[youtube] // => TODO embed youtube doesn't work?!
 // DevOps in 100 secs: scEDHsr3APg
-
-.Sketching a build pipeline overview
-image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]
 
 * When a feature branch is created, a new environment gets auto-created.
 ** Testers can write their E2E tests targeting it.
 *** Development starts in parallel: The contract (requirements) the base.
 * On merge: Old feature-branches are deleted and custom environment destroyed.
 
-=== GitHub Actions
+include::build_pipeline.adoc[leveloffset=+1]
 
-* Continuous
-* Nightly
-* Release
+include::observation.adoc[leveloffset=+1]
 
+== Misc
 
-include::distributed.adoc[]
+* Deployment: docker, kubernetes
+* Cloud platform: OpenShift (Google?); Image Registry
+* Devops tools: Kustomize, ArgoCD
+* configuration management (env properties, or more sophisticated? etcd like)
+* Resilience and Fault Tolerance: circuit breakers, retries, and bulkheads.
 
-include::{adrsdir}/building/versioning_scheme.adoc[leveloffset=+3]
+include::{adrsdir}/building/versioning_scheme.adoc[leveloffset=+2]

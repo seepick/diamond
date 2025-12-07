@@ -1,4 +1,4 @@
-= ADR - Language Choice
+= Language Choice
 
 [TIP]
 ====
@@ -14,7 +14,6 @@ Which programming language to choose?
 
 * Java or Kotlin?
 ** not really any other: Definitely no Scala, Clojure, ... and no non-JVM languages (Go, Rust, Python, C#, ...).
-
 
 * interoperability; always possible to fall back to java code and "java native libs"
 * using Lombok is an indication we want Kotlin:
@@ -45,5 +44,5 @@ Some things Java was able to catch up a bit (yet sometimes a bit poorly implemen
 Downsides for Kotlin:
 
 * Not as popular (tools, libs, documentation, experience/skill)
-* Compiler is not as highly optimized as Java's
+* Compiler is not as highly optimized (fast) as Java's
 * 100% interoperable regarding the language itself, but with some (older) frameworks there are some incompatibilities in paradigm

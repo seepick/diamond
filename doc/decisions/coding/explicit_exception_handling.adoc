@@ -1,4 +1,4 @@
-= Explicit ExceptionADR -  Handling
+= Explicit Exception Handling
 
 [TIP]
 ====

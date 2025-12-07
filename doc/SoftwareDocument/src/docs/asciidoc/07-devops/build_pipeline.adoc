@@ -1,0 +1,14 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Build Pipeline
+
+* Using GitHub Actions
+* Jobs
+** Continuous
+** Nightly
+** Release
+
+.Sketching a build pipeline overview
+image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]

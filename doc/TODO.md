@@ -28,6 +28,8 @@ Small
 * document: how to setup project locally: 1) git clone 2) ./gradlew :app:runLocal
 * document gradle task `generateConfigDoc`; using ConfigDocWriterApp; generating included file:
   environment_variables.generated.adoc
+* document finding: sonarqube plugin is blocking performance :( detekt/ktlint are blazing fast (detekt @Suppress
+  existing but no "quickfix"; ktlint via suppression.properties feels oldschool)
 
 Big
 -------------------------

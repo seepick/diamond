@@ -20,18 +20,18 @@ endif::[]
 
 include::{basedir}/preface.adoc[]
 
-include::{basedir}/architecture/_index.adoc[leveloffset=+1]
+include::{basedir}/01-architecture/_index.adoc[leveloffset=+1]
 
-include::{basedir}/api_design/_index.adoc[]
+include::{basedir}/02-api_design/_index.adoc[leveloffset=+1]
 
-include::{basedir}/application/_index.adoc[]
+include::{basedir}/03-application/_index.adoc[leveloffset=+1]
 
-include::{basedir}/coding/_index.adoc[]
+include::{basedir}/04-development/_index.adoc[leveloffset=+1]
 
-include::{basedir}/testing/_index.adoc[]
+include::{basedir}/05-testing/_index.adoc[leveloffset=+1]
 
-include::{basedir}/quality/_index.adoc[]
+include::{basedir}/06-quality/_index.adoc[leveloffset=+1]
 
-include::{basedir}/devops/_index.adoc[]
+include::{basedir}/07-devops/_index.adoc[leveloffset=+1]
 
-include::{basedir}/ch_appendix.adoc[]
+include::{basedir}/08-outro/_index.adoc[leveloffset=+1]

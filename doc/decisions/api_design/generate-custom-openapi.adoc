@@ -1,4 +1,4 @@
-= Generate Custom OpenAPI Code
+= Custom OpenAPI Generator
 
 [TIP]
 ====
@@ -26,7 +26,7 @@ Author: Seepick
 * Kotlin data classes with Kotlinx serialization annotations.
 * Ability to hook specific type serializer (provided or custom).
 * Think of `java.time.LocalDateTime` and enums.
-* Generated separately (`view-model` subproject) from server routes; a unique requirement not provided by default generators.
+* Generated separately (`view-model` sub-module) from server routes; a unique requirement not provided by default generators.
 * Interfaces for Ktor server.
 * Some route providing interface types could be injected into Koin.
 * Only bare skeleton mandatory (HTTP method and path), everything else optional (could go crazy with details).

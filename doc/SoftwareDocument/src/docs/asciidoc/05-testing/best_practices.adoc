@@ -1,0 +1,37 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Best Practices
+
+[WARNING]
+====
+Watch out to not test same multiple times, we need to be able to still move and change fast!
+====
+
+* Test for HTTP codes (sometimes returning 500 if authorization is not present for the user)
+* Think and test blackbox (you don't know the implementation)
+** E.g. just because the same mechanism is applied to several endpoints with a cross cutting concern (security, pagination, ...), doesn't justify not testing it.
+** To overcome DRY, write sophisticated test infrastructure (Kotest `include()` test factory)
+* There also always the possibility to deploy another service exposing additional test endpoints ;)
+
+Watch out for fast test execution:
+
+* Always parallelize all tests; requires isolated state of whole application!
+* Use Ktor test-engine for simulated, and much faster, testing HTTP communication.
+
+== Testable Code
+
+* no manual instantiation or static random data generation
+
+== Maintainable Tests
+
+* Assert only what's relevant, thus less in many cases.
+
+== Anti Patterns
+
+* Not keeping proper level of abstraction: Displaying irrelevant values.
+* Hardcoded, OS-specific, absolute paths in code or properties.
+* Using the filesystem; if really needed, use Java's temp file mechanism.
+* Not testing "automagic" (implicit stuff; aspects, proxies; reflection, annotations)
+** Previoiusly Spring repository interfaces (not visible in coverage as well)

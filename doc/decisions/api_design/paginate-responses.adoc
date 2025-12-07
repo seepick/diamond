@@ -1,4 +1,4 @@
-= Paginate ReST Resources
+= Paginated Resources
 
 [TIP]
 ====

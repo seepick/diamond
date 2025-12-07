@@ -10,6 +10,10 @@ endif::[]
 * Sharing build logic via the `/buildSrc/` directory.
 ** See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html
 
+include::{adrsdir}/building/gradle-kotlin-dsl.adoc[leveloffset=+1]
+
+include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+1]
+
 == Gradle Properties
 
 * Enable certain flags (enabled via gradle properties and on CI), it will enable more tests/reports (which take longer and require more local setup)
@@ -50,7 +54,3 @@ Documentation:
 ** `./gradlew :doc:SoftwareDocument:asciidoctorPdf`
 * Generate software documentation as HTML:
 * `./gradlew :doc:SoftwareDocument:asciidoctor`
-
-include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+1]
-
-include::{adrsdir}/building/gradle-kotlin-dsl.adoc[leveloffset=+1]

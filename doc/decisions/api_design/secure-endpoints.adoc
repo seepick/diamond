@@ -1,4 +1,4 @@
-= Secure HTTP Endpoints
+= Secured Endpoints
 
 [TIP]
 ====

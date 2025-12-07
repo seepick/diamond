@@ -77,3 +77,10 @@ include::{adrsdir}/libraries/choose-datetime.adoc[leveloffset=+2]
 include::{adrsdir}/libraries/dto-mapping.adoc[leveloffset=+2]
 
 include::{adrsdir}/libraries/serialization.adoc[leveloffset=+2]
+
+== Logging
+
+include::{adrsdir}/libraries/configure-logging.adoc[leveloffset=+2]
+
+include::{adrsdir}/libraries/logging-with-kotlin.adoc[leveloffset=+2]
+

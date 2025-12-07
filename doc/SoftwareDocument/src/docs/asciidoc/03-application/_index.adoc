@@ -1,0 +1,13 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Application
+
+include::techstack.adoc[leveloffset=+1]
+
+include::gradle.adoc[leveloffset=+1]
+
+include::configuration.adoc[leveloffset=+1]
+
+include::documentation.adoc[leveloffset=+1]

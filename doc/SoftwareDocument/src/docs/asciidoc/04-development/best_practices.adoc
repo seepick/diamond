@@ -2,15 +2,20 @@ ifndef::adrsdir[]
 include::../local_include.adoc[]
 endif::[]
 
-== Coding
+= Best Practices
 
-Kotlin.
+* Strive for functional, e.g.: *pure functions*:
+** return values are identical for identical arguments (no variation with static variables, non-local variables, mutable reference arguments or input streams, i.e., referential transparency)
+** the function has no side effects (no mutation of non-local variables, mutable reference arguments or input/output streams)
+* no overloaded methods, provide different name
+* instead of regular methods -> "named expressions"
+** functions as named codeblocks, lead to shorter (easier to comprehend) methods
+** always use "=" after method signature; single expression body
+** no state, no "val" keyword, all just immediate execution (more functional)
+** forces to write very short methods, easy to read and comprehend
+** methods have names, they create logical structure of arbitrary code
 
-* list the bad things as well; honesty, expection mgmt, credibility.
-* intellij support; crash; young
-
-
-=== Coding Philosophy
+== Coding Philosophy
 
 * fail early, fail fast
 * e.g. if application config something is configured wrong/missing
@@ -32,20 +37,7 @@ Kotlin.
 * clear names, self-explanatory, capturing its essence (single responsibility)
 ** no abbreviations, no short cryptic names
 
-==== Best Practices
-
-* Strive for functional, e.g.: *pure functions*:
-** return values are identical for identical arguments (no variation with static variables, non-local variables, mutable reference arguments or input streams, i.e., referential transparency)
-** the function has no side effects (no mutation of non-local variables, mutable reference arguments or input/output streams)
-* no overloaded methods, provide different name
-* instead of regular methods -> "named expressions"
-** functions as named codeblocks, lead to shorter (easier to comprehend) methods
-** always use "=" after method signature; single expression body
-** no state, no "val" keyword, all just immediate execution (more functional)
-** forces to write very short methods, easy to read and comprehend
-** methods have names, they create logical structure of arbitrary code
-
-===== Conciseness
+== Conciseness
 
 Using type inference and link:https://kotlinlang.org/docs/functions.html#single-expression-functions[single expression functions], function declarations can be shortened and made more readable:
 
@@ -86,23 +78,5 @@ fun Service.`GOOD apply`() = apply {
 }
 ----
 
-=== Code Samples
+include::{adrsdir}/coding/explicit_exception_handling.adoc[leveloffset=+1]
 
-.Source of link:https://github.com/seepick/diamond/blob/main/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt[`healthRouting.kt`] from the `view-routing` module
-[source,kotlin]
-----
-include::{rootdir}/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt[]
-----
-
-=== Logging
-
-include::{adrsdir}/libraries/configure-logging.adoc[leveloffset=+3]
-
-include::{adrsdir}/libraries/logging-with-kotlin.adoc[leveloffset=+3]
-
-include::local_development.adoc[leveloffset=+2]
-
-=== Code Generation
-
-include::{adrsdir}/building/generating-sources.adoc[leveloffset=+3]
-include::{adrsdir}/persistence/generate-code.adoc[leveloffset=+3]

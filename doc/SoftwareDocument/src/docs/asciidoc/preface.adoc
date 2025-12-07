@@ -2,6 +2,8 @@
 
 NOTE: If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
 
+The project's website is: https://github.com/seepick/diamond
+
 This document was built using link:https://asciidoc.org[AsciiDoc], a simple yet powerful markup language for writing technical documentation.
 
 ifndef::isPdf[]

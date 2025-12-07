@@ -1,0 +1,9 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Documentation
+
+include::{adrsdir}/documentation/choose-documentation-tool.adoc[leveloffset=+1]
+
+include::{adrsdir}/documentation/choose-diagram-tool.adoc[leveloffset=+1]

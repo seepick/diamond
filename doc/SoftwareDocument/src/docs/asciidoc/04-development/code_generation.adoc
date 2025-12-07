@@ -1,0 +1,9 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Code Generation
+
+include::{adrsdir}/building/generating-sources.adoc[leveloffset=+1]
+
+include::{adrsdir}/persistence/generate-code.adoc[leveloffset=+1]

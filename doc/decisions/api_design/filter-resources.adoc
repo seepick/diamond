@@ -1,4 +1,4 @@
-= Filter ReST Resources
+= Filtered Resources
 
 [TIP]
 ====

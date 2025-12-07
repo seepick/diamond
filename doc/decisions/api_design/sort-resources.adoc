@@ -1,4 +1,4 @@
-= Sort ReST Resources
+= Sorted Resources
 
 [TIP]
 ====

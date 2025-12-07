@@ -1,0 +1,24 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Testing
+
+* All tests are automated; there is not a single manual test!
+* We have full confidence in our tests as a safety net.
+
+include::types.adoc[leveloffset=+1]
+
+include::strategy.adoc[leveloffset=+1]
+
+include::best_practices.adoc[leveloffset=+1]
+
+include::techstack.adoc[leveloffset=+1]
+
+== Code Coverage
+
+include::{adrsdir}/testing/verify-coverage.adoc[leveloffset=+2]
+
+== Build Integration
+
+TODO

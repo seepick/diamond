@@ -1,0 +1,11 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Development
+
+include::best_practices.adoc[leveloffset=+1]
+
+include::local_development.adoc[leveloffset=+1]
+
+include::code_generation.adoc[leveloffset=+1]

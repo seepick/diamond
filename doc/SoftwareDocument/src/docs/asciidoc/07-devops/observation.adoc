@@ -1,0 +1,5 @@
+= Observation
+
+* Tracing (distributed), logstash; common ID to track path across services
+* monitoring (dashboards; grafana)
+* allerting (calls; sentry)

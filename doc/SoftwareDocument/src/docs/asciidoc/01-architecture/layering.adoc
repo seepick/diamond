@@ -37,11 +37,11 @@ Final thought:
 ** Tech split within domain split.
 * And always then the need (if no horizontal layer) to create a shared library for each layer...
 
-== Subprojects
+== Submodules
 
-Each architectural layer is represented by a Gradle sub-project (or sub-module as called in Maven terminology).
+Each architectural layer is represented by a sub-module (actually in Gradle terminology it's called sub-project, but we prefer Maven's sub-module).
 
-Main Subprojects:
+Main Submodules:
 
 * app
 * view
@@ -58,23 +58,22 @@ Main Subprojects:
 ** persistence-impl (is actually persistence-exposed)
 ** once there was a persistence-stub, but it turned out to be useless (already in full control)
 
-Other Subprojects:
+Test Submodules:
+
+* itest
+* etest: separate GIT repo (maybe dep on client-model)
+
+Client Submodules:
 
 * client-sdk (kotlin MP)
 ** sdk
 ** models
-** tests?
-* openapi-gen (resides in shared for now, needs to be externalized)
-
-Test Subprojects:
-
-* itest
-* etest: separate GIT repo (maybe dep on client-model)
 
 Shared Subprojects:
 
 * test
 * logging
+* openapi-gen (resides in shared for now, needs to be externalized)
 
 == Client-SDKs
 

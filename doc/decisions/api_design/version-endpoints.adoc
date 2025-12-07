@@ -1,4 +1,4 @@
-= Versioning of HTTP Endpoints
+= Endpoint Versioning
 
 [TIP]
 ====

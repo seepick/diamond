@@ -1,0 +1,27 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Static Code Analysis
+
+include::{adrsdir}/coding/code-analysis-tools.adoc[leveloffset=+2]
+
+== SonarQube
+
+* use the free tier for open source projects
+** See: https://sonarcloud.io/project/configuration/AutoScan?id=seepick_diamond
+* define new code by days (continuous delivery), not by change delta (planned releases)
+* use it to report coverage (enforced by gradle-kover itself, not sonar)
+
+== Detekt
+
+* like Checkstyle
+* vast amount of rules
+** kotlin specific rules
+* `@Suppress("RULE_ID")` support (no more huge suppression file like in checkstyle)
+
+==  ktlint
+
+* Formatter
+* via .editorconfig (IDE auto-configures)
+* https://pinterest.github.io/ktlint/1.8.0/
