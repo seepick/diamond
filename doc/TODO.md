@@ -25,7 +25,7 @@ Small
 * include sourcecode of domain-logic-impl/build.gradle.kts (look how clean it is)
 * showcase karate tests
 * showcase test inclusions (H2 and Oracle); extensions; all is code
-* document: how to setup: 1) git clone 2) gradlew :app:run
+* document: how to setup project locally: 1) git clone 2) ./gradlew :app:runLocal
 * document gradle task `generateConfigDoc`; using ConfigDocWriterApp; generating included file:
   environment_variables.generated.adoc
 
@@ -68,6 +68,7 @@ Minor:
 Backlog
 -------------------------
 
+* use fancy/colorized console output (when LocalDiamondApp; see bin/ shellscripts; possible for logging?)
 * when test fails `gradlew check`, then also display assertion error message
 * [ ] Kotlin scheduler (jobr?); cronjob running SFTP; can be triggered via endpoint
 * [ ] Configure jacaco XML for sonarqube

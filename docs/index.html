@@ -471,10 +471,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </ul>
                     </li>
                     <li><a href="#technology-choices">1.4. Technology Choices</a>
-                        <ul class="sectlevel3">
-                            <li><a href="#language-choice">1.4.1. Language Choice</a></li>
-                            <li><a href="#webframework-choice">1.4.2. Webframework Choice</a></li>
-                            <li><a href="#persistence-technology">1.4.3. Persistence Technology</a></li>
+                        <ul class="sectlevel5">
+                            <li><a href="#adr-language-choice">ADR - Language Choice</a></li>
+                            <li><a href="#adr-webframework-choice">ADR - Webframework Choice</a></li>
+                            <li><a href="#persistence-technology">Persistence Technology</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -543,56 +543,55 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </li>
                 </ul>
             </li>
-            <li><a href="#testing">5. Testing</a>
+            <li><a href="#testing">Testing</a>
                 <ul class="sectlevel2">
-                    <li><a href="#test-types">5.1. Test Types</a>
+                    <li><a href="#test-types">.1. Test Types</a>
                         <ul class="sectlevel3">
-                            <li><a href="#unit-tests">5.1.1. Unit Tests</a></li>
-                            <li><a href="#integration-tests">5.1.2. Integration Tests</a></li>
-                            <li><a href="#end-to-end-e2e-tests">5.1.3. End-to-End (E2E) Tests</a></li>
-                            <li><a href="#other-types">5.1.4. Other Types</a></li>
+                            <li><a href="#unit-tests">.1.1. Unit Tests</a></li>
+                            <li><a href="#integration-tests">.1.2. Integration Tests</a></li>
+                            <li><a href="#end-to-end-e2e-tests">.1.3. End-to-End (E2E) Tests</a></li>
+                            <li><a href="#other-types">.1.4. Other Types</a></li>
                         </ul>
                     </li>
-                    <li><a href="#test-strategy">5.2. Test Strategy</a></li>
-                    <li><a href="#e1e-test">5.3. E1E Test</a></li>
-                    <li><a href="#best-practices-2">5.4. Best Practices</a></li>
-                    <li><a href="#anti-patterns">5.5. Anti Patterns</a>
-                        <ul class="sectlevel3">
-                            <li><a href="#testable-code">5.5.1. Testable Code</a></li>
-                            <li><a href="#maintainable-tests">5.5.2. Maintainable Tests</a></li>
+                    <li><a href="#test-strategy">2. Test Strategy</a>
+                        <ul class="sectlevel2">
+                            <li><a href="#best-practices-2">2.1. Best Practices</a></li>
+                            <li><a href="#testable-code">2.2. Testable Code</a></li>
+                            <li><a href="#maintainable-tests">2.3. Maintainable Tests</a></li>
+                            <li><a href="#anti-patterns">2.4. Anti Patterns</a></li>
+                            <li><a href="#test-tech">2.5. Test Tech</a>
+                                <ul class="sectlevel3">
+                                    <li><a href="#use-bdd">2.5.1. Use BDD</a></li>
+                                    <li><a href="#use-cucumber-lambdas">2.5.2. Use Cucumber Lambdas</a></li>
+                                    <li><a href="#verify-coverage">2.5.3. Verify Coverage</a></li>
+                                    <li><a href="#assert-json">2.5.4. Assert JSON</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                    <li><a href="#test-tech">5.6. Test Tech</a>
-                        <ul class="sectlevel3">
-                            <li><a href="#use-bdd">5.6.1. Use BDD</a></li>
-                            <li><a href="#use-cucumber-lambdas">5.6.2. Use Cucumber Lambdas</a></li>
-                            <li><a href="#verify-coverage">5.6.3. Verify Coverage</a></li>
-                            <li><a href="#assert-json">5.6.4. Assert JSON</a></li>
+                    <li><a href="#code-quality">3. Code Quality</a>
+                        <ul class="sectlevel2">
+                            <li><a href="#static-code-analysis">3.1. Static Code Analysis</a></li>
+                            <li><a href="#sonarqube">3.2. SonarQube</a></li>
+                            <li><a href="#static-code-analysis-2">3.3. Static Code Analysis</a></li>
+                            <li><a href="#explicit-exceptionadr-handling">3.4. Explicit ExceptionADR - Handling</a></li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            <li><a href="#code-quality">6. Code Quality</a>
-                <ul class="sectlevel2">
-                    <li><a href="#static-code-analysis">6.1. Static Code Analysis</a></li>
-                    <li><a href="#sonarqube">6.2. SonarQube</a></li>
-                    <li><a href="#static-code-analysis-2">6.3. Static Code Analysis</a></li>
-                    <li><a href="#enforce-failure-handling">6.4. Enforce Failure Handling</a></li>
-                </ul>
-            </li>
-            <li><a href="#devops">7. DevOps</a>
-                <ul class="sectlevel2">
-                    <li><a href="#github-actions">7.1. GitHub Actions</a></li>
-                    <li><a href="#distributed-services">7.2. Distributed Services</a>
-                        <ul class="sectlevel3">
-                            <li><a href="#versioning-scheme">7.2.1. Versioning Scheme</a></li>
+                    <li><a href="#devops">4. DevOps</a>
+                        <ul class="sectlevel2">
+                            <li><a href="#github-actions">4.1. GitHub Actions</a></li>
+                            <li><a href="#distributed-services">4.2. Distributed Services</a>
+                                <ul class="sectlevel3">
+                                    <li><a href="#versioning-scheme">4.2.1. Versioning Scheme</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            <li><a href="#appendix">8. Appendix</a>
-                <ul class="sectlevel2">
-                    <li><a href="#resources">8.1. Resources</a></li>
+                    <li><a href="#appendix">5. Appendix</a>
+                        <ul class="sectlevel2">
+                            <li><a href="#resources">5.1. Resources</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -615,9 +614,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </table>
             </div>
             <div class="paragraph">
-                <p><strong>Notes:</strong></p>
-            </div>
-            <div class="paragraph">
                 <p>This document was built using <a href="https://asciidoc.org">AsciiDoc</a>, a simple yet powerful
                     markup language for writing technical documentation.</p>
             </div>
@@ -635,7 +631,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </table>
             </div>
             <div class="paragraph">
-                <p>The build for this document was triggered on Sun, 7. December 2025 at 16:04 - enjoy :)</p>
+                <p>The build for this document was triggered on Sun, 7. December 2025 at 22:24 - enjoy :)</p>
+            </div>
+            <div class="imageblock text-center">
+                <div class="content">
+                    <img alt="diamond" src="images/diamond.png">
+                </div>
+                <div class="title">Figure 1. A precious material</div>
             </div>
             <div class="paragraph">
                 <p><strong>About:</strong></p>
@@ -667,6 +669,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 <p>For more explanation what ADRs are, please read: <a
                         class="bare" href="https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc">https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc</a>
                 </p>
+            </div>
+            <div class="paragraph">
+                <p><strong>Chapter Overview:</strong></p>
+            </div>
+            <div class="imageblock">
+                <div class="content">
+                    <img alt="sitemap" src="images/sitemap.svg">
+                </div>
+                <div class="title">Figure 2. Sitemap of the book&#8217;s content</div>
             </div>
         </div>
     </div>
@@ -837,7 +848,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         <div class="content">
                             <img alt="application packaging" src="images/diagrams/application-packaging.png">
                         </div>
-                        <div class="title">Figure 1. The degree of impact on the application depending on the choice of
+                        <div class="title">Figure 3. The degree of impact on the application depending on the choice of
                             packaging strategy
                         </div>
                     </div>
@@ -1286,8 +1297,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         Especially Kotlin is fully interoperable with Java and thus all the tools can be reused and for
                         developers a smooth migration path exists.</p>
                 </div>
-                <div class="sect3">
-                    <h4 id="language-choice">1.4.1. Language Choice</h4>
+                <div class="sect5">
+                    <h6 id="adr-language-choice">ADR - Language Choice</h6>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -1307,96 +1318,269 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <div class="exampleblock">
                         <div class="content">
                             <div class="paragraph">
-                                <p>Java or Kotlin?</p>
+                                <p>Which programming language to choose?</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>TODO</p>
-                    </div>
-                    <div class="paragraph">
-                        <p>Definitely no Scala, Clojure, &#8230;&#8203; and no non-JVM languages (Go, Rust, Python, C#,
-                            &#8230;&#8203;).</p>
-                    </div>
-                    <div class="paragraph">
-                        <p>EDU: from plain java, to Lombok, to kotlin (data classes, properties, prop-initializing-ctor;
-                            from final, to var, to val)</p>
-                    </div>
-                    <div class="paragraph">
-                        <p>EDU: from plain java, to instancio, to kotest-property</p>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="webframework-choice">1.4.2. Webframework Choice</h4>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Draft<br>
-                                            Created: 5.12.2025<br>
-                                            Author: Seepick</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="exampleblock">
-                        <div class="content">
-                            <div class="paragraph">
-                                <p>Spring Boot or Ktor?
-                                    (Quarkus?)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Context:</strong></p>
                     </div>
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>besides people dont know it, less mature, less doc</p>
-                            </li>
-                            <li>
-                                <p>much needs handwritten (openapi generation, jpa orm)</p>
-                            </li>
-                            <li>
-                                <p>the thing with spring boot is, very much like maven, “super strict, either our or no
-                                    way”; very opinionated (convention over configuration like)</p>
+                                <p>Java or Kotlin?</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>it’s beneficial, speed up, and stuff, but once you want to do more custom
-                                                made things, it’s a fucking pain in the ass (like openshift: you are a
-                                                pro user, use k8s directly)</p>
+                                            <p>not really any other: Definitely no Scala, Clojure, &#8230;&#8203; and no
+                                                non-JVM languages (Go, Rust, Python, C#, &#8230;&#8203;).</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p>if you want to start only certain parts of the application in an isolated way, and
-                                    then also in parallel, then spring boot is impossible for that</p>
+                                <p>interoperability; always possible to fall back to java code and "java native
+                                    libs"</p>
+                            </li>
+                            <li>
+                                <p>using Lombok is an indication we want Kotlin:</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>trust me, i tried it several times. it’s fucked.</p>
+                                            <p>from plain java, to Lombok, to kotlin</p>
                                         </li>
                                         <li>
-                                            <p>with ktor, as everything is code (instead of annotations), there is a
-                                                beautifully simple way to do it, and so extremely flexible, that every
-                                                test strategy we can imagine can be implemented.</p>
+                                            <p>native data classes support, properties, prop-initializing-ctor; from
+                                                final to val</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                         </ul>
                     </div>
+                    <div class="paragraph">
+                        <p>Main points for Kotlin:</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Similar to java; fully interoperable (could use Spring)</p>
+                            </li>
+                            <li>
+                                <p>concise (less boilerplate, less verbose); cleaner/less code, faster development</p>
+                            </li>
+                            <li>
+                                <p>Null safety built into the type system</p>
+                            </li>
+                            <li>
+                                <p>Extension functions</p>
+                            </li>
+                            <li>
+                                <p>Functional (functions as first-class citizens; higher-order functions)</p>
+                            </li>
+                            <li>
+                                <p>Immutability by default (collections)</p>
+                            </li>
+                            <li>
+                                <p>JetBrains supported, tooling (IDE!), ecosystem</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p>Side points for Kotlin:</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Concise lambda definition (custom DSLs)</p>
+                            </li>
+                            <li>
+                                <p>Type inference, smart casts</p>
+                            </li>
+                            <li>
+                                <p>Bypass type erasure with inline functions and reified generics (have type parameter
+                                    available at runtime, no more typeOf magic)</p>
+                            </li>
+                            <li>
+                                <p>Default and named parameters</p>
+                            </li>
+                            <li>
+                                <p>String templating</p>
+                            </li>
+                            <li>
+                                <p>Coroutines (async)</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p>Some things Java was able to catch up a bit (yet sometimes a bit poorly implemented):
+                            lambdas, method reference, pattern matching, records</p>
+                    </div>
+                    <div class="paragraph">
+                        <p>Downsides for Kotlin:</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Not as popular (tools, libs, documentation, experience/skill)</p>
+                            </li>
+                            <li>
+                                <p>Compiler is not as highly optimized as Java&#8217;s</p>
+                            </li>
+                            <li>
+                                <p>100% interoperable regarding the language itself, but with some (older) frameworks
+                                    there are some incompatibilities in paradigm</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="sect3">
-                    <h4 id="persistence-technology">1.4.3. Persistence Technology</h4>
+                <div class="sect5">
+                    <h6 id="adr-webframework-choice">ADR - Webframework Choice</h6>
+                    <div class="admonitionblock tip">
+                        <table>
+                            <tr>
+                                <td class="icon">
+                                    <i class="fa icon-tip" title="Tip"></i>
+                                </td>
+                                <td class="content">
+                                    <div class="paragraph">
+                                        <p>Status: Draft<br>
+                                            Created: 5.12.2025<br>
+                                            Author: Seepick</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="exampleblock">
+                        <div class="content">
+                            <div class="paragraph">
+                                <p>We need a web framework to communicate JSON-over-HTTP.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>The web framework is usually also dictating a bigger part of the application:
+                                    dependency injection, configuration, etc.</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>Especially with heavy-weight frameworks like Spring Boot and the
+                                                enterprise implementations are covering more than just "being a fancy
+                                                servlet".</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Options:</strong></p>
+                    </div>
+                    <div class="olist arabic">
+                        <ol class="arabic">
+                            <li>
+                                <p>Spring Boot/Web</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>Most common in JVM world.</p>
+                                        </li>
+                                        <li>
+                                            <p>very opinionated (convention over configuration like)</p>
+                                        </li>
+                                        <li>
+                                            <p>Very much like maven, “super strict, either our or no way”</p>
+                                        </li>
+                                        <li>
+                                            <p>Its pro is its con: beneficial at beginning, but no power user custom
+                                                things (fighting the convention)</p>
+                                        </li>
+                                        <li>
+                                            <p>Difficult to start only parts of the application (testing), in isolation
+                                                (parallel testing; @DirtiesContext), due to classpath scanning and
+                                                annotations usage.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <p>Ktor</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>Lightweight, modern (coroutines), multiplatform (typescript), server and
+                                                client</p>
+                                        </li>
+                                        <li>
+                                            <p>Less popular (getting better), less mature, smaller community
+                                                (documentation).</p>
+                                        </li>
+                                        <li>
+                                            <p>Much needs handwritten; some good (code, control), some bad (openapi
+                                                generation, jpa orm)</p>
+                                        </li>
+                                        <li>
+                                            <p>Everything is code (instead of annotations), there is a beautifully
+                                                simple way to do it, and so extremely flexible, that every test strategy
+                                                we can imagine can be implemented.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <p>JEE JAX-RS</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>Jersey, ReST-easy</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <p>Quarkus</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>More popular, more lightweight than JEE implementations.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="paragraph">
+                        <p>Spring and Kotlin?</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>more and more attention from Spring towards Kotlin; more support</p>
+                            </li>
+                            <li>
+                                <p>see <a href="https://github.com/spring-attic/spring-fu/tree/main/kofu">kofu</a> for
+                                    spring experimental support to make it look like ktor</p>
+                            </li>
+                            <li>
+                                <p>also interesting: <a
+                                        href="https://docs.spring.io/spring-integration/reference/kotlin-dsl.html">Spring
+                                    Kotlin DSL</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Conclusion:</strong></p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>We use Ktor</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect5">
+                    <h6 id="persistence-technology">Persistence Technology</h6>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -2138,12 +2322,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     <div class="sect1">
         <h2 id="application">3. Application</h2>
         <div class="sectionbody">
-            <div class="imageblock">
-                <div class="content">
-                    <img alt="diamond" src="images/diamond.png">
-                </div>
-                <div class="title">Figure 2. A precious material</div>
-            </div>
             <div class="sect2">
                 <h3 id="techstack">3.1. Techstack</h3>
                 <div class="paragraph">
@@ -2176,6 +2354,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
                 <div class="sect3">
                     <h4 id="libraries">3.1.1. Libraries</h4>
+                    <div class="listingblock">
+                        <div class="title">A list of all used dependencies can be found at: <a
+                                href="https://github.com/seepick/diamond/blob/main/buildSrc/src/main/kotlin/Deps.kt">buildSrc/Deps.kt</a>
+                        </div>
+                        <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">object Deps {
+    val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
+    val jsch = "com.github.mwiede:jsch:${Versions.jsch}"
+    object database {
+        val h2 = "com.h2database:h2:${Versions.h2}"
+        object exposed {
+            private fun make(artifact: String) = "org.jetbrains.exposed:exposed-$artifact:${Versions.exposed}"
+            val jdbc = make("jdbc")
+            val datetime = make("java-time")
+        }
+    }
+    // ...
+}
+// Reference your dependencies as such:
+dependencies {
+    implementation(Deps.database.exposed.jdbc)
+}</code></pre>
+                        </div>
+                    </div>
                     <div class="sect4">
                         <h5 id="general">3.1.1.1. General</h5>
                         <div class="dlist">
@@ -2535,7 +2737,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="datetime-library">3.1.2.4. DateTime library</h5>
+                        <h5 id="datetime-library">3.1.2.4. DateTime Library</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -2555,7 +2757,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         <div class="exampleblock">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Use java-time or kotlin-time?</p>
+                                    <p>Use java-time or kotlin-time? (joda not needed anymore)</p>
                                 </div>
                             </div>
                         </div>
@@ -2708,6 +2910,94 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                                         <a class="bare"
                                            href="https://www.javacodegeeks.com/2025/01/mapstruct-vs-modelmapper-a-comparative-analysis.html">https://www.javacodegeeks.com/2025/01/mapstruct-vs-modelmapper-a-comparative-analysis.html</a>
                                     </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sect4">
+                        <h5 id="serialization-library">3.1.2.6. Serialization Library</h5>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Draft<br>
+                                                Created: 7.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>A marshaller/serializer is needed for JSON support.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Options:</strong></p>
+                        </div>
+                        <div class="olist arabic">
+                            <ol class="arabic">
+                                <li>
+                                    <p>Jackson</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Very mature and well-known</p>
+                                            </li>
+                                            <li>
+                                                <p>Some "hickups" with Kotlin&#8217;s different nature</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>gson</p>
+                                </li>
+                                <li>
+                                    <p>Kotlinx Serialization</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Kotlin-idiomatic; reflection/annotation based</p>
+                                            </li>
+                                            <li>
+                                                <p>Simple to write custom de/serializers</p>
+                                            </li>
+                                            <li>
+                                                <p>Multiplatform support (client SDK for frontend)</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Aspects:</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Handling of Java&#8217;s datetime</p>
+                                </li>
+                                <li>
+                                    <p>Support of value classes (typesafety + inlining)</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Conclusion:</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Kotlinx Serialization is best fitting</p>
                                 </li>
                             </ul>
                         </div>
@@ -2957,16 +3247,39 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                 </div>
                 <div class="sect3">
                     <h4 id="gradle-properties">3.5.1. Gradle Properties</h4>
-                    <div class="paragraph">
-                        <p>with certain flags (enabled via gradle properties and on CI), it will enable more
-                            tests/reports (which take longer and require more local setup)</p>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Enable certain flags (enabled via gradle properties and on CI), it will enable more
+                                    tests/reports (which take longer and require more local setup)</p>
+                            </li>
+                            <li>
+                                <p>Pass them either as system variables <code>-D</code> (as gradle properties sometimes
+                                    doesn&#8217;t work <code>-P</code>).</p>
+                            </li>
+                        </ul>
                     </div>
                     <div class="paragraph">
-                        <p>Pass them either as system variables <code>-D</code> (as gradle properties sometimes doesn&#8217;t
-                            work <code>-P</code>).</p>
+                        <p>As seen in <a
+                                href="https://github.com/seepick/diamond/blob/main/buildSrc/src/main/kotlin/GradleProperty.kt">buildSrc/GradleProperty.kt</a>:
+                        </p>
                     </div>
                     <div class="ulist">
                         <ul>
+                            <li>
+                                <p><code>diamond_version</code> - application version string</p>
+                            </li>
+                            <li>
+                                <p><code>diamond_branch</code> - Git branch name</p>
+                            </li>
+                            <li>
+                                <p><code>isCi</code> - flag to indicate running in a build pipeline (false by default,
+                                    assuming local builds)</p>
+                            </li>
+                            <li>
+                                <p><code>enableOwasp</code> - Enable additional security report (takes some time, thus
+                                    disabled by default)</p>
+                            </li>
                             <li>
                                 <p><code>diamond_version</code> - application version, defaults to <code>0</code> if not
                                     specified</p>
@@ -3601,7 +3914,20 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>Strive for functional, pure functions (no side effects).</p>
+                                <p>Strive for functional, e.g.: <strong>pure functions</strong>:</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>return values are identical for identical arguments (no variation with
+                                                static variables, non-local variables, mutable reference arguments or
+                                                input streams, i.e., referential transparency)</p>
+                                        </li>
+                                        <li>
+                                            <p>the function has no side effects (no mutation of non-local variables,
+                                                mutable reference arguments or input/output streams)</p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
                                 <p>no overloaded methods, provide different name</p>
@@ -4114,316 +4440,148 @@ internal fun Application.installHealthRouting() {
             </div>
         </div>
     </div>
-    <div class="sect1">
-        <h2 id="testing">5. Testing</h2>
-        <div class="sectionbody">
+    <h1 class="sect0" id="testing">Testing</h1>
+    <div class="ulist">
+        <ul>
+            <li>
+                <p>All tests are automated; there is not a single manual test!</p>
+            </li>
+            <li>
+                <p>We have full confidence in our tests as a safety net.</p>
+            </li>
+        </ul>
+    </div>
+    <div class="sect2">
+        <h3 id="test-types">.1. Test Types</h3>
+        <div class="sect3">
+            <h4 id="unit-tests">.1.1. Unit Tests</h4>
             <div class="ulist">
                 <ul>
                     <li>
-                        <p>All tests are automated; there is not a single manual test!</p>
+                        <p>In OO-languages, the smallest unit is a class (object); tests grouped by its public
+                            methods.</p>
                     </li>
                     <li>
-                        <p>We have full confidence in our tests as a safety net.</p>
+                        <p>Run extremely fast, easy to write (if code is well designed/testable), stable (low
+                            maintenance).</p>
+                    </li>
+                    <li>
+                        <p>There is not a single framework (besides mocking if applicable) involved.</p>
+                    </li>
+                    <li>
+                        <p>They test business logic code, not integration code (smell: overuse of mocking).</p>
                     </li>
                 </ul>
             </div>
-            <div class="sect2">
-                <h3 id="test-types">5.1. Test Types</h3>
-                <div class="sect3">
-                    <h4 id="unit-tests">5.1.1. Unit Tests</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>In OO-languages, the smallest unit is a class (object); tests grouped by its public
-                                    methods.</p>
-                            </li>
-                            <li>
-                                <p>Run extremely fast, easy to write (if code is well designed/testable), stable (low
-                                    maintenance).</p>
-                            </li>
-                            <li>
-                                <p>There is not a single framework (besides mocking if applicable) involved.</p>
-                            </li>
-                            <li>
-                                <p>They test business logic code, not integration code (smell: overuse of mocking).</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="integration-tests">5.1.2. Integration Tests</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Narrow definition: Everything testing 2+ classes; broad definition: Testing the
-                                    application as a whole.</p>
-                            </li>
-                            <li>
-                                <p>Never leaves the application boundary, thus in <strong>full control</strong>; stable,
-                                    but a bit slower.</p>
-                            </li>
-                            <li>
-                                <p>Relying on an (implicit/self-defined) contract is risky (better E2E).</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="end-to-end-e2e-tests">5.1.3. End-to-End (E2E) Tests</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>About:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Using the application as a black box; only acting upon a contract
-                                                (requirements).</p>
-                                        </li>
-                                        <li>
-                                            <p>Located in a separate GIT repo (no code sharing/dependency; be
-                                                independent, a parallel stream).</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Pros:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Verifies the (implicit) contracts</p>
-                                        </li>
-                                        <li>
-                                            <p>Tests the complexity behind configuring the systems working neatly
-                                                together.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Cons:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Very slow execution</p>
-                                        </li>
-                                        <li>
-                                            <p>Fragile, as depends on all systems to be up and running.</p>
-                                        </li>
-                                        <li>
-                                            <p>Sometimes the functionality is "hidden" and not testable from the
-                                                outside.</p>
-                                        </li>
-                                        <li>
-                                            <p>No proper control over the (test) data.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Details:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Using Karate test framework, only change base URL to target another
-                                                environment.</p>
-                                        </li>
-                                        <li>
-                                            <p>Use @WIP tagging; maybe Jira ID @ABC-12345</p>
-                                        </li>
-                                        <li>
-                                            <p>Each environment (DEV, FB-*, TEST, ACC) is running them</p>
-                                            <div class="ulist">
-                                                <ul>
-                                                    <li>
-                                                        <p>Could provide @ReadOnly to target also PROD</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>external parties need to provide test-environment/sandbox, otherwise mock it</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>mocking external parties MUST always comply with real implementation,
-                                                otherwise our (self-invented) contract is different from actual real
-                                                implementation</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="other-types">5.1.4. Other Types</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>application tests?</p>
-                            </li>
-                            <li>
-                                <p>module tests?</p>
-                            </li>
-                            <li>
-                                <p>component tests?</p>
-                            </li>
-                            <li>
-                                <p>acceptance/functional tests</p>
-                            </li>
-                            <li>
-                                <p>contract tests</p>
-                            </li>
-                            <li>
-                                <p>external system tests (backend)</p>
-                            </li>
-                            <li>
-                                <p>system tests</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Other:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>ATDD, BDD Tests</p>
-                            </li>
-                            <li>
-                                <p>smoke tests</p>
-                            </li>
-                            <li>
-                                <p>regression tests</p>
-                            </li>
-                            <li>
-                                <p>performance/load/stress tests</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>We for sure need one of those!</p>
-                                        </li>
-                                        <li>
-                                            <p>Use gatling (with karate?) or jmeter</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>security/penetration tests</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Other other:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>sanity tests</p>
-                            </li>
-                            <li>
-                                <p>exploratory tests</p>
-                            </li>
-                            <li>
-                                <p>usability tests</p>
-                            </li>
-                            <li>
-                                <p>compatibility tests</p>
-                            </li>
-                            <li>
-                                <p>localization/internationalization tests</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
+        <div class="sect3">
+            <h4 id="integration-tests">.1.2. Integration Tests</h4>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>Narrow definition: Everything testing 2+ classes; broad definition: Testing the application
+                            as a whole.</p>
+                    </li>
+                    <li>
+                        <p>Never leaves the application boundary, thus in <strong>full control</strong>; stable, but a
+                            bit slower.</p>
+                    </li>
+                    <li>
+                        <p>Relying on an (implicit/self-defined) contract is risky (better E2E).</p>
+                    </li>
+                </ul>
             </div>
-            <div class="sect2">
-                <h3 id="test-strategy">5.2. Test Strategy</h3>
-                <div class="imageblock">
-                    <div class="content">
-                        <img alt="test strategies" src="images/diagrams/test-strategies.png">
-                    </div>
-                    <div class="title">Figure 3. Simplified view from different test strategies onto the application
-                        boundaries
-                    </div>
-                </div>
-                <div class="ulist">
-                    <ul>
-                        <li>
-                            <p>Some Unit Tests (using Kotest framework) covering logic (not infrastructure/IO related
-                                code).</p>
-                        </li>
-                        <li>
-                            <p>Lots of Integration Tests (using Cucumber framework) verifying functional
-                                requirements.</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>Either using fast test engine, or real HTTP (slower, more
-                                            production-similar).</p>
-                                    </li>
-                                    <li>
-                                        <p>Either using H2 or Oracle in a testcontainer (slower, more
-                                            production-similar).</p>
-                                    </li>
-                                    <li>
-                                        <p>Has the Koin context available, thus full control of the internals
-                                            (extern-stub or custom mocks).</p>
-                                    </li>
-                                    <li>
-                                        <p>The parts, the IT don&#8217;t cover, can be complemented by separate
-                                            tests.</p>
-                                    </li>
-                                    <li>
-                                        <p>Karate not feasable anymore, due to need of custom vocabulary (step
-                                            definitions).</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Few End2end Tests talking real HTTP, separately deployed, no access than a regular user
-                                would.</p>
-                        </li>
-                        <li>
-                            <p>A sandbox environment of 3rd party services would be great (if available).</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>Do we want to provide one ourselves to others?!</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="paragraph">
-                    <p>Ad complementing:</p>
-                </div>
-                <div class="ulist">
-                    <ul>
-                        <li>
-                            <p>Backend Tests, only testing the extern-layer with testcontainers.</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>Could make them system tests (without testcontainers! sandbox?), but super
-                                            fragile/limited.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="sect3">
+            <h4 id="end-to-end-e2e-tests">.1.3. End-to-End (E2E) Tests</h4>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>About:</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Using the application as a black box; only acting upon a contract
+                                        (requirements).</p>
+                                </li>
+                                <li>
+                                    <p>Located in a separate GIT repo (no code sharing/dependency; be independent, a
+                                        parallel stream).</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Pros:</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Verifies the (implicit) contracts</p>
+                                </li>
+                                <li>
+                                    <p>Tests the complexity behind configuring the systems working neatly together.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Cons:</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Very slow execution</p>
+                                </li>
+                                <li>
+                                    <p>Fragile, as depends on all systems to be up and running.</p>
+                                </li>
+                                <li>
+                                    <p>Sometimes the functionality is "hidden" and not testable from the outside.</p>
+                                </li>
+                                <li>
+                                    <p>No proper control over the (test) data.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Details:</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Using Karate test framework, only change base URL to target another
+                                        environment.</p>
+                                </li>
+                                <li>
+                                    <p>Use @WIP tagging; maybe Jira ID @ABC-12345</p>
+                                </li>
+                                <li>
+                                    <p>Each environment (DEV, FB-*, TEST, ACC) is running them</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Could provide @ReadOnly to target also PROD</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <p>external parties need to provide test-environment/sandbox, otherwise mock it</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>mocking external parties MUST always comply with real implementation, otherwise
+                                        our (self-invented) contract is different from actual real implementation</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="sect2">
-                <h3 id="e1e-test">5.3. E1E Test</h3>
+            <div class="sect4">
+                <h5 id="e1e-test">.1.3.1. E1E Test</h5>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -4444,8 +4602,167 @@ internal fun Application.installHealthRouting() {
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="sect3">
+            <h4 id="other-types">.1.4. Other Types</h4>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>ATDD, BDD Tests</p>
+                    </li>
+                    <li>
+                        <p>performance/load/stress tests</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>We for sure need one of those!
+                                        Use gatling (with karate?) or jmeter</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Backend Tests / external system tests</p>
+                    </li>
+                    <li>
+                        <p>contract tests</p>
+                    </li>
+                    <li>
+                        <p>system tests</p>
+                    </li>
+                    <li>
+                        <p>acceptance/functional tests</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="paragraph">
+                <p>Other:</p>
+            </div>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>application tests?</p>
+                    </li>
+                    <li>
+                        <p>module tests?</p>
+                    </li>
+                    <li>
+                        <p>component tests?</p>
+                    </li>
+                    <li>
+                        <p>smoke tests</p>
+                    </li>
+                    <li>
+                        <p>regression tests</p>
+                    </li>
+                    <li>
+                        <p>security/penetration tests (outsourced?)</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="paragraph">
+                <p>Other other:</p>
+            </div>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>sanity tests</p>
+                    </li>
+                    <li>
+                        <p>exploratory tests</p>
+                    </li>
+                    <li>
+                        <p>usability tests</p>
+                    </li>
+                    <li>
+                        <p>compatibility tests</p>
+                    </li>
+                    <li>
+                        <p>localization/internationalization tests</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="test-strategy">2. Test Strategy</h2>
+        <div class="sectionbody">
+            <div class="imageblock">
+                <div class="content">
+                    <img alt="test strategies" src="images/diagrams/test-strategies.png">
+                </div>
+                <div class="title">Figure 4. Simplified view from different test strategies onto the application
+                    boundaries
+                </div>
+            </div>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>Some Unit Tests (using Kotest framework) covering logic (not infrastructure/IO related
+                            code).</p>
+                    </li>
+                    <li>
+                        <p>Lots of Integration Tests (using Cucumber framework) verifying functional requirements.</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Either using fast test engine, or real HTTP (slower, more
+                                        production-similar).</p>
+                                </li>
+                                <li>
+                                    <p>Either using H2 or Oracle in a testcontainer (slower, more
+                                        production-similar).</p>
+                                </li>
+                                <li>
+                                    <p>Has the Koin context available, thus full control of the internals (extern-stub
+                                        or custom mocks).</p>
+                                </li>
+                                <li>
+                                    <p>The parts, the IT don&#8217;t cover, can be complemented by separate tests.</p>
+                                </li>
+                                <li>
+                                    <p>Karate not feasable anymore, due to need of custom vocabulary (step
+                                        definitions).</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Few End2end Tests talking real HTTP, separately deployed, no access than a regular user
+                            would.</p>
+                    </li>
+                    <li>
+                        <p>A sandbox environment of 3rd party services would be great (if available).</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Do we want to provide one ourselves to others?!</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="paragraph">
+                <p>Ad complementing:</p>
+            </div>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>Backend Tests, only testing the extern-layer with testcontainers.</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Could make them system tests (without testcontainers! sandbox?), but super
+                                        fragile/limited.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <div class="sect2">
-                <h3 id="best-practices-2">5.4. Best Practices</h3>
+                <h3 id="best-practices-2">2.1. Best Practices</h3>
                 <div class="admonitionblock warning">
                     <table>
                         <tr>
@@ -4489,9 +4806,42 @@ internal fun Application.installHealthRouting() {
                         </li>
                     </ul>
                 </div>
+                <div class="paragraph">
+                    <p>Watch out for fast test execution:</p>
+                </div>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>Always parallelize all tests; requires isolated state of whole application!</p>
+                        </li>
+                        <li>
+                            <p>Use Ktor test-engine for simulated, and much faster, testing HTTP communication.</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="sect2">
-                <h3 id="anti-patterns">5.5. Anti Patterns</h3>
+                <h3 id="testable-code">2.2. Testable Code</h3>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>no manual instantiation or static random data generation</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="maintainable-tests">2.3. Maintainable Tests</h3>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>Assert only what&#8217;s relevant, thus less in many cases.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="anti-patterns">2.4. Anti Patterns</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -4516,31 +4866,11 @@ internal fun Application.installHealthRouting() {
                         </li>
                     </ul>
                 </div>
-                <div class="sect3">
-                    <h4 id="testable-code">5.5.1. Testable Code</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>no manual instantiation or static random data generation</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="maintainable-tests">5.5.2. Maintainable Tests</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Assert only what&#8217;s relevant, thus less in many cases.</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
             <div class="sect2">
-                <h3 id="test-tech">5.6. Test Tech</h3>
+                <h3 id="test-tech">2.5. Test Tech</h3>
                 <div class="sect3">
-                    <h4 id="use-bdd">5.6.1. Use BDD</h4>
+                    <h4 id="use-bdd">2.5.1. Use BDD</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4587,7 +4917,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="use-cucumber-lambdas">5.6.2. Use Cucumber Lambdas</h4>
+                    <h4 id="use-cucumber-lambdas">2.5.2. Use Cucumber Lambdas</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4651,7 +4981,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="verify-coverage">5.6.3. Verify Coverage</h4>
+                    <h4 id="verify-coverage">2.5.3. Verify Coverage</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4729,7 +5059,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="assert-json">5.6.4. Assert JSON</h4>
+                    <h4 id="assert-json">2.5.4. Assert JSON</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4796,7 +5126,7 @@ internal fun Application.installHealthRouting() {
         </div>
     </div>
     <div class="sect1">
-        <h2 id="code-quality">6. Code Quality</h2>
+        <h2 id="code-quality">3. Code Quality</h2>
         <div class="sectionbody">
             <div class="ulist">
                 <ul>
@@ -4832,7 +5162,7 @@ internal fun Application.installHealthRouting() {
                 </ul>
             </div>
             <div class="sect2">
-                <h3 id="static-code-analysis">6.1. Static Code Analysis</h3>
+                <h3 id="static-code-analysis">3.1. Static Code Analysis</h3>
                 <div class="paragraph">
                     <p>Detekt</p>
                 </div>
@@ -4849,7 +5179,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="sonarqube">6.2. SonarQube</h3>
+                <h3 id="sonarqube">3.2. SonarQube</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -4875,7 +5205,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="static-code-analysis-2">6.3. Static Code Analysis</h3>
+                <h3 id="static-code-analysis-2">3.3. Static Code Analysis</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -4913,7 +5243,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="enforce-failure-handling">6.4. Enforce Failure Handling</h3>
+                <h3 id="explicit-exceptionadr-handling">3.4. Explicit ExceptionADR - Handling</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -4936,86 +5266,115 @@ internal fun Application.installHealthRouting() {
                 <div class="ulist">
                     <ul>
                         <li>
-                            <p>Pure Functions:</p>
+                            <p>Ever since the time when the Spring Framework got popular, unchecked exceptions were
+                                favored over checked ones.
+                                (Neil Gafter, Josua Bloch)</p>
                             <div class="ulist">
                                 <ul>
                                     <li>
-                                        <p>return values are identical for identical arguments (no variation with static
-                                            variables, non-local variables, mutable reference arguments or input
-                                            streams, i.e., referential transparency)</p>
-                                    </li>
-                                    <li>
-                                        <p>the function has no side effects (no mutation of non-local variables, mutable
-                                            reference arguments or input/output streams)</p>
+                                        <p>Kotlin goes one step further, and treats all exceptions as unchecked
+                                            ones.</p>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <p>Throwing (unchecked) exceptions is a sort of an implicit return value which can be
-                                forgotten to be handled properly, resulting in false-500 responses.</p>
-                        </li>
-                        <li>
-                            <p>Use the Arrow library to introduce a more functional approach, the <code>Either</code>
-                                class specifically</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>TODO: in the future maybe also optics to manipulate deep nested, immutable
-                                            data classes.</p>
-                                    </li>
-                                </ul>
-                            </div>
+                            <p>Throwing exceptions is a sort of an implicit return value, which can be forgotten to be
+                                handled properly (resulting in false-500 responses).</p>
                         </li>
                     </ul>
                 </div>
+                <div class="listingblock">
+                    <div class="title">Implicit exceptions are easily forgotten and unhandled</div>
+                    <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">fun Service.dangerousMethod(): Result {
+    throw RuntimeException()
+}
+fun Route.handleGet(): ServerResponse {
+    val result = service.dangerousMethod()
+    return toResponse(result)
+}</code></pre>
+                    </div>
+                </div>
                 <div class="paragraph">
-                    <p><strong>Either:</strong></p>
+                    <p><strong>Proposal:</strong></p>
                 </div>
                 <div class="ulist">
                     <ul>
                         <li>
-                            <p>Good:</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>developers need to think (forced to, explicit) error types, mapping of them
-                                            (translation of corrupt data to bad request/internal error)</p>
-                                    </li>
-                                    <li>
-                                        <p>supports DDD by simulating failure-aware constructors (companion operator fun
-                                            with Either return type)</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Bad:</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>sometimes not clear if not familiar with it</p>
-                                    </li>
-                                    <li>
-                                        <p>sometimes IDE doesn&#8217;t suggest <code>.bind()</code> although it&#8217;s
-                                            the solution</p>
-                                    </li>
-                                </ul>
-                            </div>
+                            <p>Use the <a href="https://arrow-kt.io/">Arrow library</a> to introduce a more functional
+                                approach, its <code>Either</code> type specifically.</p>
                         </li>
                     </ul>
+                </div>
+                <div class="listingblock">
+                    <div class="title">Explicit fault handling cannot be forgotten nor unhandled</div>
+                    <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">fun Service.dangerousMethod(): Either&lt;Failure, Result&gt; {
+    // do some real logic ...
+    return Failure().left()
+}
+fun handleGet(): ServerResponse =
+    service.dangerousMethod().fold(
+        ifLeft = { toFailResponse(it) }, <i class="conum" data-value="1"></i><b>(1)</b>
+        ifRight = { toResponse(it) },
+    )</code></pre>
+                    </div>
+                </div>
+                <div class="colist arabic">
+                    <table>
+                        <tr>
+                            <td><i class="conum" data-value="1"></i><b>1</b></td>
+                            <td>in order to access the result, we need to unwrap both
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p>Good:</p>
+                                            <div class="ulist">
+                                                <ul>
+                                                    <li>
+                                                        <p>developers need to think (forced to, explicit) error types,
+                                                            mapping of them (translation of corrupt data to bad
+                                                            request/internal error)</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>supports DDD by simulating failure-aware constructors
+                                                            (companion operator fun with Either return type)</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p>Bad:</p>
+                                            <div class="ulist">
+                                                <ul>
+                                                    <li>
+                                                        <p>sometimes not clear if not familiar with it</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>sometimes IDE doesn&#8217;t suggest <code>.bind()</code>
+                                                            although it&#8217;s the solution</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
     <div class="sect1">
-        <h2 id="devops">7. DevOps</h2>
+        <h2 id="devops">4. DevOps</h2>
         <div class="sectionbody">
             <div class="imageblock">
                 <div class="content">
                     <img alt="build pipelines" src="images/diagrams/build-pipelines.png">
                 </div>
-                <div class="title">Figure 4. Sketching a build pipeline overview</div>
+                <div class="title">Figure 5. Sketching a build pipeline overview</div>
             </div>
             <div class="ulist">
                 <ul>
@@ -5043,7 +5402,7 @@ internal fun Application.installHealthRouting() {
                 </ul>
             </div>
             <div class="sect2">
-                <h3 id="github-actions">7.1. GitHub Actions</h3>
+                <h3 id="github-actions">4.1. GitHub Actions</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -5059,7 +5418,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="distributed-services">7.2. Distributed Services</h3>
+                <h3 id="distributed-services">4.2. Distributed Services</h3>
                 <div class="paragraph">
                     <p>Their specifics require:</p>
                 </div>
@@ -5074,7 +5433,7 @@ internal fun Application.installHealthRouting() {
                     </ul>
                 </div>
                 <div class="sect3">
-                    <h4 id="versioning-scheme">7.2.1. Versioning Scheme</h4>
+                    <h4 id="versioning-scheme">4.2.1. Versioning Scheme</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -5167,10 +5526,10 @@ internal fun Application.installHealthRouting() {
         </div>
     </div>
     <div class="sect1">
-        <h2 id="appendix">8. Appendix</h2>
+        <h2 id="appendix">5. Appendix</h2>
         <div class="sectionbody">
             <div class="sect2">
-                <h3 id="resources">8.1. Resources</h3>
+                <h3 id="resources">5.1. Resources</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -5256,7 +5615,7 @@ internal fun Application.installHealthRouting() {
 <div id="footer">
     <div id="footer-text">
         Version SNAPSHOT<br>
-        Last updated 2025-12-07 11:59:20 +0100
+        Last updated 2025-12-07 22:10:05 +0100
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

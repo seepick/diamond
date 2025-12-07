@@ -97,7 +97,7 @@ tasks.asciidoctorPdf {
     }
     options(
         mapOf(
-            "doctype" to "book",
+//            "doctype" to "book", // set directly in adoc (so IDE also knows it, hehe)
             "ruby" to "erubis",
         ),
     )

@@ -2,11 +2,11 @@ ifndef::adrsdir[]
 include::../local_include.adoc[]
 endif::[]
 
-== Architecture
+= Architecture
 
 // TODO show high-level overviews & diagrams
 
-=== Overall Guiding Principles
+== Overall Guiding Principles
 
 Based on those KPIs:
 
@@ -15,8 +15,8 @@ Based on those KPIs:
 * API response times of Xms (performance tests).
 * Build time max 3mins locally; build pipeline max 5mins.
 
-include::service_types.adoc[]
+include::service_types.adoc[leveloffset=+1]
 
-include::layering.adoc[leveloffset=+2]
+include::layering.adoc[leveloffset=+1]
 
-include::technology.adoc[leveloffset=+2]
+include::technology.adoc[leveloffset=+1]

@@ -62,17 +62,33 @@ ktor {
     }
 }
 
-tasks.register<JavaExec>("run") {
+fun registerJavaExecTask(name: String, group: String, description: String, mainClass: String) {
+    tasks.register<JavaExec>(name) {
+        // instead "runBoot" ;)
+        this.group = group
+        this.description = description
+        // TODO make output configurable
+        this.mainClass.set(mainClass)
+        workingDir = rootDir
+        classpath = java.sourceSets["test"].runtimeClasspath
+    }
 }
+
+registerJavaExecTask(
+    name = "runLocal",
+    group = "application",
+    description = "asdf",
+    mainClass = Constants.Fqn.localMainClass,
+)
+
 /** generate asciidoc describing the support environment variables to be set by operations */
-tasks.register<JavaExec>("generateConfigDoc") {
-    group = "documentation"
-    description = "Generate ENV vars overview by using reflection."
+registerJavaExecTask(
     // TODO make output configurable
-    mainClass.set(Constants.Fqn.configDocWriter)
-    workingDir = rootDir
-    classpath = java.sourceSets["test"].runtimeClasspath
-}
+    name = "generateConfigDoc", // instead "runBoot" ;)
+    group = "documentation",
+    description = "Generate ENV vars overview by using reflection.",
+    mainClass = Constants.Fqn.configDocWriter,
+)
 
 configure<ProcessResources>("processResources") {
     from("src/main/resources") {

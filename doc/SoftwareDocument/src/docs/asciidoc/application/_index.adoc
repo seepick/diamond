@@ -4,9 +4,6 @@ endif::[]
 
 == Application
 
-.A precious material
-image::{imgdir}/diamond.png[scaledwidth=30%]
-
 include::techstack.adoc[leveloffset=+2]
 
 === Startup Arguments

@@ -1,0 +1,34 @@
+// do NOT add header titles here!
+
+NOTE: If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
+
+This document was built using link:https://asciidoc.org[AsciiDoc], a simple yet powerful markup language for writing technical documentation.
+
+ifndef::isPdf[]
+NOTE: Download this version as a PDF: https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf
+endif::[]
+
+The build for this document was triggered on {buildDate} at {buildTime} - enjoy :)
+
+.A precious material
+image::{imgdir}/diamond.png[scaledwidth=50%,align="center"]
+
+*About:*
+
+This project is a state-of-the-art prototype of a backend service, which can be used as a laboratory to gain experience (elaborating further on this proof-of-concept), a base for technical decision making and a template for future reference.
+
+This document describes not only the specifics of this implementation (a tangible, hands-on, experience-based source of information using a concrete example instead of hypothetical theorization), but also the underlying principles, representing best practices.
+It is tailored to a technical prototype, thus there will be little to no mentioning of what could be expected for a regular service with business features and production relevance.
+Think of business concepts and rules, IT system landscape, API documentation, and much on the operational side (DevOps/CICD, releasing, performance, tracing, monitoring, alerting).
+It ends with an outlook on open doings and a future vision on how to shape also the broader picture of integration, deployment, monitoring, etc.
+
+*Decision Documentation:*
+
+We use ADRs (Architecture Decision Records) to document important architectural and technical decisions made during the development of this software project.
+
+For more explanation what ADRs are, please read: https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc
+
+*Chapter Overview:*
+
+.Sitemap of the book's content
+image::{imgdir}/sitemap.svg[]

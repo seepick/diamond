@@ -1,16 +1,16 @@
-=== Service Types
+= Service Types
 
 * single codebase, or multiple (classpath isolated) codebases
 * single service (pseudo-monolith) vs multiple services (isolation, performance)
 * TODO read and summarize: https://nordicapis.com/whats-the-difference-microservice-macroservice-monolith/
 
-==== Monolith
+== Monolith
 
 * one codebase, one deployable
 * GOOD: low complexity (versioning, service location) and high speed (calls via code in same process instead network)
 * BAD: change-resistant, slow, ...
 
-==== Modulith
+== Modulith
 
 * one codebase, basically just a monolith but a bit cleaner packaging; domain wise, not tech
 * all the disadvantages of a monolith
@@ -20,12 +20,12 @@
 * high version: classpath isolated libraries (OSGi bundles, plugin architecture; extreme low coupling)
 * this seems to be the only one counteracting the monolith's nature of low/mid version
 
-==== Macroservices
+== Macroservices
 
 * bigger sized microservices
 * a bit less (manageable) complexity (pros of monolith) and still good enough to gain from the benefits (pros of modulith)
 
-==== Microservices
+== Microservices
 
 * one very small codebase to one very small deployable
 * GOOD:
@@ -34,7 +34,7 @@
 * BAD:
 * complexity, service orchestration, versioning
 
-==== Nanoservices
+== Nanoservices
 
 * deploy functions (AWS lambda)
 * seems too extreme; complete different approach
