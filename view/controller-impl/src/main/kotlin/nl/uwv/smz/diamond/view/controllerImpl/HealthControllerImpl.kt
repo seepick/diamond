@@ -11,10 +11,6 @@ import nl.uwv.smz.diamond.view.model.HealthStateDto
 class HealthControllerImpl(
     private val healthableServices: List<HealthableService>
 ) : HealthController {
-    init {
-        println("XXXXX=${healthableServices.size}")
-    }
-
     override fun fetchHealthReport() = healthableServices.map { it.healthInfo() }.let { infos ->
         HealthReportDto(
             overallState = infos.all { it.state == HealthState.Healthy }.toHealthStateDto(),

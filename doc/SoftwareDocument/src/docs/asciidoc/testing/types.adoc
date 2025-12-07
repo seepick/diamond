@@ -1,0 +1,73 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Test Types
+
+== Unit Tests
+
+* In OO-languages, the smallest unit is a class (object); tests grouped by its public methods.
+* Run extremely fast, easy to write (if code is well designed/testable), stable (low maintenance).
+* There is not a single framework (besides mocking if applicable) involved.
+* They test business logic code, not integration code (smell: overuse of mocking).
+
+== Integration Tests
+
+* Narrow definition: Everything testing 2+ classes; broad definition: Testing the application as a whole.
+* Never leaves the application boundary, thus in *full control*; stable, but a bit slower.
+* Relying on an (implicit/self-defined) contract is risky (better E2E).
+
+== End-to-End (E2E) Tests
+
+* About:
+** Using the application as a black box; only acting upon a contract (requirements).
+** Located in a separate GIT repo (no code sharing/dependency; be independent, a parallel stream).
+* Pros:
+** Verifies the (implicit) contracts
+** Tests the complexity behind configuring the systems working neatly together.
+* Cons:
+** Very slow execution
+** Fragile, as depends on all systems to be up and running.
+** Sometimes the functionality is "hidden" and not testable from the outside.
+** No proper control over the (test) data.
+* Details:
+** Using Karate test framework, only change base URL to target another environment.
+** Use @WIP tagging; maybe Jira ID @ABC-12345
+** Each environment (DEV, FB-*, TEST, ACC) is running them
+*** Could provide @ReadOnly to target also PROD
+* external parties need to provide test-environment/sandbox, otherwise mock it
+** mocking external parties MUST always comply with real implementation, otherwise our (self-invented) contract is different from actual real implementation
+
+=== E1E Test
+
+* A mix between an Integration Test and an End2end Test is a E1E Test (half of a E2E).
+* It works under same assumptions as E2E (blackbox, Karate) but all real systems are mocked.
+** Additionally it has access to system internals through an additionally deployed test API.
+
+== Other Types
+
+* ATDD, BDD Tests
+* performance/load/stress tests
+** We for sure need one of those!
+Use gatling (with karate?) or jmeter
+* Backend Tests / external system tests
+* contract tests
+* system tests
+* acceptance/functional tests
+
+Other:
+
+* application tests?
+* module tests?
+* component tests?
+* smoke tests
+* regression tests
+* security/penetration tests (outsourced?)
+
+Other other:
+
+* sanity tests
+* exploratory tests
+* usability tests
+* compatibility tests
+* localization/internationalization tests

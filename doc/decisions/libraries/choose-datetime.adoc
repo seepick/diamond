@@ -1,4 +1,4 @@
-= DateTime library
+= DateTime Library
 
 [TIP]
 ====
@@ -9,7 +9,7 @@ Author: Seepick
 
 [QUESTION]
 ====
-Use java-time or kotlin-time?
+Use java-time or kotlin-time? (joda not needed anymore)
 ====
 
 *Java:*

@@ -1,4 +1,4 @@
-= Webframework Choice
+= ADR - Webframework Choice
 
 [TIP]
 ====
@@ -9,17 +9,36 @@ Author: Seepick
 
 [QUESTION]
 ====
-Spring Boot or Ktor?
-(Quarkus?)
+We need a web framework to communicate JSON-over-HTTP.
 ====
 
-*Context:*
+* The web framework is usually also dictating a bigger part of the application: dependency injection, configuration, etc.
+** Especially with heavy-weight frameworks like Spring Boot and the enterprise implementations are covering more than just "being a fancy servlet".
 
-* besides people dont know it, less mature, less doc
-* much needs handwritten (openapi generation, jpa orm)
+*Options:*
 
-* the thing with spring boot is, very much like maven, “super strict, either our or no way”; very opinionated (convention over configuration like)
-** it’s beneficial, speed up, and stuff, but once you want to do more custom made things, it’s a fucking pain in the ass (like openshift: you are a pro user, use k8s directly)
-* if you want to start only certain parts of the application in an isolated way, and then also in parallel, then spring boot is impossible for that
-** trust me, i tried it several times. it’s fucked.
-** with ktor, as everything is code (instead of annotations), there is a beautifully simple way to do it, and so extremely flexible, that every test strategy we can imagine can be implemented.
+. Spring Boot/Web
+** Most common in JVM world.
+** very opinionated (convention over configuration like)
+** Very much like maven, “super strict, either our or no way”
+** Its pro is its con: beneficial at beginning, but no power user custom things (fighting the convention)
+** Difficult to start only parts of the application (testing), in isolation (parallel testing; @DirtiesContext), due to classpath scanning and annotations usage.
+. Ktor
+** Lightweight, modern (coroutines), multiplatform (typescript), server and client
+** Less popular (getting better), less mature, smaller community (documentation).
+** Much needs handwritten; some good (code, control), some bad (openapi generation, jpa orm)
+** Everything is code (instead of annotations), there is a beautifully simple way to do it, and so extremely flexible, that every test strategy we can imagine can be implemented.
+. JEE JAX-RS
+** Jersey, ReST-easy
+. Quarkus
+** More popular, more lightweight than JEE implementations.
+
+Spring and Kotlin?
+
+* more and more attention from Spring towards Kotlin; more support
+* see link:https://github.com/spring-attic/spring-fu/tree/main/kofu[kofu] for spring experimental support to make it look like ktor
+* also interesting: link:https://docs.spring.io/spring-integration/reference/kotlin-dsl.html[Spring Kotlin DSL]
+
+*Conclusion:*
+
+* We use Ktor

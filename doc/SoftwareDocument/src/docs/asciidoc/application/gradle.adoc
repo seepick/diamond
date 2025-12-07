@@ -12,10 +12,15 @@ endif::[]
 
 == Gradle Properties
 
-with certain flags (enabled via gradle properties and on CI), it will enable more tests/reports (which take longer and require more local setup)
+* Enable certain flags (enabled via gradle properties and on CI), it will enable more tests/reports (which take longer and require more local setup)
+* Pass them either as system variables `-D` (as gradle properties sometimes doesn't work `-P`).
 
-Pass them either as system variables `-D` (as gradle properties sometimes doesn't work `-P`).
+As seen in link:https://github.com/seepick/diamond/blob/main/buildSrc/src/main/kotlin/GradleProperty.kt[buildSrc/GradleProperty.kt]:
 
+* `diamond_version` - application version string
+* `diamond_branch` - Git branch name
+* `isCi` - flag to indicate running in a build pipeline (false by default, assuming local builds)
+* `enableOwasp` - Enable additional security report (takes some time, thus disabled by default)
 * `diamond_version` - application version, defaults to `0` if not specified
 ** displayed in info endpoint, used in generated documentation
 * `runTestcontainersTests` - see task below

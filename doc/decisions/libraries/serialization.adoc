@@ -1,0 +1,33 @@
+= Serialization Library
+
+[TIP]
+====
+Status: Draft +
+Created: 7.12.2025 +
+Author: Seepick
+====
+
+[QUESTION]
+====
+A marshaller/serializer is needed for JSON support.
+====
+
+*Options:*
+
+. Jackson
+** Very mature and well-known
+** Some "hickups" with Kotlin's different nature
+. gson
+. Kotlinx Serialization
+** Kotlin-idiomatic; reflection/annotation based
+** Simple to write custom de/serializers
+** Multiplatform support (client SDK for frontend)
+
+*Aspects:*
+
+* Handling of Java's datetime
+* Support of value classes (typesafety + inlining)
+
+*Conclusion:*
+
+* Kotlinx Serialization is best fitting

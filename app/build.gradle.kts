@@ -62,6 +62,8 @@ ktor {
     }
 }
 
+tasks.register<JavaExec>("run") {
+}
 /** generate asciidoc describing the support environment variables to be set by operations */
 tasks.register<JavaExec>("generateConfigDoc") {
     group = "documentation"

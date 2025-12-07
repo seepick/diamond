@@ -451,157 +451,148 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     <div class="toc2" id="toc">
         <div id="toctitle">Table of Contents</div>
         <ul class="sectlevel1">
-            <li><a href="#introduction">1. Introduction</a>
+            <li><a href="#architecture">1. Architecture</a>
                 <ul class="sectlevel2">
-                    <li><a href="#purpose">1.1. Purpose</a></li>
-                    <li><a href="#decision-documentation">1.2. Decision Documentation</a></li>
-                </ul>
-            </li>
-            <li><a href="#architecture">2. Architecture</a>
-                <ul class="sectlevel2">
-                    <li><a href="#service-types">2.1. Service Types</a>
+                    <li><a href="#overall-guiding-principles">1.1. Overall Guiding Principles</a></li>
+                    <li><a href="#service-types">1.2. Service Types</a>
                         <ul class="sectlevel3">
-                            <li><a href="#monolith">2.1.1. Monolith</a></li>
-                            <li><a href="#modulith">2.1.2. Modulith</a></li>
-                            <li><a href="#macroservices">2.1.3. Macroservices</a></li>
-                            <li><a href="#microservices">2.1.4. Microservices</a></li>
-                            <li><a href="#nanoservices">2.1.5. Nanoservices</a></li>
+                            <li><a href="#monolith">1.2.1. Monolith</a></li>
+                            <li><a href="#modulith">1.2.2. Modulith</a></li>
+                            <li><a href="#macroservices">1.2.3. Macroservices</a></li>
+                            <li><a href="#microservices">1.2.4. Microservices</a></li>
+                            <li><a href="#nanoservices">1.2.5. Nanoservices</a></li>
                         </ul>
                     </li>
-                    <li><a href="#layering">2.2. Layering</a>
+                    <li><a href="#layering">1.3. Layering</a>
                         <ul class="sectlevel3">
-                            <li><a href="#packaging">2.2.1. Packaging</a></li>
-                            <li><a href="#subprojects">2.2.2. Subprojects</a></li>
-                            <li><a href="#client-sdks">2.2.3. Client-SDKs</a></li>
+                            <li><a href="#packaging">1.3.1. Packaging</a></li>
+                            <li><a href="#subprojects">1.3.2. Subprojects</a></li>
+                            <li><a href="#client-sdks">1.3.3. Client-SDKs</a></li>
                         </ul>
                     </li>
-                    <li><a href="#technology-choices">2.3. Technology Choices</a>
+                    <li><a href="#technology-choices">1.4. Technology Choices</a>
                         <ul class="sectlevel3">
-                            <li><a href="#language-choice">2.3.1. Language Choice</a></li>
-                            <li><a href="#webframework-choice">2.3.2. Webframework Choice</a></li>
-                            <li><a href="#persistence-technology">2.3.3. Persistence Technology</a></li>
+                            <li><a href="#language-choice">1.4.1. Language Choice</a></li>
+                            <li><a href="#webframework-choice">1.4.2. Webframework Choice</a></li>
+                            <li><a href="#persistence-technology">1.4.3. Persistence Technology</a></li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><a href="#api-design">3. API Design</a>
+            <li><a href="#api-design">2. API Design</a>
                 <ul class="sectlevel2">
-                    <li><a href="#filter-rest-resources">3.1. Filter ReST Resources</a></li>
-                    <li><a href="#generate-custom-openapi-code">3.2. Generate Custom OpenAPI Code</a>
-                        <ul class="sectlevel3">
-                            <li><a href="#resources">3.2.1. Resources</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#paginate-rest-resources">3.3. Paginate ReST Resources</a></li>
-                    <li><a href="#secure-http-endpoints">3.4. Secure HTTP Endpoints</a></li>
-                    <li><a href="#sort-rest-resources">3.5. Sort ReST Resources</a></li>
-                    <li><a href="#versioning-of-http-endpoints">3.6. Versioning of HTTP Endpoints</a></li>
+                    <li><a href="#filter-rest-resources">2.1. Filter ReST Resources</a></li>
+                    <li><a href="#generate-custom-openapi-code">2.2. Generate Custom OpenAPI Code</a></li>
+                    <li><a href="#paginate-rest-resources">2.3. Paginate ReST Resources</a></li>
+                    <li><a href="#secure-http-endpoints">2.4. Secure HTTP Endpoints</a></li>
+                    <li><a href="#sort-rest-resources">2.5. Sort ReST Resources</a></li>
+                    <li><a href="#versioning-of-http-endpoints">2.6. Versioning of HTTP Endpoints</a></li>
                 </ul>
             </li>
-            <li><a href="#application">4. Application</a>
+            <li><a href="#application">3. Application</a>
                 <ul class="sectlevel2">
-                    <li><a href="#techstack">4.1. Techstack</a>
+                    <li><a href="#techstack">3.1. Techstack</a>
                         <ul class="sectlevel3">
-                            <li><a href="#libraries">4.1.1. Libraries</a></li>
-                            <li><a href="#library-choices">4.1.2. Library Choices</a></li>
+                            <li><a href="#libraries">3.1.1. Libraries</a></li>
+                            <li><a href="#library-choices">3.1.2. Library Choices</a></li>
                         </ul>
                     </li>
-                    <li><a href="#startup-arguments">4.2. Startup Arguments</a></li>
-                    <li><a href="#application-configuration">4.3. Application Configuration</a></li>
-                    <li><a href="#environment-variables">4.4. Environment Variables</a></li>
-                    <li><a href="#gradle">4.5. Gradle</a>
+                    <li><a href="#startup-arguments">3.2. Startup Arguments</a></li>
+                    <li><a href="#application-configuration">3.3. Application Configuration</a></li>
+                    <li><a href="#environment-variables">3.4. Environment Variables</a></li>
+                    <li><a href="#gradle">3.5. Gradle</a>
                         <ul class="sectlevel3">
-                            <li><a href="#gradle-properties">4.5.1. Gradle Properties</a></li>
-                            <li><a href="#gradle-tasks">4.5.2. Gradle Tasks</a></li>
-                            <li><a href="#manage-dependencies">4.5.3. Manage Dependencies</a></li>
-                            <li><a href="#gradle-kotlin-dsl">4.5.4. Gradle Kotlin DSL</a></li>
+                            <li><a href="#gradle-properties">3.5.1. Gradle Properties</a></li>
+                            <li><a href="#gradle-tasks">3.5.2. Gradle Tasks</a></li>
+                            <li><a href="#manage-dependencies">3.5.3. Manage Dependencies</a></li>
+                            <li><a href="#gradle-kotlin-dsl">3.5.4. Gradle Kotlin DSL</a></li>
                         </ul>
                     </li>
-                    <li><a href="#documentation">4.6. Documentation</a>
+                    <li><a href="#documentation">3.6. Documentation</a>
                         <ul class="sectlevel3">
-                            <li><a href="#documentation-tool">4.6.1. Documentation Tool</a></li>
-                            <li><a href="#diagram-drawing-tool">4.6.2. Diagram Drawing Tool</a></li>
+                            <li><a href="#documentation-tool">3.6.1. Documentation Tool</a></li>
+                            <li><a href="#diagram-drawing-tool">3.6.2. Diagram Drawing Tool</a></li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><a href="#coding">5. Coding</a>
+            <li><a href="#coding">4. Coding</a>
                 <ul class="sectlevel2">
-                    <li><a href="#coding-philosophy">5.1. Coding Philosophy</a>
+                    <li><a href="#coding-philosophy">4.1. Coding Philosophy</a>
                         <ul class="sectlevel3">
-                            <li><a href="#best-practices">5.1.1. Best Practices</a></li>
+                            <li><a href="#best-practices">4.1.1. Best Practices</a></li>
                         </ul>
                     </li>
-                    <li><a href="#code-samples">5.2. Code Samples</a></li>
-                    <li><a href="#logging">5.3. Logging</a>
+                    <li><a href="#code-samples">4.2. Code Samples</a></li>
+                    <li><a href="#logging">4.3. Logging</a>
                         <ul class="sectlevel3">
-                            <li><a href="#logging-configuration">5.3.1. Logging Configuration</a></li>
-                            <li><a href="#logging-with-kotlin">5.3.2. Logging with Kotlin</a></li>
+                            <li><a href="#logging-configuration">4.3.1. Logging Configuration</a></li>
+                            <li><a href="#logging-with-kotlin">4.3.2. Logging with Kotlin</a></li>
                         </ul>
                     </li>
-                    <li><a href="#local-development">5.4. Local Development</a>
+                    <li><a href="#local-development">4.4. Local Development</a>
                         <ul class="sectlevel3">
-                            <li><a href="#intellij-plugins">5.4.1. IntelliJ Plugins</a></li>
+                            <li><a href="#intellij-plugins">4.4.1. IntelliJ Plugins</a></li>
                         </ul>
                     </li>
-                    <li><a href="#code-generation">5.5. Code Generation</a>
+                    <li><a href="#code-generation">4.5. Code Generation</a>
                         <ul class="sectlevel3">
-                            <li><a href="#generating-sources">5.5.1. Generating Sources</a></li>
-                            <li><a href="#generate-persistence-code">5.5.2. Generate Persistence Code</a></li>
+                            <li><a href="#generating-sources">4.5.1. Generating Sources</a></li>
+                            <li><a href="#generate-persistence-code">4.5.2. Generate Persistence Code</a></li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><a href="#testing">6. Testing</a>
+            <li><a href="#testing">5. Testing</a>
                 <ul class="sectlevel2">
-                    <li><a href="#test-types">6.1. Test Types</a>
+                    <li><a href="#test-types">5.1. Test Types</a>
                         <ul class="sectlevel3">
-                            <li><a href="#unit-tests">6.1.1. Unit Tests</a></li>
-                            <li><a href="#integration-tests">6.1.2. Integration Tests</a></li>
-                            <li><a href="#end-to-end-e2e-tests">6.1.3. End-to-End (E2E) Tests</a></li>
-                            <li><a href="#other-types">6.1.4. Other Types</a></li>
+                            <li><a href="#unit-tests">5.1.1. Unit Tests</a></li>
+                            <li><a href="#integration-tests">5.1.2. Integration Tests</a></li>
+                            <li><a href="#end-to-end-e2e-tests">5.1.3. End-to-End (E2E) Tests</a></li>
+                            <li><a href="#other-types">5.1.4. Other Types</a></li>
                         </ul>
                     </li>
-                    <li><a href="#test-strategy">6.2. Test Strategy</a></li>
-                    <li><a href="#e1e-test">6.3. E1E Test</a></li>
-                    <li><a href="#best-practices-2">6.4. Best Practices</a></li>
-                    <li><a href="#anti-patterns">6.5. Anti Patterns</a>
+                    <li><a href="#test-strategy">5.2. Test Strategy</a></li>
+                    <li><a href="#e1e-test">5.3. E1E Test</a></li>
+                    <li><a href="#best-practices-2">5.4. Best Practices</a></li>
+                    <li><a href="#anti-patterns">5.5. Anti Patterns</a>
                         <ul class="sectlevel3">
-                            <li><a href="#testable-code">6.5.1. Testable Code</a></li>
-                            <li><a href="#maintainable-tests">6.5.2. Maintainable Tests</a></li>
+                            <li><a href="#testable-code">5.5.1. Testable Code</a></li>
+                            <li><a href="#maintainable-tests">5.5.2. Maintainable Tests</a></li>
                         </ul>
                     </li>
-                    <li><a href="#test-tech">6.6. Test Tech</a>
+                    <li><a href="#test-tech">5.6. Test Tech</a>
                         <ul class="sectlevel3">
-                            <li><a href="#use-bdd">6.6.1. Use BDD</a></li>
-                            <li><a href="#use-cucumber-lambdas">6.6.2. Use Cucumber Lambdas</a></li>
-                            <li><a href="#verify-coverage">6.6.3. Verify Coverage</a></li>
-                            <li><a href="#assert-json">6.6.4. Assert JSON</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="#code-quality">7. Code Quality</a>
-                <ul class="sectlevel2">
-                    <li><a href="#static-code-analysis">7.1. Static Code Analysis</a></li>
-                    <li><a href="#sonarqube">7.2. SonarQube</a></li>
-                    <li><a href="#static-code-analysis-2">7.3. Static Code Analysis</a></li>
-                    <li><a href="#enforce-failure-handling">7.4. Enforce Failure Handling</a></li>
-                </ul>
-            </li>
-            <li><a href="#devops">8. DevOps</a>
-                <ul class="sectlevel2">
-                    <li><a href="#github-actions">8.1. GitHub Actions</a></li>
-                    <li><a href="#distributed-services">8.2. Distributed Services</a>
-                        <ul class="sectlevel3">
-                            <li><a href="#versioning-scheme">8.2.1. Versioning Scheme</a></li>
+                            <li><a href="#use-bdd">5.6.1. Use BDD</a></li>
+                            <li><a href="#use-cucumber-lambdas">5.6.2. Use Cucumber Lambdas</a></li>
+                            <li><a href="#verify-coverage">5.6.3. Verify Coverage</a></li>
+                            <li><a href="#assert-json">5.6.4. Assert JSON</a></li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><a href="#appendix">9. Appendix</a>
+            <li><a href="#code-quality">6. Code Quality</a>
                 <ul class="sectlevel2">
-                    <li><a href="#resources-2">9.1. Resources</a></li>
+                    <li><a href="#static-code-analysis">6.1. Static Code Analysis</a></li>
+                    <li><a href="#sonarqube">6.2. SonarQube</a></li>
+                    <li><a href="#static-code-analysis-2">6.3. Static Code Analysis</a></li>
+                    <li><a href="#enforce-failure-handling">6.4. Enforce Failure Handling</a></li>
+                </ul>
+            </li>
+            <li><a href="#devops">7. DevOps</a>
+                <ul class="sectlevel2">
+                    <li><a href="#github-actions">7.1. GitHub Actions</a></li>
+                    <li><a href="#distributed-services">7.2. Distributed Services</a>
+                        <ul class="sectlevel3">
+                            <li><a href="#versioning-scheme">7.2.1. Versioning Scheme</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#appendix">8. Appendix</a>
+                <ul class="sectlevel2">
+                    <li><a href="#resources">8.1. Resources</a></li>
                 </ul>
             </li>
         </ul>
@@ -624,6 +615,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </table>
             </div>
             <div class="paragraph">
+                <p><strong>Notes:</strong></p>
+            </div>
+            <div class="paragraph">
                 <p>This document was built using <a href="https://asciidoc.org">AsciiDoc</a>, a simple yet powerful
                     markup language for writing technical documentation.</p>
             </div>
@@ -641,22 +635,48 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </table>
             </div>
             <div class="paragraph">
-                <p>The build for this document was triggered on Sun, 7. December 2025 at 00:40 - enjoy :)</p>
+                <p>The build for this document was triggered on Sun, 7. December 2025 at 16:04 - enjoy :)</p>
+            </div>
+            <div class="paragraph">
+                <p><strong>About:</strong></p>
+            </div>
+            <div class="paragraph">
+                <p>This project is a state-of-the-art prototype of a backend service, which can be used as a laboratory
+                    to gain experience (elaborating further on this proof-of-concept), a base for technical decision
+                    making and a template for future reference.</p>
+            </div>
+            <div class="paragraph">
+                <p>This document describes not only the specifics of this implementation (a tangible, hands-on,
+                    experience-based source of information using a concrete example instead of hypothetical
+                    theorization), but also the underlying principles, representing best practices.
+                    It is tailored to a technical prototype, thus there will be little to no mentioning of what could be
+                    expected for a regular service with business features and production relevance.
+                    Think of business concepts and rules, IT system landscape, API documentation, and much on the
+                    operational side (DevOps/CICD, releasing, performance, tracing, monitoring, alerting).
+                    It ends with an outlook on open doings and a future vision on how to shape also the broader picture
+                    of integration, deployment, monitoring, etc.</p>
+            </div>
+            <div class="paragraph">
+                <p><strong>Decision Documentation:</strong></p>
+            </div>
+            <div class="paragraph">
+                <p>We use ADRs (Architecture Decision Records) to document important architectural and technical
+                    decisions made during the development of this software project.</p>
+            </div>
+            <div class="paragraph">
+                <p>For more explanation what ADRs are, please read: <a
+                        class="bare" href="https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc">https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc</a>
+                </p>
             </div>
         </div>
     </div>
     <div class="sect1">
-        <h2 id="introduction">1. Introduction</h2>
+        <h2 id="architecture">1. Architecture</h2>
         <div class="sectionbody">
             <div class="sect2">
-                <h3 id="purpose">1.1. Purpose</h3>
+                <h3 id="overall-guiding-principles">1.1. Overall Guiding Principles</h3>
                 <div class="paragraph">
-                    <p>It is a state-of-the-art prototype of a backend service, which can be used as a playground to
-                        gain experience, a
-                        base for technical decision making and a template for future reference.</p>
-                </div>
-                <div class="paragraph">
-                    <p>KPIs:</p>
+                    <p>Based on those KPIs:</p>
                 </div>
                 <div class="ulist">
                     <ul>
@@ -676,24 +696,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="decision-documentation">1.2. Decision Documentation</h3>
-                <div class="paragraph">
-                    <p>We use ADRs (Architecture Decision Records) to document important architectural and technical
-                        decisions made during the development of this software project.</p>
-                </div>
-                <div class="paragraph">
-                    <p>For more explanation what ADRs are, please read: <a
-                            class="bare" href="https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc">https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="sect1">
-        <h2 id="architecture">2. Architecture</h2>
-        <div class="sectionbody">
-            <div class="sect2">
-                <h3 id="service-types">2.1. Service Types</h3>
+                <h3 id="service-types">1.2. Service Types</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -711,7 +714,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </ul>
                 </div>
                 <div class="sect3">
-                    <h4 id="monolith">2.1.1. Monolith</h4>
+                    <h4 id="monolith">1.2.1. Monolith</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -728,7 +731,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="modulith">2.1.2. Modulith</h4>
+                    <h4 id="modulith">1.2.2. Modulith</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -760,7 +763,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="macroservices">2.1.3. Macroservices</h4>
+                    <h4 id="macroservices">1.2.3. Macroservices</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -774,7 +777,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="microservices">2.1.4. Microservices</h4>
+                    <h4 id="microservices">1.2.4. Microservices</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -799,7 +802,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="nanoservices">2.1.5. Nanoservices</h4>
+                    <h4 id="nanoservices">1.2.5. Nanoservices</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -819,20 +822,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="layering">2.2. Layering</h3>
+                <h3 id="layering">1.3. Layering</h3>
                 <div class="paragraph">
                     <p>How the application can be <strong>split and grouped</strong> with different aspects in mind,
-                        each with their
-                        own pros and cons.
+                        each with their own pros and cons.
                         What kind of logical layering (represented by a consistent naming pattern) and technical
-                        subdivisioning is
-                        used.
+                        subdivisioning is used.
                         Whether a subdivision is implemented as a submodule (same VCS repo), or an external dependency
-                        (own VCS
-                        repo).</p>
+                        (own VCS repo).</p>
                 </div>
                 <div class="sect3">
-                    <h4 id="packaging">2.2.1. Packaging</h4>
+                    <h4 id="packaging">1.3.1. Packaging</h4>
                     <div class="imageblock">
                         <div class="content">
                             <img alt="application packaging" src="images/diagrams/application-packaging.png">
@@ -935,7 +935,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="subprojects">2.2.2. Subprojects</h4>
+                    <h4 id="subprojects">1.3.2. Subprojects</h4>
                     <div class="paragraph">
                         <p>Each architectural layer is represented by a Gradle sub-project (or sub-module as called in
                             Maven terminology).</p>
@@ -1056,7 +1056,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="client-sdks">2.2.3. Client-SDKs</h4>
+                    <h4 id="client-sdks">1.3.3. Client-SDKs</h4>
                     <div class="paragraph">
                         <p>What is it?</p>
                     </div>
@@ -1167,7 +1167,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </ul>
                     </div>
                     <div class="sect4">
-                        <h5 id="layer-granularity">2.2.3.1. Layer Granularity</h5>
+                        <h5 id="layer-granularity">1.3.3.1. Layer Granularity</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -1200,10 +1200,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                                         <ul>
                                             <li>
                                                 <p>if testing from controller (no ktor involved, plain code, simpler but
-                                                    less
-                                                    realistic/higher risk, require complementary tests and integration
-                                                    of those layers)
-                                                    then it should be separate.</p>
+                                                    less realistic/higher risk, require complementary tests and
+                                                    integration of those layers) then it should be separate.</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -1215,8 +1213,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                                         <ul>
                                             <li>
                                                 <p>the modules are separated and the itests are not using the
-                                                    controllers (but HTTP ktor
-                                                    test engine)</p>
+                                                    controllers (but HTTP ktor test engine)</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -1279,11 +1276,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="technology-choices">2.3. Technology Choices</h3>
+                <h3 id="technology-choices">1.4. Technology Choices</h3>
                 <div class="paragraph">
                     <p>JVM based, not .NET based, because "<a href="https://www.youtube.com/watch?v=Q_Z_8HXt68k">Java is
-                        dead,
-                        long live Java</a>".
+                        dead, long live Java</a>".
                         The (Java) ecosystem is fantastic, opensource, mature, and stable.
                         The (Java) programming language is old and outdated.
                         Other languages are nowadays running on the JVM, like Kotlin and Scala.
@@ -1291,7 +1287,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         developers a smooth migration path exists.</p>
                 </div>
                 <div class="sect3">
-                    <h4 id="language-choice">2.3.1. Language Choice</h4>
+                    <h4 id="language-choice">1.4.1. Language Choice</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -1331,7 +1327,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="webframework-choice">2.3.2. Webframework Choice</h4>
+                    <h4 id="webframework-choice">1.4.2. Webframework Choice</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -1400,7 +1396,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="persistence-technology">2.3.3. Persistence Technology</h4>
+                    <h4 id="persistence-technology">1.4.3. Persistence Technology</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -1514,7 +1510,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         </div>
     </div>
     <div class="sect1">
-        <h2 id="api-design">3. API Design</h2>
+        <h2 id="api-design">2. API Design</h2>
         <div class="sectionbody">
             <div class="ulist">
                 <ul>
@@ -1540,7 +1536,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </ul>
             </div>
             <div class="sect2">
-                <h3 id="filter-rest-resources">3.1. Filter ReST Resources</h3>
+                <h3 id="filter-rest-resources">2.1. Filter ReST Resources</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -1638,7 +1634,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="generate-custom-openapi-code">3.2. Generate Custom OpenAPI Code</h3>
+                <h3 id="generate-custom-openapi-code">2.2. Generate Custom OpenAPI Code</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -1730,26 +1726,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </li>
                     </ul>
                 </div>
-                <div class="sect3">
-                    <h4 id="resources">3.2.1. Resources</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p><a class="bare" href="https://www.baeldung.com/java-openapi-custom-generator">https://www.baeldung.com/java-openapi-custom-generator</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a class="bare"
-                                       href="https://deepwiki.com/OpenAPITools/openapi-generator/5.1-creating-custom-generators">https://deepwiki.com/OpenAPITools/openapi-generator/5.1-creating-custom-generators</a>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="paragraph">
+                    <p><strong>Resources:</strong></p>
+                </div>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p><a class="bare" href="https://www.baeldung.com/java-openapi-custom-generator">https://www.baeldung.com/java-openapi-custom-generator</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a class="bare"
+                                   href="https://deepwiki.com/OpenAPITools/openapi-generator/5.1-creating-custom-generators">https://deepwiki.com/OpenAPITools/openapi-generator/5.1-creating-custom-generators</a>
+                            </p>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="paginate-rest-resources">3.3. Paginate ReST Resources</h3>
+                <h3 id="paginate-rest-resources">2.3. Paginate ReST Resources</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -1912,7 +1908,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="secure-http-endpoints">3.4. Secure HTTP Endpoints</h3>
+                <h3 id="secure-http-endpoints">2.4. Secure HTTP Endpoints</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -1972,7 +1968,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="sort-rest-resources">3.5. Sort ReST Resources</h3>
+                <h3 id="sort-rest-resources">2.5. Sort ReST Resources</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -2057,7 +2053,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="versioning-of-http-endpoints">3.6. Versioning of HTTP Endpoints</h3>
+                <h3 id="versioning-of-http-endpoints">2.6. Versioning of HTTP Endpoints</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -2140,7 +2136,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         </div>
     </div>
     <div class="sect1">
-        <h2 id="application">4. Application</h2>
+        <h2 id="application">3. Application</h2>
         <div class="sectionbody">
             <div class="imageblock">
                 <div class="content">
@@ -2149,7 +2145,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 <div class="title">Figure 2. A precious material</div>
             </div>
             <div class="sect2">
-                <h3 id="techstack">4.1. Techstack</h3>
+                <h3 id="techstack">3.1. Techstack</h3>
                 <div class="paragraph">
                     <p>Library choice guidelines:</p>
                 </div>
@@ -2174,28 +2170,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </div>
                 <div class="paragraph">
                     <p>As a golden rule, there should never be any <strong>non-production dependencies</strong> (test,
-                        stubs,
-                        localdev, etc like H2) in production code.
+                        stubs, localdev, etc like H2) in production code.
                         Instead activate profiles which customize the build (dependency tree).
                         E.g. for tests (presistence-tests and itests) different wiring</p>
                 </div>
                 <div class="sect3">
-                    <h4 id="libraries">4.1.1. Libraries</h4>
+                    <h4 id="libraries">3.1.1. Libraries</h4>
                     <div class="sect4">
-                        <h5 id="general">4.1.1.1. General</h5>
+                        <h5 id="general">3.1.1.1. General</h5>
                         <div class="dlist">
                             <dl>
                                 <dt class="hdlist1">Gradle</dt>
                                 <dd>
                                     <p>Build system to run tasks such as compiling, testing, and packaging ("<em>newer
-                                        Maven</em>",
-                                        using its sophisticated dependency management).</p>
+                                        Maven</em>", using its sophisticated dependency management).</p>
                                 </dd>
                                 <dt class="hdlist1">Kotlin</dt>
                                 <dd>
                                     <p>General purpose programming language running on the JVM ("<em>newer Java</em>",
-                                        fully
-                                        interoperable).</p>
+                                        fully interoperable).</p>
                                 </dd>
                                 <dt class="hdlist1">SonarQube</dt>
                                 <dd>
@@ -2205,7 +2198,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="core-libs">4.1.1.2. Core Libs</h5>
+                        <h5 id="core-libs">3.1.1.2. Core Libs</h5>
                         <div class="dlist">
                             <dl>
                                 <dt class="hdlist1">Ktor</dt>
@@ -2215,14 +2208,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                                 <dt class="hdlist1">Koin</dt>
                                 <dd>
                                     <p>Dependency injection, actually service locator, framework ("<em>newer Spring
-                                        Framework</em>",
-                                        neither classpath scanning nor annotations use).</p>
+                                        Framework</em>", neither classpath scanning nor annotations use).</p>
                                 </dd>
                                 <dt class="hdlist1">Kotest</dt>
                                 <dd>
                                     <p>Modern flexible testing framework integrating with the JUnit engine ("<em>newer
-                                        JUnit</em>")/
-                                    </p>
+                                        JUnit</em>")/</p>
                                 </dd>
                                 <dt class="hdlist1">Exposed</dt>
                                 <dd>
@@ -2246,7 +2237,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="support">4.1.1.3. Support</h5>
+                        <h5 id="support">3.1.1.3. Support</h5>
                         <div class="dlist">
                             <dl>
                                 <dt class="hdlist1">Detekt</dt>
@@ -2266,9 +2257,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="library-choices">4.1.2. Library Choices</h4>
+                    <h4 id="library-choices">3.1.2. Library Choices</h4>
                     <div class="sect4">
-                        <h5 id="database-access-library">4.1.2.1. Database Access Library</h5>
+                        <h5 id="database-access-library">3.1.2.1. Database Access Library</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -2336,8 +2327,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                             <ol class="arabic">
                                 <li>
                                     <p><a href="https://www.jetbrains.com/exposed/" rel="noopener" target="_blank">Exposed</a>
-                                        by
-                                        JetBrains</p>
+                                        by JetBrains</p>
                                     <div class="ulist">
                                         <ul>
                                             <li>
@@ -2410,7 +2400,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="scheduler-library">4.1.2.2. Scheduler Library</h5>
+                        <h5 id="scheduler-library">3.1.2.2. Scheduler Library</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -2512,7 +2502,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="access-sftp-service">4.1.2.3. Access SFTP service</h5>
+                        <h5 id="access-sftp-service">3.1.2.3. Access SFTP service</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -2545,7 +2535,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="datetime-library">4.1.2.4. DateTime library</h5>
+                        <h5 id="datetime-library">3.1.2.4. DateTime library</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -2625,7 +2615,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="dto-mapping-library">4.1.2.5. DTO Mapping Library</h5>
+                        <h5 id="dto-mapping-library">3.1.2.5. DTO Mapping Library</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -2725,7 +2715,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="startup-arguments">4.2. Startup Arguments</h3>
+                <h3 id="startup-arguments">3.2. Startup Arguments</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -2768,7 +2758,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="application-configuration">4.3. Application Configuration</h3>
+                <h3 id="application-configuration">3.3. Application Configuration</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -2807,7 +2797,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="environment-variables">4.4. Environment Variables</h3>
+                <h3 id="environment-variables">3.4. Environment Variables</h3>
                 <div class="paragraph">
                     <p>The following lists all configuration values passed to the application as environment variables.
                         It was automatically generated by <code>nl.uwv.smz.diamond.app.ConfigDocWriterApp</code> using
@@ -2833,23 +2823,23 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             </thead>
                             <tbody>
                             <tr>
-                                <td class="tableblock halign-left valign-top"><p class="tableblock">
-                                    <code>DATABASE_JDBCURL</code></p></td>
+                                <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DATABASE_JDBCURL</code>
+                                </p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">JDBC driver URL</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tableblock halign-left valign-top"><p class="tableblock">
-                                    <code>DATABASE_PASSWORD</code></p></td>
+                                <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DATABASE_PASSWORD</code>
+                                </p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">DB password</p></td>
                             </tr>
                             <tr>
-                                <td class="tableblock halign-left valign-top"><p class="tableblock">
-                                    <code>DATABASE_USERNAME</code></p></td>
+                                <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DATABASE_USERNAME</code>
+                                </p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">DB username</p></td>
@@ -2860,8 +2850,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Base URL for the
-                                    external
-                                    posts service</p></td>
+                                    external posts service</p></td>
                             </tr>
                             <tr>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXTERN_SFTP_AUTHISPASSWORD</code>
@@ -2869,8 +2858,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether using
-                                    password or
-                                    private key.</p></td>
+                                    password or private key.</p></td>
                             </tr>
                             <tr>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXTERN_SFTP_AUTHPASSWORDORPRIVATEKEYPATH</code>
@@ -2878,8 +2866,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Either password or
-                                    private
-                                    key.</p></td>
+                                    private key.</p></td>
                             </tr>
                             <tr>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXTERN_SFTP_KNOWNHOSTSFILEPATH</code>
@@ -2887,26 +2874,23 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Path to SSH known
-                                    hosts
-                                    file.</p></td>
+                                    hosts file.</p></td>
                             </tr>
                             <tr>
-                                <td class="tableblock halign-left valign-top"><p class="tableblock">
-                                    <code>EXTERN_SFTP_PORT</code></p></td>
+                                <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXTERN_SFTP_PORT</code>
+                                </p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Port of the SFTP
-                                    server.</p>
-                                </td>
+                                    server.</p></td>
                             </tr>
                             <tr>
-                                <td class="tableblock halign-left valign-top"><p class="tableblock">
-                                    <code>EXTERN_SFTP_REMOTEHOST</code></p></td>
+                                <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXTERN_SFTP_REMOTEHOST</code>
+                                </p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Host of the SFTP
-                                    server.</p>
-                                </td>
+                                    server.</p></td>
                             </tr>
                             <tr>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXTERN_SFTP_STRICTHOSTCHECKING</code>
@@ -2914,12 +2898,11 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Disable security
-                                    check; do
-                                    NOT activate in production; pretty please.</p></td>
+                                    check; do NOT activate in production; pretty please.</p></td>
                             </tr>
                             <tr>
-                                <td class="tableblock halign-left valign-top"><p class="tableblock">
-                                    <code>EXTERN_SFTP_USERNAME</code></p></td>
+                                <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXTERN_SFTP_USERNAME</code>
+                                </p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Login username.</p>
@@ -2927,13 +2910,11 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             </tr>
                             <tr>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">
-                                    <code>KTOR_PORT</code></p>
-                                </td>
+                                    <code>KTOR_PORT</code></p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">8080</p></td>
                                 <td class="tableblock halign-left valign-top"><p class="tableblock">Webserver HTTP port
-                                    to
-                                    listen to</p></td>
+                                    to listen to</p></td>
                             </tr>
                             </tbody>
                         </table>
@@ -2941,7 +2922,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                 </details>
             </div>
             <div class="sect2">
-                <h3 id="gradle">4.5. Gradle</h3>
+                <h3 id="gradle">3.5. Gradle</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -2975,7 +2956,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                     </ul>
                 </div>
                 <div class="sect3">
-                    <h4 id="gradle-properties">4.5.1. Gradle Properties</h4>
+                    <h4 id="gradle-properties">3.5.1. Gradle Properties</h4>
                     <div class="paragraph">
                         <p>with certain flags (enabled via gradle properties and on CI), it will enable more
                             tests/reports (which take longer and require more local setup)</p>
@@ -3007,7 +2988,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="gradle-tasks">4.5.2. Gradle Tasks</h4>
+                    <h4 id="gradle-tasks">3.5.2. Gradle Tasks</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -3096,7 +3077,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="manage-dependencies">4.5.3. Manage Dependencies</h4>
+                    <h4 id="manage-dependencies">3.5.3. Manage Dependencies</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -3236,7 +3217,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </ul>
                     </div>
                     <div class="sect4">
-                        <h5 id="gradle-version-catalog">4.5.3.1. Gradle Version Catalog</h5>
+                        <h5 id="gradle-version-catalog">3.5.3.1. Gradle Version Catalog</h5>
                         <div class="ulist">
                             <ul>
                                 <li>
@@ -3316,7 +3297,7 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="gradle-kotlin-dsl">4.5.4. Gradle Kotlin DSL</h4>
+                    <h4 id="gradle-kotlin-dsl">3.5.4. Gradle Kotlin DSL</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -3343,9 +3324,9 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="documentation">4.6. Documentation</h3>
+                <h3 id="documentation">3.6. Documentation</h3>
                 <div class="sect3">
-                    <h4 id="documentation-tool">4.6.1. Documentation Tool</h4>
+                    <h4 id="documentation-tool">3.6.1. Documentation Tool</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -3414,7 +3395,7 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="diagram-drawing-tool">4.6.2. Diagram Drawing Tool</h4>
+                    <h4 id="diagram-drawing-tool">3.6.2. Diagram Drawing Tool</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -3523,7 +3504,7 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
         </div>
     </div>
     <div class="sect1">
-        <h2 id="coding">5. Coding</h2>
+        <h2 id="coding">4. Coding</h2>
         <div class="sectionbody">
             <div class="paragraph">
                 <p>Kotlin.</p>
@@ -3539,7 +3520,7 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                 </ul>
             </div>
             <div class="sect2">
-                <h3 id="coding-philosophy">5.1. Coding Philosophy</h3>
+                <h3 id="coding-philosophy">4.1. Coding Philosophy</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -3616,7 +3597,7 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                     </ul>
                 </div>
                 <div class="sect3">
-                    <h4 id="best-practices">5.1.1. Best Practices</h4>
+                    <h4 id="best-practices">4.1.1. Best Practices</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -3652,12 +3633,12 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                         </ul>
                     </div>
                     <div class="sect4">
-                        <h5 id="conciseness">5.1.1.1. Conciseness</h5>
+                        <h5 id="conciseness">4.1.1.1. Conciseness</h5>
                         <div class="paragraph">
                             <p>Using type inference and <a
                                     href="https://kotlinlang.org/docs/functions.html#single-expression-functions">single
-                                expression
-                                functions</a>, function declarations can be shortened and made more readable:</p>
+                                expression functions</a>, function declarations can be shortened and made more readable:
+                            </p>
                         </div>
                         <div class="listingblock">
                             <div class="title">Ommitting the return type</div>
@@ -3706,9 +3687,12 @@ fun Service.`GOOD apply`() = apply {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="code-samples">5.2. Code Samples</h3>
+                <h3 id="code-samples">4.2. Code Samples</h3>
                 <div class="listingblock">
-                    <div class="title">Source of <code>healthRouting.kt</code> from the :view:view-routing module</div>
+                    <div class="title">Source of <a
+                            href="https://github.com/seepick/diamond/blob/main/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt"><code>healthRouting.kt</code></a>
+                        from the <code>view-routing</code> module
+                    </div>
                     <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">package nl.uwv.smz.diamond.view.routing
 
@@ -3731,9 +3715,9 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="logging">5.3. Logging</h3>
+                <h3 id="logging">4.3. Logging</h3>
                 <div class="sect3">
-                    <h4 id="logging-configuration">5.3.1. Logging Configuration</h4>
+                    <h4 id="logging-configuration">4.3.1. Logging Configuration</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -3781,7 +3765,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="logging-with-kotlin">5.3.2. Logging with Kotlin</h4>
+                    <h4 id="logging-with-kotlin">4.3.2. Logging with Kotlin</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -3815,8 +3799,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                     <div class="paragraph">
                         <p>Then we switched to a <code>String.format</code>-like approach to fix this, to always be able
-                            to invoke
-                            the log method without performance impact:</p>
+                            to invoke the log method without performance impact:</p>
                     </div>
                     <div class="listingblock">
                         <div class="title">Less verbose, but still performant</div>
@@ -3826,14 +3809,13 @@ internal fun Application.installHealthRouting() {
                     </div>
                     <div class="paragraph">
                         <p>This two issues (conciseness, performance) but still was not readable, especially when
-                            logging longer messages
-                            with multiple values.
+                            logging longer messages with multiple values.
                             The displacement-nature of these kind of formatting approaches is just not doing it&#8230;&#8203;</p>
                     </div>
                     <div class="paragraph">
                         <p>Finally we are doing it nicely, using Kotlin&#8217;s string templates (interpolation) which
-                            are basically string
-                            concatenations, and the ease of lambda declarations (deferred/lazy evaluation):</p>
+                            are basically string concatenations, and the ease of lambda declarations (deferred/lazy
+                            evaluation):</p>
                     </div>
                     <div class="listingblock">
                         <div class="title">Readable and performant</div>
@@ -3846,8 +3828,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                     <div class="paragraph">
                         <p>Thanks to <code>io.github.oshai:kotlin-logging-jvm</code> (former "mu-kotlin") the
-                            declaration of a
-                            logger is as simple as it can be:</p>
+                            declaration of a logger is as simple as it can be:</p>
                     </div>
                     <div class="listingblock">
                         <div class="title">Implicit log factory creation</div>
@@ -3865,7 +3846,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="local-development">5.4. Local Development</h3>
+                <h3 id="local-development">4.4. Local Development</h3>
                 <div class="paragraph">
                     <p>The goal is to only have to check out the sourcecode, and run a single command to start the
                         application up in a local model.
@@ -3879,16 +3860,16 @@ internal fun Application.installHealthRouting() {
                             <p>run <code>nl.uwv.smz.diamond.app.LocalDiamondApp</code></p>
                         </li>
                         <li>
-                            <p>Postman collection can be found at: <code>/bin/Diamond.postman_collection.json</code>
+                            <p>Postman collection can be found at: <code>/config/Diamond.postman_collection.json</code>
                             </p>
                         </li>
                         <li>
-                            <p>There are a lot of useful (required) build scripts in <code>/local/*.sh</code></p>
+                            <p>There are a lot of useful (required) build scripts in <code>/bin/*.sh</code></p>
                         </li>
                     </ul>
                 </div>
                 <div class="sect3">
-                    <h4 id="intellij-plugins">5.4.1. IntelliJ Plugins</h4>
+                    <h4 id="intellij-plugins">4.4.1. IntelliJ Plugins</h4>
                     <div class="paragraph">
                         <p>The following plugins are recommended to have a smooth development experience:</p>
                     </div>
@@ -3961,9 +3942,9 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="code-generation">5.5. Code Generation</h3>
+                <h3 id="code-generation">4.5. Code Generation</h3>
                 <div class="sect3">
-                    <h4 id="generating-sources">5.5.1. Generating Sources</h4>
+                    <h4 id="generating-sources">4.5.1. Generating Sources</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -3998,8 +3979,7 @@ internal fun Application.installHealthRouting() {
                         <div class="content">
                             <div class="paragraph">
                                 <p>Should we regenerate sources each time and host the code next to our own, or should
-                                    be pre-generate and store
-                                    them in a dedicated repository?</p>
+                                    be pre-generate and store them in a dedicated repository?</p>
                             </div>
                         </div>
                     </div>
@@ -4020,8 +4000,7 @@ internal fun Application.installHealthRouting() {
                             </li>
                             <li>
                                 <p>BAD: Exclusion configuration necessary for static code analysis, coverage, etc.
-                                    (different rules apply to
-                                    them)</p>
+                                    (different rules apply to them)</p>
                             </li>
                         </ul>
                     </div>
@@ -4071,7 +4050,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="generate-persistence-code">5.5.2. Generate Persistence Code</h4>
+                    <h4 id="generate-persistence-code">4.5.2. Generate Persistence Code</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4136,7 +4115,7 @@ internal fun Application.installHealthRouting() {
         </div>
     </div>
     <div class="sect1">
-        <h2 id="testing">6. Testing</h2>
+        <h2 id="testing">5. Testing</h2>
         <div class="sectionbody">
             <div class="ulist">
                 <ul>
@@ -4149,9 +4128,9 @@ internal fun Application.installHealthRouting() {
                 </ul>
             </div>
             <div class="sect2">
-                <h3 id="test-types">6.1. Test Types</h3>
+                <h3 id="test-types">5.1. Test Types</h3>
                 <div class="sect3">
-                    <h4 id="unit-tests">6.1.1. Unit Tests</h4>
+                    <h4 id="unit-tests">5.1.1. Unit Tests</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -4172,7 +4151,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="integration-tests">6.1.2. Integration Tests</h4>
+                    <h4 id="integration-tests">5.1.2. Integration Tests</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -4190,7 +4169,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="end-to-end-e2e-tests">6.1.3. End-to-End (E2E) Tests</h4>
+                    <h4 id="end-to-end-e2e-tests">5.1.3. End-to-End (E2E) Tests</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -4282,7 +4261,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="other-types">6.1.4. Other Types</h4>
+                    <h4 id="other-types">5.1.4. Other Types</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -4365,7 +4344,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="test-strategy">6.2. Test Strategy</h3>
+                <h3 id="test-strategy">5.2. Test Strategy</h3>
                 <div class="imageblock">
                     <div class="content">
                         <img alt="test strategies" src="images/diagrams/test-strategies.png">
@@ -4444,7 +4423,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="e1e-test">6.3. E1E Test</h3>
+                <h3 id="e1e-test">5.3. E1E Test</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -4466,7 +4445,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="best-practices-2">6.4. Best Practices</h3>
+                <h3 id="best-practices-2">5.4. Best Practices</h3>
                 <div class="admonitionblock warning">
                     <table>
                         <tr>
@@ -4512,7 +4491,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="anti-patterns">6.5. Anti Patterns</h3>
+                <h3 id="anti-patterns">5.5. Anti Patterns</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -4538,7 +4517,7 @@ internal fun Application.installHealthRouting() {
                     </ul>
                 </div>
                 <div class="sect3">
-                    <h4 id="testable-code">6.5.1. Testable Code</h4>
+                    <h4 id="testable-code">5.5.1. Testable Code</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -4548,7 +4527,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="maintainable-tests">6.5.2. Maintainable Tests</h4>
+                    <h4 id="maintainable-tests">5.5.2. Maintainable Tests</h4>
                     <div class="ulist">
                         <ul>
                             <li>
@@ -4559,9 +4538,9 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="test-tech">6.6. Test Tech</h3>
+                <h3 id="test-tech">5.6. Test Tech</h3>
                 <div class="sect3">
-                    <h4 id="use-bdd">6.6.1. Use BDD</h4>
+                    <h4 id="use-bdd">5.6.1. Use BDD</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4608,7 +4587,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="use-cucumber-lambdas">6.6.2. Use Cucumber Lambdas</h4>
+                    <h4 id="use-cucumber-lambdas">5.6.2. Use Cucumber Lambdas</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4672,7 +4651,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="verify-coverage">6.6.3. Verify Coverage</h4>
+                    <h4 id="verify-coverage">5.6.3. Verify Coverage</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4750,7 +4729,7 @@ internal fun Application.installHealthRouting() {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="assert-json">6.6.4. Assert JSON</h4>
+                    <h4 id="assert-json">5.6.4. Assert JSON</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -4817,7 +4796,7 @@ internal fun Application.installHealthRouting() {
         </div>
     </div>
     <div class="sect1">
-        <h2 id="code-quality">7. Code Quality</h2>
+        <h2 id="code-quality">6. Code Quality</h2>
         <div class="sectionbody">
             <div class="ulist">
                 <ul>
@@ -4853,7 +4832,7 @@ internal fun Application.installHealthRouting() {
                 </ul>
             </div>
             <div class="sect2">
-                <h3 id="static-code-analysis">7.1. Static Code Analysis</h3>
+                <h3 id="static-code-analysis">6.1. Static Code Analysis</h3>
                 <div class="paragraph">
                     <p>Detekt</p>
                 </div>
@@ -4870,7 +4849,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="sonarqube">7.2. SonarQube</h3>
+                <h3 id="sonarqube">6.2. SonarQube</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -4896,7 +4875,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="static-code-analysis-2">7.3. Static Code Analysis</h3>
+                <h3 id="static-code-analysis-2">6.3. Static Code Analysis</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -4934,7 +4913,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="enforce-failure-handling">7.4. Enforce Failure Handling</h3>
+                <h3 id="enforce-failure-handling">6.4. Enforce Failure Handling</h3>
                 <div class="admonitionblock tip">
                     <table>
                         <tr>
@@ -5030,7 +5009,7 @@ internal fun Application.installHealthRouting() {
         </div>
     </div>
     <div class="sect1">
-        <h2 id="devops">8. DevOps</h2>
+        <h2 id="devops">7. DevOps</h2>
         <div class="sectionbody">
             <div class="imageblock">
                 <div class="content">
@@ -5064,7 +5043,7 @@ internal fun Application.installHealthRouting() {
                 </ul>
             </div>
             <div class="sect2">
-                <h3 id="github-actions">8.1. GitHub Actions</h3>
+                <h3 id="github-actions">7.1. GitHub Actions</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -5080,7 +5059,7 @@ internal fun Application.installHealthRouting() {
                 </div>
             </div>
             <div class="sect2">
-                <h3 id="distributed-services">8.2. Distributed Services</h3>
+                <h3 id="distributed-services">7.2. Distributed Services</h3>
                 <div class="paragraph">
                     <p>Their specifics require:</p>
                 </div>
@@ -5095,7 +5074,7 @@ internal fun Application.installHealthRouting() {
                     </ul>
                 </div>
                 <div class="sect3">
-                    <h4 id="versioning-scheme">8.2.1. Versioning Scheme</h4>
+                    <h4 id="versioning-scheme">7.2.1. Versioning Scheme</h4>
                     <div class="admonitionblock tip">
                         <table>
                             <tr>
@@ -5188,10 +5167,10 @@ internal fun Application.installHealthRouting() {
         </div>
     </div>
     <div class="sect1">
-        <h2 id="appendix">9. Appendix</h2>
+        <h2 id="appendix">8. Appendix</h2>
         <div class="sectionbody">
             <div class="sect2">
-                <h3 id="resources-2">9.1. Resources</h3>
+                <h3 id="resources">8.1. Resources</h3>
                 <div class="ulist">
                     <ul>
                         <li>
@@ -5277,7 +5256,7 @@ internal fun Application.installHealthRouting() {
 <div id="footer">
     <div id="footer-text">
         Version SNAPSHOT<br>
-        Last updated 2025-12-07 00:01:29 +0100
+        Last updated 2025-12-07 11:59:20 +0100
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

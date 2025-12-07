@@ -12,6 +12,7 @@ import nl.uwv.smz.diamond.domain.model.CrystalUpdate
 import nl.uwv.smz.diamond.domain.model.PageRequest
 import nl.uwv.smz.diamond.persistence.api.CrystalRepo
 
+/** Our good old "Durchlauferhitzer", not doing anything (no business logic), but just passing through ... */
 class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
 
     private val log = logger {}
@@ -26,7 +27,6 @@ class CrystalServiceImpl(private val repo: CrystalRepo) : CrystalService {
     }
 
     override suspend fun create(create: CrystalCreate) = either {
-        // here we could do actual business logic; right now it's just a "durchlauferhitzer" ;)
         repo.insert(create).bind()
     }
 

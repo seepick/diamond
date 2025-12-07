@@ -6,6 +6,7 @@ import java.io.File
 
 object ConfigDocWriterApp {
 
+    // TODO make configurable from outside
     private val targetFolder = File("doc/SoftwareDocument/src/docs/asciidoc/generated/")
     private val target = File(targetFolder, "environment_variables.generated.adoc")
 

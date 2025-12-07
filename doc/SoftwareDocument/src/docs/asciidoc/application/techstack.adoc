@@ -20,6 +20,28 @@ E.g. for tests (presistence-tests and itests) different wiring
 
 == Libraries
 
+.A list of all used dependencies can be found at: link:https://github.com/seepick/diamond/blob/main/buildSrc/src/main/kotlin/Deps.kt[buildSrc/Deps.kt]
+[source,kotlin]
+----
+object Deps {
+    val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
+    val jsch = "com.github.mwiede:jsch:${Versions.jsch}"
+    object database {
+        val h2 = "com.h2database:h2:${Versions.h2}"
+        object exposed {
+            private fun make(artifact: String) = "org.jetbrains.exposed:exposed-$artifact:${Versions.exposed}"
+            val jdbc = make("jdbc")
+            val datetime = make("java-time")
+        }
+    }
+    // ...
+}
+// Reference your dependencies as such:
+dependencies {
+    implementation(Deps.database.exposed.jdbc)
+}
+----
+
 === General
 
 Gradle:: Build system to run tasks such as compiling, testing, and packaging ("_newer Maven_", using its sophisticated dependency management).
@@ -52,4 +74,6 @@ include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+2]
 
 include::{adrsdir}/libraries/choose-datetime.adoc[leveloffset=+2]
 
-include::{adrsdir}/coding/dto-mapping-library.adoc[leveloffset=+2]
+include::{adrsdir}/libraries/dto-mapping.adoc[leveloffset=+2]
+
+include::{adrsdir}/libraries/serialization.adoc[leveloffset=+2]

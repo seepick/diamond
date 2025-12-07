@@ -34,7 +34,9 @@ Kotlin.
 
 ==== Best Practices
 
-* Strive for functional, pure functions (no side effects).
+* Strive for functional, e.g.: *pure functions*:
+** return values are identical for identical arguments (no variation with static variables, non-local variables, mutable reference arguments or input streams, i.e., referential transparency)
+** the function has no side effects (no mutation of non-local variables, mutable reference arguments or input/output streams)
 * no overloaded methods, provide different name
 * instead of regular methods -> "named expressions"
 ** functions as named codeblocks, lead to shorter (easier to comprehend) methods
@@ -86,7 +88,7 @@ fun Service.`GOOD apply`() = apply {
 
 === Code Samples
 
-.Source of `healthRouting.kt` from the :view:view-routing module
+.Source of link:https://github.com/seepick/diamond/blob/main/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt[`healthRouting.kt`] from the `view-routing` module
 [source,kotlin]
 ----
 include::{rootdir}/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt[]

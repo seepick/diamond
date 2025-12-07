@@ -1,13 +1,48 @@
-Next
+Round up doc
 =========================
 
-Round up doc:
+Small
+-------------------------
 
-* mindmap software doc (top down)
-* integrate what's already there
-* bottom up: details, go through code
+* show (include?) source of kotest describe spec
+* ADR cucumber datatable and kotlin vs java (no proper library available; using a mixed approach)
+* ad coding: the difference between integration-code (tech/infra) and application-code (business, domain)
+* ADR dependency injection (koin); classpath scan (magic, uncontrolled) vs explicit code (manual work, code >
+  annotations)
+* ADR testing kotest (property); should matchers/assertions
+    * from plain java (instantiate always anew; not maintainable), to instancio (bit better, but cumbersome), to
+      kotest-property (hand-written, testfixtures for reuse)
+* ADR testing mockk
+* ad testing: gradle testFixtures, reusable
+* include sourcecode: extern-impl koin module.kt (beautiful, explicit, typesafe, refactoring safe; auto generated doc;
+  full control
+    * integration-code totally separate from applicaiton-code (non-intrusive; business logic is free from any framework
+      taste; non-intrusive)
+* ADR test instances (Instantio vs kotest arb)
+* showcase cucumber tests
+* new diagram: module overview (gradle's sub-projects; aka mavens sub-modules)
+* include sourcecode: SyncService.kt
+* include sourcecode of domain-logic-impl/build.gradle.kts (look how clean it is)
+* showcase karate tests
+* showcase test inclusions (H2 and Oracle); extensions; all is code
+* document: how to setup: 1) git clone 2) gradlew :app:run
+* document gradle task `generateConfigDoc`; using ConfigDocWriterApp; generating included file:
+  environment_variables.generated.adoc
 
+Big
+-------------------------
+
+* Extract all from notion and put it here
 * TODOs.md (and tasktags) as appendix chapter outlook, future/open doings
+
+Final
+-------------------------
+
+* fine-tune; proof-read it myself
+* send to alex&shai; get feedback from it
+
+Next
+=========================
 
 Business Relevant
 -------------------------
@@ -71,7 +106,6 @@ Backlog
 Asciidoc
 -------------------------
 
-* Extract all from notion and put it here
 * AsciiDoc should fail the build if stuff not found
 * Render draw.io diagrams via Gradle; do it manually in code?
     * https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
@@ -82,6 +116,7 @@ Asciidoc
 Low
 -------------------------
 
+* maybe use arrow's optics to manipulate deep nested, immutable data classes.
 * Nightly build not only more quality analysis (security/OWASP) but also different test types (performance/load/stress,
   security)
 * [ ] reconfigureProdLog(): rolling file appender for PROD (or via app-config property?!)
@@ -132,6 +167,8 @@ Low
 * [ ] client-sdk split client-models (openApi generated; custom generator? create playground); use client-models in
   separate (own repo) e2e tests
 * [ ] Investigate JSON schema: https://json-schema.org
+* [ ] could also generate config doc (just as done for app config (ENV vars)), do so as well for GradleProperty.kt (
+  always up2date doc)
 
 No!
 -------------------------

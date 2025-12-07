@@ -1,4 +1,4 @@
-= Enforce Failure Handling
+= Explicit ExceptionADR -  Handling
 
 [TIP]
 ====
@@ -9,14 +9,43 @@ Author: Seepick
 
 *Context:*
 
-* Pure Functions:
-** return values are identical for identical arguments (no variation with static variables, non-local variables, mutable reference arguments or input streams, i.e., referential transparency)
-** the function has no side effects (no mutation of non-local variables, mutable reference arguments or input/output streams)
-* Throwing (unchecked) exceptions is a sort of an implicit return value which can be forgotten to be handled properly, resulting in false-500 responses.
-* Use the Arrow library to introduce a more functional approach, the `Either` class specifically
-** TODO: in the future maybe also optics to manipulate deep nested, immutable data classes.
+* Ever since the time when the Spring Framework got popular, unchecked exceptions were favored over checked ones.
+(Neil Gafter, Josua Bloch)
+** Kotlin goes one step further, and treats all exceptions as unchecked ones.
+* Throwing exceptions is a sort of an implicit return value, which can be forgotten to be handled properly (resulting in false-500 responses).
 
-*Either:*
+.Implicit exceptions are easily forgotten and unhandled
+[source,kotlin]
+----
+fun Service.dangerousMethod(): Result {
+    throw RuntimeException()
+}
+fun Route.handleGet(): ServerResponse {
+    val result = service.dangerousMethod()
+    return toResponse(result)
+}
+----
+
+*Proposal:*
+
+* Use the link:https://arrow-kt.io/[Arrow library] to introduce a more functional approach, its `Either` type specifically.
+
+.Explicit fault handling cannot be forgotten nor unhandled
+[source,kotlin]
+----
+fun Service.dangerousMethod(): Either<Failure, Result> {
+    // do some real logic ...
+    return Failure().left()
+}
+fun handleGet(): ServerResponse =
+    service.dangerousMethod().fold(
+        ifLeft = { toFailResponse(it) }, // <1>
+        ifRight = { toResponse(it) },
+    )
+
+----
+
+<1> in order to access the result, we need to unwrap both
 
 * Good:
 ** developers need to think (forced to, explicit) error types, mapping of them (translation of corrupt data to bad request/internal error)
