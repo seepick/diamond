@@ -1,5 +1,6 @@
 plugins {
     id("diamond-kotlin-common")
+    id("diamond-kotlin-test")
     id("java-test-fixtures")
 }
 
