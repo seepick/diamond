@@ -45,7 +45,7 @@ fun handleGet(): ServerResponse =
 
 ----
 
-<1> in order to access the result, we need to unwrap both
+<1> in order to access the result, we need to unwrap both, which is already known via Java's `Optional.ifPresentOrElse`
 
 * Good:
 ** developers need to think (forced to, explicit) error types, mapping of them (translation of corrupt data to bad request/internal error)

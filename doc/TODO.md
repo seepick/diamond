@@ -4,6 +4,16 @@ Round up doc
 Small
 -------------------------
 
+* architecture layer diagram of modules/subprojects
+* rename E1E to "system integration test"
+* this project is a template, a scaffold (other people use it)
+    * it IS needed, as we see that team is busy with tech stuff (which should have been solved already), instead they
+      should be able to focus on implementing business features; they deliver business, i deliver
+      framework/infrastructure/devops
+    * deliver an experience where it is FUN again to implement; to sink into code; get into a state of flow; development
+      experience is fast, great, quick, easy (test > debug)
+* "clean code is where you can see people cared writing it" - screenshot of output of shellscripts, done with caring
+  love :)
 * show (include?) source of kotest describe spec
 * ADR cucumber datatable and kotlin vs java (no proper library available; using a mixed approach)
 * ad coding: the difference between integration-code (tech/infra) and application-code (business, domain)
@@ -48,7 +58,12 @@ Final
 Next
 =========================
 
-Business Relevant
+* [ ] create testproject for cucumber + ktor test engine
+    * w: file:///Users/toh/workspace/diamond/itest/src/test/kotlin/nl/uwv/smz/diamond/itest/testInfra/KtorHooks.kt:95:15
+      Suppression of error 'INVISIBLE_REFERENCE' might compile and work, but the compiler behavior is UNSPECIFIED and
+      WILL NOT BE PRESERVED. Please report your use case to the Kotlin issue tracker instead: https://kotl.in/issue
+      Business Relevant
+
 -------------------------
 
 * !! finish openapi generator (client 80% done; kotlinx serialization java datetime)
@@ -322,3 +337,4 @@ V1
 * [x] Incorporate ADRs (migrating from MD to AsciiDoc) into Software Doc
 * [x] Generate HTML (and host on GitHub pages) with AsciiDoc
 * [x] Check all ADRs are used in SoftwareDoc (write unit test)
+* [ ] Register Sonartype OSS Index (PAT) for faster OWASP check

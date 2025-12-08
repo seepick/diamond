@@ -61,3 +61,18 @@ kover {
         }
     }
 }
+
+if (GradleProperty.enableOwasp.isSet()) {
+    // some strange kover being dependend on OWASP build error?!
+    // ---
+    // Gradle detected a problem with the following location: '/../diamond/app/build/reports/kover/verify.err'.
+    // Reason: Task ':app:koverVerify' uses this output of task ':app:dependencyCheckAnalyze'
+    // without declaring an explicit or implicit dependency. This can lead to incorrect results being produced,
+    // depending on what order the tasks are executed.
+    gradle.projectsEvaluated {
+        tasks.named("koverVerify").configure {
+            // declare explicit dependency using Task#dependsOn
+            dependsOn(tasks.named("dependencyCheckAnalyze"))
+        }
+    }
+}

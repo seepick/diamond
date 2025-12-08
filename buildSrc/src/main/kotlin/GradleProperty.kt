@@ -10,7 +10,12 @@ enum class GradleProperty(val value: String) {
 
     // build flags
     isCi("isCi"),
-    enableOwasp("enableOwasp");
+
+    // TODO better rename to: diamond.owasp.enabled, ...
+    enableOwasp("enableOwasp"),
+    owaspOssUsername("owaspOssUsername"),
+    owaspOssPassword("owaspOssPassword"),
+    ;
 
     fun isSet(): Boolean = System.getProperty(value) != null
 

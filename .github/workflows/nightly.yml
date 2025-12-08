@@ -16,4 +16,12 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: actions/setup-gradle@v4
-      - run: ./gradlew check -DenableOwasp -DisCi
+      - name: Run Gradle checks
+        run: |
+          ./gradlew check 
+          -DisCi
+          -DenableOwasp
+#           enable for more sophisticated check (and more breaking builds ;)
+#          -DowaspOssUsername=${{ secrets.OWASP_OSS_USERNAME }}
+#          -DowaspOssPassword=${{ secrets.OWASP_OSS_PASSWORD }}
+# dependencyCheckAggregate ?

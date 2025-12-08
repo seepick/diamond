@@ -25,6 +25,7 @@ include(
     "shared:shared-test",
     "shared:shared-testKtor",
     "shared:openapi-gen",
+    "shared:gradle-platform",
     "itest",
     "etest",
     ":doc:SoftwareDocument",

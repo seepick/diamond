@@ -14,7 +14,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = group as String
             artifactId = "openapi-gen"
-            version = "0" // TODO read from somewhere...
+            version = project.version.toString()
 
             from(components["kotlin"])
         }
