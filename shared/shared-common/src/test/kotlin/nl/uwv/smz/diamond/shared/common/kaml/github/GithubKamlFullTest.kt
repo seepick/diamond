@@ -1,20 +1,22 @@
-package nl.uwv.smz.diamond.shared.common.yaml
+package nl.uwv.smz.diamond.shared.common.kaml.github
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.equals.shouldBeEqual
-import nl.uwv.smz.diamond.shared.common.yaml.github.DemoEnvironmentNamespace
-import nl.uwv.smz.diamond.shared.common.yaml.github.JavaVersion
-import nl.uwv.smz.diamond.shared.common.yaml.github.PermissionLevel
-import nl.uwv.smz.diamond.shared.common.yaml.github.Runtime
-import nl.uwv.smz.diamond.shared.common.yaml.github.githubYaml
-import nl.uwv.smz.diamond.shared.common.yaml.github.toYamlString
+import nl.uwv.smz.diamond.shared.common.kaml.github.domain.PermissionLevel
+import nl.uwv.smz.diamond.shared.common.kaml.github.domain.Runtime
+import nl.uwv.smz.diamond.shared.common.kaml.github.dsl.DemoEnvironmentNamespace
+import nl.uwv.smz.diamond.shared.common.kaml.github.dsl.JavaVersion
+import nl.uwv.smz.diamond.shared.common.kaml.github.dsl.githubKaml
+import nl.uwv.smz.diamond.shared.common.kaml.github.yaml.toYamlString
 
-class GithubYamlFullTest : StringSpec({
+class GithubKamlFullTest : StringSpec({
+
     fun loadResource(path: String): String =
-        javaClass.getResource("/githubYaml/$path")!!.readText()
+        javaClass.getResource("/githubKaml/$path")!!.readText()
+            .dropLastWhile { it == '\n' } // intellij autoformatter hack ;)
 
     "Full Test Continuous" {
-        githubYaml {
+        githubKaml {
             name = "FTC Yaml Name"
             triggers {
                 onPushBranches("FTC_branch")

@@ -1,24 +1,16 @@
-package nl.uwv.smz.diamond.shared.common.yaml
+package nl.uwv.smz.diamond.shared.common.kaml.github
 
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.string.shouldContain
-import nl.uwv.smz.diamond.shared.common.yaml.github.Runtime
-import nl.uwv.smz.diamond.shared.common.yaml.github.githubYaml
-import nl.uwv.smz.diamond.shared.common.yaml.github.toYamlString
+import nl.uwv.smz.diamond.shared.common.kaml.github.domain.Runtime
+import nl.uwv.smz.diamond.shared.common.kaml.github.dsl.githubKaml
+import nl.uwv.smz.diamond.shared.common.kaml.github.yaml.toYamlString
 
-// would be nice to support injecting comments anywhere ;)
-class GithubYamlTest : DescribeSpec({
-/*
-TODO test for multiline run
-steps:
-  - name: Execute script
-    run: |
-      chmod +x ./script.sh
-      ./script.sh
- */
+class GithubKamlTest : DescribeSpec({
+
     describe("Global configs") {
         it("name") {
-            githubYaml {
+            githubKaml {
                 name = "Continuous Integration"
             }.toYamlString() shouldContain
                 """
@@ -28,7 +20,7 @@ steps:
     }
     describe("Triggers") {
         it("on push branches") {
-            githubYaml {
+            githubKaml {
                 triggers {
                     onPushBranches("main")
                 }
@@ -41,7 +33,7 @@ steps:
                 """.trimMargin()
         }
         it("on cron") {
-            githubYaml {
+            githubKaml {
                 triggers {
                     cron("0 0 * * *")
                 }
@@ -55,7 +47,7 @@ steps:
                 """.trimMargin()
         }
         it("on manual") {
-            githubYaml {
+            githubKaml {
                 triggers {
                     manual()
                     // support input values
@@ -69,7 +61,7 @@ steps:
     }
     describe("Jobs") {
         it("general") {
-            githubYaml {
+            githubKaml {
                 jobs {
                     job {
                         id = "jobId"
@@ -88,7 +80,7 @@ steps:
     }
     describe("Steps") {
         it("checkout") {
-            githubYaml {
+            githubKaml {
                 jobs {
                     job {
                         steps {
