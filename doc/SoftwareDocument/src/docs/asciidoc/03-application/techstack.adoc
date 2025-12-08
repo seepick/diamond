@@ -50,7 +50,7 @@ SonarQube:: Quality gate for code analysis, test coverage and more.
 
 === Core Libs
 
-Ktor:: Lightweight web framework ("_newer Spring Web_").
+Ktor:: Lightweight web framework ("_newer Spring WebMVC_").
 Koin:: Dependency injection, actually service locator, framework ("_newer Spring Framework_", neither classpath scanning nor annotations use).
 Kotest:: Modern flexible testing framework integrating with the JUnit engine ("_newer JUnit_")/
 Exposed:: Typesafe SQL library (not a full fledged ORM like JPA/Hbernate).

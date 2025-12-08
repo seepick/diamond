@@ -11,4 +11,4 @@ endif::[]
 ** Release
 
 .Sketching a build pipeline overview
-image::{imgdir}/diagrams/build-pipelines.png[scaledwidth=30%]
+image::{imgdir}/diagrams/build-pipelines.png[]

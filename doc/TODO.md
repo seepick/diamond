@@ -30,6 +30,7 @@ Small
   environment_variables.generated.adoc
 * document finding: sonarqube plugin is blocking performance :( detekt/ktlint are blazing fast (detekt @Suppress
   existing but no "quickfix"; ktlint via suppression.properties feels oldschool)
+* rework build pipeline diagram: sketch future desired; layout vertically (not horizontally)
 
 Big
 -------------------------
@@ -40,8 +41,9 @@ Big
 Final
 -------------------------
 
-* fine-tune; proof-read it myself
-* send to alex&shai; get feedback from it
+* rework sitemap.svg
+* fine-tune text; proof-read it myself
+* send to alex&shai; get feedback from them
 
 Next
 =========================
@@ -119,6 +121,7 @@ Asciidoc
 Low
 -------------------------
 
+* Enable OSS Index analyzer, authentication required: https://ossindex.sonatype.org/doc/auth-required
 * maybe use arrow's optics to manipulate deep nested, immutable data classes.
 * Nightly build not only more quality analysis (security/OWASP) but also different test types (performance/load/stress,
   security)

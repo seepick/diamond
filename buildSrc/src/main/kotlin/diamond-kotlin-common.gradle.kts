@@ -39,6 +39,10 @@ if (GradleProperty.enableOwasp.isSet()) {
 //    failBuildOnCVSS = 7f // score >= 7 is critical/high
         failBuildOnCVSS = 3f // medium+
 
+        analyzers {
+            // or: -Ddependency-check.analyzer.assembly.enabled=false
+            assemblyEnabled = false // no EXE, DLL things; we are not .net
+        }
         // formats: ALL (HTML, JSON, XML), HTML, JSON, XML, CSV
 //    format = org.owasp.dependencycheck.reporting.ReportFormat.ALL
 //    suppressionFile = rootProject.file("config/owasp-suppressions.xml")
@@ -49,6 +53,8 @@ if (GradleProperty.enableOwasp.isSet()) {
 //    exclude = listOf("**/test/**", "**/*.txt")
     }
 
+    // it's better to register tasks to lifecycle, than to provide additional tasks
+    // (applied IoC, more flexible, less error-prone)
     tasks.named("check") {
         dependsOn("dependencyCheckAnalyze")
     }
