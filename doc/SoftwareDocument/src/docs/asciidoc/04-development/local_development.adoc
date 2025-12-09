@@ -35,3 +35,12 @@ The following plugins are recommended to have a smooth development experience:
 Other:
 
 * plantuml4idea (graphivz/dot required)
+
+== Helper Binaries
+
+See `/bin/*.sh` files.
+
+* Build documentation (overall, diagrams, HTML, PDF)
+* Build docker images (for own project, for SFTP)
+* Generate OpenAPI code with custom generator
+* Test the configuration is set up properly.

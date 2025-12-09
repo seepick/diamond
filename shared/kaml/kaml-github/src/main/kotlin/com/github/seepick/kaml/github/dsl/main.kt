@@ -1,0 +1,32 @@
+package com.github.seepick.kaml.github.dsl
+
+import com.github.seepick.kaml.github.domain.GithubAction
+import com.github.seepick.kaml.github.domain.Job
+import com.github.seepick.kaml.github.domain.Trigger
+
+fun githubKaml(code: GithubActionDsl.() -> Unit): GithubAction =
+    GithubActionDsl().apply(code).build()
+
+@DslMarker
+annotation class GithubDsl
+
+@GithubDsl
+class GithubActionDsl {
+    var name: String = "Default Action Name"
+    private var triggersList = emptyList<Trigger>()
+    private var jobsList = emptyList<Job>()
+
+    fun triggers(code: TriggersDsl.() -> Unit) {
+        triggersList = TriggersDsl().apply(code).build()
+    }
+
+    fun jobs(code: JobsDsl.() -> Unit) {
+        jobsList = JobsDsl().apply(code).build()
+    }
+
+    internal fun build() = GithubAction(
+        name = name,
+        triggers = triggersList,
+        jobs = jobsList,
+    )
+}

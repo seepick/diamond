@@ -35,9 +35,11 @@ As seen in link:https://github.com/seepick/diamond/blob/main/buildSrc/src/main/k
 * Build an executable JAR:
 ** `./gradlew :app:buildFatJar -Pdiamond_version="42"`
 * Check for outdated dependencies:
-* `./gradlew dependencyUpdates`
+** `./gradlew dependencyUpdates`
 * Deploy container image to local Docker registry.
-* `./gradlew publishImageToLocalRegistry`
+** `./gradlew publishImageToLocalRegistry`
+* Generate GitHub action YAML files based on programmatic DSL.
+** `./gradlew :generateKaml`
 
 Test:
 
@@ -48,9 +50,9 @@ Test:
 
 Documentation:
 
-* Generate documentation for available ENV properties:
+* Generate documentation for available environment properties:
 ** `./gradlew :app:generateConfigDoc`
 * Generate software documentation as PDF:
 ** `./gradlew :doc:SoftwareDocument:asciidoctorPdf`
 * Generate software documentation as HTML:
-* `./gradlew :doc:SoftwareDocument:asciidoctor`
+** `./gradlew :doc:SoftwareDocument:asciidoctor`

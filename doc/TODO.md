@@ -4,6 +4,7 @@ Round up doc
 Small
 -------------------------
 
+* ADR KAML, an experiment for faster/safer/easier YAML configuration with custom Kotlin DSLs
 * architecture layer diagram of modules/subprojects
 * rename E1E to "system integration test"
 * this project is a template, a scaffold (other people use it)

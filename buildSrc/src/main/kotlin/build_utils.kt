@@ -1,4 +1,8 @@
+import gradle.kotlin.dsl.accessors._dfefe04184237bb8e2cfe40aa2a2bf83.java
 import org.gradle.api.Project
+import org.gradle.api.tasks.JavaExec
+import org.gradle.kotlin.dsl.get
+import org.gradle.kotlin.dsl.register
 
 fun enhanceSystemProperties(vararg more: Pair<String, String>): Map<String, Any> =
     enhanceSystemProperties(more.toList())
@@ -22,4 +26,23 @@ fun Project.fullProjectName(): String {
 
 inline fun <reified C> Project.configure(name: String, configuration: C.() -> Unit) {
     (this.tasks.getByName(name) as C).configuration()
+}
+
+data class JavaExecConfig(
+    val name: String,
+    val group: String,
+    val description: String,
+    val mainClass: String,
+    val args: List<String> = emptyList(),
+)
+
+fun Project.registerJavaExecTask(config: JavaExecConfig) {
+    tasks.register<JavaExec>(config.name) {
+        group = config.group
+        description = config.description
+        mainClass.set(config.mainClass)
+        args = config.args
+        workingDir = rootDir
+        classpath = java.sourceSets["test"].runtimeClasspath
+    }
 }

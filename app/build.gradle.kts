@@ -62,34 +62,6 @@ ktor {
     }
 }
 
-fun registerJavaExecTask(name: String, group: String, description: String, mainClass: String) {
-    tasks.register<JavaExec>(name) {
-        // instead "runBoot" ;)
-        this.group = group
-        this.description = description
-        // TODO make output configurable
-        this.mainClass.set(mainClass)
-        workingDir = rootDir
-        classpath = java.sourceSets["test"].runtimeClasspath
-    }
-}
-
-registerJavaExecTask(
-    name = "runLocal",
-    group = "application",
-    description = "asdf",
-    mainClass = Constants.Fqn.localMainClass,
-)
-
-/** generate asciidoc describing the support environment variables to be set by operations */
-registerJavaExecTask(
-    // TODO make output configurable
-    name = "generateConfigDoc", // instead "runBoot" ;)
-    group = "documentation",
-    description = "Generate ENV vars overview by using reflection.",
-    mainClass = Constants.Fqn.configDocWriter,
-)
-
 configure<ProcessResources>("processResources") {
     from("src/main/resources") {
         include("buildInjected.properties")
@@ -103,3 +75,23 @@ configure<ProcessResources>("processResources") {
         )
     }
 }
+
+registerJavaExecTask(
+    JavaExecConfig(
+        name = "runLocal",
+        group = "application",
+        description = "Run LocalDiamondApp",
+        mainClass = Constants.Fqn.localMainClass,
+    ),
+)
+
+/** generate asciidoc describing the support environment variables to be set by operations */
+registerJavaExecTask(
+    JavaExecConfig(
+        // TODO make output configurable
+        name = "generateConfigDoc",
+        group = "documentation",
+        description = "Generate ENV vars overview by using reflection.",
+        mainClass = Constants.Fqn.configDocWriter,
+    ),
+)
