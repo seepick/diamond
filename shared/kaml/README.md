@@ -1,13 +1,58 @@
 Kaml
 ========================================================================================================================
 
-A Kotlin Yaml generator, using a typesafe, concise, auto-completable DSL.
+A Kotlin Yaml generator offering a concise, typesafe, "auto-completable" DSL.
 
-Support for GitHub Actions, and future also: OpenAPI, OpenShift, and more...
+Example of a GitHub action with Kaml:
 
+```kotlin
+githubKaml {
+    name = "Continuous"
+    triggers {
+        onPushBranches("main")
+    }
+    jobs {
+        job {
+            id = "ci"
+            name = "Continuous Integration Job"
+            // runs by default with ubuntu-latest
+            permissions {
+                contents = PermissionLevel.Read
+            }
+            steps {
+                checkout {}
+                setupJava {
+                    javaVersion = JavaVersion.v17
+                }
+                runCommand {
+                    name = "Run Gradle 'check' task"
+                    command = "./gradlew check"
+                }
+            }
+        }
+    }
+}
+```
+
+Todos
+========================================================================================================================
+
+* OpenAPI, OpenShift, Kustomize, and more...
+
+GitHub
+------------------------------------------------------------------------------------------------------------------------
+
+* multi-line strings (preserved | and folded >)
+* extensibility: allow for totally custom yaml entries
+* support comments
+* showcase building layer on top of DSL (reuse, reference, ...)
+* generation modes: 1) inline 2) reuse/reference (the typical way when handwriting them)
+
+Research
+========================================================================================================================
 
 Yaml Libs
-----
+------------------------------------------------------------------------------------------------------------------------
 
 Plain generators:
 
@@ -31,18 +76,6 @@ Object mapper:
       KMP: https://github.com/charleskorn/kaml/blob/main/src/commonMain/kotlin/com/charleskorn/kaml/YamlOutput.kt
 * jackson-dataformat-yaml
 * YamlBeans: too simple, only object de/serialization
-
-Todos
-========================================================================================================================
-
-GitHub
-------------------------------------------------------------------------------------------------------------------------
-
-* multi-line strings (preserved | and folded >)
-* extensibility: allow for totally custom yaml entries
-* support comments
-* showcase building layer on top of DSL (reuse, reference, ...)
-* generation modes: 1) inline 2) reuse/reference (the typical way when handwriting them)
 
 Yaml Spec
 ========================================================================================================================

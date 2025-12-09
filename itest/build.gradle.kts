@@ -39,6 +39,8 @@ dependencies {
 }
 
 // tasks.withType<Test> {
+// systemProperty("cucumber.junit-platform.naming-strategy", "long")
+
 // // Parallel forks across JVMs
 //    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).coerceAtLeast(2)
 //    forkEvery = 1

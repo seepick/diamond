@@ -28,7 +28,7 @@ dependencies {
     // TODO aggregated reports
 //    kover(project(":view:view-routing"))
 //    kover(project(":view:controller-impl"))
-    testImplementation(project(":shared:kaml:kaml-github"))
+    implementation(project(":shared:kaml:kaml-github"))
 }
 
 registerJavaExecTask(

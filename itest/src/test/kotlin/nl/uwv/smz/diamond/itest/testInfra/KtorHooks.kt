@@ -39,7 +39,7 @@ import kotlin.coroutines.EmptyCoroutineContext
 class KtorHooks(private val world: World) {
 
     private val log = logger {}
-    private var testApplication: TestApplication? = null
+    private lateinit var testApplication: TestApplication
     private val testEnvConfig = EnvConfig(
         KtorConfig(),
         DatabaseConfig(
@@ -66,6 +66,7 @@ class KtorHooks(private val world: World) {
     @Before
     fun `before each scenario`(scenario: Scenario) {
         log.trace { "Starting ktor for test: ${scenario.name}" }
+
         var tmpClient: HttpClient? = null
         startKtor {
             tmpClient = createClient {
@@ -87,8 +88,18 @@ class KtorHooks(private val world: World) {
                 setupDiamondKtor(testGlobalConfiguration, Modules.externStub())
             }
         }
-        @Suppress("USELESS_CAST") val koin = testApplication!!.application.attributes[KOIN_ATTRIBUTE_KEY] as Koin
+        @Suppress("USELESS_CAST") val koin = testApplication.application.attributes[KOIN_ATTRIBUTE_KEY] as Koin
         world.reinitialize(WorldContext(tmpClient!!, koin))
+
+//        testApplication = TestApplication {
+//            // will implictly start ktor's test-engine
+//            application {
+//                setupDiamondKtor(testGlobalConfiguration, Modules.externStub())
+//            }
+//        }
+//        val testClient = testApplication.client
+//        @Suppress("USELESS_CAST") val koin = testApplication.application.attributes[KOIN_ATTRIBUTE_KEY] as Koin
+//        world.reinitialize(WorldContext(testClient, koin))
     }
 
     // TODO report to ktor people, using with cucumber, "delocated" shutdown of ktor test application context

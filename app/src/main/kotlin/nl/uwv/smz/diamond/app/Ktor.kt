@@ -42,7 +42,7 @@ object Ktor {
 /** Visible for integration test setup */
 fun Application.setupDiamondKtor(
     config: GlobalConfiguration,
-    externStub: Module?,
+    externStub: Module?, // TODO change to extraModules: List<Module>
 ) {
     installKoin(config, externStub)
     installRoutingsAndPlugins(config.routingSetting)

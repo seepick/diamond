@@ -27,6 +27,7 @@ fun Application.installKoin(
 ) {
     log.info { "Installing Koin" }
     install(KoinIsolated) {
+        // imported to install the isolated version of it!
         slf4jLogger(level = Level.INFO) // TODO extract as EnvConfig, default = WARN
         modules(Modules.all(config, externStub))
     }

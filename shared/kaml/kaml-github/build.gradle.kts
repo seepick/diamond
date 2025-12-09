@@ -5,5 +5,4 @@ plugins {
 
 dependencies {
     implementation(project(":shared:kaml:kaml-core"))
-    implementation(Deps.eoYaml)
 }

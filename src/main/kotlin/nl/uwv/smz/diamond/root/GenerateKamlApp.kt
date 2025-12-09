@@ -3,6 +3,7 @@ package nl.uwv.smz.diamond.root
 import com.github.seepick.kaml.github.yaml.toYamlString
 import java.io.File
 
+/** Executed by build.gradle.kts 'generateKaml' task. */
 object GenerateKamlApp {
     private const val GITHUB_WORKFLOWS_PATH = ".github/workflows"
 

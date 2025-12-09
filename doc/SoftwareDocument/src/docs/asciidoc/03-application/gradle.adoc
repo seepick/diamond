@@ -46,7 +46,7 @@ As seen in link:https://github.com/seepick/diamond/blob/main/buildSrc/src/main/k
 ** `./gradlew dependencyUpdates`
 * Deploy container image to local Docker registry.
 ** `./gradlew publishImageToLocalRegistry`
-* Generate GitHub action YAML files based on programmatic DSL.
+* Generate GitHub action YAMLs based on a programmatic DSL.
 ** `./gradlew :generateKaml`
 
 Test:
