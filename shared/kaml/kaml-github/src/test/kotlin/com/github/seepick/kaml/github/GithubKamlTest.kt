@@ -37,13 +37,11 @@ class GithubKamlTest : DescribeSpec({
                 triggers {
                     cron("0 0 * * *")
                 }
-                // TODO does this need to be put in quotes?
-                // - cron: '0 0 * * *' # daily at 00:00 UTC
             }.toYamlString() shouldContain
                 """
                 |on:
                 |  schedule:
-                |    - cron: 0 0 * * *
+                |    - cron: "0 0 * * *"
                 """.trimMargin()
         }
         it("on manual") {
@@ -92,7 +90,7 @@ class GithubKamlTest : DescribeSpec({
                 """
                 |    steps:
                 |      - name: Checkout Code
-                |        uses: actions/checkout@v4
+                |        uses: "actions/checkout@v4"
                 """.trimMargin()
         }
     }

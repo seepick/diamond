@@ -4,17 +4,25 @@ endif::[]
 
 = Gradle
 
-* Guiding Principles:
-** Keep build log output silent; don't pollute it; don't be verbose (by default)
-** Keep all warnings down to zero immediately (0-warning policy applies here as well).
+== About
+
+include::{adrsdir}/building/gradle-or-maven.adoc[leveloffset=+2]
+
+include::{adrsdir}/building/gradle-kotlin-dsl.adoc[leveloffset=+2]
+
+=== Guiding Principles
+
+* Keep build log output silent; don't pollute it; don't be verbose (by default)
+* Keep all warnings down to zero immediately (0-warning policy applies here as well).
 * Sharing build logic via the `/buildSrc/` directory.
 ** See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html
 
-include::{adrsdir}/building/gradle-kotlin-dsl.adoc[leveloffset=+1]
 
-include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+1]
+include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+2x]
 
-== Gradle Properties
+== Application Usage
+
+=== Custom Properties
 
 * Enable certain flags (enabled via gradle properties and on CI), it will enable more tests/reports (which take longer and require more local setup)
 * Pass them either as system variables `-D` (as gradle properties sometimes doesn't work `-P`).
@@ -30,7 +38,7 @@ As seen in link:https://github.com/seepick/diamond/blob/main/buildSrc/src/main/k
 * `runTestcontainersTests` - see task below
 * `runEtests` - see task below
 
-== Gradle Tasks
+=== Common/Custom Tasks
 
 * Build an executable JAR:
 ** `./gradlew :app:buildFatJar -Pdiamond_version="42"`

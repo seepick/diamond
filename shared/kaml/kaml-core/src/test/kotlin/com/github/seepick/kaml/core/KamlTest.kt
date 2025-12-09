@@ -6,7 +6,7 @@ import io.kotest.matchers.equals.shouldBeEqual
 class KamlTest : DescribeSpec({
     describe("Simple") {
         it("single leaf node") {
-            YamlTree(listOf(Node("key", LeafNodeValue("value")))).toYamlString() shouldBeEqual "key: value"
+            YamlTree(listOf(Node("key", LeafNodeValue("value")))).toYamlStringOld() shouldBeEqual "key: value"
         }
     }
 })

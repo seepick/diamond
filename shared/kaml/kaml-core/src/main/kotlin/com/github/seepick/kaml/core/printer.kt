@@ -5,7 +5,8 @@ package com.github.seepick.kaml.core
 
 private const val NAME_VAL_SEPARATOR = ":"
 
-fun YamlTree.toYamlString(): String {
+@Deprecated(message = "Use eo-yaml instead")
+fun YamlTree.toYamlStringOld(): String {
     val yaml = StringBuilder()
     rootNodes.forEach { node ->
         buildYaml(yaml, node, 0, "")
