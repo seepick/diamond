@@ -1,16 +1,18 @@
 @Suppress("MayBeConstant", "unused", "ClassName", "ConstPropertyName")
 object Versions {
     const val java = 17
+
     val arrow = "2.2.0"
+    val eoYaml = "8.0.6"
+    val exposed = "0.61.0"
+    val h2 = "2.3.232"
+    val hoplite = "3.0.0.RC1" // "2.9.0"
+    val jsch = "2.27.7"
     val kotlin = "2.2.21"
     val koin = "4.1.1"
     val ktor = "3.3.2"
-    val h2 = "2.3.232"
-    val exposed = "0.61.0"
-    val hoplite = "3.0.0.RC1" // "2.9.0"
-    val testcontainers = "2.0.2"
-    val jsch = "2.27.7"
     val openapi = "7.17.0" // plugin and dependency
+    val testcontainers = "2.0.2"
 
     object logging {
         val kotlin = "7.0.13"

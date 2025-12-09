@@ -1,5 +1,6 @@
 package com.github.seepick.kaml.github.dsl
 
+import com.github.seepick.kaml.github.domain.Environment
 import com.github.seepick.kaml.github.domain.Job
 import com.github.seepick.kaml.github.domain.Permission
 import com.github.seepick.kaml.github.domain.Runtime

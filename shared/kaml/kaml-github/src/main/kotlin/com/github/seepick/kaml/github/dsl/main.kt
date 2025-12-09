@@ -1,5 +1,6 @@
 package com.github.seepick.kaml.github.dsl
 
+import com.github.seepick.kaml.github.domain.Environment
 import com.github.seepick.kaml.github.domain.GithubAction
 import com.github.seepick.kaml.github.domain.Job
 import com.github.seepick.kaml.github.domain.Trigger
@@ -29,4 +30,12 @@ class GithubActionDsl {
         triggers = triggersList,
         jobs = jobsList,
     )
+}
+
+// should be declared outside (custom) by the project
+enum class DemoEnvironmentNamespace(override val yamlValue: String) : Environment {
+    Production("prod"),
+    Acceptance("acc"),
+    Test("test"),
+    Development("dev"),
 }

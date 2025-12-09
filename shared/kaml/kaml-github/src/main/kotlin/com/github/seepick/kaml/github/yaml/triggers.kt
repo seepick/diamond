@@ -1,57 +1,37 @@
 package com.github.seepick.kaml.github.yaml
 
-import com.github.seepick.kaml.core.ContainerNodeValue
-import com.github.seepick.kaml.core.EmptyNodeValue
-import com.github.seepick.kaml.core.LeafNodeValue
-import com.github.seepick.kaml.core.Node
-import com.github.seepick.kaml.core.ObjectListNodeValue
-import com.github.seepick.kaml.core.PrefixedObjectListNodeValue
-import com.github.seepick.kaml.core.ScalarListNodeValue
+import com.amihaiemil.eoyaml.YamlMapping
+import com.github.seepick.kaml.core.addAllStrings
+import com.github.seepick.kaml.core.yamlMap
+import com.github.seepick.kaml.core.yamlScal
+import com.github.seepick.kaml.core.yamlSeq
 import com.github.seepick.kaml.github.domain.CronTrigger
-import com.github.seepick.kaml.github.domain.GithubAction
 import com.github.seepick.kaml.github.domain.ManualTrigger
 import com.github.seepick.kaml.github.domain.OnPushBranchTrigger
+import com.github.seepick.kaml.github.domain.Trigger
 
-internal fun GithubAction.buildTriggers(): Node? {
-    if (triggers.isEmpty()) {
-        return null
+internal fun triggersYaml(triggers: List<Trigger>): YamlMapping {
+    val rootTriggers = yamlMap()
+    triggers.forEach { trigger ->
+        when (trigger) {
+            ManualTrigger -> {
+                rootTriggers.add("workflow_dispatch", yamlScal().buildPlainScalar(""))
+            }
+
+            is CronTrigger -> {
+                rootTriggers.add("schedule", yamlSeq().add(yamlMap().add("cron", trigger.pattern).build()).build())
+            }
+
+            is OnPushBranchTrigger -> {
+                rootTriggers.add(
+                    "push",
+                    yamlMap().add(
+                        "branches",
+                        yamlSeq().addAllStrings(trigger.branchNames).build(),
+                    ).build(),
+                )
+            }
+        }
     }
-
-    return Node(
-        "on",
-        ObjectListNodeValue(
-            triggers.map { trigger ->
-                when (trigger) {
-                    is OnPushBranchTrigger -> {
-                        Node(
-                            "push",
-                            ContainerNodeValue(
-                                Node("branches", ScalarListNodeValue(trigger.branchNames)),
-                            ),
-                        )
-                    }
-
-                    is CronTrigger -> {
-                        Node(
-                            "schedule",
-                            PrefixedObjectListNodeValue(
-                                listOf(
-                                    listOf(
-                                        Node(
-                                            "cron",
-                                            LeafNodeValue(trigger.pattern),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        )
-                    }
-
-                    ManualTrigger -> {
-                        Node("workflow_dispatch", EmptyNodeValue)
-                    }
-                }
-            },
-        ),
-    )
+    return rootTriggers.build()
 }

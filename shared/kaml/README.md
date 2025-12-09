@@ -35,18 +35,12 @@ Object mapper:
 Todos
 ========================================================================================================================
 
-
-Core
-------------------------------------------------------------------------------------------------------------------------
-
-* multi-line strings (preserved | and folded >)
-* kaml-core DSL
-* extensibility: allow for totally custom yaml entries
-* support comments
-
 GitHub
 ------------------------------------------------------------------------------------------------------------------------
 
+* multi-line strings (preserved | and folded >)
+* extensibility: allow for totally custom yaml entries
+* support comments
 * showcase building layer on top of DSL (reuse, reference, ...)
 * generation modes: 1) inline 2) reuse/reference (the typical way when handwriting them)
 
@@ -101,7 +95,7 @@ orNot: null
 { key: value, port: 42 }
 ```
 
-Scalar sequence (NOT supported, as root level without cointainer node):
+Scalar sequence:
 
 ```yaml
 - Mark McGwire
@@ -130,7 +124,7 @@ Mappings:
   age: 65
 ```
 
-Sequence of sequence (NOT supported):
+Sequence of sequence:
 
 ```yaml
 - [ name , age ]
@@ -138,7 +132,7 @@ Sequence of sequence (NOT supported):
 - [ bar  ,  42 ]
 ```
 
-Mapping of mappings (NOT supported):
+Mapping of mappings:
 
 ```yaml
 Foo: { bar: 42, baz: true }
@@ -156,7 +150,7 @@ Ways of defining a list of key-value objects:
 Structures
 ------------------------------------------------------------------------------------------------------------------------
 
-directives before doc separator `---`, and doc finalizer `...` (NOT supported):
+directives before doc separator `---`, and doc finalizer `...`:
 
 ```yaml
 # some directives
@@ -170,7 +164,7 @@ directives before doc separator `---`, and doc finalizer `...` (NOT supported):
 - foobar
 ```
 
-references marked with `&` and then referenced with `*`  (NOT supported):
+references marked with `&` and then referenced with `*`:
 
 ```yaml
 obj1:
@@ -181,7 +175,7 @@ obj2:
   - Baz
 ```
 
-Complex mapping key / Mapping between Sequences (NOT supported):
+Complex mapping key / Mapping between Sequences:
 
 ```text
 ? - Detroit Tigers
