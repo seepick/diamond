@@ -446,7 +446,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     <div class="details">
         <span class="author" id="author">Seepick</span><br>
         <span id="revnumber">version SNAPSHOT,</span>
-        <span id="revdate">2025-12-07</span>
+        <span id="revdate">2025-12-11</span>
     </div>
     <div class="toc2" id="toc">
         <div id="toctitle">Table of Contents</div>
@@ -467,7 +467,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         <ul class="sectlevel3">
                             <li><a href="#packaging">1.3.1. Packaging</a></li>
                             <li><a href="#submodules">1.3.2. Submodules</a></li>
-                            <li><a href="#client-sdks">1.3.3. Client-SDKs</a></li>
+                            <li><a href="#code-generation">1.3.3. Code Generation</a></li>
+                            <li><a href="#client-sdks">1.3.4. Client-SDKs</a></li>
                         </ul>
                     </li>
                     <li><a href="#technology-choices">1.4. Technology Choices</a>
@@ -512,10 +513,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     </li>
                     <li><a href="#gradle">3.2. Gradle</a>
                         <ul class="sectlevel3">
-                            <li><a href="#gradle-kotlin-dsl">3.2.1. Gradle Kotlin DSL</a></li>
-                            <li><a href="#manage-dependencies">3.2.2. Manage Dependencies</a></li>
-                            <li><a href="#gradle-properties">3.2.3. Gradle Properties</a></li>
-                            <li><a href="#gradle-tasks">3.2.4. Gradle Tasks</a></li>
+                            <li><a href="#about">3.2.1. About</a></li>
+                            <li><a href="#application-usage">3.2.2. Application Usage</a></li>
                         </ul>
                     </li>
                     <li><a href="#application-configuration">3.3. Application Configuration</a>
@@ -545,9 +544,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <li><a href="#local-development">4.2. Local Development</a>
                         <ul class="sectlevel3">
                             <li><a href="#intellij-plugins">4.2.1. IntelliJ Plugins</a></li>
+                            <li><a href="#helper-binaries">4.2.2. Helper Binaries</a></li>
                         </ul>
                     </li>
-                    <li><a href="#code-generation">4.3. Code Generation</a>
+                    <li><a href="#code-generation-2">4.3. Code Generation</a>
                         <ul class="sectlevel3">
                             <li><a href="#generating-sources">4.3.1. Generating Sources</a></li>
                             <li><a href="#generate-persistence-code">4.3.2. Generate Persistence Code</a></li>
@@ -661,7 +661,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </table>
             </div>
             <div class="paragraph">
-                <p>The build for this document was triggered on Sun, 7. December 2025 at 23:31 - enjoy :)</p>
+                <p>The build for this document was triggered on Thu, 11. December 2025 at 20:40 - enjoy :)</p>
             </div>
             <div class="imageblock text-center">
                 <div class="content">
@@ -978,123 +978,268 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 <div class="sect3">
                     <h4 id="submodules">1.3.2. Submodules</h4>
                     <div class="paragraph">
-                        <p>Each architectural layer is represented by a sub-module (actually in Gradle terminology it&#8217;s
-                            called sub-project, but we prefer Maven&#8217;s sub-module).</p>
+                        <p>Each architectural layer is composed of several (sub-)modules (in Gradle terminology it&#8217;s
+                            called a sub-project actualy, but we prefer Maven&#8217;s sub-module term).</p>
                     </div>
-                    <div class="paragraph">
-                        <p>Main Submodules:</p>
+                    <div class="imageblock">
+                        <div class="content">
+                            <img alt="application modules" src="images/diagrams/application-modules.png">
+                        </div>
+                        <div class="title">Figure 4. The modules the application is composed of and parts of its
+                            "neighboring" components.
+                        </div>
                     </div>
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>app</p>
+                                <p><code>app</code>&#8201;&#8212;&#8201;the main entry point to start up the
+                                    application; has a dependency on all submodules (incl. impls) and wires the
+                                    dependency injection context; reads the configuration and starts the webserver.</p>
                             </li>
                             <li>
-                                <p>view</p>
+                                <p><code>view</code>&#8201;&#8212;&#8201;container for all HTTP API related routes and
+                                    controllers</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>view-routing and view-controller-[api/impl] could be merged into one&#8230;&#8203;</p>
+                                            <p><code>view-routing</code>&#8201;&#8212;&#8201;the endpoint definition and
+                                                reading of relevant data from the HTTP request</p>
+                                        </li>
+                                        <li>
+                                            <p><span class="line-through"><code>view-model</code></span>&#8201;&#8212;&#8201;No!
+                                                as those are (OpenAPI) generated and oustourced</p>
+                                        </li>
+                                        <li>
+                                            <p><code>controller-api</code>&#8201;&#8212;&#8201;abstraction of client
+                                                requests (free of webframework references, potentially easier to test;
+                                                see open question section for details)</p>
+                                        </li>
+                                        <li>
+                                            <p><code>controller-impl</code>&#8201;&#8212;&#8201;transforming view-models
+                                                into domain-models (OpenAPI spec)</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p>logic-api</p>
-                            </li>
-                            <li>
-                                <p>logic-impl</p>
-                            </li>
-                            <li>
-                                <p>extern</p>
+                                <p><code>domain`</code>&#8201;&#8212;&#8201;container for business logic, free from any
+                                    framework/tech-references</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>extern-api</p>
+                                            <p><code>domain-model</code>&#8201;&#8212;&#8201;shared representation of a
+                                                domain object and errors</p>
                                         </li>
                                         <li>
-                                            <p>extern-impl (HTTP, SFTP)</p>
+                                            <p><code>domain-logic-api</code>&#8201;&#8212;&#8201;interfaces/entry points
+                                                for controllers</p>
                                         </li>
                                         <li>
-                                            <p>extern-stub</p>
-                                        </li>
-                                        <li>
-                                            <p>extern-model (?) - generated source code (YAML, WSDL)</p>
+                                            <p><code>domain-logic-impl</code>&#8201;&#8212;&#8201;actual business
+                                                features</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p>persistence</p>
+                                <p><code>persistence</code>&#8201;&#8212;&#8201;database abstraction access layer</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>persistence-api</p>
+                                            <p><code>persistence-api</code>&#8201;&#8212;&#8201;repository interfaces
+                                            </p>
                                         </li>
                                         <li>
-                                            <p>persistence-impl (is actually persistence-exposed)</p>
+                                            <p><code>persistence-impl</code>&#8201;&#8212;&#8201;DBMS agnostic queries
+                                                and schema definition; runs DB migrations (actually <code>persistence-exposed</code>)
+                                            </p>
                                         </li>
                                         <li>
-                                            <p>once there was a persistence-stub, but it turned out to be useless
-                                                (already in full control)</p>
+                                            <p><span class="line-through"><code>persistence-stub</code></span>&#8201;&#8212;&#8201;No!
+                                                useless as already in full control and high speed with in-memory DB</p>
                                         </li>
                                     </ul>
                                 </div>
+                            </li>
+                            <li>
+                                <p><code>extern</code>&#8201;&#8212;&#8201;container for third party access (HTTP, SFTP,
+                                    MQ, &#8230;&#8203;)</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p><code>extern-api</code>&#8201;&#8212;&#8201;simplified interfaces
+                                                exposing data via domain-models</p>
+                                        </li>
+                                        <li>
+                                            <p><code>extern-impl</code>&#8201;&#8212;&#8201;configurable technology
+                                                specific clients</p>
+                                        </li>
+                                        <li>
+                                            <p><code>extern-stub</code>&#8201;&#8212;&#8201;used during testing (and
+                                                local development)</p>
+                                        </li>
+                                        <li>
+                                            <p><span class="line-through"><code>extern-model</code></span>&#8201;&#8212;&#8201;No!
+                                                as this needs to be generated and outsourced.
+                                                (YAML, WSDL)</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <p><code>shared</code>&#8201;&#8212;&#8201;container for common infrastructure code (can
+                                    be potentially outsourced over time)</p>
+                                <div class="ulist">
+                                    <ul>
+                                        <li>
+                                            <p><code>shared-common</code>&#8201;&#8212;&#8201;the obligatory
+                                                language/standard library extensions</p>
+                                        </li>
+                                        <li>
+                                            <p><code>shared-test</code>&#8201;&#8212;&#8201;framework extensions,
+                                                fixtures, logging</p>
+                                        </li>
+                                        <li>
+                                            <p><code>shared-logging</code>&#8201;&#8212;&#8201;programmatic logback
+                                                configuration (code &gt; markup)</p>
+                                        </li>
+                                        <li>
+                                            <p><code>shared-config</code>&#8201;&#8212;&#8201;custom functionality for
+                                                sophisticated configuration management</p>
+                                        </li>
+                                        <li>
+                                            <p><code>shared-xxx</code>&#8201;&#8212;&#8201;more to come&#8230;&#8203;
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <p><code>itest</code>&#8201;&#8212;&#8201;integration tests with Cucumber/Gherkin (BDD)
+                                    not leaving application boundary (full control and lightning fast)</p>
+                            </li>
+                            <li>
+                                <p><code>client-sdk</code>&#8201;&#8212;&#8201;easy to use API SDK (multiplatform
+                                    porject, reusable for JVM and JS/TypeScript, thus frontend)</p>
                             </li>
                         </ul>
                     </div>
                     <div class="paragraph">
-                        <p>Test Submodules:</p>
+                        <p>External libraries, yet maintained by us:</p>
                     </div>
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>itest</p>
-                            </li>
-                            <li>
-                                <p>etest: separate GIT repo (maybe dep on client-model)</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Client Submodules:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>client-sdk (kotlin MP)</p>
+                                <p><code>api-spec</code>&#8201;&#8212;&#8201;containing the OpenAPI specification and
+                                    generated sources</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>sdk</p>
+                                            <p><code>api-model</code>&#8201;&#8212;&#8201;entities supported by specific
+                                                serialization framework (usable by <code>client-sdk</code>)</p>
                                         </li>
                                         <li>
-                                            <p>models</p>
+                                            <p><code>api-server-routes</code>&#8201;&#8212;&#8201;webframework specific
+                                                code to tie the contract to the implementation</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Shared Subprojects:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
                             <li>
-                                <p>test</p>
+                                <p><code>thirdparty-spec</code>&#8201;&#8212;&#8201;external systems (OpenAPI/WSDL)
+                                    own-written client SDK (outsource generated code)</p>
                             </li>
                             <li>
-                                <p>logging</p>
+                                <p><code>etest</code>&#8201;&#8212;&#8201;end-to-end system tests residing outside to
+                                    decouple; only gets environment base URL for blackbox access</p>
                             </li>
                             <li>
-                                <p>openapi-gen (resides in shared for now, needs to be externalized)</p>
+                                <p><code>openapi-gen</code>&#8201;&#8212;&#8201;custom OpenAPI generators (resides in
+                                    shared for now, needs to be externalized)</p>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="client-sdks">1.3.3. Client-SDKs</h4>
+                    <h4 id="code-generation">1.3.3. Code Generation</h4>
+                    <div class="admonitionblock tip">
+                        <table>
+                            <tr>
+                                <td class="icon">
+                                    <i class="fa icon-tip" title="Tip"></i>
+                                </td>
+                                <td class="content">
+                                    <div class="paragraph">
+                                        <p>Status: Draft<br>
+                                            Created: 11.12.2025<br>
+                                            Author: Seepick</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Context:</strong></p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Third parties (and our own API as well) provide a markup document (JSON, YAML or XML)
+                                    specifying their API.</p>
+                            </li>
+                            <li>
+                                <p>It is time-consuming and error-prone to maintain code and spec in sync manually.</p>
+                            </li>
+                            <li>
+                                <p>Code needs to be generated (assumption), and the question is what&#8217;s the best
+                                    alternative to do it?</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Insourcing:</strong></p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Everything encapsulated into one unit; faster development, less "bureaucracy".</p>
+                            </li>
+                            <li>
+                                <p>The generated sources will most likely not comply with configured static code
+                                    analysis and formatting tools and cause false positives.</p>
+                            </li>
+                            <li>
+                                <p>Regenerating sources every build costs precious (build/developer) time and is 99% of
+                                    the cases not necessary (no changes).</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Outsourcing:</strong></p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Tool enforced contract compliance (more robust).</p>
+                            </li>
+                            <li>
+                                <p>A change in the API is a deliberate act (and not an accident); higher impact, more
+                                    sensitive.</p>
+                            </li>
+                            <li>
+                                <p>But it is <strong>especially true</strong> for our own API, that the spec is not part
+                                    of the backend-service; it is shared with frontend and testers; it&#8217;s the
+                                    contract to which we provide an implementation for.</p>
+                            </li>
+                            <li>
+                                <p>Not everything is achievable with code generation (at least not with realistic
+                                    effort); some needs to be handwritten.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="client-sdks">1.3.4. Client-SDKs</h4>
                     <div class="paragraph">
                         <p>What is it?</p>
                     </div>
@@ -1120,6 +1265,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                                         <li>
                                             <p>Reusable test instances for property based testing.</p>
                                         </li>
+                                        <li>
+                                            <p>It is preferrably available in all used client languages.</p>
+                                        </li>
+                                        <li>
+                                            <p>Different client technologies exist; in different versions.</p>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -1142,37 +1293,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Code generation:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Preferrably most is generated by an OpenAPI generator (contract enforcement).</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Not everything is doable with code generation (at least not with
-                                                realistic effort); some needs to be handwritten.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>It is preferrably available in all used client languages.</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Different client technologies exist; in different versions.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Alternative: Provide custom generators to be used.</p>
                             </li>
                         </ul>
                     </div>
@@ -1205,7 +1325,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         </ul>
                     </div>
                     <div class="sect4">
-                        <h5 id="layer-granularity">1.3.3.1. Layer Granularity</h5>
+                        <h5 id="layer-granularity">1.3.4.1. Layer Granularity</h5>
                         <div class="admonitionblock tip">
                             <table>
                                 <tr>
@@ -2484,7 +2604,7 @@ dependencies {
                             <dl>
                                 <dt class="hdlist1">Ktor</dt>
                                 <dd>
-                                    <p>Lightweight web framework ("<em>newer Spring Web</em>").</p>
+                                    <p>Lightweight web framework ("<em>newer Spring WebMVC</em>").</p>
                                 </dd>
                                 <dt class="hdlist1">Koin</dt>
                                 <dd>
@@ -3219,214 +3339,198 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
             </div>
             <div class="sect2">
                 <h3 id="gradle">3.2. Gradle</h3>
-                <div class="ulist">
-                    <ul>
-                        <li>
-                            <p>Guiding Principles:</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>Keep build log output silent; don&#8217;t pollute it; don&#8217;t be verbose
-                                            (by default)</p>
-                                    </li>
-                                    <li>
-                                        <p>Keep all warnings down to zero immediately (0-warning policy applies here as
-                                            well).</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <p>Sharing build logic via the <code>/buildSrc/</code> directory.</p>
-                            <div class="ulist">
-                                <ul>
-                                    <li>
-                                        <p>See: <a
-                                                class="bare"
-                                                href="https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html">https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html</a>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
                 <div class="sect3">
-                    <h4 id="gradle-kotlin-dsl">3.2.1. Gradle Kotlin DSL</h4>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Draft<br>
-                                            Created: 1.12.2025<br>
-                                            Author: Seepick</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Context:</strong>
-                            * obviously not groovy (cumbersome)
-                            * as project is already in kotlin, makes sense to configure gradle also with kotlin
-                            * has become stable enough the last years (support, plugins/configuration, sufficient
-                            documentation on the internet)</p>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="manage-dependencies">3.2.2. Manage Dependencies</h4>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Draft<br>
-                                            Created: 1.12.2025<br>
-                                            Author: Seepick</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="paragraph">
-                        <p>Which way to properly manage gradle dependencies?</p>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Problem description:</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>versions repeatedly being declared, danger of mismatch (same library, different
-                                    versions)</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>especially true for multi-module projects</p>
-                                        </li>
-                                        <li>
-                                            <p>leading to runtime error due to binary incompatibility
-                                                (NoSuchMethodError, etc.)</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>cumbersome as in lots to type and repeat (we want to be concise and fast)</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Requirements:</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>not abstracting/hiding too much (e.g. one god dependency), but be
-                                    explicit/transparent enough for understanding</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>be concise enough, while capturing the essence for clarity (intuitive
-                                                comprehension) sake</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>not too complex, no over-engineering, just get it "good enough"</p>
-                            </li>
-                            <li>
-                                <p>deal with a huge amount of versions/dependencies/plugins</p>
-                            </li>
-                            <li>
-                                <p>custom plugin declaration (to share common code as extensions/compositions) can use
-                                    it as well</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Alternatives:</strong></p>
-                    </div>
-                    <div class="paragraph">
-                        <p>Either: 1) buildSrc custom code or 2) use gradle&#8217;s standard version catalog.</p>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Custom <code>buildSrc</code> Code:</strong></p>
-                    </div>
-                    <div class="paragraph">
-                        <p>Pros:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>it&#8217;s plain kotlin code with all its advantages</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>refactoring safe</p>
-                                        </li>
-                                        <li>
-                                            <p>immediate feedback from compiler if something is wrong</p>
-                                        </li>
-                                        <li>
-                                            <p>go to source with CTRL+click (javadoc)</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>full control and flexibility (custom made solution)</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>e.g. group versions and dependencies</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>already used for custom plugins</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>BUT: it is NOT possible to use things from the catalog for those</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Cons:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>it&#8217;s custom made for something a default solution already exists</p>
-                            </li>
-                            <li>
-                                <p>doesn&#8217;t support view usages</p>
-                            </li>
-                        </ul>
-                    </div>
+                    <h4 id="about">3.2.1. About</h4>
                     <div class="sect4">
-                        <h5 id="gradle-version-catalog">3.2.2.1. Gradle Version Catalog</h5>
+                        <h5 id="gradle-or-maven">3.2.1.1. Gradle or Maven</h5>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Draft<br>
+                                                Created: 9.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p>Pro Gradle:</p>
+                        </div>
                         <div class="ulist">
                             <ul>
                                 <li>
-                                    <p><a class="bare"
-                                          href="https://docs.gradle.org/current/userguide/version_catalogs.html">https://docs.gradle.org/current/userguide/version_catalogs.html</a>
-                                    </p>
+                                    <p>A natural evolution from Ant to Maven to Gradle</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>"<em>Because Google did it</em>" (their Android ecosystem even
+                                                    skipped Maven totally, and switched from Ant to Gradle)</p>
+                                            </li>
+                                            <li>
+                                                <p>Ant&#8217;s freedom (tasks but chaos), Maven&#8217;s lifecycle
+                                                    (order); Gradle = tasks + order</p>
+                                            </li>
+                                            <li>
+                                                <p>Reusing Maven&#8217;s excellent dependency management (same
+                                                    repos)</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Code (Kotlin, Groovy) over declarative approach (XML, YAML)</p>
+                                </li>
+                                <li>
+                                    <p>Dependencies differentiated in <code>implementation</code> (non-transitive) and
+                                        <code>api</code> (transitive); in Maven all <code>api</code> by default
+                                        (polluting classpath of consumers)</p>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="sect4">
+                        <h5 id="gradle-kotlin-dsl">3.2.1.2. Gradle Kotlin DSL</h5>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Draft<br>
+                                                Created: 1.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context:</strong>
+                                * obviously not groovy (cumbersome)
+                                * as project is already in kotlin, makes sense to configure gradle also with kotlin
+                                * has become stable enough the last years (support, plugins/configuration, sufficient
+                                documentation on the internet)</p>
+                        </div>
+                    </div>
+                    <div class="sect4">
+                        <h5 id="guiding-principles">3.2.1.3. Guiding Principles</h5>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Keep build log output silent; don&#8217;t pollute it; don&#8217;t be verbose (by
+                                        default)</p>
+                                </li>
+                                <li>
+                                    <p>Keep all warnings down to zero immediately (0-warning policy applies here as
+                                        well).</p>
+                                </li>
+                                <li>
+                                    <p>Sharing build logic via the <code>/buildSrc/</code> directory.</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>See: <a
+                                                        class="bare"
+                                                        href="https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html">https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html</a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sect4">
+                        <h5 id="manage-dependencies">3.2.1.4. Manage Dependencies</h5>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Draft<br>
+                                                Created: 1.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p>Which way to properly manage gradle dependencies?</p>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Problem description:</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>versions repeatedly being declared, danger of mismatch (same library, different
+                                        versions)</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>especially true for multi-module projects</p>
+                                            </li>
+                                            <li>
+                                                <p>leading to runtime error due to binary incompatibility
+                                                    (NoSuchMethodError, etc.)</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>cumbersome as in lots to type and repeat (we want to be concise and fast)</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Requirements:</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>not abstracting/hiding too much (e.g. one god dependency), but be
+                                        explicit/transparent enough for understanding</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>be concise enough, while capturing the essence for clarity (intuitive
+                                                    comprehension) sake</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>not too complex, no over-engineering, just get it "good enough"</p>
+                                </li>
+                                <li>
+                                    <p>deal with a huge amount of versions/dependencies/plugins</p>
+                                </li>
+                                <li>
+                                    <p>custom plugin declaration (to share common code as extensions/compositions) can
+                                        use it as well</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Alternatives:</strong></p>
+                        </div>
+                        <div class="paragraph">
+                            <p>Either: 1) buildSrc custom code or 2) use gradle&#8217;s standard version catalog.</p>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Custom <code>buildSrc</code> Code:</strong></p>
                         </div>
                         <div class="paragraph">
                             <p>Pros:</p>
@@ -3434,11 +3538,40 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         <div class="ulist">
                             <ul>
                                 <li>
-                                    <p>it&#8217;s a out-of-the-box supported solution, people know it, well
-                                        documented</p>
+                                    <p>it&#8217;s plain kotlin code with all its advantages</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>refactoring safe</p>
+                                            </li>
+                                            <li>
+                                                <p>immediate feedback from compiler if something is wrong</p>
+                                            </li>
+                                            <li>
+                                                <p>go to source with CTRL+click (javadoc)</p>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
                                 <li>
-                                    <p>allows for grouped dependencies, so-called libraries</p>
+                                    <p>full control and flexibility (custom made solution)</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>e.g. group versions and dependencies</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>already used for custom plugins</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>BUT: it is NOT possible to use things from the catalog for those</p>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -3448,197 +3581,263 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         <div class="ulist">
                             <ul>
                                 <li>
-                                    <p>TOML syntax is not as useful as code (auto-completion, type feedback, etc.)</p>
+                                    <p>it&#8217;s custom made for something a default solution already exists</p>
                                 </li>
                                 <li>
-                                    <p>going into source implementation/definition not possible (CTRL+click),
-                                        cumbersome</p>
-                                </li>
-                                <li>
-                                    <p>if changing/refactoring, then step-by-step errors by each build, cumbersome</p>
+                                    <p>doesn&#8217;t support view usages</p>
                                 </li>
                             </ul>
                         </div>
-                        <div class="listingblock">
-                            <div class="title">Example of a Gradle version catalog</div>
-                            <div class="content">
+                        <div class="sect5">
+                            <h6 id="gradle-version-catalog">Gradle Version Catalog</h6>
+                            <div class="ulist">
+                                <ul>
+                                    <li>
+                                        <p><a class="bare"
+                                              href="https://docs.gradle.org/current/userguide/version_catalogs.html">https://docs.gradle.org/current/userguide/version_catalogs.html</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="paragraph">
+                                <p>Pros:</p>
+                            </div>
+                            <div class="ulist">
+                                <ul>
+                                    <li>
+                                        <p>it&#8217;s a out-of-the-box supported solution, people know it, well
+                                            documented</p>
+                                    </li>
+                                    <li>
+                                        <p>allows for grouped dependencies, so-called libraries</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="paragraph">
+                                <p>Cons:</p>
+                            </div>
+                            <div class="ulist">
+                                <ul>
+                                    <li>
+                                        <p>TOML syntax is not as useful as code (auto-completion, type feedback,
+                                            etc.)</p>
+                                    </li>
+                                    <li>
+                                        <p>going into source implementation/definition not possible (CTRL+click),
+                                            cumbersome</p>
+                                    </li>
+                                    <li>
+                                        <p>if changing/refactoring, then step-by-step errors by each build,
+                                            cumbersome</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="listingblock">
+                                <div class="title">Example of a Gradle version catalog</div>
+                                <div class="content">
 <pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="toml">[bundles]
 ktor = ["ktor-core", "ktor-json", "ktor-foobar"]
 
 [plugins]
 short-notation = "some.plugin.id:1.4"
 versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions" }</code></pre>
+                                </div>
+                            </div>
+                            <div class="paragraph">
+                                <p><strong>Conclusion:</strong></p>
+                            </div>
+                            <div class="ulist">
+                                <ul>
+                                    <li>
+                                        <p>both support grouping and a nested-hierarchy to control a vast amount of
+                                            declarations</p>
+                                    </li>
+                                    <li>
+                                        <p>both support auto-completion</p>
+                                    </li>
+                                    <li>
+                                        <p>custom plugin declaration is fucked</p>
+                                        <div class="ulist">
+                                            <ul>
+                                                <li>
+                                                    <p>neither the custom code approach, nor the version catalog
+                                                        supports it (too early in build phase i assume)</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="application-usage">3.2.2. Application Usage</h4>
+                    <div class="sect4">
+                        <h5 id="custom-properties">3.2.2.1. Custom Properties</h5>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Enable certain flags (enabled via gradle properties and on CI), it will enable
+                                        more tests/reports (which take longer and require more local setup)</p>
+                                </li>
+                                <li>
+                                    <p>Pass them either as system variables <code>-D</code> (as gradle properties
+                                        sometimes doesn&#8217;t work <code>-P</code>).</p>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="paragraph">
-                            <p><strong>Conclusion:</strong></p>
+                            <p>As seen in <a
+                                    href="https://github.com/seepick/diamond/blob/main/buildSrc/src/main/kotlin/GradleProperty.kt">buildSrc/GradleProperty.kt</a>:
+                            </p>
                         </div>
                         <div class="ulist">
                             <ul>
                                 <li>
-                                    <p>both support grouping and a nested-hierarchy to control a vast amount of
-                                        declarations</p>
+                                    <p><code>diamond_version</code> - application version string</p>
                                 </li>
                                 <li>
-                                    <p>both support auto-completion</p>
+                                    <p><code>diamond_branch</code> - Git branch name</p>
                                 </li>
                                 <li>
-                                    <p>custom plugin declaration is fucked</p>
+                                    <p><code>isCi</code> - flag to indicate running in a build pipeline (false by
+                                        default, assuming local builds)</p>
+                                </li>
+                                <li>
+                                    <p><code>enableOwasp</code> - Enable additional security report (takes some time,
+                                        thus disabled by default)</p>
+                                </li>
+                                <li>
+                                    <p><code>diamond_version</code> - application version, defaults to <code>0</code> if
+                                        not specified</p>
                                     <div class="ulist">
                                         <ul>
                                             <li>
-                                                <p>neither the custom code approach, nor the version catalog supports it
-                                                    (too early in build phase i assume)</p>
+                                                <p>displayed in info endpoint, used in generated documentation</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p><code>runTestcontainersTests</code> - see task below</p>
+                                </li>
+                                <li>
+                                    <p><code>runEtests</code> - see task below</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sect4">
+                        <h5 id="commoncustom-tasks">3.2.2.2. Common/Custom Tasks</h5>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Build an executable JAR:</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew :app:buildFatJar -Pdiamond_version="42"</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Check for outdated dependencies:</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew dependencyUpdates</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Deploy container image to local Docker registry.</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew publishImageToLocalRegistry</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Generate GitHub action YAMLs based on a programmatic DSL.</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew :generateKaml</code></p>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="gradle-properties">3.2.3. Gradle Properties</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Enable certain flags (enabled via gradle properties and on CI), it will enable more
-                                    tests/reports (which take longer and require more local setup)</p>
-                            </li>
-                            <li>
-                                <p>Pass them either as system variables <code>-D</code> (as gradle properties sometimes
-                                    doesn&#8217;t work <code>-P</code>).</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>As seen in <a
-                                href="https://github.com/seepick/diamond/blob/main/buildSrc/src/main/kotlin/GradleProperty.kt">buildSrc/GradleProperty.kt</a>:
-                        </p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p><code>diamond_version</code> - application version string</p>
-                            </li>
-                            <li>
-                                <p><code>diamond_branch</code> - Git branch name</p>
-                            </li>
-                            <li>
-                                <p><code>isCi</code> - flag to indicate running in a build pipeline (false by default,
-                                    assuming local builds)</p>
-                            </li>
-                            <li>
-                                <p><code>enableOwasp</code> - Enable additional security report (takes some time, thus
-                                    disabled by default)</p>
-                            </li>
-                            <li>
-                                <p><code>diamond_version</code> - application version, defaults to <code>0</code> if not
-                                    specified</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>displayed in info endpoint, used in generated documentation</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p><code>runTestcontainersTests</code> - see task below</p>
-                            </li>
-                            <li>
-                                <p><code>runEtests</code> - see task below</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="gradle-tasks">3.2.4. Gradle Tasks</h4>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Build an executable JAR:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p><code>./gradlew :app:buildFatJar -Pdiamond_version="42"</code></p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Check for outdated dependencies:</p>
-                            </li>
-                            <li>
-                                <p><code>./gradlew dependencyUpdates</code></p>
-                            </li>
-                            <li>
-                                <p>Deploy container image to local Docker registry.</p>
-                            </li>
-                            <li>
-                                <p><code>./gradlew publishImageToLocalRegistry</code></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Test:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Run tests using testcontainers (requires Docker daemon to be running)</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p><code>./gradlew test -PrunTestcontainersTests=true</code></p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Run Karate end-to-end tests.</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p><code>./gradlew test -PrunEtests=true</code></p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p>Documentation:</p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Generate documentation for available ENV properties:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p><code>./gradlew :app:generateConfigDoc</code></p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Generate software documentation as PDF:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p><code>./gradlew :doc:SoftwareDocument:asciidoctorPdf</code></p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Generate software documentation as HTML:</p>
-                            </li>
-                            <li>
-                                <p><code>./gradlew :doc:SoftwareDocument:asciidoctor</code></p>
-                            </li>
-                        </ul>
+                        <div class="paragraph">
+                            <p>Test:</p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Run tests using testcontainers (requires Docker daemon to be running)</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew test -PrunTestcontainersTests=true</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Run Karate end-to-end tests.</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew test -PrunEtests=true</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p>Documentation:</p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Generate documentation for available environment properties:</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew :app:generateConfigDoc</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Generate software documentation as PDF:</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew :doc:SoftwareDocument:asciidoctorPdf</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Generate software documentation as HTML:</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p><code>./gradlew :doc:SoftwareDocument:asciidoctor</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3833,25 +4032,37 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                             </tr>
                         </table>
                     </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>config as ENV vars or centralized config manager?</p>
-                            </li>
-                        </ul>
+                    <div class="listingblock">
+                        <div class="title">Annotated configuration object</div>
+                        <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">data class KtorConfig(
+    @ConfigProperty("Webserver HTTP port to listen to")
+    val port: Int = 8080,
+)</code></pre>
+                        </div>
                     </div>
                     <div class="paragraph">
-                        <p><strong>Links:</strong></p>
+                        <p>Will generate a text snippet which will be included in the documentation source:</p>
                     </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>
-                                    <a class="bare"
-                                       href="https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/">https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/</a>
-                                </p>
-                            </li>
-                        </ul>
+                    <div class="listingblock">
+                        <div class="title">Generated AsciiDoc code for the available environment variable configuration
+                            options
+                        </div>
+                        <div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">|===
+|Param |Type |Default |Description
+
+|`KTOR_PORT`
+|integer
+|8080
+|Webserver HTTP port to listen to
+|===</code></pre>
+                        </div>
+                    </div>
+                    <div class="paragraph">
+                        <p>See the result here: <a class="bare"
+                                                   href="https://seepick.github.io/diamond/#environment-variables">https://seepick.github.io/diamond/#environment-variables</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -4101,11 +4312,20 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
                                 <p>validate data (front incoming HTTP, back external systems/DB, immediately throw)</p>
                             </li>
                             <li>
-                                <p>code first / code over config</p>
+                                <p>code first / code over markup</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
                                             <p>no strings/annotations, no declarative xml/json/yaml/properties</p>
+                                            <div class="ulist">
+                                                <ul>
+                                                    <li>
+                                                        <p>see programmatic logging configuration DSL (reuse,
+                                                            parametrizable) instead of the usual, static <code>logback.xml</code>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </li>
                                         <li>
                                             <p>just code, be in control, flexible, safe (compiler reference check)</p>
@@ -4300,7 +4520,8 @@ fun handleGet(): ServerResponse =
                         <table>
                             <tr>
                                 <td><i class="conum" data-value="1"></i><b>1</b></td>
-                                <td>in order to access the result, we need to unwrap both
+                                <td>in order to access the result, we need to unwrap both, which is already known via
+                                    Java&#8217;s <code>Optional.ifPresentOrElse</code>
                                     <div class="ulist">
                                         <ul>
                                             <li>
@@ -4436,9 +4657,31 @@ fun handleGet(): ServerResponse =
                         </ul>
                     </div>
                 </div>
+                <div class="sect3">
+                    <h4 id="helper-binaries">4.2.2. Helper Binaries</h4>
+                    <div class="paragraph">
+                        <p>See <code>/bin/*.sh</code> files.</p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>Build documentation (overall, diagrams, HTML, PDF)</p>
+                            </li>
+                            <li>
+                                <p>Build docker images (for own project, for SFTP)</p>
+                            </li>
+                            <li>
+                                <p>Generate OpenAPI code with custom generator</p>
+                            </li>
+                            <li>
+                                <p>Test the configuration is set up properly.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="sect2">
-                <h3 id="code-generation">4.3. Code Generation</h3>
+                <h3 id="code-generation-2">4.3. Code Generation</h3>
                 <div class="sect3">
                     <h4 id="generating-sources">4.3.1. Generating Sources</h4>
                     <div class="admonitionblock tip">
@@ -4866,7 +5109,7 @@ fun handleGet(): ServerResponse =
                     <div class="content">
                         <img alt="test strategies" src="images/diagrams/test-strategies.png">
                     </div>
-                    <div class="title">Figure 4. Simplified view from different test strategies onto the application
+                    <div class="title">Figure 5. Simplified view from different test strategies onto the application
                         boundaries
                     </div>
                 </div>
@@ -4990,7 +5233,8 @@ fun handleGet(): ServerResponse =
                 <div class="ulist">
                     <ul>
                         <li>
-                            <p>Always parallelize all tests; requires isolated state of whole application!</p>
+                            <p>Always <strong>parallelize</strong> all tests; requires isolated state of whole
+                                application!</p>
                         </li>
                         <li>
                             <p>Use Ktor test-engine for simulated, and much faster, testing HTTP communication.</p>
@@ -5540,7 +5784,7 @@ fun handleGet(): ServerResponse =
                     <div class="content">
                         <img alt="build pipelines" src="images/diagrams/build-pipelines.png">
                     </div>
-                    <div class="title">Figure 5. Sketching a build pipeline overview</div>
+                    <div class="title">Figure 6. Sketching a build pipeline overview</div>
                 </div>
             </div>
             <div class="sect2">
@@ -5693,6 +5937,24 @@ fun handleGet(): ServerResponse =
                 <h3 id="open-doings">8.2. Open Doings</h3>
                 <div class="paragraph">
                     <p>TODO go through TODO.md and move relevants here * HTTP API caching?</p>
+                </div>
+                <div class="dlist">
+                    <dl>
+                        <dt class="hdlist1">Controller in one submodule?</dt>
+                        <dd>
+                            <p>The <code>view-routing</code> and <code>controller-*</code> are separated, which gives a
+                                clean cut and a webframework free controller layer, which potentially could be tested
+                                from. BUT if this is not used (but instead via the routing), then merge those and reduce
+                                abstraction/complexity.</p>
+                        </dd>
+                        <dt class="hdlist1">Config as environment variables or use a centralized config manager?</dt>
+                        <dd>
+                            <p>See <a
+                                    class="bare"
+                                    href="https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/">https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/</a>
+                            </p>
+                        </dd>
+                    </dl>
                 </div>
             </div>
             <div class="sect2">

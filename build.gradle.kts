@@ -21,6 +21,28 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/seepick/kaml")
+            name = "KAML GitHubPackages"
+
+            /*
+            TODO enable auth during build
+env:
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+             */
+//            credentials {
+//                username = System.getenv("GITHUB_ACTOR")
+//                    ?: error("GITHUB_ACTOR environment variable not set")
+//
+//                password = System.getenv("GITHUB_TOKEN")
+//                    ?: error("GITHUB_TOKEN environment variable not set")
+//            }
+            credentials {
+                username = project.findProperty("gpr.user") as? String ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") as? String ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
 
@@ -29,6 +51,8 @@ dependencies {
 //    kover(project(":view:view-routing"))
 //    kover(project(":view:controller-impl"))
     implementation(project(":shared:kaml:kaml-github"))
+
+    implementation("com.github.seepick.kaml:kaml-github:1.0-SNAPSHOT")
 }
 
 registerJavaExecTask(

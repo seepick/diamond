@@ -17,7 +17,7 @@ Watch out to not test same multiple times, we need to be able to still move and 
 
 Watch out for fast test execution:
 
-* Always parallelize all tests; requires isolated state of whole application!
+* Always *parallelize* all tests; requires isolated state of whole application!
 * Use Ktor test-engine for simulated, and much faster, testing HTTP communication.
 
 == Testable Code

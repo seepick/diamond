@@ -20,8 +20,9 @@ endif::[]
 * fail early, fail fast
 * e.g. if application config something is configured wrong/missing
 * validate data (front incoming HTTP, back external systems/DB, immediately throw)
-* code first / code over config
+* code first / code over markup
 ** no strings/annotations, no declarative xml/json/yaml/properties
+*** see programmatic logging configuration DSL (reuse, parametrizable) instead of the usual, static `logback.xml`
 ** just code, be in control, flexible, safe (compiler reference check)
 * no classpath scanning, reflection, other look-ups/service-locator, no auto-magically something
 * avoid intrusive frameworks (the systems serves us, we don't serve the system)

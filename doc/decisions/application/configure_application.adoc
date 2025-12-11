@@ -7,8 +7,28 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-* config as ENV vars or centralized config manager?
+.Annotated configuration object
+[source,kotlin]
+----
+data class KtorConfig(
+    @ConfigProperty("Webserver HTTP port to listen to")
+    val port: Int = 8080,
+)
+----
 
-*Links:*
+Will generate a text snippet which will be included in the documentation source:
 
-* https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/
+.Generated AsciiDoc code for the available environment variable configuration options
+[source,asciidoc]
+----
+|===
+|Param |Type |Default |Description
+
+|`KTOR_PORT`
+|integer
+|8080
+|Webserver HTTP port to listen to
+|===
+----
+
+See the result here: https://seepick.github.io/diamond/#environment-variables

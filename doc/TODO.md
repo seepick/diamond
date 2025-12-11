@@ -59,6 +59,12 @@ Final
 Next
 =========================
 
+* ad gradle: build-logic or buildSrc for convention plugins
+    * enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+      pluginManagement {
+      includeBuild("build-logic")
+      }
+* use id("io.kotest")
 * [ ] create testproject for cucumber + ktor test engine
     * w: file:///Users/toh/workspace/diamond/itest/src/test/kotlin/nl/uwv/smz/diamond/itest/testInfra/KtorHooks.kt:95:15
       Suppression of error 'INVISIBLE_REFERENCE' might compile and work, but the compiler behavior is UNSPECIFIED and

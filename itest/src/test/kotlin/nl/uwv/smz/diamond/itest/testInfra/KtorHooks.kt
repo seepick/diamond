@@ -6,7 +6,6 @@ import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.Scenario
 import io.github.oshai.kotlinlogging.KotlinLogging.logger
-import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
@@ -29,10 +28,12 @@ import nl.uwv.smz.diamond.itest.world.WorldContext
 import nl.uwv.smz.diamond.persistence.impl.DatabaseConfig
 import nl.uwv.smz.diamond.shared.common.Modules
 import nl.uwv.smz.diamond.view.routing.RoutingSetting
-import org.koin.core.Koin
-import org.koin.ktor.plugin.KOIN_ATTRIBUTE_KEY
+import org.koin.ktor.ext.getKoin
 import java.time.LocalDateTime
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 import kotlin.coroutines.EmptyCoroutineContext
 
 // FIXME if tests run in parallel, world has to be scoped for each test!
@@ -40,6 +41,7 @@ class KtorHooks(private val world: World) {
 
     private val log = logger {}
     private lateinit var testApplication: TestApplication
+
     private val testEnvConfig = EnvConfig(
         KtorConfig(),
         DatabaseConfig(
@@ -64,12 +66,10 @@ class KtorHooks(private val world: World) {
 
     // TODO could replace hooks to java8 lambdas
     @Before
-    fun `before each scenario`(scenario: Scenario) {
+    fun `using hack works`(scenario: Scenario) {
         log.trace { "Starting ktor for test: ${scenario.name}" }
-
-        var tmpClient: HttpClient? = null
-        startKtor {
-            tmpClient = createClient {
+        testApplication = hackTestApplication {
+            client = createClient {
                 install(Logging) {
                     level = LogLevel.ALL
                 }
@@ -83,33 +83,56 @@ class KtorHooks(private val world: World) {
                     )
                 }
             }
-            client = tmpClient
             application {
                 setupDiamondKtor(testGlobalConfiguration, Modules.externStub())
             }
         }
-        @Suppress("USELESS_CAST") val koin = testApplication.application.attributes[KOIN_ATTRIBUTE_KEY] as Koin
-        world.reinitialize(WorldContext(tmpClient!!, koin))
+        println("before")
+        runBlocking {
+            testApplication.start()
+        }
+        println("after")
+        println("attrs: ${testApplication.application.attributes.allKeys}")
 
-//        testApplication = TestApplication {
-//            // will implictly start ktor's test-engine
-//            application {
-//                setupDiamondKtor(testGlobalConfiguration, Modules.externStub())
-//            }
+        val koin = testApplication.application.getKoin()
+//        val koin = testApplication.application.attributes[KOIN_ATTRIBUTE_KEY]
+        world.reinitialize(WorldContext(testApplication.client, koin))
+    }
+
+    //    @Before
+    fun `fails with test http client`() { // no marshalling instaled
+        testApplication = TestApplication {
+            // will implictly start ktor's test-engine
+            application {
+                setupDiamondKtor(testGlobalConfiguration, Modules.externStub())
+            }
+        }
+//        testApplication.client = testApplication.createClient {
+//
 //        }
-//        val testClient = testApplication.client
-//        @Suppress("USELESS_CAST") val koin = testApplication.application.attributes[KOIN_ATTRIBUTE_KEY] as Koin
-//        world.reinitialize(WorldContext(testClient, koin))
+        runBlocking {
+            testApplication.start() // so koin is available!
+        }
+        println("attrs: ${testApplication.application.attributes.allKeys}")
+//        val koin = testApplication.application.attributes[KOIN_ATTRIBUTE_KEY]
+        val koin = testApplication.application.getKoin()
+        world.reinitialize(WorldContext(testApplication.client, koin))
     }
 
     // TODO report to ktor people, using with cucumber, "delocated" shutdown of ktor test application context
-    @Suppress("INVISIBLE_REFERENCE", "ERROR_SUPPRESSION") // FIXME this is a hack :-/
-    private fun startKtor(block: suspend ApplicationTestBuilder.() -> Unit) = runBlocking {
-        val builder = ApplicationTestBuilder()
-        with(builder) {
-            withContext(EmptyCoroutineContext) { block() }
+    @OptIn(ExperimentalContracts::class)
+    @Suppress("INVISIBLE_REFERENCE") // FIXME this is a hack :-/
+    private fun hackTestApplication(block: suspend ApplicationTestBuilder.() -> Unit): TestApplication {
+        contract {
+            callsInPlace(block, InvocationKind.EXACTLY_ONCE)
         }
-        testApplication = builder.testApplication.apply { start() }
+        return runBlocking {
+            val builder = ApplicationTestBuilder()
+            with(builder) {
+                withContext(EmptyCoroutineContext) { block() }
+            }
+            builder.testApplication
+        }
     }
 
     @After

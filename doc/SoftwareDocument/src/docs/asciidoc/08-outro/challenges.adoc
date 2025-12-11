@@ -1,0 +1,4 @@
+= Challenges
+
+* parallel cucumber tests with ktor test-engine
+* openAPI support for kotlin (code generation)

@@ -1,31 +1,9 @@
 = Outro
 
-== Challenges
+include::challenges.adoc[leveloffset=+1]
 
-* parallel cucumber tests with ktor test-engine
-* openAPI support for kotlin (code generation)
+include::open.adoc[leveloffset=+1]
 
-== Open Doings
+include::outlook.adoc[leveloffset=+1]
 
-TODO go through TODO.md and move relevants here * HTTP API caching?
-
-== Outlook
-
-* vision further into the feature; big things; fantasize/dream
-* the mission where to go
-
-== Resources
-
-* ADR: https://github.com/joelparkerhenderson/architecture-decision-record
-* SFTP inspirations:
-** https://github.com/alkaphreak/marstech-sftp/blob/main/src/main/kotlin/fr/marstech/mtsftp/service/SftpFileConnectorServiceImpl.kt
-** https://medium.com/whozapp/sftp-test-implem-of-jsch-with-kotlin-testcontainers-and-spring-boot-native-537f624da895
-** https://github.com/testcontainers/testcontainers-java/blob/main/examples/sftp/src/test/java/org/example/SftpContainerTest.java
-* Exposed:
-** DAO: https://ktor.io/docs/server-integrate-database.html#create-mapping
-* Cucumber:
-** https://www.baeldung.com/java-cucumber-hooks
-** https://towardsdev.com/how-to-perfectly-test-your-ktor-application-94fb92c5a303
-** https://www.baeldung.com/cucumber-data-tables
-** https://github.com/cucumber/cucumber-jvm/tree/main/datatable
-* AsciiDoc themes https://gist.github.com/misuo/5b2af22ca78d5d87c522a817a7a8569d
+include::resources.adoc[leveloffset=+1]

@@ -1,0 +1,8 @@
+= Open Doings
+
+TODO go through TODO.md and move relevants here * HTTP API caching?
+
+Controller in one submodule?:: The `view-routing` and `controller-*` are separated, which gives a clean cut and a webframework free controller layer, which potentially could be tested from.
+BUT if this is not used (but instead via the routing), then merge those and reduce abstraction/complexity.
+
+Config as environment variables or use a centralized config manager?:: See https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/
