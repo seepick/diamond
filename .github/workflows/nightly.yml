@@ -1,8 +1,8 @@
 name: Nightly
 on:
   workflow_dispatch: # invoke manually
-  schedule:
-    - cron: '0 0 * * *' # daily at 00:00 UTC
+#  schedule:
+#    - cron: '0 0 * * *' # daily at 00:00 UTC
 permissions:
   contents: read
   actions: read
