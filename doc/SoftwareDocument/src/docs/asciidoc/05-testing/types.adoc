@@ -17,6 +17,18 @@ endif::[]
 * Never leaves the application boundary, thus in *full control*; stable, but a bit slower.
 * Relying on an (implicit/self-defined) contract is risky (better E2E).
 
+.Sample Integration Test using Cucumber
+[source,gherkin]
+----
+Scenario: Get crystals when single exists
+    Given the following crystals exists in the database
+      | weight |
+      | 42     |
+    When get crystals
+    Then the response status code is 200
+    And the response JSON "$.items[0].weightInGram" is 42
+----
+
 == End-to-End (E2E) Tests
 
 * About:
@@ -38,11 +50,27 @@ endif::[]
 * external parties need to provide test-environment/sandbox, otherwise mock it
 ** mocking external parties MUST always comply with real implementation, otherwise our (self-invented) contract is different from actual real implementation
 
-=== E1E Test
+.End-to-end system tests written using Karate
 
-* A mix between an Integration Test and an End2end Test is a E1E Test (half of a E2E).
-* It works under same assumptions as E2E (blackbox, Karate) but all real systems are mocked.
-** Additionally it has access to system internals through an additionally deployed test API.
+[source,gherkin]
+----
+Feature: check the home for greeting
+  Background:
+    * url baseUrl
+    * def endpointBase = '/'
+  Scenario: request home succeeds
+    Given path endpointBase
+    When method GET
+    Then status 200
+    And match response == 'Hello Service!'
+----
+
+=== E1E System Integration Tests
+
+* A mix between an Integration Test and an End-2-End System Test is a E1E Test (half of a E2E).
+* It works under same assumptions as E2E (blackbox, Karate) but all real systems are mocked externally.
+** For backend system mocking we can use docker (testcontainers, cloud) and tools like wiremock.
+** Additionally it has access to system internals through an additionally deployed test service API, which gives it full control over data and behavior.
 
 == Other Types
 

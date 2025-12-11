@@ -1,0 +1,28 @@
+= Assertion Matchers
+
+[TIP]
+====
+Status: Accepted +
+Created: 11.12.2025 +
+Author: Seepick
+====
+
+*Context:*
+
+* Some test frameworks come shipped with a matchers library, but usually they are just very basic (intentionally).
+* We need a way to express assertions using a library.
+
+*Options:*
+
+* JUnit and Kotlin-test has only very basic functionality
+* Hamcrest/Hamkrest, good old, extending it is a bit cumbersome
+* AssertJ, bit better, still not there
+* Kotest comes with assertions which are Kotlin-idiomatic (takes care of language specifics) and easy to read
+
+.Kotest matchers library using infix functions
+[source,kotlin]
+----
+"Some test to be executed" {
+    Computer().tellTheAnswer() shouldBeEqual 42
+}
+----

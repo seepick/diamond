@@ -1,0 +1,48 @@
+= Cucumber Datatable Serialization
+
+[TIP]
+====
+Status: Accepted +
+Created: 11.12.2025 +
+Author: Seepick
+====
+
+*Context:*
+
+When we define data in a test as a table, we need a simple mechanism to transform this data to a typed result.
+
+.Example of an assertion using a data-table
+[source,gherkin]
+----
+Then the response posts are
+  | id | title |
+  | 1  | foo   |
+  | 2  | bar   |
+----
+
+The corresponding code should allow an intuitive solution like this:
+
+.Cucumber step definition to auto-transform data-tables to typed lists
+[source,kotlin]
+----
+@Then("the response posts are")
+fun `Then the response posts are`(posts: List<PostDtoRow>) {
+    // operate on posts
+}
+----
+
+*Solution:*
+
+* Not much for Kotlin...
+* Gladly there is a flawless Kotlin-Java interoperability, so fallback to a Java library:
+** See: https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping
+** Add the dependency `io.github.deblockt:cucumber-datatable-to-bean-mapping` and declare your table
+
+.Source to integrate a "Java-native" library in a mixed approach
+
+[source,java]
+----
+@DataTableWithHeader
+public record PostDtoRow(@Column int id, @Column String title) {
+}
+----

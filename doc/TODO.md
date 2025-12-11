@@ -4,56 +4,12 @@ Round up doc
 Small
 -------------------------
 
-* ADR KAML, an experiment for faster/safer/easier YAML configuration with custom Kotlin DSLs
-* architecture layer diagram of modules/subprojects
-* rename E1E to "system integration test"
-* this project is a template, a scaffold (other people use it)
-    * it IS needed, as we see that team is busy with tech stuff (which should have been solved already), instead they
-      should be able to focus on implementing business features; they deliver business, i deliver
-      framework/infrastructure/devops
-    * deliver an experience where it is FUN again to implement; to sink into code; get into a state of flow; development
-      experience is fast, great, quick, easy (test > debug)
-* "clean code is where you can see people cared writing it" - screenshot of output of shellscripts, done with caring
-  love :)
-* show (include?) source of kotest describe spec
-* ADR cucumber datatable and kotlin vs java (no proper library available; using a mixed approach)
-* ad coding: the difference between integration-code (tech/infra) and application-code (business, domain)
-* ADR dependency injection (koin); classpath scan (magic, uncontrolled) vs explicit code (manual work, code >
-  annotations)
-* ADR testing kotest (property); should matchers/assertions
-    * from plain java (instantiate always anew; not maintainable), to instancio (bit better, but cumbersome), to
-      kotest-property (hand-written, testfixtures for reuse)
-* ADR testing mockk
-* ad testing: gradle testFixtures, reusable
-* include sourcecode: extern-impl koin module.kt (beautiful, explicit, typesafe, refactoring safe; auto generated doc;
-  full control
-    * integration-code totally separate from applicaiton-code (non-intrusive; business logic is free from any framework
-      taste; non-intrusive)
-* ADR test instances (Instantio vs kotest arb)
-* showcase cucumber tests
-* new diagram: module overview (gradle's sub-projects; aka mavens sub-modules)
-* include sourcecode: SyncService.kt
-* include sourcecode of domain-logic-impl/build.gradle.kts (look how clean it is)
-* showcase karate tests
-* showcase test inclusions (H2 and Oracle); extensions; all is code
-* document: how to setup project locally: 1) git clone 2) ./gradlew :app:runLocal
-* document gradle task `generateConfigDoc`; using ConfigDocWriterApp; generating included file:
-  environment_variables.generated.adoc
-* document finding: sonarqube plugin is blocking performance :( detekt/ktlint are blazing fast (detekt @Suppress
-  existing but no "quickfix"; ktlint via suppression.properties feels oldschool)
-* rework build pipeline diagram: sketch future desired; layout vertically (not horizontally)
-
-Big
--------------------------
-
-* Extract all from notion and put it here
 * TODOs.md (and tasktags) as appendix chapter outlook, future/open doings
-
-Final
--------------------------
-
 * rework sitemap.svg
-* fine-tune text; proof-read it myself
+* go through all ADRs, finish them (add at least a bit)
+* go through all *.adoc files, do the bare minimum again
+* review HTML
+* review PDF
 * send to alex&shai; get feedback from them
 
 Next
@@ -136,6 +92,7 @@ Asciidoc
 * AsciiDoc should fail the build if stuff not found
 * Render draw.io diagrams via Gradle; do it manually in code?
     * https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
+    * what about: plantuml4idea? (graphivz/dot required)
 * advanced: generate multi-page HTML (see: https://docs.asciidoctor.org/asciidoc/latest/toc/)
 * emojis in asciidoc didn't work :-/
 * how to create "list of" at the end of document (for ADRs, for TODOs)
@@ -143,6 +100,7 @@ Asciidoc
 Low
 -------------------------
 
+* rework build pipeline diagram: sketch future desired; layout vertically (not horizontally)
 * Enable OSS Index analyzer, authentication required: https://ossindex.sonatype.org/doc/auth-required
 * maybe use arrow's optics to manipulate deep nested, immutable data classes.
 * Nightly build not only more quality analysis (security/OWASP) but also different test types (performance/load/stress,

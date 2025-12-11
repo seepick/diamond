@@ -26,7 +26,7 @@ Which way to properly manage gradle dependencies?
 
 *Alternatives:*
 
-Either: 1) buildSrc custom code or 2) use gradle's standard version catalog.
+Either: 1) `buildSrc` custom code (convenient plugins) or 2) use Gradle's standard version catalog.
 
 *Custom `buildSrc` Code:*
 

@@ -112,7 +112,6 @@ object Deps {
             val junitEngine = make("junit-platform-engine")
             val picocontainer = make("picocontainer")
 
-            // see: https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping
             val dataTable =
                 "io.github.deblockt:cucumber-datatable-to-bean-mapping:${Versions.testing.cucumberDatatable}"
         }

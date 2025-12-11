@@ -661,7 +661,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 </table>
             </div>
             <div class="paragraph">
-                <p>The build for this document was triggered on Thu, 11. December 2025 at 20:40 - enjoy :)</p>
+                <p>The build for this document was triggered on Thu, 11. December 2025 at 20:58 - enjoy :)</p>
             </div>
             <div class="imageblock text-center">
                 <div class="content">
@@ -3413,11 +3413,22 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             </table>
                         </div>
                         <div class="paragraph">
-                            <p><strong>Context:</strong>
-                                * obviously not groovy (cumbersome)
-                                * as project is already in kotlin, makes sense to configure gradle also with kotlin
-                                * has become stable enough the last years (support, plugins/configuration, sufficient
-                                documentation on the internet)</p>
+                            <p><strong>Context:</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>obviously not groovy (cumbersome)</p>
+                                </li>
+                                <li>
+                                    <p>as project is already in kotlin, makes sense to configure gradle also with
+                                        kotlin</p>
+                                </li>
+                                <li>
+                                    <p>has become stable enough the last years (support, plugins/configuration,
+                                        sufficient documentation on the internet)</p>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="sect4">
@@ -4249,6 +4260,18 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
     <div class="sect1">
         <h2 id="development">4. Development</h2>
         <div class="sectionbody">
+            <div class="admonitionblock note">
+                <table>
+                    <tr>
+                        <td class="icon">
+                            <i class="fa icon-note" title="Note"></i>
+                        </td>
+                        <td class="content">
+                            <em>Clean code is where you can see people cared writing it.</em>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div class="sect2">
                 <h3 id="best-practices">4.1. Best Practices</h3>
                 <div class="ulist">
@@ -4999,21 +5022,26 @@ fun handleGet(): ServerResponse =
                         </ul>
                     </div>
                     <div class="sect4">
-                        <h5 id="e1e-test">5.1.3.1. E1E Test</h5>
+                        <h5 id="e1e-system-integration-tests">5.1.3.1. E1E System Integration Tests</h5>
                         <div class="ulist">
                             <ul>
                                 <li>
-                                    <p>A mix between an Integration Test and an End2end Test is a E1E Test (half of a
-                                        E2E).</p>
+                                    <p>A mix between an Integration Test and an End-2-End System Test is a E1E Test
+                                        (half of a E2E).</p>
                                 </li>
                                 <li>
                                     <p>It works under same assumptions as E2E (blackbox, Karate) but all real systems
-                                        are mocked.</p>
+                                        are mocked externally.</p>
                                     <div class="ulist">
                                         <ul>
                                             <li>
+                                                <p>For backend system mocking we can use docker (testcontainers, cloud)
+                                                    and tools like wiremock.</p>
+                                            </li>
+                                            <li>
                                                 <p>Additionally it has access to system internals through an
-                                                    additionally deployed test API.</p>
+                                                    additionally deployed test service API, which gives it full control
+                                                    over data and behavior.</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -5944,7 +5972,8 @@ fun handleGet(): ServerResponse =
                         <dd>
                             <p>The <code>view-routing</code> and <code>controller-*</code> are separated, which gives a
                                 clean cut and a webframework free controller layer, which potentially could be tested
-                                from. BUT if this is not used (but instead via the routing), then merge those and reduce
+                                from.
+                                BUT if this is not used (but instead via the routing), then merge those and reduce
                                 abstraction/complexity.</p>
                         </dd>
                         <dt class="hdlist1">Config as environment variables or use a centralized config manager?</dt>

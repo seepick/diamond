@@ -1,0 +1,76 @@
+= Test Instances
+
+[TIP]
+====
+Status: Accepted +
+Created: 11.12.2025 +
+Author: Seepick
+====
+
+*Context:*
+
+We started with Java in a plain and naive way, yet sufficient due to relatively lower focus on test coverage:
+
+.Creating a domain instance manually
+[source,java]
+----
+Foo foo = new Foo("bar", 42);
+----
+
+Now imagine this copied gazillion times, and suddenly we need to add a new mandatory property.
+
+Organically we come up with test factories:
+
+.Creating a domain instance manually
+[source,java]
+----
+public class TestFactory {
+    public static Foo newFoo(String b, int i) { /* ... */ }
+    public static Foo newFoo(String b) { /* ... */ }
+}
+----
+
+But that's also not maintainable, overloading in order to provide defaults.
+Thanks to Lombok and its builder feature, so we can selectively override imutable properties by creating new instances.
+
+We can do even better by using a library which takes over the property filling and allows us to specifically set certain fields only (method references FTW):
+
+.Generating test DTOs
+[source,java]
+----
+Person person = Instancio.of(Person.class)
+.set(field(Address::getCountry), "Home")
+.create();
+----
+
+Now hopefully the new team member knows about this factory, and doesn't create his own, like... we all like to create our own `StringUtil`, `StringHelper`, ...
+
+With Kotlin's extension functions we can solve the issue neatly by adding :
+
+.Kotlin test instance extensions
+[source,kotlin]
+----
+data class Foo(val b: String, val i: int) {
+    companion object // for test extensions
+}
+// in src/test/kotlin
+fun Foo.Companion.testInstance() = Foo("bar", 42)
+// in the test itself
+Foo.testInstance().copy(i = 21)
+----
+
+Auto-completion for the win, and Kotlin already having Lombok's language features baked in.
+Just the nasty but necessary `companion object` declaration...
+
+Finally, we use Kotest's `Arb` and integrate into its infrastructure providing a more property based testing approach (no worries, there's a seed to reproduce a test in case it failed).
+
+.Kotlin test instance extensions
+[source,kotlin]
+----
+fun Arb.Companion.foo() = arbitrary {
+    Foo(string().bind(), int(0..100).bind())
+}
+// use it
+Arb.foo().next().copy(i = 21) // custom Arb
+Arb.int().next() // default available Arbs
+----

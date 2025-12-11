@@ -60,13 +60,6 @@ class CrystalExposedDboRepoInmemoryTest : DescribeSpec({
 //    )
 })
 
-// no dao
-// class CrystalExposedDaoRepoInmemoryTest : DescribeSpec({
-//    val dbListener = InmemoryDbListener()
-//    extension(dbListener)
-//    include(crystalRepoTest(dbListener, { CrystalExposedDaoRepo(it) }))
-// })
-
 @RequiresTag(KoTags.testcontainersName)
 class CrystalExposedDboRepoTestcontainersTest : DescribeSpec({
     configureRepoTests(TestcontainersDbListener())
@@ -98,7 +91,7 @@ fun crystalRepoTest(
     dbListener: DbListener,
     repoProvider: (Database, Uuid, LocalDateTime) -> CrystalRepo,
 ) = describeSpec {
-    // extension(dbListener) ... won't pick-up runtime interface types :-/
+    // extension(dbListener) ... FIXME won't pick-up runtime interface types :-/
     fun repo(
         uuid: Uuid = Uuid.random(),
         now: LocalDateTime = LocalDateTime.now(),
@@ -131,8 +124,8 @@ fun crystalRepoTest(
     )
     describe("Sorting") {
         it("Simple asc") {
-            insert(crystal1.copy(weight = 1.gram))
-            insert(crystal2.copy(weight = 2.gram))
+            insert(crystal1.copy(weight = 2.gram))
+            insert(crystal2.copy(weight = 1.gram))
 
             repo().selectAll(PageRequest.default(), sort(CrystalSortField.WeightInGram to SortDirection.Asc))
                 .shouldBeRight().map { it.weight.value } shouldContainInOrder listOf(1, 2)

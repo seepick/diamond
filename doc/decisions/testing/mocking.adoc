@@ -1,0 +1,31 @@
+= Mocking Library
+
+[TIP]
+====
+Status: Accepted +
+Created: 11.12.2025 +
+Author: Seepick
+====
+
+*Context:*
+
+We need a mocking library.
+
+*Decision:*
+
+We take link:https://mockk.io/[mockk] as a mocking library.
+
+.Mockk example
+[source,kotlin]
+----
+val car = mockk<Car>()
+every { car.drive(Direction.NORTH) } returns Outcome.OK
+car.drive(Direction.NORTH) // returns OK
+verify { car.drive(Direction.NORTH) }
+confirmVerified(car)
+----
+
+*Appendix:*
+
+Not JMock, EasyMock, or Mockito.
+We love you all, you brought us good times, and now it's time to move on.

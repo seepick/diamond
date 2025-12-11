@@ -26,7 +26,19 @@ Watch out for fast test execution:
 
 == Maintainable Tests
 
-* Assert only what's relevant, thus less in many cases.
+* Assert only what's relevant, thus less in more for many cases.
+** Everything we assert in the Then-part, must be also explicitly stated in the Given-part (max necessary, min possible).
+* Using test fixtures to be able to reuse test code from other modules.
+
+.Configure test fixtures
+[source,kotlin]
+----
+// provide it in src/testFixture/kotlin:
+id("java-test-fixtures")
+
+// use it in consumer:
+testImplementation(testFixtures(project(":sister-module")))
+----
 
 == Anti Patterns
 

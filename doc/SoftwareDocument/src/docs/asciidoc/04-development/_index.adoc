@@ -4,6 +4,18 @@ endif::[]
 
 = Development
 
+NOTE: _Clean code is where you can see people cared writing it._
+
+.Source of link:https://github.com/seepick/diamond/blob/main/domain/domain-logic-api/src/main/kotlin/nl/uwv/smz/diamond/domain/logicApi/SyncService.kt[`SyncService.kt`] from the `domain-logic-api` module
+[source,kotlin]
+----
+include::{rootdir}/domain/domain-logic-api/src/main/kotlin/nl/uwv/smz/diamond/domain/logicApi/SyncService.kt[]
+----
+
+The method is marked as `suspended` to utilize Kotlin's coroutines for high performance (integrated in Ktor and well supported by Kotest).
+
+Using Arrow's `Either` to explicitly handle failures.
+
 include::best_practices.adoc[leveloffset=+1]
 
 include::local_development.adoc[leveloffset=+1]

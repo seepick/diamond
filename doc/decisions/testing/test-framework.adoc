@@ -1,0 +1,42 @@
+= Choose Test Framework
+
+[TIP]
+====
+Status: Draft +
+Created: 11.12.2025 +
+Author: Seepick
+====
+
+*Context:*
+
+* We need a framework which supports our sophisticated/specific requirements to configure, develop and run automated tests.
+
+** Options:
+
+* JUnit obviously; mature, well-known.
+* TestNG is more modern and focus also on integration tests (opposed to JUnit's focus on, well... units).
+* Kotest is Kotlin-idiomatic framework using code over config (speak: annotations).
+
+.A simple Kotest test example
+[source,kotlin]
+----
+class ApiErrorDtoTest : StringSpec({
+    val dto = Arb.apiErrorDto().next()
+    val dtoAsString = """{"code":"${dto.code.renderedValue}","message":"${dto.message}"}"""
+
+    "When serialize DTO Then use rendered value property instead of Kotlin identifier name" {
+        Json.encodeToString(dto) shouldBeEqual dtoAsString
+    }
+    "When deserialize json Then construct DTO" {
+        Json.decodeFromString<ApiErrorDto>(dtoAsString) shouldBeEqual dto
+    }
+})
+----
+
+Kotest further offers:
+
+* Various test specifications to choose from (string, describe, functional, and even annotation based).
+* Easier and more sophisticated extensions and listeners capabilities.
+* Parameterizable inclusion of template tests.
+* Test fixtures via `Arb`.
+* Possible to generate JUnit output and even use JUnit's test engine.

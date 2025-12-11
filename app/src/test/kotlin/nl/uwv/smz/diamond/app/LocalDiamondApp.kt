@@ -38,6 +38,7 @@ object LocalDiamondApp {
 
     @JvmStatic
     fun main(args: Array<String>) {
+        // could read the CLI args here, but not needed for now
         DiamondApp.startApp(
             defaultLog = ::reconfigureLog,
             defaultEnvConfig = { localEnvConfig },

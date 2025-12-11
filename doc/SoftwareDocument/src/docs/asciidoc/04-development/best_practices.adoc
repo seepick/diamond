@@ -37,6 +37,8 @@ endif::[]
 * single responsibility (of package, class, method/function)
 * clear names, self-explanatory, capturing its essence (single responsibility)
 ** no abbreviations, no short cryptic names
+* be aware of the difference between integration-code (tech/infra; tested by integration tests) and application-code (business, domain; tested by unit tests)
+** it's a smell if unit tests have a lock of mocking going on; trying to unit test integration code
 
 == Conciseness
 

@@ -8,8 +8,19 @@ The goal is to only have to check out the sourcecode, and run a single command t
 No further setup must be needed (no docker, no special files created).
 There is no required readme to be read, no manual or instructions; it just works out of the box.
 
-* run `nl.uwv.smz.diamond.app.LocalDiamondApp`
-* Postman collection can be found at: `/config/Diamond.postman_collection.json`
+.How to setup and run the application
+[source,shell]
+----
+git clone https://github.com/seepick/diamond.git
+./gradlew :app:runLocal
+
+curl localhost:8080
+----
+
+Additionally:
+
+* To start the application from within your IDE (which also lies behind the `runLocal` task): `nl.uwv.smz.diamond.app.LocalDiamondApp`
+* A Postman collection can be found at: `/config/Diamond.postman_collection.json`
 * There are a lot of useful (required) build scripts in `/bin/*.sh`
 
 == IntelliJ Plugins
@@ -32,10 +43,6 @@ The following plugins are recommended to have a smooth development experience:
 * Cucumber Table Mapping - Specific support
 * kotlin-fill-class - Useful inline code generator
 
-Other:
-
-* plantuml4idea (graphivz/dot required)
-
 == Helper Binaries
 
 See `/bin/*.sh` files.
@@ -44,3 +51,6 @@ See `/bin/*.sh` files.
 * Build docker images (for own project, for SFTP)
 * Generate OpenAPI code with custom generator
 * Test the configuration is set up properly.
+
+.Console output made with love (and some nasty warnings still to clean up)
+image::../images/console_love.png[]

@@ -1,6 +1,6 @@
 = Architecture Decision Records
 
-// STATES { draft | proposed | rejected | accepted | deprecated }
+// STATES { Draft | Proposed | Rejected | Accepted | Deprecated }
 
 link:https://github.com/joelparkerhenderson/architecture-decision-record[What are ADRs]?
 

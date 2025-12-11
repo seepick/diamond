@@ -13,6 +13,8 @@ include::{adrsdir}/coding/code-analysis-tools.adoc[leveloffset=+2]
 * define new code by days (continuous delivery), not by change delta (planned releases)
 * use it to report coverage (enforced by gradle-kover itself, not sonar)
 
+The SonarQube plugin for IntelliJ with the cloud service is taking some time after commits, slowing down performance :( Compared to taht, detekt/ktlint are blazing fast, and especially detekt's `@Suppress` makes the experience smooth.
+
 == Detekt
 
 * like Checkstyle
@@ -20,8 +22,32 @@ include::{adrsdir}/coding/code-analysis-tools.adoc[leveloffset=+2]
 ** kotlin specific rules
 * `@Suppress("RULE_ID")` support (no more huge suppression file like in checkstyle)
 
+.The `detekt.yml` configuration file:
+[source,yaml]
+----
+build:
+  maxIssues: 0
+  excludeCorrectable: false
+config:
+  validation: true
+  warningsAsErrors: true
+style:
+  active: true
+  AlsoCouldBeApply:
+    active: true
+  BracesOnIfStatements:
+    active: true
+    singleLine: 'never'
+    multiLine: 'always'
+  BracesOnWhenStatements:
+    active: true
+    singleLine: 'necessary'
+    multiLine: 'consistent'
+----
+
 ==  ktlint
 
 * Formatter
-* via .editorconfig (IDE auto-configures)
+* via `.editorconfig` (IDE auto-configures); properties based is too simplistic (true/false, instead patterns, etc.)
+** Feels a bit "oldschool", no context-sensitive "auto-suppress"
 * https://pinterest.github.io/ktlint/1.8.0/

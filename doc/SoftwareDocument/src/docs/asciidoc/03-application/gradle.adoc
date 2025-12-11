@@ -10,15 +10,52 @@ include::{adrsdir}/building/gradle-or-maven.adoc[leveloffset=+2]
 
 include::{adrsdir}/building/gradle-kotlin-dsl.adoc[leveloffset=+2]
 
+include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+2]
+
+=== Module Build Configuration
+
+Due to the easy creation of extending the Gradle build with of custom plugins, we simply need to declare our dependencies.
+
+Although we speak from modules, Gradle calls them (sub-)projects.
+
+External dependencies are declared with the custom code to centralize all declarations along with (consistent) version numbers.
+
+.Source of link:https://github.com/seepick/diamond/blob/main/domain/domain-logic-impl/build.gradle.kts[`build.gradle.kts`] from the `domain-logic-impl` module
+[source,kotlin]
+----
+include::{rootdir}/domain/domain-logic-impl/build.gradle.kts[]
+----
+
+=== Dependencies Declarations
+
+.The `Deps.kt` abstracting dependency coordinates as an object graph
+[source,kotlin]
+----
+object Deps {
+    val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
+    object database {
+        val h2 = "com.h2database:h2:${Versions.h2}"
+        object liquibase {
+            val core = "org.liquibase:liquibase-core:4.31.1"
+            val slf4j = "com.mattbertolini:liquibase-slf4j:5.1.0"
+        }
+        object exposed {
+            private fun make(artifact: String) = "org.jetbrains.exposed:exposed-$artifact:${Versions.exposed}"
+            val dao = make("dao")
+            val jdbc = make("jdbc")
+            val datetime = make("java-time")
+        }
+    }
+    // ...
+}
+----
+
 === Guiding Principles
 
 * Keep build log output silent; don't pollute it; don't be verbose (by default)
 * Keep all warnings down to zero immediately (0-warning policy applies here as well).
 * Sharing build logic via the `/buildSrc/` directory.
 ** See: https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html
-
-
-include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+2x]
 
 == Application Usage
 
@@ -44,9 +81,9 @@ As seen in link:https://github.com/seepick/diamond/blob/main/buildSrc/src/main/k
 ** `./gradlew :app:buildFatJar -Pdiamond_version="42"`
 * Check for outdated dependencies:
 ** `./gradlew dependencyUpdates`
-* Deploy container image to local Docker registry.
+* Deploy container image to local Docker registry:
 ** `./gradlew publishImageToLocalRegistry`
-* Generate GitHub action YAMLs based on a programmatic DSL.
+* Generate GitHub action YAMLs based on a programmatic DSL:
 ** `./gradlew :generateKaml`
 
 Test:
@@ -60,6 +97,7 @@ Documentation:
 
 * Generate documentation for available environment properties:
 ** `./gradlew :app:generateConfigDoc`
+** Using the `ConfigDocWriterApp` class to generate the documentation file: `environment_variables.generated.adoc`
 * Generate software documentation as PDF:
 ** `./gradlew :doc:SoftwareDocument:asciidoctorPdf`
 * Generate software documentation as HTML:

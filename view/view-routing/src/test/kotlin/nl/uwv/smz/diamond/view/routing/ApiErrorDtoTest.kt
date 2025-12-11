@@ -9,7 +9,7 @@ import nl.uwv.smz.diamond.view.model.ApiErrorDto
 class ApiErrorDtoTest : StringSpec({
     val code = ErrorCode.BAD_CLIENT_REQUEST
     val message = "test message"
-    val dto = ApiErrorDto(code, message)
+    val dto = ApiErrorDto(code, message) // TODO test fixture Arb.apiErrorDto()
     val dtoAsString = """{"code":"${code.renderedValue}","message":"$message"}"""
 
     "When serialize DTO Then use rendered value property instead of Kotlin identifier name" {

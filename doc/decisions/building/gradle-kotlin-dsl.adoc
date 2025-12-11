@@ -12,3 +12,7 @@ Author: Seepick
 * obviously not groovy (cumbersome)
 * as project is already in kotlin, makes sense to configure gradle also with kotlin
 * has become stable enough the last years (support, plugins/configuration, sufficient documentation on the internet)
+
+*Decision:*
+
+Use Gradle's Kotlin DSL.

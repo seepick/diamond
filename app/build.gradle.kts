@@ -76,16 +76,7 @@ configure<ProcessResources>("processResources") {
     }
 }
 
-registerJavaExecTask(
-    JavaExecConfig(
-        name = "runLocal",
-        group = "application",
-        description = "Run LocalDiamondApp",
-        mainClass = Constants.Fqn.localMainClass,
-    ),
-)
-
-/** generate asciidoc describing the support environment variables to be set by operations */
+// generate asciidoc describing the support environment variables to be set by operations
 registerJavaExecTask(
     JavaExecConfig(
         // TODO make output configurable
@@ -93,5 +84,14 @@ registerJavaExecTask(
         group = "documentation",
         description = "Generate ENV vars overview by using reflection.",
         mainClass = Constants.Fqn.configDocWriter,
+    ),
+)
+
+registerJavaExecTask(
+    JavaExecConfig(
+        name = "runLocal",
+        group = "application",
+        description = "Run LocalDiamondApp",
+        mainClass = Constants.Fqn.localMainClass,
     ),
 )

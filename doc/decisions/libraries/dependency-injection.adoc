@@ -1,0 +1,54 @@
+= Dependency Injection Decision
+
+[TIP]
+====
+Status: Accepted +
+Created: 11.12.2025 +
+Author: Seepick
+====
+
+[QUESTION]
+====
+Which library to use for applying Inversion-of-Control via Dependency-Injection?
+====
+
+*Context:*
+
+* A Java standard compatible annotation based solution is usually not a bad idea.
+* Doing even without any intrusion (annotations) would even be better (enabling true DDD).
+* We have especially high needs to rewire the application to support sophisticated integration tests (cut in/override beans arbitrarily).
+** We want to be explicit with configuration, so avoid `@Property("key")` and do instead `config.key`.
+** Each module provides its own module configuration definition which is later composed (with an optional additional modules, used by the test infrastructure).
+** We don't want to use classpath scanning, although convenient, takes away control for fine-tuned configuration.
+
+*Options:*
+
+* Spring Framework, obviously
+** Supports manual @Configuration bean definition (what's the state with defining them functional style?)
+* Guice, a bit better
+* Pico, too pico/small
+* Koin, Kotlin-idiomatic, modern
+** manual configuration and wiring (no classpath scan)
+** fully programmatic; using strictly code over annotations
+
+*Decision:*
+
+* Use Koin :)
+
+.Koin module ("module", name clash here, ouch!) and our custom config, all explicitly handled leveraging the power of code
+[source,kotlin]
+----
+data class ExternConfig(
+  val postsServiceBaseUrl: String,
+  val sftp: SftpConfig,
+)
+
+fun Modules.externImpl(config: ExternConfig) = module {
+  single<PostsExtern> { PostsExternImpl(baseUrl = config.postsServiceBaseUrl) }
+  single<SftpConnector> { SftpConnectorImpl(config.sftp) }
+}
+----
+
+* We are in full control this way (rewiring for testing purpose; override bean definitions).
+* Integration-code is totally separate from application-code as Koin is non-intrusive.
+** The business logic code especially can be free from any framework code.
