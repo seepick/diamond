@@ -1,5 +1,10 @@
 = Persistence Technology
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,14 +12,14 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * We need to choose a persistence technology for our application.
 * A clear distinction between the needs for production vs test/development (local startup).
 * We choose for a relational database...
 ** No NoSQL store (MongoDB) or in-memory cache
 
-*Requirements:*
+*Requirements*
 
 Production DB:
 
@@ -27,7 +32,7 @@ Test/Dev DB:
 * Fast startup and execution time
 * No setup costs (installing, configuration, etc)
 
-*Options:*
+*Options*
 
 Production:
 

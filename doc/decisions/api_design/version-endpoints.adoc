@@ -1,5 +1,10 @@
 = Endpoint Versioning
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,7 +12,7 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Options:*
+*Options*
 
 . using header: `Accept: application/vnd.diamond.crystal.v1+json` and `Content-Type: ...`
 ** Keeps the URLs clean; metadata in headers
@@ -20,6 +25,6 @@ Also:
 * deprecate (TODO: tag OpenAPI spec as such, generate warning in code possible?!) and communicate
 ** Keep track (logging) of usage to know when to turn off
 
-*Links:*
+*Links*
 
 * https://dev.to/abhivyaktii/api-versioning-using-headers-a-clean-and-flexible-approach-218p

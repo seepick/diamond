@@ -8,8 +8,6 @@ endif::[]
 
 include::principles.adoc[leveloffset=+1]
 
-include::service_types.adoc[leveloffset=+1]
-
 include::layering.adoc[leveloffset=+1]
 
 include::technology.adoc[leveloffset=+1]

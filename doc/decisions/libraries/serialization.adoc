@@ -1,5 +1,10 @@
 = Serialization Library
 
+[QUESTION]
+====
+A marshaller/serializer is needed for JSON support.
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,12 +12,7 @@ Created: 7.12.2025 +
 Author: Seepick
 ====
 
-[QUESTION]
-====
-A marshaller/serializer is needed for JSON support.
-====
-
-*Options:*
+*Options*
 
 . Jackson
 ** Very mature and well-known
@@ -23,11 +23,11 @@ A marshaller/serializer is needed for JSON support.
 ** Simple to write custom de/serializers
 ** Multiplatform support (client SDK for frontend)
 
-*Aspects:*
+*Aspects*
 
 * Handling of Java's datetime
 * Support of value classes (typesafety + inlining)
 
-*Conclusion:*
+*Conclusion*
 
 * Kotlinx Serialization is best fitting

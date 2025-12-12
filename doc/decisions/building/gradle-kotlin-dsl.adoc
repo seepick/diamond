@@ -1,5 +1,10 @@
 = Gradle Kotlin DSL
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,12 +12,12 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * obviously not groovy (cumbersome)
 * as project is already in kotlin, makes sense to configure gradle also with kotlin
 * has become stable enough the last years (support, plugins/configuration, sufficient documentation on the internet)
 
-*Decision:*
+*Decision*
 
 Use Gradle's Kotlin DSL.

@@ -1,5 +1,10 @@
 = Dependency Injection Decision
 
+[QUESTION]
+====
+Which library to use for applying Inversion-of-Control via Dependency-Injection?
+====
+
 [TIP]
 ====
 Status: Accepted +
@@ -7,12 +12,7 @@ Created: 11.12.2025 +
 Author: Seepick
 ====
 
-[QUESTION]
-====
-Which library to use for applying Inversion-of-Control via Dependency-Injection?
-====
-
-*Context:*
+*Context*
 
 * A Java standard compatible annotation based solution is usually not a bad idea.
 * Doing even without any intrusion (annotations) would even be better (enabling true DDD).
@@ -21,7 +21,7 @@ Which library to use for applying Inversion-of-Control via Dependency-Injection?
 ** Each module provides its own module configuration definition which is later composed (with an optional additional modules, used by the test infrastructure).
 ** We don't want to use classpath scanning, although convenient, takes away control for fine-tuned configuration.
 
-*Options:*
+*Options*
 
 * Spring Framework, obviously
 ** Supports manual @Configuration bean definition (what's the state with defining them functional style?)
@@ -31,7 +31,7 @@ Which library to use for applying Inversion-of-Control via Dependency-Injection?
 ** manual configuration and wiring (no classpath scan)
 ** fully programmatic; using strictly code over annotations
 
-*Decision:*
+*Decision*
 
 * Use Koin :)
 

@@ -1,5 +1,10 @@
 = Language Choice
 
+[QUESTION]
+====
+Which programming language to choose?
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,13 +12,9 @@ Created: 5.12.2025 +
 Author: Seepick
 ====
 
-[QUESTION]
-====
-Which programming language to choose?
-====
-
 * Java or Kotlin?
-** not really any other: Definitely no Scala, Clojure, ... and no non-JVM languages (Go, Rust, Python, C#, ...).
+** not really any other: Definitely no Scala, Clojure, ... and no non-JVM languages (Go, Rust, Python, ...).
+* C# is a sophisticated option and used widely.
 
 * interoperability; always possible to fall back to java code and "java native libs"
 * using Lombok is an indication we want Kotlin:

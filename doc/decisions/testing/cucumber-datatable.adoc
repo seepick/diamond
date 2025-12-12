@@ -1,5 +1,10 @@
 = Cucumber Datatable Serialization
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Accepted +
@@ -7,7 +12,7 @@ Created: 11.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 When we define data in a test as a table, we need a simple mechanism to transform this data to a typed result.
 
@@ -31,7 +36,7 @@ fun `Then the response posts are`(posts: List<PostDtoRow>) {
 }
 ----
 
-*Solution:*
+*Solution*
 
 * Not much for Kotlin...
 * Gladly there is a flawless Kotlin-Java interoperability, so fallback to a Java library:

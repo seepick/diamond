@@ -1,5 +1,10 @@
 = Secured Endpoints
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,15 +12,21 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-How is authentification and authorization handled?
+How is authentification (username/password) and authorization (rights/role-checking) handled?
+
+*Options*
 
 * IAM/LDAP
-* Central security auth gateway in front
+* Central security auth-gateway in front
 ** A reverse proxy (nginx) for auth (more complex pipeline)
-** Services only redceive an already verified user ID header (auth-agnostic)
+** Services only redceive an already verified user ID header (auth-agnostic); esp. when 2+ services necessary
 ** Simplifies lots of code
 ** Faster build time ("IAM policy seeding" can take a lot of time)
 ** Easier test setup (happier testers)
 * Separation of concerns: make the "children slimmer/lighter"
 * Endpoints are configured centrally (?); the obligatory "auth matrix" ;)
 * OAuth2 vs JWT?
+
+*Decision*
+
+An auth-gateway upfront, not the service itself.

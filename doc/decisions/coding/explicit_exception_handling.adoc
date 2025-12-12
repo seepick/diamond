@@ -1,5 +1,10 @@
 = Explicit Exception Handling
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,7 +12,7 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * Ever since the time when the Spring Framework got popular, unchecked exceptions were favored over checked ones.
 (Neil Gafter, Josua Bloch)
@@ -26,7 +31,7 @@ fun Route.handleGet(): ServerResponse {
 }
 ----
 
-*Proposal:*
+*Proposal*
 
 * Use the link:https://arrow-kt.io/[Arrow library] to introduce a more functional approach, its `Either` type specifically.
 

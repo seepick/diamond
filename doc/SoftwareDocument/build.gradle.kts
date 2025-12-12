@@ -44,7 +44,7 @@ fun asciidocAttributes(
     "buildDateClean" to LocalDateTime.now()
         .format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)),
     "buildDate" to LocalDateTime.now()
-        .format(DateTimeFormatter.ofPattern("EEE, d. LLLL yyyy", Locale.ENGLISH)),
+        .format(DateTimeFormatter.ofPattern("EEEE, d. LLLL yyyy", Locale.ENGLISH)),
     "buildTime" to LocalDateTime.now()
         .format(DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH)),
     "imgdir" to imagesDir,

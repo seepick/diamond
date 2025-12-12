@@ -1,5 +1,10 @@
 = Generate Persistence Code
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,7 +12,7 @@ Created: 6.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * liquibase migration strategy...
 * Generate Liquibase by classes; or generate classes by liquibase?

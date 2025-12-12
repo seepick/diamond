@@ -1,5 +1,10 @@
 = Assertion Matchers
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Accepted +
@@ -7,12 +12,12 @@ Created: 11.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * Some test frameworks come shipped with a matchers library, but usually they are just very basic (intentionally).
 * We need a way to express assertions using a library.
 
-*Options:*
+*Options*
 
 * JUnit and Kotlin-test has only very basic functionality
 * Hamcrest/Hamkrest, good old, extending it is a bit cumbersome

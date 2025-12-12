@@ -12,12 +12,22 @@ NOTE: _Clean code is where you can see people cared writing it._
 include::{rootdir}/domain/domain-logic-api/src/main/kotlin/nl/uwv/smz/diamond/domain/logicApi/SyncService.kt[]
 ----
 
-The method is marked as `suspended` to utilize Kotlin's coroutines for high performance (integrated in Ktor and well supported by Kotest).
+The method is marked as `suspended` to utilize Kotlin's coroutines for high performance (integrated in Ktor and well supported by Kotest), and uUsing Arrow's `Either` to explicitly handle failures.
 
-Using Arrow's `Either` to explicitly handle failures.
+== Package Naming
+
+It must be quickly and intuitively be possible to infer the module based on the package name.
+
+The application uses a prefix, such as `com.github` and adds the module (and submodule) names to it.
+So for example the submodule `/domain/domain-impl` translates to the package name -> `com.github.domain.impl`  (we do not encode super package to the sub package's name, as in `com.github.domain.domainImpl`; this redundancy is only required for the module name itself).
 
 include::best_practices.adoc[leveloffset=+1]
 
 include::local_development.adoc[leveloffset=+1]
 
 include::code_generation.adoc[leveloffset=+1]
+
+== GitHub Actions Build Pipeline
+
+.Sketching a build pipeline overview
+image::{imgdir}/diagrams/build-pipelines.png[]

@@ -1,0 +1,28 @@
+= Central Domain Models
+
+[QUESTION]
+====
+Should we use the domain models (`Crystal`) as a return type by lower-layer modules or should they return their own types (`CrystalDbo`)?
+====
+
+[TIP]
+====
+Status: Draft +
+Created: 12.12.2025 +
+Author: Seepick
+====
+
+*Options*
+
+1. Domain Models
+** Meaning the persistence and external modules are immediately returning a domain model type.
+** The domain logic stays entirely clean, almost like a hexagonal architecture (a.k.a. port-adapter style); if we would also move the interfaces...
+** As we don't use JPA (or any other class template, annotation based approach), we can skip a custom DTO and map directly to the domain model
+2. Custom Models
+** A very common (yet cumbersome as lots of "dumb code" has to be written for declaration and mapping) approach that each layer has their own representation.
+** This is already the case for view and domain, so being consistent doing so also in the lower-layer modules.
+It is clear, and explicit, being under full control.
+
+*Decision*
+
+-> Reusing the domain models seems to be the go to (KISS) as long as the advanced control is not needed (avoid creating yet another abstraction layer).

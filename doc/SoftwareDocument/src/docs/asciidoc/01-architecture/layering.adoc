@@ -83,6 +83,18 @@ External libraries, yet maintained by us:
 * `etest` -- end-to-end system tests residing outside to decouple; only gets environment base URL for blackbox access
 * `openapi-gen` -- custom OpenAPI generators (resides in shared for now, needs to be externalized)
 
+=== Module Naming Convention
+
+In general we choose one or two short, meaningful (no abbreviations), pronouncable words which capture the essence.
+
+There are two ways of naming submodules:
+
+. Have a simple naming convention: `/domain/impl`
+** The sub-module's name itself will not be unique across the whole application, leading to potential build problems (name clash).
+** E.g. the assembled JAR file will be named `impl.jar`, thus not unique.
+. Encode the super-type in the sub-type, as in `/domain/domain-impl`
+** This seems redundant at first, but leads to a necessary unique module name.
+
 include::{adrsdir}/coding/code-generation.adoc[leveloffset=+1]
 
 == Client-SDKs
@@ -111,4 +123,4 @@ Best Practices:
 * We maintain a client-useful (confirmed benefit) SDK for our API ourselves.
 ** We potentiialy used it ourselves in tests, http-controllers, etc.
 
-include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+2]
+include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+1]

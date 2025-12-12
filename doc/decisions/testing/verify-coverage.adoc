@@ -1,5 +1,10 @@
 = Verify Coverage
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,14 +12,14 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * Goal: automatically verify minimum test coverage threshold
 ** Fail build if not achieved
 ** Provide dashboards (Sonarqube) on current state and changes (delta)
 * coverage 100%?, kotlin inlining issue...
 
-*Options:*
+*Options*
 
 * jacoco
 ** very mature, well supported by tools

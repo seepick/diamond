@@ -1,8 +1,67 @@
 = Open Doings
 
-TODO go through TODO.md and move relevants here * HTTP API caching?
+Things that half not been covered, or only partially covered in the implementation of this project but seems necessary to be addressed.
 
-Controller in one submodule?:: The `view-routing` and `controller-*` are separated, which gives a clean cut and a webframework free controller layer, which potentially could be tested from.
-BUT if this is not used (but instead via the routing), then merge those and reduce abstraction/complexity.
+== Questions
+
+=== API
+
+Support filtering:: Many different ways to do it.
+
+API versioning:: Is it also needed with only one existing FE?
+We would tie our releases together, but only for backwards incompatible changes could be good enough.
+
+Support HTTP caching:: Fine-tuning cache control, use entity tags (ETag), considering use of a CDN
+
+Expose online Swagger HTML endpoint:: Render a modern UI for an interactive exploration of the runtime API.
+
+Finish the OpenAPI generator:: The client is 80% done, only missing the kotlinx serialization java datetime (generate infra code vs. require declared dependency)
+
+Write OpenAPI generator for Ktor server side:: Provide interfaces for `Application.route` to programmatically verify API contract is implemented.
+
+=== Test, Quality
+
+Karate tests supporting different environments:: Easy to configure from outside; including preset environments and specifyable feature-branch url part (convention).
+
+Load/performance tests:: Using Gatling (https://github.com/gatling/gatling-gradle-plugin-demo-kotlin) and/or with Karate support: https://github.com/karatelabs/karate/tree/master/karate-gatling
+
+Fail build if quality threshold not met:: For detekt it works, for ktlint should be easy, SonarQube requires a bit more.
+
+=== Persistence
+
+Database connection pooling:: using good old Hikari.
+
+Initial DB seeding of masterdata:: Start application and ensure database is in an initial -content- state.
+
+Liquibase generation:: Could generate (exposed) code, or generate changelog like JPA is doing?
+Do we even want that?!
+What is the Gradle plugin capable of?
+Why its own `liquibaseRuntime`?
+
+=== External Communication
+
+Communication to a 3rd party via a message queue:: A common way service communication.
+
+LDAP integration:: A common way to do authentication in the corporate world.
+
+Circuit breaker:: Use arrow-fx-coroutines (external services and also DB?)
+
+=== Architecture
+
+Move generic (HTTP) functionality into a reusable shared library:: Thinking about pagination/sorting/filtering, from API but also DB point of view.
+
+Reconsider merging routing controller:: The `view-routing` and `controller-*` are separated, which gives a clean cut and a webframework free controller layer, which potentially could be tested from; BUT if this is not used (but instead via the routing), then merge those and reduce abstraction/complexity.
 
 Config as environment variables or use a centralized config manager?:: See https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/
+
+=== Misc Tech
+
+Feature flag support:: Necessary for continuous deployments.
+
+Use scheduler for cronjobs:: Something like JobR or Quartz
+
+Bean validation based on OpenAPI spec:: It might be possible to simply reuse Java's annotation and validation framework from Kotlin...
+
+Object mapper a la mapstruct for Kotlin:: How well does it solve the 99% default, and 1% custom mapping? (consider optics for deep object manipulation)
+
+Use Arrow's Optics to manipulate deep nested, immutable data:: Once data objects start to grow in depth (more hierarchical) and favoring immutability, when then needed to change deeply nested properties alone: this is the solution: https://arrow-kt.io/learn/immutable-data/

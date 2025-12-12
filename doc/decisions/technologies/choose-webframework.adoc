@@ -1,5 +1,10 @@
 = Webframework Choice
 
+[QUESTION]
+====
+We need a web framework to communicate JSON-over-HTTP.
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,15 +12,10 @@ Created: 5.12.2025 +
 Author: Seepick
 ====
 
-[QUESTION]
-====
-We need a web framework to communicate JSON-over-HTTP.
-====
-
 * The web framework is usually also dictating a bigger part of the application: dependency injection, configuration, etc.
 ** Especially with heavy-weight frameworks like Spring Boot and the enterprise implementations are covering more than just "being a fancy servlet".
 
-*Options:*
+*Options*
 
 . Spring Boot/Web
 ** Most common in JVM world.
@@ -39,6 +39,6 @@ Spring and Kotlin?
 * see link:https://github.com/spring-attic/spring-fu/tree/main/kofu[kofu] for spring experimental support to make it look like ktor
 * also interesting: link:https://docs.spring.io/spring-integration/reference/kotlin-dsl.html[Spring Kotlin DSL]
 
-*Conclusion:*
+*Conclusion*
 
 * We use Ktor

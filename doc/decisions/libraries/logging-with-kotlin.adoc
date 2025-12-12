@@ -1,5 +1,10 @@
 = Logging with Kotlin
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,7 +12,7 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Logging evolution:*
+*Logging evolution*
 
 .Initial approach with performance in mind
 [source,kotlin]
@@ -39,7 +44,7 @@ Finally we are doing it nicely, using Kotlin's string templates (interpolation) 
 log.debug { "some message $dto was returned" }
 ----
 
-Logger Declaration:*
+Logger Declaration*
 
 Thanks to `io.github.oshai:kotlin-logging-jvm` (former "mu-kotlin") the declaration of a logger is as simple as it can be:
 

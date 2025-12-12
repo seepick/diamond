@@ -1,21 +1,19 @@
 // do NOT add header titles here!
 
-NOTE: If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends.
+"_If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends._"
 
 The project's website is: https://github.com/seepick/diamond
-
-This document was built using link:https://asciidoc.org[AsciiDoc], a simple yet powerful markup language for writing technical documentation.
 
 ifndef::isPdf[]
 NOTE: Download this version as a PDF: https://seepick.github.io/diamond/Diamond-SoftwareDocument.pdf
 endif::[]
 
-The build for this document was triggered on {buildDate} at {buildTime} - enjoy :)
+The build for this document (using link:https://asciidoc.org[AsciiDoc]) was triggered on {buildDate} at {buildTime} - enjoy :)
 
 .A precious material
 image::{imgdir}/diamond.png[scaledwidth=50%,align="center"]
 
-*About:*
+*About*
 
 This project is a state-of-the-art prototype of a backend service, which can be used as a laboratory to gain experience (elaborating further on this proof-of-concept), a base for technical decision making and a template for future reference.
 
@@ -24,13 +22,13 @@ It is tailored to a technical prototype, thus there will be little to no mention
 Think of business concepts and rules, IT system landscape, API documentation, and much on the operational side (DevOps/CICD, releasing, performance, tracing, monitoring, alerting).
 It ends with an outlook on open doings and a future vision on how to shape also the broader picture of integration, deployment, monitoring, etc.
 
-*Decision Documentation:*
+*Decision Documentation*
 
 We use ADRs (Architecture Decision Records) to document important architectural and technical decisions made during the development of this software project.
 
 For more explanation what ADRs are, please read: https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc
 
-*Chapter Overview:*
+*Chapter Overview*
 
 .Sitemap of the book's content
 image::{imgdir}/sitemap.svg[]

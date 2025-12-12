@@ -1,5 +1,10 @@
 = Manage Dependencies
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -9,14 +14,14 @@ Author: Seepick
 
 Which way to properly manage gradle dependencies?
 
-*Problem description:*
+*Problem description*
 
 * versions repeatedly being declared, danger of mismatch (same library, different versions)
 ** especially true for multi-module projects
 ** leading to runtime error due to binary incompatibility (NoSuchMethodError, etc.)
 * cumbersome as in lots to type and repeat (we want to be concise and fast)
 
-*Requirements:*
+*Requirements*
 
 * not abstracting/hiding too much (e.g. one god dependency), but be explicit/transparent enough for understanding
 ** be concise enough, while capturing the essence for clarity (intuitive comprehension) sake
@@ -24,11 +29,11 @@ Which way to properly manage gradle dependencies?
 * deal with a huge amount of versions/dependencies/plugins
 * custom plugin declaration (to share common code as extensions/compositions) can use it as well
 
-*Alternatives:*
+*Alternatives*
 
 Either: 1) `buildSrc` custom code (convenient plugins) or 2) use Gradle's standard version catalog.
 
-*Custom `buildSrc` Code:*
+*Custom `buildSrc` Code*
 
 Pros:
 
@@ -72,7 +77,7 @@ short-notation = "some.plugin.id:1.4"
 versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions" }
 ----
 
-*Conclusion:*
+*Conclusion*
 
 * both support grouping and a nested-hierarchy to control a vast amount of declarations
 * both support auto-completion

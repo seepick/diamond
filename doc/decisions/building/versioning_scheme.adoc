@@ -1,18 +1,24 @@
 = Versioning Scheme
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
 Created: 6.12.2025 +
 Author: Seepick
 ====
-*Context:*
+
+*Context*
 
 * Deployed software has to be uniquely identifiable.
 * The version number needs to be generated automatically (CI/CD).
 * It will be exposed in various places (APIs, UIs, documentation, etc.).
 
-*Options:*
+*Options*
 
 . One single continuous version number for each build.
 ** The number becomes meaningless, but very simple to implement.
@@ -23,6 +29,6 @@ Author: Seepick
 ** Easy to understand and communicate.
 ** Conveys information about the release date.
 
-*Resources:*
+*Resources*
 
 * E.g. use GitHub action for that: https://github.com/marketplace/actions/version-increment

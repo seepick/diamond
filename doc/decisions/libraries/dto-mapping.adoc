@@ -1,5 +1,10 @@
 = DTO Mapping Library
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,14 +12,14 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * We want a clean representation, specific to a layer, of our data model.
 ** Consequence: Many different representations of the same (similar) thing.
 ** Consequence: Lots of (tedious) conversation (mapping/transformation) necessary.
 * Solution: Library which does that for us.
 
-*Options:*
+*Options*
 
 * Mapstruct
 ** Using annotations for code generation
@@ -25,6 +30,6 @@ Author: Seepick
 ** Tries as much as possible by default (same name/type)
 ** Easy and simple (for basic mappings), convenient, flexible; light-weight
 
-*Resources:*
+*Resources*
 
 * https://www.javacodegeeks.com/2025/01/mapstruct-vs-modelmapper-a-comparative-analysis.html

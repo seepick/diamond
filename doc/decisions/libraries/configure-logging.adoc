@@ -1,5 +1,10 @@
 = Logging Configuration
 
+[QUESTION]
+====
+// TODO
+====
+
 [TIP]
 ====
 Status: Draft +
@@ -7,7 +12,7 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Context:*
+*Context*
 
 * following principle: code > config
 ** more flexibility, more control, more sophisticated, more robust
