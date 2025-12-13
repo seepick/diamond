@@ -68,7 +68,7 @@ Kover:: Test coverage tool, generating JaCoCo compatible XML reports.
 
 include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+2]
 
-include::{adrsdir}/technologies/choose-scheduler-tech.adoc[leveloffset=+2]
+include::{adrsdir}/technologies/scheduler.adoc[leveloffset=+2]
 
 include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+2]
 

@@ -2,27 +2,28 @@
 
 [QUESTION]
 ====
-// TODO
+How to generate sophisticated code based on an OpenAPI Yaml specification?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Reason*
+*Context*
 
 * We need to keep the API spec (YAML) and the code (Kotlin) in sync; we don't want to rely on doing this manually.
-* Thus, establish an automatism via generation.
-* We need something that fits our needs: modern, up2date, high quality code and libs.
-* Current (Kotlin) generators are out of date (unusable), thus a custom generator is required.
+** Thus, establish an automatism via code generation; tool enforced contract compliance (more robust).
+* We need something that fits our needs: modern, up2date, high quality code and current libs.
+* Current (Kotlin) generators are out of date (unusable), thus a custom generator is recommended.
+** Official generators use outdated version; if same lib is used, possible version clashes might occur!
 
-*Alternatives*
+*Options*
 
 * Write some tests to verify sync of spec and code.
-* No, as we want immediate feedback (compile time) about correct implementation.
+** No, as we want immediate feedback (compile time) about correct implementation.
 * Use Java generators, they are more modern and Kotlin-Java interoperability works well.
 * It would not clash as Java generated clients use different libraries (even when outdated).
 

@@ -2,21 +2,36 @@
 
 [QUESTION]
 ====
-// TODO
+How to declare logging configuration, supporting different options for test/local/prod environments?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* following principle: code > config
-** more flexibility, more control, more sophisticated, more robust
-* programmatic logging configuration
-* dev/test different from default-prod
-* provide mechanism to override(?), maybe even
-* TODO: runtime, to "debug" = increase log; in running prod
+* Usually we would do it via a logback XML file, but following the "code over config" principle...
+** Code allows for more flexibility, more control, it's more sophisticated and robust.
+* Also: Follow the rule of "granular configuration" (not providing environments, but elemental switches).
+* IDEA: application is able to runtime reconfigure logging (at least log level) to take effect
+
+*Proposal*
+
+* Programmatic logging configuration.
+* It can be invoked in regular production mode, for local development, and differently for tests.
+
+.A sample programmatic configuration for Logback with a custom Kotlin DSL
+[source,kotlin]
+----
+reconfigureLogback {
+    rootLevel = LogLevel.Warn
+    addConsoleAppender {
+        pattern = "%d{HH:mm:ss.SSS} [%-5level] %logger{42} - %msg%n"
+    }
+    packageLevel(LogLevel.Trace, Constants.ROOT_PACKAGE_NAME)
+}
+----

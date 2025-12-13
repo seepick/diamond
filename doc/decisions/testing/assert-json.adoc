@@ -1,27 +1,33 @@
-= Assert JSON
+= JSON assertions
 
 [QUESTION]
 ====
-// TODO
+Which library to use to for checking JSON in tests?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* for itest with cucumber, we need a library which supports something like: `$.items[3].title eq 'foobar'`
-    * a library which we can be passed a complex string to evaluate
-* for complete JSON comparison, use: https://github.com/skyscreamer/JSONassert
+* We need enhanced JSON matching capabilities for several test types (integration tests with Cucumber)
+* Use-cases:
+** Asserting for structurally equality; ignorant to whitespace; ordering, null handling, superfluous fields.
+** JSON Path like expressions/matchers like: `$.items[3].title eq 'foobar'`
 
 *Options*
 
-* assert full JSON: https://github.com/skyscreamer/JSONassert
-* regular expression support: https://fslev.github.io/json-compare/
-* jayway path is an option (`com.jayway.jsonpath:json-path`)
-    * it provides hamcrest matchers `com.jayway.jsonpath:json-path-assert`
-    * tutorial: https://www.baeldung.com/guide-to-jayway-jsonpath
+* For complete JSON comparison, use: https://github.com/skyscreamer/JSONassert
+* Regular expression support added by: https://fslev.github.io/json-compare/
+* Jayway path is an option for expressions
+** It provides hamcrest matchers (`com.jayway.jsonpath:json-path-assert`)
+** Tutorial: https://www.baeldung.com/guide-to-jayway-jsonpath
+* Kotest provides matcher library: https://kotest.io/docs/assertions/json/json-overview.html
+
+*Decision*
+
+* JSONassert (structural equality) and Jayway (expressions).

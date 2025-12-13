@@ -33,7 +33,7 @@ Author: Seepick
 
 *Decision*
 
-* Use Koin :)
+* Use Koin, modern, fitting idiomatically and with other idiomatic frameworks (ktor, kotest).
 
 .Koin module ("module", name clash here, ouch!) and our custom config, all explicitly handled leveraging the power of code
 [source,kotlin]

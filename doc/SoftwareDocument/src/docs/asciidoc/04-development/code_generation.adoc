@@ -6,4 +6,6 @@ endif::[]
 
 include::{adrsdir}/building/generating-sources.adoc[leveloffset=+1]
 
-include::{adrsdir}/persistence/generate-code.adoc[leveloffset=+1]
+include::{adrsdir}/coding/generate-custom-openapi.adoc[leveloffset=+1]
+
+include::{adrsdir}/persistence/generate-persistence-code.adoc[leveloffset=+1]

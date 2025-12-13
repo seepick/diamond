@@ -1,13 +1,13 @@
-= Choose Test Framework
+= Test Framework
 
 [QUESTION]
 ====
-// TODO
+Which test framework to choose which manages and executes our tests?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 11.12.2025 +
 Author: Seepick
 ====
@@ -16,11 +16,22 @@ Author: Seepick
 
 * We need a framework which supports our sophisticated/specific requirements to configure, develop and run automated tests.
 
-** Options:
+*Options*
 
 * JUnit obviously; mature, well-known.
 * TestNG is more modern and focus also on integration tests (opposed to JUnit's focus on, well... units).
+* Spek; nice, but not really.
 * Kotest is Kotlin-idiomatic framework using code over config (speak: annotations).
+* (Cucumber; for BDD, not regular tests)
+
+*Decision*
+
+* Kotest, as a modern, Kotlin-idiomatic, sophisticated framework with good integration with the rest of the techstack.
+* Various test specifications to choose from (string, describe, functional, and even annotation based).
+* Easier and more sophisticated extensions and listeners capabilities (than JUnit).
+* Parameterizable inclusion of template tests (reuse tests programmatically, full power!).
+* Test fixtures via `Arb` (needs to get familiar in the beginning, but then shine).
+* Possible to generate JUnit output and even use JUnit's test engine if desired/necessary.
 
 .A simple Kotest test example
 [source,kotlin]
@@ -37,11 +48,3 @@ class ApiErrorDtoTest : StringSpec({
     }
 })
 ----
-
-Kotest further offers:
-
-* Various test specifications to choose from (string, describe, functional, and even annotation based).
-* Easier and more sophisticated extensions and listeners capabilities.
-* Parameterizable inclusion of template tests.
-* Test fixtures via `Arb`.
-* Possible to generate JUnit output and even use JUnit's test engine.

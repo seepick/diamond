@@ -1,0 +1,31 @@
+= Generate Persistence Code
+
+[QUESTION]
+====
+How much is possible, and how useful would it be to generate the Liquibase changelog based on code?
+====
+
+[TIP]
+====
+Status: Draft +
+Created: 6.12.2025 +
+Author: Seepick
+====
+
+*Context*
+
+* We use Liquibase for database schema migration; not Flyway, why?!
+* We consider generating the Liquibase XML by scanning classes
+** The other way round seems not attractive; generating classes by (liquibase) schema
+** Common Java stack uses JPA annotations (Maven plugin); delta.
+* Alternatively also keeping them in-sync by hand and have tests for a safety net.
+** Step through migration versions manually and write native SQL statements for setup/assertions.
+
+*Open*
+
+* How is it different than API-spec?
+Why don't the same principles apply for DB-spec?
+** Maybe also good to have a dedicated file (contract? not really, as internal only), to make it a conscious decision to make changes.
+* Other (semi-related) problem: How to handle if there are MANY changelogs?
+** Performance impact... It slows down startup (dev/tests) considerably.
+** Compress/squash them?!

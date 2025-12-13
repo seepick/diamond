@@ -2,24 +2,45 @@
 
 [QUESTION]
 ====
-// TODO
+Should the Cucumber step definitions implemented by using the annotation or the lambda approach?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* use more kotlin-idiomatic approach by the java8 lambda functionality
-** instead the old fashioned annotationstyle
-* both approaches are fully supported by the intellij-plugin
-** click into declaration possible from feature files
+.Regular method based step definitions using annotations
+[source,kotlin]
+----
+@Then("the response status code is {int}")
+fun `Then the response status code is {int}`(expectedStatus: Int) {
+    world.lastResponse().statusCode shouldBeEqual expectedStatus
+}
+----
 
-*Links*
+.Modern Lambda based step definitions
+[source,kotlin]
+----
+Then("the response JSON {string} is {string}") { jsonPath: String, expectedValue: String ->
+    world.assertJsonPathValue(jsonPath, expectedValue)
+}
+----
+
+* The annotation approach has redudancy, the lambda one doesn't.
+* Both approaches are fully supported by the intellij-plugin.
+** Click into declaration possible from feature files.
+
+*Decision*
+
+* Use the more Kotlin-idiomatic approach offered by the Java8 lambda functionality.
+* PS: Some problems/limitations have occured with the lambda support (fallback to annotation based).
+
+*Resources*
 
 * https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-java8/README.md
-* Example: https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-kotlin-java8/src/test/kotlin/io/cucumber/kotlin/LambdaStepDefinitions.kt
+* https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-kotlin-java8/src/test/kotlin/io/cucumber/kotlin/LambdaStepDefinitions.kt

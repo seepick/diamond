@@ -2,71 +2,44 @@
 
 [QUESTION]
 ====
-// TODO
+How to properly manage the vast amount of dependencies (including version numbers)?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
-Which way to properly manage gradle dependencies?
+*Context*
 
-*Problem description*
-
-* versions repeatedly being declared, danger of mismatch (same library, different versions)
-** especially true for multi-module projects
-** leading to runtime error due to binary incompatibility (NoSuchMethodError, etc.)
-* cumbersome as in lots to type and repeat (we want to be concise and fast)
+* Having versions repeatedly being declared, there is a danger of a mismatch (same library, different versions).
+** The mismatch might lead to runtime errors due to binary incompatibility (`NoSuchMethodError`, etc.).
+** This is especially true for multi-module projects.
+* It's also cumbersome to type and not DRYing; we want to be concise and fast.
 
 *Requirements*
 
-* not abstracting/hiding too much (e.g. one god dependency), but be explicit/transparent enough for understanding
-** be concise enough, while capturing the essence for clarity (intuitive comprehension) sake
-* not too complex, no over-engineering, just get it "good enough"
-* deal with a huge amount of versions/dependencies/plugins
-* custom plugin declaration (to share common code as extensions/compositions) can use it as well
+* Not abstracting/hiding too much (e.g. one god dependency), but be explicit/transparent enough for understanding.
+** Not too complex, no over-engineering, just get it "good enough"
+** Be concise enough, while capturing the essence for clarity (intuitive comprehension) sake.
+* Deal with a huge amount of versions, dependencies, and plugins.
+* Allow for easy custom plugin declaration (to share common code as extensions/compositions) can use it as well.
 
-*Alternatives*
+Either use Gradle's standard version catalog or write custom code in `buildSrc`.
 
-Either: 1) `buildSrc` custom code (convenient plugins) or 2) use Gradle's standard version catalog.
+*Gradle Version Catalog*
 
-*Custom `buildSrc` Code*
+* GOOD:
+** It's a out-of-the-box supported solution, people know it, well documented.
+** Allows for grouped dependencies, so-called libraries.
+* BAD:
+** TOML syntax for declaration is not as useful as code: auto-completion, type feedback, etc.
+** Going into source implementation/definition not possible (CTRL+click), cumbersome...
+** If refactoring/changing a dependency, then have to do a step-by-step error-fixing with each build, cumbersome...
 
-Pros:
-
-* it's plain kotlin code with all its advantages
-** refactoring safe
-** immediate feedback from compiler if something is wrong
-** go to source with CTRL+click (javadoc)
-* full control and flexibility (custom made solution)
-** e.g. group versions and dependencies
-* already used for custom plugins
-** BUT: it is NOT possible to use things from the catalog for those
-
-Cons:
-
-* it's custom made for something a default solution already exists
-* doesn't support view usages
-
-== Gradle Version Catalog
-
-* https://docs.gradle.org/current/userguide/version_catalogs.html
-
-Pros:
-
-* it's a out-of-the-box supported solution, people know it, well documented
-* allows for grouped dependencies, so-called libraries
-
-Cons:
-
-* TOML syntax is not as useful as code (auto-completion, type feedback, etc.)
-* going into source implementation/definition not possible (CTRL+click), cumbersome
-* if changing/refactoring, then step-by-step errors by each build, cumbersome
-
-.Example of a Gradle version catalog
+.Example of a Gradle version catalog TOML file
 [source,toml]
 ----
 [bundles]
@@ -77,9 +50,26 @@ short-notation = "some.plugin.id:1.4"
 versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions" }
 ----
 
-*Conclusion*
+*Custom `buildSrc` Code*
 
-* both support grouping and a nested-hierarchy to control a vast amount of declarations
-* both support auto-completion
-* custom plugin declaration is fucked
-** neither the custom code approach, nor the version catalog supports it (too early in build phase i assume)
+* GOOD:
+** It's plain Kotlin code with all its advantages:
+*** Immediate feedback from compiler if something is wrong.
+*** Refactoring safe.
+*** Go to source with CTRL+click (including JavaDoc).
+** Full control and flexibility (custom made solution).
+** Declaring dependencies here is low-cost as convenient plugins are already using this mechanism.
+*** BUT: It is NOT possible to use things from the catalog for those!
+* BAD:
+** It's custom made for something a default solution already exists; not known.
+** Minor: Doesn't support view usages.
+
+*Decision*
+
+* Custom approach seems more convenient, safe, and concise.
+* Both support grouping and a nested-hierarchy to control a vast amount of declarations.
+* Both support auto-completion (for usage, TOML not for declaration).
+
+*Resources*
+
+* https://docs.gradle.org/current/userguide/version_catalogs.html

@@ -4,6 +4,10 @@ endif::[]
 
 = Test Types
 
+Tests can be categorized in different dimensions.
+The following looks at the aspect of test target, the actual scope what's being tested.
+Unit tests for single classes/functions; integration tests for the whole application without externals; end2end for the while system landscape; (no tests for single modules necessary).
+
 == Unit Tests
 
 * In OO-languages, the smallest unit is a class (object); tests grouped by its public methods.
@@ -74,14 +78,15 @@ Feature: check the home for greeting
 
 == Other Types
 
-* ATDD, BDD Tests
-* performance/load/stress tests
+* BDD/ATDD Tests
+* Performance/load/stress tests
 ** We for sure need one of those!
-Use gatling (with karate?) or jmeter
+Use gatling (with karate?) or jmeter.
 * Backend Tests / external system tests
-* contract tests
-* system tests
-* acceptance/functional tests
+* System tests (involving real, external systems, leaving application boundary/control)
+* Contract tests
+* Acceptance tests
+* Functional tests
 
 Other:
 

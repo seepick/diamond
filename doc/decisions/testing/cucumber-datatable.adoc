@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+How to convert Cucumber data tables conveniently into a type-parametrized list?
 ====
 
 [TIP]
@@ -14,7 +14,8 @@ Author: Seepick
 
 *Context*
 
-When we define data in a test as a table, we need a simple mechanism to transform this data to a typed result.
+* When we define data in a test as a table, we need a simple mechanism to transform this data to a typed result.
+* Writing it by hand is cumbersome and slow, a library needs to easily declare and integrate.
 
 .Example of an assertion using a data-table
 [source,gherkin]
@@ -36,15 +37,14 @@ fun `Then the response posts are`(posts: List<PostDtoRow>) {
 }
 ----
 
-*Solution*
+*Decision*
 
 * Not much for Kotlin...
 * Gladly there is a flawless Kotlin-Java interoperability, so fallback to a Java library:
 ** See: https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping
-** Add the dependency `io.github.deblockt:cucumber-datatable-to-bean-mapping` and declare your table
+** Add the dependency `io.github.deblockt:cucumber-datatable-to-bean-mapping` and declare the data table.
 
 .Source to integrate a "Java-native" library in a mixed approach
-
 [source,java]
 ----
 @DataTableWithHeader

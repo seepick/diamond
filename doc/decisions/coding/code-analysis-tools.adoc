@@ -2,19 +2,39 @@
 
 [QUESTION]
 ====
-// TODO
+Which static code analysis tools to use to ensure high code quality?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* actually also runtime detection possible!
-* also ktlint
-* enable `Refactor -> AutoCorrect by detekt rules`
-* bad: e.g. line length not auto-configured in intellij by detekt rule :-(
+* We need an automated process to create a safety net for maintaining a high code quality.
+* Provide a sophisticated way to configure the rules (ruleset); define thresholds.
+* Provide easy to manage suppression filters (path pattern, selective, conditional; concise)
+** This usually tends to overflow over time; unmanagable list of chaos.
+* It needs proper integration in:
+** Build: verify quality gates, break if below thresholds
+** Dashboards: produce result in common formats; feed it to SonarQube (?)
+** IDE: plugins, short feedback loop
+*** Enable `Refactor -> AutoCorrect by detekt rules`
+*** Direct `@Suppress` with quickfixes
+*** BAD: line length not auto-configured in intellij by detekt rule :-(
+
+*Options*
+
+* Detekt
+** Checkstyle like XML configuration; sophisticated, looks promising.
+** Good IDE and Gradle integration; can also create sarif format results
+* ktlint
+** Configured via the `.editorconfig` file; flat list of properties to en/disable rules.
+** Can be included by Detekt (gradle plugin).
+
+*Decision*
+
+* Use Detekt (checkstyle like), and ktlint (autoformatter)

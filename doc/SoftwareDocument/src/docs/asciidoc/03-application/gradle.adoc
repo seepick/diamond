@@ -12,6 +12,9 @@ include::{adrsdir}/building/gradle-kotlin-dsl.adoc[leveloffset=+2]
 
 include::{adrsdir}/building/manage-dependencies.adoc[leveloffset=+2]
 
+.Content of the current `buildSrc` directory with build tools, convenient plugins, deps/versions, and more
+image::{imgdir}/buildSrc_folder.png[]
+
 === Module Build Configuration
 
 Due to the easy creation of extending the Gradle build with of custom plugins, we simply need to declare our dependencies.

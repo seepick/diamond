@@ -2,17 +2,27 @@
 
 [QUESTION]
 ====
-// TODO
+Which library to use to communicate to an SFTP server?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* JSch is very old and very outdated
-* Use forked and updated `com.github.mwiede:jsch` instead of original `com.jcraft:jsch`
+* We need to access an SFTP server and require a library for that.
+* It handles authentication (credentials, keys) and file operations.
+* Any external service needs to be easily testable (system integration tests; docker file) and stubbed for dev/test.
+
+*Options*
+
+* The good old JSch (`com.jcraft:jsch`) is... very old and very outdated and not maintained unfortunately.
+* There is nothing else (surprisingly)...
+
+*Decision*
+
+* Use the updated fork of JSch: `com.github.mwiede:jsch`

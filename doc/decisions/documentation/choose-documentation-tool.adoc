@@ -2,12 +2,12 @@
 
 [QUESTION]
 ====
-// TODO
+Which type setting system to use to write technical application?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 1.12.2025 +
 Author: Seepick
 ====
@@ -15,12 +15,15 @@ Author: Seepick
 *Options*
 
 * Markdown
-** Well known and well supported
-** Might not provided sufficient functionality for a more complex/bigger documentation project
-* Asciidoc
-** Somewhere between Markdown and LaTeX in usability/support and functionality/complexity
-** GitHub can also render it, just like markdown, yay
+** Well known and well supported.
+** Might not provided sufficient functionality for a more complex/bigger documentation project.
 * LaTeX
-** Great for writing books, but definitely poses a too high barrier of entry for people unfamiliar with it
-** Local latex installation is far more than needed compared to provided infrastructure for other technologies
+** Great for writing books, but definitely poses a too high barrier of entry for people unfamiliar with it.
+** Local latex installation is far more than needed compared to provided infrastructure for other technologies.
+* AsciiDoc
+** Somewhere between Markdown and LaTeX in usability/support and functionality/complexity.
+** GitHub can also render it, just like markdown, yay; superb Gradle integration.
 
+*Decision*
+
+* AsciiDoc is the sweetspot for easiness and sophistication.

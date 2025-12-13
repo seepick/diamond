@@ -2,12 +2,12 @@
 
 [QUESTION]
 ====
-// TODO
+How to to handle exceptions in a reliable way, which is typesafe and explicit?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
@@ -26,20 +26,20 @@ fun Service.dangerousMethod(): Result {
     throw RuntimeException()
 }
 fun Route.handleGet(): ServerResponse {
-    val result = service.dangerousMethod()
+    val result = service.dangerousMethod() // forgot to handle
     return toResponse(result)
 }
 ----
 
 *Proposal*
 
-* Use the link:https://arrow-kt.io/[Arrow library] to introduce a more functional approach, its `Either` type specifically.
+Use the link:https://arrow-kt.io/[Arrow library] to introduce a more functional approach, its `Either` type specifically.
 
 .Explicit fault handling cannot be forgotten nor unhandled
 [source,kotlin]
 ----
 fun Service.dangerousMethod(): Either<Failure, Result> {
-    // do some real logic ...
+    // do some real logic ... result().right()
     return Failure().left()
 }
 fun handleGet(): ServerResponse =
@@ -52,9 +52,34 @@ fun handleGet(): ServerResponse =
 
 <1> in order to access the result, we need to unwrap both, which is already known via Java's `Optional.ifPresentOrElse`
 
-* Good:
-** developers need to think (forced to, explicit) error types, mapping of them (translation of corrupt data to bad request/internal error)
-** supports DDD by simulating failure-aware constructors (companion operator fun with Either return type)
-* Bad:
-** sometimes not clear if not familiar with it
+* GOOD:
+** Java developers are already familiar with the `Optional` concept, which is an extension of it (also sometimes called `Result`).
+** Developers are conscious about (forced to, explicit) error types, mapping of them (translation of corrupt data to bad request/internal error)
+** Supports DDD by creating failure-aware constructors (companion operator fun with `Either` return type).
+* BAD:
+** A new way of working introducing a small barrier of entry at the beginning.
 ** sometimes IDE doesn't suggest `.bind()` although it's the solution
+
+.Hiding the constructor and enforcing business validation.
+
+[source,kotlin]
+----
+@JvmInline
+value class Gram private constructor(val value: Int) {
+    companion object {
+        operator fun invoke(value: Int) = either {
+            ensure(value >= 0) {
+                Failure.CorruptDataFailure("Gram must not be negative: $value")
+            }
+            Gram(value)
+        }
+    }
+}
+----
+
+When instantiating a `Gram` object, the developer is required to handle the corrupt data, and then decides whether it's coming from the frontend (BadRequest) or the backend (database, ServerError).
+
+*Decision*
+
+* A conventional use of throwing exceptions seems not sufficient.
+* `Either` solves lots of issues leading to more stable, robust, and bug-free code.

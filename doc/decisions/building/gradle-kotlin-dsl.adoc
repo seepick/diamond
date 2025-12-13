@@ -2,22 +2,24 @@
 
 [QUESTION]
 ====
-// TODO
+When using Gradle, use Groovy or the Kotlin DSL to write build scripts?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* obviously not groovy (cumbersome)
-* as project is already in kotlin, makes sense to configure gradle also with kotlin
-* has become stable enough the last years (support, plugins/configuration, sufficient documentation on the internet)
+* Groovy was the initial way to write Gradle scripts.
+** It was better than Java or XML, but still felt a bit cumbersome/unnatural/non-intuitive to use as a Java developer.
+* The Kotlin-DSL was added later.
+** Using all the language features already known, suitable for declaring scripts like these.
+** It has become stable enough the last years (support, plugins/configuration, sufficient documentation on the internet).
 
 *Decision*
 
-Use Gradle's Kotlin DSL.
+* As the project is already using Kotlin, it makes sense to configure Gradle with Kotlin as well (one language).

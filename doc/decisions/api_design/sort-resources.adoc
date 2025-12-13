@@ -2,30 +2,29 @@
 
 [QUESTION]
 ====
-// TODO
+How to specify a sorting HTTP request for listed resources?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*About*
+*Context*
 
-* call it sort or orderBy
-* `orderBy=author,title`
-* sort direction: asc/desc suffix
-* `orderBy=author asc,title desc`
-* or plus/minus: `orderBy=+author,-title`
-* default to asc if not defined
+* A query parameter needs to be provided to sort, calling it `sort`, `sortedBy` or `orderBy`.
+** E.g. `sort=author,title` -- multiple sort fields supported
+* Sort direction ascending (default) or descending
+** E.g. `orderBy=author asc,title desc` -- adding direction as a suffix to the field
+** Alternatively symbols plus/minus prefixed: `orderBy=+author,-title`
 
 *Error Handling*
 
-E.g.:
+Ensure the client gets sufficient information in case of an invalid request.
 
-.Example from a fictional API
+.Example from a fictional API if tried to sort by an unknown field
 [source,json]
 ----
 {
@@ -48,6 +47,10 @@ E.g.:
   }
 }
 ----
+
+*Decision*
+
+* Go for a simple `sort=+auther,other` implementation.
 
 *Links*
 

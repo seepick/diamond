@@ -2,19 +2,19 @@
 
 [QUESTION]
 ====
-// TODO
+How to write log statements so they are performant and concise?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Logging evolution*
 
-.Initial approach with performance in mind
+.Initial approach with performance in mind, but verbose
 [source,kotlin]
 ----
 if (log.isDebugEnabled()) {
@@ -22,12 +22,11 @@ if (log.isDebugEnabled()) {
 }
 ----
 
-This way we only create the string if it is really necessary, bad.
-But it's very verbose, to do it correct and concise; bad.
+This way we only create the string if it is really necessary, good, but it's very verbose to do it correctly and concisely; bad.
 
-Then we switched to a `String.format`-like approach to fix this, to always be able to invoke the log method without performance impact:
+We then switched to a `String.format`-like approach to fix this, to always be able to invoke the log method without a performance impact:
 
-.Less verbose, but still performant
+.Performant and less verbose, still unreadable
 [source,kotlin]
 ----
 log.debug("some message %s was returned", message)
@@ -38,13 +37,21 @@ The displacement-nature of these kind of formatting approaches is just not doing
 
 Finally we are doing it nicely, using Kotlin's string templates (interpolation) which are basically string concatenations, and the ease of lambda declarations (deferred/lazy evaluation):
 
-.Readable and performant
+.Readable and performant using link:https://kotlinlang.org/docs/strings.html#string-templates[Kotlin's string templates]
 [source,kotlin]
 ----
 log.debug { "some message $dto was returned" }
 ----
 
-Logger Declaration*
+*Logger Declaration*
+
+We are used to do this in Java:
+
+.Declaration of a Logger in Java
+[source,java]
+----
+private final static Logger LOGGER = Logger.getLogger(MyClass.class.getName());
+----
 
 Thanks to `io.github.oshai:kotlin-logging-jvm` (former "mu-kotlin") the declaration of a logger is as simple as it can be:
 
@@ -55,6 +62,8 @@ private val log = logger {}
 ----
 
 It will look up the surrounding class and thus use the right logger factory itself.
-It uses Slf4j underneath.
 
+It's explicit, and feels less like the (awesome) black magic of link:https://projectlombok.org/features/log[Lombok's `@Log` annotation].
+
+It uses Slf4j underneath.
 The actual logging implementation is done by Logback (the better Log4j).

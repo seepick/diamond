@@ -1,10 +1,10 @@
 = Open Doings
 
+"_If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends._"
+
 Things that half not been covered, or only partially covered in the implementation of this project but seems necessary to be addressed.
 
-== Questions
-
-=== API
+== API
 
 Support filtering:: Many different ways to do it.
 
@@ -19,7 +19,7 @@ Finish the OpenAPI generator:: The client is 80% done, only missing the kotlinx 
 
 Write OpenAPI generator for Ktor server side:: Provide interfaces for `Application.route` to programmatically verify API contract is implemented.
 
-=== Test, Quality
+== Test, Quality
 
 Karate tests supporting different environments:: Easy to configure from outside; including preset environments and specifyable feature-branch url part (convention).
 
@@ -27,7 +27,7 @@ Load/performance tests:: Using Gatling (https://github.com/gatling/gatling-gradl
 
 Fail build if quality threshold not met:: For detekt it works, for ktlint should be easy, SonarQube requires a bit more.
 
-=== Persistence
+== Persistence
 
 Database connection pooling:: using good old Hikari.
 
@@ -38,7 +38,7 @@ Do we even want that?!
 What is the Gradle plugin capable of?
 Why its own `liquibaseRuntime`?
 
-=== External Communication
+== External Communication
 
 Communication to a 3rd party via a message queue:: A common way service communication.
 
@@ -46,7 +46,7 @@ LDAP integration:: A common way to do authentication in the corporate world.
 
 Circuit breaker:: Use arrow-fx-coroutines (external services and also DB?)
 
-=== Architecture
+== Architecture
 
 Move generic (HTTP) functionality into a reusable shared library:: Thinking about pagination/sorting/filtering, from API but also DB point of view.
 
@@ -54,7 +54,7 @@ Reconsider merging routing controller:: The `view-routing` and `controller-*` ar
 
 Config as environment variables or use a centralized config manager?:: See https://softwarepatternslexicon.com/kotlin/microservices-design-patterns/configuration-management/
 
-=== Misc Tech
+== Misc
 
 Feature flag support:: Necessary for continuous deployments.
 
@@ -65,3 +65,5 @@ Bean validation based on OpenAPI spec:: It might be possible to simply reuse Jav
 Object mapper a la mapstruct for Kotlin:: How well does it solve the 99% default, and 1% custom mapping? (consider optics for deep object manipulation)
 
 Use Arrow's Optics to manipulate deep nested, immutable data:: Once data objects start to grow in depth (more hierarchical) and favoring immutability, when then needed to change deeply nested properties alone: this is the solution: https://arrow-kt.io/learn/immutable-data/
+
+Redundant version number declarations in Gradle build:: Especially in the `buildSrc` directory, when declaring plugins (e.g. kotlin, detekt), the `Version` object cannot be used yet (understandable, considering the build lifecycle).

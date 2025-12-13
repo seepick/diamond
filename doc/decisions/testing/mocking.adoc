@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+Which mocking library to use, so we can easily specify behavior for tests?
 ====
 
 [TIP]
@@ -14,23 +14,26 @@ Author: Seepick
 
 *Context*
 
-We need a mocking library.
+* Regular methods, but also static (Kotlin companion objects); generics.
+* Coroutine support; we don't want `runBlocking` scattered everywhere.
+
+*Options*
+
+* Dear JMock, EasyMock, and especially Mockito...
+** We love you all, you brought us good times, and now it's time to move on.
+* Mockk Kotlin-idiomatic modern library.
+** infix functions for readability coroutine support.
 
 *Decision*
 
-We take link:https://mockk.io/[mockk] as a mocking library.
+* We use link:https://mockk.io/[mockk] as a mocking library.
 
 .Mockk example
 [source,kotlin]
 ----
 val car = mockk<Car>()
-every { car.drive(Direction.NORTH) } returns Outcome.OK
+coEvery { car.drive(Direction.NORTH) } returns Outcome.OK
 car.drive(Direction.NORTH) // returns OK
-verify { car.drive(Direction.NORTH) }
+coVerify { car.drive(Direction.NORTH) }
 confirmVerified(car)
 ----
-
-*Appendix*
-
-Not JMock, EasyMock, or Mockito.
-We love you all, you brought us good times, and now it's time to move on.

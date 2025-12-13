@@ -2,15 +2,24 @@
 
 [QUESTION]
 ====
-// TODO
+How to provide easy-to-access documentation of the application configuration (env vars) in an comfortable and automated way?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 1.12.2025 +
 Author: Seepick
 ====
+
+*Context*
+
+* When deploying our software and it requires quite some configuration values, this information needs to be communicated to ops.
+* Everything done manually sucks (and is error-prone); to reduce effort and risk, it is necessary to automate this process.
+
+*Proposal*
+
+Represent the whole "configuration tree" as a plain data class and add custom annotations providing metadata for the documentation generation process.
 
 .Annotated configuration object
 [source,kotlin]
@@ -21,7 +30,7 @@ data class KtorConfig(
 )
 ----
 
-Will generate a text snippet which will be included in the documentation source:
+This can be read via reflection and a simple generator creates a file, which will then be included in the documentation.
 
 .Generated AsciiDoc code for the available environment variable configuration options
 [source,asciidoc]

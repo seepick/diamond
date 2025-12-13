@@ -1,6 +1,8 @@
 🔥📘🔥 Round up Documentation
 ========================================================================================================================
 
+* show exposed table definition and CRUD operations/DSL queries
+
 * filter for `// TODO` in `doc/` folder
 * go through all ADRs, finish them (add at least a bit)
 * go through all *.adoc files, do the bare minimum again
@@ -38,6 +40,7 @@ Testing
 * Configure jacaco XML for sonarqube
     * see: https://docs.sonarsource.com/sonarqube-cloud/enriching/test-coverage/java-test-coverage
 * in itest, use programmatic tests too (mock single bean in koin; more fine control)
+* Use Codecov / Coveralls (or via sonarqube?)
 
 Quality
 -------------------------

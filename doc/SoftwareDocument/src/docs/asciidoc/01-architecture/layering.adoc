@@ -74,13 +74,14 @@ image::{imgdir}/diagrams/application-modules.png[scaledwidth=100%]
 * `itest` -- integration tests with Cucumber/Gherkin (BDD) not leaving application boundary (full control and lightning fast)
 * `client-sdk` -- easy to use API SDK (multiplatform porject, reusable for JVM and JS/TypeScript, thus frontend)
 
-External libraries, yet maintained by us:
+External libraries (own repository), yet maintained by us:
 
-* `api-spec` -- containing the OpenAPI specification and generated sources
+// TODO link to code_generation.adoc
+* `api-SDK` -- containing the OpenAPI specification and generated sources
 ** `api-model` -- entities supported by specific serialization framework (usable by `client-sdk`)
 ** `api-server-routes` -- webframework specific code to tie the contract to the implementation
-* `thirdparty-spec` -- external systems (OpenAPI/WSDL) own-written client SDK (outsource generated code)
-* `etest` -- end-to-end system tests residing outside to decouple; only gets environment base URL for blackbox access
+* `<THIRDPARTY>-SDK` -- external systems (OpenAPI/WSDL) own-written client SDK (outsource generated code)
+* `etest` -- end-to-end system tests residing outside to decouple it from the implementation; only gets environment base URL for blackbox access
 * `openapi-gen` -- custom OpenAPI generators (resides in shared for now, needs to be externalized)
 
 === Module Naming Convention
@@ -94,8 +95,6 @@ There are two ways of naming submodules:
 ** E.g. the assembled JAR file will be named `impl.jar`, thus not unique.
 . Encode the super-type in the sub-type, as in `/domain/domain-impl`
 ** This seems redundant at first, but leads to a necessary unique module name.
-
-include::{adrsdir}/coding/code-generation.adoc[leveloffset=+1]
 
 == Client-SDKs
 

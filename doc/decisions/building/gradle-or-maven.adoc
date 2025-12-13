@@ -2,21 +2,35 @@
 
 [QUESTION]
 ====
-// TODO
+Which build software to use: Maven or Gradle?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 9.12.2025 +
 Author: Seepick
 ====
 
-Pro Gradle:
+*Context*
 
-* A natural evolution from Ant to Maven to Gradle
-** "_Because Google did it_" (their Android ecosystem even skipped Maven totally, and switched from Ant to Gradle)
-** Ant's freedom (tasks but chaos), Maven's lifecycle (order); Gradle = tasks + order
-** Reusing Maven's excellent dependency management (same repos)
-* Code (Kotlin, Groovy) over declarative approach (XML, YAML)
-* Dependencies differentiated in `implementation` (non-transitive) and `api` (transitive); in Maven all `api` by default (polluting classpath of consumers)
+* A natural evolution from Ant (XML-"code") to Maven (XML, purely declarative) to Gradle (code).
+** "_Because Google did it_" (their Android ecosystem even skipped Maven totally, and switched from Ant to directly Gradle)
+
+*Maven*
+
+* Verbose XML scripts.
+* Impossible to composite, reuse, or do other more sophisticated declarations.
+** Only single parent to reuse partial build configuration.
+
+*Gradle*
+
+* Ant's freedom (tasks but chaos), Maven's lifecycle (order); Gradle = tasks + order
+** Code (Kotlin, Groovy) over declarative approach (XML)
+* Reusing Maven's excellent dependency management (same repos)
+** Dependencies differentiated in `implementation` (non-transitive) and `api` (transitive); in Maven all `api` by default (polluting classpath of consumers)
+
+*Decision*
+
+* Gradle is faster, more modern, and supports more sophisticated configuration possibility.
+* Possible to make it easily fit our custom needs; less code to write (higher maintainability).

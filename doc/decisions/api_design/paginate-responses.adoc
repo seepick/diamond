@@ -2,35 +2,40 @@
 
 [QUESTION]
 ====
-// TODO
+How to specify a paginaged request/response via HTTP?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Approaches*
+*Context*
 
-Offset:
+* We need to support a pagination mechanism for the client to access big datasets in chunks.
+* The request (query) parameters need to be defined, as well as the payload metadata (with possible resource links).
 
-* offset, limit; skip, take
-* based upon it can implement page-based pagination (could support both actually)
-* bad for big datasets; DB has to scan through rows
+*Options*
 
-Others:
+Conventional offset approach:
+
+* named skip and take (shorter, each 4 letters), or (more commonly) offset and limit
+* based upon this, one can easily implement a page-based pagination (could support both actually)
+* this approach is actually bad for big datasets, as the DB has to scan through all rows (limit; total count)
+
+Others approaches:
 
 * Keyset pagination, seek method
-    * for example via `since_id` and a limit/take param
-    * only for IDs with auto-increment, or timestamps
+** for example via `since_id` and a limit/take param
+** only for IDs with auto-increment, or timestamps
 * Time-based pagination
-    * for analytics/log monitoring only
+** for analytics/log monitoring only
 * Cursor-based pagination
-    * like a bookmark, a backend-determined value not necessarily linked to any data fields (contrary to keyset)
-    * more complex to implement
-    * also return the "next cursor" in the response
+** like a bookmark, a backend-determined value not necessarily linked to any data fields (contrary to keyset)
+** more complex to implement
+** also return the "next cursor" in the response
 
 *Best Practices*
 
@@ -38,26 +43,28 @@ Others:
 * don't implement pagination for: A) small datasets and B) fast changing data
 * use standard names
 * provide page metadata:
-    * total pages, current page
-    * total items, items in page, size (request page size)
-    * has more
-* provide navigation _links (HATEOES), next/previous/first/last
-    * either in metadata payload
-    * or in header: Link: <http://localhost:8080/api/books/paged?page=1&size=10>; rel="self"
-
+** total pages, current page
+** total items, items in page, size (request page size)
+** has more
+** provide navigation _links (HATEOES), next/previous/first/last
+*** either in metadata payload
+*** or in header: Link: <http://localhost:8080/api/books/paged?page=1&size=10>; rel="self"
 * reuse test logic: each paginated endpoint needs to have the same set of tests
 
 *Questions*
 
-* either use or at least get "inspired" by: https://github.com/perracodex/exposed-pagination
-* how strict or lenient to be?
-    * negative numbers (skip -1, take 0)?
-    * take more than existing (page > totalPages)
-* restrict a maximum take/limit param?
+* restrict to a maximum take/limit param?
+* how strict or lenient to be? (bad request)
+** negative numbers (skip -1, take 0)?
+** take more than existing (page > totalPages)
+* either use, or at least get "inspired" by: https://github.com/perracodex/exposed-pagination
+
+*Proposal*
+
+Use the conventional approach with `skip/take` and keep the response KISS (no links).
 
 *Resources*
 
-* TODO get inspired by: https://github.com/perracodex/exposed-pagination
 * https://www.merge.dev/blog/rest-api-pagination
 * https://www.merge.dev/blog/api-pagination-best-practices
 * https://restfulapi.net/api-pagination-sorting-filtering/

@@ -21,6 +21,12 @@ import nl.uwv.smz.diamond.view.model.CrystalDto
 import nl.uwv.smz.diamond.view.model.CrystalUpdateDto
 import nl.uwv.smz.diamond.view.model.PageRequestDto
 
+val SortDirection.queryParamSymbol: String
+    get() = when (this) {
+        SortDirection.Asc -> "+"
+        SortDirection.Desc -> "-"
+    }
+
 // visible for testing
 internal fun String?.toCrystalSorting(): Either<Failure.BadRequestFailure, CrystalSortingsRequest> = either {
     if (this@toCrystalSorting.isNullOrEmpty()) {
@@ -30,12 +36,6 @@ internal fun String?.toCrystalSorting(): Either<Failure.BadRequestFailure, Cryst
         CrystalSortingsRequest(parts.map { it.toCrystalSort().bind() }).right().bind()
     }
 }
-
-val SortDirection.queryParamSymbol: String
-    get() = when (this) {
-        SortDirection.Asc -> "+"
-        SortDirection.Desc -> "-"
-    }
 
 private fun String.toCrystalSort(): Either<Failure.BadRequestFailure, CrystalSortRequest> = either {
     val (paramWithoutDirection, direction) = parseDirection()

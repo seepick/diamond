@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+How is authentification (username/password) and authorization (rights/role-checking) handled to secure endpoints properly?
 ====
 
 [TIP]
@@ -12,21 +12,21 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-How is authentification (username/password) and authorization (rights/role-checking) handled?
-
 *Options*
 
 * IAM/LDAP
-* Central security auth-gateway in front
+* Central security auth-gateway in front (federated-login)
 ** A reverse proxy (nginx) for auth (more complex pipeline)
-** Services only redceive an already verified user ID header (auth-agnostic); esp. when 2+ services necessary
-** Simplifies lots of code
+** Services only receive an already verified user ID header (auth-agnostic); esp. when 2+ services necessary
+** Especially in a multi-service setup non-negotiable (DRY; or shared-sec lib?!)
+** Simplifies code a lot, less code = fewer bugs
 ** Faster build time ("IAM policy seeding" can take a lot of time)
 ** Easier test setup (happier testers)
-* Separation of concerns: make the "children slimmer/lighter"
-* Endpoints are configured centrally (?); the obligatory "auth matrix" ;)
-* OAuth2 vs JWT?
+** Separation of concerns: make the "children slimmer/lighter"
+** Endpoints are configured centrally (?); the obligatory "auth matrix" ;)
+* OAuth2 or JWT?
 
-*Decision*
+*Proposal*
 
 An auth-gateway upfront, not the service itself.
+More research needs to be done...

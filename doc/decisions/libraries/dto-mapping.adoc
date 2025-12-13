@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+Which library to use for taking over the boilerplate code when mapping an entity from one "face" to another (polymorphism)?
 ====
 
 [TIP]
@@ -29,6 +29,13 @@ Author: Seepick
 ** Using reflection (slower, less typesafe)
 ** Tries as much as possible by default (same name/type)
 ** Easy and simple (for basic mappings), convenient, flexible; light-weight
+
+*Decision*
+
+* OPEN.
+* Is there a Kotlin-idiomatic library?
+** property-awareness; data classes support; null handling
+** more concise most likely
 
 *Resources*
 

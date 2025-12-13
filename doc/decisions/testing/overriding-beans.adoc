@@ -1,0 +1,59 @@
+= Overriding Beans
+
+[QUESTION]
+====
+How to override declared beans from tests if the bean is wrapped in a delegate?
+====
+
+[TIP]
+====
+Status: Proposed +
+Created: 11.12.2025 +
+Author: Seepick
+====
+
+*Problem*
+
+* Considering we have a service that is wrapped around with some caching functionality:
+
+.A service wrapped in a delegate to add a caching aspect
+[source,kotlin]
+----
+interface Service { fun foo() }
+class RealService : Service { override fun foo() {} }
+class CacheService(private val delegate: Service) : Service {
+    override fun foo() {
+        // do caching ...
+        delegate.foo()
+    }
+}
+----
+
+* With Spring we would annotate (assuming we are using a classpath scan) the cached service with `@PrimaryBean`.
+* But if we now need to override those in a specific way *during a test*, this leaves us with a problem; primary-primary?!
+* Or having to fiddle around in the internals of Spring, which doesn't sound very appealing...
+* There are solutions which are all not very appealing (not straightforward, clean).
+
+*Solution*
+
+* With Koin it's possible to override beans inside a module; infinite amount of times.
+* See overriding and strict handling: https://insert-koin.io/docs/reference/koin-core/modules/#explicit-override-per-definition-420
+
+.Strict and overide handling of Koin
+[source,kotlin]
+----
+val productionModule = module {
+    single<ApiService> { ProductionApiService() }
+    single<Logger> { ProductionLogger() }
+}
+val testModule = module {
+    // only this definition is allowed to override
+    single<ApiService> { MockApiService() }.override()
+    // Tthis would throw an exception without .override()
+    // single<Logger> { TestLogger() }
+}
+startKoin {
+    allowOverride(false)  // enable strict mode
+    modules(productionModule, testModule)
+}
+----

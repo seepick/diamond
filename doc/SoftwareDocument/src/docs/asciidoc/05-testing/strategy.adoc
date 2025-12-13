@@ -4,21 +4,37 @@ endif::[]
 
 = Test Strategy
 
+** E2E tests covers the whole system landscape via feature flows; only 5% or less.
+
 .Simplified view from different test strategies onto the application boundaries
 image::{imgdir}/diagrams/test-strategies.png[]
 
-* Some Unit Tests (using Kotest framework) covering logic (not infrastructure/IO related code).
-* Lots of Integration Tests (using Cucumber framework) verifying functional requirements.
+Regarding the *test pyramide*:
+
+* Some Unit Tests (using Kotest framework) covering businss logic code (not infrastructure/IO related code).
+** Composing about 30% of the overall tests.
+* Lots of Integration Tests (using BDD/Cucumber framework) verifying functional requirements.
 ** Either using fast test engine, or real HTTP (slower, more production-similar).
 ** Either using H2 or Oracle in a testcontainer (slower, more production-similar).
 ** Has the Koin context available, thus full control of the internals (extern-stub or custom mocks).
 ** The parts, the IT don't cover, can be complemented by separate tests.
+** Composing about 65% of the overall tests.
 ** Karate not feasable anymore, due to need of custom vocabulary (step definitions).
 * Few End2end Tests talking real HTTP, separately deployed, no access than a regular user would.
 * A sandbox environment of 3rd party services would be great (if available).
 ** Do we want to provide one ourselves to others?!
+* Potentially complementary backend tests to verify external service contracts.
+** Only testing the extern-layer with testcontainers
+** Could make them system tests (without testcontainers! sandbox?), but super unstable/limited.
 
-Ad complementing:
+== TDD, BDD, ATDD
 
-* Backend Tests, only testing the extern-layer with testcontainers.
-** Could make them system tests (without testcontainers! sandbox?), but super fragile/limited.
+* TDD (Test-Driven Development) acts on unit test level (code correctness)
+* BDD (Behavior-Driven Development) for integration tests (API system behavior)
+** Using a Gherkin-based format (Cucumber) to describe the system from a business point of view.
+** Acts on a higher acceptance/functional level.
+** Using in-memory DB and stub implementations for external services (potentially mocking, but no testcontainers; too slow).
+** PS: When having both IDE plugins (cucumber and karate) installed, configure file types to be different
+*** Cucumber: *.feature
+*** Karate: *.karate.feature
+* ATDD for Acceptance Criteria, similar to BDD which adds structured language

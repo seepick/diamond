@@ -2,32 +2,43 @@
 
 [QUESTION]
 ====
-Use java-time or kotlin-time? (joda not needed anymore)
+Which datetime library to use?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Accepted +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
+* The old Java datetime library was really bad.
+* Thus, joda entered the stage.
+* The new Java datetime library is usable and replaced joda again.
+* With Kotlin there is a Kotlin datetime available...
+
 *Java*
 
-* GOOD: robust, well-known, well-integrated with libs (serialization, DB)
-* BAD: cumberesome
-* BAD: not supported by kotlin-idiomatic libs
+* GOOD:
+** robust, well-known, well-integrated with libs (serialization, DB)
+* BAD:
+** cumberesome to write
+** not supported by kotlin-idiomatic libs
 
 *Kotlin*
 
-* GOOD: lightweight, probably/most-likely kotlin idiomatic; modern API
-* GOOD: integration with kotlinx-serialization and exposed
-* BAD: not all (java) libs support it
-* BAD: higher barrier of entry for others
-* any benefit from its multiplatform nature?
+* GOOD:
+** lightweight, probably/most-likely kotlin idiomatic; modern API
+** integration with kotlinx-serialization and exposed
+* BAD:
+** Still experimental and very limited functionality (slim for KMP?)
+** Not all (java) libs support it yet.
+** Higher barrier of entry for developers.
+* Any benefit from its multiplatform (KMP) nature?
 
 *Conclusion*
 
-* unstable API is too dangerous for production!
-* NoSuchMethod error, incompatible versions on classpath
-* kotlin is not well integrated yet (kotest)
+* We choose for the new Java standard datetime library; stable, supported, sufficient.
+* The unstable API from Kotlin datetime is too dangerous for production!
+** NoSuchMethod error, incompatible versions on classpath
+** It is not well integrated yet (kotest, etc.).

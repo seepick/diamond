@@ -2,28 +2,39 @@
 
 [QUESTION]
 ====
-// TODO
+How to support multiple API versions simultaneously?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
+*Context*
+
+* When backend and frontend deploy independently (which is supposed to be), they might run out of sync with the contract.
+** There needs to be a way to introduce breaking changes yet not break the clients.
+** The API needs to be able to be versioned (specified by the client), behaving in different ways based on the version used.
+* Also think of a deprecation strategy, the roadmap needs to be easily visible (communicated, dashboards) for the clients.
+** E.g. tag OpenAPI spec as deprecated; add warnings in generated code possible.
+** Keep track (logging, dashboards) of usage of each version by clients, to know when it is safe to turn it off (or nudge clients).
+
 *Options*
 
-. using header: `Accept: application/vnd.diamond.crystal.v1+json` and `Content-Type: ...`
-** Keeps the URLs clean; metadata in headers
-** But not so obvious at first, requires additional logic to be implemented
-. encode in path: `GET /api/v1/crystals`
-** out-of-the-box supported by caching
+. Either using the accept header to specify a custom mime type
+** E.g. `Accept: application/vnd.diamond.crystal.v1+json` and `Content-Type: ...`
+** This keeps the URLs clean, and metadata is stored properly in headers as supposed to be.
+** But not so obvious at first; also requires additional logic to be implemented.
+. Or encode the version in path: `GET /api/v1/crystals` (this is the more common approach)
+** Explicit, flexible, simple.
+** Out-of-the-box supported by caching.
 
-Also:
+*Decision*
 
-* deprecate (TODO: tag OpenAPI spec as such, generate warning in code possible?!) and communicate
-** Keep track (logging) of usage to know when to turn off
+* Encoding the version in the path.
+More common, simpler.
 
 *Links*
 

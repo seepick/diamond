@@ -2,40 +2,52 @@
 
 [QUESTION]
 ====
-// TODO
+How to specify a filter request via HTTP?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* the user (via the frontend) needs to be able to filter bigger datasetes
-* different fields have different types require different operators
+* The user (via the frontend) needs to be able to filter bigger data sets.
+* Different fields have different *data types* and require *type-specific operators*.
+* Types: string, int/float (number), boolean, list/set/enum
+** Fields can be nested with a dot-syntax.
+* operators:
 ** general: equal, not equal
+** string: (not)contains, starts/ends (simple regexp?)
 ** numeric: greater/lesser (or equal); between is done by adding both ;)
-** enum: (with)in
-* operators are all in conjunctive form (coupled by AND)
+** enum: in
+* operators are all in conjunctive form (coupled by AND), otherwise too complex
+* explicit handling of invalid requests
+** e.g. if unknown field/operator, suggest possible ones
 
 *Proposal*
 
-Simple:
+* `GET /crystals?author=eq:Peter` -- a simple equals filter
+* `GET /crystals?weight=gt:3&weight=lte:10` -- between via combined operators
+* `GET /crystals?author.address.streetNumber=eq:42` -- nested fields
+* `GET /crystals?state=in:FOO,BAR`
 
-* `/crystals?filter=author eq 'Peter'`
-* `/crystals?author=eq:Peter`
-* `/crystals?weight=gt:3&weight=lte:10`
-* `/crystals?state=in:FOO,BAR`
+Investigate on (de-facto) industry standards (JAX-RS, SpringBoot), things people are used to, and client libraries exist (Angular, React).
 
-Complex:
+*Alternatives*
 
-* `/crystals?filter[0].property=owner.name&filter[0].operator=equals&filter[0].value=Peter`
+Passing the whole filter query as a single parameter:
 
-Radical other approach would be to turn it into a POST (PUT?) request and provide a request body (full control).
-It feels like we are trying to squeeze a proper payload into query parameters (feels wrong, a smell we are misusing something).
+* `GET /crystals?filter=author eq 'Peter'`
+
+Or split each term of the query into explicit pieces (verbose, probably not maintainable):
+
+* `GET /crystals?filter[0].property=owner.name&filter[0].operator=equals&filter[0].value=Peter`
+
+A radically different approach would be to turn it into a *POST* (or PUT) request and provide a (JSON) request body.
+Ratio: It feels like we are trying to squeeze a proper payload into query parameters (feels wrong, a smell we are misusing something).
 
 *Resources*
 

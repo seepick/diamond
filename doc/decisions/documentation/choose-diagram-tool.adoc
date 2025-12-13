@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+Which tool to use to draw (technical) diagrams?
 ====
 
 [TIP]
@@ -12,21 +12,22 @@ Created: 1.12.2025 +
 Author: Seepick
 ====
 
-*Requirements*
+*Criteria*
 
-* programmatic (source code, version trackable)
-* but high barrier entry
-* no WYSIWYG, thus not suitable for complex (and "pretty") diagrams
-* defined along adoc
-* easy access (no visio)
-* user/rights/auth
-* web based
+* easy access
+** desktop or web based
+** costs (free?)
+* Programmatic or WYSIWYG
+** Programmatic defined along documentation (AsciiDoc)
+** next to source code, version trackable
+** Has a high barrier entry, and not suitable for complex (and "pretty") diagrams
 
 *Options*
 
-* plantuml
-* mermaid
-* ...?
+* draw.io, ...
+* PlantUML
+* Mermaid
+* ...
 
 *PlantUml*
 

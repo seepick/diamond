@@ -2,32 +2,36 @@
 
 [QUESTION]
 ====
-Should the view-routing and view-controller-* modules be separate or merged?
+Should the modules `view-routing` and `view-controller-api/impl` be separate or merged?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 5.12.2025 +
 Author: Seepick
 ====
 
-* if testing strategy is testing from http (ktor test engine) then it can be merged.
-** if testing from controller (no ktor involved, plain code, simpler but less realistic/higher risk, require complementary tests and integration of those layers) then it should be separate.
-* current situation feels like adding a costly feature without using its benefit
-** the modules are separated and the itests are not using the controllers (but HTTP ktor test engine)
-
 *Separate*
 
-* very clean
-** view-route only purpose interact with web framework and leave
-** easy to test routes
-* adds complexity (already heavy due to route - controller - domain - persist/extern)
-** controller interface, controller impl, register koin, ...
-** but enforces clean architecture!
-* itests could use view-controllers instead using HTTP (from cucumber looks the same, just faster/easier setup)
+* Adds complexity, more code to write; (already heavy due to route - controller - domain - persist/extern)
+** Have to change the controller interface, the controller impl, and potentially register Koin bean, ...
+* Adding another abstraction layer leads to more clean architecture (enforced).
+** The `view-route` only purpose is, to interact with the web framework specifics, and leave that context immediately.
+** Very easy to (semi-unit) test routes (only mock controllers)
+* The biggest need-driven reason is from testing point of view:
+** Tests cutting into controller, thus no HTTP request/response mechanism is involved
+** Making testing extremely fast (runtime performance and development time) and simple (plain code).
+*** From Cucumber point of view this is an implementation detail (interchangable, spec stays robust).
+** It's simpler, it's more focused, faster, ... but less close to "reality" (higher risk!)
+*** It requires complementary tests (route only tests) and integration test of those layers.
 
 *Merged*
 
 * faster development; less code/complexity
 * unit (integration, as they use ktor) test for routes will be heavier.
+
+*Decision*
+
+* If the integration tests use HTTP (and not the controllers), then the modules should be merged (less strict but faster).
+** Otherwise it would add complexity without using its the benefits.

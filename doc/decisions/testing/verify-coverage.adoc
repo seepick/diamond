@@ -2,29 +2,37 @@
 
 [QUESTION]
 ====
-// TODO
+Which tool to use to measure and verify the test coverage?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* Goal: automatically verify minimum test coverage threshold
-** Fail build if not achieved
-** Provide dashboards (Sonarqube) on current state and changes (delta)
-* coverage 100%?, kotlin inlining issue...
+* We need automatically verify the minimum test coverage threshold (different for each module).
+** Fail build if not achieved.
+** Provide dashboards (Sonarqube) on current state and changes (delta).
+* Separate unit and integration test reports.
+* Sending test results to SonarQube must be possible.
+* OPEN: Try to achieve 100% coverage?
 
 *Options*
 
-* jacoco
-** very mature, well supported by tools
-** other coverage tools usually can export to jacoco's format too
-** not supporting Kotlin's inline
-* kover
-** specific for kotlin, from jetbrains
-** bleeding edge (child sicknesses?)
+* JaCoCo
+** Industry standard; very mature, well supported by tools.
+** Other coverage tools (kover) usually can export to JaCoCo's format too
+** Not supporting Kotlin language features (inline, default params)
+* Codecov / Coveralls for open source software
+* Kover
+** Specifically for Kotlin (more accurate) from JetBrains (handles inline, default params, coroutines)
+** Good Gradle integration (exports to JaCoCo's format)
+** Bleeding edge, too much...?
+
+*Decision*
+
+* Try Kover and see if stable enough, otherwise fallback to JaCoCo.

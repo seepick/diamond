@@ -2,12 +2,12 @@
 
 [QUESTION]
 ====
-// TODO
+Which storage system to use to persist data?
 ====
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 1.12.2025 +
 Author: Seepick
 ====
@@ -16,28 +16,25 @@ Author: Seepick
 
 * We need to choose a persistence technology for our application.
 * A clear distinction between the needs for production vs test/development (local startup).
-* We choose for a relational database...
-** No NoSQL store (MongoDB) or in-memory cache
+* We choose for a conventional relational database...
+** No NoSQL store (MongoDB), event datastore, or even an in-memory cache... no elasticsearch in front for speedy queries.
 
 *Requirements*
 
-Production DB:
-
-* Available in corporate environment.
-* If performance (searching/filtering) is an issue, maybe an elasticsearch index could be useful?
-
-Test/Dev DB:
-
-* Lightweight (in-memory)
-* Fast startup and execution time
-* No setup costs (installing, configuration, etc)
+* Production DB:
+** Available in corporate environment.
+** If performance (searching/filtering) is an issue, maybe an elasticsearch index could be useful?
+* Test/Dev DB:
+** Lightweight (in-memory)
+** Fast startup and execution time
+** No setup costs (installing, configuration, etc)
 
 *Options*
 
 Production:
 
 . Oracle
-. Postgres/MySQL
+. Postgres, MariaDB (MySQL)
 . MS SQL Server
 
 Test/Dev:
@@ -46,3 +43,7 @@ Test/Dev:
 . HSQLDB
 . Sqlite
 
+*Decision*
+
+* Postgres for production: simple, yet powerful; well known, free
+* H2: very common, mature, free, fast, lightweight

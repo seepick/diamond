@@ -30,4 +30,3 @@ include::{adrsdir}/api_design/secure-endpoints.adoc[leveloffset=+2]
 ** OpenAPI generators can keep contract in sync with code
 * Show SwaggerUI as endpoint (display both UI and yaml-spec); consumer convenience
 
-include::{adrsdir}/api_design/generate-custom-openapi.adoc[leveloffset=+2]

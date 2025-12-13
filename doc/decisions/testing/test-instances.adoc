@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+How to reuse test instances in a future-proof, maintainable, conise, and configurable way?
 ====
 
 [TIP]
@@ -79,3 +79,5 @@ fun Arb.Companion.foo() = arbitrary {
 Arb.foo().next().copy(i = 21) // custom Arb
 Arb.int().next() // default available Arbs
 ----
+
+PS: Those test instances are better exposed via test fixtures to other modules for reuse (because sharing is caring).

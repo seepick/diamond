@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+Which version number pattern to use for identifying an artifact permanently?
 ====
 
 [TIP]
@@ -15,20 +15,23 @@ Author: Seepick
 *Context*
 
 * Deployed software has to be uniquely identifiable.
-* The version number needs to be generated automatically (CI/CD).
-* It will be exposed in various places (APIs, UIs, documentation, etc.).
+* The version number needs to be generated automatically (CI/CD) with the option to manually override (?).
+* It will be exposed in various places: API (version/info endpoint), UI, documentation, dashboards, etc.
+* Are suffixes for release-candidates and similar required? (aim for KISS)
+* Consider the fact if we are in full control of the single existing client...
 
 *Options*
 
 . One single continuous version number for each build.
 ** The number becomes meaningless, but very simple to implement.
-. Semantic Versioning (SemVer)
-** Well known and widely adopted.
-** Major, Minor, Patch conveys information about backward compatibility.
-. Calendar Versioning (CalVer)
-** Easy to understand and communicate.
-** Conveys information about the release date.
+** It would require a global version number tracker across branches.
+. Semantic Versioning: `1.12.0`  (link:https://semver.org/[semver.org])
+** Parts: Major (incompatible changes), Minor (backwards compatible added changes), Patch (bug fixes).
+** Well known and widely adopted; it conveys information about backward compatibility.
+. Calendar Versioning: `2025.12.2` (link:https://calver.org/[calverorg])
+** Parts: Year, Month, incremented number.
+** Easy to understand and communicate; conveys information about the release date.
 
 *Resources*
 
-* E.g. use GitHub action for that: https://github.com/marketplace/actions/version-increment
+* GitHub action for version incrementing: https://github.com/marketplace/actions/version-increment

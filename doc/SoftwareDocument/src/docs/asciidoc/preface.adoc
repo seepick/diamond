@@ -1,6 +1,6 @@
 // do NOT add header titles here!
 
-"_If you want to go fast and far in a sustainable way, you need to go slow and lightweight with your friends._"
+"_Given a very long time (far, far away) and an exorbitant amount of persistent pressure, and even out of the most ordinary dirt, a precious diamond will be formed._"
 
 The project's website is: https://github.com/seepick/diamond
 

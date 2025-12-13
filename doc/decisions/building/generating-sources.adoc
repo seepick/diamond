@@ -7,34 +7,45 @@ Should we regenerate sources each time and host the code next to our own, or sho
 
 [TIP]
 ====
-Status: Draft +
+Status: Proposed +
 Created: 6.12.2025 +
 Author: Seepick
 ====
 
 *Context*
 
-* We use specifications to document the contract, provided by ourselves and third parties.
-* Primarily OpenAPI YAML and WSDL XML files.
+* We use specifications to document the contract, provided for our own API and by third parties.
+* Primarily OpenAPI YAML and WSDL XML files need to be generated into usable code (keep in sync).
+* It is time-consuming and error-prone to keep code and spec in sync manually.
+** Thus the code needs to be generated (assumption), and the question is what's the best way to do it?
 
 *Options*
 
-Re-generate:
+Re-generate/Insourcing:
 
-* GOOD: Everything is self-contained; simple, easy.
-* BAD: Slows down the build process due to regeneration despite no API changes (caching?).
-* BAD: Exclusion configuration necessary for static code analysis, coverage, etc. (different rules apply to them)
+* GOOD:
+** Everything is self-contained, encapsulated one unit
+** Faster to change, as simple/less "bureaucracy"
+* BAD:
+** Slows down the build process due to regeneration despite no API changes (caching somehow possible?).
+** Quality False Positives: Exclusion configuration necessary for static code analysis, coverage, etc. (different rules apply to them)
 
-Pre-generate:
+Pre-generate/Outsourcing:
 
-* GOOD: Faster build times.
-* GOOD: A change of the API contract must be a conscious act
-** Leads to more safety/stability
-** But it's also a BAD argument: slower development time, more complex!
-* For 3rd party APIs, we would expect a given SDK anyways... so we do it ourselves.
+* Move spec and generated code in an own GIT repository and add a dependency for it.
+* GOOD:
+** Leads to more safety/stability: A change of the API contract must be a conscious act (not just by accident).
+** Faster build times.
+** Divide and conquer; manage the bigger complexity by outsourcing; split things apart, separation of concerns.
+** Represents the actual reality regarding own API: The contract being a shared artifact (with testers and clients); our application just an implementation of an interface, thus not owned by us.
+* BAD:
+** Slower development time, having to touch several code bases.
+** More complex: separate repositories, version/release management -requires high degree of automation!
+** Not everything is achievable with code generation (at least not with realistic effort); some needs to be handwritten.
+* For 3rd party APIs, we would expect a given SDK anyways... so we do it ourselves ;)
 
 *Decision*
 
-* Pre-generate!
-* Divide and conquer: Manage the bigger complexity by outsourcing.
-* Split things apart, separation of concerns.
+* Pre-generate.
+** Will reduce crucial build time -KPI!
+** Simplifies quality analysis (detekt, coverage) tools; keeps our codebase clean and slim.

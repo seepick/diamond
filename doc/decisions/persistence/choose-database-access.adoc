@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+Which (JDBC) library to use to access entities from the database in a convenient way?
 ====
 
 [TIP]
@@ -16,30 +16,26 @@ Author: Seepick
 
 * We need a way to access relational database from Kotlin code.
 ** We talk about DB access (as in JDBC), not a full ORM solution.
-* Question is, which library to use?
-
-Requirements:
-
-* Needs to be type-safe (no "stringly-typed" expressions)
-* Little/no code generation magic
-* Kotlin-idiomatic (coroutines, DSLs)
-** For using coroutines we would need a non-blocking implementation (no JDBC)
+* Requirements:
+** Needs to be type-safe (no "stringly-typed" expressions)
+** Little/no code generation magic (explicit, in control, safe and stable)
+** Kotlin-idiomatic (coroutines, DSLs)
+*** For using coroutines we would need a non-blocking implementation (no JDBC)
 
 *Options*
 
-. https://www.jetbrains.com/exposed/[Exposed,window=_blank] by JetBrains
-** Seems production ready; mature and stable enough
-** Lightweight and typesafe
+. link:https://www.jetbrains.com/exposed/[Exposed,window=_blank] by JetBrains
+** Seems production ready; mature and stable enough.
+** Lightweight and typesafe.
 . https://www.ktorm.org[KTorm,window=_blank]
 ** ORM mapper for Kotlin, pure JDBC
 . JPA / Hibernate
 ** Heavyweight, not Kotlin-idiomatic
 ** Lots of magic, code generation, proxies, etc.
 
-*Choice*
+*Decision*
 
-* Exposed
-* It fits with the rest of the used ecosystem.
+* Exposed; it fits with the rest of the used ecosystem.
 * We use the conventional DSL, not the DAO API (seem unfinished).
 
 .Example of Exposed's (unfavored) DAO API
@@ -60,4 +56,6 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
 }
 ----
 
-Read: https://stackoverflow.com/questions/70734941/exposed-orm-dsl-vs-dao-in-many-to-many-relationships-best-practices
+*Resources*
+
+* https://stackoverflow.com/questions/70734941/exposed-orm-dsl-vs-dao-in-many-to-many-relationships-best-practices

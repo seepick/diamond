@@ -10,11 +10,11 @@ The (Java) programming language is old and outdated.
 Other languages are nowadays running on the JVM, like Kotlin and Scala.
 Especially Kotlin is fully interoperable with Java and thus all the tools can be reused and for developers a smooth migration path exists.
 
-include::{adrsdir}/technologies/choose-language.adoc[leveloffset=+1]
+include::{adrsdir}/technologies/programming_language.adoc[leveloffset=+1]
 
 == Web Framework
 
-include::{adrsdir}/technologies/choose-webframework.adoc[leveloffset=+2]
+include::{adrsdir}/technologies/webframework.adoc[leveloffset=+2]
 
 .Source of link:https://github.com/seepick/diamond/blob/main/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt[`healthRouting.kt`] from the `view-routing` module
 [source,kotlin]

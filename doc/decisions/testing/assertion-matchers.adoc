@@ -2,7 +2,7 @@
 
 [QUESTION]
 ====
-// TODO
+Which assertion library to use to express conditions on test subjects?
 ====
 
 [TIP]
@@ -14,20 +14,32 @@ Author: Seepick
 
 *Context*
 
-* Some test frameworks come shipped with a matchers library, but usually they are just very basic (intentionally).
-* We need a way to express assertions using a library.
+* We need a way to express assertions using a library; `assertEquals`, `assertThat`, `should`, ...
+* It should provide a fluent API with auto-completion support for easy discovery.
+* It needs to be easily extendible with custom matchers (for custom types/functionality; e.g. JSON support).
 
 *Options*
 
-* JUnit and Kotlin-test has only very basic functionality
-* Hamcrest/Hamkrest, good old, extending it is a bit cumbersome
-* AssertJ, bit better, still not there
-* Kotest comes with assertions which are Kotlin-idiomatic (takes care of language specifics) and easy to read
+* Some test frameworks come shipped with a matchers library, but usually they are just very basic (intentionally).
+** JUnit, Kotlin-test: have only very basic functionality.
+* Hamcrest/Hamkrest: good old, extending it is a bit cumbersome
+* AssertJ: bit better, still not there
+* Kotest (link:https://kotest.io/docs/assertions/matchers/[matchers]):
+** Comes with assertions which are Kotlin-idiomatic (takes care of language specifics) and easy to read
+
 
 .Kotest matchers library using infix functions
+
 [source,kotlin]
 ----
 "Some test to be executed" {
-    Computer().tellTheAnswer() shouldBeEqual 42
+    // basic matcher
+    Computer.tellTheAnswer().shouldNotBeNull() shouldBeEqual 42
+    // arrow support and various list matchers
+    foobar().shouldBeRight().map { it.weight.value } shouldContainInOrder listOf(1, 2)
 }
 ----
+
+*Decision*
+
+* Use Kotest, as it is modern, Kotlin-idiomatic and fits to the rest of the techstack.
