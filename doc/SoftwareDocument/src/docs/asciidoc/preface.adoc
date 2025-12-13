@@ -28,7 +28,5 @@ We use ADRs (Architecture Decision Records) to document important architectural 
 
 For more explanation what ADRs are, please read: https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc
 
-*Chapter Overview*
-
 .Sitemap of the book's content
 image::{imgdir}/sitemap.svg[]

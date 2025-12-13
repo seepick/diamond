@@ -7,436 +7,7 @@
     <meta content="Asciidoctor 2.0.18" name="generator">
     <meta content="Seepick" name="author">
     <title>Diamond Doc: A Software Documentation</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
-          rel="stylesheet">
-    <style>
-        /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
-/* Uncomment the following line when using as a custom stylesheet */
-/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
-html{font-family:sans-serif;-webkit-text-size-adjust:100%}
-a{background:none}
-a:focus{outline:thin dotted}
-a:active,a:hover{outline:0}
-h1{font-size:2em;margin:.67em 0}
-b,strong{font-weight:bold}
-abbr{font-size:.9em}
-abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
-dfn{font-style:italic}
-hr{height:0}
-mark{background:#ff0;color:#000}
-code,kbd,pre,samp{font-family:monospace;font-size:1em}
-pre{white-space:pre-wrap}
-q{quotes:"\201C" "\201D" "\2018" "\2019"}
-small{font-size:80%}
-sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
-sup{top:-.5em}
-sub{bottom:-.25em}
-img{border:0}
-svg:not(:root){overflow:hidden}
-figure{margin:0}
-audio,video{display:inline-block}
-audio:not([controls]){display:none;height:0}
-fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
-legend{border:0;padding:0}
-button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
-button,input{line-height:normal}
-button,select{text-transform:none}
-button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
-button[disabled],html input[disabled]{cursor:default}
-input[type=checkbox],input[type=radio]{padding:0}
-button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
-textarea{overflow:auto;vertical-align:top}
-table{border-collapse:collapse;border-spacing:0}
-*,::before,::after{box-sizing:border-box}
-html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
-a:hover{cursor:pointer}
-img,object,embed{max-width:100%;height:auto}
-object,embed{height:100%}
-img{-ms-interpolation-mode:bicubic}
-.left{float:left!important}
-.right{float:right!important}
-.text-left{text-align:left!important}
-.text-right{text-align:right!important}
-.text-center{text-align:center!important}
-.text-justify{text-align:justify!important}
-.hide{display:none}
-img,object,svg{display:inline-block;vertical-align:middle}
-textarea{height:auto;min-height:50px}
-select{width:100%}
-.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
-div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
-a{color:#2156a5;text-decoration:underline;line-height:inherit}
-a:hover,a:focus{color:#1d4b8f}
-a img{border:0}
-p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
-p aside{font-size:.875em;line-height:1.35;font-style:italic}
-h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
-h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
-h1{font-size:2.125em}
-h2{font-size:1.6875em}
-h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
-h4,h5{font-size:1.125em}
-h6{font-size:1em}
-hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
-em,i{font-style:italic;line-height:inherit}
-strong,b{font-weight:bold;line-height:inherit}
-small{font-size:60%;line-height:inherit}
-code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
-ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
-ul,ol{margin-left:1.5em}
-ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.circle{list-style-type:circle}
-ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
-ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
-dl dt{margin-bottom:.3125em;font-weight:bold}
-dl dd{margin-bottom:1.25em}
-blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
-blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
-@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
-h1{font-size:2.75em}
-h2{font-size:2.3125em}
-h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
-h4{font-size:1.4375em}}
-table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
-table thead,table tfoot{background:#f7f8f7}
-table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
-table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
-table tr.even,table tr.alt{background:#f8f8f7}
-table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
-h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
-h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
-.center{margin-left:auto;margin-right:auto}
-.stretch{width:100%}
-.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
-.clearfix::after,.float-group::after{clear:both}
-:not(pre).nobreak{word-wrap:normal}
-:not(pre).nowrap{white-space:nowrap}
-:not(pre).pre-wrap{white-space:pre-wrap}
-:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
-pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
-pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
-pre>code{display:block}
-pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
-em em{font-style:normal}
-strong strong{font-weight:400}
-.keyseq{color:rgba(51,51,51,.8)}
-kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
-.keyseq kbd:first-child{margin-left:0}
-.keyseq kbd:last-child{margin-right:0}
-.menuseq,.menuref{color:#000}
-.menuseq b:not(.caret),.menuref{font-weight:inherit}
-.menuseq{word-spacing:-.02em}
-.menuseq b.caret{font-size:1.25em;line-height:.8}
-.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
-b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
-b.button::before{content:"[";padding:0 3px 0 2px}
-b.button::after{content:"]";padding:0 2px 0 3px}
-p a>code:hover{color:rgba(0,0,0,.9)}
-#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
-#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
-#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
-#content{margin-top:1.25em}
-#content::before{content:none}
-#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
-#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
-#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
-#header .details span:first-child{margin-left:-.125em}
-#header .details span.email a{color:rgba(0,0,0,.85)}
-#header .details br{display:none}
-#header .details br+span::before{content:"\00a0\2013\00a0"}
-#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
-#header .details br+span#revremark::before{content:"\00a0|\00a0"}
-#header #revnumber{text-transform:capitalize}
-#header #revnumber::after{content:"\00a0"}
-#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
-#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
-#toc>ul{margin-left:.125em}
-#toc ul.sectlevel0>li>a{font-style:italic}
-#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
-#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
-#toc li{line-height:1.3334;margin-top:.3334em}
-#toc a{text-decoration:none}
-#toc a:active{text-decoration:underline}
-#toctitle{color:#7a2518;font-size:1.2em}
-@media screen and (min-width:768px){#toctitle{font-size:1.375em}
-body.toc2{padding-left:15em;padding-right:0}
-#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
-#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
-#toc.toc2>ul{font-size:.9em;margin-bottom:0}
-#toc.toc2 ul ul{margin-left:0;padding-left:1em}
-#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
-body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
-@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
-#toc.toc2{width:20em}
-#toc.toc2 #toctitle{font-size:1.375em}
-#toc.toc2>ul{font-size:.95em}
-#toc.toc2 ul ul{padding-left:1.25em}
-body.toc2.toc-right{padding-left:0;padding-right:20em}}
-#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
-#content #toc>:first-child{margin-top:0}
-#content #toc>:last-child{margin-bottom:0}
-#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
-#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
-#content{margin-bottom:.625em}
-.sect1{padding-bottom:.625em}
-@media screen and (min-width:768px){#content{margin-bottom:1.25em}
-.sect1{padding-bottom:1.25em}}
-.sect1:last-child{padding-bottom:0}
-.sect1+.sect1{border-top:1px solid #e7e7e9}
-#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
-#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
-#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
-#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
-#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
-details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
-details{margin-left:1.25rem}
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
-details>summary::-webkit-details-marker{display:none}
-details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
-details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
-details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
-.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
-table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
-.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
-.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
-.admonitionblock>table td.icon{text-align:center;width:80px}
-.admonitionblock>table td.icon img{max-width:none}
-.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
-.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
-.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
-.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
-.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
-.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
-@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
-@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
-.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
-.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
-.listingblock>.content{position:relative}
-.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
-.listingblock:hover code[data-lang]::before{display:block}
-.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
-.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
-.listingblock pre.highlightjs{padding:0}
-.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
-.listingblock pre.prettyprint{border-width:0}
-.prettyprint{background:#f7f7f8}
-pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
-pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
-pre.prettyprint li code[data-lang]::before{opacity:1}
-pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
-table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
-table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
-table.linenotable td.code{padding-left:.75em}
-table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
-pre.pygments span.linenos{display:inline-block;margin-right:.75em}
-.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
-.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
-.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
-.quoteblock blockquote{margin:0;padding:0;border:0}
-.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
-.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
-.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
-.verseblock{margin:0 1em 1.25em}
-.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
-.verseblock pre strong{font-weight:400}
-.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
-.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
-.quoteblock .attribution br,.verseblock .attribution br{display:none}
-.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
-.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
-.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
-.quoteblock.abstract{margin:0 1em 1.25em;display:block}
-.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
-.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
-.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
-.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
-.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
-p.tableblock:last-child{margin-bottom:0}
-td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
-td.tableblock>.content>:last-child{margin-bottom:-1.25em}
-table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>*>tr>*{border-width:1px}
-table.grid-cols>*>tr>*{border-width:0 1px}
-table.grid-rows>*>tr>*{border-width:1px 0}
-table.frame-all{border-width:1px}
-table.frame-ends{border-width:1px 0}
-table.frame-sides{border-width:0 1px}
-table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
-table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
-table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
-table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
-table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
-th.halign-left,td.halign-left{text-align:left}
-th.halign-right,td.halign-right{text-align:right}
-th.halign-center,td.halign-center{text-align:center}
-th.valign-top,td.valign-top{vertical-align:top}
-th.valign-bottom,td.valign-bottom{vertical-align:bottom}
-th.valign-middle,td.valign-middle{vertical-align:middle}
-table thead th,table tfoot th{font-weight:bold}
-tbody tr th{background:#f7f8f7}
-tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
-p.tableblock>code:only-child{background:none;padding:0}
-p.tableblock{font-size:1em}
-ol{margin-left:1.75em}
-ul li ol{margin-left:1.5em}
-dl dd{margin-left:1.125em}
-dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
-li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
-ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
-ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
-ul.unstyled,ol.unstyled{margin-left:0}
-li>p:empty:only-child::before{content:"";display:inline-block}
-ul.checklist>li>p:first-child{margin-left:-1em}
-ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
-ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
-ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
-ul.inline>li{margin-left:1.25em}
-.unstyled dl dt{font-weight:400;font-style:normal}
-ol.arabic{list-style-type:decimal}
-ol.decimal{list-style-type:decimal-leading-zero}
-ol.loweralpha{list-style-type:lower-alpha}
-ol.upperalpha{list-style-type:upper-alpha}
-ol.lowerroman{list-style-type:lower-roman}
-ol.upperroman{list-style-type:upper-roman}
-ol.lowergreek{list-style-type:lower-greek}
-.hdlist>table,.colist>table{border:0;background:none}
-.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
-td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
-td.hdlist1{font-weight:bold;padding-bottom:1.25em}
-td.hdlist2{word-wrap:anywhere}
-.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
-.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
-.colist td:not([class]):first-child img{max-width:none}
-.colist td:not([class]):last-child{padding:.25em 0}
-.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
-.imageblock.left{margin:.25em .625em 1.25em 0}
-.imageblock.right{margin:.25em 0 1.25em .625em}
-.imageblock>.title{margin-bottom:0}
-.imageblock.thumb,.imageblock.th{border-width:6px}
-.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
-.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
-.image.left{margin-right:.625em}
-.image.right{margin-left:.625em}
-a.image{text-decoration:none;display:inline-block}
-a.image object{pointer-events:none}
-sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
-sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
-#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
-#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
-#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
-#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
-#footnotes .footnote:last-of-type{margin-bottom:0}
-#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-div.unbreakable{page-break-inside:avoid}
-.big{font-size:larger}
-.small{font-size:smaller}
-.underline{text-decoration:underline}
-.overline{text-decoration:overline}
-.line-through{text-decoration:line-through}
-.aqua{color:#00bfbf}
-.aqua-background{background:#00fafa}
-.black{color:#000}
-.black-background{background:#000}
-.blue{color:#0000bf}
-.blue-background{background:#0000fa}
-.fuchsia{color:#bf00bf}
-.fuchsia-background{background:#fa00fa}
-.gray{color:#606060}
-.gray-background{background:#7d7d7d}
-.green{color:#006000}
-.green-background{background:#007d00}
-.lime{color:#00bf00}
-.lime-background{background:#00fa00}
-.maroon{color:#600000}
-.maroon-background{background:#7d0000}
-.navy{color:#000060}
-.navy-background{background:#00007d}
-.olive{color:#606000}
-.olive-background{background:#7d7d00}
-.purple{color:#600060}
-.purple-background{background:#7d007d}
-.red{color:#bf0000}
-.red-background{background:#fa0000}
-.silver{color:#909090}
-.silver-background{background:#bcbcbc}
-.teal{color:#006060}
-.teal-background{background:#007d7d}
-.white{color:#bfbfbf}
-.white-background{background:#fafafa}
-.yellow{color:#bfbf00}
-.yellow-background{background:#fafa00}
-span.icon>.fa{cursor:default}
-a span.icon>.fa{cursor:inherit}
-.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
-.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
-.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
-.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
-.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
-.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
-.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
-.conum[data-value] *{color:#fff!important}
-.conum[data-value]+b{display:none}
-.conum[data-value]::after{content:attr(data-value)}
-pre .conum[data-value]{position:relative;top:-.125em}
-b.conum *{color:inherit!important}
-.conum:not([data-value]):empty{display:none}
-dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
-h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
-p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
-p{margin-bottom:1.25rem}
-.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
-.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
-.print-only{display:none!important}
-@page{margin:1.25cm .75cm}
-@media print{*{box-shadow:none!important;text-shadow:none!important}
-html{font-size:80%}
-a{color:inherit!important;text-decoration:underline!important}
-a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
-a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
-abbr[title]{border-bottom:1px dotted}
-abbr[title]::after{content:" (" attr(title) ")"}
-pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
-thead{display:table-header-group}
-svg{max-width:100%}
-p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
-h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
-#header,#content,#footnotes,#footer{max-width:none}
-#toc,.sidebarblock,.exampleblock>.content{background:none!important}
-#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
-body.book #header{text-align:center}
-body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
-body.book #header .details{border:0!important;display:block;padding:0!important}
-body.book #header .details span:first-child{margin-left:0!important}
-body.book #header .details br{display:block}
-body.book #header .details br+span::before{content:none!important}
-body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
-body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
-.listingblock code[data-lang]::before{display:block}
-#footer{padding:0 .9375em}
-.hide-on-print{display:none!important}
-.print-only{display:block!important}
-.hide-for-print{display:none!important}
-.show-for-print{display:inherit!important}}
-@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
-.sect1{padding:0!important}
-.sect1+.sect1{border:0}
-#footer{background:none}
-#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
-@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
-    </style>
+    <link href="./styles/diamond-theme.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css" rel="stylesheet">
 </head>
@@ -453,12 +24,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <ul class="sectlevel1">
             <li><a href="#architecture">1. Architecture</a>
                 <ul class="sectlevel2">
-                    <li><a href="#overall-guiding-principles">1.1. Overall Guiding Principles</a></li>
+                    <li><a href="#guiding-principles">1.1. Guiding Principles</a></li>
                     <li><a href="#layering">1.2. Layering</a>
                         <ul class="sectlevel3">
                             <li><a href="#packaging">1.2.1. Packaging</a></li>
                             <li><a href="#submodules">1.2.2. Submodules</a></li>
-                            <li><a href="#client-sdks">1.2.3. Client-SDKs</a></li>
+                            <li><a href="#client-sdk">1.2.3. Client-SDK</a></li>
                             <li><a href="#layer-granularity">1.2.4. Layer Granularity</a></li>
                         </ul>
                     </li>
@@ -508,13 +79,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                             <li><a href="#versioning-scheme">3.3.1. Versioning Scheme</a></li>
                             <li><a href="#startup-arguments">3.3.2. Startup Arguments</a></li>
                             <li><a href="#environment-variables">3.3.3. Environment Variables</a></li>
-                            <li><a href="#application-configuration-2">3.3.4. Application Configuration</a></li>
                         </ul>
                     </li>
                     <li><a href="#documentation">3.4. Documentation</a>
                         <ul class="sectlevel3">
                             <li><a href="#documentation-tool">3.4.1. Documentation Tool</a></li>
                             <li><a href="#diagram-tool">3.4.2. Diagram Tool</a></li>
+                            <li><a href="#generate-configuration-doc">3.4.3. Generate Configuration Doc</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -570,14 +141,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <li><a href="#test-techstack">5.4. Test Techstack</a>
                         <ul class="sectlevel3">
                             <li><a href="#test-framework">5.4.1. Test Framework</a></li>
-                            <li><a href="#test-instances">5.4.2. Test Instances</a></li>
-                            <li><a href="#assertion-matchers">5.4.3. Assertion Matchers</a></li>
-                            <li><a href="#json-assertions">5.4.4. JSON assertions</a></li>
-                            <li><a href="#mocking-library">5.4.5. Mocking Library</a></li>
-                            <li><a href="#use-cucumber-lambdas">5.4.6. Use Cucumber Lambdas</a></li>
-                            <li><a href="#cucumber-datatable-serialization">5.4.7. Cucumber Datatable Serialization</a>
-                            </li>
-                            <li><a href="#wiremock">5.4.8. Wiremock</a></li>
+                            <li><a href="#mocking-library">5.4.2. Mocking Library</a></li>
+                            <li><a href="#assertions">5.4.3. Assertions</a></li>
+                            <li><a href="#cucumber">5.4.4. Cucumber</a></li>
+                            <li><a href="#wiremock">5.4.5. Wiremock</a></li>
                         </ul>
                     </li>
                     <li><a href="#code-coverage">5.5. Code Coverage</a>
@@ -650,7 +217,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             </div>
             <div class="paragraph">
                 <p>The build for this document (using <a href="https://asciidoc.org">AsciiDoc</a>) was triggered on
-                    Saturday, 13. December 2025 at 21:51 - enjoy :)</p>
+                    Saturday, 13. December 2025 at 23:09 - enjoy :)</p>
             </div>
             <div class="imageblock text-center">
                 <div class="content">
@@ -689,9 +256,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                         class="bare" href="https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc">https://github.com/seepick/diamond/blob/main/doc/decisions/README.adoc</a>
                 </p>
             </div>
-            <div class="paragraph">
-                <p><strong>Chapter Overview</strong></p>
-            </div>
             <div class="imageblock">
                 <div class="content">
                     <img alt="sitemap" src="images/sitemap.svg">
@@ -708,7 +272,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     the application itself (no system landscape with external services).</p>
             </div>
             <div class="sect2">
-                <h3 id="overall-guiding-principles">1.1. Overall Guiding Principles</h3>
+                <h3 id="guiding-principles">1.1. Guiding Principles</h3>
                 <div class="paragraph">
                     <p>To come to a decision, we need basic values (principles) to refer back to, to check whether an
                         option is aligned (or not) with those values.
@@ -897,135 +461,129 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p><code>app</code>&#8201;&#8212;&#8201;the main entry point to start up the
-                                    application; has a dependency on all submodules (incl. impls) and wires the
-                                    dependency injection context; reads the configuration and starts the webserver.</p>
+                                <p><code>app</code> - the main entry point to start up the application; has a dependency
+                                    on all submodules (incl. impls) and wires the dependency injection context; reads
+                                    the configuration and starts the webserver.</p>
                             </li>
                             <li>
-                                <p><code>view</code>&#8201;&#8212;&#8201;container for all HTTP API related routes and
-                                    controllers</p>
+                                <p><code>view</code> - container for all HTTP API related routes and controllers</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p><code>view-routing</code>&#8201;&#8212;&#8201;the endpoint definition and
-                                                reading of relevant data from the HTTP request</p>
+                                            <p><code>view-routing</code> - the endpoint definition and reading of
+                                                relevant data from the HTTP request</p>
                                         </li>
                                         <li>
-                                            <p><span class="line-through"><code>view-model</code></span>&#8201;&#8212;&#8201;No!
-                                                as those are (OpenAPI) generated and oustourced</p>
+                                            <p><span class="line-through"><code>view-model</code></span> - No! as those
+                                                are (OpenAPI) generated and oustourced</p>
                                         </li>
                                         <li>
-                                            <p><code>controller-api</code>&#8201;&#8212;&#8201;abstraction of client
-                                                requests (free of webframework references, potentially easier to test;
-                                                see open question section for details)</p>
+                                            <p><code>controller-api</code> - abstraction of client requests (free of
+                                                webframework references, potentially easier to test; see open question
+                                                section for details)</p>
                                         </li>
                                         <li>
-                                            <p><code>controller-impl</code>&#8201;&#8212;&#8201;transforming view-models
-                                                into domain-models (OpenAPI spec)</p>
+                                            <p><code>controller-impl</code> - transforming view-models into
+                                                domain-models (OpenAPI spec)</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p><code>domain`</code>&#8201;&#8212;&#8201;container for business logic, free from any
+                                <p><code>domain`</code> - container for business logic, free from any
                                     framework/tech-references</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p><code>domain-model</code>&#8201;&#8212;&#8201;shared representation of a
-                                                domain object and errors</p>
+                                            <p><code>domain-model</code> - shared representation of a domain object and
+                                                errors</p>
                                         </li>
                                         <li>
-                                            <p><code>domain-logic-api</code>&#8201;&#8212;&#8201;interfaces/entry points
-                                                for controllers</p>
+                                            <p><code>domain-logic-api</code> - interfaces/entry points for controllers
+                                            </p>
                                         </li>
                                         <li>
-                                            <p><code>domain-logic-impl</code>&#8201;&#8212;&#8201;actual business
-                                                features</p>
+                                            <p><code>domain-logic-impl</code> - actual business features</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p><code>persistence</code>&#8201;&#8212;&#8201;database abstraction access layer</p>
+                                <p><code>persistence</code> - database abstraction access layer</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p><code>persistence-api</code>&#8201;&#8212;&#8201;repository interfaces
-                                            </p>
+                                            <p><code>persistence-api</code> - repository interfaces</p>
                                         </li>
                                         <li>
-                                            <p><code>persistence-impl</code>&#8201;&#8212;&#8201;DBMS agnostic queries
-                                                and schema definition; runs DB migrations (actually <code>persistence-exposed</code>)
-                                            </p>
+                                            <p><code>persistence-impl</code> - DBMS agnostic queries and schema
+                                                definition; runs DB migrations (actually
+                                                <code>persistence-exposed</code>)</p>
                                         </li>
                                         <li>
-                                            <p><span class="line-through"><code>persistence-stub</code></span>&#8201;&#8212;&#8201;No!
+                                            <p><span class="line-through"><code>persistence-stub</code></span> - No!
                                                 useless as already in full control and high speed with in-memory DB</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p><code>extern</code>&#8201;&#8212;&#8201;container for third party access (HTTP, SFTP,
-                                    MQ, &#8230;&#8203;)</p>
+                                <p><code>extern</code> - container for third party access (HTTP, SFTP, MQ, &#8230;&#8203;)
+                                </p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p><code>extern-api</code>&#8201;&#8212;&#8201;simplified interfaces
-                                                exposing data via domain-models</p>
+                                            <p><code>extern-api</code> - simplified interfaces exposing data via
+                                                domain-models</p>
                                         </li>
                                         <li>
-                                            <p><code>extern-impl</code>&#8201;&#8212;&#8201;configurable technology
-                                                specific clients</p>
+                                            <p><code>extern-impl</code> - configurable technology specific clients</p>
                                         </li>
                                         <li>
-                                            <p><code>extern-stub</code>&#8201;&#8212;&#8201;used during testing (and
-                                                local development)</p>
+                                            <p><code>extern-stub</code> - used during testing (and local development)
+                                            </p>
                                         </li>
                                         <li>
-                                            <p><span class="line-through"><code>extern-model</code></span>&#8201;&#8212;&#8201;No!
-                                                as this needs to be generated and outsourced.
+                                            <p><span class="line-through"><code>extern-model</code></span> - No! as this
+                                                needs to be generated and outsourced.
                                                 (YAML, WSDL)</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p><code>shared</code>&#8201;&#8212;&#8201;container for common infrastructure code (can
-                                    be potentially outsourced over time)</p>
+                                <p><code>shared</code> - container for common infrastructure code (can be potentially
+                                    outsourced over time)</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p><code>shared-common</code>&#8201;&#8212;&#8201;the obligatory
-                                                language/standard library extensions</p>
+                                            <p><code>shared-common</code> - the obligatory language/standard library
+                                                extensions</p>
                                         </li>
                                         <li>
-                                            <p><code>shared-test</code>&#8201;&#8212;&#8201;framework extensions,
-                                                fixtures, logging</p>
+                                            <p><code>shared-test</code> - framework extensions, fixtures, logging</p>
                                         </li>
                                         <li>
-                                            <p><code>shared-logging</code>&#8201;&#8212;&#8201;programmatic logback
-                                                configuration (code &gt; markup)</p>
+                                            <p><code>shared-logging</code> - programmatic logback configuration (code
+                                                &gt; markup)</p>
                                         </li>
                                         <li>
-                                            <p><code>shared-config</code>&#8201;&#8212;&#8201;custom functionality for
-                                                sophisticated configuration management</p>
+                                            <p><code>shared-config</code> - custom functionality for sophisticated
+                                                configuration management</p>
                                         </li>
                                         <li>
-                                            <p><code>shared-xxx</code>&#8201;&#8212;&#8201;more to come&#8230;&#8203;
-                                            </p>
+                                            <p><code>shared-xxx</code> - more to come&#8230;&#8203;</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p><code>itest</code>&#8201;&#8212;&#8201;integration tests with Cucumber/Gherkin (BDD)
-                                    not leaving application boundary (full control and lightning fast)</p>
+                                <p><code>itest</code> - integration tests with Cucumber/Gherkin (BDD) not leaving
+                                    application boundary (full control and lightning fast)</p>
                             </li>
                             <li>
-                                <p><code>client-sdk</code>&#8201;&#8212;&#8201;easy to use API SDK (multiplatform
-                                    porject, reusable for JVM and JS/TypeScript, thus frontend)</p>
+                                <p><code>client-sdk</code> - easy to use API SDK (multiplatform porject, reusable for
+                                    JVM and JS/TypeScript, thus frontend)</p>
                             </li>
                         </ul>
                     </div>
@@ -1035,34 +593,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p><code>api-SDK</code>&#8201;&#8212;&#8201;containing the OpenAPI specification and
-                                    generated sources (see chapter <a href="#development_codegeneration">Code
-                                        Generation</a>)</p>
+                                <p><code>api-SDK</code> - containing the OpenAPI specification and generated sources
+                                    (see chapter <a href="#development_codegeneration">Code Generation</a>)</p>
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p><code>api-model</code>&#8201;&#8212;&#8201;entities supported by specific
-                                                serialization framework (usable by <code>client-sdk</code>)</p>
+                                            <p><code>api-model</code> - entities supported by specific serialization
+                                                framework (usable by <code>client-sdk</code>)</p>
                                         </li>
                                         <li>
-                                            <p><code>api-server-routes</code>&#8201;&#8212;&#8201;webframework specific
-                                                code to tie the contract to the implementation</p>
+                                            <p><code>api-server-routes</code> - webframework specific code to tie the
+                                                contract to the implementation</p>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <p><code>&lt;THIRDPARTY&gt;-SDK</code>&#8201;&#8212;&#8201;external systems
-                                    (OpenAPI/WSDL) own-written client SDK (outsource generated code)</p>
+                                <p><code>&lt;THIRDPARTY&gt;-SDK</code> - external systems (OpenAPI/WSDL) own-written
+                                    client SDK (outsource generated code)</p>
                             </li>
                             <li>
-                                <p><code>etest</code>&#8201;&#8212;&#8201;end-to-end system tests residing outside to
-                                    decouple it from the implementation; only gets environment base URL for blackbox
-                                    access</p>
+                                <p><code>etest</code> - end-to-end system tests residing outside to decouple it from the
+                                    implementation; only gets environment base URL for blackbox access</p>
                             </li>
                             <li>
-                                <p><code>openapi-gen</code>&#8201;&#8212;&#8201;custom OpenAPI generators (resides in
-                                    shared for now, needs to be externalized)</p>
+                                <p><code>openapi-gen</code> - custom OpenAPI generators (resides in shared for now,
+                                    needs to be externalized)</p>
                             </li>
                         </ul>
                     </div>
@@ -1107,9 +663,102 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                             </ol>
                         </div>
                     </div>
+                    <div class="sect4">
+                        <h5 id="central-domain-models">1.2.2.2. Central Domain Models</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>Should we use the domain models (<code>Crystal</code>) as a return type by
+                                        lower-layer modules or should they return their own types
+                                        (<code>CrystalDbo</code>)?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Proposed<br>
+                                                Created: 12.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Options</strong></p>
+                        </div>
+                        <div class="olist arabic">
+                            <ol class="arabic">
+                                <li>
+                                    <p>Domain Models</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Meaning the persistence and external modules are immediately
+                                                    returning a domain model type (dependency into <code>domain</code>
+                                                    layer upwards!).</p>
+                                            </li>
+                                            <li>
+                                                <p>The domain logic stays entirely clean, almost like a hexagonal
+                                                    architecture (a.k.a. port-adapter style); if we would also move the
+                                                    interfaces&#8230;&#8203;</p>
+                                            </li>
+                                            <li>
+                                                <p>As we don&#8217;t use JPA (or any other class template, annotation
+                                                    based approach), we can skip a custom DTO and map directly to the
+                                                    domain model</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Custom Models</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>A very common (yet cumbersome as lots of "dumb code" has to be
+                                                    written for declaration and mapping) approach that each layer has
+                                                    their own representation.</p>
+                                            </li>
+                                            <li>
+                                                <p>This is already the case for view and domain, so being consistent
+                                                    doing so also in the lower-layer modules.
+                                                    It is clear, and explicit, being under full control.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Decision</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Reusing the domain models seems to be the way to go (KISS) as long as the
+                                        advanced control is not needed</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Avoid having to create yet another abstraction layer (models,
+                                                    mappers).</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="client-sdks">1.2.3. Client-SDKs</h4>
+                    <h4 id="client-sdk">1.2.3. Client-SDK</h4>
                     <div class="paragraph">
                         <p>What is it?</p>
                     </div>
@@ -1501,7 +1150,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 <div class="sect3">
                     <h4 id="web-framework">1.3.2. Web Framework</h4>
                     <div class="sect4">
-                        <h5 id="webframework">1.3.2.1. Webframework</h5>
+                        <h5 id="boot-or-ktor">1.3.2.1. Boot or Ktor?</h5>
                         <div class="exampleblock">
                             <div class="content">
                                 <div class="paragraph">
@@ -1526,6 +1175,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                                     </td>
                                 </tr>
                             </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
                         </div>
                         <div class="ulist">
                             <ul>
@@ -1645,7 +1297,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                             </ul>
                         </div>
                         <div class="paragraph">
-                            <p><strong>Conclusion</strong></p>
+                            <p><strong>Decision</strong></p>
                         </div>
                         <div class="ulist">
                             <ul>
@@ -1873,8 +1525,7 @@ internal fun Application.installHealthRouting() {
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>E.g. <code>sort=author,title</code>&#8201;&#8212;&#8201;multiple sort
-                                                fields supported</p>
+                                            <p>E.g. <code>sort=author,title</code> - multiple sort fields supported</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -1884,8 +1535,8 @@ internal fun Application.installHealthRouting() {
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p>E.g. <code>orderBy=author asc,title desc</code>&#8201;&#8212;&#8201;adding
-                                                direction as a suffix to the field</p>
+                                            <p>E.g. <code>orderBy=author asc,title desc</code> - adding direction as a
+                                                suffix to the field</p>
                                         </li>
                                         <li>
                                             <p>Alternatively symbols plus/minus prefixed:
@@ -2143,6 +1794,34 @@ internal fun Application.installHealthRouting() {
                         <p>Use the conventional approach with <code>skip/take</code> and keep the response KISS (no
                             links).</p>
                     </div>
+                    <div class="listingblock">
+                        <div class="title">A sample paginated response by an arbitrary service:</div>
+                        <div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "data": [
+    // array of items for the current page
+    { "id": "item_21", "name": "Item 21", ... },
+    { "id": "item_22", "name": "Item 22", ... },
+    // ... up to 'limit' items
+    { "id": "item_30", "name": "Item 30", ... }
+  ],
+  "pagination": {
+    "offset": 20,
+    "limit": 10,
+    "totalItems": 5000, // Total number of items available
+    "totalPages": 500, // Calculated as ceil(totalItems / limit)
+    "currentPage": 3 // Calculated as (offset / limit) + 1
+  },
+  "links": { // HATEOAS links for navigation
+    "self": "/items?offset=20&amp;limit=10",
+    "first": "/items?offset=0&amp;limit=10",
+    "prev": "/items?offset=10&amp;limit=10", // Null if on the first page
+    "next": "/items?offset=30&amp;limit=10", // Null if on the last page
+    "last": "/items?offset=4990&amp;limit=10"
+  }
+}</code></pre>
+                        </div>
+                    </div>
                     <div class="paragraph">
                         <p><strong>Resources</strong></p>
                     </div>
@@ -2158,6 +1837,10 @@ internal fun Application.installHealthRouting() {
                             </li>
                             <li>
                                 <p><a class="bare" href="https://restfulapi.net/api-pagination-sorting-filtering/">https://restfulapi.net/api-pagination-sorting-filtering/</a>
+                                </p>
+                            </li>
+                            <li>
+                                <p><a class="bare" href="https://apidog.com/blog/pagination-in-rest-apis/">https://apidog.com/blog/pagination-in-rest-apis/</a>
                                 </p>
                             </li>
                         </ul>
@@ -2250,16 +1933,14 @@ internal fun Application.installHealthRouting() {
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p><code>GET /crystals?author=eq:Peter</code>&#8201;&#8212;&#8201;a simple equals filter
-                                </p>
+                                <p><code>GET /crystals?author=eq:Peter</code> - a simple equals filter</p>
                             </li>
                             <li>
-                                <p><code>GET /crystals?weight=gt:3&amp;weight=lte:10</code>&#8201;&#8212;&#8201;between
-                                    via combined operators</p>
+                                <p><code>GET /crystals?weight=gt:3&amp;weight=lte:10</code> - between via combined
+                                    operators</p>
                             </li>
                             <li>
-                                <p><code>GET /crystals?author.address.streetNumber=eq:42</code>&#8201;&#8212;&#8201;nested
-                                    fields</p>
+                                <p><code>GET /crystals?author.address.streetNumber=eq:42</code> - nested fields</p>
                             </li>
                             <li>
                                 <p><code>GET /crystals?state=in:FOO,BAR</code></p>
@@ -2918,7 +2599,167 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="scheduler-solution">3.1.2.2. Scheduler Solution</h5>
+                        <h5 id="dependency-injection-decision">3.1.2.2. Dependency Injection Decision</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>Which library to use for applying Inversion-of-Control via
+                                        Dependency-Injection?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Accepted<br>
+                                                Created: 11.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>A Java standard compatible annotation based solution is usually not a bad
+                                        idea.</p>
+                                </li>
+                                <li>
+                                    <p>Doing even without any intrusion (annotations) would even be better (enabling
+                                        true DDD).</p>
+                                </li>
+                                <li>
+                                    <p>We have especially high needs to rewire the application to support sophisticated
+                                        integration tests (cut in/override beans arbitrarily).</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>We want to be explicit with configuration, so avoid <code>@Property("key")</code>
+                                                    and do instead <code>config.key</code>.</p>
+                                            </li>
+                                            <li>
+                                                <p>Each module provides its own module configuration definition which is
+                                                    later composed (with an optional additional modules, used by the
+                                                    test infrastructure).</p>
+                                            </li>
+                                            <li>
+                                                <p>We don&#8217;t want to use classpath scanning, although convenient,
+                                                    takes away control for fine-tuned configuration.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>What we are doing here is actually a service locator, but it&#8217;s good enough&#8230;&#8203;</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Options</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Spring Framework, obviously</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Supports manual @Configuration bean definition (what&#8217;s the
+                                                    state with defining them functional style?)</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Guice, a bit better</p>
+                                </li>
+                                <li>
+                                    <p>Pico, too pico/small</p>
+                                </li>
+                                <li>
+                                    <p>Koin, Kotlin-idiomatic, modern</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>manual configuration and wiring (no classpath scan)</p>
+                                            </li>
+                                            <li>
+                                                <p>fully programmatic; using strictly code over annotations</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Decision</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Use Koin, modern, fitting idiomatically and with other idiomatic frameworks
+                                        (ktor, kotest).</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Koin module ("module", name clash here, ouch!) and our custom config, all
+                                explicitly handled leveraging the power of code
+                            </div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">data class ExternConfig(
+  val postsServiceBaseUrl: String,
+  val sftp: SftpConfig,
+)
+
+fun Modules.externImpl(config: ExternConfig) = module {
+  single&lt;PostsExtern&gt; { PostsExternImpl(baseUrl = config.postsServiceBaseUrl) }
+  single&lt;SftpConnector&gt; { SftpConnectorImpl(config.sftp) }
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>We are in full control this way (rewiring for testing purpose; override bean
+                                        definitions).</p>
+                                </li>
+                                <li>
+                                    <p>Integration-code is totally separate from application-code as Koin is
+                                        non-intrusive.</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>The business logic code especially can be free from any framework
+                                                    code.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Example of how Koin support is added to Ktor</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">install(KoinIsolated) {
+    slf4jLogger(level = config.koinLogLevel)
+    allowOverride(false) // be strict about it
+    modules(Modules.all(config, additionalModules))
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sect4">
+                        <h5 id="scheduler-solution">3.1.2.3. Scheduler Solution</h5>
                         <div class="exampleblock">
                             <div class="content">
                                 <div class="paragraph">
@@ -3049,7 +2890,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="access-sftp-service">3.1.2.3. Access SFTP service</h5>
+                        <h5 id="access-sftp-service">3.1.2.4. Access SFTP service</h5>
                         <div class="exampleblock">
                             <div class="content">
                                 <div class="paragraph">
@@ -3116,7 +2957,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="datetime-library">3.1.2.4. DateTime Library</h5>
+                        <h5 id="datetime-library">3.1.2.5. DateTime Library</h5>
                         <div class="exampleblock">
                             <div class="content">
                                 <div class="paragraph">
@@ -3226,7 +3067,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             </ul>
                         </div>
                         <div class="paragraph">
-                            <p><strong>Conclusion</strong></p>
+                            <p><strong>Decision</strong></p>
                         </div>
                         <div class="ulist">
                             <ul>
@@ -3251,7 +3092,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="dto-mapping-library">3.1.2.5. DTO Mapping Library</h5>
+                        <h5 id="dto-mapping-library">3.1.2.6. DTO Mapping Library</h5>
                         <div class="exampleblock">
                             <div class="content">
                                 <div class="paragraph">
@@ -3380,7 +3221,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="serialization-library">3.1.2.6. Serialization Library</h5>
+                        <h5 id="serialization-library">3.1.2.7. Serialization Library</h5>
                         <div class="exampleblock">
                             <div class="content">
                                 <div class="paragraph">
@@ -3403,6 +3244,19 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                                     </td>
                                 </tr>
                             </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Handling of Java&#8217;s datetime</p>
+                                </li>
+                                <li>
+                                    <p>Support of value classes (typesafety + inlining)</p>
+                                </li>
+                            </ul>
                         </div>
                         <div class="paragraph">
                             <p><strong>Options</strong></p>
@@ -3454,20 +3308,7 @@ CrystalDaoEntity.findByIdAndUpdate(id) {
                             </ol>
                         </div>
                         <div class="paragraph">
-                            <p><strong>Aspects</strong></p>
-                        </div>
-                        <div class="ulist">
-                            <ul>
-                                <li>
-                                    <p>Handling of Java&#8217;s datetime</p>
-                                </li>
-                                <li>
-                                    <p>Support of value classes (typesafety + inlining)</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="paragraph">
-                            <p><strong>Conclusion</strong></p>
+                            <p><strong>Decision</strong></p>
                         </div>
                         <div class="ulist">
                             <ul>
@@ -4139,7 +3980,7 @@ dependencies {
                         </div>
                     </div>
                     <div class="sect4">
-                        <h5 id="guiding-principles">3.2.3.2. Guiding Principles</h5>
+                        <h5 id="guiding-principles-2">3.2.3.2. Guiding Principles</h5>
                         <div class="ulist">
                             <ul>
                                 <li>
@@ -4689,88 +4530,6 @@ dependencies {
                         </div>
                     </div>
                 </div>
-                <div class="sect3">
-                    <h4 id="application-configuration-2">3.3.4. Application Configuration</h4>
-                    <div class="exampleblock">
-                        <div class="content">
-                            <div class="paragraph">
-                                <p>How to provide easy-to-access documentation of the application configuration (env
-                                    vars) in an comfortable and automated way?</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Accepted<br>
-                                            Created: 1.12.2025<br>
-                                            Author: Seepick</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Context</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>When deploying our software and it requires quite some configuration values, this
-                                    information needs to be communicated to ops.</p>
-                            </li>
-                            <li>
-                                <p>Everything done manually sucks (and is error-prone); to reduce effort and risk, it is
-                                    necessary to automate this process.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Proposal</strong></p>
-                    </div>
-                    <div class="paragraph">
-                        <p>Represent the whole "configuration tree" as a plain data class and add custom annotations
-                            providing metadata for the documentation generation process.</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Annotated configuration object</div>
-                        <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">data class KtorConfig(
-    @ConfigProperty("Webserver HTTP port to listen to")
-    val port: Int = 8080,
-)</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>This can be read via reflection and a simple generator creates a file, which will then be
-                            included in the documentation.</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Generated AsciiDoc code for the available environment variable configuration
-                            options
-                        </div>
-                        <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">|===
-|Param |Type |Default |Description
-
-|`KTOR_PORT`
-|integer
-|8080
-|Webserver HTTP port to listen to
-|===</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>See the result here: <a class="bare"
-                                                   href="https://seepick.github.io/diamond/#environment-variables">https://seepick.github.io/diamond/#environment-variables</a>
-                        </p>
-                    </div>
-                </div>
             </div>
             <div class="sect2">
                 <h3 id="documentation">3.4. Documentation</h3>
@@ -4992,6 +4751,88 @@ dependencies {
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="generate-configuration-doc">3.4.3. Generate Configuration Doc</h4>
+                    <div class="exampleblock">
+                        <div class="content">
+                            <div class="paragraph">
+                                <p>How to provide easy-to-access documentation of the application configuration (env
+                                    vars) in an comfortable and automated way?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="admonitionblock tip">
+                        <table>
+                            <tr>
+                                <td class="icon">
+                                    <i class="fa icon-tip" title="Tip"></i>
+                                </td>
+                                <td class="content">
+                                    <div class="paragraph">
+                                        <p>Status: Accepted<br>
+                                            Created: 1.12.2025<br>
+                                            Author: Seepick</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Context</strong></p>
+                    </div>
+                    <div class="ulist">
+                        <ul>
+                            <li>
+                                <p>When deploying our software and it requires quite some configuration values, this
+                                    information needs to be communicated to operations.</p>
+                            </li>
+                            <li>
+                                <p>Everything done manually sucks (and is error-prone); to reduce effort and risk, it is
+                                    necessary to automate this process.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="paragraph">
+                        <p><strong>Proposal</strong></p>
+                    </div>
+                    <div class="paragraph">
+                        <p>Represent the whole "configuration tree" as a plain data class and add custom annotations
+                            providing metadata for the documentation generation process.</p>
+                    </div>
+                    <div class="listingblock">
+                        <div class="title">Annotated configuration object</div>
+                        <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">data class KtorConfig(
+    @ConfigProperty("Webserver HTTP port to listen to")
+    val port: Int = 8080,
+)</code></pre>
+                        </div>
+                    </div>
+                    <div class="paragraph">
+                        <p>This can be read via reflection and a simple generator creates a file, which will then be
+                            included in the documentation.</p>
+                    </div>
+                    <div class="listingblock">
+                        <div class="title">Generated AsciiDoc code for the available environment variable configuration
+                            options
+                        </div>
+                        <div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">|===
+|Param |Type |Default |Description
+
+|`KTOR_PORT`
+|integer
+|8080
+|Webserver HTTP port to listen to
+|===</code></pre>
+                        </div>
+                    </div>
+                    <div class="paragraph">
+                        <p>See the result here: <a class="bare"
+                                                   href="https://seepick.github.io/diamond/#environment-variables">https://seepick.github.io/diamond/#environment-variables</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -5400,7 +5241,10 @@ fun handleGet(): ServerResponse =
                             </table>
                         </div>
                         <div class="listingblock">
-                            <div class="title">Hiding the constructor and enforcing business validation.</div>
+                            <div class="title">Hiding the constructor and enforcing business validation for the <a
+                                    href="https://github.com/seepick/diamond/blob/main/domain/domain-model/src/main/kotlin/nl/uwv/smz/diamond/domain/model/crystal.kt#L49"><code>Gram</code></a>
+                                class
+                            </div>
                             <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@JvmInline
 value class Gram private constructor(val value: Int) {
@@ -5449,14 +5293,12 @@ value class Gram private constructor(val value: Int) {
                 <div class="listingblock">
                     <div class="title">How to setup and run the application</div>
                     <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone https://github.com/seepick/diamond.git
-./gradlew :app:runLocal</code></pre>
-                    </div>
-                </div>
-                <div class="listingblock">
-                    <div class="title">Open another shell and verify it&#8217;s running</div>
-                    <div class="content">
-                        <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl localhost:8080</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&gt; git clone https://github.com/seepick/diamond.git
+&gt; cd diamond
+&gt; ./gradlew :app:runLocal &amp;&amp;
+&gt; curl localhost:8080
+Hello Service!%
+&gt;</code></pre>
                     </div>
                 </div>
                 <div class="paragraph">
@@ -6506,9 +6348,129 @@ value class Gram private constructor(val value: Int) {
                     <div class="ulist">
                         <ul>
                             <li>
-                                <p>no manual instantiation or static random data generation</p>
+                                <p>No manual instantiation or static random data generation.</p>
+                            </li>
+                            <li>
+                                <p>No side-effects and void returning methods (pure functions; idempotent).</p>
+                            </li>
+                            <li>
+                                <p>No output-parameters for signaling state change (favor immutability).</p>
+                            </li>
+                            <li>
+                                <p>Small units, with a single, clear responsibility; composition.</p>
+                            </li>
+                            <li>
+                                <p>When doing test-first, the design is always testable, as we start with another
+                                    service-consumer.</p>
                             </li>
                         </ul>
+                    </div>
+                    <div class="sect4">
+                        <h5 id="overriding-beans">5.3.1.1. Overriding Beans</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>How to override declared beans from tests if the bean is wrapped in a
+                                        delegate?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Proposed<br>
+                                                Created: 11.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Problem</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Considering we have a service that is wrapped around with some caching
+                                        functionality:</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">A service wrapped in a delegate to add a caching aspect</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">interface Service { fun foo() }
+class RealService : Service { override fun foo() {} }
+class CacheService(private val delegate: Service) : Service {
+    override fun foo() {
+        // do caching ...
+        delegate.foo()
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>With Spring we would annotate (assuming we are using a classpath scan) the cached
+                                        service with <code>@PrimaryBean</code>.</p>
+                                </li>
+                                <li>
+                                    <p>But if we now need to override those in a specific way <strong>during a
+                                        test</strong>, this leaves us with a problem; primary-primary?!</p>
+                                </li>
+                                <li>
+                                    <p>Or having to fiddle around in the internals of Spring, which doesn&#8217;t sound
+                                        very appealing&#8230;&#8203;</p>
+                                </li>
+                                <li>
+                                    <p>There are solutions which are all not very appealing (not straightforward,
+                                        clean).</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Solution</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>With Koin it&#8217;s possible to override beans inside a module; infinite amount
+                                        of times.</p>
+                                </li>
+                                <li>
+                                    <p>See overriding and strict handling: <a
+                                            class="bare"
+                                            href="https://insert-koin.io/docs/reference/koin-core/modules/#explicit-override-per-definition-420">https://insert-koin.io/docs/reference/koin-core/modules/#explicit-override-per-definition-420</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Strict and overide handling of Koin</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">val productionModule = module {
+    single&lt;ApiService&gt; { ProductionApiService() }
+    single&lt;Logger&gt; { ProductionLogger() }
+}
+val testModule = module {
+    // only this definition is allowed to override
+    single&lt;ApiService&gt; { MockApiService() }.override()
+    // Tthis would throw an exception without .override()
+    // single&lt;Logger&gt; { TestLogger() }
+}
+startKoin {
+    allowOverride(false)  // enable strict mode
+    modules(productionModule, testModule)
+}</code></pre>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="sect3">
@@ -6735,326 +6697,7 @@ private fun DslDrivenSpec.configureRepoTests(dbListener: DbListener) {
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="test-instances">5.4.2. Test Instances</h4>
-                    <div class="exampleblock">
-                        <div class="content">
-                            <div class="paragraph">
-                                <p>How to reuse test instances in a future-proof, maintainable, conise, and configurable
-                                    way?</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Accepted<br>
-                                            Created: 11.12.2025<br>
-                                            Author: Seepick</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Context</strong></p>
-                    </div>
-                    <div class="paragraph">
-                        <p>We started with Java in a plain and naive way, yet sufficient due to relatively lower focus
-                            on test coverage:</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Creating a domain instance manually</div>
-                        <div class="content">
-                            <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Foo foo = new Foo("bar", 42);</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>Now imagine this copied gazillion times, and suddenly we need to add a new mandatory
-                            property.</p>
-                    </div>
-                    <div class="paragraph">
-                        <p>Organically we come up with test factories:</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Creating a domain instance manually</div>
-                        <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class TestFactory {
-    public static Foo newFoo(String b, int i) { /* ... */ }
-    public static Foo newFoo(String b) { /* ... */ }
-}</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>But that&#8217;s also not maintainable, overloading in order to provide defaults.
-                            Thanks to Lombok and its builder feature, so we can selectively override imutable properties
-                            by creating new instances.</p>
-                    </div>
-                    <div class="paragraph">
-                        <p>We can do even better by using a library which takes over the property filling and allows us
-                            to specifically set certain fields only (method references FTW):</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Generating test DTOs</div>
-                        <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Person person = Instancio.of(Person.class)
-.set(field(Address::getCountry), "Home")
-.create();</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>Now hopefully the new team member knows about this factory, and doesn&#8217;t create his own,
-                            like&#8230;&#8203; we all like to create our own <code>StringUtil</code>,
-                            <code>StringHelper</code>, &#8230;&#8203;</p>
-                    </div>
-                    <div class="paragraph">
-                        <p>With Kotlin&#8217;s extension functions we can solve the issue neatly by adding :</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Kotlin test instance extensions</div>
-                        <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">data class Foo(val b: String, val i: int) {
-    companion object // for test extensions
-}
-// in src/test/kotlin
-fun Foo.Companion.testInstance() = Foo("bar", 42)
-// in the test itself
-Foo.testInstance().copy(i = 21)</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>Auto-completion for the win, and Kotlin already having Lombok&#8217;s language features baked
-                            in.
-                            Just the nasty but necessary <code>companion object</code> declaration&#8230;&#8203;</p>
-                    </div>
-                    <div class="paragraph">
-                        <p>Finally, we use Kotest&#8217;s <code>Arb</code> and integrate into its infrastructure
-                            providing a more property based testing approach (no worries, there&#8217;s a seed to
-                            reproduce a test in case it failed).</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Kotlin test instance extensions</div>
-                        <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">fun Arb.Companion.foo() = arbitrary {
-    Foo(string().bind(), int(0..100).bind())
-}
-// use it
-Arb.foo().next().copy(i = 21) // custom Arb
-Arb.int().next() // default available Arbs</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>PS: Those test instances are better exposed via test fixtures to other modules for reuse
-                            (because sharing is caring).</p>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="assertion-matchers">5.4.3. Assertion Matchers</h4>
-                    <div class="exampleblock">
-                        <div class="content">
-                            <div class="paragraph">
-                                <p>Which assertion library to use to express conditions on test subjects?</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Accepted<br>
-                                            Created: 11.12.2025<br>
-                                            Author: Seepick</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Context</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>We need a way to express assertions using a library; <code>assertEquals</code>,
-                                    <code>assertThat</code>, <code>should</code>, &#8230;&#8203;</p>
-                            </li>
-                            <li>
-                                <p>It should provide a fluent API with auto-completion support for easy discovery.</p>
-                            </li>
-                            <li>
-                                <p>It needs to be easily extendible with custom matchers (for custom
-                                    types/functionality; e.g. JSON support).</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Options</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Some test frameworks come shipped with a matchers library, but usually they are just
-                                    very basic (intentionally).</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>JUnit, Kotlin-test: have only very basic functionality.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Hamcrest/Hamkrest: good old, extending it is a bit cumbersome</p>
-                            </li>
-                            <li>
-                                <p>AssertJ: bit better, still not there</p>
-                            </li>
-                            <li>
-                                <p>Kotest (<a href="https://kotest.io/docs/assertions/matchers/">matchers</a>):</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Comes with assertions which are Kotlin-idiomatic (takes care of language
-                                                specifics) and easy to read</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Kotest matchers library using infix functions</div>
-                        <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">"Some test to be executed" {
-    // basic matcher
-    Computer.tellTheAnswer().shouldNotBeNull() shouldBeEqual 42
-    // arrow support and various list matchers
-    foobar().shouldBeRight().map { it.weight.value } shouldContainInOrder listOf(1, 2)
-}</code></pre>
-                        </div>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Decision</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Use Kotest, as it is modern, Kotlin-idiomatic and fits to the rest of the
-                                    techstack.</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="json-assertions">5.4.4. JSON assertions</h4>
-                    <div class="exampleblock">
-                        <div class="content">
-                            <div class="paragraph">
-                                <p>Which library to use to for checking JSON in tests?</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Proposed<br>
-                                            Created: 1.12.2025<br>
-                                            Author: Seepick</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Context</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>We need enhanced JSON matching capabilities for several test types (integration tests
-                                    with Cucumber)</p>
-                            </li>
-                            <li>
-                                <p>Use-cases:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Asserting for structurally equality; ignorant to whitespace; ordering,
-                                                null handling, superfluous fields.</p>
-                                        </li>
-                                        <li>
-                                            <p>JSON Path like expressions/matchers like: <code>$.items[3].title eq
-                                                'foobar'</code></p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Options</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>For complete JSON comparison, use: <a
-                                        class="bare" href="https://github.com/skyscreamer/JSONassert">https://github.com/skyscreamer/JSONassert</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>Regular expression support added by: <a class="bare"
-                                                                           href="https://fslev.github.io/json-compare/">https://fslev.github.io/json-compare/</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>Jayway path is an option for expressions</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>It provides hamcrest matchers
-                                                (<code>com.jayway.jsonpath:json-path-assert</code>)</p>
-                                        </li>
-                                        <li>
-                                            <p>Tutorial: <a class="bare"
-                                                            href="https://www.baeldung.com/guide-to-jayway-jsonpath">https://www.baeldung.com/guide-to-jayway-jsonpath</a>
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Kotest provides matcher library: <a
-                                        class="bare" href="https://kotest.io/docs/assertions/json/json-overview.html">https://kotest.io/docs/assertions/json/json-overview.html</a>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Decision</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>JSONassert (structural equality) and Jayway (expressions).</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="mocking-library">5.4.5. Mocking Library</h4>
+                    <h4 id="mocking-library">5.4.2. Mocking Library</h4>
                     <div class="exampleblock">
                         <div class="content">
                             <div class="paragraph">
@@ -7142,201 +6785,532 @@ confirmVerified(car)</code></pre>
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="use-cucumber-lambdas">5.4.6. Use Cucumber Lambdas</h4>
-                    <div class="exampleblock">
-                        <div class="content">
-                            <div class="paragraph">
-                                <p>Should the Cucumber step definitions implemented by using the annotation or the
-                                    lambda approach?</p>
+                    <h4 id="assertions">5.4.3. Assertions</h4>
+                    <div class="sect4">
+                        <h5 id="assertion-matchers">5.4.3.1. Assertion Matchers</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>Which assertion library to use to express conditions on test subjects?</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Accepted<br>
-                                            Created: 1.12.2025<br>
-                                            Author: Seepick</p>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Accepted<br>
+                                                Created: 11.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>We need a way to express assertions using a library; <code>assertEquals</code>,
+                                        <code>assertThat</code>, <code>should</code>, &#8230;&#8203;</p>
+                                </li>
+                                <li>
+                                    <p>It should provide a fluent API with auto-completion support for easy
+                                        discovery.</p>
+                                </li>
+                                <li>
+                                    <p>It needs to be easily extendible with custom matchers (for custom
+                                        types/functionality; e.g. JSON support).</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Options</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Some test frameworks come shipped with a matchers library, but usually they are
+                                        just very basic (intentionally).</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>JUnit, Kotlin-test: have only very basic functionality.</p>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </td>
-                            </tr>
-                        </table>
+                                </li>
+                                <li>
+                                    <p>Hamcrest/Hamkrest: good old, extending it is a bit cumbersome</p>
+                                </li>
+                                <li>
+                                    <p>AssertJ: bit better, still not there</p>
+                                </li>
+                                <li>
+                                    <p>Kotest (<a href="https://kotest.io/docs/assertions/matchers/">matchers</a>):</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Comes with assertions which are Kotlin-idiomatic (takes care of
+                                                    language specifics) and easy to read</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Kotest matchers library using infix functions</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">"Some test to be executed" {
+    // basic matcher
+    Computer.tellTheAnswer().shouldNotBeNull() shouldBeEqual 42
+    // arrow support and various list matchers
+    foobar().shouldBeRight().map { it.weight.value } shouldContainInOrder listOf(1, 2)
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Decision</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Use Kotest, as it is modern, Kotlin-idiomatic and fits to the rest of the
+                                        techstack.</p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="paragraph">
-                        <p><strong>Context</strong></p>
+                    <div class="sect4">
+                        <h5 id="json-assertions">5.4.3.2. JSON assertions</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>Which library to use to for checking JSON in tests?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Proposed<br>
+                                                Created: 1.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>We need enhanced JSON matching capabilities for several test types (integration
+                                        tests with Cucumber)</p>
+                                </li>
+                                <li>
+                                    <p>Use-cases:</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Asserting for structurally equality; ignorant to whitespace;
+                                                    ordering, null handling, superfluous fields.</p>
+                                            </li>
+                                            <li>
+                                                <p>JSON Path like expressions/matchers like: <code>$.items[3].title eq
+                                                    'foobar'</code></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Options</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>For complete JSON comparison, use: <a
+                                            class="bare" href="https://github.com/skyscreamer/JSONassert">https://github.com/skyscreamer/JSONassert</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Regular expression support added by: <a
+                                            class="bare" href="https://fslev.github.io/json-compare/">https://fslev.github.io/json-compare/</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Jayway path is an option for expressions</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>It provides hamcrest matchers (<code>com.jayway.jsonpath:json-path-assert</code>)
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>Tutorial: <a class="bare"
+                                                                href="https://www.baeldung.com/guide-to-jayway-jsonpath">https://www.baeldung.com/guide-to-jayway-jsonpath</a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Kotest provides matcher library: <a
+                                            class="bare"
+                                            href="https://kotest.io/docs/assertions/json/json-overview.html">https://kotest.io/docs/assertions/json/json-overview.html</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Decision</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>JSONassert (structural equality) and Jayway (expressions).</p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="listingblock">
-                        <div class="title">Regular method based step definitions using annotations</div>
-                        <div class="content">
+                    <div class="sect4">
+                        <h5 id="test-instances">5.4.3.3. Test Instances</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>How to reuse test instances in a future-proof, maintainable, conise, and
+                                        configurable way?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Accepted<br>
+                                                Created: 11.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
+                        </div>
+                        <div class="paragraph">
+                            <p>We started with Java in a plain and naive way, yet sufficient due to relatively lower
+                                focus on test coverage:</p>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Creating a domain instance manually</div>
+                            <div class="content">
+                                <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Foo foo = new Foo("bar", 42);</code></pre>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Now imagine this copied gazillion times, and suddenly we need to add a new mandatory
+                                property.</p>
+                        </div>
+                        <div class="paragraph">
+                            <p>Organically we come up with test factories:</p>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Creating a domain instance manually</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class TestFactory {
+    public static Foo newFoo(String b, int i) { /* ... */ }
+    public static Foo newFoo(String b) { /* ... */ }
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>But that&#8217;s also not maintainable, overloading in order to provide defaults.
+                                Thanks to Lombok and its builder feature, so we can selectively override imutable
+                                properties by creating new instances.</p>
+                        </div>
+                        <div class="paragraph">
+                            <p>We can do even better by using a library which takes over the property filling and allows
+                                us to specifically set certain fields only (method references FTW):</p>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Generating test DTOs</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Person person = Instancio.of(Person.class)
+.set(field(Address::getCountry), "Home")
+.create();</code></pre>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Now hopefully the new team member knows about this factory, and doesn&#8217;t create his
+                                own, like&#8230;&#8203; we all like to create our own <code>StringUtil</code>, <code>StringHelper</code>,
+                                &#8230;&#8203;</p>
+                        </div>
+                        <div class="paragraph">
+                            <p>With Kotlin&#8217;s extension functions we can solve the issue neatly by adding :</p>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Kotlin test instance extensions</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">data class Foo(val b: String, val i: int) {
+    companion object // for test extensions
+}
+// in src/test/kotlin
+fun Foo.Companion.testInstance() = Foo("bar", 42)
+// in the test itself
+Foo.testInstance().copy(i = 21)</code></pre>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Auto-completion for the win, and Kotlin already having Lombok&#8217;s language features
+                                baked in.
+                                Just the nasty but necessary <code>companion object</code> declaration&#8230;&#8203;</p>
+                        </div>
+                        <div class="paragraph">
+                            <p>Finally, we use Kotest&#8217;s <code>Arb</code> and integrate into its infrastructure
+                                providing a more property based testing approach (no worries, there&#8217;s a seed to
+                                reproduce a test in case it failed).</p>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Kotlin test instance extensions</div>
+                            <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">fun Arb.Companion.foo() = arbitrary {
+    Foo(string().bind(), int(0..100).bind())
+}
+// use it
+Arb.foo().next().copy(i = 21) // custom Arb
+Arb.int().next() // default available Arbs</code></pre>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>PS: Those test instances are better exposed via test fixtures to other modules for reuse
+                                (because sharing is caring).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sect3">
+                    <h4 id="cucumber">5.4.4. Cucumber</h4>
+                    <div class="sect4">
+                        <h5 id="use-cucumber-lambdas">5.4.4.1. Use Cucumber Lambdas</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>Should the Cucumber step definitions implemented by using the annotation or the
+                                        lambda approach?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Accepted<br>
+                                                Created: 1.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Regular method based step definitions using annotations</div>
+                            <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Then("the response status code is {int}")
 fun `Then the response status code is {int}`(expectedStatus: Int) {
     world.lastResponse().statusCode shouldBeEqual expectedStatus
 }</code></pre>
+                            </div>
                         </div>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Modern Lambda based step definitions</div>
-                        <div class="content">
+                        <div class="listingblock">
+                            <div class="title">Modern Lambda based step definitions</div>
+                            <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">Then("the response JSON {string} is {string}") { jsonPath: String, expectedValue: String -&gt;
     world.assertJsonPathValue(jsonPath, expectedValue)
 }</code></pre>
-                        </div>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>The annotation approach has redudancy, the lambda one doesn&#8217;t.</p>
-                            </li>
-                            <li>
-                                <p>Both approaches are fully supported by the intellij-plugin.</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>Click into declaration possible from feature files.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Decision</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Use the more Kotlin-idiomatic approach offered by the Java8 lambda functionality.</p>
-                            </li>
-                            <li>
-                                <p>PS: Some problems/limitations have occured with the lambda support (fallback to
-                                    annotation based).</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Resources</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p><a class="bare"
-                                      href="https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-java8/README.md">https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-java8/README.md</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a class="bare"
-                                       href="https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-kotlin-java8/src/test/kotlin/io/cucumber/kotlin/LambdaStepDefinitions.kt">https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-kotlin-java8/src/test/kotlin/io/cucumber/kotlin/LambdaStepDefinitions.kt</a>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sect3">
-                    <h4 id="cucumber-datatable-serialization">5.4.7. Cucumber Datatable Serialization</h4>
-                    <div class="exampleblock">
-                        <div class="content">
-                            <div class="paragraph">
-                                <p>How to convert Cucumber data tables conveniently into a type-parametrized list?</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="admonitionblock tip">
-                        <table>
-                            <tr>
-                                <td class="icon">
-                                    <i class="fa icon-tip" title="Tip"></i>
-                                </td>
-                                <td class="content">
-                                    <div class="paragraph">
-                                        <p>Status: Accepted<br>
-                                            Created: 11.12.2025<br>
-                                            Author: Seepick</p>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>The annotation approach has redudancy, the lambda one doesn&#8217;t.</p>
+                                </li>
+                                <li>
+                                    <p>Both approaches are fully supported by the intellij-plugin.</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>Click into declaration possible from feature files.</p>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </td>
-                            </tr>
-                        </table>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Decision</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Use the more Kotlin-idiomatic approach offered by the Java8 lambda
+                                        functionality.</p>
+                                </li>
+                                <li>
+                                    <p>PS: Some problems/limitations have occured with the lambda support (fallback to
+                                        annotation based).</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Resources</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <a class="bare"
+                                           href="https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-java8/README.md">https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-java8/README.md</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a class="bare"
+                                           href="https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-kotlin-java8/src/test/kotlin/io/cucumber/kotlin/LambdaStepDefinitions.kt">https://github.com/cucumber/cucumber-jvm/blob/main/cucumber-kotlin-java8/src/test/kotlin/io/cucumber/kotlin/LambdaStepDefinitions.kt</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="paragraph">
-                        <p><strong>Context</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>When we define data in a test as a table, we need a simple mechanism to transform
-                                    this data to a typed result.</p>
-                            </li>
-                            <li>
-                                <p>Writing it by hand is cumbersome and slow, a library needs to easily declare and
-                                    integrate.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Example of an assertion using a data-table</div>
-                        <div class="content">
+                    <div class="sect4">
+                        <h5 id="cucumber-datatable-serialization">5.4.4.2. Cucumber Datatable Serialization</h5>
+                        <div class="exampleblock">
+                            <div class="content">
+                                <div class="paragraph">
+                                    <p>How to convert Cucumber data tables conveniently into a type-parametrized
+                                        list?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admonitionblock tip">
+                            <table>
+                                <tr>
+                                    <td class="icon">
+                                        <i class="fa icon-tip" title="Tip"></i>
+                                    </td>
+                                    <td class="content">
+                                        <div class="paragraph">
+                                            <p>Status: Accepted<br>
+                                                Created: 11.12.2025<br>
+                                                Author: Seepick</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="paragraph">
+                            <p><strong>Context</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>When we define data in a test as a table, we need a simple mechanism to transform
+                                        this data to a typed result.</p>
+                                </li>
+                                <li>
+                                    <p>Writing it by hand is cumbersome and slow, a library needs to easily declare and
+                                        integrate.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Example of an assertion using a data-table</div>
+                            <div class="content">
 <pre class="highlightjs highlight"><code class="language-gherkin hljs" data-lang="gherkin">Then the response posts are
   | id | title |
   | 1  | foo   |
   | 2  | bar   |</code></pre>
+                            </div>
                         </div>
-                    </div>
-                    <div class="paragraph">
-                        <p>The corresponding code should allow an intuitive solution like this:</p>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Cucumber step definition to auto-transform data-tables to typed lists</div>
-                        <div class="content">
+                        <div class="paragraph">
+                            <p>The corresponding code should allow an intuitive solution like this:</p>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Cucumber step definition to auto-transform data-tables to typed lists
+                            </div>
+                            <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Then("the response posts are")
 fun `Then the response posts are`(posts: List&lt;PostDtoRow&gt;) {
     // operate on posts
 }</code></pre>
+                            </div>
                         </div>
-                    </div>
-                    <div class="paragraph">
-                        <p><strong>Decision</strong></p>
-                    </div>
-                    <div class="ulist">
-                        <ul>
-                            <li>
-                                <p>Not much for Kotlin&#8230;&#8203;</p>
-                            </li>
-                            <li>
-                                <p>Gladly there is a flawless Kotlin-Java interoperability, so fallback to a Java
-                                    library:</p>
-                                <div class="ulist">
-                                    <ul>
-                                        <li>
-                                            <p>See: <a
-                                                    class="bare"
-                                                    href="https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping">https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping</a>
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>Add the dependency <code>io.github.deblockt:cucumber-datatable-to-bean-mapping</code>
-                                                and declare the data table.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="listingblock">
-                        <div class="title">Source to integrate a "Java-native" library in a mixed approach</div>
-                        <div class="content">
+                        <div class="paragraph">
+                            <p><strong>Decision</strong></p>
+                        </div>
+                        <div class="ulist">
+                            <ul>
+                                <li>
+                                    <p>Not much for Kotlin&#8230;&#8203;</p>
+                                </li>
+                                <li>
+                                    <p>Gladly there is a flawless Kotlin-Java interoperability, so fallback to a Java
+                                        library:</p>
+                                    <div class="ulist">
+                                        <ul>
+                                            <li>
+                                                <p>See: <a
+                                                        class="bare"
+                                                        href="https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping">https://dzone.com/articles/automating-cucumber-data-table-to-java-object-mapping</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>Add the dependency <code>io.github.deblockt:cucumber-datatable-to-bean-mapping</code>
+                                                    and declare the data table.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listingblock">
+                            <div class="title">Source to integrate a "Java-native" library in a mixed approach</div>
+                            <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@DataTableWithHeader
 public record PostDtoRow(@Column int id, @Column String title) {
 }</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="wiremock">5.4.8. Wiremock</h4>
+                    <h4 id="wiremock">5.4.5. Wiremock</h4>
                     <div class="paragraph">
                         <p>We use Wiremock to fake HTTP calls in System Integration Tests.
                             Due to the <code>extern-stub</code> abstraction, this tool won&#8217;t be used much.
@@ -7345,8 +7319,8 @@ public record PostDtoRow(@Column int id, @Column String title) {
                     </div>
                     <div class="paragraph">
                         <p>For integration tests (Cucumber) we use the <code>extern-stub</code> implementation to
-                            fine-control behavior (and also improve execution time). A test can also override the stub
-                            with custom mocked instances.</p>
+                            fine-control behavior (and also improve execution time).
+                            A test can also override the stub with custom mocked instances.</p>
                     </div>
                 </div>
             </div>
@@ -7743,7 +7717,7 @@ style:
                                 </div>
                             </li>
                             <li>
-                                <p><a class="bare" href="https://pinterest.github.io/ktlint/1.8.0/">https://pinterest.github.io/ktlint/1.8.0/</a>
+                                <p>See: <a class="bare" href="https://pinterest.github.io/ktlint/">https://pinterest.github.io/ktlint/</a>
                                 </p>
                             </li>
                         </ul>

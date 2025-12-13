@@ -1,10 +1,7 @@
 🔥📘🔥 Round up Documentation
 ========================================================================================================================
 
-* HTML theme from red to blue
-* rework sitemap.svg
 * run spell checker
-* review HTML&PDF
 * send to alex&shai; get feedback from them
 
 Backlog

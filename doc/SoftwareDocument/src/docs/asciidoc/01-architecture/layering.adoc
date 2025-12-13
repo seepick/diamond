@@ -45,43 +45,43 @@ Each architectural layer is composed of several (sub-)modules (in Gradle termino
 image::{imgdir}/diagrams/application-modules.png[scaledwidth=100%]
 
 
-* `app` -- the main entry point to start up the application; has a dependency on all submodules (incl. impls) and wires the dependency injection context; reads the configuration and starts the webserver.
-* `view` -- container for all HTTP API related routes and controllers
-** `view-routing` -- the endpoint definition and reading of relevant data from the HTTP request
-** [line-through]#`view-model`# -- No! as those are (OpenAPI) generated and oustourced
-** `controller-api` -- abstraction of client requests (free of webframework references, potentially easier to test; see open question section for details)
-** `controller-impl` -- transforming view-models into domain-models (OpenAPI spec)
-* `domain`` -- container for business logic, free from any framework/tech-references
-** `domain-model` -- shared representation of a domain object and errors
-** `domain-logic-api` -- interfaces/entry points for controllers
-** `domain-logic-impl` -- actual business features
-* `persistence` -- database abstraction access layer
-** `persistence-api` -- repository interfaces
-** `persistence-impl` -- DBMS agnostic queries and schema definition; runs DB migrations (actually `persistence-exposed`)
-** [line-through]#`persistence-stub`# -- No! useless as already in full control and high speed with in-memory DB
-* `extern` -- container for third party access (HTTP, SFTP, MQ, ...)
-** `extern-api` -- simplified interfaces exposing data via domain-models
-** `extern-impl` -- configurable technology specific clients
-** `extern-stub` -- used during testing (and local development)
-** [line-through]#`extern-model`# -- No! as this needs to be generated and outsourced.
+* `app` - the main entry point to start up the application; has a dependency on all submodules (incl. impls) and wires the dependency injection context; reads the configuration and starts the webserver.
+* `view` - container for all HTTP API related routes and controllers
+** `view-routing` - the endpoint definition and reading of relevant data from the HTTP request
+** [line-through]#`view-model`# - No! as those are (OpenAPI) generated and oustourced
+** `controller-api` - abstraction of client requests (free of webframework references, potentially easier to test; see open question section for details)
+** `controller-impl` - transforming view-models into domain-models (OpenAPI spec)
+* `domain`` - container for business logic, free from any framework/tech-references
+** `domain-model` - shared representation of a domain object and errors
+** `domain-logic-api` - interfaces/entry points for controllers
+** `domain-logic-impl` - actual business features
+* `persistence` - database abstraction access layer
+** `persistence-api` - repository interfaces
+** `persistence-impl` - DBMS agnostic queries and schema definition; runs DB migrations (actually `persistence-exposed`)
+** [line-through]#`persistence-stub`# - No! useless as already in full control and high speed with in-memory DB
+* `extern` - container for third party access (HTTP, SFTP, MQ, ...)
+** `extern-api` - simplified interfaces exposing data via domain-models
+** `extern-impl` - configurable technology specific clients
+** `extern-stub` - used during testing (and local development)
+** [line-through]#`extern-model`# - No! as this needs to be generated and outsourced.
 (YAML, WSDL)
-* `shared` -- container for common infrastructure code (can be potentially outsourced over time)
-** `shared-common` -- the obligatory language/standard library extensions
-** `shared-test` -- framework extensions, fixtures, logging
-** `shared-logging` -- programmatic logback configuration (code > markup)
-** `shared-config` -- custom functionality for sophisticated configuration management
-** `shared-xxx` -- more to come...
-* `itest` -- integration tests with Cucumber/Gherkin (BDD) not leaving application boundary (full control and lightning fast)
-* `client-sdk` -- easy to use API SDK (multiplatform porject, reusable for JVM and JS/TypeScript, thus frontend)
+* `shared` - container for common infrastructure code (can be potentially outsourced over time)
+** `shared-common` - the obligatory language/standard library extensions
+** `shared-test` - framework extensions, fixtures, logging
+** `shared-logging` - programmatic logback configuration (code > markup)
+** `shared-config` - custom functionality for sophisticated configuration management
+** `shared-xxx` - more to come...
+* `itest` - integration tests with Cucumber/Gherkin (BDD) not leaving application boundary (full control and lightning fast)
+* `client-sdk` - easy to use API SDK (multiplatform porject, reusable for JVM and JS/TypeScript, thus frontend)
 
 External libraries (own repository), yet maintained by us:
 
-* `api-SDK` -- containing the OpenAPI specification and generated sources (see chapter <<development_codegeneration>>)
-** `api-model` -- entities supported by specific serialization framework (usable by `client-sdk`)
-** `api-server-routes` -- webframework specific code to tie the contract to the implementation
-* `<THIRDPARTY>-SDK` -- external systems (OpenAPI/WSDL) own-written client SDK (outsource generated code)
-* `etest` -- end-to-end system tests residing outside to decouple it from the implementation; only gets environment base URL for blackbox access
-* `openapi-gen` -- custom OpenAPI generators (resides in shared for now, needs to be externalized)
+* `api-SDK` - containing the OpenAPI specification and generated sources (see chapter <<development_codegeneration>>)
+** `api-model` - entities supported by specific serialization framework (usable by `client-sdk`)
+** `api-server-routes` - webframework specific code to tie the contract to the implementation
+* `<THIRDPARTY>-SDK` - external systems (OpenAPI/WSDL) own-written client SDK (outsource generated code)
+* `etest` - end-to-end system tests residing outside to decouple it from the implementation; only gets environment base URL for blackbox access
+* `openapi-gen` - custom OpenAPI generators (resides in shared for now, needs to be externalized)
 
 === Module Naming Convention
 

@@ -29,9 +29,9 @@ Author: Seepick
 
 *Proposal*
 
-* `GET /crystals?author=eq:Peter` -- a simple equals filter
-* `GET /crystals?weight=gt:3&weight=lte:10` -- between via combined operators
-* `GET /crystals?author.address.streetNumber=eq:42` -- nested fields
+* `GET /crystals?author=eq:Peter` - a simple equals filter
+* `GET /crystals?weight=gt:3&weight=lte:10` - between via combined operators
+* `GET /crystals?author.address.streetNumber=eq:42` - nested fields
 * `GET /crystals?state=in:FOO,BAR`
 
 Investigate on (de-facto) industry standards (JAX-RS, SpringBoot), things people are used to, and client libraries exist (Angular, React).

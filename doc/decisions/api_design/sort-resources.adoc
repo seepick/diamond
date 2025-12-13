@@ -15,9 +15,9 @@ Author: Seepick
 *Context*
 
 * A query parameter needs to be provided to sort, calling it `sort`, `sortedBy` or `orderBy`.
-** E.g. `sort=author,title` -- multiple sort fields supported
+** E.g. `sort=author,title` - multiple sort fields supported
 * Sort direction ascending (default) or descending
-** E.g. `orderBy=author asc,title desc` -- adding direction as a suffix to the field
+** E.g. `orderBy=author asc,title desc` - adding direction as a suffix to the field
 ** Alternatively symbols plus/minus prefixed: `orderBy=+author,-title`
 
 *Error Handling*
