@@ -4,8 +4,6 @@ endif::[]
 
 = Techstack
 
-// TODO Go through all dependencies
-
 Library choice guidelines:
 
 * Kotlin-idiomatic (DSLs, functional)
@@ -36,37 +34,51 @@ object Deps {
     }
     // ...
 }
-// Reference your dependencies as such:
-dependencies {
-    implementation(Deps.database.exposed.jdbc)
-}
 ----
 
 === General
 
 Gradle:: Build system to run tasks such as compiling, testing, and packaging ("_newer Maven_", using its sophisticated dependency management).
 Kotlin:: General purpose programming language running on the JVM ("_newer Java_", fully interoperable).
-SonarQube:: Quality gate for code analysis, test coverage and more.
 
-=== Core Libs
+=== Web
 
-Ktor:: Lightweight web framework ("_newer Spring WebMVC_").
-Koin:: Dependency injection, actually service locator, framework ("_newer Spring Framework_", neither classpath scanning nor annotations use).
-Kotest:: Modern flexible testing framework integrating with the JUnit engine ("_newer JUnit_")/
+Ktor:: Lightweight web framework ("_newer Spring WebMVC_") and client.
+Serializationx:: Kotlin specific JSON serialization (instead of Jackson).
+
+=== Persistence
+
 Exposed:: Typesafe SQL library (not a full fledged ORM like JPA/Hbernate).
 Liquibase:: Database migration library using XML.
-Arrow:: Functional library used for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling] via `Either`.
-link:https://github.com/sksamuel/hoplite[Hoplite]:: Typesafe loading of application configuration.
+H2:: As an in-memory database for testing and local development.
 
-=== Support
+=== Test
 
+Kotest:: Modern flexible testing framework integrating with the JUnit engine ("_newer JUnit_")/
+Cucumber:: BDD framework to write integration tests with Gherkin.
+Kover:: Test coverage tool, generating JaCoCo compatible XML reports.
+Mockk:: Kotlin-idiomatic mocking framework.
+WireMock:: Complex backend call mocking.
+Testcontainers:: To locally spin-up docker containers for system integration tests.
+
+=== Quality
+
+SonarQube:: Quality gate for code analysis, test coverage and more.
 Detekt:: Static code analysis together ("_newer CheckStyle_")
 Ktlint:: Auto-formatter, integrated via Detekt.
-Kover:: Test coverage tool, generating JaCoCo compatible XML reports.
+OWASP:: Vulnerability dependency scanner.
+
+=== Supportive
+
+Koin:: Dependency injection, actually service locator, framework ("_newer Spring Framework_", neither classpath scanning nor annotations use).
+Arrow:: Functional library used for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling] via `Either`.
+link:https://github.com/sksamuel/hoplite[Hoplite]:: Typesafe loading of application configuration.
 
 == Library Choices
 
 include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+2]
+
+include::{adrsdir}/libraries/dependency-injection.adoc[leveloffset=+2]
 
 include::{adrsdir}/technologies/scheduler.adoc[leveloffset=+2]
 

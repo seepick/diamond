@@ -2,7 +2,10 @@ ifndef::adrsdir[]
 include::../local_include.adoc[]
 endif::[]
 
+[#development_codegeneration]
 = Code Generation
+
+Working with contracts, it is inevitable to make use of generators to keep the sourcecode in sync with those contracts.
 
 include::{adrsdir}/building/generating-sources.adoc[leveloffset=+1]
 

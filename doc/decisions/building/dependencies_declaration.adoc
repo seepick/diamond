@@ -1,8 +1,8 @@
-= Manage Dependencies
+= Declaration of Dependencies
 
 [QUESTION]
 ====
-How to properly manage the vast amount of dependencies (including version numbers)?
+How to properly declare and centralize the vast amount of dependencies (including version numbers)?
 ====
 
 [TIP]
@@ -40,6 +40,7 @@ Either use Gradle's standard version catalog or write custom code in `buildSrc`.
 ** If refactoring/changing a dependency, then have to do a step-by-step error-fixing with each build, cumbersome...
 
 .Example of a Gradle version catalog TOML file
+
 [source,toml]
 ----
 [bundles]
@@ -63,6 +64,52 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "manes-versions
 * BAD:
 ** It's custom made for something a default solution already exists; not known.
 ** Minor: Doesn't support view usages.
+
+.Version declaration in `buildSrc/Version.kt`
+
+[source,kotlin]
+----
+object Versions {
+    const val java = 17
+    val kotlin = "2.2.21"
+    val ktor = "3.3.2"
+    val koin = "4.1.1"
+    object logging {
+        val kotlin = "7.0.13"
+        val logback = "1.5.18"
+    }
+    object testing {
+        val kotest = "6.0.5"
+        val cucumber = "7.32.0"
+    }
+    // ...
+}
+----
+
+.The `buildSrc/Deps.kt` abstracting dependency coordinates as an object graph
+[source,kotlin]
+----
+object Deps {
+    val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
+    object database {
+        val h2 = "com.h2database:h2:${Versions.h2}"
+        object liquibase {
+            val core = "org.liquibase:liquibase-core:4.31.1"
+            val slf4j = "com.mattbertolini:liquibase-slf4j:5.1.0"
+        }
+        object exposed {
+            private fun make(artifact: String) = "org.jetbrains.exposed:exposed-$artifact:${Versions.exposed}"
+            val jdbc = make("jdbc")
+            val datetime = make("java-time")
+        }
+    }
+    // ...
+}
+// Reference your dependencies as such:
+dependencies {
+    implementation(Deps.database.exposed.jdbc)
+}
+----
 
 *Decision*
 

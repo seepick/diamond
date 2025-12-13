@@ -12,6 +12,11 @@ Created: 7.12.2025 +
 Author: Seepick
 ====
 
+*Context*
+
+* Handling of Java's datetime
+* Support of value classes (typesafety + inlining)
+
 *Options*
 
 . Jackson
@@ -25,11 +30,6 @@ Author: Seepick
 ** Simple to write custom de/serializers.
 ** Multiplatform support (client SDK for frontend).
 
-*Aspects*
-
-* Handling of Java's datetime
-* Support of value classes (typesafety + inlining)
-
-*Conclusion*
+*Decision*
 
 * Kotlinx Serialization seems best fitting and is stable/mature enough.

@@ -4,8 +4,6 @@ endif::[]
 
 = Test Strategy
 
-** E2E tests covers the whole system landscape via feature flows; only 5% or less.
-
 .Simplified view from different test strategies onto the application boundaries
 image::{imgdir}/diagrams/test-strategies.png[]
 
@@ -20,12 +18,20 @@ Regarding the *test pyramide*:
 ** The parts, the IT don't cover, can be complemented by separate tests.
 ** Composing about 65% of the overall tests.
 ** Karate not feasable anymore, due to need of custom vocabulary (step definitions).
-* Few End2end Tests talking real HTTP, separately deployed, no access than a regular user would.
+* Few End-to-End Tests talking real HTTP, separately deployed, no access than a regular user would.
+** E2E tests covers the whole system landscape via feature flows; only 5% or less of total tests.
 * A sandbox environment of 3rd party services would be great (if available).
 ** Do we want to provide one ourselves to others?!
 * Potentially complementary backend tests to verify external service contracts.
 ** Only testing the extern-layer with testcontainers
 ** Could make them system tests (without testcontainers! sandbox?), but super unstable/limited.
+
+== Build Integration
+
+* The application contains several different test types (unit, integration; some with H2 some with testcontainers; maybe backend system tests; e2e should be external).
+** Tests need to be tagged (atomar attribute approach), and selectively run by the build.
+** First unit tests (fast), then integration (slower, no need to run if unit tests fail).
+** E2E tests could be triggered as an "async invoked" subsequent build (to not extend feedback loop, yet delayed report about failures).
 
 == TDD, BDD, ATDD
 

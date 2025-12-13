@@ -38,6 +38,28 @@ Author: Seepick
 * Exposed; it fits with the rest of the used ecosystem.
 * We use the conventional DSL, not the DAO API (seem unfinished).
 
+.Example of Exposed's table schema definition
+[source,kotlin]
+----
+object CrystalTable : UUIDTable("CRYSTALS", "ID") {
+    val created = datetime("CREATED")
+    val weightInGrams = integer("WEIGHT_IN_GRAMS")
+}
+----
+
+.Example of Exposed's (favored) DSL API
+[source,kotlin]
+----
+override suspend fun selectById(id: CrystalId) = suspendTransaction(db) {
+    either {
+            CrystalTable.selectAll()
+                .where { CrystalTable.id eq id.value }
+                .map { Crystal.byRow(it).bind() }
+                .ensureSingleFound(id.value).bind()
+    }
+}
+----
+
 .Example of Exposed's (unfavored) DAO API
 [source,kotlin]
 ----

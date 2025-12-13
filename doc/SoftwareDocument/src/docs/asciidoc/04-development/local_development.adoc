@@ -11,10 +11,12 @@ There is no required readme to be read, no manual or instructions; it just works
 .How to setup and run the application
 [source,shell]
 ----
-git clone https://github.com/seepick/diamond.git
-./gradlew :app:runLocal
-
-curl localhost:8080
+> git clone https://github.com/seepick/diamond.git
+> cd diamond
+> ./gradlew :app:runLocal &&
+> curl localhost:8080
+Hello Service!%
+>
 ----
 
 Additionally:
@@ -53,4 +55,4 @@ See `/bin/*.sh` files.
 * Test the configuration is set up properly.
 
 .Console output made with love (and some nasty warnings still to clean up)
-image::../images/console_love.png[]
+image::{imgdir}/console_love.png[]

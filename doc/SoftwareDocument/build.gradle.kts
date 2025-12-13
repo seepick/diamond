@@ -115,7 +115,7 @@ tasks.asciidoctorPdf {
         ),
     )
     jvm {
-//             TODO JRuby accessing some internal JDK classes without proper module access causes warnings
+// NOPE: JRuby accessing some internal JDK classes without proper module access causes warnings
 // 2025-12-06T09:15:49.847+01:00 [WorkerExecutor Queue] WARN FilenoUtil :
 // Native subprocess control requires open access to the JDK IO subsystem
 // Pass '--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED' to enable.
@@ -129,7 +129,6 @@ tasks.asciidoctorPdf {
 //        )
     }
     asciidoctorj {
-        // TODO support emojis!
         // AsciidoctorJExtension
         // The AsciidoctorJ engine supports Batik, Ditaa, JSyntrax, and PlantUml via a Diagram extension
         modules {

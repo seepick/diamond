@@ -1,0 +1,9 @@
+= Outro
+
+To round it up, we end with a list of open doings, something more like future outlook points, and a few difficulties experienced during implementing this project.
+
+include::challenges.adoc[leveloffset=+1]
+
+include::open.adoc[leveloffset=+1]
+
+include::resources.adoc[leveloffset=+1]

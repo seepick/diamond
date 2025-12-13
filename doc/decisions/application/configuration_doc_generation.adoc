@@ -1,4 +1,4 @@
-= Application Configuration
+= Generate Configuration Doc
 
 [QUESTION]
 ====
@@ -14,7 +14,7 @@ Author: Seepick
 
 *Context*
 
-* When deploying our software and it requires quite some configuration values, this information needs to be communicated to ops.
+* When deploying our software and it requires quite some configuration values, this information needs to be communicated to operations.
 * Everything done manually sucks (and is error-prone); to reduce effort and risk, it is necessary to automate this process.
 
 *Proposal*

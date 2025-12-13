@@ -4,8 +4,8 @@ endif::[]
 
 = Testing
 
-* All tests are automated; there is not a single manual test!
-* We have full confidence in our tests as a safety net.
+All tests are automated; there is not a single manual test!
+We have full confidence in our tests as a safety net.
 
 include::types.adoc[leveloffset=+1]
 
@@ -17,8 +17,7 @@ include::techstack.adoc[leveloffset=+1]
 
 == Code Coverage
 
+We want an automated process which runs test/code coverage metrics.
+We need a report visible in a dashboard (and IDE integrated coverage colorization for immediate feedback loop like for all quality tools).
+
 include::{adrsdir}/testing/verify-coverage.adoc[leveloffset=+2]
-
-== Build Integration
-
-TODO

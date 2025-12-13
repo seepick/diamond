@@ -60,7 +60,7 @@ fun handleGet(): ServerResponse =
 ** A new way of working introducing a small barrier of entry at the beginning.
 ** sometimes IDE doesn't suggest `.bind()` although it's the solution
 
-.Hiding the constructor and enforcing business validation.
+.Hiding the constructor and enforcing business validation for the link:https://github.com/seepick/diamond/blob/main/domain/domain-model/src/main/kotlin/nl/uwv/smz/diamond/domain/model/crystal.kt#L49[`Gram`] class
 
 [source,kotlin]
 ----

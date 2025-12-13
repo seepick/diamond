@@ -27,6 +27,8 @@ Load/performance tests:: Using Gatling (https://github.com/gatling/gatling-gradl
 
 Fail build if quality threshold not met:: For detekt it works, for ktlint should be easy, SonarQube requires a bit more.
 
+Run coverage reports locally in IDE:: Find suitable tool and evaluate general maturity of library.
+
 == Persistence
 
 Database connection pooling:: using good old Hikari.

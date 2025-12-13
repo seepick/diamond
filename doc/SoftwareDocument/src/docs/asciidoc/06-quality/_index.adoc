@@ -4,16 +4,21 @@ endif::[]
 
 = Code Quality
 
-* quality gates
-** make the build fail upon error
-** 0-warning policy
-* sonarqube (misc metrics), coverage kotlin tools (detekt, ktlint)
-* CAVE: there is much overlap in the tools
-** test coverage enforcing by gradle (kover) and sonarqube
-** lots with detekt/ktlint (intellij? sonarqube?)
-
-include::best_practices.adoc[leveloffset=+1]
+* This is about how to maintain high code quality supported by static code analysis tools and similar.
+* There need to be certain "quality gates" which ensure that the quality doesn't drop below a certain threshold.
+** In that case, make the build fail to enforce quality.
+** Introduce a *zero-warning policy* from the beginning
+* Use for example:
+** SonarQube (metrics, but also coverage)
+** Kotlin specific tools (detekt, ktlint)
+** Do not rely on local IDE specific tools; they need to be executable by the build.
+* Watch out for contradicting configuration: There is much overlap with those tools, they often do the same thing.
 
 include::static_analysis.adoc[leveloffset=+1]
 
-include::integration.adoc[leveloffset=+1]
+== Integration
+
+* IDE plugins (detekt, ktlint, save actions)
+** configure IDE
+* build integration (gradle)
+* quality gates break the build (sonar reporting?); kover jacoco

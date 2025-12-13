@@ -63,8 +63,37 @@ Others approaches:
 
 Use the conventional approach with `skip/take` and keep the response KISS (no links).
 
+.A sample paginated response by an arbitrary service:
+[source,json]
+----
+{
+  "data": [
+    // array of items for the current page
+    { "id": "item_21", "name": "Item 21", ... },
+    { "id": "item_22", "name": "Item 22", ... },
+    // ... up to 'limit' items
+    { "id": "item_30", "name": "Item 30", ... }
+  ],
+  "pagination": {
+    "offset": 20,
+    "limit": 10,
+    "totalItems": 5000, // Total number of items available
+    "totalPages": 500, // Calculated as ceil(totalItems / limit)
+    "currentPage": 3 // Calculated as (offset / limit) + 1
+  },
+  "links": { // HATEOAS links for navigation
+    "self": "/items?offset=20&limit=10",
+    "first": "/items?offset=0&limit=10",
+    "prev": "/items?offset=10&limit=10", // Null if on the first page
+    "next": "/items?offset=30&limit=10", // Null if on the last page
+    "last": "/items?offset=4990&limit=10"
+  }
+}
+----
+
 *Resources*
 
 * https://www.merge.dev/blog/rest-api-pagination
 * https://www.merge.dev/blog/api-pagination-best-practices
 * https://restfulapi.net/api-pagination-sorting-filtering/
+* https://apidog.com/blog/pagination-in-rest-apis/

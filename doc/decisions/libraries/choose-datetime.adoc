@@ -36,7 +36,7 @@ Author: Seepick
 ** Higher barrier of entry for developers.
 * Any benefit from its multiplatform (KMP) nature?
 
-*Conclusion*
+*Decision*
 
 * We choose for the new Java standard datetime library; stable, supported, sufficient.
 * The unstable API from Kotlin datetime is too dangerous for production!

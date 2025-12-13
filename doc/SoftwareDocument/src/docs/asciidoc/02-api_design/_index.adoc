@@ -6,27 +6,13 @@ endif::[]
 
 Let's talk about everything relevant for a common HTTP, ReST-like webservice.
 
-== Common Features
+include::common_features.adoc[leveloffset=+1]
 
-* We only offer `application/json` by default; no alternative representations needed, no content-negotiation.
-
-include::{adrsdir}/api_design/sort-resources.adoc[leveloffset=+2]
-
-include::{adrsdir}/api_design/paginate-responses.adoc[leveloffset=+2]
-
-include::{adrsdir}/api_design/filter-resources.adoc[leveloffset=+2]
-
-include::{adrsdir}/api_design/version-endpoints.adoc[leveloffset=+2]
-
-== Security
-
-include::{adrsdir}/api_design/secure-endpoints.adoc[leveloffset=+2]
+include::{adrsdir}/api_design/secure-endpoints.adoc[leveloffset=+1]
 
 == OpenAPI Specification
 
-* OpenAPI even needed?
-** The spec is the source of truth, the holy contract
+* The spec is the source of truth, the holy contract
 ** Especially multiple consumers (always at least 2: 1x FE and testers)
-** OpenAPI generators can keep contract in sync with code
-* Show SwaggerUI as endpoint (display both UI and yaml-spec); consumer convenience
-
+* OpenAPI generators can keep contract in sync with code
+* Show SwaggerUI as endpoint (display both UI and yaml-spec); consumer convenience.

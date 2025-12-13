@@ -1,9 +1,0 @@
-= Outro
-
-include::challenges.adoc[leveloffset=+1]
-
-include::open.adoc[leveloffset=+1]
-
-include::outlook.adoc[leveloffset=+1]
-
-include::resources.adoc[leveloffset=+1]

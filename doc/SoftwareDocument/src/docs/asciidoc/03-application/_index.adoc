@@ -4,6 +4,9 @@ endif::[]
 
 = Application
 
+Zooming in a bit from the architectural view into the internals of the application.
+Libraries used, build system, application configuration and documentation.
+
 include::techstack.adoc[leveloffset=+1]
 
 include::gradle.adoc[leveloffset=+1]

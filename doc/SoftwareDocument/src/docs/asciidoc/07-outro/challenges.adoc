@@ -1,0 +1,17 @@
+= Challenges
+
+== Parallel Cucumber tests
+
+* The application needs to be run in total isolation.
+* First the ktor test-engine was not properly capable of running in a deferred way.
+** There is still a small hack, casting to an internap type to configure the Ktor test-client.
+* The the Koin application used global shared state (`Koin` to `KoinIsolated` plugin).
+
+== OpenAPI support for Kotlin
+
+* Especially talking about code generation.
+** Need something recent and fitting (actually usable) for Kotlin.
+** Generate (ktor KMP) client and server (ktor routes); and optional separate data models (depending on application layering required separately).
+** See <<adr_coding_openapigenerator>> for details.
+* Automatic SwaggerUI generation.
+** Works nicely with Spring, nothing really for Ktor.

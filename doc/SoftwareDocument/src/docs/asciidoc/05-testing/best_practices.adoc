@@ -22,7 +22,13 @@ Watch out for fast test execution:
 
 == Testable Code
 
-* no manual instantiation or static random data generation
+* No manual instantiation or static random data generation.
+* No side-effects and void returning methods (pure functions; idempotent).
+* No output-parameters for signaling state change (favor immutability).
+* Small units, with a single, clear responsibility; composition.
+* When doing test-first, the design is always testable, as we start with another service-consumer.
+
+include::{adrsdir}/testing/overriding-beans.adoc[leveloffset=+2]
 
 == Maintainable Tests
 
@@ -40,7 +46,7 @@ id("java-test-fixtures")
 testImplementation(testFixtures(project(":sister-module")))
 ----
 
-== Anti Patterns
+== Anti-Patterns
 
 * Not keeping proper level of abstraction: Displaying irrelevant values.
 * Hardcoded, OS-specific, absolute paths in code or properties.

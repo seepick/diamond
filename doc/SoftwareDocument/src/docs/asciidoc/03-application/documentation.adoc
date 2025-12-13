@@ -4,6 +4,12 @@ endif::[]
 
 = Documentation
 
+Technical documentation has slightly different needs and require a tool appropriate for it; a generic solution like Confluence might just not do it.
+When the documentation is stored along with the application (sorucecode), it creates an encapsulated unit, increasing probability that everything is kept in sync.
+Furthermore some documentation can (and is being) generated, it can include directly sourcecode into it, and use scripts to verify integrity.
+
 include::{adrsdir}/documentation/choose-documentation-tool.adoc[leveloffset=+1]
 
 include::{adrsdir}/documentation/choose-diagram-tool.adoc[leveloffset=+1]
+
+include::{adrsdir}/application/configuration_doc_generation.adoc[leveloffset=+1]

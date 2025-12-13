@@ -1,12 +1,7 @@
 🔥📘🔥 Round up Documentation
 ========================================================================================================================
 
-* show exposed table definition and CRUD operations/DSL queries
-
-* filter for `// TODO` in `doc/` folder
-* go through all ADRs, finish them (add at least a bit)
-* go through all *.adoc files, do the bare minimum again
-
+* HTML theme from red to blue
 * rework sitemap.svg
 * run spell checker
 * review HTML&PDF
@@ -77,6 +72,7 @@ Asciidoc
 * advanced: generate multi-page HTML (see: https://docs.asciidoctor.org/asciidoc/latest/toc/)
 * how to create "list of" at the end of document? (for ADRs, for TODOs)
 * emojis in asciidoc didn't work :-/
+* for PDF, render table borders (now there are no borders)
 
 Low
 -------------------------

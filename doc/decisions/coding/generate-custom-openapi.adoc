@@ -1,3 +1,4 @@
+[#adr_coding_openapigenerator]
 = Custom OpenAPI Generator
 
 [QUESTION]

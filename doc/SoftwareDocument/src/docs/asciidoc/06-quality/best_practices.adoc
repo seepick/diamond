@@ -1,3 +1,0 @@
-ifndef::adrsdir[]
-include::../local_include.adoc[]
-endif::[]

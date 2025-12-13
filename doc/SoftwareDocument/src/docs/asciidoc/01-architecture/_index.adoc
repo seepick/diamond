@@ -4,7 +4,7 @@ endif::[]
 
 = Architecture
 
-// TODO show high-level overviews & diagrams
+Let's have a look at the application from the broadest view possible while still focusing on the application itself (no system landscape with external services).
 
 include::principles.adoc[leveloffset=+1]
 

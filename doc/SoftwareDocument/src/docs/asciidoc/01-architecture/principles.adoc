@@ -1,10 +1,20 @@
-= Overall Guiding Principles
+= Guiding Principles
 
-Based on those KPIs:
+To come to a decision, we need basic values (principles) to refer back to, to check whether an option is aligned (or not) with those values.
+Thus "guiding" us into the right (value-appropriate) direction.
+This is by no means a complete list, nor is the order of any particular importance; it's just a quick beginning, an inspiration...
+
+* Clean code, clean architecture.
+* Single responsibilty; one, and only one thing well.
+* Clear defined (and clean) interfaces.
+** Hiding internals, exposing only what's relevant.
+* Divide and conquer; as small as possible, as big as necessary.
+* Reuse, externalize as much as possible infrastructure code; focus on business features.
+* No classpath pollution; minimal as possible (Gradle's `implementation` vs `api` dependency scope).
+
+Based on some KPIs:
 
 * Lead time of X days until feature available.
 * High quality, many tests, low bugs.
 * API response times of Xms (performance tests).
-* Build time max 3mins locally; build pipeline max 5mins.
-
-// TODO write more
+* Build time max X minutes locally; build pipeline max X+ minutes.

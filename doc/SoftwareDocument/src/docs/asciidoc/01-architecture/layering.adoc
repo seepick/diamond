@@ -76,8 +76,7 @@ image::{imgdir}/diagrams/application-modules.png[scaledwidth=100%]
 
 External libraries (own repository), yet maintained by us:
 
-// TODO link to code_generation.adoc
-* `api-SDK` -- containing the OpenAPI specification and generated sources
+* `api-SDK` -- containing the OpenAPI specification and generated sources (see chapter <<development_codegeneration>>)
 ** `api-model` -- entities supported by specific serialization framework (usable by `client-sdk`)
 ** `api-server-routes` -- webframework specific code to tie the contract to the implementation
 * `<THIRDPARTY>-SDK` -- external systems (OpenAPI/WSDL) own-written client SDK (outsource generated code)
@@ -96,7 +95,9 @@ There are two ways of naming submodules:
 . Encode the super-type in the sub-type, as in `/domain/domain-impl`
 ** This seems redundant at first, but leads to a necessary unique module name.
 
-== Client-SDKs
+include::{adrsdir}/application/central-domain-model.adoc[leveloffset=+2]
+
+== Client-SDK
 
 What is it?
 

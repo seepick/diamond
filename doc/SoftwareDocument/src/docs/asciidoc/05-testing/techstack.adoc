@@ -58,20 +58,27 @@ private fun DslDrivenSpec.configureRepoTests(dbListener: DbListener) {
 }
 ----
 
-include::{adrsdir}/testing/test-instances.adoc[leveloffset=+1]
-
-include::{adrsdir}/testing/assertion-matchers.adoc[leveloffset=+1]
-
-include::{adrsdir}/testing/assert-json.adoc[leveloffset=+1]
-
 include::{adrsdir}/testing/mocking.adoc[leveloffset=+1]
 
-include::{adrsdir}/testing/BDD.adoc[leveloffset=+1]
+== Assertions
 
-include::{adrsdir}/testing/cucumber-lambdas.adoc[leveloffset=+1]
+include::{adrsdir}/testing/assertion-matchers.adoc[leveloffset=+2]
 
-include::{adrsdir}/testing/cucumber-datatable.adoc[leveloffset=+1]
+include::{adrsdir}/testing/assert-json.adoc[leveloffset=+2]
+
+include::{adrsdir}/testing/test-instances.adoc[leveloffset=+2]
+
+== Cucumber
+
+include::{adrsdir}/testing/cucumber-lambdas.adoc[leveloffset=+2]
+
+include::{adrsdir}/testing/cucumber-datatable.adoc[leveloffset=+2]
 
 == Wiremock
 
-TODO
+We use Wiremock to fake HTTP calls in System Integration Tests.
+Due to the `extern-stub` abstraction, this tool won't be used much.
+Complementary tests, testing the `extern-impl` on an integration level in isolation (strange contradicting phrasing?!) will require Wiremock.
+
+For integration tests (Cucumber) we use the `extern-stub` implementation to fine-control behavior (and also improve execution time).
+A test can also override the stub with custom mocked instances.

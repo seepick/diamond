@@ -4,6 +4,10 @@ endif::[]
 
 = Best Practices
 
+A quick flush of some brainstorm thoughts around what could be considered relevant; please don't give too much meaning to it...
+
+== Coding Hints
+
 * Strive for functional, e.g.: *pure functions*:
 ** return values are identical for identical arguments (no variation with static variables, non-local variables, mutable reference arguments or input streams, i.e., referential transparency)
 ** the function has no side effects (no mutation of non-local variables, mutable reference arguments or input/output streams)
@@ -15,7 +19,7 @@ endif::[]
 ** forces to write very short methods, easy to read and comprehend
 ** methods have names, they create logical structure of arbitrary code
 
-== Coding Philosophy
+=== Coding Philosophy
 
 * fail early, fail fast
 * e.g. if application config something is configured wrong/missing
@@ -40,7 +44,11 @@ endif::[]
 * be aware of the difference between integration-code (tech/infra; tested by integration tests) and application-code (business, domain; tested by unit tests)
 ** it's a smell if unit tests have a lock of mocking going on; trying to unit test integration code
 
-== Conciseness
+== Specific Topics
+
+This section can be expanded to address specific development related topics in more detail.
+
+=== Conciseness
 
 Using type inference and link:https://kotlinlang.org/docs/functions.html#single-expression-functions[single expression functions], function declarations can be shortened and made more readable:
 
@@ -81,5 +89,5 @@ fun Service.`GOOD apply`() = apply {
 }
 ----
 
-include::{adrsdir}/coding/explicit_exception_handling.adoc[leveloffset=+1]
+include::{adrsdir}/coding/explicit_exception_handling.adoc[leveloffset=+2]
 

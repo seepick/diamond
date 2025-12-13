@@ -32,4 +32,4 @@ include::{basedir}/05-testing/_index.adoc[leveloffset=+1]
 
 include::{basedir}/06-quality/_index.adoc[leveloffset=+1]
 
-include::{basedir}/08-outro/_index.adoc[leveloffset=+1]
+include::{basedir}/07-outro/_index.adoc[leveloffset=+1]

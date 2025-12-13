@@ -1,0 +1,15 @@
+ifndef::adrsdir[]
+include::../local_include.adoc[]
+endif::[]
+
+= Common Features
+
+* We only offer `application/json` by default; no alternative representations needed, no content-negotiation.
+
+include::{adrsdir}/api_design/sort-resources.adoc[leveloffset=+1]
+
+include::{adrsdir}/api_design/paginate-responses.adoc[leveloffset=+1]
+
+include::{adrsdir}/api_design/filter-resources.adoc[leveloffset=+1]
+
+include::{adrsdir}/api_design/version-endpoints.adoc[leveloffset=+1]

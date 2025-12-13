@@ -1,9 +1,6 @@
-// STATES { draft | proposed | rejected | accepted | deprecated }
-
 // with gradle: https://www.vogella.com/tutorials/AsciiDoc/article.html
 // https://www.quadhelion.engineering/guides/AsciiDocCheatSheet.pdf
 // https://gist.github.com/namjae/bcac5fb00d1edc4e74a5e20a7dc8dace
-
 
 .Caption
 [source,kotlin]
@@ -30,11 +27,15 @@ CAUTION: flame symbol --> ?
 not multi line
 ====
 
-[headingId]
+// [#headingId,reftext=Custom ref text, otherwise default]
+// or short: [[headingId,Custom ref text]]
+[#headingId]
 == Heading with ID
 
-.A precious material
-image::diamond.png[scaledwidth=30%]
+Anchor link will render ref text: <<headingId>>
+
+.Caption to an image
+image::file.png[scaledwidth=30%]
 
 // image attributes: https://docs.asciidoctor.org/asciidoc/latest/macros/image-ref/
 
@@ -49,9 +50,17 @@ Ordered:
 .. sub
 
 
+// frame=all, grid=all
+// frame=all, grid=none
+// frame=all, grid=rows
+// frame=all, grid=cols
+// frame=ends, grid=rows
+// frame=sides, grid=cols
+// frame=none, grid=none
+
 .caption for this TABLE
 
-[width="100%",cols="50%,50%",options="header",]
+[width="100%",cols="50%,50%",options="header",frame=all,grid=rows]
 |===
 |Th1 |Th2
 |row1 col1
@@ -60,6 +69,11 @@ Ordered:
 |row2 col1
 |row2 col2
 |===
+
+[%collapsible]
+====
+can go away with a click
+====
 
 // auto link
 https://asciidoctor.org[Asciidoctor,window=_blank]

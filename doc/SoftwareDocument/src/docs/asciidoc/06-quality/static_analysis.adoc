@@ -4,7 +4,7 @@ endif::[]
 
 = Static Code Analysis
 
-include::{adrsdir}/coding/code-analysis-tools.adoc[leveloffset=+2]
+include::{adrsdir}/coding/code-analysis-tools.adoc[leveloffset=+1]
 
 == SonarQube
 
@@ -50,4 +50,4 @@ style:
 * Formatter
 * via `.editorconfig` (IDE auto-configures); properties based is too simplistic (true/false, instead patterns, etc.)
 ** Feels a bit "oldschool", no context-sensitive "auto-suppress"
-* https://pinterest.github.io/ktlint/1.8.0/
+* See: https://pinterest.github.io/ktlint/

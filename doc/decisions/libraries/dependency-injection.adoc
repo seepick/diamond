@@ -20,6 +20,7 @@ Author: Seepick
 ** We want to be explicit with configuration, so avoid `@Property("key")` and do instead `config.key`.
 ** Each module provides its own module configuration definition which is later composed (with an optional additional modules, used by the test infrastructure).
 ** We don't want to use classpath scanning, although convenient, takes away control for fine-tuned configuration.
+* What we are doing here is actually a service locator, but it's good enough...
 
 *Options*
 
@@ -52,3 +53,14 @@ fun Modules.externImpl(config: ExternConfig) = module {
 * We are in full control this way (rewiring for testing purpose; override bean definitions).
 * Integration-code is totally separate from application-code as Koin is non-intrusive.
 ** The business logic code especially can be free from any framework code.
+
+.Example of how Koin support is added to Ktor
+
+[source,kotlin]
+----
+install(KoinIsolated) {
+    slf4jLogger(level = config.koinLogLevel)
+    allowOverride(false) // be strict about it
+    modules(Modules.all(config, additionalModules))
+}
+----
