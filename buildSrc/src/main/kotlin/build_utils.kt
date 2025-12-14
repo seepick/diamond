@@ -17,7 +17,9 @@ fun enhanceSystemProperties(more: List<Pair<String, String>>): Map<String, Any> 
 fun Project.readGithubCredentials(): Pair<String, String> {
     fun readSingle(property: String, envVar: String): String {
         val found = project.findProperty(property) as? String ?: System.getenv(envVar)
-        if (found.isNullOrEmpty()) error("Expected property '$property' (~/.gradle/gradle.properties) or env var '$envVar' to be defined!")
+        if (found.isNullOrEmpty()) {
+            error("Expected property '$property' (~/.gradle/gradle.properties) or env var '$envVar' to be defined!")
+        }
         return found
     }
     return readSingle("githubPackages.user", "GITHUB_ACTOR") to readSingle("githubPackages.key", "GITHUB_TOKEN")

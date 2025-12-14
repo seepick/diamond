@@ -1,5 +1,4 @@
 name: Build Release
-
 on:
   # invoke manually
   workflow_dispatch:
@@ -100,12 +99,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Tag version
-        uses: .... tag... FIXME!
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.event.inputs.version }}
+      #      - name: Tag version
+      #      #        uses: .... tag... FIXME!
+      #        env:
+      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #        with:
+      #          tag_name: ${{ github.event.inputs.version }}
       - name: Create Release # https://github.com/marketplace/actions/create-tag-release
         id: create_release
         uses: actions/create-release@latest
