@@ -9,7 +9,10 @@ on:
         required: true
         default: '2025.12.1'
         type: string
-
+# to access GitHub maven repo (called packages)
+env:
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # TODO rearrange
 # on: manual-run
 # gradlew -DisCi

@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+# to access GitHub maven repo (called packages)
+env:
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   gradle:
     name: Build Gradle project

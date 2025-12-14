@@ -3,6 +3,10 @@ on:
   workflow_dispatch: # invoke manually
 #  schedule:
 #    - cron: '0 0 * * *' # daily at 00:00 UTC
+# to access GitHub maven repo (called packages)
+env:
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 permissions:
   contents: read
   actions: read
