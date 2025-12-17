@@ -9,6 +9,21 @@ minikube
     * Start [Docker Desktop](https://www.docker.com/products/docker-desktop/) and try again (this will take a while).
     * "_🏄 Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default_"
 
+Assuming we have deployed the demo-app image `demo-app:latest`.
+
+* Create a deployment: `kubectl create deployment demo-minikube --image=demo-app:latest`
+* Expose internal network: `kubectl expose deployment demo-minikube --type=NodePort --port=8080`
+* Verify existing: `kubectl get services demo-minikube`
+* Access via managed-browser: `minikube service demo-minikube`
+    * Or portforward: `kubectl port-forward service/demo-minikube 8080:8080`
+* If pod has `ErrImagePull`:
+    * Redirect docker to minikube: `eval $(minikube docker-env)`
+    * Now build (and push) your image: `docker build -t demo-app:latest .`
+    * List all images: `minikube image ls --format table` (should see `docker.io/library/demo-app`)
+    * https://minikube.sigs.k8s.io/docs/handbook/pushing/
+    * https://www.baeldung.com/ops/docker-local-images-minikube
+    * might not work directly; simply use kubernetes manifest files instead
+
 kubectl
 ====
 
