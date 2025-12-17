@@ -7,6 +7,7 @@ import com.github.seepick.kaml.github.dsl.githubKaml
 val githubContinuous = githubKaml {
     name = "Continuous"
     triggers {
+        cron(pattern = "0 0 * * *")
         onPushBranches("main")
     }
     jobs {

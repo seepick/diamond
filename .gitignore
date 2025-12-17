@@ -3,3 +3,6 @@ build/
 .gradle/
 .kotlin/
 *.drawio.bkp
+.DS_Store
+# draw io temp file
+*.dtmp

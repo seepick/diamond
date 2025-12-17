@@ -5,7 +5,6 @@ object Deps {
     val openapi = "org.openapitools:openapi-generator:${Versions.openapi}"
     val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrow}"
     val jsch = "com.github.mwiede:jsch:${Versions.jsch}" // fork of JSch: "com.jcraft:jsch:0.1.55"
-    val eoYaml = "com.amihaiemil.web:eo-yaml:${Versions.eoYaml}"
 
     object database {
         val h2 = "com.h2database:h2:${Versions.h2}"

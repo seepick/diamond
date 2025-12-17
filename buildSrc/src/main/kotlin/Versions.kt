@@ -3,7 +3,6 @@ object Versions {
     const val java = 17
 
     val arrow = "2.2.0"
-    val eoYaml = "8.0.6"
     val exposed = "0.61.0"
     val h2 = "2.3.232"
     val hoplite = "3.0.0.RC1" // "2.9.0"

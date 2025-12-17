@@ -1,3 +1,5 @@
+// explicitly overrule dependency versions due to OWASP vulnerability reports
+
 // See: https://docs.gradle.org/current/userguide/platforms.html#sec:sharing-dep-versions-between-projects
 // basically like Maven's dependency management section but more sophisticated (BOM)
 

@@ -40,7 +40,6 @@ dependencies {
     // TODO aggregated reports
 //    kover(project(":view:view-routing"))
 //    kover(project(":view:controller-impl"))
-    implementation(project(":shared:kaml:kaml-github"))
 
     implementation("com.github.seepick.kaml:kaml-github:1.0-SNAPSHOT")
 }
@@ -49,7 +48,7 @@ registerJavaExecTask(
     JavaExecConfig(
         name = "generateKaml",
         group = "generation",
-        description = "Generate YAML based on KAML",
+        description = "Generate Yaml based on Kaml",
         mainClass = Constants.Fqn.kamlGenerator,
         args = listOf(rootDir.absolutePath),
     ),
