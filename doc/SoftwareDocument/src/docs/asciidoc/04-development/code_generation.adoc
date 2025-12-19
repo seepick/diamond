@@ -7,6 +7,8 @@ endif::[]
 
 Working with contracts, it is inevitable to make use of generators to keep the sourcecode in sync with those contracts.
 
+In general we try to move anything generated in its own GIT repository (faster, cleaner; more complex).
+
 include::{adrsdir}/building/generating-sources.adoc[leveloffset=+1]
 
 include::{adrsdir}/coding/generate-custom-openapi.adoc[leveloffset=+1]

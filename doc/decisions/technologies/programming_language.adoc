@@ -28,12 +28,15 @@ Main points for Kotlin:
 * Interoperability
 ** Allows smooth migration (Java and Kotlin live side-by-side)
 ** Always possible to fall back to java code and "java native libs" (could use Spring)
-* Concise (less boilerplate, less verbose); cleaner/less code, faster development
-* Null safety built into the type system
-* Extension functions
+* Faster Development
+** Concise, expressive (less boilerplate, less verbose); cleaner/less code,
+* Higher stability, fewer bugs
+** Null safety built into the type system
+** Immutability by default (collections)
+* High performance with coroutine support
 * Functional (functions as first-class citizens; higher-order functions)
-* Immutability by default (collections)
-* JetBrains supported, tooling (IDE!), ecosystem
+* Extension functions
+* Great Tooling: JetBrains supported (IDE!), growing ecosystem
 
 Side points for Kotlin:
 
@@ -42,7 +45,6 @@ Side points for Kotlin:
 * Bypass type erasure with inline functions and reified generics (have type parameter available at runtime, no more typeOf magic)
 * Default and named parameters
 * String templating
-* Coroutines (async)
 
 Some things Java was able to catch up a bit (yet sometimes a bit poorly implemented): lambdas, method reference, pattern matching, records.
 

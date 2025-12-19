@@ -44,14 +44,13 @@ Each architectural layer is composed of several (sub-)modules (in Gradle termino
 .The modules the application is composed of and parts of its "neighboring" components.
 image::{imgdir}/diagrams/application-modules.png[scaledwidth=100%]
 
-
-* `app` - the main entry point to start up the application; has a dependency on all submodules (incl. impls) and wires the dependency injection context; reads the configuration and starts the webserver.
+* `app` - the main entry point to start up the application; has a dependency on all Koin submodules (incl. impls) and wires the dependency injection context; reads the configuration and starts the Ktor webserver.
 * `view` - container for all HTTP API related routes and controllers
-** `view-routing` - the endpoint definition and reading of relevant data from the HTTP request
-** [line-through]#`view-model`# - No! as those are (OpenAPI) generated and oustourced
+** `view-routing` - the endpoint definition and reading of relevant data from the HTTP request; exception/failure handling
+** [line-through]#`view-model`# - No! as those DTOs are (OpenAPI) generated and oustourced
 ** `controller-api` - abstraction of client requests (free of webframework references, potentially easier to test; see open question section for details)
-** `controller-impl` - transforming view-models into domain-models (OpenAPI spec)
-* `domain`` - container for business logic, free from any framework/tech-references
+** `controller-impl` - request/response mapping; transformation from view-models (OpenAPI spec) into domain-models (clean business entities)
+* `domain`` - container for business logic/rules, entities/value objects (free from any framework/tech-references!); semi-hexagonal architecture
 ** `domain-model` - shared representation of a domain object and errors
 ** `domain-logic-api` - interfaces/entry points for controllers
 ** `domain-logic-impl` - actual business features
@@ -65,20 +64,21 @@ image::{imgdir}/diagrams/application-modules.png[scaledwidth=100%]
 ** `extern-stub` - used during testing (and local development)
 ** [line-through]#`extern-model`# - No! as this needs to be generated and outsourced.
 (YAML, WSDL)
-* `shared` - container for common infrastructure code (can be potentially outsourced over time)
+* `shared` - container for common functionality/infrastructure code (can be potentially outsourced over time)
 ** `shared-common` - the obligatory language/standard library extensions
 ** `shared-test` - framework extensions, fixtures, logging
 ** `shared-logging` - programmatic logback configuration (code > markup)
 ** `shared-config` - custom functionality for sophisticated configuration management
-** `shared-xxx` - more to come...
+** `shared-xxx` - ... more cross-cutting concerns (metrics, HTTP, scheduling, security)...
 * `itest` - integration tests with Cucumber/Gherkin (BDD) not leaving application boundary (full control and lightning fast)
 * `client-sdk` - easy to use API SDK (multiplatform porject, reusable for JVM and JS/TypeScript, thus frontend)
 
 External libraries (own repository), yet maintained by us:
 
-* `api-SDK` - containing the OpenAPI specification and generated sources (see chapter <<development_codegeneration>>)
+* `api-SDK` - containing the OpenAPI specification (Yaml) and generated (Kotlin Multiplatform) sources (see chapter <<development_codegeneration>>)
+** The OpenAPI spec is a contract and owned by developers (backend and frontend), testers, and business alike; our service is "just an implementation" of it, tied to an interface (=contract).
 ** `api-model` - entities supported by specific serialization framework (usable by `client-sdk`)
-** `api-server-routes` - webframework specific code to tie the contract to the implementation
+** `api-server-routes` - webframework specific server side code to tie the contract to the implementation (jvm only)
 * `<THIRDPARTY>-SDK` - external systems (OpenAPI/WSDL) own-written client SDK (outsource generated code)
 * `etest` - end-to-end system tests residing outside to decouple it from the implementation; only gets environment base URL for blackbox access
 * `openapi-gen` - custom OpenAPI generators (resides in shared for now, needs to be externalized)
@@ -123,4 +123,4 @@ Best Practices:
 * We maintain a client-useful (confirmed benefit) SDK for our API ourselves.
 ** We potentiialy used it ourselves in tests, http-controllers, etc.
 
-include::{adrsdir}/application/choose-layer-granularity.adoc[leveloffset=+1]
+include::{adrsdir}/application/layer-granularity.adoc[leveloffset=+1]

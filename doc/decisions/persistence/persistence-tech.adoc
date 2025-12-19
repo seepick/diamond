@@ -34,8 +34,10 @@ Author: Seepick
 Production:
 
 . Oracle
-. Postgres, MariaDB (MySQL)
-. MS SQL Server
+. Postgres: default modern choice
+. MariaDB (MySQL): somewhat acceptable
+. MS SQL Server: preferable in an "MS-native" environment
+. CockroachDB: cloud-native
 
 Test/Dev:
 

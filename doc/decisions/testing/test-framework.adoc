@@ -18,11 +18,20 @@ Author: Seepick
 
 *Options*
 
-* JUnit obviously; mature, well-known.
-* TestNG is more modern and focus also on integration tests (opposed to JUnit's focus on, well... units).
-* Spek; nice, but not really.
-* Kotest is Kotlin-idiomatic framework using code over config (speak: annotations).
-* (Cucumber; for BDD, not regular tests)
+* JUnit
+** Obviously, legacy; mature, well-known.
+* TestNG
+** The more modern follow-up of JUnit.
+** Focuses also on integration tests (opposed to JUnit's focus on, well... units).
+* Spek
+** Nice, but not really.
+* Kotest
+** A test framework and assertion library (property testing)
+** A Kotlin-idiomatic framework using code over config (speak: annotations).
+** Can reuse JUnit 5 engine or run with its own (Gradle integration).
+** BAD: IDE integration a bit worse (dynamic nature of added tests).
+* Cucumber
+** For BDD, not regular tests...
 
 *Decision*
 

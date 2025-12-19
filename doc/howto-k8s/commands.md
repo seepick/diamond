@@ -2,6 +2,7 @@ minikube
 ====
 
 * Install `❯ homebrew install minikube`
+* might need to check whether your OS supports virtualization (maybe also need a hypervisor like virtualbox?)
 * Running `❯ minikube start` you might receive an error:
     * "_❌ Exiting due to DRV_DOCKER_NOT_RUNNING: Found docker, but the docker service isn't running. Try restarting the
       docker
@@ -24,11 +25,20 @@ Assuming we have deployed the demo-app image `demo-app:latest`.
     * https://www.baeldung.com/ops/docker-local-images-minikube
     * might not work directly; simply use kubernetes manifest files instead
 
+* `minikube delete` to delete the cluster
+* `minikube addons list` to list all available addons (plugins like; ingress, istio, ...)
+    * enable addon during startup `minikube start --addons <name1> --addons <name2>` or later
+      `minikube addons enable <name>` (https://minikube.sigs.k8s.io/docs/handbook/deploying/)
+
+* get external URL: `minikube service my-demo-app --url`
+
 kubectl
 ====
 
 * Install `❯ brew install kubernetes-cli`
 * Configure your shell first: `alias k=kubectl`
+    * Enable ZSH plugin for autocompletion and many more aliases:
+    * https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/kubectl/kubectl.plugin.zsh
 * Commands follow a common pattern: `k <ACTION> <OBJECT> [IDENTIFIER] [OPTIONS]`
     * ACTION: get, describe, delete, apply, edit, logs, exec, port-forward, ...
     * OBJECT: pods, nodes, deployments, services, ...

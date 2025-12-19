@@ -1,4 +1,4 @@
-= Access SFTP service
+= SFTP Server Connection
 
 [QUESTION]
 ====

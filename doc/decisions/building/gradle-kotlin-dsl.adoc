@@ -23,3 +23,4 @@ Author: Seepick
 *Decision*
 
 * As the project is already using Kotlin, it makes sense to configure Gradle with Kotlin as well (one language).
+* The standard choice for Kotlin (project in Kotlin, build in Kotlin), including `buildSrc` convention plugins.

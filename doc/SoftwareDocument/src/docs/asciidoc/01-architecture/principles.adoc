@@ -4,13 +4,16 @@ To come to a decision, we need basic values (principles) to refer back to, to ch
 Thus "guiding" us into the right (value-appropriate) direction.
 This is by no means a complete list, nor is the order of any particular importance; it's just a quick beginning, an inspiration...
 
-* Clean code, clean architecture.
-* Single responsibilty; one, and only one thing well.
-* Clear defined (and clean) interfaces.
-** Hiding internals, exposing only what's relevant.
+* Clean code, clean architecture (business/domain focused; hexagonal).
+* Single responsibilty; one, and only one thing well (SRP, SoC).
 * Divide and conquer; as small as possible, as big as necessary.
+* Clearly defined (and clean) interfaces.
+** Hiding internals, exposing only what's relevant.
 * Reuse, externalize as much as possible infrastructure code; focus on business features.
 * No classpath pollution; minimal as possible (Gradle's `implementation` vs `api` dependency scope).
+* Use simple non-blocking async code via coroutines.
+* Use sealed classes for predictable error modeling.
+* Use Results/Either types for predictable outcomes.
 
 Based on some KPIs:
 
@@ -18,3 +21,34 @@ Based on some KPIs:
 * High quality, many tests, low bugs.
 * API response times of Xms (performance tests).
 * Build time max X minutes locally; build pipeline max X+ minutes.
+
+== Maining the same Level of Abstraction
+
+* This relates primarily in code, its about the layering (but you apply this universal principle also to meetings, requirements, etc.).
+* sample high level code (business feature talk):
+
+.Doing it wrong: Changing levels of abstraction
+[source,kotlin]
+----
+person.sendTask(task) // high level
+fileServer.upload(file) // low level ! wrong abstraction !
+notifier.notify(person) // high level
+----
+
+* In the example above, the lower level (file interaction) pierces through the "membranes" of the layering, penetrating into an upper layer (domain entities).
+* The solution would be to lift this fundamental command by capturing its essence and use domain language: `notifier.notifyDepartment(domainEntity)`
+
+== Keep a Clean Architecture by using Adapters
+
+* Keep your own architecture clean by fencing off external dirty architectura via adapters (wrap them around).
+** NO: App directly communicating via files on an SFTP server (guts, internals, no resource mgmt; conflicting with other users; deletion of files; polling)
+** YES: Adapter service sitting as a man-in-the-middle, exposing the desired architecture; shielding from sh...
+** Basically applying the common divide-and-conquer principle (or: SoC, SRP).
+** Every external service, we have an abstraction if necessary.
+*** SDK-client, to formalize the contract (Gherkin tests; easy for exchanging system assumptions).
+* Consequences:
+** Decrease local complexity at the cost of increasing global complexity.
+** The service is very easy to setup and test.
+** The adapter can be tested in isolation (easier, focus, faster).
+** Defining a clear contract (self-made up?) and potentially doing contract-testing.
+* Ultimately, those adapters should reside in the the external system.

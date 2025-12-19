@@ -1,4 +1,4 @@
-= Dependency Injection Decision
+= Dependency Injection Framework
 
 [QUESTION]
 ====
@@ -24,13 +24,20 @@ Author: Seepick
 
 *Options*
 
-* Spring Framework, obviously
+* link:https://spring.io/projects/spring-framework[Spring Framework]
 ** Supports manual @Configuration bean definition (what's the state with defining them functional style?)
-* Guice, a bit better
-* Pico, too pico/small
-* Koin, Kotlin-idiomatic, modern
-** manual configuration and wiring (no classpath scan)
-** fully programmatic; using strictly code over annotations
+* link:https://github.com/google/guice[Guice]
+** Google's lightweight DI frameowrk, similar to Koin (programmatic modules)
+* link:http://picocontainer.com/introduction.html[Pico]
+** too pico/small
+* link:https://dagger.dev[Dagger]/Hilt
+** compile-time DI (fast, but more complex; android style)
+* link:https://insert-koin.io/[Koin]
+** Simple (no proxies/reflection magic), lightweight, Kotlin-idiomatic, modern
+** Full control of configuration and wiring (no classpath scan)
+** Fully programmatic; using strictly code over annotations
+** Well integrated with other libraries (Ktor)
+
 
 *Decision*
 

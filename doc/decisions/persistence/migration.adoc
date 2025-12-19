@@ -1,0 +1,28 @@
+= Database Migration Library
+
+[QUESTION]
+====
+Which library to use for migrating our database schema with new versions?
+====
+
+[TIP]
+====
+Status: Accepted +
+Created: 19.12.2025 +
+Author: Seepick
+====
+
+*Context*
+
+* When changes need to be made about the schema, we need a tool to manage these updates.
+
+*Options*
+
+. Liquibase
+** XML, higher abstraction
+. Flyway
+** Native SQL, DBMS specific
+
+*Decision*
+
+* Liquibase, higher abstraction, more flexibility.

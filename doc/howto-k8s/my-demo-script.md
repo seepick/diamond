@@ -2,6 +2,7 @@ k8s handson demo
 
 see: https://www.youtube.com/watch?v=r2zuL9MW6wc
 
+
 Upfront Preparation
 =====
 
@@ -20,7 +21,9 @@ Basic K8s
 
 * containerization
     * simple webapp, dockerfile, (podman?), create image (standalone and lightweight)
-* start cluster
+* start minikube cluster
+    * run `❯ minikube status`
+    * reuse minikube tutorial: https://kubernetes.io/docs/tutorials/hello-minikube/
 * create deployment (explain: node, container, pod)
     * login into container, curl localhost
     * expose service; curl pod-host

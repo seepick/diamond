@@ -22,4 +22,4 @@ include::{adrsdir}/technologies/webframework.adoc[leveloffset=+2]
 include::{rootdir}/view/view-routing/src/main/kotlin/nl/uwv/smz/diamond/view/routing/healthRouting.kt[]
 ----
 
-include::{adrsdir}/persistence/choose-persistence-tech.adoc[leveloffset=+1]
+include::{adrsdir}/persistence/persistence-tech.adoc[leveloffset=+1]

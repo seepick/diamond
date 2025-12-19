@@ -1,0 +1,30 @@
+= HTTP Client Library
+
+[QUESTION]
+====
+Which library to use to make HTTP requests to other services?
+====
+
+[TIP]
+====
+Status: Accepted +
+Created: 19.12.2025 +
+Author: Seepick
+====
+
+*Context*
+
+* We need to execute HTTP requests.
+
+*Options*
+
+.OkHttp
+. Java native Http Client
+. Apache Http Client
+. Feign
+. Ktor client
+** Same coroutine-first design; Install JSON, Logging, Retry, etc.
+
+*Decision*
+
+* Ktor

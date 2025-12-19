@@ -91,3 +91,8 @@ fun Service.`GOOD apply`() = apply {
 
 include::{adrsdir}/coding/explicit_exception_handling.adoc[leveloffset=+2]
 
+== Logging
+
+include::{adrsdir}/libraries/logging-configuration.adoc[leveloffset=+2]
+
+include::{adrsdir}/libraries/logging-with-kotlin.adoc[leveloffset=+2]

@@ -25,8 +25,11 @@ Author: Seepick
 *Options*
 
 . link:https://www.jetbrains.com/exposed/[Exposed,window=_blank] by JetBrains
-** Seems production ready; mature and stable enough.
-** Lightweight and typesafe.
+** Lightweight and typesafe; Kotlin-first ORM/SQL DSL
+** Great for schema-first development.
+** Production ready; mature and stable enough.
+. JOOQ
+** No
 . https://www.ktorm.org[KTorm,window=_blank]
 ** ORM mapper for Kotlin, pure JDBC
 . JPA / Hibernate

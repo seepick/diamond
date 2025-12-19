@@ -29,20 +29,27 @@ Author: Seepick
 ** Difficult to start only parts of the application (testing), in isolation (parallel testing; @DirtiesContext), due to classpath scanning and annotations usage.
 . Ktor
 ** Lightweight, modern (coroutines), multiplatform (typescript), server and client.
-** Less popular (getting better), less mature, smaller community (documentation).
+** Less popular (getting better; dev familiarity), less mature, smaller community/ecosystem (libs, plugins, documentation).
 ** Much needs handwritten; some good (code, control), some bad (OpenAPI generation)
 ** Everything is code (instead of annotations), there is a beautifully simple way to do it, and so extremely flexible, that every test strategy we can imagine can be implemented.
+. Quarkus
+** Currently a very popular alternative to the aforementioned.
+** Nore lightweight (build/start time, lower resource consumption) than JEE implementations
+** Kube-native: pre-built integrations increasing productivity.
 . JEE JAX-RS
 ** Jersey, ReST-easy, ... the big ones.
-. Quarkus
-** More popular, more lightweight than JEE implementations; cloud native.
 
-Spring and Kotlin?
+Or maybe Spring with Kotlin?
 
-* more and more attention from Spring towards Kotlin; more support
-* see link:https://github.com/spring-attic/spring-fu/tree/main/kofu[kofu] for spring experimental support to make it look like ktor
-* also interesting: link:https://docs.spring.io/spring-integration/reference/kotlin-dsl.html[Spring Kotlin DSL]
+* More and more attention from Spring towards Kotlin; more support.
+* Also interesting: link:https://docs.spring.io/spring-integration/reference/kotlin-dsl.html[Spring Kotlin DSL]
+* See link:https://github.com/spring-attic/spring-fu/tree/main/kofu[kofu] for Spring experimental support to make it look like ktor.
 
 *Decision*
 
 * We use Ktor, fitting in the tech-stack for a modern, safe, rapid development approach.
+* It's lightweight, requires minimal boilerplate
+* Code as first-class-citizens (no annotations/properties)
+* It's coroutine-based thus extremely efficient
+* Fast startup and low memory footprint (compared to Spring)
+* Developed by JetBrains which creates synergies (Kotlin, Exposed, Serialization)

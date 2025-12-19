@@ -20,13 +20,13 @@ Author: Seepick
 *Options*
 
 . Jackson
-** Very mature and well-known.
+** Very mature and well-known; legacy
 ** Some "hickups" with Kotlin's different nature.
 . gson
-** Nah
+** could be ok; legacy
 . Kotlinx Serialization
-** Kotlin-idiomatic
-** using annotations; meh, for compiler magic to do its work.
+** Fastest and most Kotlin-idiomatic; Native support in Ktor
+** Using annotations (meh), for compiler magic to do its work.
 ** Simple to write custom de/serializers.
 ** Multiplatform support (client SDK for frontend).
 

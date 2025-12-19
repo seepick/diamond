@@ -41,16 +41,28 @@ object Deps {
 Gradle:: Build system to run tasks such as compiling, testing, and packaging ("_newer Maven_", using its sophisticated dependency management).
 Kotlin:: General purpose programming language running on the JVM ("_newer Java_", fully interoperable).
 
+include::{adrsdir}/libraries/dependency-injection.adoc[leveloffset=+3]
+
+include::{adrsdir}/libraries/datetime.adoc[leveloffset=+3]
+
 === Web
 
 Ktor:: Lightweight web framework ("_newer Spring WebMVC_") and client.
 Serializationx:: Kotlin specific JSON serialization (instead of Jackson).
+
+include::{adrsdir}/libraries/dto-mapping.adoc[leveloffset=+3]
+
+include::{adrsdir}/libraries/serialization.adoc[leveloffset=+3]
 
 === Persistence
 
 Exposed:: Typesafe SQL library (not a full fledged ORM like JPA/Hbernate).
 Liquibase:: Database migration library using XML.
 H2:: As an in-memory database for testing and local development.
+
+include::{adrsdir}/persistence/database-library.adoc[leveloffset=+3]
+
+include::{adrsdir}/persistence/migration.adoc[leveloffset=+3]
 
 === Test
 
@@ -74,25 +86,8 @@ Koin:: Dependency injection, actually service locator, framework ("_newer Spring
 Arrow:: Functional library used for link:https://proandroiddev.com/how-to-use-arrows-either-for-exception-handling-in-your-application-a73574b39d07[better exception handling] via `Either`.
 link:https://github.com/sksamuel/hoplite[Hoplite]:: Typesafe loading of application configuration.
 
-== Library Choices
+include::{adrsdir}/technologies/scheduler.adoc[leveloffset=+3]
 
-include::{adrsdir}/persistence/choose-database-access.adoc[leveloffset=+2]
+include::{adrsdir}/technologies/message_queue.adoc[leveloffset=+3]
 
-include::{adrsdir}/libraries/dependency-injection.adoc[leveloffset=+2]
-
-include::{adrsdir}/technologies/scheduler.adoc[leveloffset=+2]
-
-include::{adrsdir}/technologies/access-sftp-service.adoc[leveloffset=+2]
-
-include::{adrsdir}/libraries/choose-datetime.adoc[leveloffset=+2]
-
-include::{adrsdir}/libraries/dto-mapping.adoc[leveloffset=+2]
-
-include::{adrsdir}/libraries/serialization.adoc[leveloffset=+2]
-
-== Logging
-
-include::{adrsdir}/libraries/configure-logging.adoc[leveloffset=+2]
-
-include::{adrsdir}/libraries/logging-with-kotlin.adoc[leveloffset=+2]
-
+include::{adrsdir}/technologies/sftp-service.adoc[leveloffset=+3]

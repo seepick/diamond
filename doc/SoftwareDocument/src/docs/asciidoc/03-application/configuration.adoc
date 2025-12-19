@@ -6,6 +6,11 @@ endif::[]
 
 Describe how the application is injected with values to access services, provide credentials, thresholds and other information like from the build context (build timestamp, version number, ...).
 
+The common approach is to use *environment variables* set by the container where the application is running.
+We could consider using a more sophisticated configuration manager (runtime changes?).
+For secrets its common to use the cloud providers manager (vault, AWS secrets manager, OS' sealed secrets).
+An `.env` file is usually only used for local development.
+
 include::{adrsdir}/building/versioning_scheme.adoc[leveloffset=+1]
 
 == Startup Arguments

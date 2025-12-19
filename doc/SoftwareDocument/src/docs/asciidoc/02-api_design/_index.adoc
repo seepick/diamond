@@ -5,6 +5,14 @@ endif::[]
 = API Design
 
 Let's talk about everything relevant for a common HTTP, ReST-like webservice.
+To be precise, we are more doing RPC-over-HTTP instead of real ReST maturity level 3 HATEOS approach.
+
+Richardson maturity model of ReST architecture:
+
+. Remote Procedure Call: Single URI and single HTTP Verb (the swamp of pox)
+. Resources: Multiple resource-based URIs and single HTTP verb
+. Verbs: Multiple resource-based URIs and multiple HTTP verbs (utilizing potential of HTTP)
+. HATEOS: Hypermedia links to guide client through states.
 
 include::common_features.adoc[leveloffset=+1]
 

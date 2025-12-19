@@ -48,6 +48,9 @@ LDAP integration:: A common way to do authentication in the corporate world.
 
 Circuit breaker:: Use arrow-fx-coroutines (external services and also DB?)
 
+Implement cronjob functionality:: Internal lib (needed for programmatically created events) or triggered by environment?
+Via endpoint triggered externally for testability.
+
 == Architecture
 
 Move generic (HTTP) functionality into a reusable shared library:: Thinking about pagination/sorting/filtering, from API but also DB point of view.

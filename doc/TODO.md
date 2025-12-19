@@ -1,8 +1,14 @@
 🔥📘🔥 Round up Documentation
 ========================================================================================================================
 
+* principle, code over data (yaml, xml, json)
+* document health endpoint; auto-disccover services with Healthable interface
+* use manes versions plugin, manually, dependabot/renovate nice idea, but usually doesnt work and is annoying/creating
+  noise
+* go through code and find small design decisions: Arb test-fixtures, no DBO but domain immediately, enums instead of
+  boolean-flags, sealed classes/enums for exhaustive whens (compile safety, instead runtime bugs)
 * run spell checker
-* send to alex&shai; get feedback from them
+* go through tasktags, setup roadmap
 
 Backlog
 ========================================================================================================================
@@ -62,7 +68,11 @@ Build
 Asciidoc
 -------------------------
 
+* generate documentation in nightly
+    - generate diagram images
+    - commit back git changes to docs/ for github pages
 * AsciiDoc should fail the build if files not found
+* generate and copy gradle reports (HTML, TXT) to docs/ folder and link in doc
 * Render draw.io diagrams via Gradle; do it manually in code?
     * https://github.com/laingsimon/render-diagram/blob/master/drawio-renderer/src/main/java/com/simonlaing/drawiorenderer/controllers/RenderController.java
     * what about: plantuml4idea? (graphivz/dot required)

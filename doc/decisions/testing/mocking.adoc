@@ -21,7 +21,8 @@ Author: Seepick
 
 * Dear JMock, EasyMock, and especially Mockito...
 ** We love you all, you brought us good times, and now it's time to move on.
-* Mockk Kotlin-idiomatic modern library.
+* Mockk
+** Kotlin-idiomatic modern library
 ** infix functions for readability coroutine support.
 
 *Decision*

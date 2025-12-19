@@ -18,6 +18,7 @@ Unit tests for single classes/functions; integration tests for the whole applica
 == Integration Tests
 
 * Narrow definition: Everything testing 2+ classes; broad definition: Testing the application as a whole.
+** Use the Ktor test-engine to improve speed; pretending to do HTTP without the need of actually communicating it (port allocating, etc.).
 * Never leaves the application boundary, thus in *full control*; stable, but a bit slower.
 * Relying on an (implicit/self-defined) contract is risky (better E2E).
 
@@ -47,7 +48,7 @@ Scenario: Get crystals when single exists
 ** Sometimes the functionality is "hidden" and not testable from the outside.
 ** No proper control over the (test) data.
 * Details:
-** Using Karate test framework, only change base URL to target another environment.
+** Using Karate (Cucumber?) test framework, only change base URL to target another environment.
 ** Use @WIP tagging; maybe Jira ID @ABC-12345
 ** Each environment (DEV, FB-*, TEST, ACC) is running them
 *** Could provide @ReadOnly to target also PROD

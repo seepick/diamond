@@ -1,0 +1,31 @@
+= Message Queues
+
+[QUESTION]
+====
+Which product to use to implement working with events/messages?
+====
+
+[TIP]
+====
+Status: Draft +
+Created: 19.12.2025 +
+Author: Seepick
+====
+
+*Context*
+
+* Some systems already work with it, sometimes architecture requires this approach.
+* Several options exist, which to choose and why?
+
+*Options*
+
+. Kafka
+** Most popular/common; high throughput
+. RabbitMQ
+** Simple queueing
+. Cloud offers
+** Google PubSub, AWS SNS/SQS (cloud native)
+
+*Decision*
+
+* ???
