@@ -1,5 +1,5 @@
 plugins {
-    id("kotlin-multiplatform")
+    kotlin("multiplatform")
 //    kotlin("plugin.serialization")
 }
 
@@ -10,27 +10,32 @@ plugins {
 kotlin {
     jvm()
     js {
-        // https://kotlinlang.org/docs/js-project-setup.html#support-for-es2015-features
-        nodejs {} // or browser {}
+//        // https://kotlinlang.org/docs/js-project-setup.html#support-for-es2015-features
+        browser {}
+        binaries.executable()
+        generateTypeScriptDefinitions() // d.ts
     }
 
     // https://ktor.io/docs/client-create-multiplatform-application.html
-    sourceSets {
-        commonMain.dependencies {
-//            implementation(Deps.ktor.client.core)
-//            implementation(Deps.serializationx)
-//            implementation("kotlin-stdlib)
-            // implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-        }
-        jvmMain.dependencies {
-//            implementation(Deps.ktor.client.cio)
-        }
-        jsMain.dependencies {
-//            implementation(Deps.ktor.client.?which?)
-        }
-        // TODO javascript...
-
-        commonTest.dependencies {
-        }
-    }
+//    sourceSets {
+//        commonMain.dependencies {
+// //            implementation(Deps.ktor.client.core)
+// //            implementation(Deps.serializationx)
+// //            implementation("kotlin-stdlib)
+//            // implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+//        }
+//        jvmMain.dependencies {
+// //            implementation(Deps.ktor.client.cio)
+//        }
+//        jsMain.dependencies {
+// //            implementation(Deps.ktor.client.?which?)
+//        }
+//        commonTest.dependencies {
+//        }
 }
+
+// tasks.withType<KotlinJsCompile>().configureEach {
+//    compilerOptions {
+//        target = "es2015"
+//    }
+// }

@@ -1,4 +1,4 @@
-import gradle.kotlin.dsl.accessors._dfefe04184237bb8e2cfe40aa2a2bf83.java
+import gradle.kotlin.dsl.accessors._662d112ba7efebaa06e1f8125d03b535.sourceSets
 import org.gradle.api.Project
 import org.gradle.api.tasks.JavaExec
 import org.gradle.kotlin.dsl.get
@@ -58,6 +58,6 @@ fun Project.registerJavaExecTask(config: JavaExecConfig) {
         mainClass.set(config.mainClass)
         args = config.args
         workingDir = rootDir
-        classpath = java.sourceSets["test"].runtimeClasspath
+        classpath = sourceSets["test"].runtimeClasspath
     }
 }
