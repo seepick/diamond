@@ -20,4 +20,3 @@ a single [PDF file](https://seepick.github.io/diamond/Diamond-SoftwareDocument.p
 
 Technical relevant decisions are well documented in
 so-called [architecture decision records](https://github.com/seepick/diamond/tree/main/doc/decisions).
-
