@@ -10,21 +10,6 @@ fun enhanceSystemProperties(vararg more: Pair<String, String>): Map<String, Any>
 fun enhanceSystemProperties(more: List<Pair<String, String>>): Map<String, Any> =
     System.getProperties().asIterable().associate { it.key.toString() to it.value }.plus(more.toMap())
 
-// store in ~/.gradle/gradle.properties, or define in your GitHub Action workflow:
-// env:
-//   GITHUB_ACTOR: ${{ github.actor }}
-//   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-fun Project.readGithubCredentials(): Pair<String, String> {
-    fun readSingle(property: String, envVar: String): String {
-        val found = project.findProperty(property) as? String ?: System.getenv(envVar)
-        if (found.isNullOrEmpty()) {
-            error("Expected property '$property' (~/.gradle/gradle.properties) or env var '$envVar' to be defined!")
-        }
-        return found
-    }
-    return readSingle("githubPackages.user", "GITHUB_ACTOR") to readSingle("githubPackages.key", "GITHUB_TOKEN")
-}
-
 fun Project.gradleLog(message: String) {
     logger.info("[GRADLE:${fullProjectName()}] $message")
 }

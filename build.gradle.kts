@@ -17,25 +17,7 @@ allprojects {
     group = "nl.uwv.smz.diamond"
     version = appVersion
     description = "diamond sample project"
-
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
 }
-
-// FIXME re-enable! maybe deploy to official maven-repo (no need for credentials!)
-// repositories {
-//    maven {
-//        url = uri("https://maven.pkg.github.com/seepick/kaml")
-//        name = "KAML GitHubPackages"
-//        credentials {
-//            val (user, pass) = readGithubCredentials()
-//            username = user
-//            password = pass
-//        }
-//    }
-// }
 
 dependencies {
     // TODO aggregated reports
