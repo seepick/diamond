@@ -24,32 +24,33 @@ allprojects {
     }
 }
 
-repositories {
-    maven {
-        url = uri("https://maven.pkg.github.com/seepick/kaml")
-        name = "KAML GitHubPackages"
-        credentials {
-            val (user, pass) = readGithubCredentials()
-            username = user
-            password = pass
-        }
-    }
-}
+// FIXME re-enable! maybe deploy to official maven-repo (no need for credentials!)
+// repositories {
+//    maven {
+//        url = uri("https://maven.pkg.github.com/seepick/kaml")
+//        name = "KAML GitHubPackages"
+//        credentials {
+//            val (user, pass) = readGithubCredentials()
+//            username = user
+//            password = pass
+//        }
+//    }
+// }
 
 dependencies {
     // TODO aggregated reports
 //    kover(project(":view:view-routing"))
 //    kover(project(":view:controller-impl"))
 
-    implementation("com.github.seepick.kaml:kaml-github:1.0-SNAPSHOT")
+//    implementation("com.github.seepick.kaml:kaml-github:1.0-SNAPSHOT")
 }
 
-registerJavaExecTask(
-    JavaExecConfig(
-        name = "generateKaml",
-        group = "generation",
-        description = "Generate Yaml based on Kaml",
-        mainClass = Constants.Fqn.kamlGenerator,
-        args = listOf(rootDir.absolutePath),
-    ),
-)
+// registerJavaExecTask(
+//    JavaExecConfig(
+//        name = "generateKaml",
+//        group = "generation",
+//        description = "Generate Yaml based on Kaml",
+//        mainClass = Constants.Fqn.kamlGenerator,
+//        args = listOf(rootDir.absolutePath),
+//    ),
+// )
