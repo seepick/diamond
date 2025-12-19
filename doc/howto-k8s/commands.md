@@ -70,14 +70,20 @@ kube-system   kube-scheduler-minikube            1/1     Running   0            
 kube-system   storage-provisioner                1/1     Running   1 (3m58s ago)   4m33s
 ```
 
+* Get details of a specific pod:
+
+```shell
+❯ k describe pod mypodname
+```
+
 Setup
 ----
 
-* Create a static pod:
+* Create a static pod (usually we don't do that!):
 
 ```shell
-❯ k run nginx --image=nginx
-pod/nginx created
+❯ k run mypodname --image=nginx
+pod/mypodname created
 ```
 
 * Create a Deployment manifest `deployment.yaml`:

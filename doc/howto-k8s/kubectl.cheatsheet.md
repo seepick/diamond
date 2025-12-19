@@ -5,7 +5,7 @@ Basics
 * `kubectl get <object> [<name>]`
 * `kubectl describe <object> [<name>]`
 * `kubectl delete <object> <name>`
-* options: `--output=wide`, `--all-namespaces`
+* options: `--output=wide` (or `-o wide`), `--all-namespaces`
 * `kubectl version`
 
 Pod Management
