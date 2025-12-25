@@ -57,7 +57,7 @@ Terminology
 * **containerized application** - packaged as a container image
 * **Sets** - groups of objects with a common characteristic (e.g. all pods in a deployment have the same label)
 * **ReplicaSet** - manages pods based on a desired state (number of pods running; load balancing, auto-scaling)
-    * **Replication Controller** - deprecated (use ReplicateSet instead)
+    * **Replication Controller** - deprecated (use ReplicateSet instead; with rs selector field is mandatory)
 * **StatefulSet** - ?
 * **Observable** (actual current) and desired state (as configured).
     * The system is **drifting** if the differ, and k8s has to do its sync work.
@@ -170,6 +170,9 @@ Services
 * enables connectivity; lose coupling between parts of the cluster
 * to access (group of) pods within and outside the cluster (for users or other services)
 * service types:
+    * ClusterIP: (default); PS: not "ClusterIp" (uppercase!)
+        * only communication within cluster; group pods together, providing single access interface
+        * creates a virtual IP inside the cluster (communication among pods / tiers like FE and BE and DB)
     * NodePort:
         * enable access from outside the cluster (access via the cluster's IP)
         * NodePort (30000-32767) forwarded to an internal pod's (Taget)Port
@@ -177,9 +180,6 @@ Services
         * like a virtual server inside the node (has its own cluster IP)
         * PS: nodes (IPs) can be accessed from outside the cluster, via: `minikube service my-service --url`
         * implicit load balancing capabilities (random node selection by labels)
-    * ClusterIP: (default); PS: not "ClusterIp" (uppercase!)
-        * group pods together, providing single access interface
-        * creates a virtual IP inside the cluster (communication among pods / tiers like FE and BE and DB)
     * LoadBalancer:
         * create user facing, stable URL; e.g. to balance load within a tier
         * e.g. HAProxy, nginx; or on supported cloud provider, native load balancer available
@@ -190,3 +190,4 @@ IP Addresses
 
 * You must manually install cluster networking; k8s requires all communication without NAT
     * E.g. calico, canal, flannel, romana, weave net...
+

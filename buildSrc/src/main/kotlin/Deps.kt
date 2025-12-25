@@ -19,7 +19,7 @@ object Deps {
             private fun make(artifact: String) = "org.jetbrains.exposed:exposed-$artifact:${Versions.exposed}"
 
             val core = make("core")
-            val dao = make("dao")
+            val dao = make("dao") // TODO remove
             val jdbc = make("jdbc")
             val datetime = make("java-time")
         }

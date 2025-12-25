@@ -1,5 +1,5 @@
 minikube
-====
+============================
 
 * Install `❯ homebrew install minikube`
 * might need to check whether your OS supports virtualization (maybe also need a hypervisor like virtualbox?)
@@ -17,13 +17,7 @@ Assuming we have deployed the demo-app image `demo-app:latest`.
 * Verify existing: `kubectl get services demo-minikube`
 * Access via managed-browser: `minikube service demo-minikube`
     * Or portforward: `kubectl port-forward service/demo-minikube 8080:8080`
-* If pod has `ErrImagePull`:
-    * Redirect docker to minikube: `eval $(minikube docker-env)`
-    * Now build (and push) your image: `docker build -t demo-app:latest .`
-    * List all images: `minikube image ls --format table` (should see `docker.io/library/demo-app`)
-    * https://minikube.sigs.k8s.io/docs/handbook/pushing/
-    * https://www.baeldung.com/ops/docker-local-images-minikube
-    * might not work directly; simply use kubernetes manifest files instead
+
 
 * `minikube delete` to delete the cluster
 * `minikube addons list` to list all available addons (plugins like; ingress, istio, ...)
@@ -31,6 +25,17 @@ Assuming we have deployed the demo-app image `demo-app:latest`.
       `minikube addons enable <name>` (https://minikube.sigs.k8s.io/docs/handbook/deploying/)
 
 * get external URL: `minikube service my-demo-app --url`
+
+ErrImagePull Registry Issue
+---------------------------------------------
+* If pod has `ErrImagePull`...
+  * Redirect docker to minikube: `eval $(minikube docker-env)`
+  * Now build (and push) your image: `docker build -t demo-app:latest .`
+  * List all images: `minikube image ls --format table` (should see `docker.io/library/demo-app`)
+  * https://minikube.sigs.k8s.io/docs/handbook/pushing/
+  * https://www.baeldung.com/ops/docker-local-images-minikube
+  * might not work directly; simply use kubernetes manifest files instead
+* Wire Docker registry with minikube: https://minikube.sigs.k8s.io/docs/handbook/registry/
 
 kubectl
 ============================
@@ -44,7 +49,8 @@ kubectl
 General Info
 ----------------------------------------------------
 
-* Get help: `❯ k set image --help`
+* Get command overview: `❯ k `
+* Get help: `❯ k run --help` or `❯ k set image --help`
 * Commands follow a common pattern: `k <ACTION> <OBJECT> [IDENTIFIER] [OPTIONS]`
     * ACTION:
         * `get` - get a list of objects of the same type, or a single object by its ID
@@ -52,6 +58,8 @@ General Info
         * `apply` - tell k8s to apply changes to the cluster (based on a given file); changing the desired state
         * `logs` - show stdout output
         * `exec` - execute a single command (possible logging into a remote shell)
+          * Log in with a shell: `❯ k exec -it <pod-name> -- /bin/bash`
+          * Or simply use `k9s` to enable port forwarding and conveniently work on your local machine :)
         * `port-forward` - to debug a pod, expose its port, make it locally available
         * `explain` - print info for a specific object type
     * imperative style ACTIONs (don't do them! always use declarative YAML approach)
@@ -103,13 +111,22 @@ kube-system   kube-scheduler-minikube            1/1     Running   0            
 kube-system   storage-provisioner                1/1     Running   1 (3m58s ago)   4m33s
 ```
 
+* Get a bit more info (e.g. reveals node):
+
+```shell
+❯ k get pods -o wide
+NAME                                       READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+kaml-backend-deployment-7849768597-5r8wq   1/1     Running   0          43m   10.244.0.21   minikube   <none>           <none>
+kaml-backend-deployment-7849768597-qthtd   1/1     Running   0          43m   10.244.0.20   minikube   <none>           <none>
+```
+
 * Get details of a specific pod:
 
 ```shell
 ❯ k describe pod mypodname
 ```
 
-Setup
+Imperatively Modify the Cluster
 ----------------------------------------
 
 * Create a static pod (usually we don't do that!):
@@ -132,15 +149,16 @@ spec:
       image: nginx
 ```
 
-(or let it be generated: `❯ k run nginx --image=nginx --dry-run=client -o yaml > nginx.yaml` and
-`k create -f nginx.yaml`)
-
-and run it:
+* And run it:
 
 ```shell
 ❯ k create -f pod.yaml
 pod/my-pod created
 ```
+
+* Or let it be generated: `❯ k run nginx --image=nginx --dry-run=client -o yaml > nginx.yaml`
+* Reverse engineer an existing one: `❯ k get pod <pod-name> -o yaml > pod.yaml`
+
 
 * Imperative, generic edit (and apply on save): `❯ k edit deployment/nginx-deployment`
 
