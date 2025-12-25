@@ -7,6 +7,7 @@ and provides a containerized image tagged `demo-app:latest`.
 
 * `./gradlew build` for fat-jar assembly at: `build/libs/demo-app-all.jar`
 * Containerize via: `docker build -t demo-app:latest .`
+* Together: `./gradlew build && docker build -t demo-app:latest .`
 
 ## Run with Docker
 

@@ -11,7 +11,11 @@ import io.ktor.server.routing.routing
 object DemoApp {
     @JvmStatic
     fun main(args: Array<String>) {
-        embeddedServer(Netty, port = 8080) {
+        val portString = System.getenv("PORT") ?: error("PORT env var missing!")
+        val port = portString.toIntOrNull() ?: error("PORT env var invalid: [$portString]!")
+        println("Using ktor server on port [$port]")
+
+        embeddedServer(Netty, port = port) {
             println("Simulating delayed startup time (by 10secs)")
             Thread.sleep(10_000)
             println("... sleeping done; service will be ready.")
