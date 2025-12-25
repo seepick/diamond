@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: # replicate metadata
+  name: my-replicaset
+  labels:
+    app: my-app
+spec: # replica spec
+  replicas: 3
+  selector: # a replication controller didn't have this field; it can manage pods not created by itself (e.g. already existing)
+    matchLabels:
+      app: my-app
+  # actually a "pod template"; basically the content of a pod-manifest (except for apiVersion and kind)
+  template:
+    metadata: # pod-metadata
+      labels:
+        app: my-app
+    spec: # pod spec
+      containers:
+        - name: my-app-container
+          image: my-app-image:latest
+          imagePullPolicy: IfNotPresent
+          # otherwise we are warned for being a "noisy neighbor"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
