@@ -16,6 +16,8 @@ Backlog
 Impl
 ------------------------------------------------------------------------------------------------------------------------
 
+* new submodule, system-integration-tests; spin up real ktor engine, with lots of testcontainers; no cucumber, code is
+  easier
 * use SyncService to actually do something meaningful (verifable in tests)
 * change postsAPI to something meaningful
 * make cronjob triggered-able via (secured) endpoint (for testing purposes)

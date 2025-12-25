@@ -45,12 +45,14 @@ include::{adrsdir}/libraries/dependency-injection.adoc[leveloffset=+3]
 
 include::{adrsdir}/libraries/datetime.adoc[leveloffset=+3]
 
+include::{adrsdir}/libraries/dto-mapping.adoc[leveloffset=+3]
+
 === Web
 
 Ktor:: Lightweight web framework ("_newer Spring WebMVC_") and client.
 Serializationx:: Kotlin specific JSON serialization (instead of Jackson).
 
-include::{adrsdir}/libraries/dto-mapping.adoc[leveloffset=+3]
+include::{adrsdir}/libraries/http-client.adoc[leveloffset=+3]
 
 include::{adrsdir}/libraries/serialization.adoc[leveloffset=+3]
 

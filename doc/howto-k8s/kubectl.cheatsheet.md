@@ -5,13 +5,15 @@ Basics
 * `kubectl get <object> [<name>]`
 * `kubectl describe <object> [<name>]`
 * `kubectl delete <object> <name>`
-* options: `--output=wide` (or `-o wide`), `--all-namespaces`
+* `kubectl options` to print possible ones
+    * e.g.: `--output=wide` (or `-o wide`), `--all-namespaces`
+* `kubectl get pods --help` (or any other command)
 * `kubectl version`
 
 Pod Management
 ====
 
-* `kubectl get pods`
+* `kubectl get pods -o wide` (also see the node)
 * `kubectl describe pod <pod-name>`
 * `kubectl delete pod <pod-name>`
 * `kubectl logs <pod-name>`

@@ -23,8 +23,12 @@ Author: Seepick
 . Apache Http Client
 . Feign
 . Ktor client
-** Same coroutine-first design; Install JSON, Logging, Retry, etc.
+** Kotlin-idiomatic library with coroutine-first design
+** Plugins for Content-negotiation, (JSON) serializer, Logging, Retry, etc.
+** Kotlin multiplatform support (client SDKs possible)
 
 *Decision*
 
-* Ktor
+* Ktor-client
+* Fits the lightweight goal.
+* Fits in with the rest of the Ktor&co stack.

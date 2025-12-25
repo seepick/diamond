@@ -1,6 +1,4 @@
 plugins {
-    id("diamond-kotlin-common") // for util generators only
-
     id("io.ktor.plugin") version Versions.ktor apply false
     // TODO could we apply=false all other plugins here as well, and use Versions.plugins.*?!
     // instead of cumbersome impl dependency in buildSrc build file?! :)
@@ -23,8 +21,6 @@ dependencies {
     // TODO aggregated reports
 //    kover(project(":view:view-routing"))
 //    kover(project(":view:controller-impl"))
-
-//    implementation("com.github.seepick.kaml:kaml-github:1.0-SNAPSHOT")
 }
 
 // registerJavaExecTask(

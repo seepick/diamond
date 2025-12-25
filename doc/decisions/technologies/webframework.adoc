@@ -32,6 +32,7 @@ Author: Seepick
 ** Less popular (getting better; dev familiarity), less mature, smaller community/ecosystem (libs, plugins, documentation).
 ** Much needs handwritten; some good (code, control), some bad (OpenAPI generation)
 ** Everything is code (instead of annotations), there is a beautifully simple way to do it, and so extremely flexible, that every test strategy we can imagine can be implemented.
+. Micronaut
 . Quarkus
 ** Currently a very popular alternative to the aforementioned.
 ** Nore lightweight (build/start time, lower resource consumption) than JEE implementations

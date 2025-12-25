@@ -5,6 +5,11 @@ Thus "guiding" us into the right (value-appropriate) direction.
 This is by no means a complete list, nor is the order of any particular importance; it's just a quick beginning, an inspiration...
 
 * Clean code, clean architecture (business/domain focused; hexagonal).
+* Code over data (ie.
+Kotlin over properties file)
+* Composition over inheritance.
+* Choose non-invasive, lightweight, modern frameworks.
+* Favor immutability; no side-effects
 * Single responsibilty; one, and only one thing well (SRP, SoC).
 * Divide and conquer; as small as possible, as big as necessary.
 * Clearly defined (and clean) interfaces.
@@ -21,6 +26,32 @@ Based on some KPIs:
 * High quality, many tests, low bugs.
 * API response times of Xms (performance tests).
 * Build time max X minutes locally; build pipeline max X+ minutes.
+
+== Cloud-native Service
+
+* Statelessness (scaling/load balancing, resilience/easy restarts; fast startup/shutdown)
+* Independent of other deployments
+* Loose coupling (communication via API or events); async communication preferred
+** no shared DB/filesystem/runtime state (incl.
+SFTP)
+* Version forward and backward compatible
+* Provide "cluster management endpoints": readiness, health and (graceful) shutdown
+* Simply log to console (no need for file based logging on a pod)
+* Containerized (OCI image); no in-place mutation
+* Environment-agnostic, easy to configure (using env-vars/secrets, 12-Factor principle)
+* Using GitOps: Declarative configs, drift detection, reproducible environments (GIT single source)
+* Elastic under load
+* Resilient by design: retry, circuit breaker, smart timeouts ("Failure is assumed, not exceptional")
+** Partial failures tolerance and fallback responses
+
+Common Anti-Patterns:
+
+* Shared database across services
+* Stateful services without external storage
+* Manual deployments
+* Snowflake environments
+* Hardcoded config
+* No metrics or health checks
 
 == Maining the same Level of Abstraction
 

@@ -4,6 +4,8 @@ endif::[]
 
 = Testing
 
+NOTE: "_The greatest glory in living, lies not in never falling, but in rising every time we fall._" - Nelson Mandela
+
 All tests are automated; there is not a single manual test!
 We have full confidence in our tests as a safety net.
 
