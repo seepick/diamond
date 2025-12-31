@@ -9,14 +9,6 @@ import liquibase.database.jvm.JdbcConnection
 import java.sql.DriverManager
 import kotlin.use
 
-data class DatabaseAccess(
-    val jdbcUrl: String,
-    val username: String,
-    val password: String,
-) {
-    override fun toString() = "DatabaseAccess[jdbcUrl=$jdbcUrl; username=$username; password=****]"
-}
-
 object LiquibaseMigrator {
 
     private const val CHANGELOG_CLASSPATH = "/liquibase.xml"

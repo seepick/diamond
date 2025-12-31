@@ -35,14 +35,17 @@ Main points for Kotlin:
 ** Immutability by default (collections)
 * High performance with coroutine support
 * Functional (functions as first-class citizens; higher-order functions)
-* Extension functions
+* Extension functions (discoverability, auto-completion)
 * Great Tooling: JetBrains supported (IDE!), growing ecosystem
 
 Side points for Kotlin:
 
-* Concise lambda definition (custom DSLs)
+* Concise lambda definition
+* Easy to write custom DSLs
 * Type inference, smart casts
-* Bypass type erasure with inline functions and reified generics (have type parameter available at runtime, no more typeOf magic)
+* Simple delegates with `by`
+* Bypass type erasure with inline functions and reified generics
+** Meaning, having the type parameter available at runtime, no more `typeOf` magic
 * Default and named parameters
 * String templating
 

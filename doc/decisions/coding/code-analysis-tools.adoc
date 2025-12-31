@@ -18,6 +18,7 @@ Author: Seepick
 * Provide a sophisticated way to configure the rules (ruleset); define thresholds.
 * Provide easy to manage suppression filters (path pattern, selective, conditional; concise)
 ** This usually tends to overflow over time; unmanagable list of chaos.
+** It is required that it's possible to use @Suppress annotations.
 * It needs proper integration in:
 ** Build: verify quality gates, break if below thresholds
 ** Dashboards: produce result in common formats; feed it to SonarQube (?)
@@ -32,9 +33,11 @@ Author: Seepick
 ** Checkstyle like XML configuration; sophisticated, looks promising.
 ** Good IDE and Gradle integration; can also create sarif format results
 * ktlint
+** More a auto-formatter than static code analsysis.
 ** Configured via the `.editorconfig` file; flat list of properties to en/disable rules.
 ** Can be included by Detekt (gradle plugin).
 
 *Decision*
 
-* Use Detekt (checkstyle like), and ktlint (autoformatter)
+* Use Detekt; seems mature, many rules, IntelliJ plugin, suppress annotation.
+* Do NOT use ktlint, detekt is sufficient (what's its additional benefit?), and configuration is cumbersome.

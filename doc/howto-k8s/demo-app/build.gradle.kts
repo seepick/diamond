@@ -18,7 +18,7 @@ dependencies {
 
     implementation("org.liquibase:liquibase-core:4.31.1")
     runtimeOnly("com.mattbertolini:liquibase-slf4j:5.1.0")
-    runtimeOnly("org.postgresql:postgresql:42.1.4")
+    runtimeOnly("org.postgresql:postgresql:42.7.8")
 }
 
 application {
