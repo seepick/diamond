@@ -86,8 +86,13 @@ Commands
         * `-o <format>` - change the output format, e.g. to `yaml`, `wide`, `name`, `json`, `jsonpath`, `go-template`
         * `--dry-run=client` - this will not create the resource; instead it will tell you whether the resource can be
           created and if your command is right (use in combination with `-o yaml`)
-* Tip: use shorter names such as: "po" over "pods", "deploy" over "deployment", "svc" over "service", "ns" over "
-  namespace", "cm" over "configmap
+* Tip: use shortnames such as (list them all via `❯ k api-resources`):
+    * pods -> po
+    * deployment -> deploy
+    * service -> svc
+    * namespace -> ns
+    * configmap -> cm
+    * networkpolicies -> netpol
 * `apply -f .` for all files in the cwd
 * `apply` vs `create`
     * apply: declarative, repeatable updates
@@ -102,10 +107,12 @@ Commands
 Context Configuration
 ----------------------------------------------------
 
+* the `~/.kube/config` Yaml contains: clusters (dev/prod), users (creds), contexts (cluster+user, optional namespace)
 * list all contexts `❯ k config view`
 * get current context name: `❯ k config current-context`
 * change ns for current context permanently: `❯ k config set-context --current --namespace=dev`
     * `❯ k config set-context $(k config current-context) --namespace=dev`
+    * to override in the config file: `❯ k config use-context foo@bar`
 * change current cluster/ns:
 
 ```shell
@@ -113,6 +120,9 @@ kubectl config set-context dev --namespace=development \
   --cluster=some_cluster \
   --user=some_user
 ```
+
+* change by specific config file location: `❯ k config --kubeconfig=/folder/my-config use-context my-context`
+    * or change for your shell via: `export KUBECONFIG=/folder/my-config`
 
 Basic Orientation
 ----------------------------------------------------
@@ -145,8 +155,9 @@ kube-system   storage-provisioner                1/1     Running   1 (3m58s ago)
 * Get several object types at the same time: `❯ k get deploy,rs,po`
 * Get several objects of the same time: `❯ k get po pod1 pod2` (or `describe` it)
 * List labels of all pods (no need to describe): `❯ k get po --show-labels` (simply add a column, nice)
-    * Or be more specific: `❯ k get pods --selector foo=bar`
+* Filter objects based on selectors: `❯ k get pods --selector foo=bar`
     * And properly count them: `❯ k get pods --selector foo=bar --no-headers | wc -l`
+    * Multiple for all object type: `❯ k get all --selector foo=bar,baz=foo `
 * Watch state with the `-w` suffix: `❯ k get pods -w`
 * Get a bit more info (e.g. reveals node):
 
@@ -393,14 +404,14 @@ spec.containers:
   - image: nginx
     name: my-nginx-container
     # overrides Dockerfile CMD
-    args: ["arg1"] 
+    args: [ "arg1" ]
     # overrides Dockerfile ENTRYPOINT
-    command: ["exe2"]
+    command: [ "exe2" ]
     or non-inline list yaml syntax:
     command:
-    	- "foo"
-    	- "42"
-   	# => entries MUST be in double-quotes (even numbers!)
+      - "foo"
+      - "42"
+    # => entries MUST be in double-quotes (even numbers!)
 ```
 
 * or pass it through when running it:

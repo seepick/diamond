@@ -31,7 +31,7 @@ For VSC:
 * restart VSC
 
 Terminology
-====
+==================================================
 
 * **Kubernetes** - A container orchestration system (deploy, manage, scale)
     * Greek "helmsman", person steering a seafaring ship; cybernetic
@@ -51,8 +51,9 @@ Terminology
 * **Deployment** - manages pods and their replicas.
 * **Controller** - manages pods based on desired state ("the brain"), containers
 * **Service** - exposes pods to the outside world; short "svc"
-* **cloud-native application** - designed to meet cloud-like demands (autoscaling, self-healing, rolling updates,
-  rollbacks,
+* **Workload** - a running thing in k8s like a webservice, database; or temporary things like batch processing,
+  analytics, reporting
+* **cloud-native application** - designed to meet cloud-like demands (scaling, healing, rolling updates, rollbacks,
   etc.)
 * **containerized application** - packaged as a container image
 * **Sets** - groups of objects with a common characteristic (e.g. all pods in a deployment have the same label)
@@ -154,17 +155,29 @@ Deployment
 
 * Manages internally a ReplicaSet; adds additional functionality.
 * A new rollout (image with update version) will create a new revision (roll-backable).
-    * Check what's happened: `k rollout history deployment/my-deployment`
-    * Live monitor progress: `k rollout status deployment/my-deployment`
-* The old will be preserved, to be able to roll-back (simply scaling down/up pods).
+    * List revisions: `❯ k rollout history deployment/my-deployment`
+        * Get details of a revision: `❯ k rollout history deployment my-deployment --revision=1`
+    * Live monitor progress: `❯ k rollout status deployment/my-deployment`
+* The old will be preserved, to be able to rollback (simply scaling down/up pods).
+    * Rollback via: `❯ k rollout undo deployment/my-deployment` and check via: `❯ k get replicasets`
+        * Or to a specific revisions with the `--to-revision` option
 * Deployment Strategies:
-    * **RollingUpdate**: Tear down/start up one-by-one, zero downtime; the default.
+    * **RollingUpdate**: Tear down/start up one-by-one, zero downtime (the default)
     * **Recreate**: Tear all down, short application unavailability, start new ones up.
+* Deployment Approaches (not options which can be choosen from, but implemented customly):
+    * **Blue/Green**: 100% of old (blue) running and receive traffic, while new (green) is running but not trafficed (
+      run tests first), then switch all at once
+        * Steps: v1 deployment and service; new v2 deploy; change selector in service; done
+    * **Canary**: a progressive blue/green deployment: only route a bit of traffic and observe before going 100%
+        * Naive k8s implementation: v1 deployment and service; new v2 deploy with 1 pod and a shared label as v1;
+          service picks up both now; done.
+        * like the birds in mines, smelling the gas
+    * Use a service mesh like istio, for more sophisticated implementation of those
 
 Namespaces
 --------------------------------------------------------
 
-* or short "ns"; group objects together; not accidentally configuring wrong one
+* to group objects together, to isolate them (not accidentally configuring wrong one); short: "ns"
     * kind-a "virtual cluster", e.g. for environments: dev-test-acc-prod
     * k8s has its own (kube-system for internal, and kube-public for shared)
 * features: custom policies (RBAC; who can do what), ResourceQuotas (limit resources), constraints, ...
@@ -173,6 +186,22 @@ Namespaces
 * kubectl commands:
     * get objects for all namespaces: `k get pods -A`
     * get objects for a specific ns: `k get pods --namespace=kube-system`
+* some objects are _not_ namespaced, e.g.: nodes, PersistentVolumes, cluster roles (bindings), ..., namespaces
+  themselves
+    * see a complete list: `k api-resources --namespaced=true` (or: false)
+
+API Groups
+--------------------------------------------------------
+
+* as defined in the Yaml `apiVersion: group.foobar/version`
+* k8s objects are grouped, e.g.: /apps, /extensions, /networking.k8s.io
+* they have versions:
+    * once a group is in "/v1" it is in a generally available (GA) stable version
+    * or /v1beta1 or /v1alpha1
+    * preferred vs. storage versions (as stored in etcd, not easy to access though)
+* can enable APIs with API server config param `--runtime-config=batch/v2alpha1,...`
+* define your own resources with a CRD (CustomResourceDefinition)
+    * could then also define your own controllers
 
 Configuration
 ==================================================
@@ -189,22 +218,6 @@ Configuration
         * all k8s APIs "support at-rest encryption"; "configure encryption of API data at rest"
         * basically like "linux kernel recompile": enable flag, add some manifest, restart. new secrets will be
           encrypted.
-
-Security
-==================================================
-
-* linux (host/container)  namespaces; process isolation, ... (shared OS kernel, opposed to with VMs)
-* container user is by default root, but with limited capabilities; or change user to run with
-    * capabilities can only be set on containers (not pods)
-* regarding Secrets: see "Configuration" section
-* in order to allow applications talk like we do via kubect, a service account is require:
-  `kubectl create serviceaccount my-user`
-    * and: `kubectl create token my-user` (before k8s version 1.24, this was done implicitly with account creation)
-    * the token (auth-bearer) is stored in the associated secret object
-        * decode the token via https://www.jwt.io or:
-          `jq -R 'split(".) | select(length > 0) | .[0],.[1] | @base64d | fromjson' <<< eyJhb...`
-    * preferably mount volume for the secret: use `serviceAccountName` on a pod's spec to do so
-    * CAVE: no expiry date set for the token! (need to do some more logic in yaml files)
 
 Multi-Container Pods
 ==================================================
@@ -312,10 +325,165 @@ Computation
 * use `ResourceQuota` to limit resources for all pods in the cluster (on a namespace level again)
     * https://kubernetes.io/docs/concepts/policy/resource-quotas/
 
-Persistence
+Jobs
 --------------------------------------------------------
 
+* Use native k8s object `Job`, using the regular pod template inside of it
+    * Use `spec.completions` to specify a sequence of pods (one starts after previous completed successfully)
+    * Use `spec.parallelism` for them to be started at the same time
+* PS: We could simply change the restart policy to never, to do the same naively (by default, pods are restarted once
+  finished)
+
+CronJobs
+--------------------------------------------------------
+
+* just like linux crontab; or like a delayed k8s job, but scheduled periodically
+* the 1st spec for the cronjob, the 2nd for the job, the 3rd for the pod
+    * the 2nd spec for job is an "embedded part", just like pods to deployments
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-job
+spec:
+  schedule: "30 21 * * *" # min hour month_day month week_day
+  jobTemplate:
+    spec:
+      completions: 3
+      parallelism: 3
+      backoffLimit: 25 # This is so the job does not quit before it succeeds.
+      template:
+        spec:
+          containers:
+          - name: my-container
+            image: my-image
+          restartPolicy: Never
+```
+
+Persistence
+==================================================
+
 * StatefulSets (not! Deployments!) for persistent storage (plus: Persistent Storage Claim)
+
+Docker Basics
+--------------------------------------------------------
+
+* layered architecture: each line in Dockerfile a new layer (reuse from bottom to top, or actually top to bottom)
+* the image layers are read-only; when running an image, we have a writable container layer (gone when container dead)
+    * writing in image still possible via an implicit "copy-on-write"
+* mounting:
+    * volume mounting: create a volume (docker), then mount it to the container
+    * bind mounting: map a local folder (absolute path) to a container folder
+* storage and volume drivers...
+    * "storage drivers" do the hard lifting (aufs, zfs, btrfs, device mapper, overlay); docker will choose one for your
+      OS (or you can be picky based on specific needs)
+    * "volume drivers" managed via volume driver plugins (local, azure, convoy, rex ray, flocker ...); to provision on
+      AWS, EBS, S3, ...
+
+Volumes and Claims
+--------------------------------------------------------
+
+* specify volumes with a storage solution (NFS, GlusterFS, ...)
+    * attach a volume to a pod (actually `container.volumeMounts`) to persist data
+    * the order is: PV -> PVC -> Pod (mounted volume)
+* persistent volumes: to not have to reconfigure each pod with the same volume configuration, but centralize it
+    * the cluster (admin) provides volumes
+    * the pods (users/devs) request a volume with a "PVC" = PersistentVolumeClaim
+    * the volume and the claim will be bound in a 1-to-1 relationship
+        * request properties: capacity, access mode, volume mode, storage class; or use labels&selectors to be more
+          specific
+        * if nothing found to be bound, PVC stays in "pending" state
+* if pod is done, reclaim policy: Retain (keep), Delete
+    * Recycle policy is deprecated, data is scrubbed before reuse, but not sophisticated enough for portability/security
+      gaps
+    * Use storage class / CSI drivers instead...
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce # or: ReadOnlyMany, ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
+```
+
+And the claim (https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims):
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi # capacity request less than provided is ok
+```
+
+And in the pod (deployment template) refer to the PVC:
+
+```yaml
+volumes:
+  - name: mypd
+    persistentVolumeClaim:
+      claimName: myclaim
+```
+
+Storage Class
+--------------------------------------------------------
+
+* without it, would need to first manually create a volume in cloud provider, and then create the PV
+* with it, volumes are "dynamically provisioned"
+* no more PV to be created manually (done under the hood for you), instead: SC -> PVC -> Pod
+    * check via: `k get sc,pvc,po`
+    * recape: storage classes create the PV for you, so your PVC refers to SC (not PV)
+* define the details such as: disk/ssd, replication, ... group those, give them names like "normal, gold, platinum"
+* if VolumeBindingMode set to WaitForFirstConsumer, then provisioning delayed until first pod actually consumes
+* more details are very specific to the cloud provider...
+
+StatefulSet
+--------------------------------------------------------
+
+* Similar to deployment set (ReplicaSet): manages pods (scaling, updates, ...)
+    * The Yaml manifest is identical to deployment (different kind of course), with additional headless service
+      reference
+    * Goal: to differentiate master/slave for replicas
+* Offers more sophisticated logic
+    * **sequential startup** of pods: previous needs to run&ready before next pod starts ("ordered, graceful
+      deployment")
+    * stable **host names**: 0-base indexed names (instead hash-suffixed); name retains even after crash&restart (sticky
+      network ID by DNS)
+    * Adjust by e.g. `podManagementPolicy: Parallel`
+* all the pods need a service (also load balancing) in front of them
+* When referring to a PVC, then all the pods in the SS will use that single one (not all storage types support that
+  though)
+    * Or: for each pod a PVC, each a PV, created by a single SC
+    * Need a VolumeClaimTemplate (basically a regular PersistentVolumeClaim but templateized)
+        * do so in the SS under `spec.volumeClaimTemplates` with the content of a regular PVC
+
+Headless Service
+--------------------------------------------------------
+
+* provides a DNS entry to reach a pod (as IPs and hostnames (which are based on IPs) are not stable)
+    * doesn't have an own (cluster) IP address; simply creates DNS entries; also doesn't do load balancing
+    * results in something like: `podname.headless-servicename.namespace.svc.cluster.local`
+* the master is the only one receiving write-operations, and replicates it to the slaves
+    * reads can be load balanced across all pods; thus: the service must not load balance writes!
+* Yaml is identical to one of a regular Service (name, port, selector), but set `clusterIP: None`
+* With Deployment, you have to wire the DNS stuff yourself
+    * (Refer to the service: `spec.subdomain: service-name`)
+    * (And set `spec.hostname: pod-name` to create a DNS record with the podname)
+    * with with StatefulSet it does that automatically for you
+        * BUT: still need to refer to the headless service via `spec.serviceName: my-service`
 
 Networking
 ==================================================
@@ -350,8 +518,152 @@ IP Addresses
 * You must manually install cluster networking; k8s requires all communication without NAT
     * E.g. calico, canal, flannel, romana, weave net...
 
-Monitoring
+Network Policies
+--------------------------------------------------------
+
+* https://kubernetes.io/docs/concepts/services-networking/network-policies/
+* A `NetworkPolicy` is an object similar to a service (use label selectors to be applied to pods)
+    * Once configured all other traffic will be blocked
+* Ingress = Incoming, Outgoing/External = Egress (port, protocol, ...)
+    * A list of (disjuncted) pass-through rules, each having selectors by: pod label, namespace label, IP range
+* By default, all pods can see each other; "All Allow" rule
+    * Security wise, block e.g. communication channel from web-server to DB (only from API pods)
+    * Once a network policy is applied, everything is blocked, except what's explicitly allowed
+* Not all network policies are supported by all "network solutions" (kube-router, calico are ok; flannel limited)
+
+Ingress
+--------------------------------------------------------
+
+* `NodePort` to expose, or use a "cloud native load balancer"; reverse proxy
+    * And don't forget the DNS entry and proxy for port mapping
+* routing incoming requests to specific services
+    * based on: URL, domain name, or hostname
+    * using a default backend if no rules matched
+* Have SSL security (certificates) in a single place (low maintenance)
+* You need an "Ingress Control": nginx (not only a webserver!), istio, HAProxy, traefik (k8s doesn't provide one by
+  default)
+    * The configuration rules (Yaml files) you will make are "Ingress Resources"
+* e.g. for nginx ingress controller...
+    * a Deployment with the right image
+    * a ConfigMap with all kinds of settings
+    * a Service to expose 80/443 ports
+    * a ServiceAccount with the proper (cluster-)role(-binding), etc.
+* watch out for:
+    * disabling SSL redirects via annotation: `http://nginx.ingress.kubernetes.io/ssl-redirect: "false"`
+    * URL rewrite via annotation: `nginx.ingress.kubernetes.io/rewrite-target: /`
+        * see https://kubernetes.github.io/ingress-nginx/examples/rewrite/
+
+Security
 ==================================================
+
+* linux (host/container) namespaces; process isolation, ... (shared OS kernel, opposed to with VMs)
+* container user is by default root, but with limited capabilities; or change user to run with
+    * capabilities can only be set on containers (not pods)
+* regarding Secrets: see "Configuration" section
+* usually passwords disabled, but SSH keys instead
+* kubernetes internal guys (api-server, etcd, scheduler, controller, kubelet, kube-proxy) talk via TLS encryption (
+  certificates)
+* by default all pods can see each other; except if network policies were defined
+* instead of a reference to a cert-file, you can also add it directly embedded (base 64 encoded) with the `*-data` Yaml
+  entry
+
+Service Accounts
+--------------------------------------------------------
+
+* in order to allow applications talk like we (humans) do via kubectl, a service account is require:
+  `kubectl create serviceaccount my-user`
+    * and: `kubectl create token my-user` (before k8s version 1.24, this was done implicitly with account creation)
+    * the token (auth-bearer) is stored in the associated secret object
+        * decode the token via https://www.jwt.io or:
+          `jq -R 'split(".) | select(length > 0) | .[0],.[1] | @base64d | fromjson' <<< eyJhb...`
+    * preferably mount volume for the secret: use `serviceAccountName` on a pod's spec to do so
+    * CAVE: no expiry date set for the token! (need to do some more logic in yaml files)
+
+User Management, Roles (Bindings)
+--------------------------------------------------------
+
+* k8s doesn't do it itself, use auth mechanisms for that
+    * { password/token file, certs, identity service } or third party like { LDAP, kerberos }
+* different user types: admins, devs, end-users, bots (service accounts for 3rd party integrations)
+* authorization modes (mechanism): RBAC (role-based), ABAC (attribute-based), Node, Webhook mode, ...
+    * multiple modes can be configued and are executed in sequence until a permit is created
+    * execute `kubectl describe pod kube-apiserver-controlplane -n kube-system` and look for `--authorization-mode`
+* specific verbs (operations) are permitted for specific resources (pods) (and groups) for a user (ABAC) or role (RBAC)
+* RBAC:
+    * first create a Role, then a RoleBinding to link a user (subjects) to that Role (roleRef)
+    * Role and RoleBinding are namespaced
+* check your permissions: `kubectl auth can-i create deployments`
+* view them via: `k get roles` and `k get rolebindings`
+    * they have resources (resource names) and verbs (get, create, update, delete, ...)
+
+E.g.:
+
+```yaml
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list", "create","delete"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: dev-user-binding
+subjects:
+- kind: User
+  name: dev-user-007
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+```
+
+* use cluster roles (bindings) to:
+    * manage cluster based resources (see "namespaces" section), such as nodes
+    * manage resources across all namespaces
+
+Certificates
+--------------------------------------------------------
+
+* the triple: client-key (admin.key), client-cert (admin.crt), certificate authority (ca.crt)
+* for authentication (of users and k8s components between them)
+
+* TLS creation: `kubectl -n my-namespace create secret tls my-tls --cert "/keys/my-tls.crt" --key "/keys/my-tls.key"`
+
+K8S API Access
+--------------------------------------------------------
+
+* old `/api` (set of core resources) and new `/apis` (more organized: in groups and resources underneath)
+    * verbs (list, get, create, ...) applied to each resource
+* when directly interacting (curl/wget) with the API server, reuse certs specification via `kubectl proxy` (!=
+  kube-proxy)
+
+Admission Controllers
+--------------------------------------------------------
+
+* somehow similar like RBAC auth, but more fine-grained; security measures, enforce certain cluster usage
+    * e.g.: enforce specific image registry, disallow latest version, disallow root, certain capabilities, ...
+* many of these controllers pre-built available: AlwaysPullImages, DefaultStorageClass, EventRateLimit, ...
+* procedure is: user -> kubectl -> API server -> authentication -> authorization -> admission controller -> operation
+* they can be enabled via the run options of the API server (`enable/disable-admission-plugins`)
+    * do so in the `/etc/kubernetes/manifests/kube-apiserver.yaml` file
+    * check what's configured: `ps -ef | grep kube-apiserver | grep admission-plugins`
+    * or: `k exec -it kube-apiserver-controlplane -n kube-system -- kube-apiserver -h | grep 'admission-plugins'`
+* there are two controller types:
+    * mutating: change request, e.g. add default!
+    * validating: allow/deny after validate e.g. exists?
+    * (they can also be custom implemented via webhooks)
+
+Advanced
+==================================================
+
+Monitoring
+--------------------------------------------------------
 
 * k8s has nothing built-in, instead use opensource solutions: metrics server, prometheus, elastic stack, (proprietary:
   datadog, dynatrace)
@@ -361,3 +673,22 @@ Monitoring
     * advanced: `git clone https://github.com/kubernetes-sigs/metrics-server.git`, and apply manifest files
         * or: `k apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`
     * allowing for new command: `k top node` or `k top pod` (acts like a `ps`)
+
+Customization
+--------------------------------------------------------
+
+* CRDs: Custom Resource Definitions: a k8s object itself, using OpenAPI spec for attributes
+* custom controllers (otherwise CRDs are useless), running in a loop in a pod/deploy, written in Go
+* Operator framework: CRDs + custom controllers (deployed as a single entity)
+    * e.g. the etcd-operator, which manages, maintains, fixes, installs, backsup, restores, etc. etcd.
+    * see: http://operatorhub.io
+
+Helm
+--------------------------------------------------------
+
+* like a package manager for k8s; looking at single pieces as a whole application
+* choose an application (http://artifacthub.io) and do a `helm install my-app`, or upgrade/rollback/uninstall
+    * no more need to define, configure, and create all single parts (and remember them to delete them)
+* creating charts: templates + values
+    * convert yaml files to template-yaml files, introducing `{{ .Values.foobar }}`
+    * provide a `values.yaml` file for all the parameters required
