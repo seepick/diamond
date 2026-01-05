@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-more-prod-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-more-prod-pod
+  template:
+    metadata:
+      labels:
+        app: my-more-prod-pod
+    spec:
+      containers:
+        - name: my-more-prod-container
+          image: nginx
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "200m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80

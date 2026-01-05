@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Component
+
+resources:
+  - redis.deployment.yaml
+# service
+# config maps
+# secrets
+# maybe volumes, etc.
+
+# patches...
+# secretGenerator?

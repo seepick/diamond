@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob
+spec:
+  schedule: "30 21 * * *" # min hour month_day month week_day
+  jobTemplate:
+    spec:
+      completions: 3
+      parallelism: 3 # or 1
+      backoffLimit: 25 # This is so the job does not quit before it succeeds.
+      # activeDeadlineSeconds: 200
+      template:
+        spec:
+          containers:
+            - name: my-container
+              image: my-image
+          restartPolicy: Never # OnFailure

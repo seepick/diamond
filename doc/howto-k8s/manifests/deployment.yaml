@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+  namespace: foobar
+  # labels
+  # annotations
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: demo-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  # nodeSelector:
+  #   disktype: ssd
+  # nodeName: node-1.example.com
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/e2e-az-name
+              operator: In
+              values: [ "e2e-az1", "e2e-az2" ]
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      # add taint to a node: `kubectl taint nodes my-node key1=value1:NoSchedule``
+      # remove it again: `kubectl taint nodes node1 key1=value1:NoSchedule-``
+      tolerations:
+        - key: "key1"
+          operator: "Equal" # default anyway
+          value: "value1"
+          effect: "NoSchedule"
+      containers:
+        - name: demo-app
+          image: demo-app:latest
+          ports:
+            - name: web
+              containerPort: 80 # 5432
+          # local image: https://kubernetes.io/docs/concepts/containers/images/#updating-images
+          imagePullPolicy: Never # or Always, IfNotPresent
+          # otherwise we are warned for being a "noisy neighbor"
+          env:
+            - name: SOME_USER
+              value: myuser007
+            - name: SOME_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: my-config-map
+                  key: secret
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+              httpHeaders:
+                - name: Custom-Header
+                  value: Awesome
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: my-demo-volume
+              mountPath: /data # /var/lib/postgresql/data
+            - name: my-volume-config
+              mountPath: /etc/config-volume
+            - name: my-secret-volume
+              mountPath: /etc/secret-volume
+              readOnly: true
+      volumes:
+        - name: my-demo-volume
+          emptyDir: { } # local directory while disappear once pod dies
+        - name: my-volume-config
+          configMap:
+            name: my-config-map
+        - name: my-secret-volume
+          secret:
+            secretName: my-secret

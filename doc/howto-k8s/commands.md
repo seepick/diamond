@@ -44,6 +44,7 @@ kubectl
 ============================
 
 * kubectl docs: https://kubernetes.io/docs/reference/kubectl/
+* kubectl commands: http://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 * API reference: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/
 * Installation:
     * macOS: `❯ brew install kubernetes-cli`
@@ -65,13 +66,14 @@ Commands
         * `describe` - get more details about a single object
         * `apply` - tell k8s to apply changes to the cluster (based on a given file); changing the desired state
         * `logs` - show stdout output; `k logs -f my-pod` (`-f` to follow stream live)
-            * `exec` - execute a single command (possible logging into a remote shell)
-                * Log in with a shell: `❯ k exec -it <pod-name> -- /bin/bash`
-                * Or simply use `k9s` to enable port forwarding and conve niently work on your local machine :)
-            * `port-forward` - to debug a pod, expose its port, make it locally available
-        * `explain <type>` - print info for a specific object type (get types via `k api-resources` command)
-            * drill down sub-elements: `❯ k explain deployment.spec` (gives Yaml structure info)
-            * get them all: `❯ k explain deployment --recursive`
+            * if multiple containers: `k logs my-pod -c my-container`
+        * `exec` - execute a single command (possible logging into a remote shell)
+            * Log in with a shell: `❯ k exec -it <pod-name> -- /bin/bash`
+            * Or simply use `k9s` to enable port forwarding and conve niently work on your local machine :)
+        * `port-forward` - to debug a pod, expose its port, make it locally available
+            * `explain <type>` - print info for a specific object type (get types via `k api-resources` command)
+                * drill down sub-elements: `❯ k explain deployment.spec` (gives Yaml structure info)
+                * get them all: `❯ k explain deployment --recursive`
     * imperative style ACTIONs (don't do them! always use declarative YAML approach)
         * `delete` - remove an object from the cluster
         * `edit` - be presented a generated yaml file and edited to be applied immediately
@@ -287,6 +289,7 @@ pod/my-pod created
 
 * Create a pod and immediately expose it: `❯ k run my-pod --image=httpd:alpine --port=80 --expose=true`
 * Nuke them all: `❯ k delete pod --all`
+* Or just some specific: `❯ k delete pod -l labelKey=labelValue`
 
 Pod Hard Change
 --------------------------------------------

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-api-pod
+  template:
+    metadata:
+      labels:
+        app: my-api-pod
+    spec:
+      containers:
+        - name: my-api-container
+          image: nginx #:1.14.2
+          env:
+            - name: FOO_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: my-api-config
+                  key: foo
+            - name: ENV_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: my-env-configmap
+                  key: environment
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "200m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80

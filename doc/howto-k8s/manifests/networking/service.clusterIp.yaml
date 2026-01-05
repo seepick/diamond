@@ -6,9 +6,17 @@ spec:
   type: ClusterIP  # or NodePort, LoadBalancer, etc.
   ports:
     # mulitple mappings can be defined here
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80 # service port, accessible within the cluster
       targetPort: 80 # pod port; if ommitted, defaults to 'port' value
       # nodePort: 30080 # must be 30xxx by default, only for NodePort type; if ommitted, a valid port will be automatically assigned
   selector: # labels to select pods
     app: my-nginx-pods
+  # ports:
+  #   - name: "db-service"
+  #     port: 5432
+  #     targetPort: 5432
+  # selector:
+  #   app: db
+

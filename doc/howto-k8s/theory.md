@@ -1,6 +1,12 @@
 Overview
 ====
 
+Links:
+
+* See: https://notes.kodekloud.com/docs/Certified-Kubernetes-Application-Developer-CKAD/First-Section/Introduction
+* Do: https://learn.kodekloud.com/user/courses/kubernetes-challenges
+* Watch: https://www.youtube.com/watch?v=X48VuDVv0do
+
 * Control Plane and Worker Nodes
 * Declarative model, desired state vs actual state
 * API server and CLI apps (kubectl)
@@ -59,7 +65,7 @@ Terminology
 * **Sets** - groups of objects with a common characteristic (e.g. all pods in a deployment have the same label)
 * **ReplicaSet** - manages pods based on a desired state (number of pods running; load balancing, auto-scaling)
     * **Replication Controller** - deprecated (use ReplicateSet instead; with rs selector field is mandatory)
-* **StatefulSet** - ?
+* **StatefulSet** - Like deployments but for persistence/DBs, as provides ordered startup and stable hostnames
 * **Observable** (actual current) and desired state (as configured).
     * The system is **drifting** if the differ, and k8s has to do its sync work.
 * **Ingress** -
@@ -297,6 +303,30 @@ Liveness Probes
 * periodically checking whether pod is still healthy (maybe app has a bug; container up and running though)
     * if unhealthy, pod is destroyed and recreated
 
+```yaml
+# for a container (in a Deployment):
+readinessProbe:
+  tcpSocket:
+    port: 8080
+  initialDelaySeconds: 15
+  periodSeconds: 10
+livenessProbe:
+  # exec:
+  #   command:
+  #   - cat
+  #   - /tmp/healthy
+  httpGet:
+    path: /healthz
+    port: 8080
+    httpHeaders:
+      - name: Custom-Header
+        value: Awesome
+  initialDelaySeconds: 3
+  periodSeconds: 60
+  # failureThreshold: 1
+  # successThreshold: 1
+```
+
 Resources
 ==================================================
 
@@ -356,8 +386,8 @@ spec:
       template:
         spec:
           containers:
-          - name: my-container
-            image: my-image
+            - name: my-container
+              image: my-image
           restartPolicy: Never
 ```
 
@@ -453,7 +483,7 @@ Storage Class
 StatefulSet
 --------------------------------------------------------
 
-* Similar to deployment set (ReplicaSet): manages pods (scaling, updates, ...)
+* Similar to deployment (ReplicaSet): manages pods (scaling, updates, ...)
     * The Yaml manifest is identical to deployment (different kind of course), with additional headless service
       reference
     * Goal: to differentiate master/slave for replicas
@@ -605,18 +635,18 @@ metadata:
   namespace: default
   name: developer
 rules:
-- apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["list", "create","delete"]
+  - apiGroups: [ "" ]
+    resources: [ "pods" ]
+    verbs: [ "list", "create","delete" ]
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-binding
 subjects:
-- kind: User
-  name: dev-user-007
-  apiGroup: rbac.authorization.k8s.io
+  - kind: User
+    name: dev-user-007
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
   name: developer
@@ -687,8 +717,270 @@ Helm
 --------------------------------------------------------
 
 * like a package manager for k8s; looking at single pieces as a whole application
-* choose an application (http://artifacthub.io) and do a `helm install my-app`, or upgrade/rollback/uninstall
+    * choose an application (http://artifacthub.io) and do a `helm install my-app`, or upgrade/rollback/uninstall
     * no more need to define, configure, and create all single parts (and remember them to delete them)
 * creating charts: templates + values
-    * convert yaml files to template-yaml files, introducing `{{ .Values.foobar }}`
+    * convert yaml files to template-yaml files, introducing Go templates `{{ .Values.foobar }}`
     * provide a `values.yaml` file for all the parameters required
+    * more features than kustomize: conditionals, loops, functions, hooks...
+
+Kustomize
+==================================================
+
+* Homepage: https://github.com/kubernetes-sigs/kustomize
+* Simple sample: https://github.com/kubernetes-sigs/kustomize/blob/master/examples/helloWorld/README.md
+
+Basics
+--------------------------------------------------------
+
+* `brew install kustomize` (or for linux:
+  `curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash`)
+* built-in support in kubectl for kustomize! (but it is sometimes outdated, so better install kustomize CLI)
+* to support variations for different environments (development, test, staging, production)
+    * without kustomize, usually have folders for each env, and duplicate all the Yamls across with slight adaptions
+    * BUT this doesn't scale; copying; change; ... mismatch in configs
+    * solution: reuse k8s configs, only modify what needs to be changed (per env)
+* super easy to learn (compared with templating magic from helm); all just yaml (but also not as powerful)
+* core concepts are: **base** (basic shared config, default values) and **overlay** (specific overrides per env)
+    * these are reflected in the file system:
+
+```
+k8s/
+  base/   <= shared/default configs
+    kustomization.yaml.  <= entry point
+    backend.deploy.yaml
+  overlays/   <= per environment sub-folder for overrides
+    dev/
+      kustomization.yaml
+      config-map.yaml
+    prod/
+      kustomization.yaml
+      config-map.yaml
+```
+
+* run it by executing: `kustomize build <kdirectory>` (or without the native binary: `kubectl kustomize <kdirectory>`)
+    * this will only display the generated, "raw" k8s yaml files (you still need to apply them to the cluster)
+* generate and apply with native support: `kubectl apply -k <kdirectory>` (instead of the common `-f` option)
+    * otherwise could trick around with shell tools and chain them: `kustomize build <kdirectory> | kubectl apply -f -`
+    * or `delete` instead of `apply` to tear it all down again
+
+Transformers
+--------------------------------------------------------
+
+* several built-in, or create custom one
+* common transformations: commonLabel/commonAnnotations, namePrefix/Suffix, Namespace
+
+```yaml
+
+labels:
+  - pairs:
+      labelKey: labelValueToAdd
+  includeSelectors: true # otherwise only in the top level manifest objects, not down to e.g. deployment.spec.template.metadata (for pods)
+# commonLabels: # NO: commonLabels is deprecated!
+#   labelKey: labelValueToAdd
+commonAnnotations:
+  some.foobar.io: config-value
+
+namespace: my-namespace
+namePrefix: dev-
+nameSuffix: "-001"
+
+# image transformer:
+images:
+  - name: nginx # matches containers.image (not containers.name!)
+    newName: haproxy # replaces containers.image (not containers.name!)
+    newTag: "1.2.3" # the version (double quote as others int not string!), thus "haproxy:1.2.3"
+```
+
+* when having subdirectories, the `kustomization.yaml` of each directory will only apply from this level recursively
+  downward.
+    * if multiple same transformers applied, then "most lower" will be applied first.
+* WATCH OUT: when first creating all, then modifying kustomize files (e.g. namespace), and then try to delete won't work
+  anymore ;)
+
+Patches
+--------------------------------------------------------
+
+* A more "surgical" (targeting specific sections) approach to customize k8s configs
+* Requires 3 attributes:
+    * Operation types: add | replace | remove
+    * Target: name, namespace, labelSelector, ...
+    * And the actual value (for add/replace only of course, not remove)
+* Two patch types are available: Inline and strategic.
+
+An **inline** patch (or officially Json RFC-6902 patch; traget + patch details):
+
+```yaml
+patches:
+  - target: # kind of a selector
+      kind: Deployment
+      name: web-deployment
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: api-deployment
+```
+
+A **strategic** merge patch:
+
+```yaml
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: api-deployment # selector
+      spec:
+        replicas: 5 # replace
+```
+
+* Patches can be defined inline or in a **separate file**:
+
+```yaml
+# kustomization.yaml
+patches:
+  - path: replica-patch.yaml
+    target:
+      kind: Deployment
+      name: nginx-deployment
+---
+# replica-patch.yaml
+- op: replace
+  path: /spec/replicas
+  value: 5
+```
+
+* Replace a dictionary Json6902 patch:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  template:
+    metadata:
+      labels:
+        component: api
+    #...
+---
+patches:
+  - #...
+    patch: |-
+      - op: replace
+        path: /spec/template/metadata/labels/component
+        value: web
+```
+
+* Or the same with a strategic merge patch (basically a copy'n'paste with an updated value):
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  template:
+    metadata:
+      labels:
+        component: web
+```
+
+* Adding a new property (for strategic identical as with replace; the yamls are being merged):
+
+```yaml
+patch: |-
+  - op: add
+    path: /spec/template/metadata//labels/addedLabelKey
+    value: addedValue
+```
+
+* Removing a property for strategic patches (for 6902 you simply use the `remove` operator):
+
+```yaml
+spec:
+  template:
+    metadata:
+      labels:
+        oldKey: null
+```
+
+* Identify elements of a **listed value** by index: `path: /spec/template/spec/containers/0` (meh, seems very fragile to
+  me); value is then name & image map
+    * or via strategic patch, by providing the search name, and change the image (seems no way to change the container
+      name as it is used for selection?!)
+* To add an item: `path: /spec/template/spec/containers/-` (`-` add as last, or index where before to add, e.g. 0 for
+  first)
+    * via strategic patch, simply declare it (hopefully name is not yet used, otherwise no explicit statement that this
+      is an add, not a replace)
+* To delete just use `op: remove` and an index for the path
+    * For strategic:
+
+```yaml
+spec:
+  containers:
+    - $path: delete
+      name: my-container
+```
+
+Overlays
+--------------------------------------------------------
+
+* This is kustomize's main usecase! Reuse config per environment basis.
+* in each overlay (`kustomization.yaml`), refer to the base folder `bases`
+    * Also add patches (see previous chapter), and additional resources (deployments, services, config maps, etc.)
+* The structure folder for base and overlays is independent; they don't need to match up.
+* To apply an overlay, simply do a: `k apply -k /path/to/overlays/dev`
+
+Components
+--------------------------------------------------------
+
+* Reusable parts of config logic (patches, resources); can be included in several overlays (thus, not possible to put in
+  base).
+* When the app supports optional features; enable only in certain "subset" overlays.
+    * Avoid to having copy'n'paste the same config in several overlays if they are identical (scalability again; avoid "
+      config drift").
+* E.g. caching with redis only for premium overlays (not dev); or different DBMS
+
+How to:
+
+* Create a folder `components/` next to base and overlays, quiet similar to overlays themselves.
+    * Create a `kustomization.yaml` file, BUT the kind must be `Component` (and not `Kustomization`).
+    * Also watch out to not re-define base (not necessary if invoked from overlay; actually will result in an error if).
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+  - db-deployment.yaml
+  - db-service.yaml
+secretGenerator:
+  - name: db-creds
+    literals:
+      - password=password1
+patches:
+  - path: api-patch.yaml
+```
+
+* In your overlay config, simply import the component by adding:
+
+```yaml
+components:
+  - ../../components/db
+```
+
+Open Questions
+--------------------------------------------------------
+
+* if try to remove something which doesnt exist, will it fail as expected? (seems error-prone this yaml operation
+  approach)
+* how to do relative changes, e.g. "increment replicate by 1" (instead of using an absolute value)?
+* best practice assumption: prod is the default (in base), as better fuck-up dev with prod-values, then prod with
+  dev-values!
+* when modifying artifacts (name-prefix/suffix), and i use patches to select certain items, will it filter before or
+  after the modification?
+    * e.g. name: "service"; suffix: "-app"; select traget name: "service" or "service-app"?
+* regarding commands: when to use
+    * `command: [ "someBin", "someArg" ]` (definitely NOT: `command: [ "someBin someArg" ]`)
+    * `command: [ "sh", "-c", "someBin someArg" ]`?
+    * or command + args property?

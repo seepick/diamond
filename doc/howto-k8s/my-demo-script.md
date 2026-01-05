@@ -2,7 +2,6 @@ k8s handson demo
 
 see: https://www.youtube.com/watch?v=r2zuL9MW6wc
 
-
 Upfront Preparation
 =====
 
